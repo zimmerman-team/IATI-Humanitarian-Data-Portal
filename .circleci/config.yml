@@ -136,7 +136,7 @@ jobs:
                       --output=json \
                       --output=html
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                lighthouse "~/mlt-frontend$REACT_APP_PROJECT_URL_TEST" \
+                lighthouse "$REACT_APP_PROJECT_URL_TEST" \
                  --port=9222 \
                       --chrome-flags=\"--headless\" \
                       --output-path=/home/chrome/reports/anonymous-"$(echo -n $CIRCLE_SHELL_ENV | md5sum | awk '{print $1}')"-$(date +'%Y-%m-%d') \
@@ -190,13 +190,13 @@ jobs:
           name: Send report files to droplet
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                rsync -O -ave ssh ./reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/
+                rsync -O -ave ssh ~/mlt-apps/staging/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                rsync -O -ave ssh ./reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/
+                rsync -O -ave ssh ~/mlt-apps/test/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-                rsync -O -ave ssh ./reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/
+                rsync -O -ave ssh ~/mlt-apps/dev/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
             else
-                rsync -O -ave ssh ./reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/
+                rsync -O -ave ssh ~/mlt-apps/dev/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
             fi
       - run:
           name: Analyze and report desired vs actual lighthouse scores
