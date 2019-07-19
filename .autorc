@@ -1,6 +1,6 @@
 {
-  "repo": "https://github.com/zimmerman-zimmerman/mlt-frontend",
-  "owner": "Zimmerman & Zimmerman",
+  "repo": "mlt-frontend",
+  "owner": "zimmerman-zimmerman",
   "email": "jim@zimmermanzimmerman.nl",
   "plugins": [
     "conventional-commits"
