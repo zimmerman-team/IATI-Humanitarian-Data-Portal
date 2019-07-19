@@ -35,3 +35,4 @@ EXPOSE 80
 
 # Entrypoint
 CMD ["nginx", "-g", "daemon off;"]
+
