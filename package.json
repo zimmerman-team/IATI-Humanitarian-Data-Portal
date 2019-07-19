@@ -9,6 +9,7 @@
     "@material-ui/styles": "^4.2.1",
     "circle-github-bot": "^2.0.1",
     "cuid": "^2.1.6",
+    "dexie": "^2.0.4",
     "easy-peasy": "3.0.0-rc.2",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
