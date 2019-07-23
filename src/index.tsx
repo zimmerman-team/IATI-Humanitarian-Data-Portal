@@ -1,7 +1,6 @@
 import React from 'react';
 import { hydrate, render } from 'react-dom';
 import { createBrowserHistory } from 'history';
-import 'index.css';
 import App from 'app';
 import { setupNotification } from './notification';
 import * as serviceWorker from 'serviceWorker';
