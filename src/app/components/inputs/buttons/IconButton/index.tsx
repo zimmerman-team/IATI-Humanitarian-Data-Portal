@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/icons/ArrowForward';
+import { Palette } from 'app/theme';
 
 type Props = {
   text: string;
@@ -12,6 +13,10 @@ type Props = {
 
 const BaseContainedButton = styled(props => <Button {...props} />)`
   padding: 12px 15px !important;
+  
+  &:hover{
+  background-color: ${Palette.primary.light} !important;
+  }
   
   & [class*='MuiButton-label'] {
     text-transform: none;
