@@ -12,14 +12,14 @@ type Props = {
 
 const BaseComponent = styled(props => <Button {...props} />)`
   && {
-    margin-left: 20px;
+    margin-left: 40px;
+    margin-left: 40px;
     & [class*='MuiButton-label'] {
       font-size: 14px;
       text-transform: capitalize;
     }
 
     &:hover {
-      opacity: 0.6;
       background-color: initial;
     }
   }
@@ -27,7 +27,10 @@ const BaseComponent = styled(props => <Button {...props} />)`
 
 const CustomLink = styled(props => <NavLink {...props} />)`
   text-decoration: none;
-  color: white;
+  color: black;
+  &:hover {
+    color: #25a898;
+  }
 `;
 
 const AppBarButton = (props: Props) => {

@@ -21,14 +21,7 @@ type AppBarProps = {
 
 const BaseComponent = styled(props => <BaseAppBar {...props} />)`
   && {
-    background-color: ${props => {
-      switch (props.location) {
-        case '/':
-          return 'initial';
-        default:
-          return theme.palette.grey.greyBase;
-      }
-    }};
+    background-color: #f7f7f7;
     position: fixed;
     top: 0;
   }
@@ -45,24 +38,22 @@ const AppBar = (props: AppBarProps) => {
       {...props}
     >
       <Toolbar>
-        <Grid
-          container
-          direction="row"
-          justify="space-between"
-          alignItems="center"
-        >
-          <Typography variant="h6">
-            <LinkMod to="/" data-cy="appbar-title">
-              {process.env.REACT_APP_CLIENT_NAME}
-            </LinkMod>
-          </Typography>
+        <Grid container direction="row" justify="center" alignItems="center">
           <Grid>
-            <AppBarButton label="Welcome" url="/" data-cy="appbar-button1" />
+            <AppBarButton label="Home" url="/" data-cy="appbar-button1" />
+            <AppBarButton label="About" url="/about" data-cy="appbar-button2" />
             <AppBarButton
-              label="Query builder"
-              url="/querybuilder"
-              data-cy="appbar-button2"
+              label="Signatory Progress"
+              url="/signatory-progress"
+              data-cy="appbar-button3"
             />
+            <AppBarButton
+              label="Signatory Data"
+              url="/signatory-data"
+              data-cy="appbar-button4"
+            />
+            <AppBarButton label="FAQ's" url="/faq" data-cy="appbar-button5" />
+
             {/*<AppBarButton label="API documentation" link="" data-cy="appbar-button3"/>*/}
             {/*<AppBarButton label="Github" data-cy="appbar-button4"/>*/}
           </Grid>
