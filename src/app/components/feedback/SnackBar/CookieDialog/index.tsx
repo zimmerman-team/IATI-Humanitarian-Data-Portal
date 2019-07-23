@@ -1,14 +1,9 @@
 import React, { SyntheticEvent } from 'react';
 import clsx from 'clsx';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
-import InfoIcon from '@material-ui/icons/Info';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import WarningIcon from '@material-ui/icons/Warning';
 import styled from 'styled-components';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import Button from '@material-ui/core/Button';
+import ContainedButton from 'app/components/inputs/buttons/ContainedButton'
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
@@ -20,18 +15,29 @@ type SnackBarProps = {
 };
 
 const BaseSnackbar = styled(props => <Snackbar {...props} />)`
-  && [class*='MuiSnackbarContent-root'] {
+  bottom: 0;
+  
+  & [class*='MuiSnackbarContent-root'] {
     background-color: white;
     border-radius: 2px;
     box-shadow: 0 8px 17px -4px rgba(130, 142, 148, 0.35), 0 0 4px 0 rgba(130, 142, 148, 0.16), 0 0 2px 0 rgba(130, 142, 148, 0.12);
-    max-width: 1224px;
-    width: 100%;
+    flex-wrap: nowrap;
     padding: 0 32px;
   }
 
   & [class*="MuiSnackbarContent-message"] {
-    padding: 28px;
+    padding-left: 0px;
+    padding-top: 28px;
+    padding-bottom: 28px;  
   }
+  
+  & [class*="MuiSnackbarContent-action"] {
+   padding-left: 64px;
+  }
+`;
+
+const Typo = styled(props => <Typography {...props} />)`
+  color: black;
 `;
 
 const SnackBar = (props: SnackBarProps) => {
@@ -60,13 +66,11 @@ const SnackBar = (props: SnackBarProps) => {
         aria-describedby="client-snackbar"
         message={
           <span id="client-snackbar">
-            <Typography variant="body1">The website uses cookies for tracking statistics. Read <Link>Grand Bargins data privacy</Link> for more details.</Typography>
+            <Typo variant="body1">The website uses cookies for tracking statistics. Read <Link>Grand Bargins data privacy</Link> for more details.</Typo>
           </span>
         }
         action={[
-          <Button key="undo" color="secondary" size="small" onClick={handleClose}>
-            Accept
-          </Button>,
+          <ContainedButton text="Accept" onClick={handleClose}/>
         ]}
         {...other}
       />
