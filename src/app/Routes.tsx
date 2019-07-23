@@ -2,14 +2,16 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PageLoader } from 'app/modules/common/PageLoader';
 
-const Page = lazy(() => import('app/modules/common/Page'));
+import About from 'app/modules/about';
+
+import { Page } from 'app/modules/common/Page';
 
 function Routes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
         <Route exact path="/" render={() => <Page />} />
-        <Route exact path="/about" render={() => <Page />} />
+        <Route exact path="/about" render={() => <About />} />
         <Route exact path="/faq" render={() => <Page />} />
         //////////////////////////////////////////////////////////////////////
         <Route
@@ -52,7 +54,9 @@ function Routes() {
           path="/signatory-data/:code/coverage"
           render={() => <Page />}
         />
+        //////////////////////////////////////////////////////////////////////
         <Route exact path="/signatory-progress" render={() => <Page />} />
+        //////////////////////////////////////////////////////////////////////
         <Route
           exact
           path="/signatory-data/:code/activity-list/:code/detail"

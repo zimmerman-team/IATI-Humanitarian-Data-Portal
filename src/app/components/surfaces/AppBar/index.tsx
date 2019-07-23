@@ -22,8 +22,8 @@ type AppBarProps = {
 const BaseComponent = styled(props => <BaseAppBar {...props} />)`
   && {
     background-color: #f7f7f7;
-    position: fixed;
-    top: 0;
+    // position: fixed;
+    // top: 0;
   }
 `;
 
