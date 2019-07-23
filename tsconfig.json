@@ -1,25 +1,37 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "allowUnreachableCode": true,
+    "module": "esnext",
+    "noEmit": true,
+    "jsx": "react",
+    "isolatedModules": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": false,
+    "incremental": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve"
+    "strict": false,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "types": ["cypress", "@percy/cypress"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
-  "include": [
-    "src"
+  "include": ["src", "**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "build",
+    "scripts",
+    "config",
+    ".storybook",
+    "node_modules",
+    "**/story.tsx",
+    "**/*.spec.ts"
   ]
 }
