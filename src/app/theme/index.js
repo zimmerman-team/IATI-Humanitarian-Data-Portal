@@ -6,9 +6,9 @@ export const Spacing = {
 
 export const Palette = {
   primary: {
-    light: '#66a1ff',
-    main: '#3074f1',
-    dark: '#1e60d9',
+    light: '#51dbca',
+    main: '#30c2b0',
+    dark: '#25a898',
     contrastText: '#fff'
   },
   secondary: {
