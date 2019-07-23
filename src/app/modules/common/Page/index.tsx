@@ -1,19 +1,53 @@
 /* core */
-import React from 'react';
-/* third-party */
-import useTitle from 'react-use';
-import { PageLayout } from './layout';
+import React, { ReactNode } from 'react';
+import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import { Typography, Container } from '@material-ui/core';
+import useTitle from 'react-use/lib/useTitle';
+import { ThemeProvider } from 'styled-components';
 
-function Page() {
-  /* set the window title */
-  // useTitle('OIPA - Query Builder');
+export type PageProps = {
+  title?: string;
+  children?: ReactNode;
+};
+
+const theme = {
+  flexboxgrid: {
+    // Defaults
+    gridSize: 12, // columns
+    gutterWidth: 1, // rem
+    outerMargin: 2, // rem
+    mediaQuery: 'only screen',
+    container: {
+      sm: 46, // rem
+      md: 61, // rem
+      lg: 76, // rem
+    },
+    breakpoints: {
+      xs: 0, // em
+      sm: 48, // em
+      md: 64, // em
+      lg: 75, // em
+    },
+  },
+};
+
+export const Page = (props: PageProps) => {
+  useTitle(`MLT - ${props.title}`);
 
   return (
-    <>
-      container
-      <PageLayout />
-    </>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Grid>
+          <Row>
+            <Col lg={7}>
+              <Typography variant="h3" color="textPrimary">
+                {props.title}
+              </Typography>
+            </Col>
+          </Row>
+        </Grid>
+        {props.children}
+      </Container>
+    </ThemeProvider>
   );
-}
-
-export default Page;
+};
