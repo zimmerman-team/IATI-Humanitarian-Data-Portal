@@ -1,0 +1,13 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+
+import { AboutLayout } from './layout';
+import Providers from 'app/Providers';
+
+storiesOf('Modules|Page', module).add('Page - about', () => (
+  <>
+    <Providers>
+      <AboutLayout />
+    </Providers>
+  </>
+));
