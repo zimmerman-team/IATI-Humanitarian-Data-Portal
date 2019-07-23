@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/icons/ArrowForward';
 
 type Props = {
   text: string;
@@ -13,8 +14,9 @@ const BaseContainedButton = styled(props => <Button {...props} />)`
   padding: 12px 15px !important;
   
   & [class*='MuiButton-label'] {
-    min-width: 102px;
     text-transform: none;
+    min-width: 102px;
+    justify-content: space-between;
   }   
 `;
 
@@ -22,7 +24,10 @@ const ContainedButton = (props: Props) => {
   const { text, disabled, ...other } = props;
 
   return (
-    <BaseContainedButton variant={"contained"} color="primary" disabled={disabled} disableRipple {...other}>{text}</BaseContainedButton>
+    <BaseContainedButton variant={"contained"} color="primary" disabled={disabled} disableRipple {...other}>
+      {text}
+      <Icon fontSize="small">send</Icon>
+    </BaseContainedButton>
   );
 };
 
