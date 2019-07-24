@@ -6,56 +6,59 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ListItem from './common/ListItem'
+import {ListModel} from './mock';
 import Paper from '@material-ui/core/Paper';
-import listModel from './mock';
 
-const BaseSnackbar = styled(props => <Table {...props} />)`
-  & [class*=''] {
+//TODO:
+// - Optional Title
+// - Optional Table Headers
+// - Optional Subtitle
+// - Optional Tooltip
+
+const Base = styled(props => <Paper {...props} />)`
+  padding: 18px 28px 32px 28px;
+`;
+
+const TableHeader = styled(props => <TableCell {...props} />)`
+  //H6 variant of Typography
+  &&{
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding-left: 0px; 
   }
 `;
 
-type ListModel = {
-  title?: string;
-  subtitle?: string;
-  header?: boolean;
-  items: ListItemModel[];
-}
-
-type ListItemModel = {
-  label: string;
-  values: ListItemValueModel[];
-}
-
-type ListItemValueModel = {
-  qtc?: number;
-  ptc?: number;
-  date?: Date;
-  version?: string
-}
-
 const List = (props: ListModel) => {
   const listItems = props.items.map((item) =>
-    <ListItem label={item.label} values={item.values}/>
+  <ListItem label={item.label} values={item.values}/>
   );
 
+// https://dev.to/claireparkerjones/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
+function formTableHeaders2() {
+  const tableHeaders = new Set();
+  props.items.map(item => Object.keys(item.values[0]).map( (header) => tableHeaders.add(header) ));
+  //Return as array
+  return Array.from(tableHeaders);
+}
+
+console.log(formTableHeaders2());
   return (
-    <Paper>
+    <Base>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
+            <TableHeader>{props.title}</TableHeader>
+            {formTableHeaders2().map((header) =><TableCell align="right">{header}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>
-          {/*<ListItem label="Hond" values={[1,2]} coloured/>*/}
-          {/*<ListItem label="Hond" values={[1,2]} tooltip="Tooltip"/>*/}
           {listItems}
         </TableBody>
       </Table>
-    </Paper>
+    </Base>
   );
-}
+};
 
 export default List;

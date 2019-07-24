@@ -1,21 +1,23 @@
-type ListModel = {
-  title?:string;
-  items:ListItemModel[];
+export type ListModel = {
+  title?: string;
+  subtitle?: string;
+  header?: boolean;
+  items: ListItemModel[];
 }
 
-type ListItemModel = {
+export type ListItemModel = {
   label: string;
   values: ListItemValueModel[];
 }
 
-type ListItemValueModel = {
+export type ListItemValueModel = {
   qtc?: number;
   ptc?: number;
   date?: Date;
   version?: string
 }
 
-const ListModel:ListModel = {
+export const listModel:ListModel = {
   title:'Activity Summary',
   items: [
     {
@@ -23,7 +25,7 @@ const ListModel:ListModel = {
       values: [
         {
           qtc: 1,
-          ptc: 1
+          ptc: 2
         }
       ],
     },
@@ -31,8 +33,8 @@ const ListModel:ListModel = {
       label: "Has funding recipient details",
       values: [
         {
-          qtc: 1,
-          ptc: 1
+          qtc: 3,
+          ptc: 4
         }
       ],
     },
@@ -40,12 +42,12 @@ const ListModel:ListModel = {
       label: "With organisation type provided",
       values: [
         {
-          qtc: 1,
-          ptc: 1
+          qtc: 5,
+          ptc: 6
         }
       ],
     },
   ]
-}
+};
 
-export default ListModel;
+
