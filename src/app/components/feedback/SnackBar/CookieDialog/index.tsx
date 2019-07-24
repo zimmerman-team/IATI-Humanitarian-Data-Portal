@@ -15,7 +15,9 @@ type SnackBarProps = {
 };
 
 const BaseSnackbar = styled(props => <Snackbar {...props} />)`
+  &&{
   bottom: 0;
+  }
   
   & [class*='MuiSnackbarContent-root'] {
     background-color: white;
