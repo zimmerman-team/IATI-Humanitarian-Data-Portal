@@ -1,27 +1,12 @@
-export type ListModel = {
-  title?: string;
-  subtitle?: string;
-  header?: boolean;
-  items: ListItemModel[];
-}
+import { ListModel } from './model';
 
-export type ListItemModel = {
-  label: string;
-  values: ListItemValueModel[];
-}
-
-export type ListItemValueModel = {
-  qtc?: number;
-  ptc?: number;
-  date?: Date;
-  version?: string
-}
-
-export const listModel:ListModel = {
+export const mockData:ListModel = {
   title:'Activity Summary',
+  subtitle:'Activity Summary subtitle',
   items: [
     {
       label: "For humanitarian activities",
+      tooltip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       values: [
         {
           qtc: 1,
@@ -42,7 +27,7 @@ export const listModel:ListModel = {
       label: "With organisation type provided",
       values: [
         {
-          qtc: 5,
+          qtc: undefined,
           ptc: 6
         }
       ],

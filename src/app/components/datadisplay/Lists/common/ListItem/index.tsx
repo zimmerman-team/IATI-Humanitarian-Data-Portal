@@ -5,7 +5,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Tooltip from 'app/components/datadisplay/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { Palette } from 'app/theme';
-import { ListItemModel } from 'app/components/datadisplay/Lists/mock';
+import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 
 const ToolTip = styled(props => <Tooltip {...props} />)`
   margin-top: 4px !important;
@@ -24,11 +24,10 @@ padding-left: 0;
 `;
 
 const ListItem = (props: ListItemModel) => {
-  const cellValues = props.values.map(value => Object.values(value).map( cell => <TableCell align="right" style={{color: props.coloured ? Palette.primary.main : 'none'}}>{cell}</TableCell> ));
+  const cellValues = props.values.map(value => Object.values(value).map( cell => <TableCell align="right">{cell}</TableCell> ));
 
   return (
           <TableRow>
-            {props.children}
             <RowHeader component="th" scope="row">
               <Typo variant="body2">{props.label}</Typo>
               {props.tooltip ? <ToolTip tip={props.tooltip}/> : null}

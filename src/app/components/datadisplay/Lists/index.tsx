@@ -6,53 +6,69 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ListItem from './common/ListItem'
-import {ListModel} from './mock';
+import { ListModel } from './model';
 import Paper from '@material-ui/core/Paper';
+import { Typography } from '@material-ui/core';
 
 //TODO:
-// - Optional Title
-// - Optional Table Headers
-// - Optional Subtitle
-// - Optional Tooltip
+// - Optional highlight
+// - Overall styling
 
 const Base = styled(props => <Paper {...props} />)`
   padding: 18px 28px 32px 28px;
 `;
 
 const TableHeader = styled(props => <TableCell {...props} />)`
-  //H6 variant of Typography
+  &&{
+  padding-left: 0px; 
+  //padding-bottom: 9px;
+  }
+`;
+
+const TableValueHeader = styled(props => <TableCell {...props} />)`
+  &&{
+  text-transform: capitalize;
+  }
+`;
+
+const TableTitle = styled(props => <Typography {...props} />)`
   &&{
   color: black;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.5;
-  padding-left: 0px; 
   }
+`;
+
+const TableSubtitle = styled(props => <Typography {...props} />)`
 `;
 
 const List = (props: ListModel) => {
   const listItems = props.items.map((item) =>
-  <ListItem label={item.label} values={item.values}/>
+  <ListItem label={item.label} values={item.values} tooltip={item.tooltip}/>
   );
 
 // https://dev.to/claireparkerjones/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
-function formTableHeaders2() {
-  const tableHeaders = new Set();
-  props.items.map(item => Object.keys(item.values[0]).map( (header) => tableHeaders.add(header) ));
-  //Return as array
-  return Array.from(tableHeaders);
+function valueHeaders() {
+
+  const tableHeadersSet = new Set();
+  props.items.map(item => Object.keys(item.values[0]).map( (header) => tableHeadersSet.add(header)));
+  // From Set to Array
+  const tableHeadersArray = Array.from(tableHeadersSet);
+
+  return tableHeadersArray.map( (header) => <TableValueHeader align="right">{header as string}</TableValueHeader>);
 }
 
-console.log(formTableHeaders2());
   return (
     <Base>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeader>{props.title}</TableHeader>
-            {formTableHeaders2().map((header) =><TableCell align="right">{header}</TableCell>)}
-          </TableRow>
-        </TableHead>
+          <TableHead>
+            <TableRow>
+              <TableHeader>
+                <TableTitle variant="h6">{props.title}</TableTitle>
+                <TableSubtitle variant="caption">{props.subtitle}</TableSubtitle>
+              </TableHeader>
+              {props.valueHeaders && valueHeaders()}
+            </TableRow>
+          </TableHead>
+
         <TableBody>
           {listItems}
         </TableBody>
