@@ -38,7 +38,7 @@ const Typo = styled(props => <Typography {...props} />)`
 
 // https://material-ui.com/components/progress/#CircularStatic.js
 // Animated value going from 0 to value?
-const DonutChart = (props: DonutChartModel) => {
+export const DonutChart = (props: DonutChartModel) => {
   // Switch between these code lines for animation.
   const [completed, setCompleted] = React.useState(props.value);
   // const [completed, setCompleted] = React.useState(0);
@@ -62,4 +62,3 @@ const DonutChart = (props: DonutChartModel) => {
   );
 };
 
-export default DonutChart;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard} from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
-import DonutChart from 'app/components/charts/DonutChart/index';
+import { DonutChart } from 'app/components/charts/DonutChart/index';
 import { DonutChartCardModel } from './model';
 
 const Card = styled(props => <MuiCard {...props} />)`&&{
@@ -25,7 +25,7 @@ const Typo = styled(props => <Typography {...props} />)`
   }
 `;
 
-const DonutChartCard = (props: DonutChartCardModel) => {
+export const DonutChartCard = (props: DonutChartCardModel) => {
   return (
     <Card>
       <Content>
@@ -36,4 +36,3 @@ const DonutChartCard = (props: DonutChartCardModel) => {
   );
 };
 
-export default DonutChartCard;

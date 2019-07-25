@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Component from '.';
+import { DonutChartCard } from './index';
 import Providers from 'app/Providers';
 import { Grid } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ const mockData = {
 storiesOf('Surfaces|Cards/', module).add('Donut Chart Card', () => (
   <Providers>
     <Grid container>
-      <Component value={mockData.value} activity={mockData.activity}/>
+      <DonutChartCard value={mockData.value} activity={mockData.activity}/>
     </Grid>
   </Providers>
 ));
