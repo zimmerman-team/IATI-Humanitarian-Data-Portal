@@ -17,14 +17,14 @@ const Container =  styled(props => <Box {...props} />)`
 const BackgroundDonut = styled(props => <CircularProgress {...props} />)`
   position: absolute;
   &&{
-  color: ${Colours.greylight30OrFontdisablet};
+    color: ${Colours.greylight30OrFontdisablet};
   }
 `;
 
 const ProgressDonut = styled(props => <CircularProgress {...props} />)`
   position: absolute;
   &&{
-  transform: rotate(90deg) !important;
+    transform: rotate(90deg) !important;
   }
 `;
 
@@ -39,7 +39,9 @@ const Typo = styled(props => <Typography {...props} />)`
 // https://material-ui.com/components/progress/#CircularStatic.js
 // Animated value going from 0 to value?
 const DonutChart = (props: DonutChartModel) => {
-  const [completed, setCompleted] = React.useState(0);
+  // Switch between these code lines for animation.
+  const [completed, setCompleted] = React.useState(props.value);
+  // const [completed, setCompleted] = React.useState(0);
   React.useEffect(() => {
     function progress() {
       setCompleted(prevCompleted => (prevCompleted >= props.value ? props.value : prevCompleted + 10));
