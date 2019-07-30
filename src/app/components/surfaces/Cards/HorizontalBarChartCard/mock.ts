@@ -1,4 +1,6 @@
-export const mockData = [
+export const mockData ={
+  title: 'Signatories meeting Data Publication CCTRIs',
+  values : [
   {
     name: 'Inc. Pledge',
     value: 232,
@@ -17,4 +19,4 @@ export const mockData = [
     percentage: 25,
     color: '#5accbf',
   },
-];
+]};
