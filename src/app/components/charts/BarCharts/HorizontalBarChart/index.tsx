@@ -24,6 +24,7 @@ const barModel: BarSvgProps = {
   padding: 0.4,
   layout: 'horizontal',
   axisTop: {
+    tickValues: 5,
     tickSize: 5,
     tickPadding: 5,
     tickRotation: 0,
