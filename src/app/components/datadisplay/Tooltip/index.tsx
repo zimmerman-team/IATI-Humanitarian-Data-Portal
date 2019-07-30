@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Tooltip } from '@material-ui/core';
+import Colours from 'app/theme/color';
 
 type Props = {
   size?: string;
@@ -11,6 +12,7 @@ type Props = {
 
 const BaseButton = styled(props => <Button {...props} />)`
   && {
+    background-color: ${Colours.greydark20OrFontsecondary};
     border-radius: 50%;
     height: 15px;
     width: 15px;
@@ -25,6 +27,9 @@ const BaseButton = styled(props => <Button {...props} />)`
       font-size: 9px;
       text-transform: initial;
       line-height: 1;
+    }
+    &:hover{
+      background-color: ${Colours.greydark20OrFontsecondary};
     }
   }
 `;

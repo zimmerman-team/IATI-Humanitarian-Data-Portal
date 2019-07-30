@@ -4,7 +4,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from 'app/components/datadisplay/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import { Palette } from 'app/theme';
 import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 
 const ToolTip = styled(props => <Tooltip {...props} />)`
@@ -35,6 +34,6 @@ const ListItem = (props: ListItemModel) => {
             {cellValues}
           </TableRow>
   );
-}
+};
 
 export default ListItem;

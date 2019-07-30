@@ -12,7 +12,6 @@ import { Typography } from '@material-ui/core';
 
 //TODO:
 // - Optional highlight
-// - Overall styling
 
 const Base = styled(props => <Paper {...props} />)`
   padding: 18px 28px 32px 28px;
@@ -21,7 +20,6 @@ const Base = styled(props => <Paper {...props} />)`
 const TableHeader = styled(props => <TableCell {...props} />)`
   &&{
   padding-left: 0px; 
-  //padding-bottom: 9px;
   }
 `;
 
@@ -46,8 +44,8 @@ const List = (props: ListModel) => {
   );
 
 // https://dev.to/claireparkerjones/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
+// TODO: Refactor code, this logic does not matches the headers with the actual value. Works for now but may cause problems.
 function valueHeaders() {
-
   const tableHeadersSet = new Set();
   props.items.map(item => Object.keys(item.values[0]).map( (header) => tableHeadersSet.add(header)));
   // From Set to Array
