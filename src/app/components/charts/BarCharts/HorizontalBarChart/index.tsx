@@ -3,6 +3,7 @@ import { ResponsiveBar, BarSvgProps } from '@nivo/bar';
 import styled from 'styled-components';
 import Colours from 'app/theme/color';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';
+import { HorizontalBarChartModel } from './model';
 
 //TODO:
 //  - Find a way to implement the colouring.
@@ -45,7 +46,7 @@ const barModel: BarSvgProps = {
   legends: [],
   motionStiffness: 90,
   motionDamping: 15,
-
+  colors: [],
 
   enableGridX: true,
   enableGridY: true,
@@ -74,7 +75,7 @@ const barModel: BarSvgProps = {
 const BarComponent = props => {
   return(
     <g {...props}>
-      <rect {...props} fill="#5accbf" height={props.height / 2} />
+      <rect {...props} fill={Colours.primaryBase} height={props.height / 2} />
       <text {...props} x={props.width - 64} y={props.y - 5} fontFamily="Inter" fontSize="12px" lineHeight="1.33" letterSpacing="0.42" fontWeight="normal" fill={Colours.greydark20OrFontsecondary}>{props.data.data.percentage}% ({props.data.data.value})</text>
     </g>
   );
@@ -89,10 +90,10 @@ const ChartContainer = styled.div`
 `;
 
 // https://nivo.rocks/bar/
-export const HorizontalBarChart = ({ data }) => {
+export const HorizontalBarChart = (props: HorizontalBarChartModel) => {
   return(
     <ChartContainer>
-      <BarChart {...barModel} data={data} barComponent={BarComponent} />
+      <BarChart {...barModel} data={props.values} colors={colorScheme(props.colors)} barComponent={BarComponent} />
     </ChartContainer>
   );
 };

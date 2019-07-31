@@ -5,7 +5,9 @@ import Providers from 'app/Providers';
 import { mockData } from './mock'
 
 storiesOf('Charts|Bar Charts/', module).add('Horizontal Bar Chart', () => (
+  //TODO: Two kinds of flavours on this component, see linechart
   <Providers>
-      <HorizontalBarChart data={mockData}/>
+      <HorizontalBarChart values={mockData} />
+      <HorizontalBarChart values={mockData} colors="single"/>
   </Providers>
 ));

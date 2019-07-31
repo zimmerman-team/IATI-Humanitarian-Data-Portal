@@ -30,7 +30,7 @@ export const HorizontalBarChartCard = (props: HorizontalBarChartCardModel) => {
         <Typo variant="h6">{props.title}</Typo>
         {/*TODO: Implement when merged with MLT-102*/}
         {/*{props.tooltip && <Tooltip />}*/}
-        <HorizontalBarChart data={props.values.values}/>
+        <HorizontalBarChart values={props.values.values}/>
       </Content>
     </Card>
   );
