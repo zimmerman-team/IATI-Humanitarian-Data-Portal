@@ -2,5 +2,5 @@ import { VerticalBarChartModel } from 'app/components/charts/BarCharts/VerticalB
 
 export type VerticalBarChartCardModel = {
   title: string;
-  values: VerticalBarChartModel;
+  data: VerticalBarChartModel;
 };

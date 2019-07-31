@@ -1,19 +1,11 @@
 import React from 'react';
 import { ResponsiveBar, BarSvgProps } from '@nivo/bar';
 import styled from 'styled-components';
-import { ChartTooltip } from '../common/index';
-import Colours from 'app/theme/color';
-
+import { ChartTooltip } from 'app/components/charts/BarCharts/common/ChartTooltip';
 
 //TODO:
+//  - Make this component way more generic
 //  - Find a better solution to handle colours
-
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
-
 const barModel: BarSvgProps = {
   data: [],
   keys: ['humanitarianActivities', 'activities'],
@@ -58,36 +50,64 @@ const barModel: BarSvgProps = {
       symbolSize: 10,
     }
     ],
-  tooltip: function(){},
+  //TODO: this logic should be refactored to a more generic solution.
+  //As of Visual Design this is not nescesarry for now.
+  tooltip: function createChartTooltip({ data }){
+    const items = [
+      {
+        label: "All activities", //Object.keys(data)[0]
+        value: data.activities ? data.activities : "No data" ,
+        color: data.activitiesColor
+      },
+      {
+        label: "Humanitarian", //Object.keys(data)[3]
+        value: data.humanitarianActivities ? data.humanitarianActivities : "No data" ,
+        color: data.humanitarianActivitiesColor
+      }
+    ];
+
+    return (
+      <ChartTooltip items={items}/>
+    )
+  },
   animate: false,
   motionStiffness: 90,
   motionDamping: 15,
 
   theme: {
-    fontFamily: "Inter",
-    fontSize: 12,
-
     axis: {
-      ticks:{
+      ticks: {
         text: {
           fontWeight: 500,
+          fontFamily: "Inter",
+          fontSize: 12,
         }
       }
-
+    },
+    legends: {
+      text: {
+        fontWeight: 500,
+        fontFamily: "Inter",
+        fontSize: 12,
+      }
     }
   }
 };
 
-const BarChart = styled(props => <ResponsiveBar {...props} />)`
-`;
+const BarChart = styled(props => <ResponsiveBar {...props} />)`&&{}`;
 
+//TODO: Chart container should adapt to the width of the card that it is in for responsiveness.
+const ChartContainer = styled.div`
+  height: 320px;
+  width: 1000px
+`;
 
 // https://nivo.rocks/bar/
 export const VerticalBarChart = ({ data }) => {
   return(
-    <div style={{height: '320px', width: '1000px'}}>
-      {/*<BarChart {...barModel} data={data} barComponent={ChartTooltip}/>*/}
+    // make sure parent container have a defined height when using ResposinveBar
+    <ChartContainer>
       <BarChart {...barModel} data={data} />
-    </div>
+    </ChartContainer>
   );
 };

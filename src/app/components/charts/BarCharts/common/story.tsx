@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ChartTooltip } from './index';
+import { ChartTooltip } from './ChartTooltip';
 import Providers from 'app/Providers';
 // import { mockData } from './mock'
 
@@ -17,7 +17,7 @@ const mock = [
     color: "#666666",
   },
   {
-    label: "Je ma",
+    label: "Non Activities",
     value: 33,
     color: "#a23b23",
   }

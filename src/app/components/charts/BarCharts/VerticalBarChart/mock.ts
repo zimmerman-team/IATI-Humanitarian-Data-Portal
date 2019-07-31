@@ -105,47 +105,52 @@ export const nivoMock = [
     "donutColor": "hsl(40, 70%, 50%)"
   }
 ];
-export const dataMock = [
-      {
+export const dataMock =
+
+    {
+      data: [
+        {
           year: 1999,
           activities: 500,
-          activitiesColor:  "#d7d8d9",
-          humanitarianActivities:  200,
-          humanitarianActivitiesColor:  "#5accbf",
-      },
-      {
-        year: 2000,
-        activities: 600,
-        activitiesColor:  "#d7d8d9",
-        humanitarianActivities:  500,
-        humanitarianActivitiesColor:  "#5accbf",
-      },
-      {
-        year: 2001,
-        activities: 750,
-        activitiesColor:  "#d7d8d9",
-        humanitarianActivities:  240,
-        humanitarianActivitiesColor:  "#5accbf",
-      },
-      {
-        year: 2002,
-        activities: 200,
-        activitiesColor:  "#d7d8d9",
-        humanitarianActivities:  100,
-        humanitarianActivitiesColor:  "#5accbf",
-      },
-      {
-        year: 2003,
-        activities: 800,
-        activitiesColor:  "#d7d8d9",
-        humanitarianActivities:  444,
-        humanitarianActivitiesColor:  "#5accbf",
-      },
-      {
-        year: 2004,
-        activities: 130,
-        activitiesColor:  "#d7d8d9",
-        humanitarianActivities:  90,
-        humanitarianActivitiesColor:  "#5accbf",
-      },
-    ];
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 200,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+        {
+          year: 2000,
+          activities: 600,
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 500,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+        {
+          year: 2001,
+          activities: 750,
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 240,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+        {
+          year: 2002,
+          activities: 200,
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 100,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+        {
+          year: 2003,
+          activities: 800,
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 444,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+        {
+          year: 2004,
+          activities: 130,
+          activitiesColor: "#d7d8d9",
+          humanitarianActivities: 90,
+          humanitarianActivitiesColor: "#5accbf",
+        },
+      ]
+    }
+;

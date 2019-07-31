@@ -15,7 +15,6 @@ const Content = styled(props => <CardContent {...props} />)`
   flex-direction: column;
   &&{
     padding: 32px !important;
-    height: 544px;
   }
 `;
 
@@ -29,6 +28,8 @@ export const HorizontalBarChartCard = (props: HorizontalBarChartCardModel) => {
     <Card>
       <Content>
         <Typo variant="h6">{props.title}</Typo>
+        {/*TODO: Implement when merged with MLT-102*/}
+        {/*{props.tooltip && <Tooltip />}*/}
         <HorizontalBarChart data={props.values.values}/>
       </Content>
     </Card>
