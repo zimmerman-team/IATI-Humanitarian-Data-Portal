@@ -200,7 +200,7 @@ jobs:
             fi
       - run:
           name: Analyze and report desired vs actual lighthouse scores
-          command: sudo ./scripts/analyze_scores.js package.json reports
+          command: ./scripts/analyze_scores.js package.json reports
 
 
 # WORKFLOWS
