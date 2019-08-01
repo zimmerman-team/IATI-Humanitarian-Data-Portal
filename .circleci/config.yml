@@ -63,13 +63,13 @@ jobs:
           name: Upload build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             else
-              rsync -O -ave ssh ~/mlt-frontend/build "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             fi
 #     - run:
 #          name: Upload storybook build folder to target host
