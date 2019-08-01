@@ -190,13 +190,13 @@ jobs:
           name: Send report files to droplet
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                rsync -O -ave ssh ~/project/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/lighthouse-reports
+                rsync -O -ave ssh ~/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                rsync -O -ave ssh ~/project/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/lighthouse-reports
+                rsync -O -ave ssh ~/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-                rsync -O -ave ssh ~/project/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
+                rsync -O -ave ssh ~/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             else
-                rsync -O -ave ssh ~/project/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
+                rsync -O -ave ssh ~/chrome/reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             fi
       - run:
           name: Analyze and report desired vs actual lighthouse scores
