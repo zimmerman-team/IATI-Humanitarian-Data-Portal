@@ -7,22 +7,22 @@ jobs:
     working_directory: ~/mlt-frontend
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ~/mlt-frontend
-#      - restore_cache:
-#          keys:
-#            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-#      - run: yarn install --fronzen-lockfile
-#      - save_cache:
-#          key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-#          paths:
-#            - ./.cache
-#            - node_modules
-#      - persist_to_workspace:
-#          root: .
-#          paths:
-#            - .
-#            - ./.cache/Cypress
+      - attach_workspace:
+          at: ~/mlt-frontend
+      - restore_cache:
+          keys:
+            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn install --fronzen-lockfile
+      - save_cache:
+          key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./.cache
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+            - ./.cache/Cypress
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
@@ -208,9 +208,9 @@ workflows:
   checkout_build_deploy_test:
     jobs:
       - checkout_repo
-#      - build_deploy:
-#          requires:
-#            - checkout_repo
+      - build_deploy:
+          requires:
+            - checkout_repo
 #      - test_e2e:
 #          requires:
 #            - build_deploy
