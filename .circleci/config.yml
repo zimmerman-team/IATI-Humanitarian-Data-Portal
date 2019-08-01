@@ -48,7 +48,7 @@ jobs:
             fi
             source $BASH_ENV
       - run: yarn build
-      - run: yarn build-storybook
+#      - run: yarn build-storybook
       - run:
           name: Add target host to known_hosts files
           command: |
@@ -71,18 +71,18 @@ jobs:
             else
               rsync -O -ave ssh ~/mlt-apps/dev/build "$SSH_USER"@"$SSH_HOST":~/mlt-frontend
             fi
-      - run:
-          name: Upload storybook build folder to target host
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              rsync -O -ave ssh ~/mlt-apps/test/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            else
-              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            fi
+#      - run:
+#          name: Upload storybook build folder to target host
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/test/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            else
+#              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            fi
 
   #  RUN CYPRESS END TO END TESTS
   test_e2e:
