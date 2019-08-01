@@ -9,7 +9,9 @@
     "jsx": "react",
     "isolatedModules": false,
     "skipLibCheck": true,
+    "checkJs": false,
     "esModuleInterop": true,
+    "declaration": true,
     "forceConsistentCasingInFileNames": false,
     "incremental": true,
     "resolveJsonModule": true,
@@ -32,6 +34,7 @@
     ".storybook",
     "node_modules",
     "**/story.tsx",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "@nivo/bar"
   ]
 }
