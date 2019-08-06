@@ -155,6 +155,7 @@ export const Typography = {
   button: {
     fontSize: `${0.875}rem`,
     fontWeight: Weight.bold,
+    textTransform: 'none',
   },
   caption: {
     fontSize: `${0.75}rem`,
