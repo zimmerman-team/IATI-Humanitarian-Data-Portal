@@ -15,6 +15,9 @@ import { Typography } from '@material-ui/core';
 
 const Base = styled(props => <Paper {...props} />)`
   padding: 18px 28px 32px 28px;
+  &&{
+  box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
+  }
 `;
 
 const TableHeader = styled(props => <TableCell {...props} />)`
