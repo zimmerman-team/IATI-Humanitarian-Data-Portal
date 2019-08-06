@@ -1,4 +1,5 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import color from './color';
 
 export const Spacing = {
   inputSideSpacing: '15px',
@@ -9,7 +10,7 @@ export const Palette = {
     light: '#51dbca',
     main: '#30c2b0',
     dark: '#25a898',
-    contrastText: '#fff'
+    contrastText: '#fff',
   },
   secondary: {
     light: '#2bd3d9',
@@ -208,4 +209,45 @@ export default createMuiTheme({
   mixins: Mixins,
   shape: Shape,
   zIndex: zIndex,
+  overrides: {
+    MUIDataTable: {
+      paper: {
+        boxShadow: 'none',
+        backgroundColor: 'transparent',
+      },
+    },
+    MUIDataTableToolbar: {
+      root: {
+        backgroundColor: color.whiteOrFontlightbase,
+        borderBottom: `${color.paleGrey} 3px solid`,
+      },
+      icon: {
+        color: color.greybase,
+      },
+      titleText: {
+        fontSize: 20,
+      },
+    },
+    MuiTableBody: {
+      root: {
+        backgroundColor: 'transparent',
+      },
+    },
+    MuiTableRow: {
+      root: {
+        backgroundColor: color.whiteOrFontlightbase,
+        borderBottom: `${color.paleGrey} 3px solid`,
+      },
+    },
+    MuiTableCell: {
+      root: {
+        paddingLeft: '24px',
+        backgroundColor: color.whiteOrFontlightbase,
+        borderBottomStyle: 'none',
+      },
+      body: {
+        fontWeight: 'normal',
+      },
+    },
+  },
 });

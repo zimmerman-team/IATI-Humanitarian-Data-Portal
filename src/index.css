@@ -70,3 +70,8 @@ a {
   text-decoration: initial;
   color: #3074f1;
 }
+
+.TotalCell {
+  color: #ffffff !important;
+  background: #3d3d3d !important;
+}
