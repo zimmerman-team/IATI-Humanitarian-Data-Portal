@@ -12,6 +12,10 @@ const BaseLink = styled(props => <Link {...props} />)`
   color: rgba(1, 1, 10, 0.6);
   padding-left: 32px;
   padding-bottom: 25px;
+  :hover{
+    cursor: pointer;
+    text-decoration: none;
+  }
   }
 `;
 
@@ -19,6 +23,10 @@ const CurrentLink = styled(props => <Link {...props} />)`
   && {
   color: ${Colors.branddark};
   padding-bottom: 25px;
+    :hover{
+    cursor: default;
+    text-decoration: none;
+  }
   }
 `;
 
@@ -50,6 +58,7 @@ const Controls = styled(props => <Box {...props} />)`
 const LOCATION = "#activity_summary";
 
 export function InPageNavigation(props: InPageNavModel) {
+  const [locations, setLocations] = React.useState();
   const [currentLocation, setCurrentLocation] = React.useState(LOCATION);
 
   function handleClickUp(location: LocationModel ){
@@ -81,7 +90,7 @@ export function InPageNavigation(props: InPageNavModel) {
       </LinksContainer>
       <Controls>
         <ButtonUp fontSize="large" onClick={handleClickUp}/>
-        <ButtonDown fontSize="large" onClick={handleClickDown}/>
+        <ButtonDown fontSize="large" onClick={handleClickDown} color="disabled"/>
       </Controls>
     </Box>
   );
