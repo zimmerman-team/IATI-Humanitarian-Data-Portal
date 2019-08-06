@@ -1,5 +1,11 @@
+import React from 'react';
 import { TableModuleModel } from './model';
 import { getInfoTHead } from '.';
+import { Link } from 'react-router-dom';
+import LinkCellModule from './common/LinkCell';
+import IconCellModule from './common/IconCell';
+import InfoCellModule from './common/InfoCell';
+import MultiValuesCell from './common/MultiValuesCell';
 
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated Signatory Data Publication Indicator Values',
@@ -14,11 +20,44 @@ export const mockDataVar1: TableModuleModel = {
     ],
   ],
   columns: [
-    'Status',
-    'Baseline June 2017',
-    'May 2019',
-    'Today [DD MM YYYY]',
-    'Changes [20. May] to Today',
+    {
+      name: 'Status',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <InfoCellModule value={value} info={value} />;
+        },
+      },
+    },
+    {
+      name: 'Baseline June 2017',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'May 2019',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Today [DD MM YYYY]',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Changes [20. May] to Today',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
   ],
   options: {
     print: true,
@@ -27,13 +66,12 @@ export const mockDataVar1: TableModuleModel = {
     download: true,
     rowHover: false,
     pagination: false,
-    viewColumns: false,
+    viewColumns: true,
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
   },
   columnsCell: ['InfoCellModule'],
-  customRows: true,
 };
 
 export const mockDataVar2: TableModuleModel = {
@@ -65,9 +103,11 @@ export const mockDataVar2: TableModuleModel = {
       name: 'Publishing Organistion',
       options: {
         filter: true,
-        viewColumns: true,
         filterType: 'checkbox',
         filterOptions: ['ActionAid UK'],
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <LinkCellModule link="#" value={value} />;
+        },
       },
     },
     {
@@ -100,6 +140,9 @@ export const mockDataVar2: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         filterOptions: ['true', 'false', 'na'],
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
       },
     },
     {
@@ -108,6 +151,9 @@ export const mockDataVar2: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         filterOptions: ['true', 'false', 'na'],
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
       },
     },
     {
@@ -116,6 +162,9 @@ export const mockDataVar2: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         filterOptions: ['true', 'false', 'na'],
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
       },
     },
     {
@@ -124,6 +173,9 @@ export const mockDataVar2: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         filterOptions: ['true', 'false', 'na'],
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
       },
     },
   ],
@@ -134,7 +186,7 @@ export const mockDataVar2: TableModuleModel = {
     download: true,
     rowHover: true,
     pagination: false,
-    viewColumns: false,
+    viewColumns: true,
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
@@ -149,7 +201,6 @@ export const mockDataVar2: TableModuleModel = {
     'IconCellModule',
     'IconCellModule',
   ],
-  customRows: true,
   totalCell: true,
   totalCellData: [
     '',
@@ -216,6 +267,9 @@ export const mockDataVar3: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <LinkCellModule link="#" value={value} />;
+        },
       },
     },
     {
@@ -223,6 +277,9 @@ export const mockDataVar3: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <MultiValuesCell value={value} />;
+        },
       },
     },
     {
@@ -240,13 +297,12 @@ export const mockDataVar3: TableModuleModel = {
     download: true,
     rowHover: true,
     pagination: true,
-    viewColumns: false,
+    viewColumns: true,
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
   },
   columnsCell: ['', '', '', 'LinkCellModule', 'MultiValuesCellModule', ''],
-  customRows: true,
   totalCell: false,
 };
 
@@ -304,7 +360,6 @@ export const mockDataVar4: TableModuleModel = {
     expandableRowsOnClick: true,
   },
   columnsCell: ['', '', '', '', '', ''],
-  customRows: false,
   totalCell: false,
   expandableData: [
     [
@@ -508,7 +563,6 @@ export const mockDataVar5: TableModuleModel = {
     selectableRows: 'none',
   },
   columnsCell: ['', '', '', '', ''],
-  customRows: false,
   totalCell: true,
   totalCellData: ['', '', '€000,000,000.00', '€000,000,000.00', ''],
 };
@@ -689,7 +743,6 @@ export const mockDataVar6: TableModuleModel = {
     selectableRows: 'none',
   },
   columnsCell: ['', '', '', '', '', '', ''],
-  customRows: false,
   totalCell: true,
   totalCellData: [
     '',

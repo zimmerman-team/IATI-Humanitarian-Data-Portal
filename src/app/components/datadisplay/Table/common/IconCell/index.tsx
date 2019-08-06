@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TableCell } from '@material-ui/core';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { IconCellModuleModel } from 'app/components/datadisplay/Table/model';
 
@@ -49,7 +48,7 @@ function getIcon(value: string | string[]) {
 }
 
 const IconCellModule = (props: IconCellModuleModel) => {
-  return <TableCell {...props}>{getIcon(props.value)}</TableCell>;
+  return getIcon(props.value);
 };
 
 export default IconCellModule;

@@ -6,7 +6,6 @@ export type TableModuleModel = {
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
   columnsCell: Array<string>;
-  customRows: boolean;
   totalCell?: boolean | undefined;
   expandableData?: Array<Array<Array<any>>> | undefined;
   totalCellData?: Array<string> | undefined;

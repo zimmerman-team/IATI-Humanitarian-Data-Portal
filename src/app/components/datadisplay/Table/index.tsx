@@ -3,6 +3,7 @@ import React from 'react';
 
 /* third-party */
 import indexOf from 'lodash/indexOf';
+import findIndex from 'lodash/findIndex';
 import { TableCell, TableRow } from '@material-ui/core';
 
 /* project-comps */
@@ -10,26 +11,17 @@ import TableLayout from 'app/components/datadisplay/Table/layout';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
-import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
-import MultiValuesCellModule from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
-/* method for getting the correct table cell component depending on the table variant */
-function getTableCell(
+/* method for getting the correct expandable table cell component depending on the table variant */
+function getExpandableTableCell(
   type: string,
-  value: string | Array<string>,
-  props?: any
+  value: string | Array<string>
 ): React.ReactNode {
   switch (type) {
-    case 'InfoCellModule':
-      return <InfoCellModule value={value} info={value} {...props} />;
     case 'LinkCellModule':
-      return <LinkCellModule value={value} link="#" {...props} />;
-    case 'IconCellModule':
-      return <IconCellModule value={value} {...props} />;
-    case 'MultiValuesCellModule':
-      return <MultiValuesCellModule value={value} {...props} />;
+      return <LinkCellModule value={value} link="#" />;
     default:
-      return <TableCell {...props}>{value}</TableCell>;
+      return value;
   }
 }
 
@@ -59,7 +51,11 @@ function checkAndAddTotalRow(totalData: Array<string> | undefined) {
 
 /* method for getting table header cell with an info icon hover tooltip */
 export function getInfoTHead(value: string, infoText: string): React.ReactNode {
-  return <InfoCellModule value={value} info={infoText} />;
+  return (
+    <TableCell variant="head">
+      <InfoCellModule value={value} info={infoText} />
+    </TableCell>
+  );
 }
 
 const TableModule = (props: TableModuleModel) => {
@@ -70,26 +66,6 @@ const TableModule = (props: TableModuleModel) => {
     rowsPerPage: 10,
   });
   let options = props.options;
-  if (props.customRows) {
-    options = {
-      ...options,
-      customRowRender: (data, dataIndex, rowIndex) => {
-        const tds: any[] = [];
-        data.forEach((el, index) => {
-          if (props.columnsCell.length > index) {
-            const cell: React.ReactNode = getTableCell(
-              props.columnsCell[index],
-              el
-            );
-            tds.push(cell);
-          } else {
-            tds.push(<TableCell>{el}</TableCell>);
-          }
-        });
-        return <TableRow key={`${rowIndex}-${dataIndex}`}>{tds}</TableRow>;
-      },
-    };
-  }
   if (props.totalCell) {
     options = {
       ...options,
@@ -106,6 +82,19 @@ const TableModule = (props: TableModuleModel) => {
           });
         }
       },
+      /* when column view changes we need to also change the column in the custom total row */
+      onColumnViewChange: (changedColumn, action) => {
+        const totalCell = document.getElementById('total-cell') as HTMLElement;
+        const colIndex = findIndex(props.columns, { name: changedColumn });
+        if (colIndex > -1 && totalCell) {
+          const totalCellNodes = totalCell.childNodes[colIndex] as HTMLElement;
+          if (action === 'add') {
+            totalCellNodes.style.display = 'table-cell';
+          } else {
+            totalCellNodes.style.display = 'none';
+          }
+        }
+      },
     };
   }
   if (props.expandableData) {
@@ -120,9 +109,11 @@ const TableModule = (props: TableModuleModel) => {
             key={`${rowMeta.dataIndex}-${rowMeta.rowIndex}-${row[0].value}`}
           >
             <TableCell />
-            {row.map(item =>
-              getTableCell(item.type, item.value, { colSpan: item.colSpan })
-            )}
+            {row.map(item => (
+              <TableCell colSpan={item.colSpan}>
+                {getExpandableTableCell(item.type, item.value)}
+              </TableCell>
+            ))}
           </TableRow>
         ));
       },

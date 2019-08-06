@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TableCell, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { InfoCellModuleModel } from 'app/components/datadisplay/Table/model';
 import theme from 'app/theme';
@@ -36,14 +36,14 @@ function InfoIcon(props: SvgIconProps) {
 const InfoCellModule = (props: InfoCellModuleModel) => {
   const [showInfo, setShowInfo] = React.useState(false);
   return (
-    <TableCell {...props}>
+    <>
       {props.value}{' '}
       <InfoIcon
         onMouseEnter={() => setShowInfo(true)}
         onMouseLeave={() => setShowInfo(false)}
       />
       {showInfo && <MoreTooltip>{props.info}</MoreTooltip>}
-    </TableCell>
+    </>
   );
 };
 
