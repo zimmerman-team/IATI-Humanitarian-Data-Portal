@@ -274,5 +274,13 @@
       "pre-commit": "echo pre && echo commit && echo police",
       "pre-push": "echo pre push police"
     }
+  },
+  "lighthouse": {
+    "requiredScores": {
+      "performance": 95,
+      "accessibility": 90,
+      "best-practices": 100,
+      "seo": 90
+    }
   }
 }

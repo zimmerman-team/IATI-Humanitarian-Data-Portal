@@ -48,7 +48,7 @@ jobs:
             fi
             source $BASH_ENV
       - run: yarn build
-      - run: yarn build-storybook
+#      - run: yarn build-storybook
       - run:
           name: Add target host to known_hosts files
           command: |
@@ -63,26 +63,26 @@ jobs:
           name: Upload build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-apps/staging/build "$SSH_USER"@"$SSH_HOST":~/mlt-frontend
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              rsync -O -ave ssh ~/mlt-apps/test/build "$SSH_USER"@"$SSH_HOST":~/mlt-frontend
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              rsync -O -ave ssh ~/mlt-apps/dev/build "$SSH_USER"@"$SSH_HOST":~/mlt-frontend
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             else
-              rsync -O -ave ssh ~/mlt-apps/dev/build "$SSH_USER"@"$SSH_HOST":~/mlt-frontend
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             fi
-      - run:
-          name: Upload storybook build folder to target host
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              rsync -O -ave ssh ~/mlt-apps/test/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            else
-              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
-            fi
+#     - run:
+#          name: Upload storybook build folder to target host
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/test/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
+#              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            else
+#              rsync -O -ave ssh ~/mlt-apps/dev/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+#            fi
 
   #  RUN CYPRESS END TO END TESTS
   test_e2e:
@@ -190,13 +190,13 @@ jobs:
           name: Send report files to droplet
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                rsync -O -ave ssh ~/mlt-apps/staging/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
+                rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                rsync -O -ave ssh ~/mlt-apps/test/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
+                rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-                rsync -O -ave ssh ~/mlt-apps/dev/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
+                rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             else
-                rsync -O -ave ssh ~/mlt-apps/dev/lighthouse-reports "$SSH_USER"@"$SSH_HOST":~/mlt-frontend/chrome/reports
+                rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             fi
       - run:
           name: Analyze and report desired vs actual lighthouse scores
@@ -214,9 +214,9 @@ workflows:
 #      - test_e2e:
 #          requires:
 #            - build_deploy
-#      - performance_test:
-#          requires:
-#            - build_deploy
-#      - process_performance_test_results:
-#          requires:
-#            - performance_test
+      - performance_test:
+          requires:
+            - build_deploy
+      - process_performance_test_results:
+          requires:
+            - performance_test
