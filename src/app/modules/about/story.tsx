@@ -3,11 +3,14 @@ import { storiesOf } from '@storybook/react';
 
 import { AboutLayout } from './layout';
 import Providers from 'app/Providers';
+import { DebugBox } from 'app/utils/layout';
 
 storiesOf('Modules|Page', module).add('Page - about', () => (
   <>
     <Providers>
-      <AboutLayout />
+      <DebugBox>
+        <AboutLayout />
+      </DebugBox>
     </Providers>
   </>
 ));

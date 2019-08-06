@@ -41,7 +41,7 @@ const TableTitle = styled(props => <Typography {...props} />)`
 const TableSubtitle = styled(props => <Typography {...props} />)`
 `;
 
-const List = (props: ListModel) => {
+export const List = (props: ListModel) => {
   const listItems = props.items.map((item) =>
   <ListItem label={item.label} values={item.values} tooltip={item.tooltip}/>
   );
@@ -78,4 +78,4 @@ function valueHeaders() {
   );
 };
 
-export default List;
+
