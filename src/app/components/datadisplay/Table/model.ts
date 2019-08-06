@@ -39,3 +39,9 @@ export type MultiValuesCellModuleModel = {
   value: Array<string>;
   colSpan?: number;
 };
+
+export type LocalTableStateModel = {
+  page: number;
+  prevAction: string;
+  rowsPerPage: number;
+};

@@ -1,11 +1,13 @@
+/* core */
 import React from 'react';
-import { TableModuleModel } from './model';
-import { getInfoTHead } from '.';
-import { Link } from 'react-router-dom';
-import LinkCellModule from './common/LinkCell';
-import IconCellModule from './common/IconCell';
-import InfoCellModule from './common/InfoCell';
-import MultiValuesCell from './common/MultiValuesCell';
+
+/* project-comps */
+import { getInfoTHead } from 'app/components/datadisplay/Table/helpers';
+import { TableModuleModel } from 'app/components/datadisplay/Table/model';
+import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
+import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
+import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
+import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated Signatory Data Publication Indicator Values',
