@@ -1,0 +1,42 @@
+[
+	{
+		"path": "$ROOTPATH$/src/app/modules/signatory-data/submodules/overview/layout.tsx",
+		"bookmarks": [
+			{
+				"line": 24,
+				"column": 4,
+				"label": ""
+			},
+			{
+				"line": 30,
+				"column": 5,
+				"label": ""
+			},
+			{
+				"line": 75,
+				"column": 5,
+				"label": ""
+			},
+			{
+				"line": 87,
+				"column": 5,
+				"label": ""
+			},
+			{
+				"line": 143,
+				"column": 6,
+				"label": ""
+			},
+			{
+				"line": 180,
+				"column": 5,
+				"label": ""
+			},
+			{
+				"line": 201,
+				"column": 8,
+				"label": ""
+			}
+		]
+	}
+]
