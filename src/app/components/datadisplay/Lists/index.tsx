@@ -15,6 +15,9 @@ import { Typography } from '@material-ui/core';
 
 const Base = styled(props => <Paper {...props} />)`
   padding: 18px 28px 32px 28px;
+  &&{
+  box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
+  }
 `;
 
 const TableHeader = styled(props => <TableCell {...props} />)`
@@ -38,7 +41,7 @@ const TableTitle = styled(props => <Typography {...props} />)`
 const TableSubtitle = styled(props => <Typography {...props} />)`
 `;
 
-const List = (props: ListModel) => {
+export const List = (props: ListModel) => {
   const listItems = props.items.map((item) =>
   <ListItem label={item.label} values={item.values} tooltip={item.tooltip}/>
   );
@@ -75,4 +78,4 @@ function valueHeaders() {
   );
 };
 
-export default List;
+

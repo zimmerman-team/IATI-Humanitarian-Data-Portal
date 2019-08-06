@@ -89,3 +89,5 @@ yarn-error.log*
 # IDE specific
 .idea
 
+# storybook build ouptput
+.out

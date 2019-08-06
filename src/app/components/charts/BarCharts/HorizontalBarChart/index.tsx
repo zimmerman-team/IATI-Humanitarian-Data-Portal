@@ -41,10 +41,8 @@ const BarChart = styled(props => <ResponsiveBar {...props} />)`
   }
 `;
 
-//TODO: Chart container should adapt to the width of the card that it is in for responsiveness.
 const ChartContainer = styled.div`
   height: 270px;
-  width: 1000px;
 `;
 
 // https://nivo.rocks/bar/

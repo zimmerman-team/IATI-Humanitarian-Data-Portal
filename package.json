@@ -98,7 +98,7 @@
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "commitlint-circle": "^1.0.0",
     "css-loader": "2.1.1",
-    "cypress": "^3.3.1",
+    "cypress": "^3.4.1",
     "dotenv": "^6.2.0",
     "dotenv-expand": "^4.2.0",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
@@ -188,7 +188,8 @@
     "build-storybook": "build-storybook -c .storybook -o .out",
     "check-types": "tsc",
     "cy:run": "cypress run",
-    "cy:run:record:percy:parallel:reporter": "percy exec -- cypress run --record --key 86800b76-116b-47f9-bc1b-cd8ec67f7212 --parallel --reporter junit",
+    "cy:run:record:parallel": "cypress run --record --key 9f5380f4-1876-4758-aded-8e30971fb7b6 --parallel",
+    "cy:run:record:percy:parallel:reporter": "percy exec -- cypress run --record --key 9f5380f4-1876-4758-aded-8e30971fb7b6 --parallel --reporter junit",
     "cy:open": "cypress open",
     "analyse": "madge src/index.tsx",
     "depcheck": "depcheck",
@@ -275,6 +276,14 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "echo pre && echo commit && echo police",
       "pre-push": "echo pre push police"
+    }
+  },
+  "lighthouse": {
+    "requiredScores": {
+      "performance": 95,
+      "accessibility": 90,
+      "best-practices": 100,
+      "seo": 90
     }
   }
 }

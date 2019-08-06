@@ -1,6 +1,6 @@
 import { ListModel } from './model';
 
-export const mockData:ListModel = {
+export const listMockData:ListModel = {
   title:'Activity Summary',
   subtitle:'Activity Summary subtitle',
   items: [

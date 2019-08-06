@@ -124,7 +124,7 @@ export const Typography = {
     letterSpacing: '0.3px',
   },
   h6: {
-    fontSize: `${1.5}rem`,
+    fontSize: `${1.25}rem`,
     fontWeight: Weight.bold,
     lineHeight: '1.5',
   },
@@ -156,6 +156,7 @@ export const Typography = {
   button: {
     fontSize: `${0.875}rem`,
     fontWeight: Weight.bold,
+    textTransform: 'none',
   },
   caption: {
     fontSize: `${0.75}rem`,

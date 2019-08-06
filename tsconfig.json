@@ -35,6 +35,13 @@
     "node_modules",
     "**/story.tsx",
     "**/*.spec.ts",
-    "@nivo/bar"
+    "@nivo/bar",
+    ".vscode",
+    "cypress",
+    ".history",
+    "e2e",
+    "etc",
+    "public",
+    ".git"
   ]
 }
