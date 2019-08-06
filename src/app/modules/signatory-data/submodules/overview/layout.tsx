@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box } from '@material-ui/core';
+import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
 import { DebugBox } from 'app/utils/layout';
 import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
 import { dataMock } from 'app/components/charts/BarCharts/VerticalBarChart/mock';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
+import { InsertLink } from '@material-ui/icons';
 
 /**
  * todo:'s
@@ -37,7 +39,7 @@ export const OverviewLayout = () => {
       {/** --------------------------------------------------------------------------- */}
       {/** Header */}
       <Grid container>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Grid container direction="column">
             <Grid item>
               <Typography variant="h3" color="textPrimary">
@@ -57,14 +59,25 @@ export const OverviewLayout = () => {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1" color="secondary">
-                {/**  todo: add link icon and make link of text */}
-                Publisher Supplementary Information
-              </Typography>
+              <Grid container>
+                <Grid item>
+                  <InsertLink color="secondary" />
+                </Grid>
+                <Box width="5px" />
+                <Grid item>
+                  <Typography variant="body1" color="secondary">
+                    {/**  todo: add link icon and make link of text */}
+                    Publisher Supplementary Information
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Hidden mdUp>
+          <Box height="50px" width="100%" />
+        </Hidden>
+        <Grid item xs={12} md={6}>
           {/** todo: add navigation 
         - Overview 
         - Activity List
@@ -102,7 +115,7 @@ export const OverviewLayout = () => {
 
         {/** 1 */}
         {/** Hum. activities with UN HRP codes */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DonutChartCard
             value={cardMockData.value}
             activity="Hum. activities with UN HRP codes"
@@ -111,7 +124,7 @@ export const OverviewLayout = () => {
 
         {/** 2 */}
         {/** Hum. activities with Cluster codes */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DonutChartCard
             value={cardMockData.value}
             activity="Hum. activities with Cluster codes"
@@ -120,7 +133,7 @@ export const OverviewLayout = () => {
 
         {/** 3 */}
         {/** Hum. activities Glide codes */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DonutChartCard
             value={cardMockData.value}
             activity="Hum. activities Glide codes"
@@ -130,7 +143,7 @@ export const OverviewLayout = () => {
         {/** 4 */}
         {/** % of activities with both humanitarian indicator and also a valid
               humanitarian sector code */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DebugBox>
             <DonutChartCard
               value={cardMockData.value}
@@ -151,7 +164,7 @@ export const OverviewLayout = () => {
         </Grid>
 
         {/** Status 1 */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Box width="100%" height="175px" bgcolor="white">
             <Typography color="textPrimary" variant="h6">
               Status 1
@@ -164,7 +177,7 @@ export const OverviewLayout = () => {
         </Grid>
 
         {/** Status 2 */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Box width="100%" height="175px" bgcolor="white">
             <Typography color="textPrimary" variant="h6">
               Status 2
@@ -190,17 +203,19 @@ export const OverviewLayout = () => {
         - Location information
         
         */}
-        <Grid item xs={3}>
-          <Grid container spacing={4}>
-            <Grid item xs={12}>
-              {/** todo: add side menu */}
-              <Box width="100%" height="300px" bgcolor="white" />
+        <Hidden smDown>
+          <Grid item xs={3}>
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                {/** todo: add side menu */}
+                <Box width="100%" height="300px" bgcolor="white" />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Hidden>
 
         {/** --------------------------------------------------------------------------- */}
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9}>
           <Grid container spacing={4}>
             {/** 1 */}
             {/** Activity Summary */}
