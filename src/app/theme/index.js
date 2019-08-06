@@ -123,7 +123,7 @@ export const Typography = {
     letterSpacing: '0.3px',
   },
   h6: {
-    fontSize: `${1.5}rem`,
+    fontSize: `${1.25}rem`,
     fontWeight: Weight.bold,
     lineHeight: '1.5',
   },
