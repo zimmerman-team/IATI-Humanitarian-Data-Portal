@@ -21,7 +21,7 @@ export type TableLayoutModel = {
 
 export type InfoCellModuleModel = {
   value: string | Array<string>;
-  infoText: string;
+  info: string;
   colSpan?: number;
 };
 

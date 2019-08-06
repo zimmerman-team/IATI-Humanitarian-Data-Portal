@@ -1,11 +1,8 @@
 /* core */
 import React from 'react';
-import styled from 'styled-components';
 
 /* third-party */
-import remove from 'lodash/remove';
 import indexOf from 'lodash/indexOf';
-import findIndex from 'lodash/findIndex';
 import { TableCell, TableRow } from '@material-ui/core';
 
 /* project-comps */
@@ -24,7 +21,7 @@ function getTableCell(
 ): React.ReactNode {
   switch (type) {
     case 'InfoCellModule':
-      return <InfoCellModule value={value} infoText={value} {...props} />;
+      return <InfoCellModule value={value} info={value} {...props} />;
     case 'LinkCellModule':
       return <LinkCellModule value={value} link="#" {...props} />;
     case 'IconCellModule':
@@ -62,11 +59,11 @@ function checkAndAddTotalRow(totalData: Array<string> | undefined) {
 
 /* method for getting table header cell with an info icon hover tooltip */
 export function getInfoTHead(value: string, infoText: string): React.ReactNode {
-  return <InfoCellModule value={value} infoText={infoText} />;
+  return <InfoCellModule value={value} info={infoText} />;
 }
 
 const TableModule = (props: TableModuleModel) => {
-  React.useEffect(() => checkAndAddTotalRow(props.totalCellData), []);
+  React.useEffect(() => checkAndAddTotalRow(props.totalCellData));
   const [localTableState, setLocalTableState] = React.useState({
     page: 1,
     prevAction: '',
@@ -89,7 +86,7 @@ const TableModule = (props: TableModuleModel) => {
             tds.push(<TableCell>{el}</TableCell>);
           }
         });
-        return <TableRow key={rowIndex}>{tds}</TableRow>;
+        return <TableRow key={`${rowIndex}-${dataIndex}`}>{tds}</TableRow>;
       },
     };
   }
@@ -118,8 +115,10 @@ const TableModule = (props: TableModuleModel) => {
         const dataArr = props.expandableData
           ? props.expandableData[rowMeta.rowIndex]
           : [];
-        return dataArr.map(row => (
-          <TableRow key={rowMeta.dataIndex}>
+        return dataArr.map((row, i) => (
+          <TableRow
+            key={`${rowMeta.dataIndex}-${rowMeta.rowIndex}-${row[0].value}`}
+          >
             <TableCell />
             {row.map(item =>
               getTableCell(item.type, item.value, { colSpan: item.colSpan })

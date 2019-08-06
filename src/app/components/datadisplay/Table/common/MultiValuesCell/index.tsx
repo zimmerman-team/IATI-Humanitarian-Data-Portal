@@ -30,7 +30,7 @@ const MultiValuesCell = (props: MultiValuesCellModuleModel) => {
           <MoreTooltip>
             <List>
               {props.value.map(item => (
-                <li>{item}</li>
+                <li key={`multi-value-list-${item}`}>{item}</li>
               ))}
             </List>
           </MoreTooltip>

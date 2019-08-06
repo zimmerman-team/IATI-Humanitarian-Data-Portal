@@ -329,7 +329,7 @@ export const mockDataVar4: TableModuleModel = {
       ],
       [
         {
-          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
           type: 'LinkCellModule',
           colSpan: 3,
         },
@@ -369,7 +369,7 @@ export const mockDataVar4: TableModuleModel = {
       ],
       [
         {
-          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
           type: 'LinkCellModule',
           colSpan: 3,
         },
@@ -409,7 +409,7 @@ export const mockDataVar4: TableModuleModel = {
       ],
       [
         {
-          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
           type: 'LinkCellModule',
           colSpan: 3,
         },

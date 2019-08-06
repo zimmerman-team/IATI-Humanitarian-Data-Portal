@@ -42,7 +42,7 @@ const InfoCellModule = (props: InfoCellModuleModel) => {
         onMouseEnter={() => setShowInfo(true)}
         onMouseLeave={() => setShowInfo(false)}
       />
-      {showInfo && <MoreTooltip>{props.infoText}</MoreTooltip>}
+      {showInfo && <MoreTooltip>{props.info}</MoreTooltip>}
     </TableCell>
   );
 };
