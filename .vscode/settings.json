@@ -2,7 +2,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.fontFamily": "'Fira Code'",
+  "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": false,
   "eslint.autoFixOnSave": true,
   "prettier.trailingComma": "es5",

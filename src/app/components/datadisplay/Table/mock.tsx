@@ -2,7 +2,10 @@
 import React from 'react';
 
 /* project-comps */
-import { getInfoTHead } from 'app/components/datadisplay/Table/helpers';
+import {
+  getInfoTHead,
+  formatMoney,
+} from 'app/components/datadisplay/Table/helpers';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
@@ -77,7 +80,7 @@ export const mockDataVar1: TableModuleModel = {
 };
 
 export const mockDataVar2: TableModuleModel = {
-  title: 'Signatories or their Affiliate Oranisations ',
+  title: 'Signatories or their Affiliate Organisations ',
   data: [
     [
       'ActionAid UK',
@@ -204,15 +207,15 @@ export const mockDataVar2: TableModuleModel = {
     'IconCellModule',
   ],
   totalCell: true,
-  totalCellData: [
-    '',
-    '',
-    '98',
-    '74 (75%)',
-    '74 (75%)',
-    '10 (23%)',
-    '20 (46%)',
-    '21 (55%)',
+  totalRowColsDef: [
+    { dataType: 'none' },
+    { dataType: 'none' },
+    { dataType: 'count' },
+    { dataType: 'percentage', percValue: '2.03' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
   ],
 };
 
@@ -490,20 +493,8 @@ export const mockDataVar4: TableModuleModel = {
 export const mockDataVar5: TableModuleModel = {
   title: 'Coverage data',
   data: [
-    [
-      '01. Jan-2018',
-      '31. Dec 2018',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '80%',
-    ],
-    [
-      '01. Jan-2017',
-      '31. Dec 2018',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '40%',
-    ],
+    ['01. Jan-2018', '31. Dec 2018', 123324234.0, 123324234.0, '80%'],
+    ['01. Jan-2017', '31. Dec 2018', 123324234.0, 123324234.0, '40%'],
     ['01. Jan-2017', '31. Dec 2017', 'No data', 'No data', 'No data'],
     ['01. Jan-2016', '31. Dec 2016', 'No data', 'No data', 'No data'],
     ['01. Jan-2015', '31. Dec 2015', 'No data', 'No data', 'No data'],
@@ -530,6 +521,10 @@ export const mockDataVar5: TableModuleModel = {
             'Operational funds available',
             'Operational funds available'
           ),
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value && value > 0) return formatMoney(value);
+          return 'No data';
+        },
       },
     },
     {
@@ -541,6 +536,10 @@ export const mockDataVar5: TableModuleModel = {
             'Disbursements & Expenditure',
             'Disbursements & Expenditure'
           ),
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value && value > 0) return formatMoney(value);
+          return 'No data';
+        },
       },
     },
     {
@@ -566,7 +565,13 @@ export const mockDataVar5: TableModuleModel = {
   },
   columnsCell: ['', '', '', '', ''],
   totalCell: true,
-  totalCellData: ['', '', '€000,000,000.00', '€000,000,000.00', ''],
+  totalRowColsDef: [
+    { dataType: 'none' },
+    { dataType: 'none' },
+    { dataType: 'money' },
+    { dataType: 'money' },
+    { dataType: 'none' },
+  ],
 };
 
 export const mockDataVar6: TableModuleModel = {
@@ -576,54 +581,54 @@ export const mockDataVar6: TableModuleModel = {
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       '',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       '',
     ],
 
@@ -631,54 +636,54 @@ export const mockDataVar6: TableModuleModel = {
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       'XM-DAV-7PPR-28317',
     ],
     [
       '01. Jan-2018',
       'France',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       '',
     ],
     [
       '01. Jan-2018',
       'Germany',
       'Netherlands',
-      '€123,324,234.00',
-      '€123,324,234.00',
-      '€123,324,234.00',
+      123324234.0,
+      123324234.0,
+      123324234.0,
       '',
     ],
   ],
@@ -709,18 +714,30 @@ export const mockDataVar6: TableModuleModel = {
       name: 'Pledged',
       options: {
         filter: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value && value > 0) return formatMoney(value);
+          return 'No data';
+        },
       },
     },
     {
       name: 'Incoming funds',
       options: {
         filter: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value && value > 0) return formatMoney(value);
+          return 'No data';
+        },
       },
     },
     {
       name: 'Commitment',
       options: {
         filter: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value && value > 0) return formatMoney(value);
+          return 'No data';
+        },
       },
     },
     {
@@ -746,13 +763,13 @@ export const mockDataVar6: TableModuleModel = {
   },
   columnsCell: ['', '', '', '', '', '', ''],
   totalCell: true,
-  totalCellData: [
-    '',
-    '',
-    '',
-    '€000,000,000.00',
-    '€000,000,000.00',
-    '€000,000,000.00',
-    '',
+  totalRowColsDef: [
+    { dataType: 'none' },
+    { dataType: 'none' },
+    { dataType: 'none' },
+    { dataType: 'money' },
+    { dataType: 'money' },
+    { dataType: 'money' },
+    { dataType: 'none' },
   ],
 };
