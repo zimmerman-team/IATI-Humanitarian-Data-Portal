@@ -34,15 +34,13 @@ const BaseButton = styled(props => <Button {...props} />)`
   }
 `;
 
-const TooltipButton = (props: Props) => {
-  // fix this...
-  // @ts-ignore
+/* span is here for a reason https://github.com/atomiks/tippy.js-react */
+export const TooltipButton = (props: Props) => {
   return (
     <Tooltip
       title={props.tip ? props.tip : 'empty tooltip'}
       placement="top-end"
     >
-      {/* span is here for a reason https://github.com/atomiks/tippy.js-react*/}
       <span>
       <BaseButton
         {...props}
@@ -57,4 +55,3 @@ const TooltipButton = (props: Props) => {
   );
 };
 
-export default TooltipButton;
