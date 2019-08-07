@@ -1,5 +1,10 @@
 import { MUIDataTableOptions, MUIDataTableColumnDef } from 'mui-datatables';
 
+export type TotalRowColModel = {
+  percValue?: number | string;
+  dataType: 'money' | 'percentage' | 'count' | 'none';
+};
+
 export type TableModuleModel = {
   title: string;
   data: Array<Array<any>>;
@@ -8,7 +13,7 @@ export type TableModuleModel = {
   columnsCell: Array<string>;
   totalCell?: boolean | undefined;
   expandableData?: Array<Array<Array<any>>> | undefined;
-  totalCellData?: Array<string> | undefined;
+  totalRowColsDef?: TotalRowColModel[];
 };
 
 export type TableLayoutModel = {
