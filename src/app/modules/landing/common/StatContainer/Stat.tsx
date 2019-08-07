@@ -4,10 +4,24 @@ import { Typography, Grid, Box } from '@material-ui/core';
 import { StatModel } from 'app/modules/landing/common/StatContainer/models';
 import styled from 'styled-components';
 
+type TypoModel = {
+  signatoryType: string;
+};
+
 const CustomTypo = styled(Typography)`
-  color: ${props => {
-    console.log(props);
-    return props.color;
+  font-size: 64px !important;
+  font-weight: 600 !important;
+  color: ${(props: TypoModel) => {
+    switch (props.signatoryType) {
+      case 'gb':
+        return '#ed6060';
+      case 'iati':
+        return '#6e5acc';
+      case 'humanitarian':
+        return '#5accbf';
+      default:
+        return 'red';
+    }
   }}!important;
 `;
 
@@ -18,7 +32,7 @@ export const Stat = (props: StatModel) => {
         <Typography variant="subtitle1">{props.description}</Typography>
       </Box>
 
-      <CustomTypo variant="h3" color={props.color}>
+      <CustomTypo variant="h4" signatoryType={props.signatoryType}>
         {props.value}
       </CustomTypo>
     </Grid>

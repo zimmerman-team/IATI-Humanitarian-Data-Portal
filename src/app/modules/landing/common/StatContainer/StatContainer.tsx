@@ -9,7 +9,11 @@ export const StatContainer = (props: StateContainerModel) => {
     <Grid container direction="row" spacing={2}>
       {props.items.map(item => (
         <Grid item md={3}>
-          <Stat description={item.description} value={item.value} />
+          <Stat
+            description={item.description}
+            value={item.value}
+            signatoryType={item.signatoryType}
+          />
         </Grid>
       ))}
     </Grid>
