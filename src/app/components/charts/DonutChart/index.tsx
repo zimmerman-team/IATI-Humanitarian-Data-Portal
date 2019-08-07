@@ -8,10 +8,11 @@ import { DonutChartModel } from './model';
 
 const SIZE = 158;
 
-const Container =  styled(props => <Box {...props} />)`
+const Container =  styled(props => <div {...props} />)`
   position: relative;
   height: ${SIZE}px;
   width: ${SIZE}px;
+  min-width: ${SIZE}px;
 `;
 
 const BackgroundDonut = styled(props => <CircularProgress {...props} />)`

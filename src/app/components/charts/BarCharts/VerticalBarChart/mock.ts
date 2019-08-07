@@ -110,42 +110,42 @@ export const dataMock =
     {
       data: [
         {
-          year: 1999,
+          year: "1999",
           activities: 500,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 200,
           humanitarianActivitiesColor: "#5accbf",
         },
         {
-          year: 2000,
+          year: "2000",
           activities: 600,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 500,
           humanitarianActivitiesColor: "#5accbf",
         },
         {
-          year: 2001,
+          year: "2001",
           activities: 750,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 240,
           humanitarianActivitiesColor: "#5accbf",
         },
         {
-          year: 2002,
+          year: "2002",
           activities: 200,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 100,
           humanitarianActivitiesColor: "#5accbf",
         },
         {
-          year: 2003,
+          year: "2003",
           activities: 800,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 444,
           humanitarianActivitiesColor: "#5accbf",
         },
         {
-          year: 2004,
+          year: "2004",
           activities: 130,
           activitiesColor: "#d7d8d9",
           humanitarianActivities: 90,
