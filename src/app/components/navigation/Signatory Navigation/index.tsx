@@ -32,9 +32,8 @@ const CurrentLocationLink = styled(props => <Link {...props} />)`
 `;
 
 const Underline = styled(props => <div {...props} />)`
-  //display: ${props => (props.display ? 'block' : 'none')};
   background-color: ${props =>
-    props.display ? Colors.primaryBase : 'transparent'};
+    props.show ? Colors.primaryBase : 'transparent'};
   height: 4px;
   margin-top: 8px;
 `;
@@ -60,7 +59,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
           return (
             <CurrentLocationLink variant="button">
               {location}
-              <Underline display />
+              <Underline show={"true"} />
             </CurrentLocationLink>
           );
         }
