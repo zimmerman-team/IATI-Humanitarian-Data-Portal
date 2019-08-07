@@ -13,6 +13,7 @@ import {
   TableModuleModel,
   LocalTableStateModel,
 } from 'app/components/datadisplay/Table/model';
+import { MUIDataTableState } from 'mui-datatables';
 
 /* method for getting the correct expandable table cell component depending on the table variant */
 export function getExpandableTableCell(
@@ -54,6 +55,62 @@ export function getInfoTHead(value: string, infoText: string): React.ReactNode {
   );
 }
 
+function onTableChange(
+  action: string,
+  tableState: MUIDataTableState,
+  localTableState: LocalTableStateModel,
+  setLocalTableState: Function
+) {
+  if (
+    indexOf(['changePage', 'changeRowsPerPage', 'propsUpdate'], action) > -1 &&
+    localTableState.prevAction !== action
+  ) {
+    setLocalTableState({
+      page: tableState.page,
+      prevAction: action,
+      rowsPerPage: tableState.rowsPerPage,
+    });
+  }
+}
+
+function onColumnViewChange(
+  changedColumn: string,
+  action: string,
+  configProps: TableModuleModel
+) {
+  const totalCell = document.getElementById('total-cell') as HTMLElement;
+  const colIndex = findIndex(configProps.columns, {
+    name: changedColumn,
+  });
+  if (colIndex > -1 && totalCell) {
+    const totalCellNodes = totalCell.childNodes[colIndex] as HTMLElement;
+    if (action === 'add') {
+      totalCellNodes.style.display = 'table-cell';
+    } else {
+      totalCellNodes.style.display = 'none';
+    }
+  }
+}
+
+function renderExpandableRow(
+  rowMeta: { dataIndex: number; rowIndex: number },
+  configProps: TableModuleModel
+) {
+  const dataArr = configProps.expandableData
+    ? configProps.expandableData[rowMeta.rowIndex]
+    : [];
+  return dataArr.map((row, i) => (
+    <TableRow key={`${rowMeta.dataIndex}-${rowMeta.rowIndex}-${row[0].value}`}>
+      <TableCell />
+      {row.map(item => (
+        <TableCell colSpan={item.colSpan}>
+          {getExpandableTableCell(item.type, item.value)}
+        </TableCell>
+      ))}
+    </TableRow>
+  ));
+}
+
 /* additional config */
 export function addConfig(
   configProps: TableModuleModel,
@@ -64,56 +121,18 @@ export function addConfig(
   if (configProps.totalCell) {
     options = {
       ...options,
-      onTableChange: (action, tableState) => {
-        if (
-          indexOf(['changePage', 'changeRowsPerPage', 'propsUpdate'], action) >
-            -1 &&
-          localTableState.prevAction !== action
-        ) {
-          setLocalTableState({
-            page: tableState.page,
-            prevAction: action,
-            rowsPerPage: tableState.rowsPerPage,
-          });
-        }
-      },
+      onTableChange: (action, tableState) =>
+        onTableChange(action, tableState, localTableState, setLocalTableState),
       /* when column view changes we need to also change the column in the custom total row */
-      onColumnViewChange: (changedColumn, action) => {
-        const totalCell = document.getElementById('total-cell') as HTMLElement;
-        const colIndex = findIndex(configProps.columns, {
-          name: changedColumn,
-        });
-        if (colIndex > -1 && totalCell) {
-          const totalCellNodes = totalCell.childNodes[colIndex] as HTMLElement;
-          if (action === 'add') {
-            totalCellNodes.style.display = 'table-cell';
-          } else {
-            totalCellNodes.style.display = 'none';
-          }
-        }
-      },
+      onColumnViewChange: (changedColumn, action) =>
+        onColumnViewChange(changedColumn, action, configProps),
     };
   }
   if (configProps.expandableData) {
     options = {
       ...options,
-      renderExpandableRow: (rowData, rowMeta) => {
-        const dataArr = configProps.expandableData
-          ? configProps.expandableData[rowMeta.rowIndex]
-          : [];
-        return dataArr.map((row, i) => (
-          <TableRow
-            key={`${rowMeta.dataIndex}-${rowMeta.rowIndex}-${row[0].value}`}
-          >
-            <TableCell />
-            {row.map(item => (
-              <TableCell colSpan={item.colSpan}>
-                {getExpandableTableCell(item.type, item.value)}
-              </TableCell>
-            ))}
-          </TableRow>
-        ));
-      },
+      renderExpandableRow: (rowData, rowMeta) =>
+        renderExpandableRow(rowMeta, configProps),
     };
   }
   return options;
