@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Tooltip } from '@material-ui/core';
@@ -35,11 +35,15 @@ const BaseButton = styled(props => <Button {...props} />)`
 `;
 
 const TooltipButton = (props: Props) => {
+  // fix this...
+  // @ts-ignore
   return (
     <Tooltip
       title={props.tip ? props.tip : 'empty tooltip'}
       placement="top-end"
     >
+      {/* span is here for a reason https://github.com/atomiks/tippy.js-react*/}
+      <span>
       <BaseButton
         {...props}
         size={props.size}
@@ -48,6 +52,7 @@ const TooltipButton = (props: Props) => {
       >
         i
       </BaseButton>
+      </span>
     </Tooltip>
   );
 };
