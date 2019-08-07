@@ -157,6 +157,7 @@ export const Typography = {
     fontSize: `${0.875}rem`,
     fontWeight: Weight.bold,
     textTransform: 'none',
+    letterSpacing: '1.25px',
   },
   caption: {
     fontSize: `${0.75}rem`,
