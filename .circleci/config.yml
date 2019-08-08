@@ -54,7 +54,6 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                yarn build-storybook
             fi
-      - run: yarn build-storybook
       - run:
           name: Add target host to known_hosts files
           command: |
@@ -81,6 +80,8 @@ jobs:
           name: Upload storybook build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
+            else
               rsync -O -ave ssh ~/mlt-apps/staging/build-storybook "$SSH_USER"@"$SSH_HOST":~/storybook
             fi
 
