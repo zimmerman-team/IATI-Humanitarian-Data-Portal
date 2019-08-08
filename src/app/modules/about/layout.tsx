@@ -5,6 +5,12 @@ import { Box, Grid, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';
 
+//TODO: -Correct page title => @jim?
+//      -Correct outer container margins of MD size => @jim?
+//      -Implement correct spacing between components
+//      -Implement background with artworks
+//      -Implement footer component
+
 export const AboutLayout = (props: AboutPageModel) => {
   return (
     <Page title={props.title}>
