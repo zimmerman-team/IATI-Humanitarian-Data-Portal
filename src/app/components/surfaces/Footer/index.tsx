@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import MuiBox from '@material-ui/core/Box';
 import Colors from 'app/theme/color';
 import MuiLink from '@material-ui/core/Link';
-import Close from '@material-ui/icons/Close';
+import { DILogo } from 'app/components/svgs/DevelopmentInitiatives';
+import { MONLogo } from 'app/components/svgs/MinistryOfNetherlands';
 
 const Box = styled(props => <MuiBox {...props} />)`
   && {
@@ -29,17 +30,13 @@ const Link = styled(props => <MuiLink {...props} />)`
 
 export function Footer() {
   return (
-    <Box display="flex" justifyContent="space-between">
+    <Box display="flex" justifyContent="space-between" alignItems="center">
       <Link>
-        <Close />
-        {/*  SVG */}
-        {/*http://devinit.org/wp-content/themes/diTheme/img/logo.png*/}
+        <DILogo />
       </Link>
 
       <Link>
-        <Close />
-        {/*  SVG */}
-        {/*Grand Bargins Data Privacy and Cookie Policy*/}
+        <MONLogo />
       </Link>
 
       <Link>Grand Bargins Data Privacy and Cookie Policy</Link>
