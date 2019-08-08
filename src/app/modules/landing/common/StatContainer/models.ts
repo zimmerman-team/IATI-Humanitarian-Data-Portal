@@ -1,7 +1,7 @@
 export type StatModel = {
   description: string;
   value: number;
-  color: string;
+  signatoryType: string;
 };
 export type StateContainerModel = {
   items: StatModel[];

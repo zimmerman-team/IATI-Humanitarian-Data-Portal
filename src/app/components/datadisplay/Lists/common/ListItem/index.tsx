@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import { TooltipButton } from 'app/components/datadisplay/Tooltip';
+import { TooltipButton as Tooltip } from 'app/components/datadisplay/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 
-const ToolTip = styled(props => <TooltipButton {...props} />)`
+const ToolTip = styled(props => <Tooltip {...props} />)`
   margin-top: 4px !important;
 `;
 
