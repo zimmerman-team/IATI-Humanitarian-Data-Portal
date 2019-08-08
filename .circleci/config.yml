@@ -81,9 +81,9 @@ jobs:
           name: Upload storybook build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/.storybook/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
+              rsync -O -ave ssh ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
             else
-              rsync -O -ave ssh  ~/mlt-frontend/.storybook/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
+              rsync -O -ave ssh  ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
             fi
 
   #  RUN CYPRESS END TO END TESTS
