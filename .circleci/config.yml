@@ -48,12 +48,12 @@ jobs:
             fi
             source $BASH_ENV
       - run: yarn build
-#      - run:
-#          name: Check if master and build storybook
-#          command: |
-#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#               yarn build-storybook
-#            fi
+      - run:
+          name: Check if master and build storybook
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+               yarn build-storybook
+            fi
       - run: yarn build-storybook
       - run:
           name: Add target host to known_hosts files
