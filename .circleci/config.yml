@@ -48,13 +48,12 @@ jobs:
             fi
             source $BASH_ENV
       - run: yarn build
-      - run: yarn build-storybook
-#      - run:
-#          name: Check if master and build storybook
-#          command: |
-#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#               yarn build-storybook
-#            fi
+      - run:
+          name: Check if master and build storybook
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+               yarn build-storybook
+            fi
       - run:
           name: Add target host to known_hosts files
           command: |
@@ -82,8 +81,6 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               rsync -O -ave ssh ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
-            else
-              rsync -O -ave ssh  ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
             fi
 
   #  RUN CYPRESS END TO END TESTS
