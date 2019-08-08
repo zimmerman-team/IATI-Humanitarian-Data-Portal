@@ -28,7 +28,7 @@ const BaseButton = styled(props => <Button {...props} />)`
       text-transform: initial;
       line-height: 1;
     }
-    &:hover{
+    &:hover {
       background-color: ${Colours.greydark20OrFontsecondary};
     }
   }
@@ -42,16 +42,15 @@ export const TooltipButton = (props: Props) => {
       placement="top-end"
     >
       <span>
-      <BaseButton
-        {...props}
-        size={props.size}
-        variant="contained"
-        color="primary"
-      >
-        i
-      </BaseButton>
+        <BaseButton
+          {...props}
+          size={props.size}
+          variant="contained"
+          color="primary"
+        >
+          i
+        </BaseButton>
       </span>
     </Tooltip>
   );
 };
-
