@@ -1,11 +1,8 @@
-type BasePageModel = {
+export type AboutPageModel = {
   title: string;
+  sections: SectionModel[];
 };
 
-interface AboutPageModel extends BasePageModel {
-  intro?: string;
+interface SectionModel {
+  content: string;
 }
-
-export const aboutPageConfig: AboutPageModel = {
-  title: 'The Grand Bargain transparency commitment',
-};
