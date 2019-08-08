@@ -48,7 +48,7 @@ jobs:
             fi
             source $BASH_ENV
       - run: yarn build
-      #      - run: yarn build-storybook
+      - run: yarn build-storybook
       - run:
           name: Add target host to known_hosts files
           command: |
