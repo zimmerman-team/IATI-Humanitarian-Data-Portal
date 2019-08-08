@@ -4,5 +4,6 @@ export type AboutPageModel = {
 };
 
 interface SectionModel {
-  content: string;
+  title: string;
+  content: string | string[];
 }
