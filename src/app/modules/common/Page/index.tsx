@@ -31,6 +31,7 @@ const theme = {
   },
 };
 
+//TODO: refactor to not use styled-flexboxgrid
 export const Page = (props: PageProps) => {
   useTitle(`MLT - ${props.title}`);
 
@@ -39,7 +40,7 @@ export const Page = (props: PageProps) => {
       <Container>
         <Grid>
           <Row>
-            <Col lg={7}>
+            <Col lg={7} md={9}>
               <Typography variant="h3" color="textPrimary">
                 {props.title}
               </Typography>
