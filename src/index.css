@@ -69,7 +69,17 @@ code {
 /* todo: should be solved in a cleaner way */
 a {
   text-decoration: initial;
-  color: #3074f1;
+  color: #25a898;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: initial;
+  color: #30c2b0;
+}
+
+ol{
+  font-family: Inter;
+  font-weight: bold;
 }
 
 .TotalCell {
