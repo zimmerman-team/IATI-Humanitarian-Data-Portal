@@ -3,5 +3,5 @@ import { AboutLayout } from './layout';
 import { mockData } from './mock';
 
 export default function About() {
-  return <AboutLayout />;
+  return <AboutLayout sections={mockData.sections} title={mockData.title} />;
 }
