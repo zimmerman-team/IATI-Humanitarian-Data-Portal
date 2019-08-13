@@ -1,5 +1,6 @@
 import React from 'react';
+import { OverviewLayout } from './layout';
 
-function Overview() {
-  return <></>;
+export default function Overview() {
+  return <OverviewLayout />;
 }
