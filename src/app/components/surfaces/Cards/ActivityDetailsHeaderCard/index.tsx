@@ -24,14 +24,6 @@ const Content = styled(props => <CardContent {...props} />)`
   }
 `;
 
-const Typo = styled(props => <Typography {...props} />)`
-  width: 300px;
-  max-width: 300px;
-  && {
-    margin-right: 100px;
-  }
-`;
-
 export const ActivityDetailsHeaderCard = (
   props: ActivityDetailsHeaderCardModel
 ) => {
