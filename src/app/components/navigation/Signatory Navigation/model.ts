@@ -1,4 +1,3 @@
-export type SignatoryNavigationModel  = {
-  locations: string[]
+export type SignatoryNavigationModel = {
+  locations: string[];
 };
-

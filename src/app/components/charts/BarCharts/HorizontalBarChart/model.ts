@@ -1,16 +1,16 @@
 import { ColorSchemeType } from '../common/colorUtil';
-import {BarSvgProps} from '@nivo/bar';
+import { BarSvgProps } from '@nivo/bar';
 
 export type HorizontalBarChartValueModel = {
   name: string;
   value: number;
   percentage: number;
-}
+};
 
 export type HorizontalBarChartModel = {
   values: HorizontalBarChartValueModel[];
   colors?: ColorSchemeType;
-}
+};
 
 export const barModel: BarSvgProps = {
   data: [],
@@ -26,7 +26,7 @@ export const barModel: BarSvgProps = {
     tickRotation: 0,
     legend: '',
     legendOffset: 36,
-    format: v => `${v}%`
+    format: v => `${v}%`,
   },
   axisRight: null,
   axisBottom: null,
@@ -54,17 +54,17 @@ export const barModel: BarSvgProps = {
       ticks: {
         text: {
           fontWeight: 500,
-          fontFamily: "Inter",
+          fontFamily: 'Inter',
           fontSize: 12,
-        }
-      }
+        },
+      },
     },
     legends: {
       text: {
         fontWeight: 500,
-        fontFamily: "Inter",
+        fontFamily: 'Inter',
         fontSize: 12,
-      }
-    }
-  }
+      },
+    },
+  },
 };

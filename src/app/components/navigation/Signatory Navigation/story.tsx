@@ -4,8 +4,11 @@ import Providers from 'app/Providers';
 import { SignatoryNavigation } from './index';
 import { locations } from './mock';
 
-storiesOf('Navigation|Signatory Navigation', module).add('Signatory Navigation', () => (
-  <Providers>
-    <SignatoryNavigation locations={locations}/>
-  </Providers>
-));
+storiesOf('Navigation|Signatory Navigation', module).add(
+  'Signatory Navigation',
+  () => (
+    <Providers>
+      <SignatoryNavigation locations={locations} />
+    </Providers>
+  )
+);

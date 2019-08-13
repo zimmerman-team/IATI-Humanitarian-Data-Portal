@@ -59,7 +59,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
           return (
             <CurrentLocationLink variant="button">
               {location}
-              <Underline show={"true"} />
+              <Underline show={'true'} />
             </CurrentLocationLink>
           );
         }
