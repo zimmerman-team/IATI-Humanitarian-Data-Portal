@@ -21,13 +21,13 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
       {/*SECTION*/}
-      <Hidden mdUp>
+      <Hidden lgUp>
         {/*TODO: Replace with props */}
         <DrawerMenu links={drawerMockData.links} />
         <Box height="56px" width="100%" />
       </Hidden>
 
-      <Grid container lg={8} md={6}>
+      <Grid container lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
         <BreadCrumbs
           currentLocation="CCTRIs Target"
