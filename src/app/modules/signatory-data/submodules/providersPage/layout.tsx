@@ -7,8 +7,8 @@ import { locations } from 'app/components/navigation/Signatory Navigation/mock';
 import TableModule from 'app/components/datadisplay/Table/index';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import Box from '@material-ui/core/Box';
-import { DrawerMenu } from '../../../../components/navigation/Drawer';
-import { mockData as drawerMockData } from '../../../../components/navigation/Drawer/mock';
+import { DrawerMenu } from 'app/components/navigation/Drawer';
+import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
 
 export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
