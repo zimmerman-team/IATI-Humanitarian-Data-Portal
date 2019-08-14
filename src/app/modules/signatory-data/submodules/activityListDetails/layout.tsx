@@ -17,7 +17,7 @@ import Table from 'app/components/datadisplay/Table';
 import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
 import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
 
-const ContentTypography = styled(props => <Typography {...props} />)`
+const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;
   column-gap: 6rem;
 `;
@@ -27,7 +27,7 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
     <Container>
       {/** --------------------------------------------------------------------------- */}
       {/** Header && Breadcumnb */}
-      <Hidden mdUp>
+      <Hidden lgUp>
         {/*TODO: Replace with props */}
         <DrawerMenu links={drawerMockData.links} />
         <Box height="56px" width="100%" />
@@ -50,7 +50,7 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
 
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
-      <Grid container lg={7}>
+      <Grid container lg={7} md={12}>
         <Typography variant="subtitle1">{props.sections[0].title}</Typography>
         <Box width="100%" height="25px" />
         <Typography variant="body1">{props.sections[0].content}</Typography>
@@ -60,8 +60,9 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
 
       {/** --------------------------------------------------------------------------- */}
       {/** Tables */}
-      <Grid container>
+      <Grid container lg={12} md={12}>
         {/*TODO: where is the black total sum up bar?*/}
+        {/*TODO: Tables need to be horizontally scrollable and may not exceed parent width*/}
         <Table
           title={props.incomingTransactionsTableData.title}
           data={props.incomingTransactionsTableData.data}
@@ -88,9 +89,15 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
       <Grid container lg={11} style={{ paddingLeft: '16px' }}>
         <Typography variant="h4">{props.sections[1].title}</Typography>
         <Box width="100%" height="25px" />
-        <ContentTypography variant="body1">
-          {props.sections[1].content}
-        </ContentTypography>
+        <Hidden only="md">
+          <ContentTypographyLG variant="body1">
+            {props.sections[1].content}
+          </ContentTypographyLG>
+        </Hidden>
+
+        <Hidden only={['lg', 'xl']}>
+          <Typography variant="body1">{props.sections[1].content}</Typography>
+        </Hidden>
       </Grid>
 
       <Box height="144px" width="100%" />
@@ -98,11 +105,12 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
       <Grid container spacing={4}>
-        <Grid item lg={3}>
-          <InPageNavigation locations={inPageNavMockData.locations} />
-        </Grid>
-
-        <Grid item lg={8}>
+        <Hidden only="md">
+          <Grid item lg={3}>
+            <InPageNavigation locations={inPageNavMockData.locations} />
+          </Grid>
+        </Hidden>
+        <Grid item lg={8} md={12}>
           {props.lists.map(list => (
             <>
               <List items={list.items} />
