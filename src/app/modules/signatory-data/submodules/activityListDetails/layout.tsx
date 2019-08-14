@@ -30,7 +30,7 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
       <Hidden mdUp>
         {/*TODO: Replace with props */}
         <DrawerMenu links={drawerMockData.links} />
-        <Box height="72px" width="100%" />
+        <Box height="56px" width="100%" />
       </Hidden>
 
       <Grid container lg={9}>
