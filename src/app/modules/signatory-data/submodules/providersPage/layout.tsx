@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import { ProvidersModel } from './model';
+import { ProvidersPageModel } from './model';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
 import TableModule from 'app/components/datadisplay/Table/index';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import Box from '@material-ui/core/Box';
 
-export const ProvidersLayout = (props: ProvidersModel) => {
+export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
     <Container>
       {/** --------------------------------------------------------------------------- */}

@@ -3,22 +3,22 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 // utils
 import { DebugBox, OutlineBox } from 'app/utils/layout';
-import Providers from 'app/Providers';
+import ProvidersPage from 'app/Providers';
 // comps
-import { ProvidersLayout } from './layout';
+import { ProvidersPageLayout } from './layout';
 import { mockData } from './mock';
 
 storiesOf('Modules|Page', module).add(
   'Page - Signatory Data / Providers',
   () => (
     <>
-      <Providers>
-        <ProvidersLayout
+      <ProvidersPage>
+        <ProvidersPageLayout
           activity={mockData.activity}
           barChartData={mockData.barChartData}
           tableData={mockData.tableData}
         />
-      </Providers>
+      </ProvidersPage>
     </>
   )
 );
