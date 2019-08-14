@@ -8,7 +8,9 @@ const DS_API = 'https://api.datastore.iati.cloud';
 
 // so this basically describes the redux initial values
 // and redux actions for the generic api model
-const apiModel = <QueryModel, ResponseModel>(endpoint: string): ApiModel<QueryModel, ResponseModel> => ({
+const apiModel = <QueryModel, ResponseModel>(
+  endpoint: string
+): ApiModel<QueryModel, ResponseModel> => ({
   loading: false,
   success: false,
   data: null,
@@ -35,15 +37,19 @@ const apiModel = <QueryModel, ResponseModel>(endpoint: string): ApiModel<QueryMo
     // work with strings passed in as params
     // we will convert the objects passed in as values
     // to a string and pass it into q accordingly
-    axios.get(url, {
-        params: query.values
-    }).then((resp: AxiosResponse) => {
-        actions.onSuccess(resp.data);
-      },
-      (error: any) => {
-        actions.onError(error.response);
-      });
-  })
+    axios
+      .get(url, {
+        params: query.values,
+      })
+      .then(
+        (resp: AxiosResponse) => {
+          actions.onSuccess(resp.data);
+        },
+        (error: any) => {
+          actions.onError(error.response);
+        }
+      );
+  }),
 });
 
 export default apiModel;

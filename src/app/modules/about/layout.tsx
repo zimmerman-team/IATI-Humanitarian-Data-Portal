@@ -5,7 +5,7 @@ import { AboutPageModel } from './model';
 import { Box, Grid, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';
-import { useStoreActions, useStoreState } from '../../state/store/hooks';
+import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 //TODO: -Correct page title => @jim?
 //      -Correct outer container margins of MD size => @jim?
@@ -124,4 +124,4 @@ export const AboutLayout = (props: AboutPageModel) => {
       </Grid>
     </Page>
   );
-}
+};

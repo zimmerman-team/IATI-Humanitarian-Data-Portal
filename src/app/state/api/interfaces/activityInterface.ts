@@ -79,18 +79,18 @@ export interface ActivityResponse {
     QTime: number;
     params: {
       q: string;
-    }
+    };
   };
   response: {
     numFound: number;
     start: number;
     docs: Array<SingleDefActivity>;
-  }
+  };
 }
 
 interface ActivityQuery {
   q: string;
 }
 
-export default interface ActivityResponceInterface extends ApiModel<ActivityQuery, ActivityResponse> {}
-
+export default interface ActivityResponceInterface
+  extends ApiModel<ActivityQuery, ActivityResponse> {}

@@ -20,7 +20,10 @@ export interface ApiModel<QueryModel, ResponseModel> {
   data: ResponseData<ResponseModel> | null;
   errorData: Errors | null;
   onError: Action<ApiModel<QueryModel, ResponseModel>, Errors>;
-  onSuccess: Action<ApiModel<QueryModel, ResponseModel>, ResponseData<ResponseModel>>;
+  onSuccess: Action<
+    ApiModel<QueryModel, ResponseModel>,
+    ResponseData<ResponseModel>
+  >;
   onRequest: Action<ApiModel<QueryModel, ResponseModel>>;
   fetch: Thunk<ApiModel<QueryModel, ResponseModel>, RequestValues<QueryModel>>;
 }
