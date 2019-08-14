@@ -1,4 +1,4 @@
-export const mockData ={
+export const horizontalBarChartMockData ={
   title: 'Signatories meeting Data Publication CCTRIs',
   values : [
   {
