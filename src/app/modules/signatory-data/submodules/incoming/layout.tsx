@@ -77,10 +77,7 @@ export const IncomingLayout = () => {
       <Box height="50px" width="100%" />
       <Grid container spacing={4}>
         <Grid item md={12}>
-          <HorizontalBarChartCard
-            values={horizontalBarChartMockData}
-            title={horizontalBarChartMockData.title}
-          />
+          <Box width="100%" height="335px" bgcolor="white" />
         </Grid>
       </Grid>
 

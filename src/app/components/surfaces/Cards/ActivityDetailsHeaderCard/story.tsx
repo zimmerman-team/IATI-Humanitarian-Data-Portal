@@ -1,14 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { HorizontalBarChartCard } from './index';
+import { ActivityDetailsHeaderCard } from './index';
 import Providers from 'app/Providers';
 import { Grid } from '@material-ui/core';
 import { mockData } from './mock';
 
-storiesOf('Surfaces|Cards/', module).add('Horizontal Bar Chart card', () => (
+storiesOf('Surfaces|Cards/', module).add('Activity Details Header', () => (
   <Providers>
     <Grid container>
-      <HorizontalBarChartCard data={mockData.data} title={mockData.title} />
+      <ActivityDetailsHeaderCard
+        organisation={mockData.organisation}
+        activity={mockData.activity}
+      />
     </Grid>
   </Providers>
 ));
