@@ -1,12 +1,9 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import Skeleton from '@material-ui/lab/Skeleton';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
-import { HorizontalBarChartCard } from '../../../../components/surfaces/Cards/HorizontalBarChartCard/index';
-import { horizontalBarChartMockData } from '../../../../components/surfaces/Cards/HorizontalBarChartCard/mock';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
 export const IncomingLayout = () => {
