@@ -39,6 +39,7 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
           previousLocations={['Signatory Data', 'ActionAid UK']}
         />
         <Box width="100%" height="25px" />
+        {/*TODO: HeaderCard should flow out of the grid to the left*/}
         <ActivityDetailsHeaderCard
           organisation={props.header.organisation}
           activity={props.header.activity}
