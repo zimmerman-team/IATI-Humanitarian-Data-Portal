@@ -1,9 +1,9 @@
-export type AboutPageModel = {
+export type CCTRIPageModel = {
   title: string;
   sections: SectionModel[];
 };
 
 interface SectionModel {
-  title: string;
+  title?: string;
   content: string | string[];
 }
