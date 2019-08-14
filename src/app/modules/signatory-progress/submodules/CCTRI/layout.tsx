@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CCTRIPageModel } from './model';
-import { Box, Grid, Typography, Container } from '@material-ui/core';
+import { Box, Grid, Typography, Container, Hidden } from '@material-ui/core';
 import parse from 'html-react-parser';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
+import { DrawerMenu } from 'app/components/navigation/Drawer';
+import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
 
 //TODO: Implement background with artworks
 
@@ -19,7 +21,13 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
       {/*SECTION*/}
-      <Grid container lg={8}>
+      <Hidden lgUp>
+        {/*TODO: Replace with props */}
+        <DrawerMenu links={drawerMockData.links} />
+        <Box height="56px" width="100%" />
+      </Hidden>
+
+      <Grid container lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
         <BreadCrumbs
           currentLocation="CCTRIs Target"
