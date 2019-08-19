@@ -8,9 +8,7 @@ import { DebugBox } from 'app/utils/layout';
 storiesOf('Modules|Page', module).add('Page - about', () => (
   <>
     <Providers>
-      <DebugBox>
         <About />
-      </DebugBox>
     </Providers>
   </>
 ));

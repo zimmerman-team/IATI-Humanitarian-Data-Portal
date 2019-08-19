@@ -15,7 +15,6 @@ const Box = styled(props => <MuiBox {...props} />)`
 
 const Link = styled(props => <MuiLink {...props} />)`
   && {
-    //Type specific
     font-family: Inter;
     font-size: 1rem;
     font-weight: 500;
@@ -28,7 +27,7 @@ const Link = styled(props => <MuiLink {...props} />)`
   }
 `;
 
-export function Footer() {
+export const Footer = () => {
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Link>
@@ -42,4 +41,4 @@ export function Footer() {
       <Link>Grand Bargins Data Privacy and Cookie Policy</Link>
     </Box>
   );
-}
+};
