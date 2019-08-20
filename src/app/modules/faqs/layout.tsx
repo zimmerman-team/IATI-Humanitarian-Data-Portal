@@ -9,7 +9,7 @@ export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
       <Page title={props.title}>
-        <Box height="48px" />
+
         <Grid container>
           <ExpansionPanel questions={props.questions} />
         </Grid>
