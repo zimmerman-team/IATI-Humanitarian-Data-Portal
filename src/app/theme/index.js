@@ -174,6 +174,7 @@ export const Typography = {
   overline: {
     fontSize: `${0.75}rem`,
     fontWeight: Weight.regular,
+    letterSpacing: '2.0px',
   },
   code: {
     fontSize: `${0.875}rem`,

@@ -11,6 +11,9 @@ const Box = styled(props => <MuiBox {...props} />)`
   && {
     background-color: ${Colors.branddark};
     padding: 32px 54px;
+    position: absolute;
+    left: 0;
+    width: calc(100% - 108px);
   }
 `;
 

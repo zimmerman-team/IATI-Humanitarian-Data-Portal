@@ -21,6 +21,7 @@ export default {
   greylight40OrFontdisabled: '#ebebeb',
   lightGreyBlue: '#a1aebd',
   melon: '#ff8256',
+  midnight60: 'rgba(1 1 10, 0.6)',
   paleGrey: '#f0f3f7',
   primaryBase: '#5accbf',
   purplebase: '#6e5acc',

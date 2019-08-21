@@ -77,13 +77,11 @@ export const OverviewLayout = () => {
         {/** % of activities with both humanitarian indicator and also a valid
               humanitarian sector code */}
         <Grid item xs={12} md={6}>
-          <DebugBox>
-            <DonutChartCard
-              value={cardMockData.value}
-              activity="% of activities with both humanitarian indicator and also a valid
+          <DonutChartCard
+            value={cardMockData.value}
+            activity="% of activities with both humanitarian indicator and also a valid
               humanitarian sector code"
-            />
-          </DebugBox>
+          />
         </Grid>
       </Grid>
       <Box height="50px" />
