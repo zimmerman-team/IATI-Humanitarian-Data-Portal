@@ -3,13 +3,10 @@ import { action, thunk } from 'easy-peasy';
 
 import { ApiModel } from '../interfaces';
 
-// TODO: add this to .env and make it work properly
-const DS_API = 'https://api.datastore.iati.cloud';
-
 // so this basically describes the redux initial values
 // and redux actions for the generic api model
 const apiModel = <QueryModel, ResponseModel>(
-  endpoint: string
+  url: string
 ): ApiModel<QueryModel, ResponseModel> => ({
   loading: false,
   success: false,
@@ -30,7 +27,6 @@ const apiModel = <QueryModel, ResponseModel>(
   }),
   fetch: thunk(async (actions, query) => {
     actions.onRequest();
-    const url = `${DS_API}${endpoint}`;
 
     // okay so to keep the proper type script checks
     // for our query variables and still make this solr
