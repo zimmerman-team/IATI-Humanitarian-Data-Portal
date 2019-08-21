@@ -1,9 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { InsertLink } from '@material-ui/icons';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
+import { Container, Grid, Typography, Box } from '@material-ui/core';
 import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 export const TimelinesLayout = () => {

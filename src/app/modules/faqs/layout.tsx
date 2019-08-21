@@ -9,7 +9,6 @@ export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
       <Page title={props.title}>
-
         <Grid container>
           <ExpansionPanel questions={props.questions} />
         </Grid>
