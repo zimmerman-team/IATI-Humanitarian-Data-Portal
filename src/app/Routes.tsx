@@ -1,80 +1,45 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PageLoader } from 'app/modules/common/PageLoader';
 
-import About from 'app/modules/about';
-
-import { Page } from 'app/modules/common/Page';
+// App Bar Pages
+import { About } from 'app/modules/about';
+import { Faqs } from 'app/modules/faqs';
 import { Landing } from 'app/modules/landing';
 import { SignatoryData } from 'app/modules/signatory-data';
+
+// Signatory Progress Sub Pages
+import { CCTRI } from 'app/modules/signatory-progress/submodules/CCTRI';
+import { SignatoryProgress } from 'app/modules/signatory-progress';
+
+// Signatory Data Sub Pages
+import { SubmoduleContainer } from './modules/signatory-data/submodules';
 
 function Routes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
+        {/* App Bar */}
         <Route exact path="/" render={() => <Landing />} />
         <Route exact path="/about" render={() => <About />} />
-        <Route exact path="/faq" render={() => <Page />} />
-        //////////////////////////////////////////////////////////////////////
+        <Route exact path="/faq" render={() => <Faqs />} />
         <Route exact path="/signatory-data" render={() => <SignatoryData />} />
+        {/*TODO: im missing!*/}
         <Route
           exact
-          path="/signatory-data/:code/overview"
-          render={() => <Page />}
+          path="/signatory-progress"
+          render={() => <SignatoryProgress />}
         />
+
+        {/* Signatory Progress Sub Pages */}
         <Route
           exact
-          path="/signatory-data/:code/activity-list"
-          render={() => <Page />}
+          path="/signatory-progress/cctri-target"
+          render={() => <CCTRI />}
         />
-        <Route
-          exact
-          path="/signatory-data/:code/incoming"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/providers"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/outgoing"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/recipients"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/timelines"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/coverage"
-          render={() => <Page />}
-        />
-        //////////////////////////////////////////////////////////////////////
-        <Route exact path="/signatory-progress" render={() => <Page />} />
-        //////////////////////////////////////////////////////////////////////
-        <Route
-          exact
-          path="/signatory-data/:code/activity-list/:code/detail"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/providers/:code/detail"
-          render={() => <Page />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/recipients/:code/detail"
-          render={() => <Page />}
-        />
+
+        {/* Signatory Data Container*/}
+        <SubmoduleContainer />
       </Switch>
     </Suspense>
   );

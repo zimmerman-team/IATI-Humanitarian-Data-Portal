@@ -1,14 +1,10 @@
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
+import { Grid, Box, Hidden } from '@material-ui/core';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
-import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { OutgoingModel } from './model';
 import { InPageNavigation } from '../../../../components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from '../../../../components/surfaces/Cards/HorizontalBarChartCard';
-import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (

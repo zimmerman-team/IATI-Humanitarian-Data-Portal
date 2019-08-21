@@ -31,7 +31,9 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
         {/* TITLE + INTRODUCTION */}
         <BreadCrumbs
           currentLocation="CCTRIs Target"
-          previousLocations={['Signatory Progress']}
+          previousLocations={[
+            { url: '/signatory-progress', label: 'Signatory Progress' },
+          ]}
         />
         <Box height="32px" width="100%" />
         <Typography variant="h3">{parse(props.title)}</Typography>

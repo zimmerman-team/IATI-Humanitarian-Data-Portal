@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+/* eslint-disable react/jsx-max-depth */
+import React from 'react';
 
 import { Page } from 'app/modules/common/Page';
 import { AboutPageModel } from './model';
 import { Box, Grid, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';
-import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import { Footer } from 'app/components/surfaces/Footer';
 
-//TODO: -Correct page title => @jim?
+// TODO: -Correct page title => @jim?
 //      -Correct outer container margins of MD size => @jim?
 //      -Implement correct spacing between components
 //      -Implement background with artworks

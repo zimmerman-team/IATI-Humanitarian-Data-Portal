@@ -20,5 +20,5 @@ storiesOf('Modules|Page', module).add(
         />
       </Providers>
     </>
-  ),
+  )
 );
