@@ -5,12 +5,13 @@ import { PageLoader } from 'app/modules/common/PageLoader';
 import About from 'app/modules/about';
 
 import { Page } from 'app/modules/common/Page';
+import { Landing } from 'app/modules/landing';
 
 function Routes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
-        <Route exact path="/" render={() => <Page />} />
+        <Route exact path="/" render={() => <Landing />} />
         <Route exact path="/about" render={() => <About />} />
         <Route exact path="/faq" render={() => <Page />} />
         //////////////////////////////////////////////////////////////////////

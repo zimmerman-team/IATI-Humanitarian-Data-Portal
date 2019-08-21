@@ -5,11 +5,9 @@ import styled from 'styled-components';
 import Highlighter from 'react-highlight-words';
 // utils
 import { Container, Grid, Typography, Box } from '@material-ui/core';
-// mock data
-import { mockData } from './common/StatContainer/mock';
 // comps
 import { StatContainer } from 'app/modules/landing/common/StatContainer/StatContainer';
-import { DebugBox } from 'app/utils/layout';
+import { LandingModel } from 'app/modules/landing/model';
 
 const LandingPaper = styled.div`
   background-color: white;
@@ -26,7 +24,7 @@ const LandingIntrotext = styled(Typography)`
   }
 `;
 
-export const LandingLayout = () => {
+export const LandingLayout = (props: LandingModel) => {
   return (
     <Container>
       <LandingPaper>
@@ -55,7 +53,7 @@ export const LandingLayout = () => {
       </LandingPaper>
       <Box height="40px" />
       <Box paddingLeft="40px">
-        <StatContainer items={mockData.items} />
+        <StatContainer items={props.stats} />
       </Box>
     </Container>
   );
