@@ -1,7 +1,7 @@
 import { Action, Thunk } from 'easy-peasy';
 
 interface RequestValues<T> {
-  values: T;
+  values?: T;
 }
 
 export interface ResponseData<T> {

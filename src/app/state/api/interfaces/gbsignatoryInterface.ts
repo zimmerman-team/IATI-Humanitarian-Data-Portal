@@ -2,21 +2,22 @@ import { ApiModel } from './index';
 
 // so this is the interface for a single Grand Bargain Signatory response datas
 interface SingleDefGBSignatory {
-  Publisher: string;
-  Signatory: string;
-  OrganisationType: string;
-  FirstPublished: string;
-  RegistryPubID: number;
+  _id: string;
+  pubName: string;
+  orgType: string;
+  name: string;
+  regPubId: string;
   IATIOrgRef: string;
-  SuppInfoURL: string;
-  ReportsToFTS: string;
-  ReportsToFTSViaIATI: string;
-  ReportsToEU: string;
-  FiscalYearStart: string;
-  FiscalYearEnd: string;
+  suppInfoUrl: string;
+  fiscalStart: string;
+  fiscalEnd: string;
+  firstPubDate: string;
+  reportsToEU: string;
+  reportsToFTS: string;
+  reportsToFTSViaIATI: string;
 }
 
 interface GBSignatoryQuery {}
 
 export default interface GBSignatoryResponseInterface
-  extends ApiModel<GBSignatoryQuery, SingleDefGBSignatory[]> {}
+  extends ApiModel<GBSignatoryQuery, SingleDefGBSignatory> {}
