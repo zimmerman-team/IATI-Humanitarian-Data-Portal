@@ -14,7 +14,6 @@ type Signatory = {
 };
 export type SignatoryDataModel = {
   title: string;
+  signatories: any[];
   description: string;
-  signatories: Signatory[];
 };
-

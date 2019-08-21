@@ -27,6 +27,8 @@
     "react-highlight-words": "^0.16.0",
     "react-router-dom": "^5.0.1",
     "react-use": "^10.1.0",
+    "redux-persist": "^5.10.0",
+    "space-api": "^0.11.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -59,7 +61,7 @@
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.15",
     "@types/material-ui": "^0.21.6",
-    "@types/mui-datatables": "^2.1.4",
+    "@types/mui-datatables": "^2.1.7",
     "@types/node": "^12.6.8",
     "@types/prop-types": "^15.7.1",
     "@types/react": "^16.8.23",

@@ -2,7 +2,8 @@
 import React from 'react';
 import { Container, Grid, Typography, Box } from '@material-ui/core';
 import { SignatoryDataModel } from './model';
-import AppBarButton from 'app/components/inputs/buttons/AppBarButton';
+import TableModule from 'app/components/datadisplay/Table';
+import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryDataLayout = (props: SignatoryDataModel) => {
   return (
@@ -17,14 +18,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       <Box height="50px" />
       <Grid container>
         <Grid item xs={12}>
-          <Box bgcolor="white" width="100%" height="800px">
-            {props.signatories.map(signatory => (
-              <AppBarButton
-                label={signatory.gbSignatory}
-                url={`/signatory-data/${signatory.gbSignatory}/overview`}
-              />
-            ))}
-          </Box>
+          <TableModule {...mockDataVar2} data={props.signatories} />
         </Grid>
       </Grid>
     </Container>

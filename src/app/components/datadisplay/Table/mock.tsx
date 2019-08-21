@@ -105,11 +105,10 @@ export const mockDataVar2: TableModuleModel = {
   ],
   columns: [
     {
-      name: 'Publishing Organistion',
+      name: 'Publishing Organisation',
       options: {
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: { names: ['ActionAid UK'] },
+        filterType: 'dropdown',
         customBodyRender: (value, tableMeta, updateValue) => {
           return <LinkCellModule link="#" value={value} />;
         },
@@ -119,16 +118,14 @@ export const mockDataVar2: TableModuleModel = {
       name: 'GB signatory',
       options: {
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: { names: ['ActionAid UK'] },
+        filterType: 'dropdown',
       },
     },
     {
       name: 'Organisation type',
       options: {
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: { names: ['International NGO', 'Multilateral'] },
+        filterType: 'dropdown',
       },
     },
     {
@@ -136,7 +133,6 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['2.03'] },
       },
     },
     {
