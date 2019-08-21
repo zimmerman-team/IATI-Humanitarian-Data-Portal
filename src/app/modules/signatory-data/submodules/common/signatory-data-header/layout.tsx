@@ -60,7 +60,6 @@ export const SubmoduleHeaderLayout = () => {
           <SignatoryNavigation locations={locations} />
         </Grid>
       </Grid>
-
       <Box height="50px" width="100%" />
     </>
   );

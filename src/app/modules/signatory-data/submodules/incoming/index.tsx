@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import { IncomingLayout } from './layout';
 
-function SignatoryIncoming() {
-  return <Container></Container>;
+export function SignatoryIncoming() {
+  return <IncomingLayout />;
 }

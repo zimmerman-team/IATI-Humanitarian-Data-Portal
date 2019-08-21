@@ -13,8 +13,7 @@ import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/si
 
 export const RecipientsLayout = (props: RecipientsModel) => {
   return (
-    <Container>
-      <SubmoduleHeader />
+    <>
       {/** --------------------------------------------------------------------------- */}
       {/** Charts */}
       <Grid item lg={12}>
@@ -36,6 +35,6 @@ export const RecipientsLayout = (props: RecipientsModel) => {
           options={props.tableData.options}
         />
       </Grid>
-    </Container>
+    </>
   );
 };

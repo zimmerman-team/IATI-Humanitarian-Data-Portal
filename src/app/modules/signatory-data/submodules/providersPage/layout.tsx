@@ -13,9 +13,7 @@ import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/si
 
 export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
-    <Container>
-      <SubmoduleHeader />
-
+    <>
       {/** --------------------------------------------------------------------------- */}
       {/** Charts */}
       <Grid item lg={12}>
@@ -37,6 +35,6 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
           options={props.tableData.options}
         />
       </Grid>
-    </Container>
+    </>
   );
 };

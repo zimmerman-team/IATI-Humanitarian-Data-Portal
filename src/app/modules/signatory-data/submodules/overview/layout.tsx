@@ -30,11 +30,7 @@ const cardMockData = {
 
 export const OverviewLayout = () => {
   return (
-    <Container maxWidth="lg">
-      <SubmoduleHeader />
-
-      {/** --------------------------------------------------------------------------- */}
-      {/** Activity Timeline */}
+    <>
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
@@ -324,6 +320,6 @@ export const OverviewLayout = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };

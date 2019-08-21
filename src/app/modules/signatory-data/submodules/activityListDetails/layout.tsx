@@ -25,11 +25,7 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
 
 export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
   return (
-    <Container>
-      <SubmoduleHeader />
-
-
-
+    <>
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
       <Grid container lg={7} md={12}>
@@ -103,6 +99,6 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
       </Grid>
 
       <Box height="50px" />
-    </Container>
+    </>
   );
 };

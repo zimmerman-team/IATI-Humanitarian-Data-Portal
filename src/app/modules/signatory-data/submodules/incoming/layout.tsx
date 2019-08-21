@@ -9,8 +9,8 @@ import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 export const IncomingLayout = () => {
   return (
-    <Container>
-      <SubmoduleHeader />
+<>
+
       {/** content */}
 
       <Grid container spacing={4}>
@@ -104,6 +104,6 @@ export const IncomingLayout = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };

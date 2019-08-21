@@ -11,10 +11,8 @@ import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/si
 
 export const ActivityListLayout = (props: ActivityListLayoutModel) => {
   return (
-    <Container>
+    <>
       <Grid container>
-        <SubmoduleHeader />
-
         {/** --------------------------------------------------------------------------- */}
         {/** Table */}
         <Grid item>
@@ -27,6 +25,6 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
           />
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };

@@ -12,8 +12,7 @@ import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/si
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (
-    <Container>
-      <SubmoduleHeader />
+    <>
       {/** content */}
 
       <Grid container spacing={4}>
@@ -112,6 +111,6 @@ export const OutgoingLayout = (props: OutgoingModel) => {
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
