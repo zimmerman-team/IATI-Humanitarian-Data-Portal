@@ -7,5 +7,5 @@ export const mockData: CoverageModel = {
     code: 'GB-CHC-274467',
     date: '2017 - 2019',
   },
-  tableData: mockTable,
+  tableData: { ...mockTable },
 };

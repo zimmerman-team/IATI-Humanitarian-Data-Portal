@@ -9,6 +9,7 @@ import { SignatoryOutgoing } from './outgoing';
 import { Recipients } from './recipients';
 import { Timelines } from './timelines';
 import { ActivityListDetails } from './activityListDetails';
+import { Coverage } from './coverage';
 
 export function SignatoryDataRoutes() {
   return (
@@ -53,7 +54,7 @@ export function SignatoryDataRoutes() {
         <Route
           exact
           path="/signatory-data/:code/coverage"
-          render={() => <></>}
+          render={() => <Coverage />}
         />
         <Route
           exact
