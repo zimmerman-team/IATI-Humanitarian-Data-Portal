@@ -24,7 +24,12 @@
     "baseUrl": "src",
     "types": ["cypress", "@percy/cypress"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ]
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],
   "exclude": [
