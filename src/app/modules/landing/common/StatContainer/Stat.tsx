@@ -1,5 +1,4 @@
 import React from 'react';
-import { Row, Col } from 'react-styled-flexboxgrid';
 import { Typography, Grid, Box } from '@material-ui/core';
 import { StatModel } from 'app/modules/landing/common/StatContainer/models';
 import styled from 'styled-components';
