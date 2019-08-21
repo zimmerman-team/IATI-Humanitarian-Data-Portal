@@ -38,7 +38,6 @@ function Routes() {
           render={() => <SignatoryProgress />}
         />
 
-
         {/* Signatory Progress Sub Pages*/}
         <Route
           exact

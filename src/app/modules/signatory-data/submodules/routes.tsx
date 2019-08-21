@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { Route, Switch } from 'react-router';
-import {Overview} from 'app/modules/signatory-data/submodules/overview';
+import { Overview } from 'app/modules/signatory-data/submodules/overview';
 import { ActivityList } from './activityList';
 import { SignatoryIncoming } from './incoming';
 import { ProvidersPage } from './providersPage';
