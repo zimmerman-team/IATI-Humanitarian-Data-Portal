@@ -9,9 +9,9 @@ import '../index.css';
 import { Client } from './state/api/Client';
 import { ClientContextProvider } from 'react-fetching-library';
 
-type ProviderProps = {
+interface ProviderProps {
   children?: ReactNode;
-};
+}
 
 function Providers(props: ProviderProps) {
   return (
