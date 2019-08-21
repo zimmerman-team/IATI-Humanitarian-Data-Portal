@@ -13,7 +13,6 @@ type Props = {
 const BaseComponent = styled(props => <Button {...props} />)`
   && {
     margin-left: 40px;
-    margin-left: 40px;
     & [class*='MuiButton-label'] {
       font-size: 14px;
       text-transform: capitalize;

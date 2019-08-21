@@ -12,7 +12,9 @@ export const SubmoduleHeaderLayout = () => {
       <Grid container>
         <BreadCrumbs
           currentLocation="ActionAid UK"
-          previousLocations={['Signatory Data']}
+          previousLocations={[
+            { url: '/signatory-data', label: 'Signatory Data' },
+          ]}
         />
       </Grid>
       {/** --------------------------------------------------------------------------- */}
@@ -57,7 +59,12 @@ export const SubmoduleHeaderLayout = () => {
           <Box height="50px" width="100%" />
         </Hidden>
         <Grid item xs={12} md={6}>
-          <SignatoryNavigation locations={locations} />
+
+
+          <SignatoryNavigation
+            locations={locations.locations}
+            activity={locations.activity}
+          />
         </Grid>
       </Grid>
       <Box height="50px" width="100%" />

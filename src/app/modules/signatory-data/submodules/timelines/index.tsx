@@ -1,5 +1,6 @@
 import React from 'react';
+import { TimelinesLayout } from './layout';
 
-function Timelines() {
-  return <>oe</>;
+export function Timelines() {
+  return <TimelinesLayout/>;
 }

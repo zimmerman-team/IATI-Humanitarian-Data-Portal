@@ -1,52 +1,52 @@
 import { MUIDataTableOptions, MUIDataTableColumnDef } from 'mui-datatables';
 
-export type TotalRowColModel = {
+export interface TotalRowColModel {
   percValue?: number | string;
   dataType: 'money' | 'percentage' | 'count' | 'none';
-};
+}
 
-export type TableModuleModel = {
+export interface TableModuleModel {
   title: string;
-  data: Array<Array<any>>;
+  data: any[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
-  columnsCell: Array<string>;
+  columnsCell: string[];
   totalCell?: boolean | undefined;
-  expandableData?: Array<Array<Array<any>>> | undefined;
+  expandableData?: any[][][] | undefined;
   totalRowColsDef?: TotalRowColModel[];
-};
+}
 
-export type TableLayoutModel = {
+export interface TableLayoutModel {
   title: string;
-  data: Array<Array<any>>;
+  data: any[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
-};
+}
 
-export type InfoCellModuleModel = {
-  value: string | Array<string>;
+export interface InfoCellModuleModel {
+  value: string | string[];
   info: string;
   colSpan?: number;
-};
+}
 
-export type LinkCellModuleModel = {
-  value: string | Array<string>;
+export interface LinkCellModuleModel {
+  value: string | string[];
   link: string;
   colSpan?: number;
-};
+}
 
-export type IconCellModuleModel = {
-  value: string | Array<string>;
+export interface IconCellModuleModel {
+  value: string | string[];
   colSpan?: number;
-};
+}
 
-export type MultiValuesCellModuleModel = {
-  value: Array<string>;
+export interface MultiValuesCellModuleModel {
+  value: string[];
   colSpan?: number;
-};
+}
 
-export type LocalTableStateModel = {
+export interface LocalTableStateModel {
   page: number;
   prevAction: string;
   rowsPerPage: number;
-};
+}
