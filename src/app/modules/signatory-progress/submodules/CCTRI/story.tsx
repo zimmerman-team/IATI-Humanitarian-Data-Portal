@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {CCTRI} from './index';
+import { CCTRI } from './index';
 import Providers from 'app/Providers';
 import { DebugBox } from 'app/utils/layout';
 
