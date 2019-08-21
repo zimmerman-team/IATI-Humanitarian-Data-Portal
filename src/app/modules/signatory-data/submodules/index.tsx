@@ -7,7 +7,7 @@ import { ProvidersPage } from 'app/modules/signatory-data/submodules/providersPa
 import { Recipients } from 'app/modules/signatory-data/submodules/recipients';
 import { SignatoryOutgoing } from 'app/modules/signatory-data/submodules/outgoing';
 import { SignatoryIncoming } from 'app/modules/signatory-data/submodules/incoming';
-import { CoverageModule } from 'app/modules/signatory-data/submodules/coverage';
+// import { CoverageModule } from 'app/modules/signatory-data/submodules/coverage';
 import { ActivityList } from 'app/modules/signatory-data/submodules/activityList';
 import { ActivityListDetails } from 'app/modules/signatory-data/submodules/activityListDetails';
 import { SignatoryDataRoutes } from 'app/modules/signatory-data/submodules/routes';
