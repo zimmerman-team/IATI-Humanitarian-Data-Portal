@@ -12,7 +12,7 @@ export const StatContainer = (props: StateContainerModel) => {
           <Stat
             description={item.description}
             value={item.value}
-            signatoryType={item.signatoryType}
+            signatorytype={item.signatorytype}
           />
         </Grid>
       ))}
