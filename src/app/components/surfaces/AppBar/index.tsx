@@ -8,6 +8,9 @@ import AppBarButton from 'app/components/inputs/buttons/AppBarButton';
 import Grid from '@material-ui/core/Grid';
 import useLocation from 'react-use/lib/useLocation';
 import { Link } from 'react-router-dom';
+/* state & utils */
+import { useStoreActions } from 'app/state/store/hooks';
+import { useStoreState } from 'easy-peasy';
 
 const LinkMod = styled(Link)`
   text-decoration: none;
@@ -29,6 +32,13 @@ const BaseComponent = styled(props => <BaseAppBar {...props} />)`
 
 const AppBar = (props: AppBarProps) => {
   const state = useLocation();
+  const gbsignatoriesData = useStoreState(
+    reduxstate => reduxstate.gbsignatories
+  );
+  if (!gbsignatoriesData.success && !gbsignatoriesData.loading) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useStoreActions(actions => actions.gbsignatories.fetch)({});
+  }
 
   return (
     <BaseComponent
