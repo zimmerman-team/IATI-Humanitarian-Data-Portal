@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { Route, Switch } from 'react-router';
-import {Overview} from 'app/modules/signatory-data/submodules/overview';
+import { Overview } from 'app/modules/signatory-data/submodules/overview';
 import { ActivityList } from './activityList';
 import { SignatoryIncoming } from './incoming';
 import { ProvidersPage } from './providersPage';
@@ -14,16 +14,6 @@ export function SignatoryDataRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
-        {/** routes for submodules to be put here */}
-        {/*<Overview />*/}
-        {/* <ProvidersPage />*/}
-        {/*<Recipients />*/}
-        {/* <SignatoryOutgoing />*/}
-        {/* <SignatoryIncoming />*/}
-        {/*<ActivityListDetails />*/}
-        {/*<ActivityList />*/}
-        {/*<CoverageModule />*/}
-        {/* Signatory Data Sub Pages*/}
         <Route
           exact
           path="/signatory-data/:code/overview"
