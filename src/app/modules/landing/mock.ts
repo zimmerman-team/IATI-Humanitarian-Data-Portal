@@ -6,5 +6,3 @@ export const humanitarianCallValues = {
     fl: 'facet_counts',
   },
 };
-
-export const gbsignatoriesCallValues = { values: {} };
