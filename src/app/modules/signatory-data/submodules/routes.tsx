@@ -14,16 +14,6 @@ export function SignatoryDataRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
-        {/** routes for submodules to be put here */}
-        {/*<Overview />*/}
-        {/* <ProvidersPage />*/}
-        {/*<Recipients />*/}
-        {/* <SignatoryOutgoing />*/}
-        {/* <SignatoryIncoming />*/}
-        {/*<ActivityListDetails />*/}
-        {/*<ActivityList />*/}
-        {/*<CoverageModule />*/}
-        {/* Signatory Data Sub Pages*/}
         <Route
           exact
           path="/signatory-data/:code/overview"
