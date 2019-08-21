@@ -109,7 +109,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['ActionAid UK'],
+        // filterOptions: ['ActionAid UK'],
         customBodyRender: (value, tableMeta, updateValue) => {
           return <LinkCellModule link="#" value={value} />;
         },
@@ -120,7 +120,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['ActionAid UK'],
+        // filterOptions: ['ActionAid UK'],
       },
     },
     {
@@ -128,7 +128,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['International NGO', 'Multilateral'],
+        // filterOptions: ['International NGO', 'Multilateral'],
       },
     },
     {
@@ -136,7 +136,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['2.03'],
+        // filterOptions: ['2.03'],
       },
     },
     {
@@ -144,7 +144,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        // filterOptions: ['true', 'false', 'na'],
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -155,7 +155,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        // filterOptions: ['true', 'false', 'na'],
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -166,7 +166,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        // filterOptions: ['true', 'false', 'na'],
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -177,7 +177,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        // filterOptions: ['true', 'false', 'na'],
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -699,7 +699,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['France', 'Germany'],
+        // filterOptions: ['France', 'Germany'],
       },
     },
     {
@@ -707,7 +707,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['Netherlands'],
+        // filterOptions: ['Netherlands'],
       },
     },
     {
@@ -745,7 +745,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['XM-DAV-7PPR-28317'],
+        // filterOptions: ['XM-DAV-7PPR-28317'],
       },
     },
   ],
