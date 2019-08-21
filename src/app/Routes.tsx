@@ -6,6 +6,7 @@ import About from 'app/modules/about';
 
 import { Page } from 'app/modules/common/Page';
 import { Landing } from 'app/modules/landing';
+import { SignatoryData } from 'app/modules/signatory-data';
 
 function Routes() {
   return (
@@ -15,6 +16,7 @@ function Routes() {
         <Route exact path="/about" render={() => <About />} />
         <Route exact path="/faq" render={() => <Page />} />
         //////////////////////////////////////////////////////////////////////
+        <Route exact path="/signatory-data" render={() => <SignatoryData />} />
         <Route
           exact
           path="/signatory-data/:code/overview"
