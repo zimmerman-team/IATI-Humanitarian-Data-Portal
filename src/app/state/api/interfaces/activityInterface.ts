@@ -90,6 +90,9 @@ export interface ActivityResponse {
 
 interface ActivityQuery {
   q: string;
+  facet?: string;
+  'facet.field'?: string;
+  fl?: string;
 }
 
 export default interface ActivityResponceInterface
