@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { PageLoader } from 'app/modules/common/PageLoader';
-import { Switch, Route } from 'react-router';
+import { Switch } from 'react-router';
 import Overview from 'app/modules/signatory-data/submodules/overview';
 
 export function SignatoryDataRoutes() {

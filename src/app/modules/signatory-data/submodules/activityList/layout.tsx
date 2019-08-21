@@ -1,13 +1,7 @@
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Table from 'app/components/datadisplay/Table/index';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation/index';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
 import { ActivityListLayoutModel } from './model';
-import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import { DrawerMenu } from 'app/components/navigation/Drawer';
-import { mockData } from 'app/components/navigation/Drawer/mock';
-import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 export const ActivityListLayout = (props: ActivityListLayoutModel) => {
   return (
