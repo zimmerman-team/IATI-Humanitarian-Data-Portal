@@ -5,6 +5,7 @@ import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
+import color from 'app/theme/color';
 
 export const SubmoduleHeaderLayout = () => {
   return (
@@ -16,42 +17,38 @@ export const SubmoduleHeaderLayout = () => {
             { url: '/signatory-data', label: 'Signatory Data' },
           ]}
         />
+        <Box height="24px" width="100%" />
       </Grid>
       {/** --------------------------------------------------------------------------- */}
       {/** Header */}
       <Grid container>
         <Grid item xs={12} md={6}>
           <Grid container direction="column">
-            <Grid item>
-              <Typography variant="h3" color="textPrimary">
-                ActionAid UK
+            <Typography variant="h3" color="textPrimary">
+              ActionAid UK
+            </Typography>
+            {/** todo: style */}
+            <Typography variant="overline" color="textPrimary">
+              GB-CHC-274467 2017-2019
+            </Typography>
+            {/** todo: style */}
+            <Typography
+              variant="overline"
+              style={{ textTransform: 'none' }}
+              color="textPrimary"
+            >
+              *earliest and latest activity start dates
+            </Typography>
+
+            <Box height="14px" width="100%" />
+
+            <Grid container>
+              <InsertLink color="secondary" />
+              <Box width="5px" />
+              <Typography variant="body1" color="secondary">
+                {/**  todo: add link icon and make link of text */}
+                Publisher Supplementary Information
               </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                GB-CHC-274467 2017-2019
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                *earliest and latest activity start dates
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid container>
-                <Grid item>
-                  <InsertLink color="secondary" />
-                </Grid>
-                <Box width="5px" />
-                <Grid item>
-                  <Typography variant="body1" color="secondary">
-                    {/**  todo: add link icon and make link of text */}
-                    Publisher Supplementary Information
-                  </Typography>
-                </Grid>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>

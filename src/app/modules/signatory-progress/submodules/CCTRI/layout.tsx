@@ -29,6 +29,7 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
 
       <Grid container lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
+        <Box height="20px" width="100%" />
         <BreadCrumbs
           currentLocation="CCTRIs Target"
           previousLocations={[
