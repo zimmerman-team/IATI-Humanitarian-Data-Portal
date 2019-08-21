@@ -9,44 +9,12 @@ import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/Horizontal
 import Box from '@material-ui/core/Box';
 import { DrawerMenu } from 'app/components/navigation/Drawer';
 import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
+import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 export const RecipientsLayout = (props: RecipientsModel) => {
   return (
     <Container>
-      {/** --------------------------------------------------------------------------- */}
-      {/** Breadcrumb + Title + Navigation */}
-      <Hidden lgUp>
-        {/*TODO: Replace with props */}
-        <DrawerMenu links={drawerMockData.links} />
-        <Box height="56px" width="100%" />
-      </Hidden>
-
-      <Grid
-        container
-        justify="space-between"
-        direction="row"
-        alignItems="flex-end"
-      >
-        <Grid item lg={6}>
-          <BreadCrumbs
-            currentLocation="ActionAid UK"
-            previousLocations={['Signatory Data']}
-          />
-          <Box width="100%" height="32px" />
-          <Typography variant="h3">{props.activity.name}</Typography>
-          <Typography variant="overline">{props.activity.code}</Typography>
-        </Grid>
-
-        <Grid item lg={6} md={12} justify="flex-end">
-          <Hidden lgUp>
-            <Box width="100%" height="56px" />
-          </Hidden>
-
-          <SignatoryNavigation locations={locations} />
-        </Grid>
-      </Grid>
-
-      <Box width="100%" height="64px" />
+      <SubmoduleHeader />
       {/** --------------------------------------------------------------------------- */}
       {/** Charts */}
       <Grid item lg={12}>

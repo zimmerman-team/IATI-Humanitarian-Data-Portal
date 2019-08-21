@@ -38,7 +38,7 @@ const Underline = styled(props => <div {...props} />)`
   margin-top: 8px;
 `;
 
-//TODO: Implement current location retrieving
+// TODO: Implement current location retrieving
 const CURRENT_LOCATION = 'Overview';
 
 export function SignatoryNavigation(props: SignatoryNavigationModel) {
@@ -66,7 +66,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
         return (
           <LocationLink
             variant="button"
-            onClick={e => handleClick(e, location)}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleClick(e, location)}
           >
             {location}
             <Underline />

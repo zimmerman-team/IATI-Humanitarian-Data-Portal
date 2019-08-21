@@ -8,45 +8,14 @@ import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { OutgoingModel } from './model';
 import { InPageNavigation } from '../../../../components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from '../../../../components/surfaces/Cards/HorizontalBarChartCard';
+import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (
     <Container>
-      {/** header */}
-      <Grid container>
-        <BreadCrumbs
-          currentLocation="ActionAid UK"
-          previousLocations={['Signatory Data']}
-        />
-        <Box height="32px" width="100%" />
-      </Grid>
-
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="h3" color="textPrimary">
-                {props.activity.name}
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="overline" color="textPrimary">
-                {`${props.activity.code} ${props.activity.date}`}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Hidden mdUp>
-          <Box height="50px" width="100%" />
-        </Hidden>
-        <Grid item xs={12} md={6}>
-          <SignatoryNavigation locations={locations} />
-        </Grid>
-      </Grid>
+      <SubmoduleHeader />
       {/** content */}
 
-      <Box height="50px" width="100%" />
       <Grid container spacing={4}>
         <Grid item md={12}>
           <HorizontalBarChartCard
@@ -58,15 +27,15 @@ export const OutgoingLayout = (props: OutgoingModel) => {
 
       <Box height="50px" width="100%" />
       <Grid container spacing={4}>
-        {/** side menu 
-        
+        {/** side menu
+
         - Activity Summary
         - FTS Import related
         - Grand Bargain classifications
         - Other classifications of intererest
         - Humanitarian results
         - Location information
-        
+
         */}
         <Hidden smDown>
           <Grid item xs={3}>
@@ -88,7 +57,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
             <Grid item xs={12}>
               {/**
                   Outgoing pledges
-                  
+
                     - Total no. of activities with Outgoing Pledges
                     - With funding provider details specified
                     - With funding organisation type provided
@@ -107,7 +76,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
             <Grid item xs={12}>
               {/**
                   Outgoing commitments
-                  
+
                     - Total no. of activities with Outgoing Pledges
                     - With funding provider details specified
                     - With funding organisation type provided
@@ -126,7 +95,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
             <Grid item xs={12}>
               {/**
                   Outgoing funds
-                  
+
                     - Total no. of activities with Outgoing Pledges
                     - With funding provider details specified
                     - With funding organisation type provided

@@ -11,6 +11,7 @@ import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation/index';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
+import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 /**
  * todo:'s
@@ -29,70 +30,9 @@ const cardMockData = {
 
 export const OverviewLayout = () => {
   return (
-    <Container>
-      {/** --------------------------------------------------------------------------- */}
-      {/** Breadcrumb */}
-      <Grid container>
-        {/** todo: add breadcrumb component */}
-        <Typography variant="body2">Signatory Data / ActionAid UK</Typography>
-      </Grid>
-      {/** --------------------------------------------------------------------------- */}
-      {/** Header */}
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="h3" color="textPrimary">
-                ActionAid UK
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                GB-CHC-274467 2017-2019
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                *earliest and latest activity start dates
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid container>
-                <Grid item>
-                  <InsertLink color="secondary" />
-                </Grid>
-                <Box width="5px" />
-                <Grid item>
-                  <Typography variant="body1" color="secondary">
-                    {/**  todo: add link icon and make link of text */}
-                    Publisher Supplementary Information
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Hidden mdUp>
-          <Box height="50px" width="100%" />
-        </Hidden>
-        <Grid item xs={12} md={6}>
-          {/** todo: add navigation 
-        - Overview 
-        - Activity List
-        - Incoming transactions
-        - Providers
-        - Outgoing transactions
-        - Recipents
-        - Timeliness
-        - Coverage
-        */}
+    <Container maxWidth="lg">
+      <SubmoduleHeader />
 
-          <SignatoryNavigation locations={locations} />
-        </Grid>
-      </Grid>
-      <Box height="50px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Activity Timeline */}
       <Grid container>
@@ -169,7 +109,7 @@ export const OverviewLayout = () => {
           <Box width="100%" height="175px" bgcolor="white">
             <Typography color="textPrimary" variant="h6">
               Status 1
-              {/** 
+              {/**
                 - Latest version of the IATI standard used: number
                 - Activities with data errors: percentage
             */}
@@ -182,7 +122,7 @@ export const OverviewLayout = () => {
           <Box width="100%" height="175px" bgcolor="white">
             <Typography color="textPrimary" variant="h6">
               Status 2
-              {/** 
+              {/**
                 - Latest update: date
                 - Data first published: date
             */}
@@ -194,15 +134,15 @@ export const OverviewLayout = () => {
 
       {/** --------------------------------------------------------------------------- */}
       <Grid container spacing={4}>
-        {/** side menu 
-        
+        {/** side menu
+
         - Activity Summary
         - FTS Import related
         - Grand Bargain classifications
         - Other classifications of intererest
         - Humanitarian results
         - Location information
-        
+
         */}
         <Hidden smDown>
           <Grid item xs={3}>
@@ -223,7 +163,7 @@ export const OverviewLayout = () => {
             <Grid item xs={12}>
               {/**
                   Activity Summary
-                  
+
                     - All actitives
                     - Humanitarian activities
                     - Current humanitarian activities
@@ -242,14 +182,14 @@ export const OverviewLayout = () => {
             <Grid item xs={12}>
               {/**
                   Hum. activities with FTS Import related
-                  
+
                     - Activities with humanitarian OECD DAC sector code 700 or 70000 range
                     - With humanitarian indicator
                     - With UN Humanitarian Response Plan(s)
                     - With GLIDE code(s)
                     - With organisation's own internal crisis codes (ie using vocab '99' )
                     - With clusters
-                 
+
                 */}
 
               <List
@@ -265,12 +205,12 @@ export const OverviewLayout = () => {
             <Grid item xs={12}>
               {/**
                   Hum. activity with Grand Bargain classifications
-                 
+
                     - Earmarked for Grand Bargain (Categories)
                     - Earmarked for Grand Bargain (Modalities)
                     - Where a Partner Country Based NGO is referenced
                     - Cash transfer (Not yet available in IATI Standard)
-                
+
                 */}
 
               <List
@@ -285,12 +225,12 @@ export const OverviewLayout = () => {
             {/** Hum. other classifications of intererest */}
             <Grid item xs={12}>
               {/** Hum. other classifications of intererest
-                  
+
                     - OECD DAC sector codes
                     - OECD DAC aid types
                     - Sustainable Development Goals (SDGs)
                     - OECD DAC gender marker
-               
+
                 */}
 
               <List
@@ -305,12 +245,12 @@ export const OverviewLayout = () => {
             {/** Humanitarian results */}
             <Grid item xs={12}>
               {/**   Humanitarian results
-                  
+
                     - Activities with results
                     - With results documents links
                     - With result indicators with baseline and target values
                     - With result indicator documents links
-                 
+
                 */}
 
               <List
@@ -325,7 +265,7 @@ export const OverviewLayout = () => {
             {/** Hum. activites with location information */}
             <Grid item xs={12}>
               {/**    Hum. activites with location information
-                  
+
                     - Activities with recipient countries
                     - With latitude / longitude coordinates
                     - Describing location according to a recognised geo-location gazetteer
@@ -349,7 +289,7 @@ export const OverviewLayout = () => {
                     - Current hum. activities with duration > 24 months
                     - Current Hum. Activities > 24 months with budget exempt
                     - Current hum. activities > 24 months & budgets for > 'next' 12 months
-              
+
                 */}
 
               <List
@@ -365,13 +305,13 @@ export const OverviewLayout = () => {
             <Grid item xs={12}>
               {/**
                   Financial reporting
-                  
+
                     - Default currency
                     - Reports to UN OCHA Financial Tracking Service (FTS)
                     - Reports to UN OCHA For FTS via IATI
                     - Reports to European Union (EDRIS)
                     - Coverage for [2019]
-                
+
                 */}
 
               <List
