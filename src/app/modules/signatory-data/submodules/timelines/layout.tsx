@@ -5,8 +5,7 @@ import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/si
 
 export const TimelinesLayout = () => {
   return (
-  <>
-
+    <>
       <Grid container spacing={4} direction="column">
         <Grid item md={6}>
           <Typography variant="h4">
@@ -68,6 +67,6 @@ export const TimelinesLayout = () => {
           </Typography>
         </Grid>
       </Grid>
- </>
+    </>
   );
 };

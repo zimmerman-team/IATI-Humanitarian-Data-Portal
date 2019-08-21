@@ -59,8 +59,6 @@ export const SubmoduleHeaderLayout = () => {
           <Box height="50px" width="100%" />
         </Hidden>
         <Grid item xs={12} md={6}>
-
-
           <SignatoryNavigation
             locations={locations.locations}
             activity={locations.activity}

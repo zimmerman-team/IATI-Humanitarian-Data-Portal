@@ -45,7 +45,7 @@ const CurrentLocationLink = styled(props => <NavLink {...props} />)`
 
 const Underline = styled(props => <div {...props} />)`
   background-color: ${props =>
-  props.show ? Colors.primaryBase : 'transparent'};
+    props.show ? Colors.primaryBase : 'transparent'};
   height: 4px;
   margin-top: 8px;
 `;
