@@ -75,6 +75,7 @@ module.exports = {
     'import/first': 0,
     'import/no-unresolved': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/prefer-interface':0,
     '@typescript-eslint/indent': 0,
     'no-unused-vars': 0,
     'no-use-before-define': 0,
