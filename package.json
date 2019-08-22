@@ -189,7 +189,6 @@
     "check-types": "tsc",
     "cy:run": "cypress run",
     "cy:run:record:parallel": "cypress run --record --key 9f5380f4-1876-4758-aded-8e30971fb7b6 --parallel",
-    "cy:run:record:percy:parallel:reporter": "percy exec -- cypress run --record --key 9f5380f4-1876-4758-aded-8e30971fb7b6 --parallel --reporter junit",
     "cy:open": "cypress open",
     "analyse": "madge src/index.tsx",
     "depcheck": "depcheck",

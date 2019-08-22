@@ -24,7 +24,7 @@ const applicationStore: ApplicationStoreModel = {
   activities,
   humanitarian,
   gbsignatories,
-  iatigbsignatories
+  iatigbsignatories,
 };
 
 export const appStore = createStore(applicationStore, {

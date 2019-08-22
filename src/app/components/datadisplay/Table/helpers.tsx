@@ -30,7 +30,7 @@ const nf = new Intl.NumberFormat('en-US', {
 /* method for getting the correct expandable table cell component depending on the table variant */
 export function getExpandableTableCell(
   type: string,
-  value: string | string[],
+  value: string | string[]
 ): React.ReactNode {
   switch (type) {
     case 'LinkCellModule':
@@ -43,7 +43,7 @@ export function getExpandableTableCell(
 /* method for checking if total row exists, or not to add it */
 export function checkAndAddTotalRow(
   totalData: Array<string | number> | undefined,
-  update?: boolean,
+  update?: boolean
 ) {
   const totalCell = document.getElementById('total-cell') as HTMLElement;
   const tbody = document.getElementsByClassName('MuiTable-root');
@@ -82,7 +82,7 @@ function onTableChange(
   localTableState: LocalTableStateModel,
   setLocalTableState: Function,
   setTotalData: Function,
-  totalRowColsDef: TotalRowColModel[] | undefined,
+  totalRowColsDef: TotalRowColModel[] | undefined
 ) {
   if (
     indexOf(['changePage', 'changeRowsPerPage', 'propsUpdate'], action) > -1 &&
@@ -110,7 +110,7 @@ function onTableChange(
 function onColumnViewChange(
   changedColumn: string,
   action: string,
-  configProps: TableModuleModel,
+  configProps: TableModuleModel
 ) {
   const totalCell = document.getElementById('total-cell') as HTMLElement;
   const colIndex = findIndex(configProps.columns, {
@@ -128,7 +128,7 @@ function onColumnViewChange(
 
 function renderExpandableRow(
   rowMeta: { dataIndex: number; rowIndex: number },
-  configProps: TableModuleModel,
+  configProps: TableModuleModel
 ) {
   const dataArr = configProps.expandableData
     ? configProps.expandableData[rowMeta.rowIndex]
@@ -183,7 +183,7 @@ export function addConfig(
   configProps: TableModuleModel,
   localTableState: LocalTableStateModel,
   setLocalTableState: Function,
-  setTotalData: Function,
+  setTotalData: Function
 ) {
   let options = configProps.options;
   if (configProps.totalCell) {
@@ -196,7 +196,7 @@ export function addConfig(
           localTableState,
           setLocalTableState,
           setTotalData,
-          configProps.totalRowColsDef,
+          configProps.totalRowColsDef
         ),
       /* when column view changes we need to also change the column in the custom total row */
       onColumnViewChange: (changedColumn, action) =>

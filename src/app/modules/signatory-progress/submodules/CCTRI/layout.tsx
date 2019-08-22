@@ -20,13 +20,6 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
-      {/*SECTION*/}
-      <Hidden lgUp>
-        {/*TODO: Replace with props */}
-        <DrawerMenu links={drawerMockData.links} />
-        <Box height="56px" width="100%" />
-      </Hidden>
-
       <Grid container lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
         <Box height="20px" width="100%" />
