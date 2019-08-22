@@ -29,9 +29,12 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
 
       <Grid container lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
+        <Box height="20px" width="100%" />
         <BreadCrumbs
           currentLocation="CCTRIs Target"
-          previousLocations={['Signatory Progress']}
+          previousLocations={[
+            { url: '/signatory-progress', label: 'Signatory Progress' },
+          ]}
         />
         <Box height="32px" width="100%" />
         <Typography variant="h3">{parse(props.title)}</Typography>

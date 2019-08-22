@@ -1,17 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
+import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
 import { DebugBox } from 'app/utils/layout';
 import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
 import { dataMock } from 'app/components/charts/BarCharts/VerticalBarChart/mock';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
-import { InsertLink } from '@material-ui/icons';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation/index';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
-import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 /**
  * todo:'s
@@ -81,13 +77,11 @@ export const OverviewLayout = () => {
         {/** % of activities with both humanitarian indicator and also a valid
               humanitarian sector code */}
         <Grid item xs={12} md={6}>
-          <DebugBox>
-            <DonutChartCard
-              value={cardMockData.value}
-              activity="% of activities with both humanitarian indicator and also a valid
+          <DonutChartCard
+            value={cardMockData.value}
+            activity="% of activities with both humanitarian indicator and also a valid
               humanitarian sector code"
-            />
-          </DebugBox>
+          />
         </Grid>
       </Grid>
       <Box height="50px" />

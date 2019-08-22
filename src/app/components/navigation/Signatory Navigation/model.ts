@@ -1,3 +1,9 @@
 export type SignatoryNavigationModel = {
-  locations: string[];
+  locations: LocationModel[];
+  activity: string; //or whole activity
+};
+
+export type LocationModel = {
+  label: string;
+  url: string;
 };

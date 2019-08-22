@@ -5,18 +5,13 @@ import styled from 'styled-components';
 import { ActivityListDetailModel } from './model';
 
 // Components
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { ActivityDetailsHeaderCard } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard';
-import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
+import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
-import { DrawerMenu } from 'app/components/navigation/Drawer';
 import { List } from 'app/components/datadisplay/Lists';
 import Table from 'app/components/datadisplay/Table';
 
 // Mock Data
 import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
-import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
-import { SubmoduleHeader } from 'app/modules/signatory-data/submodules/common/signatory-data-header';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;

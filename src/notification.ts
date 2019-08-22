@@ -1,4 +1,4 @@
-import { API_BASE_URL } from './constants'
+import { API_BASE_URL } from './constants';
 
 function urlBase64ToUint8Array(base64String: string) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)

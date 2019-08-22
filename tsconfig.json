@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowUnreachableCode": true,
@@ -14,6 +14,7 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": false,
     "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "resolveJsonModule": true,
     "strict": false,
     "strictFunctionTypes": true,
@@ -25,6 +26,7 @@
     "types": ["cypress", "@percy/cypress"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "sourceMap": false,
     "plugins": [
       {
         "name": "typescript-tslint-plugin"

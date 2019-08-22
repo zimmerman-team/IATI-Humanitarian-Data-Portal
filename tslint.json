@@ -23,7 +23,7 @@
     "import-name": false,
     "function-name": false,
     "interface-name": false,
-    "interface-over-type-literal": true,
+    "interface-over-type-literal": false,
     "label-position": true,
     "max-line-length": [true, 140],
     "member-access": false,
@@ -59,6 +59,7 @@
     "no-unused-expression": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
+    "jsdoc-format": false,
     "one-line": [
       true,
       "check-open-brace",
