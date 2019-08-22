@@ -12,7 +12,5 @@ export function Faqs() {
     actions.getAllItems();
   }, []);
 
-  console.log(state);
-
   return <FaqsLayout faqItems={state.faqItems} title="FAQ" />;
 }
