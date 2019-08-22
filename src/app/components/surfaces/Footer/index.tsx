@@ -13,6 +13,7 @@ const Box = styled(props => <MuiBox {...props} />)`
     padding: 32px 54px;
     position: absolute;
     left: 0;
+    bottom: 0;
     width: calc(100% - 108px);
   }
 `;
