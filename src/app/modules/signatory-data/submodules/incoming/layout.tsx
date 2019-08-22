@@ -3,15 +3,21 @@ import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
+import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
+import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
+import { IncomingModel } from './model';
 
-export const IncomingLayout = () => {
+export const IncomingLayout = (props: IncomingModel) => {
   return (
     <>
       {/** content */}
 
       <Grid container spacing={4}>
         <Grid item md={12}>
-          <Box width="100%" height="335px" bgcolor="white" />
+          <HorizontalBarChartCard
+            title={props.horizontalBarChartCardData.title}
+            data={props.horizontalBarChartCardData.data}
+          />
         </Grid>
       </Grid>
 
@@ -31,8 +37,9 @@ export const IncomingLayout = () => {
           <Grid item xs={3}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <Box width="100%" height="300px" bgcolor="white" />
+                <InPageNavigation
+                  locations={props.inPageNavigation.locations}
+                />
               </Grid>
             </Grid>
           </Grid>

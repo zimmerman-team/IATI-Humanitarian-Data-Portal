@@ -3,11 +3,13 @@
 import React from 'react';
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
-import { DebugBox } from 'app/utils/layout';
 import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
 import { dataMock } from 'app/components/charts/BarCharts/VerticalBarChart/mock';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
+import { listMockData1, listMockData2 } from './mock';
+import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
+import { mockData as inPageNavMock } from 'app/components/navigation/InPageNavigation/mock';
 
 /**
  * todo:'s
@@ -94,30 +96,12 @@ export const OverviewLayout = () => {
           </Typography>
         </Grid>
 
-        {/** Status 1 */}
         <Grid item xs={12} md={6}>
-          <Box width="100%" height="175px" bgcolor="white">
-            <Typography color="textPrimary" variant="h6">
-              Status 1
-              {/**
-                - Latest version of the IATI standard used: number
-                - Activities with data errors: percentage
-            */}
-            </Typography>
-          </Box>
+          <List items={listMockData1.items} />
         </Grid>
 
-        {/** Status 2 */}
         <Grid item xs={12} md={6}>
-          <Box width="100%" height="175px" bgcolor="white">
-            <Typography color="textPrimary" variant="h6">
-              Status 2
-              {/**
-                - Latest update: date
-                - Data first published: date
-            */}
-            </Typography>
-          </Box>
+          <List items={listMockData2.items} />
         </Grid>
       </Grid>
       <Box height="50px" />
@@ -134,12 +118,11 @@ export const OverviewLayout = () => {
         - Location information
 
         */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <Grid item xs={3}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <Box width="100%" height="300px" bgcolor="white" />
+                <InPageNavigation locations={inPageNavMock.locations} />
               </Grid>
             </Grid>
           </Grid>

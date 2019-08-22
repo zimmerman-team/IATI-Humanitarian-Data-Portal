@@ -769,3 +769,169 @@ export const mockDataVar6: TableModuleModel = {
     { dataType: 'none' },
   ],
 };
+
+export const mockDataVar7: TableModuleModel = {
+  title: '',
+  data: [
+    [
+      '2019',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+    [
+      '2018',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+    [
+      '2017',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+  ],
+  columns: [
+    {
+      name: 'Year',
+      options: {
+        filter: false,
+      },
+    },
+    {
+      name: 'Jan',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Feb',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'March',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'April',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'May',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Juni',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'July',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Jan',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Aug',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Sep',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Okt',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Nov',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Dec',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+  ],
+  options: {
+    print: true,
+    search: false,
+    filter: false,
+    download: true,
+    rowHover: false,
+    pagination: false,
+    viewColumns: true,
+    responsive: 'scroll',
+    filterType: 'checkbox',
+    selectableRows: 'none',
+  },
+  columnsCell: [''],
+};

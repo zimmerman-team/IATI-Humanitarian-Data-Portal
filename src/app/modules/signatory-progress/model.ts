@@ -1,19 +1,11 @@
-// type HumanitarianCheckup = {
-//   primary: boolean | string;
-//   secondary: boolean | string;
-//   tertiary: boolean | string;
-//   quaternary: boolean | string;
-// };
-//
-// type Signatory = {
-//   publishinOrganisation: string;
-//   gbSignatory: string;
-//   organisationType: string;
-//   iatiVersion: number;
-//   humanitarianData: HumanitarianCheckup;
-// };
-// export type SignatoryDataModel = {
-//   title: string;
-//   description: string;
-//   signatories: Signatory[];
-// };
+import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
+import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
+import { TableModuleModel } from 'app/components/datadisplay/Table/model';
+
+export interface SignatoryProgressModel {
+  title: string;
+  description: string;
+  lineChartCardData: LineChartCardModel;
+  horizontalBarChartCardData: HorizontalBarChartCardModel;
+  tableChartData: TableModuleModel;
+}
