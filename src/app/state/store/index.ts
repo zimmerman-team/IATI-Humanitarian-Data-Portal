@@ -1,29 +1,36 @@
 import { createStore } from 'easy-peasy';
-import { ApplicationStoreModel } from 'app/state/models';
-import organisationTypes from 'app/state/interfaces/OrganisationTypesInterface';
-import organisations from 'app/state/interfaces/OrganisationsInterface';
-import sectors from 'app/state/interfaces/SectorsInterface';
-import regions from 'app/state/interfaces/RegionsInterface';
-import countries from 'app/state/interfaces/CountriesInterface';
-import sectorCategories from 'app/state/interfaces/SectorCategoryInterface';
-import { borgCollective } from 'app/state/models/CyborgModel';
-import { queryModel } from 'app/state/models/QueryModel';
+import { persistStore, persistReducer } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import activities from 'app/state/api/actionsReducers/activity';
+import humanitarian from 'app/state/api/actionsReducers/humanitarian';
+import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
+import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
+import ActivityResponceInterface from 'app/state/api/interfaces/activityInterface';
+import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 
-const applicationStore: ApplicationStoreModel = {
-  organisationTypes: organisationTypes,
-  organisations: organisations,
-  sectors: sectors,
-  regions: regions,
-  countries: countries,
-  sectorCategories: sectorCategories,
-  borgCollective: borgCollective,
-  query: queryModel,
+const persistSessionConfig = {
+  key: 'session',
+  storage: storageSession,
 };
 
-const appStore = createStore(applicationStore);
+export interface ApplicationStoreModel {
+  activities: ActivityResponceInterface;
+  humanitarian: ActivityResponceInterface;
+  gbsignatories: GBSignatoryResponseInterface;
+  iatigbsignatories: ActivityResponceInterface;
+}
 
-// export const useStoreActions = appStore.useStoreActions;
-// export const useStoreState = appStore.useStoreState;
-// export const useStoreDispatch = appStore.useStoreDispatch;
+const applicationStore: ApplicationStoreModel = {
+  activities,
+  humanitarian,
+  gbsignatories,
+  iatigbsignatories,
+};
 
-export default appStore;
+export const appStore = createStore(applicationStore, {
+  reducerEnhancer: reducer => {
+    return persistReducer(persistSessionConfig, reducer);
+  },
+});
+
+export const persistor = persistStore(appStore);

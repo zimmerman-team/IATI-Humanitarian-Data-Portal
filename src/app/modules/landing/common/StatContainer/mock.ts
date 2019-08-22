@@ -4,17 +4,17 @@ export const mockData: StateContainerModel = {
     {
       description: 'Grand Bargain Signatories',
       value: 89,
-      signatoryType: 'gb',
+      signatorytype: 'gb',
     },
     {
       description: 'GB signatories publishing to IATI',
-      value: 250,
-      signatoryType: 'iati',
+      value: 300,
+      signatorytype: 'iati',
     },
     {
       description: 'Signatories & affiliates publishing humanitarian data ',
       value: 2,
-      signatoryType: 'humanitarian',
+      signatorytype: 'humanitarian',
     },
   ],
 };

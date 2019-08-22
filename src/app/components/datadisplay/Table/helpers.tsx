@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* core */
 import React from 'react';
 
@@ -29,7 +30,7 @@ const nf = new Intl.NumberFormat('en-US', {
 /* method for getting the correct expandable table cell component depending on the table variant */
 export function getExpandableTableCell(
   type: string,
-  value: string | Array<string>
+  value: string | string[]
 ): React.ReactNode {
   switch (type) {
     case 'LinkCellModule':
@@ -153,17 +154,16 @@ export function calculateTotalRow(tableState, totalRowColsDef) {
   const totalRowData = totalRowColsDef.map((cd, index) => {
     switch (cd.dataType) {
       case 'money':
-        // eslint-disable-next-line no-case-declarations
         const validData = filter(data, item => {
           return typeof item.data[index] === 'number';
         });
         return formatMoney(sumBy(validData, `data[${index}]`));
       case 'percentage':
-        // eslint-disable-next-line no-case-declarations
         const count = filter(data, item => {
           return item.data[index] === cd.percValue;
         }).length;
-        return `${count} (${(count / data.length) * 100}%)`;
+        const percVal = (count / data.length) * 100;
+        return `${count} (${percVal.toFixed(2)}%)`;
       case 'count':
         return data.length;
       default:

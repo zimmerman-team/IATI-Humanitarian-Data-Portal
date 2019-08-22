@@ -70,7 +70,7 @@ typings/
 .pnp.js
 
 # testing
-/coverage
+#/coverage
 
 # production
 /build
@@ -91,3 +91,5 @@ yarn-error.log*
 
 # storybook build ouptput
 .out
+
+yarn.lock

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import styled from 'styled-components';
 import MuiBox from '@material-ui/core/Box';
@@ -10,12 +11,15 @@ const Box = styled(props => <MuiBox {...props} />)`
   && {
     background-color: ${Colors.branddark};
     padding: 32px 54px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 108px);
   }
 `;
 
 const Link = styled(props => <MuiLink {...props} />)`
   && {
-    //Type specific
     font-family: Inter;
     font-size: 1rem;
     font-weight: 500;
@@ -28,7 +32,7 @@ const Link = styled(props => <MuiLink {...props} />)`
   }
 `;
 
-export function Footer() {
+export const Footer = () => {
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Link>
@@ -42,4 +46,4 @@ export function Footer() {
       <Link>Grand Bargins Data Privacy and Cookie Policy</Link>
     </Box>
   );
-}
+};

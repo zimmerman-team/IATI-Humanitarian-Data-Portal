@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
-import Link from '@material-ui/core/Link';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Colors from 'app/theme/color';
 import { SignatoryNavigationModel } from './model';
-import { Container, Box, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import useLocation from 'react-use/lib/useLocation';
 
-const LocationLink = styled(props => <Link {...props} />)`
+//TODO: Component too convoluted, should be refactored to work the same as the App Bar
+const LocationLink = styled(props => <NavLink {...props} />)`
   && {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.71;
+    letter-spacing: 1.25px;
     color: rgba(1, 1, 10, 0.6);
     padding-right: 32px;
     margin-bottom: 20px;
@@ -18,8 +25,13 @@ const LocationLink = styled(props => <Link {...props} />)`
   }
 `;
 
-const CurrentLocationLink = styled(props => <Link {...props} />)`
+const CurrentLocationLink = styled(props => <NavLink {...props} />)`
   && {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.71;
+    letter-spacing: 1.25px;
     color: ${Colors.black};
     padding-right: 32px;
     margin-bottom: 20px;
@@ -38,37 +50,27 @@ const Underline = styled(props => <div {...props} />)`
   margin-top: 8px;
 `;
 
-//TODO: Implement current location retrieving
-const CURRENT_LOCATION = 'Overview';
-
 export function SignatoryNavigation(props: SignatoryNavigationModel) {
-  const [currentLocation, setCurrentLocation] = useState(CURRENT_LOCATION);
-
-  function handleClick(
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    location: string
-  ) {
-    event.preventDefault();
-    setCurrentLocation(location);
-  }
+  const state = useLocation();
 
   return (
     <Grid container justify="flex-end" wrap="wrap">
       {props.locations.map(location => {
-        if (currentLocation === location) {
+        //TODO: this ofcourse should not be supressed
+        // @ts-ignore
+        if (state.pathname.includes(location.url)) {
           return (
             <CurrentLocationLink variant="button">
-              {location}
-              <Underline show={"true"} />
+              {location.label}
+              <Underline show={'true'} />
             </CurrentLocationLink>
           );
         }
         return (
           <LocationLink
-            variant="button"
-            onClick={e => handleClick(e, location)}
+            to={`/signatory-data/${props.activity}/${location.url}`}
           >
-            {location}
+            {location.label}
             <Underline />
           </LocationLink>
         );

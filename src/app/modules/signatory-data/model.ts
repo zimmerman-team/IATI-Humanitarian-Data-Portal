@@ -12,9 +12,9 @@ type Signatory = {
   iatiVersion: number;
   humanitarianData: HumanitarianCheckup;
 };
+
 export type SignatoryDataModel = {
   title: string;
+  signatories: any[];
   description: string;
-  signatories: Signatory[];
 };
-

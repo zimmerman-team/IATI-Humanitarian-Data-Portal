@@ -9,9 +9,10 @@ import {
   mockDataVar4,
   mockDataVar5,
   mockDataVar6,
+  mockDataVar7,
 } from './mock';
-import Providers from '../../../Providers';
-import color from '../../../theme/color';
+import Providers from 'app/Providers';
+import color from 'app/theme/color';
 
 const Container = styled.div`
   padding: 10px;
@@ -62,6 +63,14 @@ storiesOf('Data Display|Table', module).add('Variant 6', () => (
   <Providers>
     <Container>
       <Component {...mockDataVar6} />
+    </Container>
+  </Providers>
+));
+
+storiesOf('Data Display|Table', module).add('Variant 7', () => (
+  <Providers>
+    <Container>
+      <Component {...mockDataVar7} />
     </Container>
   </Providers>
 ));
