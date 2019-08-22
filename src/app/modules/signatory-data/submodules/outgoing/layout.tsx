@@ -3,8 +3,8 @@ import { Grid, Box, Hidden } from '@material-ui/core';
 import { List } from 'app/components/datadisplay/Lists';
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { OutgoingModel } from './model';
-import { InPageNavigation } from '../../../../components/navigation/InPageNavigation';
-import { HorizontalBarChartCard } from '../../../../components/surfaces/Cards/HorizontalBarChartCard';
+import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
+import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (
