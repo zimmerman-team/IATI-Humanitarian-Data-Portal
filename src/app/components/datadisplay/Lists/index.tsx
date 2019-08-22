@@ -50,7 +50,7 @@ export const List = (props: ListModel) => {
   function valueHeaders() {
     const tableHeadersSet = new Set();
     props.items.map(item =>
-      Object.keys(item.values[0]).map(header => tableHeadersSet.add(header)),
+      Object.keys(item.values[0]).map(header => tableHeadersSet.add(header))
     );
     // From Set to Array
     const tableHeadersArray = Array.from(tableHeadersSet);
