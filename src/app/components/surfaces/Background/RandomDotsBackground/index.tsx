@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { DotsSM } from 'app/components/svgs/BackgroundDots/DotsSM';
 import { DotsMD } from 'app/components/svgs/BackgroundDots/DotsMD';
 import { DotsLG } from 'app/components/svgs/BackgroundDots/DotsLG';
@@ -11,18 +10,22 @@ type RandomDotsBackgroundprops = {
   hasXL: boolean;
 };
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+function randomizeArray(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
+//function returns a array of react components.
 function renderRandomDots(hasXL: boolean) {
   const backgrounds = [<DotsSM />, <DotsMD />, <DotsLG />];
+  const randomizedBackgrounds = randomizeArray(backgrounds);
 
   if (hasXL) {
-    backgrounds.splice(getRandomInt(backgrounds.length), 1);
-    backgrounds.splice(getRandomInt(backgrounds.length), 1);
+    React.cloneElement(randomizedBackgrounds[0], {
+      position: 'top-left',
+    });
+    React.cloneElement(randomizedBackgrounds[1], { position: 'bottom-right' });
   } else {
-    backgrounds.splice(getRandomInt(backgrounds.length), 1);
+    React.cloneElement(randomizedBackgrounds[0], { position: 'top-left' });
   }
 
   return backgrounds;
@@ -32,7 +35,7 @@ export function Background(props: RandomDotsBackgroundprops) {
   return (
     <>
       {renderRandomDots(props.hasXL)}
-      {props.hasXL && <DotsXL />}
+      {props.hasXL && <DotsXL position="bottom-right" />}
     </>
   );
 }
