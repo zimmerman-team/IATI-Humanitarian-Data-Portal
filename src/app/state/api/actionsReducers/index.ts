@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { action, thunk } from 'easy-peasy';
 import { API } from 'space-api';
 
-import { ApiModel } from '../interfaces';
+import { ApiModel, Errors, RequestValues, ResponseData } from '../interfaces';
 
 export const api = new API(
   process.env.REACT_APP_CMS_PROJECT_ID,
@@ -21,11 +21,11 @@ export const apiModel = <QueryModel, ResponseModel>(
   success: false,
   data: null,
   errorData: null,
-  onError: action((state, payload) => {
+  onError: action((state, payload: Errors) => {
     state.loading = false;
     state.errorData = payload;
   }),
-  onSuccess: action((state, payload) => {
+  onSuccess: action((state, payload: ResponseData<ResponseModel>) => {
     state.loading = false;
     state.success = true;
     state.data = payload;
@@ -34,14 +34,8 @@ export const apiModel = <QueryModel, ResponseModel>(
     state.loading = true;
     state.success = false;
   }),
-  fetch: thunk(async (actions, query) => {
+  fetch: thunk(async (actions, query: RequestValues<QueryModel>) => {
     actions.onRequest();
-
-    // okay so to keep the proper type script checks
-    // for our query variables and still make this solr
-    // work with strings passed in as params
-    // we will convert the objects passed in as values
-    // to a string and pass it into q accordingly
     axios
       .get(url, {
         params: query.values,

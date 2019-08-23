@@ -1,6 +1,6 @@
 import { Action, Thunk } from 'easy-peasy';
 
-interface RequestValues<T> {
+export interface RequestValues<T> {
   values?: T;
 }
 
