@@ -8,11 +8,23 @@ import { Box, Container, Hidden } from '@material-ui/core';
 import { DrawerMenu } from './components/navigation/Drawer';
 import { mockData as drawerMockData } from './components/navigation/Drawer/mock';
 
+/* store */
+import { useStoreState } from 'easy-peasy';
+import { useStoreActions } from './state/store/hooks';
+
 type AppProps = {
   openSnackbar?: boolean;
 };
 
 function App(props: AppProps) {
+  const gbsignatoriesData = useStoreState(
+    reduxstate => reduxstate.gbsignatories
+  );
+  if (!gbsignatoriesData.success && !gbsignatoriesData.loading) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useStoreActions(actions => actions.gbsignatories.fetch)({});
+  }
+
   return (
     <Providers>
       <Router>
