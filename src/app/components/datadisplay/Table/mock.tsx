@@ -1,5 +1,6 @@
 /* core */
 import React from 'react';
+import get from 'lodash/get';
 
 /* project-comps */
 import {
@@ -110,7 +111,12 @@ export const mockDataVar2: TableModuleModel = {
         filter: true,
         filterType: 'dropdown',
         customBodyRender: (value, tableMeta, updateValue) => {
-          return <LinkCellModule link="#" value={value} />;
+          return (
+            <LinkCellModule
+              link={`/signatory-data/${value.code}/overview`}
+              value={value.name}
+            />
+          );
         },
       },
     },
@@ -191,6 +197,24 @@ export const mockDataVar2: TableModuleModel = {
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
+    customSort: (data, colIndex, order) => {
+      let indexStr = colIndex.toString();
+      if (colIndex === 0) {
+        indexStr = `[${colIndex}].name`;
+      }
+      const sortedData = data.sort((a, b) => {
+        const v1 = get(a.data, indexStr, '');
+        const v2 = get(b.data, indexStr, '');
+        if (v1 < v2) {
+          return -1;
+        }
+        if (v1 > v2) {
+          return 1;
+        }
+        return 0;
+      });
+      return order === 'asc' ? sortedData : sortedData.reverse();
+    },
   },
   columnsCell: [
     'LinkCellModule',
