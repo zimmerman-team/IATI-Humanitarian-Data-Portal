@@ -21,7 +21,8 @@ const Drawer = styled(props => <MuiDrawer {...props} />)`
 const MenuButton = styled(props => <MenuIcon {...props} />)`
   && {
     font-size: 40px;
-
+    margin-right: 55px;
+    //margin-bottom: 55px;
     :hover {
       cursor: pointer;
     }
@@ -111,6 +112,7 @@ export function DrawerMenu(props: DrawerMenuModel) {
       justifyContent="flex-end"
       alignItems="center"
       height="72px"
+      paddingBottom="56px"
     >
       <MenuButton onClick={toggleDrawer(true)} />
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer(false)}>

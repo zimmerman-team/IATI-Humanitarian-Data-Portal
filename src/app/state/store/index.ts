@@ -13,7 +13,6 @@ import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivi
 import {
   ActivityResponceInterface,
   ActivityResponceStringQueryInterface,
-  ActivityResponceStringArrayQueryInterface,
 } from 'app/state/api/interfaces/activityInterface';
 
 const persistSessionConfig = {

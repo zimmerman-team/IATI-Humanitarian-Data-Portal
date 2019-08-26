@@ -1,8 +1,8 @@
 export type ExpansionPanelDetailModel = {
-  question: string;
-  answer: string;
+  title: string;
+  expl: string;
 };
 
 export type ExpansionPanelModel = {
-  questions: ExpansionPanelDetailModel[];
+  faqItems: ExpansionPanelDetailModel[];
 };

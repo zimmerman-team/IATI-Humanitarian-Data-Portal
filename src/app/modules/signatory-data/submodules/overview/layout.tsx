@@ -5,12 +5,9 @@ import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
 import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
 import { List } from 'app/components/datadisplay/Lists';
-import {
-  listMockData,
-  statusList1MockData,
-  statusList2MockData,
-} from 'app/components/datadisplay/Lists/mock';
 import { OverviewLayoutModel } from 'app/modules/signatory-data/submodules/overview/model';
+import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
+import { mockData as inPageNavMock } from 'app/components/navigation/InPageNavigation/mock';
 
 /**
  * todo:'s
@@ -64,18 +61,12 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
           </Typography>
         </Grid>
 
-        {/** Status 1 */}
         <Grid item xs={12} md={6}>
-          <Box width="100%" bgcolor="white">
             <List items={props.statusData.slice(0, 2)} />
-          </Box>
         </Grid>
 
-        {/** Status 2 */}
         <Grid item xs={12} md={6}>
-          <Box width="100%" bgcolor="white">
             <List items={props.statusData.slice(2, 4)} />
-          </Box>
         </Grid>
       </Grid>
       <Box height="50px" />
@@ -92,12 +83,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         - Location information
 
         */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <Grid item xs={3}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <Box width="100%" height="300px" bgcolor="white" />
+                <InPageNavigation locations={inPageNavMock.locations} />
               </Grid>
             </Grid>
           </Grid>

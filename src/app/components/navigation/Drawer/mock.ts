@@ -8,19 +8,19 @@ export const mockData: DrawerMenuModel = {
     },
     {
       label: 'About',
-      url: '/1',
+      url: '/about',
     },
     {
       label: 'Signatory Progress',
-      url: '/2',
+      url: '/signatory-progress',
     },
     {
       label: 'Signatory Data',
-      url: '/3',
+      url: '/signatory-data',
     },
     {
       label: 'FAQs',
-      url: '/4',
+      url: '/faq',
     },
   ],
 };
