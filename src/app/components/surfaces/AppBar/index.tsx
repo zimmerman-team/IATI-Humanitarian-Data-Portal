@@ -31,13 +31,6 @@ const BaseComponent = styled(props => <BaseAppBar {...props} />)`
 
 const AppBar = (props: AppBarProps) => {
   const state = useLocation();
-  const gbsignatoriesData = useStoreState(
-    reduxstate => reduxstate.gbsignatories
-  );
-  if (!gbsignatoriesData.success && !gbsignatoriesData.loading) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useStoreActions(actions => actions.gbsignatories.fetch)({});
-  }
 
   return (
     <BaseComponent
