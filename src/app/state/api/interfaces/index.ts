@@ -17,12 +17,12 @@ export interface Errors {
 export interface ApiModel<QueryModel, ResponseModel> {
   loading: boolean;
   success: boolean;
-  data: ResponseData<ResponseModel> | null;
+  data: ResponseData<ResponseModel> | null | ResponseData<ResponseModel>[];
   errorData: Errors | null;
   onError: Action<ApiModel<QueryModel, ResponseModel>, Errors>;
   onSuccess: Action<
     ApiModel<QueryModel, ResponseModel>,
-    ResponseData<ResponseModel>
+    ResponseData<ResponseModel> | ResponseData<ResponseModel>[]
   >;
   onRequest: Action<ApiModel<QueryModel, ResponseModel>>;
   fetch: Thunk<ApiModel<QueryModel, ResponseModel>, RequestValues<QueryModel>>;
