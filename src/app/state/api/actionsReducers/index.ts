@@ -42,7 +42,7 @@ export const apiModel = <QueryModel, ResponseModel>(
       })
       .then(
         (resp: AxiosResponse) => {
-          actions.onSuccess(resp.data);
+          actions.onSuccess({ data: resp.data });
         },
         (error: any) => {
           actions.onError(error.response);

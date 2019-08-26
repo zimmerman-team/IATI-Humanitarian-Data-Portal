@@ -34,10 +34,11 @@ export function SignatoryData() {
     };
     iatigbsignatoriesCall(callValues);
   }, [gbsignatoriesData]);
+
   const signatories = formatTableSignatories(
     get(
       iatigbsignatoriesData.data,
-      'facet_counts.facet_pivot["reporting_org_ref,reporting_org_type,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref"]',
+      'data.facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref"]',
       []
     ),
     gbsignatoriesData.data
