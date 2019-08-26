@@ -29,7 +29,7 @@ export const formatTableSignatories = (signatories, gbsignatoriesFromCMS) => {
       gbsig => gbsig.IATIOrgRef === sig.value
     );
     formatSigs.push([
-      get(fSig, 'pubName', ''),
+      { name: get(fSig, 'pubName', ''), code: sig.value },
       get(fSig, 'name', ''),
       get(fSig, 'orgType', ''),
       versions[0].value,

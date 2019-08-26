@@ -1,4 +1,5 @@
 import { SignatoryDataModel } from './model';
+
 export const signatoryDataMock: SignatoryDataModel = {
   title: 'Grand Bargin signatories',
   description:
@@ -37,6 +38,6 @@ export const iatigbsignatoriesCallValues = {
     facet: 'on',
     fl: 'facet_count',
     'facet.pivot':
-      'reporting_org_ref,reporting_org_type,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref',
+      'reporting_org_ref,reporting_org_type_code,iati_version,humanitarian,transaction_type,transaction_provider_org_ref',
   },
 };
