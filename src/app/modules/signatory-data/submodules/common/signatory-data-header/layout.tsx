@@ -57,8 +57,8 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
         </Hidden>
         <Grid item xs={12} md={6}>
           <SignatoryNavigation
+            activity={props.code}
             locations={locations.locations}
-            activity={locations.activity}
           />
         </Grid>
       </Grid>

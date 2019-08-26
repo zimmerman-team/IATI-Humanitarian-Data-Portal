@@ -903,13 +903,6 @@ export const mockDataVar7: TableModuleModel = {
       },
     },
     {
-      name: 'Jan',
-      options: {
-        filter: true,
-        filterType: 'checkbox',
-      },
-    },
-    {
       name: 'Aug',
       options: {
         filter: true,
