@@ -5,14 +5,14 @@ import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import color from 'app/theme/color';
+import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
 
-export const SubmoduleHeaderLayout = () => {
+export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
   return (
     <>
       <Grid container>
         <BreadCrumbs
-          currentLocation="ActionAid UK"
+          currentLocation={props.organisationName}
           previousLocations={[
             { url: '/signatory-data', label: 'Signatory Data' },
           ]}
@@ -25,11 +25,11 @@ export const SubmoduleHeaderLayout = () => {
         <Grid item xs={12} md={6}>
           <Grid container direction="column">
             <Typography variant="h3" color="textPrimary">
-              ActionAid UK
+              {props.organisationName}
             </Typography>
             {/** todo: style */}
             <Typography variant="overline" color="textPrimary">
-              GB-CHC-274467 2017-2019
+              {props.code} | {props.yearRange}
             </Typography>
             {/** todo: style */}
             <Typography
