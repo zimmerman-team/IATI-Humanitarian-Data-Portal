@@ -3,21 +3,21 @@ export type ListModel = {
   subtitle?: string;
   valueHeaders?: boolean;
   items: ListItemModel[];
-}
+};
 
 export type ListItemModel = {
   label: string;
   values: ListItemValueModel[];
   tooltip?: string;
-}
+};
 
 export type ListItemValueModel = {
-  qtc?: number;
+  qtc?: number | string;
   ptc?: number;
-  date?: Date;
+  date?: string;
   version?: string;
   highlight?: string;
-}
+};
 
 //TODO: ListItemValueModel should be implemented different
 //-value: oneOf qtc, ptc, date, version
