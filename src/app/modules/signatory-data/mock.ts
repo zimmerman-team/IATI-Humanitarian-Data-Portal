@@ -37,6 +37,6 @@ export const iatigbsignatoriesCallValues = {
     facet: 'on',
     fl: 'facet_count',
     'facet.pivot':
-      'reporting_org_ref,reporting_org_type,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref',
+      'reporting_org_ref,reporting_org_type_code,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref',
   },
 };

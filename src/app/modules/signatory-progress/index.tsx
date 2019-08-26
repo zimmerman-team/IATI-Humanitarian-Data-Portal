@@ -10,6 +10,11 @@ import { useStoreState } from 'app/state/store/hooks';
 /* consts */
 import { humPubQuery, pubQuery } from './const';
 
+/* utils */
+import map from 'lodash/map';
+import get from 'lodash/get';
+import { formatLineChart } from './util';
+
 export function SignatoryProgress() {
   useTitle(`MLT - ${SignatoryProgressMock.title}`);
   const [state, actions] = signProgStore();
@@ -18,20 +23,28 @@ export function SignatoryProgress() {
     globalState => globalState.gbsignatories
   );
 
-  let gbOrgRefs = iatigbsignatoriesData.data
-    ? iatigbsignatoriesData.data.map(item => item.IATIOrgRef)
-    : [];
+  const gbOrgRefs = map(
+    iatigbsignatoriesData.data,
+    item => item.IATIOrgRef
+  ).join(' ');
 
-  console.log('state.humPublishers.data', state.humPublishers.data);
-  console.log('state.publishers.data', state.publishers.data);
-  console.log('iatigbsignatoriesData', iatigbsignatoriesData);
+  const humPubFacets = get(state.humPublishers, 'data.data.facets', null);
+
+  const pubFacets = get(state.publishers, 'data.data.facets', null);
 
   useEffect(() => {
+    pubQuery.q = `reporting_org_ref:(${gbOrgRefs})`;
+    humPubQuery.q = `reporting_org_ref:(${gbOrgRefs}) AND `.concat(
+      humPubQuery.q
+    );
+
     // here we call the data for humanitarian publishers
     actions.humPublishers.fetch({ values: humPubQuery });
     // and here we call the data for all publishers
     actions.publishers.fetch({ values: pubQuery });
   }, []);
+
+  formatLineChart(humPubFacets, pubFacets);
 
   return (
     <SignatoryProgressLayout
