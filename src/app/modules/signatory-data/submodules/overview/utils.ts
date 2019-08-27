@@ -168,10 +168,19 @@ export const getActivitySummaryData = (rawData): ListModel => {
         values: [
           {
             qtc: `${Math.round(
-              (get(rawData.currentHumActData, 'facets.currentHumValuesData.count', 0) * 100) /
+              (get(
+                rawData.currentHumActData,
+                'facets.currentHumValuesData.count',
+                0
+              ) *
+                100) /
                 allActivitiesCount
             )}%`,
-            ptc: get(rawData.currentHumActData, 'facets.currentHumValuesData.count', 0),
+            ptc: get(
+              rawData.currentHumActData,
+              'facets.currentHumValuesData.count',
+              0
+            ),
           },
         ],
       },
@@ -382,7 +391,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'Activities with results',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: 'TBD',
+            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
             ptc: itemCounts[0],
           },
         ],
@@ -392,7 +402,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With results documents links',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: 'TBD',
+            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
             ptc: itemCounts[1],
           },
         ],
@@ -402,7 +413,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicators with baseline and target values',
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: 'TBD',
+            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
             ptc: itemCounts[2],
           },
         ],
@@ -412,7 +424,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicator documents links',
         values: [
           {
-            qtc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            qtc: 'TBD',
+            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
             ptc: itemCounts[3],
           },
         ],
