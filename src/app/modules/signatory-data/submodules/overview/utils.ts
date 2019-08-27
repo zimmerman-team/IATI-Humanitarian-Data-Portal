@@ -147,8 +147,8 @@ export const getActivitySummaryData = (rawData): ListModel => {
         tooltip: 'All activities',
         values: [
           {
-            qtc: undefined,
-            ptc: allActivitiesCount,
+            ptc: undefined,
+            qtc: allActivitiesCount,
           },
         ],
       },
@@ -156,10 +156,10 @@ export const getActivitySummaryData = (rawData): ListModel => {
         label: 'Humanitarian activities',
         values: [
           {
-            qtc: `${Math.round(
+            ptc: `${Math.round(
               (humanitarianCount * 100) / allActivitiesCount
             )}%`,
-            ptc: humanitarianCount,
+            qtc: humanitarianCount,
           },
         ],
       },
@@ -167,7 +167,7 @@ export const getActivitySummaryData = (rawData): ListModel => {
         label: 'Current humanitarian activities',
         values: [
           {
-            qtc: `${Math.round(
+            ptc: `${Math.round(
               (get(
                 rawData.currentHumActData,
                 'facets.currentHumValuesData.count',
@@ -176,7 +176,7 @@ export const getActivitySummaryData = (rawData): ListModel => {
                 100) /
                 allActivitiesCount
             )}%`,
-            ptc: get(
+            qtc: get(
               rawData.currentHumActData,
               'facets.currentHumValuesData.count',
               0
@@ -209,8 +209,8 @@ export const getHumActFTSData = (rawData): ListModel => {
           'Activities with humanitarian OECD DAC sector code 700 or 70000 range',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -219,8 +219,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With humanitarian indicator',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -229,8 +229,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With UN Humanitarian Response Plan(s)',
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: itemCounts[2],
           },
         ],
       },
@@ -239,8 +239,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With GLIDE code(s)',
         values: [
           {
-            qtc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
-            ptc: itemCounts[3],
+            ptc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            qtc: itemCounts[3],
           },
         ],
       },
@@ -251,8 +251,8 @@ export const getHumActFTSData = (rawData): ListModel => {
           "With organisation's own internal crisis codes(ie using vocab '99')",
         values: [
           {
-            qtc: `${Math.round((itemCounts[4] * 100) / allActCount)}%`,
-            ptc: itemCounts[4],
+            ptc: `${Math.round((itemCounts[4] * 100) / allActCount)}%`,
+            qtc: itemCounts[4],
           },
         ],
       },
@@ -261,8 +261,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With clusters',
         values: [
           {
-            qtc: `${Math.round((itemCounts[5] * 100) / allActCount)}%`,
-            ptc: itemCounts[5],
+            ptc: `${Math.round((itemCounts[5] * 100) / allActCount)}%`,
+            qtc: itemCounts[5],
           },
         ],
       },
@@ -287,8 +287,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Earmarked for Grand Bargain (Categories)',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -297,8 +297,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Earmarked for Grand Bargain (Modalities)',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -307,15 +307,15 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Where a Partner Country Based NGO is referenced',
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: itemCounts[2],
           },
         ],
       },
       {
         label: 'Cash transfer (Not yet available in IATI Standard)',
         tooltip: 'Cash transfer (Not yet available in IATI Standard)',
-        values: [{ qtc: 'TBD', ptc: 'TBD' }],
+        values: [{ ptc: 'TBD', qtc: 'TBD' }],
       },
     ],
   };
@@ -337,8 +337,8 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
         tooltip: 'OECD DAC sector codes',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -347,8 +347,8 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
         tooltip: 'OECD DAC aid types',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -357,8 +357,8 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
         tooltip: 'Sustainable Development Goals (SDGs)',
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: itemCounts[2],
           },
         ],
       },
@@ -367,8 +367,8 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
         tooltip: 'OECD DAC gender marker',
         values: [
           {
-            qtc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
-            ptc: itemCounts[3],
+            ptc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            qtc: itemCounts[3],
           },
         ],
       },
@@ -391,9 +391,10 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'Activities with results',
         values: [
           {
+            ptc: 'TBD',
             qtc: 'TBD',
-            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            // ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            // qtc: itemCounts[0],
           },
         ],
       },
@@ -402,9 +403,10 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With results documents links',
         values: [
           {
+            ptc: 'TBD',
             qtc: 'TBD',
-            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            // ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            // qtc: itemCounts[1],
           },
         ],
       },
@@ -413,9 +415,10 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicators with baseline and target values',
         values: [
           {
+            ptc: 'TBD',
             qtc: 'TBD',
-            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            // ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            // qtc: itemCounts[2],
           },
         ],
       },
@@ -424,9 +427,10 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicator documents links',
         values: [
           {
+            ptc: 'TBD',
             qtc: 'TBD',
-            // qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[3],
+            // ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            // qtc: itemCounts[3],
           },
         ],
       },
@@ -450,8 +454,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'Activities with recipient countries',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -460,8 +464,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'With latitude / longitude coordinates',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -472,8 +476,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
           'Describing location according to a recognised geo-location gazetteer',
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: itemCounts[2],
           },
         ],
       },
@@ -482,8 +486,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'Using any other type of sub-national location data',
         values: [
           {
-            qtc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
-            ptc: itemCounts[3],
+            ptc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            qtc: itemCounts[3],
           },
         ],
       },
@@ -506,8 +510,8 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
         tooltip: 'Current hum. activities with duration > 24 months',
         values: [
           {
-            qtc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
-            ptc: itemCounts[0],
+            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -516,8 +520,8 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
         tooltip: 'Current Hum. Activities > 24 months with budget exempt',
         values: [
           {
-            qtc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
-            ptc: itemCounts[1],
+            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -528,8 +532,8 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
           "Current hum. activities > 24 months & budgets for > 'next' 12 months",
         values: [
           {
-            qtc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
-            ptc: itemCounts[2],
+            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            qtc: itemCounts[2],
           },
         ],
       },
