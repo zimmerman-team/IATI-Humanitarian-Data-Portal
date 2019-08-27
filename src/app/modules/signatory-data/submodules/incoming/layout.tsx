@@ -2,7 +2,6 @@
 import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
 import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import { IncomingModel } from './model';
@@ -58,12 +57,7 @@ export const IncomingLayout = (props: IncomingModel) => {
                     - With funding organisation type provided
                 */}
 
-              <List
-                title="Incoming pledges"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[0]} />
             </Grid>
 
             {/** 2 */}
@@ -77,12 +71,7 @@ export const IncomingLayout = (props: IncomingModel) => {
                     - With funding organisation type provided
                 */}
 
-              <List
-                title="Incoming commitments"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[1]} />
             </Grid>
 
             {/** 3 */}
@@ -97,12 +86,7 @@ export const IncomingLayout = (props: IncomingModel) => {
                     - With source traceability information
                 */}
 
-              <List
-                title="Incoming funds"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[2]} />
             </Grid>
           </Grid>
         </Grid>
