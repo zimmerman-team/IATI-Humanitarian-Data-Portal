@@ -15,7 +15,7 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 // Signatory Data Sub Pages
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 
-function Routes() {
+export function Routes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
@@ -44,5 +44,3 @@ function Routes() {
     </Suspense>
   );
 }
-
-export default Routes;
