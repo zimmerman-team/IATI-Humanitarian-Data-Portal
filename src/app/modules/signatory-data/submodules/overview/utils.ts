@@ -168,10 +168,10 @@ export const getActivitySummaryData = (rawData): ListModel => {
         values: [
           {
             qtc: `${Math.round(
-              (get(rawData.currentHumActData, 'response.numFound', 0) * 100) /
+              (get(rawData.currentHumActData, 'facets.currentHumValuesData.count', 0) * 100) /
                 allActivitiesCount
             )}%`,
-            ptc: get(rawData.currentHumActData, 'response.numFound', 0),
+            ptc: get(rawData.currentHumActData, 'facets.currentHumValuesData.count', 0),
           },
         ],
       },
