@@ -13,7 +13,7 @@ export type ListItemModel = {
 
 export type ListItemValueModel = {
   qtc?: number | string;
-  ptc?: number;
+  ptc?: number | string;
   date?: string;
   version?: string;
   highlight?: string;
