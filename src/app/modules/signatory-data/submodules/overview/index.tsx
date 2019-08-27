@@ -9,24 +9,23 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import {
-  getYearBarChartData,
-  getHumanitarianElementsData,
-  getStatusData,
-  getActivitySummaryData,
-  getHumActFTSData,
-  getHumActwGBClassificationsData,
-  getHumOtherClassOfInterestData,
-  getHumResultsData,
-  getHumActWLocationInfoData,
-  getHumActWMultiYearFundingData,
-  getFinancialReportingData,
-} from 'app/modules/signatory-data/submodules/overview/utils';
+
 import { getAllYears } from 'app/modules/signatory-data/submodules/utils';
 import {
   humCallValues,
   activityStatusValues,
 } from 'app/modules/signatory-data/submodules/overview/const';
+import { getYearBarChartData } from 'app/modules/signatory-data/submodules/overview/utils/getYearBarChartData';
+import { getHumanitarianElementsData } from 'app/modules/signatory-data/submodules/overview/utils/getHumanitarianElementsData';
+import { getStatusData } from 'app/modules/signatory-data/submodules/overview/utils/getStatusData';
+import { getHumActFTSData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActFTSData';
+import { getHumActwGBClassificationsData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActwGBClassificationsData';
+import { getHumOtherClassOfInterestData } from 'app/modules/signatory-data/submodules/overview/utils/getHumOtherClassOfInterestData';
+import { getHumResultsData } from 'app/modules/signatory-data/submodules/overview/utils/getHumResultsData';
+import { getHumActWLocationInfoData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWLocationInfoData';
+import { getHumActWMultiYearFundingData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWMultiYearFundingData';
+import { getFinancialReportingData } from 'app/modules/signatory-data/submodules/overview/utils/getFinancialReportingData';
+import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
 
 export function OverviewPage(props) {
   /* redux store variables */
