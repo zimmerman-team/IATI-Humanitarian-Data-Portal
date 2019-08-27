@@ -47,7 +47,7 @@ export const List = (props: ListModel) => {
 
   // https://dev.to/claireparkerjones/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
   // TODO: Refactor code, this logic does not matches the headers with the actual value. Works for now but may cause problems.
-  function valueHeaders() {
+  function valueHeaders(showHeadersText) {
     const tableHeadersSet = new Set();
     props.items.map(item =>
       Object.keys(item.values[0]).map(header => tableHeadersSet.add(header))
@@ -56,7 +56,9 @@ export const List = (props: ListModel) => {
     const tableHeadersArray = Array.from(tableHeadersSet);
 
     return tableHeadersArray.map(header => (
-      <TableValueHeader align="right">{header as string}</TableValueHeader>
+      <TableValueHeader align="right" key={header as string}>
+        {showHeadersText ? (header as string) : ''}
+      </TableValueHeader>
     ));
   }
 
@@ -69,7 +71,7 @@ export const List = (props: ListModel) => {
               <TableTitle variant="h6">{props.title}</TableTitle>
               <TableSubtitle variant="caption">{props.subtitle}</TableSubtitle>
             </TableHeader>
-            {props.valueHeaders && valueHeaders()}
+            {valueHeaders(props.valueHeaders)}
           </TableRow>
         </TableHead>
 

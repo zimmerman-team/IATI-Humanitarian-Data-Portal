@@ -1,4 +1,4 @@
-import ActivityResponceInterface from 'app/state/api/interfaces/activityInterface';
+import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 import { apiModel } from './index';
 
 const iatigbsignatories: ActivityResponceInterface = {

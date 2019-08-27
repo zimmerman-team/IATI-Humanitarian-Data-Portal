@@ -5,8 +5,15 @@ import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
-import ActivityResponceInterface from 'app/state/api/interfaces/activityInterface';
+import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
+import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
+import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
+import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
+import {
+  ActivityResponceInterface,
+  ActivityResponceStringQueryInterface,
+} from 'app/state/api/interfaces/activityInterface';
 
 const persistSessionConfig = {
   key: 'session',
@@ -18,6 +25,10 @@ export interface ApplicationStoreModel {
   humanitarian: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
+  sigdataoverviewhum: ActivityResponceInterface;
+  sigdataactivityyears: ActivityResponceInterface;
+  sigdataactivitystatus: ActivityResponceInterface;
+  sigdataactivitiesbyyear: ActivityResponceStringQueryInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -25,6 +36,10 @@ const applicationStore: ApplicationStoreModel = {
   humanitarian,
   gbsignatories,
   iatigbsignatories,
+  sigdataoverviewhum,
+  sigdataactivityyears,
+  sigdataactivitystatus,
+  sigdataactivitiesbyyear,
 };
 
 export const appStore = createStore(applicationStore, {

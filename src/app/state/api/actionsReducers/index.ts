@@ -37,23 +37,41 @@ export const apiModel = <QueryModel, ResponseModel>(
   fetch: thunk(async (actions, query) => {
     actions.onRequest();
 
-    // okay so to keep the proper type script checks
-    // for our query variables and still make this solr
-    // work with strings passed in as params
-    // we will convert the objects passed in as values
-    // to a string and pass it into q accordingly
-    axios
-      .get(url, {
-        params: query.values,
-      })
-      .then(
-        (resp: AxiosResponse) => {
-          actions.onSuccess(resp.data);
+    if (Array.isArray(query.values)) {
+      const calls = query.values.map(v => axios.get(`${url}?${v}`));
+      axios.all(calls).then(
+        (resp: any[]) => {
+          actions.onSuccess(resp);
         },
         (error: any) => {
           actions.onError(error.response);
         }
       );
+    } else {
+      let formedUrl = url;
+      let params: any = query.values;
+      if (typeof query.values === 'string') {
+        formedUrl = `${formedUrl}?${query.values}`;
+        params = {};
+      }
+      // okay so to keep the proper type script checks
+      // for our query variables and still make this solr
+      // work with strings passed in as params
+      // we will convert the objects passed in as values
+      // to a string and pass it into q accordingly
+      axios
+        .get(formedUrl, {
+          params,
+        })
+        .then(
+          (resp: AxiosResponse) => {
+            actions.onSuccess({ data: resp.data });
+          },
+          (error: any) => {
+            actions.onError(error.response);
+          }
+        );
+    }
   }),
 });
 
@@ -79,7 +97,7 @@ export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
   }),
   fetch: thunk(async (actions, query) => {
     actions.onRequest();
-    const res = await db.get('signatories').apply();
+    const res = await db.get(endpoint).apply();
     if (res.status === 200) {
       actions.onSuccess(res.data.result);
     } else {
