@@ -14,7 +14,7 @@ interface SingleDefActivity {
   default_flow_type_code: string;
   default_tied_status_code: string;
   reporting_org_ref: string;
-  reporting_org_type: string;
+  reporting_org_type_code: string;
   reporting_org_secondary_reporter: string;
   reporting_org_narrative: string[];
   title: string[];
