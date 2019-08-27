@@ -188,7 +188,13 @@ columns.unshift({
     filter: true,
     filterType: 'checkbox',
     customBodyRender: (value, tableMeta, updateValue) => {
-      return <InfoCellModule value={value} info={value} />;
+      let info = null;
+
+      if (value.toLowerCase() !== 'of these') {
+        info = value;
+      }
+
+      return <InfoCellModule value={value} info={info} />;
     },
   },
 });

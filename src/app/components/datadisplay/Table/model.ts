@@ -25,7 +25,7 @@ export interface TableLayoutModel {
 
 export interface InfoCellModuleModel {
   value: string | string[];
-  info: string;
+  info: string | null;
   colSpan?: number;
 }
 

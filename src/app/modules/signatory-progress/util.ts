@@ -152,6 +152,9 @@ export function formatTableData(
       }
     });
 
+    // pushing in the 'Of these' row
+    tableData.push(['Of these']);
+
     // and here we'll push in the calculation for changes between
     // may and today, aka changes between the last two items
     const change =

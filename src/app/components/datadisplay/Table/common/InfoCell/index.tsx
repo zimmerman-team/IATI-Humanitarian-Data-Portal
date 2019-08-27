@@ -38,10 +38,12 @@ const InfoCellModule = (props: InfoCellModuleModel) => {
   return (
     <>
       {props.value}{' '}
-      <InfoIcon
-        onMouseEnter={() => setShowInfo(true)}
-        onMouseLeave={() => setShowInfo(false)}
-      />
+      {props.info && (
+        <InfoIcon
+          onMouseEnter={() => setShowInfo(true)}
+          onMouseLeave={() => setShowInfo(false)}
+        />
+      )}
       {showInfo && <MoreTooltip>{props.info}</MoreTooltip>}
     </>
   );
