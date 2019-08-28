@@ -70,6 +70,8 @@ interface SingleDefActivity {
   document_link_language_code: string[];
   related_activity_ref: string[];
   related_activity_type: string[];
+  recipient_country_narrative?: string[];
+  result: any[];
   _version_: number;
 }
 
@@ -93,6 +95,8 @@ interface ActivityQuery {
   facet?: string;
   'facet.field'?: string;
   fl?: string;
+  rows?: number;
+  start?: number;
 }
 
 export interface ActivityResponceInterface

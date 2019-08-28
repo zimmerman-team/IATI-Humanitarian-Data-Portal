@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { ActivityListLayout } from './layout';
-import { mockData } from './mock';
+
+/* store */
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
+/* consts */
+import { activitiesQuery, activityBaseTable } from './const';
+
+/* utils */
+import { formatActivities } from './utils/formatActivities';
+import get from 'lodash/get';
+
 function ActivityListz(props) {
+  const [page, setPage] = useState(0);
+  const [rows, setRows] = useState(10);
+
   const activitiesAction = useStoreActions(actions => actions.activities.fetch);
 
-  const activities = useStoreState(state => state.activities);
+  useEffect(() => {
+    activitiesQuery.q = activitiesQuery.q.replace(
+      '{rep_org_val}',
+      props.match.params.code
+    );
 
-  console.log('activities', activities);
-
-  React.useEffect(() => {
-    const callValues = {
+    activitiesAction({
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        ...activitiesQuery,
+        rows,
+        start: page * rows,
       },
-    };
-    activitiesAction(callValues);
-  }, []);
+    });
+  }, [page, rows]);
 
-  return (
-    <ActivityListLayout
-      title={mockData.title}
-      subtitle={mockData.subtitle}
-      activity={mockData.activity}
-    />
-  );
+  const activities: any = useStoreState(state => state.activities.data);
+  const activityCount = activities ? activities.data.response.numFound : 0;
+
+  activityBaseTable.data = formatActivities(get(activities, 'data', null));
+  activityBaseTable.options.count = activityCount;
+  activityBaseTable.options.onChangePage = setPage;
+  activityBaseTable.options.onChangeRowsPerPage = setRows;
+
+  return <ActivityListLayout activity={activityBaseTable} />;
 }
 
 export const ActivityList = withRouter(ActivityListz);
