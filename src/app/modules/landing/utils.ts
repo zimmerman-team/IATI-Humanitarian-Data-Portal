@@ -18,7 +18,7 @@ export const getStatsFromApiResponses = (
   ).length;
   stats[2].value = get(
     humanitarian,
-    'data.data.facet_counts.facet_fields.reporting_org_ref.length',
+    'data.facet_counts.facet_fields.reporting_org_ref.length',
     0
   );
   return stats;

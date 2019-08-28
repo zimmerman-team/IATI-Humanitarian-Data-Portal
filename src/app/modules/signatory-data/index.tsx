@@ -41,7 +41,7 @@ export function SignatoryData() {
   const signatories = formatTableSignatories(
     get(
       get(iatigbsignatoriesData, 'data', []),
-      'data.facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,humanitarian,transaction_type,transaction_provider_org_ref"]',
+      'facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,humanitarian,transaction_type,transaction_provider_org_ref"]',
       []
     ),
     get(gbsignatoriesData, 'data', [])

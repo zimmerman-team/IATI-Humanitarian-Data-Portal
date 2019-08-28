@@ -23,7 +23,8 @@ function Routes() {
   const gbsignatoriesData = useStoreState(
     reduxstate => reduxstate.gbsignatories
   );
-  if (!gbsignatoriesData.success && !gbsignatoriesData.loading) {
+
+  if (!gbsignatoriesData.data) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useStoreActions(actions => actions.gbsignatories.fetch)({});
   }

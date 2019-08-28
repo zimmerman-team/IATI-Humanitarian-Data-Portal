@@ -26,16 +26,13 @@ export function SignatoryProgress() {
   useTitle(`MLT - ${SignatoryProgressMock.title}`);
   const [state, actions] = signProgStore();
 
-  const iatigbsignatoriesData = useStoreState(
-    globalState => globalState.gbsignatories
+  const iatigbsignatoriesData: any = useStoreState(
+    globalState => globalState.gbsignatories.data
   );
 
-  // console.log('iatigbsignatoriesData', iatigbsignatoriesData);
-
-  const gbOrgRefs = map(
-    iatigbsignatoriesData.data,
-    item => item.IATIOrgRef
-  ).join(' ');
+  const gbOrgRefs = iatigbsignatoriesData
+    ? map(iatigbsignatoriesData, item => item.IATIOrgRef).join(' ')
+    : '';
 
   useEffect(() => {
     const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;

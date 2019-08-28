@@ -62,11 +62,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-            <List items={props.statusData.slice(0, 2)} />
+          <List items={props.statusData.slice(0, 2)} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-            <List items={props.statusData.slice(2, 4)} />
+          <List items={props.statusData.slice(2, 4)} />
         </Grid>
       </Grid>
       <Box height="50px" />
