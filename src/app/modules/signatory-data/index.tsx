@@ -37,6 +37,7 @@ export function SignatoryData() {
     };
     iatigbsignatoriesCall(callValues);
   }, [gbsignatoriesData]);
+
   const signatories = formatTableSignatories(
     get(
       get(iatigbsignatoriesData, 'data', []),

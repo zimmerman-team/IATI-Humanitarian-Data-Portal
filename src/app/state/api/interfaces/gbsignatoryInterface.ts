@@ -17,6 +17,10 @@ export interface SingleDefGBSignatory {
   reportsToFTSViaIATI: string;
 }
 
+// export interface ArrayDefGBSignatory {
+//   data: Array<SingleDefGBSignatory>;
+// }
+
 interface GBSignatoryQuery {}
 
 export default interface GBSignatoryResponseInterface

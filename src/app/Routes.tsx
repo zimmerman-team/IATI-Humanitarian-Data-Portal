@@ -2,6 +2,10 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PageLoader } from 'app/modules/common/PageLoader';
 
+/* store */
+import { useStoreState } from 'easy-peasy';
+import { useStoreActions } from './state/store/hooks';
+
 // App Bar Pages
 import { About } from 'app/modules/about';
 import { Faqs } from 'app/modules/faqs';
@@ -16,6 +20,16 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 
 export function Routes() {
+
+  const gbsignatoriesData = useStoreState(
+    reduxstate => reduxstate.gbsignatories
+  );
+
+  if (!gbsignatoriesData.data) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useStoreActions(actions => actions.gbsignatories.fetch)({});
+  }
+
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
