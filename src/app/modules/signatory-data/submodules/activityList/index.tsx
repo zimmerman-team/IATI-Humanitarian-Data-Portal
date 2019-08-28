@@ -5,8 +5,6 @@ import { mockData } from './mock';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 function ActivityListz(props) {
-  console.log('props', props);
-
   const activitiesAction = useStoreActions(actions => actions.activities.fetch);
 
   const activities = useStoreState(state => state.activities);
@@ -16,7 +14,7 @@ function ActivityListz(props) {
   React.useEffect(() => {
     const callValues = {
       values: {
-        q: `reporting_org_ref:1`,
+        q: `reporting_org_ref:${props.match.params.code}`,
       },
     };
     activitiesAction(callValues);
