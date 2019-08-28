@@ -4,10 +4,8 @@ import React from 'react';
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
 import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
-import { dataMock } from 'app/components/charts/BarCharts/VerticalBarChart/mock';
 import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
-import { listMockData1, listMockData2 } from './mock';
+import { OverviewLayoutModel } from 'app/modules/signatory-data/submodules/overview/model';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { mockData as inPageNavMock } from 'app/components/navigation/InPageNavigation/mock';
 
@@ -26,15 +24,15 @@ const cardMockData = {
   value: 76,
 };
 
-export const OverviewLayout = () => {
+export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
     <>
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
-            data={dataMock.data}
             title="Activity Timeline"
             tooltip="Lorem ipsum dolor"
+            data={props.activityTimelineData}
           />
         </Grid>
       </Grid>
@@ -47,44 +45,11 @@ export const OverviewLayout = () => {
             Humanitarian elements
           </Typography>
         </Grid>
-
-        {/** 1 */}
-        {/** Hum. activities with UN HRP codes */}
-        <Grid item xs={12} md={6}>
-          <DonutChartCard
-            value={cardMockData.value}
-            activity="Hum. activities with UN HRP codes"
-          />
-        </Grid>
-
-        {/** 2 */}
-        {/** Hum. activities with Cluster codes */}
-        <Grid item xs={12} md={6}>
-          <DonutChartCard
-            value={cardMockData.value}
-            activity="Hum. activities with Cluster codes"
-          />
-        </Grid>
-
-        {/** 3 */}
-        {/** Hum. activities Glide codes */}
-        <Grid item xs={12} md={6}>
-          <DonutChartCard
-            value={cardMockData.value}
-            activity="Hum. activities Glide codes"
-          />
-        </Grid>
-
-        {/** 4 */}
-        {/** % of activities with both humanitarian indicator and also a valid
-              humanitarian sector code */}
-        <Grid item xs={12} md={6}>
-          <DonutChartCard
-            value={cardMockData.value}
-            activity="% of activities with both humanitarian indicator and also a valid
-              humanitarian sector code"
-          />
-        </Grid>
+        {props.humanitarianElementsData.map(humEl => (
+          <Grid item xs={12} md={6} key={humEl.activity}>
+            <DonutChartCard value={humEl.value} activity={humEl.activity} />
+          </Grid>
+        ))}
       </Grid>
       <Box height="50px" />
       {/** --------------------------------------------------------------------------- */}
@@ -97,11 +62,11 @@ export const OverviewLayout = () => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List items={listMockData1.items} />
+            <List items={props.statusData.slice(0, 2)} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List items={listMockData2.items} />
+            <List items={props.statusData.slice(2, 4)} />
         </Grid>
       </Grid>
       <Box height="50px" />
@@ -142,12 +107,7 @@ export const OverviewLayout = () => {
                     - Current humanitarian activities
                 */}
 
-              <List
-                title="Activity Summary"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.activitySummaryData} />
             </Grid>
 
             {/** 2 */}
@@ -165,12 +125,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Hum. activities with FTS Import related"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humActFTSData} />
             </Grid>
 
             {/** 3 */}
@@ -186,12 +141,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Hum. activity with Grand Bargain classifications"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humActwGBClassificationsData} />
             </Grid>
 
             {/** 4 */}
@@ -206,12 +156,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Hum. other classifications of intererest"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humOtherClassOfInterestData} />
             </Grid>
 
             {/** 5 */}
@@ -226,12 +171,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Humanitarian results"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humResultsData} />
             </Grid>
 
             {/** 6 */}
@@ -245,12 +185,7 @@ export const OverviewLayout = () => {
                     - Using any other type of sub-national location data
                */}
 
-              <List
-                title="Hum. activites with location information"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humActWLocationInfoData} />
             </Grid>
 
             {/** 7 */}
@@ -265,12 +200,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Hum. acitivites with multi-year funding"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.humActWMultiYearFundData} />
             </Grid>
 
             {/** 8 */}
@@ -287,12 +217,7 @@ export const OverviewLayout = () => {
 
                 */}
 
-              <List
-                title="Financial reporting"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List {...props.financialReportingData} />
             </Grid>
           </Grid>
         </Grid>

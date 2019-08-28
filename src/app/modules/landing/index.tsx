@@ -23,7 +23,7 @@ export function Landing() {
   React.useEffect(() => {
     humanitarianCall(humanitarianCallValues);
   }, [gbsignatoriesData]);
-  const humanitarianData = useStoreState(state => state.humanitarian);
+  const humanitarianData = useStoreState(state => state.humanitarian.data);
 
   return (
     <LandingLayout

@@ -95,5 +95,11 @@ interface ActivityQuery {
   fl?: string;
 }
 
-export default interface ActivityResponceInterface
+export interface ActivityResponceInterface
   extends ApiModel<ActivityQuery, ActivityResponse> {}
+
+export interface ActivityResponceStringQueryInterface
+  extends ApiModel<string, ActivityResponse> {}
+
+export interface ActivityResponceStringArrayQueryInterface
+  extends ApiModel<string[], ActivityResponse> {}

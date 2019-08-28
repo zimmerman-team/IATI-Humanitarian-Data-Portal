@@ -1,6 +1,7 @@
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
+
 /* components */
 import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
 
@@ -16,16 +17,18 @@ import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 export function SignatoryData() {
   useTitle(`MLT - ${signatoryDataMock.title}`);
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
-  const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
+  const iatigbsignatoriesData = useStoreState(
+    state => state.iatigbsignatories.data
+  );
   /* create the API call instances */
   const iatigbsignatoriesCall = useStoreActions(
     actions => actions.iatigbsignatories.fetch
   );
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
-    const publishers = map(gbsignatoriesData.data, sig => sig.IATIOrgRef).join(
-      ' '
-    );
+    const publishers = map(get(gbsignatoriesData, 'data', []), sig =>
+      get(sig, 'IATIOrgRef', '')
+    ).join(' ');
     const callValues = {
       values: {
         ...iatigbsignatoriesCallValues.values,
@@ -37,11 +40,11 @@ export function SignatoryData() {
 
   const signatories = formatTableSignatories(
     get(
-      iatigbsignatoriesData.data,
-      'data.facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,transaction_humanitarian,transaction_type,transaction_provider_org_ref"]',
+      get(iatigbsignatoriesData, 'data', []),
+      'data.facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,humanitarian,transaction_type,transaction_provider_org_ref"]',
       []
     ),
-    gbsignatoriesData.data
+    get(gbsignatoriesData, 'data', [])
   );
   return (
     <SignatoryDataLayout

@@ -13,7 +13,7 @@ export const getStatsFromApiResponses = (
   const stats = [...mockData.items];
   stats[0].value = get(gbsignatories, 'data.length', 0);
   stats[1].value = filter(
-    gbsignatories.data,
+    get(gbsignatories, 'data', []),
     item => get(item, 'IATIOrgRef', '') !== ''
   ).length;
   stats[2].value = get(
