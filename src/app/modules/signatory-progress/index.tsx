@@ -20,7 +20,9 @@ import {
 /* utils */
 import map from 'lodash/map';
 import get from 'lodash/get';
-import { formatBarData, formatLineChart, formatTableData } from './util';
+import { formatLineChart } from './utils/formatLineChart';
+import { formatBarData } from './utils/formatBarData';
+import { formatTableData } from './utils/formatTableData';
 
 export function SignatoryProgress() {
   useTitle(`MLT - ${SignatoryProgressMock.title}`);
