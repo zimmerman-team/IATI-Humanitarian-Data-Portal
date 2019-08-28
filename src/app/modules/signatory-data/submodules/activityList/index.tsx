@@ -1,8 +1,27 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { ActivityListLayout } from './layout';
 import { mockData } from './mock';
+import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
-export function ActivityList() {
+function ActivityListz(props) {
+  console.log('props', props);
+
+  const activitiesAction = useStoreActions(actions => actions.activities.fetch);
+
+  const activities = useStoreState(state => state.activities);
+
+  console.log('activities', activities);
+
+  React.useEffect(() => {
+    const callValues = {
+      values: {
+        q: `reporting_org_ref:1`,
+      },
+    };
+    activitiesAction(callValues);
+  }, []);
+
   return (
     <ActivityListLayout
       title={mockData.title}
@@ -11,3 +30,5 @@ export function ActivityList() {
     />
   );
 }
+
+export const ActivityList = withRouter(ActivityListz);
