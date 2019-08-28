@@ -19,7 +19,7 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 // Signatory Data Sub Pages
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 
-function Routes() {
+export function Routes() {
   const gbsignatoriesData = useStoreState(
     reduxstate => reduxstate.gbsignatories
   );
@@ -61,5 +61,3 @@ function Routes() {
     </Suspense>
   );
 }
-
-export default Routes;

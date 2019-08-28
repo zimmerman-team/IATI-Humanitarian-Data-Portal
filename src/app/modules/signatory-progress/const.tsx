@@ -5,25 +5,13 @@ import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import { MUIDataTableColumnDef } from 'mui-datatables';
 
-const monthNames = [
-  'Jan',
-  'Feb',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
+/* consts */
+import { shortMonthNames } from 'app/__consts__/dates';
 
 const today = new Date();
 
 const currDate = `${today.getDate()}.${
-  monthNames[today.getMonth()]
+  shortMonthNames[today.getMonth()]
 }.${today.getFullYear()}`;
 
 // this variable basically stores the fixed date

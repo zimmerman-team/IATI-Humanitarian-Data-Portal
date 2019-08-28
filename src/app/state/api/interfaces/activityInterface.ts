@@ -14,7 +14,7 @@ interface SingleDefActivity {
   default_flow_type_code: string;
   default_tied_status_code: string;
   reporting_org_ref: string;
-  reporting_org_type: string;
+  reporting_org_type_code: string;
   reporting_org_secondary_reporter: string;
   reporting_org_narrative: string[];
   title: string[];
@@ -70,6 +70,8 @@ interface SingleDefActivity {
   document_link_language_code: string[];
   related_activity_ref: string[];
   related_activity_type: string[];
+  recipient_country_narrative?: string[];
+  result: any[];
   _version_: number;
 }
 
@@ -93,6 +95,8 @@ interface ActivityQuery {
   facet?: string;
   'facet.field'?: string;
   fl?: string;
+  rows?: number;
+  start?: number;
 }
 
 export interface ActivityResponceInterface
