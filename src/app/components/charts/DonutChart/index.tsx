@@ -61,7 +61,7 @@ export const DonutChart = (props: DonutChartModel) => {
       <BackgroundDonut variant="static" value={100} size={SIZE} thickness={5} />
       <ProgressDonut
         variant="static"
-        value={completed}
+        value={props.value}
         size={SIZE}
         thickness={5}
       />

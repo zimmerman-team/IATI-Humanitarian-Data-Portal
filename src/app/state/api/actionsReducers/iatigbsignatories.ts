@@ -1,8 +1,9 @@
-import ActivityResponceInterface from 'app/state/api/interfaces/activityInterface';
+import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 import { apiModel } from './index';
+import { DS_API } from 'app/config';
 
 const iatigbsignatories: ActivityResponceInterface = {
-  ...apiModel(`${process.env.REACT_APP_DS_API}/search/activity/select/`),
+  ...apiModel(`${DS_API}/search/activity/select/`),
 };
 
 export default iatigbsignatories;

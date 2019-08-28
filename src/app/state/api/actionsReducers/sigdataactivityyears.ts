@@ -2,8 +2,8 @@ import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInte
 import { apiModel } from './index';
 import { DS_API } from 'app/config';
 
-const activities: ActivityResponceInterface = {
+const sigdataactivityyears: ActivityResponceInterface = {
   ...apiModel(`${DS_API}/search/activity/select/`),
 };
 
-export default activities;
+export default sigdataactivityyears;

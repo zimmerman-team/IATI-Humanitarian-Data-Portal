@@ -24,6 +24,10 @@ export function Routes() {
         <Route exact path="/about" render={() => <About />} />
         <Route exact path="/faq" render={() => <Faqs />} />
         <Route exact path="/signatory-data" render={() => <SignatoryData />} />
+        <Route
+          path="/signatory-data/:code"
+          render={props => <SubmoduleContainer {...props} />}
+        />
         {/*TODO: im missing!*/}
         <Route
           exact
@@ -39,7 +43,7 @@ export function Routes() {
         />
 
         {/* Signatory Data Container*/}
-        <SubmoduleContainer />
+        {/* <SubmoduleContainer /> */}
       </Switch>
     </Suspense>
   );

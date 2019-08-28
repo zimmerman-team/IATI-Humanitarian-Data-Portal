@@ -12,9 +12,9 @@ export type ListItemModel = {
 };
 
 export type ListItemValueModel = {
-  qtc?: number;
-  ptc?: number;
-  date?: Date;
+  qtc?: number | string;
+  ptc?: number | string;
+  date?: string;
   version?: string;
   highlight?: string;
 };

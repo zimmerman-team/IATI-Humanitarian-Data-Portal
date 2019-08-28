@@ -1,4 +1,4 @@
-import { ListModel } from './model';
+import { ListModel, ListItemModel } from './model';
 
 export const listMockData: ListModel = {
   title: 'Activity Summary',
@@ -35,3 +35,29 @@ export const listMockData: ListModel = {
     },
   ],
 };
+
+export const statusList1MockData: ListItemModel[] = [
+  {
+    label: 'Latest version of the IATI standard used',
+    tooltip: 'Latest version of the IATI standard used',
+    values: [{ version: '2.02' }],
+  },
+  {
+    label: 'Activities with data errors',
+    tooltip: 'Activities with data errors',
+    values: [{ version: '2 ~10%' }],
+  },
+];
+
+export const statusList2MockData: ListItemModel[] = [
+  {
+    label: 'Latest update',
+    tooltip: 'Latest update',
+    values: [{ date: 'DD MMM YY' }],
+  },
+  {
+    label: 'Data first published',
+    tooltip: 'Data first published',
+    values: [{ date: 'DD MMM YY' }],
+  },
+];
