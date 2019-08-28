@@ -3,8 +3,8 @@ import { BarSvgProps } from '@nivo/bar';
 
 export type HorizontalBarChartValueModel = {
   name: string;
-  value: number;
-  percentage: number;
+  value: number | null;
+  percentage: number | null;
 };
 
 export type HorizontalBarChartModel = {
@@ -16,7 +16,7 @@ export const barModel: BarSvgProps = {
   data: [],
   keys: ['percentage'],
   indexBy: 'name',
-  margin: { top: 32, right: 50, bottom: 0, left: 120 },
+  margin: { top: 32, right: 50, bottom: 0, left: 200 },
   padding: 0.4,
   layout: 'horizontal',
   axisTop: {

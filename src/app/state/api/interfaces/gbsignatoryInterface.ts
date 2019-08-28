@@ -1,7 +1,7 @@
 import { ApiModel } from './index';
 
 // so this is the interface for a single Grand Bargain Signatory response datas
-interface SingleDefGBSignatory {
+export interface SingleDefGBSignatory {
   _id: string;
   pubName: string;
   orgType: string;
@@ -16,6 +16,10 @@ interface SingleDefGBSignatory {
   reportsToFTS: string;
   reportsToFTSViaIATI: string;
 }
+
+// export interface ArrayDefGBSignatory {
+//   data: Array<SingleDefGBSignatory>;
+// }
 
 interface GBSignatoryQuery {}
 
