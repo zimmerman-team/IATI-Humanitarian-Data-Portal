@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import { formatHeader } from './utils/formatHeader';
 
 /* consts */
-import { actDetailQuery } from './const';
+import { actMetadataQuery } from './const';
 
 /* store */
 import { actDetailStore } from './store';
@@ -19,12 +19,14 @@ import { formatSections } from './utils/formatSections';
 function ActivityDetail(props) {
   const [state, actions] = actDetailStore();
 
+  const activityFilter = `iati_identifier:${props.match.params.code}`;
+
   useEffect(() => {
-    actDetailQuery.q = `iati_identifier:${props.match.params.code}`;
-    actions.actDetail.fetch({ values: actDetailQuery });
+    actMetadataQuery.q = activityFilter;
+    actions.actMetadata.fetch({ values: actMetadataQuery });
   }, []);
 
-  const actDetail = get(state.actDetail, 'data.data.response.docs[0]', null);
+  const actDetail = get(state.actMetadata, 'data.data.response.docs[0]', null);
 
   const header = formatHeader(actDetail);
   const sections = formatSections(actDetail);

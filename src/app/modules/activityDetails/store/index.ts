@@ -1,14 +1,22 @@
 import { createComponentStore } from 'easy-peasy';
-import { ActDetailInterface } from './interface';
+import { ActMetadataInterface, ActTransactionsInterface } from './interface';
 
-import { actDetail } from './actionsReducers';
+import {
+  actMetadata,
+  incTransactions,
+  outTransactions,
+} from './actionsReducers';
 
 export interface ComponentStoreModel {
-  actDetail: ActDetailInterface;
+  actMetadata: ActMetadataInterface;
+  incTransactions: ActTransactionsInterface;
+  outTransactions: ActTransactionsInterface;
 }
 
 const actDetails: ComponentStoreModel = {
-  actDetail,
+  actMetadata,
+  incTransactions,
+  outTransactions,
 };
 
 export const actDetailStore = createComponentStore(actDetails);

@@ -5,7 +5,7 @@ export interface ActDetailQuery {
   fl: string;
 }
 
-export interface ActDetailModel {
+export interface ActMetadataModel {
   iati_identifier: string;
   reporting_org_ref: string;
   reporting_org_narrative: string[];
@@ -15,7 +15,17 @@ export interface ActDetailModel {
   activity_date_type: string[];
 }
 
-export interface ActDetailResponse {
+export interface ActTransactionModel {
+  transaction_date_iso_date: string;
+  transaction_type: string;
+  transaction_value: number;
+  transaction_value_currency: string;
+  transaction_provider_org_provider_activity_id: string;
+  transaction_provider_org_narrative: string;
+  transaction_receiver_org_narrative: string;
+}
+
+export interface ActDetailResponse<DocModel> {
   responseHeader: {
     status: number;
     QTime: number;
@@ -24,13 +34,14 @@ export interface ActDetailResponse {
   response: {
     numFound: number;
     start: number;
-    // this value will be an empty array with the current response
-    // so the type doesn't matter
-    docs: ActDetailModel[];
+    docs: DocModel[];
   };
 }
 
-// all publishers data interface this will be used for
-// humanitarian publishers and non humanitarian publishers
-export interface ActDetailInterface
-  extends ApiModel<ActDetailQuery, ActDetailResponse> {}
+// activities metadata
+export interface ActMetadataInterface
+  extends ApiModel<ActDetailQuery, ActDetailResponse<ActMetadataModel>> {}
+
+// activities transactions
+export interface ActTransactionsInterface
+  extends ApiModel<ActDetailQuery, ActDetailResponse<ActTransactionModel>> {}
