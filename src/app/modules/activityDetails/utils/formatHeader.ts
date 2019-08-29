@@ -1,12 +1,12 @@
 /* interfaces/models */
 import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
-import { ActDetailModel } from '../store/interface';
+import { ActMetadataModel } from '../store/interface';
 
 /* utils */
 import { getActualDates, getEngText } from 'app/utils/generic';
 
 export function formatHeader(
-  actDetail: ActDetailModel | null
+  actDetail: ActMetadataModel | null
 ): ActivityDetailsHeaderCardModel {
   const header = {
     organisation: {

@@ -7,10 +7,10 @@ export interface TotalRowColModel {
 
 export interface TableModuleModel {
   title: string;
-  data: Array<Array<number | string | Array<string>>>;
+  data: Array<Array<number | string | undefined | Array<string | number>>>;
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
-  columnsCell: string[];
+  columnsCell?: string[];
   totalCell?: boolean | undefined;
   expandableData?: any[][][] | undefined;
   totalRowColsDef?: TotalRowColModel[];

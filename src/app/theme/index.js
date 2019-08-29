@@ -223,6 +223,8 @@ export default createMuiTheme({
       paper: {
         boxShadow: 'none',
         backgroundColor: 'transparent',
+        height: 'fit-content',
+        width: '100%',
       },
     },
     MUIDataTableToolbar: {

@@ -1,12 +1,12 @@
 /* interfaces/models */
-import { ActDetailModel } from '../store/interface';
+import { ActMetadataModel } from '../store/interface';
 import { SectionsModel } from '../model';
 
 /* utils */
 import find from 'lodash/find';
 
 export function formatSections(
-  actDetail: ActDetailModel | null
+  actDetail: ActMetadataModel | null
 ): SectionsModel[] {
   const sections: SectionsModel[] = [
     {
