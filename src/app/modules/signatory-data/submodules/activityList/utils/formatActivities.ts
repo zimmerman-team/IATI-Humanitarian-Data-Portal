@@ -59,7 +59,7 @@ export function formatActivities(
         actualStart,
         actualEnd,
         statusNames[activity.activity_status_code],
-        engTitle,
+        [activity.iati_identifier, engTitle],
         activity.recipient_country_narrative || [],
         resultCount,
       ]);
