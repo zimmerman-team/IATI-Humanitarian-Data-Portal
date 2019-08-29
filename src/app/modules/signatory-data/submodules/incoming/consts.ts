@@ -27,9 +27,12 @@ export const incomingCallFacetValues = {
     type: 'query',
     q: '(transaction_type:1 AND transaction_provider_org_type:*)',
   },
+};
+
+export const incomingCallFacetValuesTrace = {
   incFunds_4: {
     type: 'query',
-    q: '(transaction_type:1 AND transaction_provider_org_type:*)',
+    q: 'transaction_type:1',
   },
 };
 

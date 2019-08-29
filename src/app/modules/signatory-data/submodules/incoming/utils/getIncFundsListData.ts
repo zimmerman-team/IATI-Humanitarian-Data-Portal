@@ -2,12 +2,12 @@ import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getIncFundsListData = (rawData): ListModel => {
-  const allHumActCount = get(rawData, 'count', 0);
-  const incFundsValue1 = get(rawData, 'incFundsBar.count', 0);
-  const incFundsValue2 = get(rawData, 'incFunds_2.count', 0);
-  const incFundsValue3 = get(rawData, 'incFunds_3.count', 0);
-  // const incFundsValue4 = get(rawData, 'incFunds_4.count', 0);
+export const getIncFundsListData = (rawData1, rawData2): ListModel => {
+  const allHumActCount = get(rawData1, 'count', 0);
+  const incFundsValue1 = get(rawData1, 'incFundsBar.count', 0);
+  const incFundsValue2 = get(rawData1, 'incFunds_2.count', 0);
+  const incFundsValue3 = get(rawData1, 'incFunds_3.count', 0);
+  const incFundsValue4 = get(rawData2, 'incFunds_4.count', 0);
   return {
     title: 'Incoming funds',
     items: [
@@ -46,10 +46,8 @@ export const getIncFundsListData = (rawData): ListModel => {
         tooltip: 'With source traceability information',
         values: [
           {
-            // ptc: percentage(incFundsValue4, allHumActCount),
-            // qtc: incFundsValue4,
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(incFundsValue4, allHumActCount),
+            qtc: incFundsValue4,
           },
         ],
       },
