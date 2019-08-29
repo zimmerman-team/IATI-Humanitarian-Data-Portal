@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { ResponsiveBar, BarSvgProps } from '@nivo/bar';
 import styled from 'styled-components';
@@ -16,16 +17,30 @@ import { HorizontalBarChartModel, barModel } from './model';
 // you'll often use just a few of them.
 
 const BarComponent = props => {
+  const {
+    borderRadius,
+    borderWidth,
+    enableLabel,
+    labelSkipWidth,
+    labelSkipHeight,
+    showTooltip,
+    hideTooltip,
+    getTooltipLabel,
+    tooltipFormat,
+    shouldRenderLabel,
+    labelColor,
+    borderColor,
+    ...fprops
+  } = props;
   return (
-    <g {...props}>
-      <rect {...props} fill={Colours.primaryBase} height={props.height / 2} />
+    <g {...fprops}>
+      <rect {...fprops} fill={Colours.primaryBase} height={props.height / 2} />
       <text
-        {...props}
         x={props.width - 64}
         y={props.y - 5}
         fontFamily="Inter"
         fontSize="12px"
-        lineHeight="1.33"
+        // lineHeight="1.33"
         letterSpacing="0.42"
         fontWeight="normal"
         fill={Colours.greydark20OrFontsecondary}
