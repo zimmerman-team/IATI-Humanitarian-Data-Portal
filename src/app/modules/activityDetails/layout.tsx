@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import { ActivityDetailModel } from './model';
 
 // Components
-import { Grid, Typography, Box, Hidden } from '@material-ui/core';
+import { Grid, Typography, Box, Hidden, Container } from '@material-ui/core';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { List } from 'app/components/datadisplay/Lists';
 import Table from 'app/components/datadisplay/Table';
+import { ActivityHeaderLayout } from './common/activityHeader';
 
 // Mock Data
 import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
@@ -20,7 +21,15 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
-    <>
+    <Container maxWidth="lg">
+      {/** --------------------------------------------------------------------------- */}
+      {/** Header Section */}
+      <ActivityHeaderLayout
+        activity={props.header.activity}
+        organisation={props.header.organisation}
+      />
+
+      <Box width="100%" height="91px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
       <Grid container lg={7} md={12}>
@@ -94,6 +103,6 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       </Grid>
 
       <Box height="50px" />
-    </>
+    </Container>
   );
 };
