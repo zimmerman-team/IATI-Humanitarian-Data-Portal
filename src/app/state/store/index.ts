@@ -5,6 +5,7 @@ import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
 import sigdataincoming from 'app/state/api/actionsReducers/sigdataincoming';
+import sigdataoutgoing from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
@@ -21,8 +22,9 @@ const persistSessionConfig = {
 export interface ApplicationStoreModel {
   activities: ActivityResponceInterface;
   humanitarian: ActivityResponceInterface;
-  gbsignatories: GBSignatoryResponseInterface;
   sigdataincoming: ActivityResponceInterface;
+  sigdataoutgoing: ActivityResponceInterface;
+  gbsignatories: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
@@ -35,6 +37,7 @@ const applicationStore: ApplicationStoreModel = {
   humanitarian,
   gbsignatories,
   sigdataincoming,
+  sigdataoutgoing,
   iatigbsignatories,
   sigdataoverviewhum,
   sigdataactivityyears,
