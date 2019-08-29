@@ -17,6 +17,8 @@ function ActivityListz(props) {
   const [rows, setRows] = useState(10);
 
   const activitiesAction = useStoreActions(actions => actions.activities.fetch);
+  const actState: any = useStoreState(state => state.activities.data);
+  const activities = actState ? actState.data.response : {};
 
   useEffect(() => {
     activitiesQuery.q = activitiesQuery.q.replace(
@@ -33,11 +35,8 @@ function ActivityListz(props) {
     });
   }, [page, rows]);
 
-  const activities: any = useStoreState(state => state.activities.data);
-  const activityCount = activities ? activities.data.response.numFound : 0;
-
-  activityBaseTable.data = formatActivities(get(activities, 'data', null));
-  activityBaseTable.options.count = activityCount;
+  activityBaseTable.data = formatActivities(activities.docs);
+  activityBaseTable.options.count = activities.numFound;
   activityBaseTable.options.onChangePage = setPage;
   activityBaseTable.options.onChangeRowsPerPage = setRows;
 

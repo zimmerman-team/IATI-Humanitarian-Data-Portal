@@ -8,7 +8,6 @@ import { ProvidersPage } from './providersPage';
 import { SignatoryOutgoing } from './outgoing';
 import { Recipients } from './recipients';
 import { Timelines } from './timelines';
-import { ActivityListDetails } from './activityListDetails';
 import { Coverage } from './coverage';
 
 export function SignatoryDataRoutes() {
@@ -55,11 +54,6 @@ export function SignatoryDataRoutes() {
           exact
           path="/signatory-data/:code/coverage"
           render={() => <Coverage />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/activity-list/:code/detail"
-          render={() => <ActivityListDetails />}
         />
       </Switch>
     </Suspense>

@@ -3,7 +3,7 @@ import { ApiModel } from './index';
 // so this is the interface for a single activity response data
 // describing all of the activity fields returned without
 // any extra or any less fields requested
-interface SingleDefActivity {
+export interface SingleDefActivity {
   id: string;
   iati_identifier: string;
   activity_status_code: string;

@@ -14,7 +14,7 @@ export const activitiesQuery = {
       transaction_humanitarian:1 OR
       sector_vocabulary:1 OR
       (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
-  fl: `activity_status_code,title,recipient_country_narrative,
+  fl: `iati_identifier,activity_status_code,title,recipient_country_narrative,
         activity_date_type,activity_date_iso_date,result`,
 };
 
@@ -59,7 +59,8 @@ export const activityBaseTable: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         customBodyRender: (value, tableMeta, updateValue) => {
-          return <LinkCellModule link="#" value={value} />;
+          const link = `/activity-detail/${value[0]}`;
+          return <LinkCellModule link={link} value={value[1]} />;
         },
       },
     },

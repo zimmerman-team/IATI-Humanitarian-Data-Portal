@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Model
-import { ActivityListDetailModel } from './model';
+import { ActivityDetailModel } from './model';
 
 // Components
-import { Grid, Typography, Box, Hidden } from '@material-ui/core';
+import { Grid, Typography, Box, Hidden, Container } from '@material-ui/core';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { List } from 'app/components/datadisplay/Lists';
 import Table from 'app/components/datadisplay/Table';
+import { ActivityHeaderLayout } from './common/activityHeader';
 
 // Mock Data
 import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
@@ -18,9 +19,17 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-gap: 6rem;
 `;
 
-export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
+export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
-    <>
+    <Container maxWidth="lg">
+      {/** --------------------------------------------------------------------------- */}
+      {/** Header Section */}
+      <ActivityHeaderLayout
+        activity={props.header.activity}
+        organisation={props.header.organisation}
+      />
+
+      <Box width="100%" height="91px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
       <Grid container lg={7} md={12}>
@@ -94,6 +103,6 @@ export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
       </Grid>
 
       <Box height="50px" />
-    </>
+    </Container>
   );
 };
