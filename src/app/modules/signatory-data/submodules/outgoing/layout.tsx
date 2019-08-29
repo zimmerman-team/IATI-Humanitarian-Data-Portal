@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
 import { List } from 'app/components/datadisplay/Lists';
@@ -58,12 +59,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
                     - With funding organisation type provided
                 */}
 
-              <List
-                title="Outgoing pledges"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[0]} />
             </Grid>
 
             {/** 2 */}
@@ -77,19 +73,14 @@ export const OutgoingLayout = (props: OutgoingModel) => {
                     - With funding organisation type provided
                 */}
 
-              <List
-                title="Outgoing commitments"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[1]} />
             </Grid>
 
             {/** 3 */}
             {/** Outgoing funds */}
             <Grid item xs={12}>
               {/**
-                  Outgoing funds
+                  Outgoing disbursements
 
                     - Total no. of activities with Outgoing Pledges
                     - With funding provider details specified
@@ -97,12 +88,22 @@ export const OutgoingLayout = (props: OutgoingModel) => {
                     - With source traceability information
                 */}
 
-              <List
-                title="Outgoing funds"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
+              <List valueHeaders {...props.lists[2]} />
+            </Grid>
+
+            {/** 4 */}
+            {/** Expenditure */}
+            <Grid item xs={12}>
+              {/**
+                  Expenditure
+
+                    - Total
+                    - With funding provider details specified
+                    - With funding organisation type provided
+                    - With source traceability information
+                */}
+
+              <List valueHeaders {...props.lists[3]} />
             </Grid>
           </Grid>
         </Grid>
