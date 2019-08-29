@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from './percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getHumActWLocationInfoData = (rawData): ListModel => {
@@ -17,7 +18,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'Activities with recipient countries',
         values: [
           {
-            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[0], allActCount),
             qtc: itemCounts[0],
           },
         ],
@@ -27,7 +28,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'With latitude / longitude coordinates',
         values: [
           {
-            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[1], allActCount),
             qtc: itemCounts[1],
           },
         ],
@@ -39,7 +40,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
           'Describing location according to a recognised geo-location gazetteer',
         values: [
           {
-            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[2], allActCount),
             qtc: itemCounts[2],
           },
         ],
@@ -49,7 +50,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         tooltip: 'Using any other type of sub-national location data',
         values: [
           {
-            ptc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[3], allActCount),
             qtc: itemCounts[3],
           },
         ],

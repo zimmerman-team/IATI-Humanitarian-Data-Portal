@@ -19,7 +19,7 @@ export const humCallValues = {
   currentHumValuesData: {
     type: 'query',
     q:
-      '((activity_date_type:[1 TO 2] AND activity_date_iso_date:[* TO NOW]) AND (activity_date_type:[3 TO 4] AND activity_date_iso_date:[NOW TO *]) AND humanitarian:1)',
+      '(activity_date_type:[1 TO 2] AND activity_date_iso_date:[* TO NOW]) AND (activity_date_type:[3 TO 4] AND activity_date_iso_date:[NOW TO *])',
   },
   humActFTSData_1: {
     type: 'query',
@@ -120,4 +120,24 @@ export const activityStatusValues = {
     field: 'default_currency',
     limit: 1,
   },
+};
+
+export const barJsonFacet = years => {
+  const result = {};
+
+  years.forEach(year => {
+    result[year] = {
+      type: 'query',
+      q: `activity_date_iso_date:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
+      facet: {
+        hum_count: {
+          type: 'query',
+          q:
+            '(humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))',
+        },
+      },
+    };
+  });
+
+  return result;
 };

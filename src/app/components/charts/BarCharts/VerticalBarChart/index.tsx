@@ -13,6 +13,7 @@ const barModel: BarSvgProps = {
   margin: { top: 0, right: 0, bottom: 50, left: 60 },
   padding: 0.5,
   colors: ({ id, data }) => data[`${id}Color`],
+  groupMode: 'grouped',
   axisRight: null,
   axisBottom: {
     tickSize: 0,

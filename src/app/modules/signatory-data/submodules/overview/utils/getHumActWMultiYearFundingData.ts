@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from './percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getHumActWMultiYearFundingData = (rawData): ListModel => {
@@ -16,7 +17,7 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
         tooltip: 'Current hum. activities with duration > 24 months',
         values: [
           {
-            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[0], allActCount),
             qtc: itemCounts[0],
           },
         ],
@@ -26,7 +27,7 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
         tooltip: 'Current Hum. Activities > 24 months with budget exempt',
         values: [
           {
-            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[1], allActCount),
             qtc: itemCounts[1],
           },
         ],
@@ -38,7 +39,7 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
           "Current hum. activities > 24 months & budgets for > 'next' 12 months",
         values: [
           {
-            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[2], allActCount),
             qtc: itemCounts[2],
           },
         ],
