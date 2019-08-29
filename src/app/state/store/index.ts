@@ -4,8 +4,14 @@ import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
-import sigdataincoming from 'app/state/api/actionsReducers/sigdataincoming';
-import sigdataoutgoing from 'app/state/api/actionsReducers/sigdataoutgoing';
+import {
+  sigdataincoming,
+  sigdataincomingfundtrace,
+} from 'app/state/api/actionsReducers/sigdataincoming';
+import {
+  sigdataoutgoing,
+  sigdataoutgoingdisbtrace,
+} from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
@@ -30,6 +36,8 @@ export interface ApplicationStoreModel {
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
+  sigdataincomingfundtrace: ActivityResponceInterface;
+  sigdataoutgoingdisbtrace: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -43,6 +51,8 @@ const applicationStore: ApplicationStoreModel = {
   sigdataactivityyears,
   sigdataactivitystatus,
   sigdataactivitiesbyyear,
+  sigdataincomingfundtrace,
+  sigdataoutgoingdisbtrace,
 };
 
 export const appStore = createStore(applicationStore, {
