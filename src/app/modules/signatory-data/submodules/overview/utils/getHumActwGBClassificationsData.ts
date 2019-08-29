@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from './percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getHumActwGBClassificationsData = (rawData): ListModel => {
@@ -18,7 +19,7 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Earmarked for Grand Bargain (Categories)',
         values: [
           {
-            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[0], allActCount),
             qtc: itemCounts[0],
           },
         ],
@@ -28,7 +29,7 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Earmarked for Grand Bargain (Modalities)',
         values: [
           {
-            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[1], allActCount),
             qtc: itemCounts[1],
           },
         ],
@@ -38,7 +39,7 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         tooltip: 'Where a Partner Country Based NGO is referenced',
         values: [
           {
-            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[2], allActCount),
             qtc: itemCounts[2],
           },
         ],

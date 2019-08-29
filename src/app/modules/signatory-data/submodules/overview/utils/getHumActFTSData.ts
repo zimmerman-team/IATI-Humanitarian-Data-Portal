@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from './percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getHumActFTSData = (rawData): ListModel => {
@@ -22,7 +23,7 @@ export const getHumActFTSData = (rawData): ListModel => {
           'Activities with humanitarian OECD DAC sector code 700 or 70000 range',
         values: [
           {
-            ptc: `${Math.round((itemCounts[0] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[0], allActCount),
             qtc: itemCounts[0],
           },
         ],
@@ -32,7 +33,7 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With humanitarian indicator',
         values: [
           {
-            ptc: `${Math.round((itemCounts[1] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[1], allActCount),
             qtc: itemCounts[1],
           },
         ],
@@ -42,7 +43,7 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With UN Humanitarian Response Plan(s)',
         values: [
           {
-            ptc: `${Math.round((itemCounts[2] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[2], allActCount),
             qtc: itemCounts[2],
           },
         ],
@@ -52,7 +53,7 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With GLIDE code(s)',
         values: [
           {
-            ptc: `${Math.round((itemCounts[3] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[3], allActCount),
             qtc: itemCounts[3],
           },
         ],
@@ -64,7 +65,7 @@ export const getHumActFTSData = (rawData): ListModel => {
           "With organisation's own internal crisis codes(ie using vocab '99')",
         values: [
           {
-            ptc: `${Math.round((itemCounts[4] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[4], allActCount),
             qtc: itemCounts[4],
           },
         ],
@@ -74,7 +75,7 @@ export const getHumActFTSData = (rawData): ListModel => {
         tooltip: 'With clusters',
         values: [
           {
-            ptc: `${Math.round((itemCounts[5] * 100) / allActCount)}%`,
+            ptc: percentage(itemCounts[5], allActCount),
             qtc: itemCounts[5],
           },
         ],
