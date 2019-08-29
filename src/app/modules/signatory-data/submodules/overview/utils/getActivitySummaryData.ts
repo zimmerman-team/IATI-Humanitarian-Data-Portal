@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { percentage } from './percentage';
+import { percentage } from 'app/utils/percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getActivitySummaryData = (rawData): ListModel => {
