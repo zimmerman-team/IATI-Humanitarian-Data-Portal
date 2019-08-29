@@ -5,9 +5,9 @@ import { mockData as inPageNavigationMockData } from 'app/components/navigation/
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
 
 // Mock data
-import { ActivityListDetailModel } from './model';
+import { ActivityDetailModel } from './model';
 
-export const mockData: ActivityListDetailModel = {
+export const mockData: ActivityDetailModel = {
   header: ActivityDetailsHeaderCardMockData,
   sections: [
     {

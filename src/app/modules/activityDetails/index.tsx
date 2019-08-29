@@ -1,10 +1,10 @@
 import React from 'react';
-import { ActivityListDetailsLayout } from './layout';
+import { ActivityDetailsLayout } from './layout';
 import { mockData } from './mock';
 
-export function ActivityListDetails() {
+export function ActivityDetails() {
   return (
-    <ActivityListDetailsLayout
+    <ActivityDetailsLayout
       header={mockData.header}
       sections={mockData.sections}
       incomingTransactionsTableData={mockData.incomingTransactionsTableData}

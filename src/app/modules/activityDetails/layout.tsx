@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Model
-import { ActivityListDetailModel } from './model';
+import { ActivityDetailModel } from './model';
 
 // Components
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
@@ -18,7 +18,7 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-gap: 6rem;
 `;
 
-export const ActivityListDetailsLayout = (props: ActivityListDetailModel) => {
+export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
     <>
       {/** --------------------------------------------------------------------------- */}

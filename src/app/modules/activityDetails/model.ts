@@ -3,7 +3,7 @@ import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/Ac
 import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export type ActivityListDetailModel = {
+export type ActivityDetailModel = {
   header: ActivityDetailsHeaderCardModel;
   sections: SectionsModel[];
   incomingTransactionsTableData: TableModuleModel;

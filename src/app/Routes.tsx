@@ -18,6 +18,7 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 
 // Signatory Data Sub Pages
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
+import { ActivityDetails } from './modules/activityDetails';
 
 export function Routes() {
   const gbsignatoriesData = useStoreState(
@@ -53,6 +54,12 @@ export function Routes() {
           exact
           path="/signatory-progress/cctri-target"
           render={() => <CCTRI />}
+        />
+
+        <Route
+          exact
+          path="/activity-detail/:code"
+          render={() => <ActivityDetails />}
         />
 
         {/* Signatory Data Container*/}
