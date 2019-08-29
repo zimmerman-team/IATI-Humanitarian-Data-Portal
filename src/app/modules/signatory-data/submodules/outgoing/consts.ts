@@ -28,10 +28,6 @@ export const outgoingCallFacetValues = {
     type: 'query',
     q: '(transaction_type:3 AND transaction_receiver_org_type:*)',
   },
-  outDisbursement_4: {
-    type: 'query',
-    q: '(transaction_type:3 AND transaction_receiver_org_type:*)',
-  },
   expenditure_3: {
     type: 'query',
     q: '(transaction_type:4 AND transaction_receiver_org_narrative:*)',
@@ -39,6 +35,13 @@ export const outgoingCallFacetValues = {
   expenditure_4: {
     type: 'query',
     q: '(transaction_type:4 AND transaction_receiver_org_type:*)',
+  },
+};
+
+export const outgoingCallFacetValuesTrace = {
+  outDisbursement_4: {
+    type: 'query',
+    q: 'transaction_type:3',
   },
 };
 

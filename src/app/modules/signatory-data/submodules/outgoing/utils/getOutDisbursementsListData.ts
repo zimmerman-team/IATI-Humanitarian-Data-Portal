@@ -2,12 +2,12 @@ import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getOutDisbursementsListData = (rawData): ListModel => {
-  const allHumActCount = get(rawData, 'count', 0);
-  const outDisbursement1 = get(rawData, 'outDisbursementBar.count', 0);
-  const outDisbursement2 = get(rawData, 'outDisbursement_2.count', 0);
-  const outDisbursement3 = get(rawData, 'outDisbursement_3.count', 0);
-  // const outDisbursement4 = get(rawData, 'outDisbursement_4.count', 0);
+export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
+  const allHumActCount = get(rawData1, 'count', 0);
+  const outDisbursement1 = get(rawData1, 'outDisbursementBar.count', 0);
+  const outDisbursement2 = get(rawData1, 'outDisbursement_2.count', 0);
+  const outDisbursement3 = get(rawData1, 'outDisbursement_3.count', 0);
+  const outDisbursement4 = get(rawData2, 'outDisbursement_4.count', 0);
   return {
     title: 'Outgoing disbursements',
     items: [
@@ -47,10 +47,8 @@ export const getOutDisbursementsListData = (rawData): ListModel => {
         tooltip: 'With source traceability information',
         values: [
           {
-            // ptc: percentage(outDisbursement4, allHumActCount),
-            // qtc: outDisbursement4,
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(outDisbursement4, allHumActCount),
+            qtc: outDisbursement4,
           },
         ],
       },

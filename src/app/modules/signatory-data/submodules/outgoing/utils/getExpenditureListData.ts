@@ -6,7 +6,7 @@ export const getExpenditureListData = (rawData): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const outExpenditure1 = get(rawData, 'outExpenditureBar.count', 0);
   const outExpenditure3 = get(rawData, 'outExpenditure_3.count', 0);
-  // const outExpenditure4 = get(rawData, 'outExpenditure_4.count', 0);
+  const outExpenditure4 = get(rawData, 'outExpenditure_4.count', 0);
   return {
     title: 'Expenditure',
     items: [
@@ -45,10 +45,8 @@ export const getExpenditureListData = (rawData): ListModel => {
         tooltip: 'With organisation type provided',
         values: [
           {
-            // ptc: percentage(outDisbursement4 allHumActCount),
-            // qtc: outDisbursement4,
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(outExpenditure4, allHumActCount),
+            qtc: outExpenditure4,
           },
         ],
       },
