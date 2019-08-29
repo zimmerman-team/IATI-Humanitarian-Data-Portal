@@ -105,3 +105,44 @@ export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
     }
   }),
 });
+
+// and redux actions for the generic api model
+export const apiPOSTModel = <QueryModel, ResponseModel>(
+  url: string
+): ApiModel<QueryModel, ResponseModel> => ({
+  loading: false,
+  success: false,
+  data: null,
+  errorData: null,
+  onError: action((state, payload: Errors) => {
+    state.loading = false;
+    state.errorData = payload;
+  }),
+  onSuccess: action((state, payload: ResponseData<ResponseModel>) => {
+    state.loading = false;
+    state.success = true;
+    state.data = payload;
+  }),
+  onRequest: action(state => {
+    state.loading = true;
+    state.success = false;
+  }),
+  fetch: thunk(async (actions, query: RequestValues<QueryModel>) => {
+    actions.onRequest();
+
+    const formData = new FormData();
+    const qValues = query.values as QueryModel;
+    Object.keys(qValues).forEach(key => {
+      formData.append(key, qValues[key]);
+    });
+
+    axios.post(url, formData).then(
+      (resp: AxiosResponse) => {
+        actions.onSuccess({ data: resp.data });
+      },
+      (error: any) => {
+        actions.onError(error.response);
+      }
+    );
+  }),
+});
