@@ -6,12 +6,12 @@ import { OverviewLayout } from './layout';
 
 /* state & utils */
 import get from 'lodash/get';
-import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 import { getAllYears } from 'app/modules/signatory-data/submodules/utils';
 import {
+  barJsonFacet,
   humCallValues,
   activityStatusValues,
 } from 'app/modules/signatory-data/submodules/overview/const';
@@ -70,7 +70,7 @@ export function OverviewPage(props) {
     };
     const sigdataoverviewhumcallValues = {
       values: {
-        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1))`,
+        q: `reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
         'json.facet': JSON.stringify(humCallValues),
         rows: 0,
       },
@@ -81,37 +81,27 @@ export function OverviewPage(props) {
 
   /* componentDidUpdate based on sigdataactivityyearsData */
   React.useEffect(() => {
-    const yearsQueryString = years
-      .map(
-        (y, index) =>
-          `${
-            index > 0 ? 'facet.query=' : ''
-          }{!tag=q1}activity_date_iso_date:[${y}-01-01T00:00:00Z TO ${y}-12-31T24:00:00Z]`
-      )
-      .join('&');
     const sigdataactivitiesbyyearcallValues = {
-      values: `q=reporting_org_ref:${props.match.params.code}&facet.query=${yearsQueryString}&facet.pivot={!query=q1}humanitarian&facet=on&fl=facet_counts`,
+      values: {
+        q: `reporting_org_ref:${props.match.params.code}`,
+        'json.facet': JSON.stringify(barJsonFacet(years)),
+        rows: 0,
+      },
     };
     sigdataactivitiesbyyearCall(sigdataactivitiesbyyearcallValues);
   }, [sigdataactivityyearsData]);
 
-  const yearsData = get(
-    sigdataactivitiesbyyearData,
-    'data.facet_counts.facet_pivot.humanitarian',
-    []
-  );
+  const yearsData = get(sigdataactivitiesbyyearData, 'data.facets', {});
 
   /* format data */
-  const activityTimelineData = getYearBarChartData(yearsData, years);
-  const humActCount = get(find(yearsData, { value: '1' }), 'count', 0);
+  const activityTimelineData = getYearBarChartData(yearsData);
   const humanitarianElementsData = getHumanitarianElementsData(
-    get(sigdataoverviewhumData, 'data', []),
-    humActCount
+    get(sigdataoverviewhumData, 'data', [])
   );
   const statusData = getStatusData(get(sigdataactivitystatusData, 'data', []));
   const activitySummaryData = getActivitySummaryData({
     yearsData,
-    currentHumActData: get(sigdataactivitystatusData, 'data', []),
+    humData: get(sigdataoverviewhumData, 'data', []),
   });
   const humActFTSData = getHumActFTSData(
     get(sigdataoverviewhumData, 'data', {})

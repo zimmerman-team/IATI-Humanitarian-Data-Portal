@@ -11,10 +11,7 @@ import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityy
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
-import {
-  ActivityResponceInterface,
-  ActivityResponceStringQueryInterface,
-} from 'app/state/api/interfaces/activityInterface';
+import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 
 const persistSessionConfig = {
   key: 'session',
@@ -30,7 +27,7 @@ export interface ApplicationStoreModel {
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
-  sigdataactivitiesbyyear: ActivityResponceStringQueryInterface;
+  sigdataactivitiesbyyear: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {

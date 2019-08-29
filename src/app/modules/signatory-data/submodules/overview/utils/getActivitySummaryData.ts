@@ -1,16 +1,9 @@
 import get from 'lodash/get';
-import find from 'lodash/find';
+import { percentage } from './percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getActivitySummaryData = (rawData): ListModel => {
-  const humanitarianCount = get(
-    find(rawData.yearsData, { value: '1' }),
-    'count',
-    0
-  );
-  const allActivitiesCount =
-    humanitarianCount +
-    get(find(rawData.yearsData, { value: '0' }), 'count', 0);
+  const allActivitiesCount = get(rawData.yearsData, 'count', 0);
   return {
     title: 'Activity Summary',
     subtitle: '',
@@ -29,10 +22,11 @@ export const getActivitySummaryData = (rawData): ListModel => {
         label: 'Humanitarian activities',
         values: [
           {
-            ptc: `${Math.round(
-              (humanitarianCount * 100) / allActivitiesCount
-            )}%`,
-            qtc: humanitarianCount,
+            ptc: percentage(
+              get(rawData.humData, 'facets.count', 0),
+              allActivitiesCount
+            ),
+            qtc: get(rawData.humData, 'facets.count', 0),
           },
         ],
       },
@@ -40,20 +34,11 @@ export const getActivitySummaryData = (rawData): ListModel => {
         label: 'Current humanitarian activities',
         values: [
           {
-            ptc: `${Math.round(
-              (get(
-                rawData.currentHumActData,
-                'facets.currentHumValuesData.count',
-                0
-              ) *
-                100) /
-                allActivitiesCount
-            )}%`,
-            qtc: get(
-              rawData.currentHumActData,
-              'facets.currentHumValuesData.count',
-              0
+            ptc: percentage(
+              get(rawData.humData, 'facets.currentHumValuesData.count', 0),
+              allActivitiesCount
             ),
+            qtc: get(rawData.humData, 'facets.currentHumValuesData.count', 0),
           },
         ],
       },
