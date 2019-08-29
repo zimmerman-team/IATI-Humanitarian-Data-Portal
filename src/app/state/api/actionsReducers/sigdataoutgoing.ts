@@ -2,10 +2,10 @@ import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInte
 import { apiModel } from './index';
 import { DS_API } from 'app/config';
 
-export const sigdataincoming: ActivityResponceInterface = {
+export const sigdataoutgoing: ActivityResponceInterface = {
   ...apiModel(`${DS_API}/search/activity/select/`),
 };
 
-export const sigdataincomingfundtrace: ActivityResponceInterface = {
+export const sigdataoutgoingdisbtrace: ActivityResponceInterface = {
   ...apiModel(`${DS_API}/search/activity/select/`),
 };

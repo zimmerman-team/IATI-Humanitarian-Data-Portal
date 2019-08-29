@@ -4,7 +4,14 @@ import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
-import sigdataincoming from 'app/state/api/actionsReducers/sigdataincoming';
+import {
+  sigdataincoming,
+  sigdataincomingfundtrace,
+} from 'app/state/api/actionsReducers/sigdataincoming';
+import {
+  sigdataoutgoing,
+  sigdataoutgoingdisbtrace,
+} from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
@@ -21,13 +28,16 @@ const persistSessionConfig = {
 export interface ApplicationStoreModel {
   activities: ActivityResponceInterface;
   humanitarian: ActivityResponceInterface;
-  gbsignatories: GBSignatoryResponseInterface;
   sigdataincoming: ActivityResponceInterface;
+  sigdataoutgoing: ActivityResponceInterface;
+  gbsignatories: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
+  sigdataincomingfundtrace: ActivityResponceInterface;
+  sigdataoutgoingdisbtrace: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -35,11 +45,14 @@ const applicationStore: ApplicationStoreModel = {
   humanitarian,
   gbsignatories,
   sigdataincoming,
+  sigdataoutgoing,
   iatigbsignatories,
   sigdataoverviewhum,
   sigdataactivityyears,
   sigdataactivitystatus,
   sigdataactivitiesbyyear,
+  sigdataincomingfundtrace,
+  sigdataoutgoingdisbtrace,
 };
 
 export const appStore = createStore(applicationStore, {

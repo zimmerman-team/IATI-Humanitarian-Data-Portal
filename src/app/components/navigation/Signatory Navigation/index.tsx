@@ -5,6 +5,7 @@ import Colors from 'app/theme/color';
 import { SignatoryNavigationModel } from './model';
 import { Grid } from '@material-ui/core';
 import useLocation from 'react-use/lib/useLocation';
+import get from 'lodash/get';
 
 //TODO: Component too convoluted, should be refactored to work the same as the App Bar
 const LocationLink = styled(props => <NavLink {...props} />)`
@@ -56,18 +57,21 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
   return (
     <Grid container justify="flex-end" wrap="wrap">
       {props.locations.map(location => {
-        //TODO: this ofcourse should not be supressed
-        // @ts-ignore
-        if (state.pathname.includes(location.url)) {
+        if (get(state, 'pathname', '').includes(location.url)) {
           return (
-            <CurrentLocationLink variant="button">
+            <CurrentLocationLink
+              variant="button"
+              key={location.label}
+              to={`/signatory-data/${props.activity}/${location.url}`}
+            >
               {location.label}
-              <Underline show={'true'} />
+              <Underline show="true" />
             </CurrentLocationLink>
           );
         }
         return (
           <LocationLink
+            key={location.label}
             to={`/signatory-data/${props.activity}/${location.url}`}
           >
             {location.label}

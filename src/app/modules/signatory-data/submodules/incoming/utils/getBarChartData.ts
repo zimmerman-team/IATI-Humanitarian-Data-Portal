@@ -7,7 +7,7 @@ export const getBarChartData = (rawData): HorizontalBarChartCardModel => {
   const incCommitmentValue = get(rawData, 'incCommitmentBar.count', 0);
   const incFundsValue = get(rawData, 'incFundsBar.count', 0);
   return {
-    title: 'Signatories meeting Data Publication CCTRIs',
+    title: 'Humanitarian transaction type breakdown',
     data: {
       values: [
         {
