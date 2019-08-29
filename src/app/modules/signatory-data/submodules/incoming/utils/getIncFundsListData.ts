@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from 'app/utils/percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getIncFundsListData = (rawData): ListModel => {
@@ -15,7 +16,7 @@ export const getIncFundsListData = (rawData): ListModel => {
         tooltip: 'Total no. of activities with Incoming Funds',
         values: [
           {
-            ptc: `${Math.round((incFundsValue1 * 100) / allHumActCount)}%`,
+            ptc: percentage(incFundsValue1, allHumActCount),
             qtc: incFundsValue1,
           },
         ],
@@ -25,7 +26,7 @@ export const getIncFundsListData = (rawData): ListModel => {
         tooltip: 'With funding provider details specified',
         values: [
           {
-            ptc: `${Math.round((incFundsValue2 * 100) / allHumActCount)}%`,
+            ptc: percentage(incFundsValue2, allHumActCount),
             qtc: incFundsValue2,
           },
         ],
@@ -35,7 +36,7 @@ export const getIncFundsListData = (rawData): ListModel => {
         tooltip: 'With funding organisation type provided',
         values: [
           {
-            ptc: `${Math.round((incFundsValue3 * 100) / allHumActCount)}%`,
+            ptc: percentage(incFundsValue3, allHumActCount),
             qtc: incFundsValue3,
           },
         ],
@@ -45,7 +46,7 @@ export const getIncFundsListData = (rawData): ListModel => {
         tooltip: 'With source traceability information',
         values: [
           {
-            // ptc: `${Math.round((incFundsValue4 * 100) / allHumActCount)}%`,
+            // ptc: percentage(incFundsValue4, allHumActCount),
             // qtc: incFundsValue4,
             ptc: 'TBD',
             qtc: 'TBD',

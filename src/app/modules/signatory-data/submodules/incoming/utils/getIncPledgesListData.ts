@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import { percentage } from 'app/utils/percentage';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getIncPledgesListData = (rawData): ListModel => {
@@ -14,7 +15,7 @@ export const getIncPledgesListData = (rawData): ListModel => {
         tooltip: 'Total no. of activities with Incoming Pledges',
         values: [
           {
-            ptc: `${Math.round((incPledgeValue1 * 100) / allHumActCount)}%`,
+            ptc: percentage(incPledgeValue1, allHumActCount),
             qtc: incPledgeValue1,
           },
         ],
@@ -24,7 +25,7 @@ export const getIncPledgesListData = (rawData): ListModel => {
         tooltip: 'With funding provider details specified',
         values: [
           {
-            ptc: `${Math.round((incPledgeValue2 * 100) / allHumActCount)}%`,
+            ptc: percentage(incPledgeValue2, allHumActCount),
             qtc: incPledgeValue2,
           },
         ],
@@ -34,7 +35,7 @@ export const getIncPledgesListData = (rawData): ListModel => {
         tooltip: 'With funding organisation type provided',
         values: [
           {
-            ptc: `${Math.round((incPledgeValue3 * 100) / allHumActCount)}%`,
+            ptc: percentage(incPledgeValue3, allHumActCount),
             qtc: incPledgeValue3,
           },
         ],
