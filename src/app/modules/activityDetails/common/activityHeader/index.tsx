@@ -5,10 +5,17 @@ import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import styled from 'styled-components';
 import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 
-const LabelContainer = styled.div`
-  margin-top: 2px;
-  margin-left: 58px;
+const DatesContainer = styled.div`
+  display: flex;
+`;
+
+const DatesLabel = styled.div`
+  margin-top: 3px;
   margin-right: 8px;
+`;
+
+const IdentifierContainer = styled.div`
+  margin-right: 58px;
 `;
 
 export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
@@ -41,17 +48,21 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
             </Typography>
             <Box height="14px" width="100%" />
             <Grid container direction="row">
-              <Typography variant="overline" color="textPrimary">
-                {props.activity.code}
-              </Typography>
-              <LabelContainer>
-                <Typography variant="subtitle1" color="textPrimary">
-                  Activity dates
+              <IdentifierContainer>
+                <Typography variant="overline" color="textPrimary">
+                  {props.activity.code}
                 </Typography>
-              </LabelContainer>
-              <Typography variant="overline" color="textPrimary">
-                {props.activity.startDate} {props.activity.endDate}
-              </Typography>
+              </IdentifierContainer>
+              <DatesContainer>
+                <DatesLabel>
+                  <Typography variant="subtitle1" color="textPrimary">
+                    Activity dates
+                  </Typography>
+                </DatesLabel>
+                <Typography variant="overline" color="textPrimary">
+                  {props.activity.startDate} to {props.activity.endDate}
+                </Typography>
+              </DatesContainer>
             </Grid>
           </Grid>
         </Grid>

@@ -12,7 +12,7 @@ export type ActivityDetailModel = {
   lists: ListModel[];
 };
 
-type SectionsModel = {
+export type SectionsModel = {
   title: string;
   content: string;
 };
