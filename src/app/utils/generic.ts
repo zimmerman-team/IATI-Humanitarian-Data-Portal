@@ -35,6 +35,7 @@ interface ActualDateInterface {
 // where the indexes correspond to each other.
 // The actual start date is of type code 2
 // and the actual end is of type code 4
+// ALSO this formats the dates
 export function getActualDates(
   dates: string[],
   dateTypes: string[]

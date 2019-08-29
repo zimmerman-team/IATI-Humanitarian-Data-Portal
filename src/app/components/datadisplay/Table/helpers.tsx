@@ -20,12 +20,14 @@ import {
 } from 'app/components/datadisplay/Table/model';
 import { MUIDataTableState } from 'mui-datatables';
 
-const nf = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
+const nf = (currency: string) => {
+  return new Intl.NumberFormat('en-US', {
+    currency,
+    style: 'currency',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
 
 /* method for getting the correct expandable table cell component depending on the table variant */
 export function getExpandableTableCell(
@@ -145,6 +147,11 @@ function renderExpandableRow(
   ));
 }
 
+export function formatMoney(value: number, currency?: string): string {
+  const currenc = currency || 'EUR';
+  return nf(currenc).format(value);
+}
+
 export function calculateTotalRow(tableState, totalRowColsDef) {
   const data = tableState.displayData
     ? filter(tableState.data, d => {
@@ -172,10 +179,6 @@ export function calculateTotalRow(tableState, totalRowColsDef) {
   });
   checkAndAddTotalRow(totalRowData, true);
   return totalRowData;
-}
-
-export function formatMoney(value: number): string {
-  return nf.format(value);
 }
 
 /* additional config */

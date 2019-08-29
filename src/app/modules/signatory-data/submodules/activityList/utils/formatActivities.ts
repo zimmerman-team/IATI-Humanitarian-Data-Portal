@@ -4,7 +4,7 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 import { getActualDates, getEngText } from 'app/utils/generic';
 
 /* consts */
-import { statusNames } from '../const';
+import { actStatusNames } from 'app/__consts__/iati_standard_code_names';
 
 export function formatActivities(
   activities?: SingleDefActivity[]
@@ -26,7 +26,7 @@ export function formatActivities(
       tableData.push([
         dates.actualStart,
         dates.actualEnd,
-        statusNames[activity.activity_status_code],
+        actStatusNames[activity.activity_status_code],
         [activity.iati_identifier, engTitle],
         activity.recipient_country_narrative || [],
         resultCount,

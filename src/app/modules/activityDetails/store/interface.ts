@@ -3,6 +3,7 @@ import { ApiModel } from 'app/state/api/interfaces';
 export interface ActDetailQuery {
   q: string;
   fl: string;
+  rows?: number;
 }
 
 export interface ActMetadataModel {
@@ -21,6 +22,7 @@ export interface ActTransactionModel {
   transaction_value: number;
   transaction_value_currency: string;
   transaction_provider_org_provider_activity_id: string;
+  transaction_receiver_org_receiver_activity_id: string;
   transaction_provider_org_narrative: string;
   transaction_receiver_org_narrative: string;
 }

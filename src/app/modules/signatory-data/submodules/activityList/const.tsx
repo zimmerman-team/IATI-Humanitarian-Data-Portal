@@ -18,18 +18,6 @@ export const activitiesQuery = {
         activity_date_type,activity_date_iso_date,result`,
 };
 
-// the activity status code correspondence to
-// the name status name according to the
-// iati standard - http://reference.iatistandard.org/203/codelists/ActivityStatus/
-export const statusNames = {
-  '1': 'Pipeline/identification',
-  '2': 'Implementation',
-  '3': 'Finalisation',
-  '4': 'Closed',
-  '5': 'Cancelled',
-  '6': 'Suspended',
-};
-
 export const activityBaseTable: TableModuleModel = {
   title: 'Humanitarian activities',
   data: [],
