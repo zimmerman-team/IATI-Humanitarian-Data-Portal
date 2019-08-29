@@ -25,7 +25,7 @@ function SignatoryIncomingPage(props) {
   React.useEffect(() => {
     const sigdataincomingcallValues = {
       values: {
-        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1))`,
+        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
         'json.facet': JSON.stringify(incomingCallFacetValues),
         rows: 0,
       },
