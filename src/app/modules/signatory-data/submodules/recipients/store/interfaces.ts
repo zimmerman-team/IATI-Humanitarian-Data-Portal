@@ -44,3 +44,6 @@ export interface RecipientsRespModel {
     };
   };
 }
+
+// TODO:
+// url to work with: https://test-datastore.iatistandard.org/search/transaction/select/?q=reporting_org_ref:XM-DAC-xz928&rows=0&facet=on&stats=true&stats.field={!tag=piv1%20sum=true}transaction_value&facet.pivot={!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,iati_identifier,transaction_type,transaction_value_currency
