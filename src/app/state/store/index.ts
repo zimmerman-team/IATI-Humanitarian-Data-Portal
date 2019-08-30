@@ -12,10 +12,6 @@ import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
-import {
-  orgtypecodelist,
-  sigdataproviderstypes,
-} from 'app/state/api/actionsReducers/sigdataproviders';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
@@ -34,13 +30,11 @@ export interface ApplicationStoreModel {
   humanitarian: ActivityResponceInterface;
   sigdataincoming: ActivityResponceInterface;
   sigdataoutgoing: ActivityResponceInterface;
-  orgtypecodelist: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
-  sigdataproviderstypes: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
   sigdataincomingfundtrace: ActivityResponceInterface;
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
@@ -50,14 +44,12 @@ const applicationStore: ApplicationStoreModel = {
   activities,
   humanitarian,
   gbsignatories,
-  orgtypecodelist,
   sigdataincoming,
   sigdataoutgoing,
   iatigbsignatories,
   sigdataoverviewhum,
   sigdataactivityyears,
   sigdataactivitystatus,
-  sigdataproviderstypes,
   sigdataactivitiesbyyear,
   sigdataincomingfundtrace,
   sigdataoutgoingdisbtrace,

@@ -5,46 +5,33 @@ import { withRouter } from 'react-router-dom';
 import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/providersPage/layout';
 /* state & utils */
 import get from 'lodash/get';
-import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import { mockData } from './mock';
+import { sigDataProvidersStore } from 'app/modules/signatory-data/submodules/providersPage/store';
 import { providersTypesCallValues } from 'app/modules/signatory-data/submodules/providersPage/consts';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 
 export function ProvidersPageFunc(props) {
-  /* redux store variables */
-  const orgtypecodelistData = useStoreState(
-    state => state.orgtypecodelist.data
-  );
-  const sigdataproviderstypesData = useStoreState(
-    state => state.sigdataproviderstypes.data
-  );
-  /* create the API call instances */
-  const orgtypecodelistCall = useStoreActions(
-    state => state.orgtypecodelist.fetch
-  );
-  const sigdataproviderstypesCall = useStoreActions(
-    state => state.sigdataproviderstypes.fetch
-  );
+  /* component store */
+  const [state, actions] = sigDataProvidersStore();
   /* componentDidMount call */
   React.useEffect(() => {
-    orgtypecodelistCall({});
+    actions.orgtypecodelist.fetch({});
   }, []);
   React.useEffect(() => {
-    const callValues = {
+    actions.sigdataproviderstypes.fetch({
       values: {
         q: `reporting_org_ref:${props.match.params.code}`,
         'json.facet': JSON.stringify(providersTypesCallValues),
         rows: 0,
       },
-    };
-    sigdataproviderstypesCall(callValues);
-  }, [orgtypecodelistData]);
+    });
+  }, [state.orgtypecodelist.data]);
   return (
     <ProvidersPageLayout
       activity={mockData.activity}
       barChartData={getBarChartData(
-        get(sigdataproviderstypesData, 'data', {}),
-        get(orgtypecodelistData, 'data', {})
+        get(state.sigdataproviderstypes.data, 'data', {}),
+        get(state.orgtypecodelist.data, 'data', {})
       )}
       tableData={mockData.tableData}
     />

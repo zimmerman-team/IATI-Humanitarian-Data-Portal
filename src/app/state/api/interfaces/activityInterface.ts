@@ -97,6 +97,7 @@ interface ActivityQuery {
   fl?: string;
   rows?: number;
   start?: number;
+  'json.facet'?: string;
 }
 
 export interface ActivityResponceInterface
