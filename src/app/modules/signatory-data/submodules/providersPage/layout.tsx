@@ -21,13 +21,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
           <Box width="100%" height="32px" />
         </Hidden>
 
-        <TableModule
-          title={props.tableData.title}
-          columnsCell={props.tableData.columnsCell}
-          columns={props.tableData.columns}
-          data={props.tableData.data}
-          options={props.tableData.options}
-        />
+        <TableModule {...props.tableData} />
       </Grid>
     </>
   );

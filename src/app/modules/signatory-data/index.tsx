@@ -17,9 +17,7 @@ import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 export function SignatoryData() {
   useTitle(`MLT - ${signatoryDataMock.title}`);
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
-  const iatigbsignatoriesData = useStoreState(
-    state => state.iatigbsignatories.data
-  );
+  const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
   /* create the API call instances */
   const iatigbsignatoriesCall = useStoreActions(
     actions => actions.iatigbsignatories.fetch
@@ -40,7 +38,7 @@ export function SignatoryData() {
 
   const signatories = formatTableSignatories(
     get(
-      get(iatigbsignatoriesData, 'data', []),
+      get(iatigbsignatoriesData, 'data.data', []),
       'facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,iati_version,humanitarian,transaction_type,transaction_provider_org_ref"]',
       []
     ),
@@ -51,6 +49,7 @@ export function SignatoryData() {
       signatories={signatories}
       title={signatoryDataMock.title}
       description={signatoryDataMock.description}
+      loading={gbsignatoriesData.loading || iatigbsignatoriesData.loading}
     />
   );
 }
