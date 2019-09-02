@@ -1,19 +1,47 @@
 import React from 'react';
 
-/* models */
+/* models/interfaces */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
+import { RecipientsQueryModel, RecTypesQueryModel } from './store/interfaces';
 
-export const recipientsQuery = {
-  q:
-    'reporting_org_ref:{rep_org_ref} AND (transaction_humanitarian:1 OR iati_identifier:({iati_identifiers}))',
-  stats: true,
-  'facet.pivot':
-    '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency',
-  rows: 0,
-  facet: 'on',
-  'stats.field': '{!tag=piv1 sum=true}transaction_value',
-  'facet.limit': -1,
-  'facet.missing': true,
+export const recipientsQuery = (
+  repOrgRef: string,
+  iatiIdentifiers: string
+): RecipientsQueryModel => {
+  return {
+    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
+    stats: true,
+    'facet.pivot':
+      '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency',
+    rows: 0,
+    facet: 'on',
+    'stats.field': '{!tag=piv1 sum=true}transaction_value',
+    'facet.limit': -1,
+    'facet.missing': true,
+  };
+};
+
+export const recHumTypesQuery = (
+  repOrgRef: string,
+  iatiIdentifiers: string
+): RecTypesQueryModel => {
+  return {
+    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
+    'facet.limit': -1,
+    'facet.pivot': 'transaction_receiver_org_type',
+    rows: 0,
+    facet: 'on',
+  };
+};
+
+export const recAllTypesQuery = (repOrgRef: string): RecTypesQueryModel => {
+  return {
+    q: `reporting_org_ref:${repOrgRef}`,
+    'facet.limit': -1,
+    'facet.pivot': 'transaction_receiver_org_type',
+    rows: 0,
+    facet: 'on',
+  };
 };
 
 // so this query gets the humanitarian activity identifiers

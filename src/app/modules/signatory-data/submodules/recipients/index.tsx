@@ -7,7 +7,13 @@ import { mockData } from './mock';
 import { recStore } from './store';
 
 /* consts */
-import { humActQuery, recBaseTable, recipientsQuery } from './const';
+import {
+  humActQuery,
+  recAllTypesQuery,
+  recBaseTable,
+  recHumTypesQuery,
+  recipientsQuery,
+} from './const';
 import { pivotKey } from './store/interfaces';
 
 /* utils */
@@ -20,27 +26,29 @@ import { ExpandedRow } from 'app/components/datadisplay/Table/common/ExpandedRow
 function RecipientsF(props) {
   const [state, actions] = recStore();
 
-  // so here we get the humanitarian activities of the signatory
-  // and we will use the activity identifiers as filters for the
-  // transactions BUT one thing is left out of the query for these activities
-  // it is the 'transaction/@humanitarion' query check as it makes more
-  // sense to check if the transaction is humanitarian when
-  // checking the transactions endpoint, as some of the activities
-  // transactions may not be humanitarian, so it would be not
-  // accurate data in that sense
   useEffect(() => {
     humActQuery.q = humActQuery.q.replace(
       '{rep_org_ref}',
       props.match.params.code
     );
+    // so here we get the humanitarian activities of the signatory
+    // and we will use the activity identifiers as filters for the
+    // transactions BUT one thing is left out of the query for these activities
+    // it is the 'transaction/@humanitarion' query check as it makes more
+    // sense to check if the transaction is humanitarian when
+    // checking the transactions endpoint, as some of the activities
+    // transactions may not be humanitarian, so it would be not
+    // accurate data in that sense
     actions.humActivities.fetch({ values: humActQuery });
+
+    // and here we get all the receiving organisation types
+    // of the signatory
+    actions.humRecTypes.fetch({
+      values: recAllTypesQuery(props.match.params.code),
+    });
   }, []);
 
   useEffect(() => {
-    recipientsQuery.q = recipientsQuery.q.replace(
-      '{rep_org_ref}',
-      props.match.params.code
-    );
     const humIdentifiers = get(
       state.humActivities,
       `data.data.response.docs`,
@@ -50,11 +58,14 @@ function RecipientsF(props) {
       const iatiIdentifiers = humIdentifiers
         .map(hum => hum.iati_identifier)
         .join(' ');
-      recipientsQuery.q = recipientsQuery.q.replace(
-        '{iati_identifiers}',
-        iatiIdentifiers
-      );
-      actions.recipients.fetch({ values: recipientsQuery });
+      // so we call table data here
+      actions.recipients.fetch({
+        values: recipientsQuery(props.match.params.code, iatiIdentifiers),
+      });
+      // and here we call the humanitarian bar data
+      actions.humRecTypes.fetch({
+        values: recHumTypesQuery(props.match.params.code, iatiIdentifiers),
+      });
     }
   }, [state.humActivities]);
 
