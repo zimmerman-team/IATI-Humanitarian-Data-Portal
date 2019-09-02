@@ -24,7 +24,7 @@ export function ProvidersPageFunc(props) {
   React.useEffect(() => {
     actions.sigdataproviderstypes.fetch({
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
         'json.facet': JSON.stringify(providersTypesCallValues),
         rows: 0,
       },

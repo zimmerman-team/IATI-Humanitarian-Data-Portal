@@ -8,7 +8,7 @@ export const providersTypesCallValues = {
 
 export const providersTableCallValues = pubRef => {
   return {
-    q: `reporting_org_ref:${pubRef}`,
+    q: `reporting_org_ref:${pubRef} AND transaction_humanitarian:1`,
     stats: 'true',
     'facet.pivot':
       '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency',
