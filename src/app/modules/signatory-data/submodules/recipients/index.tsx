@@ -82,7 +82,6 @@ function RecipientsF(props) {
 
   return (
     <RecipientsLayout
-      activity={mockData.activity}
       barChartData={mockData.barChartData}
       tableData={recBaseTable}
     />
