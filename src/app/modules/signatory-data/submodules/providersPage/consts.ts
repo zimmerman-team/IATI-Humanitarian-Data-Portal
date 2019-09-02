@@ -14,6 +14,7 @@ export const providersTableCallValues = pubRef => {
       '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency',
     rows: 0,
     facet: 'on',
+    'facet.missing': 'true',
     'stats.field': '{!tag=piv1 sum=true}transaction_value',
   };
 };
