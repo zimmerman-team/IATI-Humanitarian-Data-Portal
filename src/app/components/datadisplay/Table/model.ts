@@ -30,7 +30,7 @@ export interface InfoCellModuleModel {
 }
 
 export interface LinkCellModuleModel {
-  value: string | string[];
+  value: string | string[] | number;
   link: string;
   colSpan?: number;
 }

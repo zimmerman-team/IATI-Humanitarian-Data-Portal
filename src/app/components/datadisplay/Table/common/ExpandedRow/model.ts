@@ -1,5 +1,5 @@
 export interface ExpandedCell {
-  value: string;
+  value: string | number;
   link?: string;
   colSpan: number;
   type?: string;
