@@ -43,7 +43,7 @@ export const Footer = () => {
         <MONLogo />
       </Link>
 
-      <Link>Grand Bargins Data Privacy and Cookie Policy</Link>
+      <Link>Grand Bargains Data Privacy and Cookie Policy</Link>
     </Box>
   );
 };
