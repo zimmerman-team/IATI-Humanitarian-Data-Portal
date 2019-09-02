@@ -5,9 +5,14 @@ export interface TotalRowColModel {
   dataType: 'money' | 'percentage' | 'count' | 'none';
 }
 
+type moneyType = {
+  num: number;
+  currency: string;
+};
+
 export interface TableModuleModel {
   title: string;
-  data: Array<Array<number | string | undefined | Array<string | number>>>;
+  data: (number | string | undefined | (string | number)[] | moneyType)[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
   columnsCell?: string[];

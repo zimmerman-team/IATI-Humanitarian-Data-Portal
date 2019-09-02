@@ -21,7 +21,7 @@ import {
 import { MUIDataTableState } from 'mui-datatables';
 
 const nf = (currency: string) => {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat(undefined, {
     currency,
     style: 'currency',
     minimumFractionDigits: 2,
@@ -32,11 +32,12 @@ const nf = (currency: string) => {
 /* method for getting the correct expandable table cell component depending on the table variant */
 export function getExpandableTableCell(
   type: string,
-  value: string | string[]
+  value: string | string[],
+  link: string | undefined
 ): React.ReactNode {
   switch (type) {
     case 'LinkCellModule':
-      return <LinkCellModule value={value} link="#" />;
+      return <LinkCellModule value={value} link={link as string} />;
     default:
       return value;
   }
@@ -44,7 +45,7 @@ export function getExpandableTableCell(
 
 /* method for checking if total row exists, or not to add it */
 export function checkAndAddTotalRow(
-  totalData: Array<string | number> | undefined,
+  totalData: (string | number)[] | undefined,
   update?: boolean
 ) {
   const totalCell = document.getElementById('total-cell') as HTMLElement;
@@ -133,14 +134,14 @@ function renderExpandableRow(
   configProps: TableModuleModel
 ) {
   const dataArr = configProps.expandableData
-    ? configProps.expandableData[rowMeta.rowIndex]
+    ? configProps.expandableData[rowMeta.dataIndex]
     : [];
   return dataArr.map((row, i) => (
     <TableRow key={`${rowMeta.dataIndex}-${rowMeta.rowIndex}-${row[0].value}`}>
       <TableCell />
       {row.map(item => (
-        <TableCell colSpan={item.colSpan}>
-          {getExpandableTableCell(item.type, item.value)}
+        <TableCell colSpan={item.colSpan} key={item.value}>
+          {getExpandableTableCell(item.type, item.value, item.link)}
         </TableCell>
       ))}
     </TableRow>

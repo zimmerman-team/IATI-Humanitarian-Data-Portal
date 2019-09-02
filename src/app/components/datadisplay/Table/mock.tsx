@@ -340,10 +340,24 @@ export const mockDataVar4: TableModuleModel = {
       'National NGO',
       '3',
       '',
-      '€000,000.00',
+      { num: 0, currency: 'EUR' },
     ],
-    ['Aidsfonds', '000 000 00', 'National NGO', '3', '', '€000,000.00'],
-    ['UNESCO', '000 000 00', 'National NGO', '3', '', '€000,000.00'],
+    [
+      'Aidsfonds',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
+    [
+      'UNESCO',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
   ],
   columns: [
     {
