@@ -6,9 +6,15 @@ export const providersTypesCallValues = {
   orgTypes: { type: 'terms', field: 'transaction_provider_org_type' },
 };
 
-export const providersTableCallValues = pubRef => {
+export const providersTableCallValues = (pubRef, humActivities) => {
   return {
-    q: `reporting_org_ref:${pubRef} AND transaction_humanitarian:1`,
+    q: `reporting_org_ref:${pubRef} AND (transaction_humanitarian:1${
+      humActivities.length > 0
+        ? ` OR iati_identifier:(${humActivities
+            .map(act => act.iati_identifier)
+            .join(',')})`
+        : ''
+    })`,
     stats: 'true',
     'facet.pivot':
       '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency',

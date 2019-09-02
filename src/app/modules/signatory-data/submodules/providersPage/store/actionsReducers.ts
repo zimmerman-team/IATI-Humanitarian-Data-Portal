@@ -12,6 +12,10 @@ export const orgtypecodelist: ActivityResponceInterface = {
   ),
 };
 
+export const humanitarianActivities: ActivityResponceInterface = {
+  ...apiModel(`${DS_API}/search/activity/select/`),
+};
+
 export const sigdataproviders: ActivityResponceInterface = {
   ...apiModel(`${DS_API}/search/transaction/select/`),
 };

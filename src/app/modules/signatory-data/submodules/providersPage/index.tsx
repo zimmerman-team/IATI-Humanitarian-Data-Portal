@@ -20,6 +20,13 @@ export function ProvidersPageFunc(props) {
   /* componentDidMount call */
   React.useEffect(() => {
     actions.orgtypecodelist.fetch({});
+    actions.humanitarianActivities.fetch({
+      values: {
+        q: `reporting_org_ref:${props.match.params.code} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
+        fl: 'iati_identifier',
+        rows: 100000,
+      },
+    });
   }, []);
   React.useEffect(() => {
     actions.sigdataproviderstypes.fetch({
@@ -30,9 +37,12 @@ export function ProvidersPageFunc(props) {
       },
     });
     actions.sigdataproviders.fetch({
-      values: providersTableCallValues(props.match.params.code),
+      values: providersTableCallValues(
+        props.match.params.code,
+        get(state.humanitarianActivities.data, 'data.response.docs', [])
+      ),
     });
-  }, [state.orgtypecodelist.data]);
+  }, [state.orgtypecodelist.data, state.humanitarianActivities.data]);
 
   const tableData = getTableData(
     get(state.sigdataproviders.data, 'data', {}),
