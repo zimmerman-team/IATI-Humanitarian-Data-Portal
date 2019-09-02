@@ -98,6 +98,11 @@ interface ActivityQuery {
   rows?: number;
   start?: number;
   'json.facet'?: string;
+  'facet.limit'?: number;
+  'facet.offset'?: number;
+  'stats.field'?: string;
+  stats?: string;
+  'facet.pivot'?: string;
 }
 
 export interface ActivityResponceInterface
