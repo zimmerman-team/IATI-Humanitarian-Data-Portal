@@ -5,9 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/providersPage/layout';
 /* state & utils */
 import get from 'lodash/get';
-import { mockData } from './mock';
 import { sigDataProvidersStore } from 'app/modules/signatory-data/submodules/providersPage/store';
-import { providersTypesCallValues } from 'app/modules/signatory-data/submodules/providersPage/consts';
+import {
+  baseProviderConfig,
+  providersTypesCallValues,
+  providersTableCallValues,
+} from 'app/modules/signatory-data/submodules/providersPage/consts';
+import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 
 export function ProvidersPageFunc(props) {
@@ -25,15 +29,26 @@ export function ProvidersPageFunc(props) {
         rows: 0,
       },
     });
+    actions.sigdataproviders.fetch({
+      values: providersTableCallValues(props.match.params.code),
+    });
   }, [state.orgtypecodelist.data]);
+
+  const tableData = getTableData(
+    get(state.sigdataproviders.data, 'data', {}),
+    get(state.orgtypecodelist.data, 'data', {})
+  );
   return (
     <ProvidersPageLayout
-      activity={mockData.activity}
       barChartData={getBarChartData(
         get(state.sigdataproviderstypes.data, 'data', {}),
         get(state.orgtypecodelist.data, 'data', {})
       )}
-      tableData={mockData.tableData}
+      tableData={{
+        ...baseProviderConfig,
+        data: tableData.data,
+        expandableData: tableData.expData,
+      }}
     />
   );
 }
