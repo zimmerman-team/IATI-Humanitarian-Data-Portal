@@ -5,13 +5,23 @@ export interface BaseQuery {
   rows: number;
 }
 
+export interface RecTypesQueryModel extends BaseQuery {
+  'json.facet': string;
+}
+
 export interface RecipientsQueryModel extends BaseQuery {
   facet: string;
-  stats: boolean;
-  'stats.field': string;
   'facet.pivot': string;
   'facet.limit': number;
+  stats: boolean;
+  'stats.field': string;
   'facet.missing': boolean;
+}
+
+export interface RecTypesItemModel {
+  val: string;
+  count: number;
+  org_count: number;
 }
 
 export interface PivotItemModel {
@@ -53,6 +63,16 @@ export interface BaseRespModel<QueryModel, DocModel> {
   };
 }
 
+export interface RecTypeRespModel<QueryModel, DocModel>
+  extends BaseRespModel<QueryModel, DocModel> {
+  facets: {
+    count: number;
+    orgTypes: {
+      buckets: RecTypesItemModel[];
+    };
+  };
+}
+
 export interface RecipientsRespModel<QueryModel, DocModel>
   extends BaseRespModel<QueryModel, DocModel> {
   facet_counts: {
@@ -71,6 +91,12 @@ export interface RecipientsInterface
   extends ApiModel<
     RecipientsQueryModel,
     RecipientsRespModel<RecipientsQueryModel, any>
+  > {}
+
+export interface RecTypesInterface
+  extends ApiModel<
+    RecTypesQueryModel,
+    RecTypeRespModel<RecTypesQueryModel, any>
   > {}
 
 // interface to get humanitarian activities
