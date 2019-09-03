@@ -6,24 +6,28 @@ export interface BaseQuery {
 }
 
 export interface RecTypesQueryModel extends BaseQuery {
+  'json.facet': string;
+}
+
+export interface RecipientsQueryModel extends BaseQuery {
   facet: string;
   'facet.pivot': string;
   'facet.limit': number;
-}
-
-export interface RecipientsQueryModel extends RecTypesQueryModel {
   stats: boolean;
   'stats.field': string;
   'facet.missing': boolean;
 }
 
 export interface RecTypesItemModel {
+  val: string;
+  count: number;
+  org_count: number;
+}
+
+export interface PivotItemModel {
   field: string;
   value: string | null;
   count: number;
-}
-
-export interface PivotItemModel extends RecTypesItemModel {
   pivot?: PivotItemModel[];
   stats: {
     stats_fields: {
@@ -61,14 +65,10 @@ export interface BaseRespModel<QueryModel, DocModel> {
 
 export interface RecTypeRespModel<QueryModel, DocModel>
   extends BaseRespModel<QueryModel, DocModel> {
-  facet_counts: {
-    facet_queries: object;
-    facet_fields: object;
-    facet_ranges: object;
-    facet_intervals: object;
-    facet_heatmaps: object;
-    facet_pivot: {
-      transaction_receiver_org_type: PivotItemModel[];
+  facets: {
+    count: number;
+    orgTypes: {
+      buckets: RecTypesItemModel[];
     };
   };
 }

@@ -27,20 +27,18 @@ export const recHumTypesQuery = (
 ): RecTypesQueryModel => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
-    'facet.limit': -1,
-    'facet.pivot': 'transaction_receiver_org_type',
     rows: 0,
-    facet: 'on',
+    'json.facet':
+      "{ orgTypes: { type: 'terms', field: 'transaction_receiver_org_type', facet: { org_count: 'unique(transaction_receiver_org_narrative)' }, }, }",
   };
 };
 
 export const recAllTypesQuery = (repOrgRef: string): RecTypesQueryModel => {
   return {
     q: `reporting_org_ref:${repOrgRef}`,
-    'facet.limit': -1,
-    'facet.pivot': 'transaction_receiver_org_type',
     rows: 0,
-    facet: 'on',
+    'json.facet':
+      "{ orgTypes: { type: 'terms', field: 'transaction_receiver_org_type', facet: { org_count: 'unique(transaction_receiver_org_narrative)' }, }, }",
   };
 };
 

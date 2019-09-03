@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { RecipientsLayout } from './layout';
-import { mockData } from './mock';
 
 /* local store */
 import { recStore } from './store';
@@ -22,6 +21,7 @@ import { formatTableData } from './util/formatTableData';
 
 /* components */
 import { ExpandedRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
+import { formatBarChart } from './util/formatBarChart';
 
 function RecipientsF(props) {
   const [state, actions] = recStore();
@@ -43,7 +43,7 @@ function RecipientsF(props) {
 
     // and here we get all the receiving organisation types
     // of the signatory
-    actions.humRecTypes.fetch({
+    actions.allRecTypes.fetch({
       values: recAllTypesQuery(props.match.params.code),
     });
   }, []);
@@ -75,7 +75,20 @@ function RecipientsF(props) {
     null
   );
 
+  const allRecTypes = get(
+    state.allRecTypes,
+    `data.data.facets.orgTypes.buckets`,
+    null
+  );
+
+  const humRecTypes = get(
+    state.humRecTypes,
+    `data.data.facets.orgTypes.buckets`,
+    null
+  );
+
   const recTableData = formatTableData(recData);
+  const barChartData = formatBarChart(allRecTypes, humRecTypes);
 
   recBaseTable.data = recTableData.tableData;
   recBaseTable.options.renderExpandableRow = (rowData, rowMeta) => {
@@ -92,10 +105,7 @@ function RecipientsF(props) {
   };
 
   return (
-    <RecipientsLayout
-      barChartData={mockData.barChartData}
-      tableData={recBaseTable}
-    />
+    <RecipientsLayout barChartData={barChartData} tableData={recBaseTable} />
   );
 }
 
