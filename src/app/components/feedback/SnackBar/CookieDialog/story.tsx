@@ -8,7 +8,7 @@ storiesOf('Feedback|Snackbar/', module).add('Cookie Dialog', () => (
   <Providers>
     <Grid container spacing={3}>
       <Component
-        message="The website uses cookies for tracking statistics. Read Grand Bargins data privacy for more details."
+        message="The website uses cookies for tracking statistics. Read Grand Bargains data privacy for more details."
         open
       />
     </Grid>

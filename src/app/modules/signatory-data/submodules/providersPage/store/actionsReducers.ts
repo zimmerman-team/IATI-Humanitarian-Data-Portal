@@ -11,3 +11,11 @@ export const orgtypecodelist: ActivityResponceInterface = {
     `${process.env.REACT_APP_DS_API}/api/codelists/OrganisationType/?format=json`
   ),
 };
+
+export const humanitarianActivities: ActivityResponceInterface = {
+  ...apiModel(`${DS_API}/search/activity/select/`),
+};
+
+export const sigdataproviders: ActivityResponceInterface = {
+  ...apiModel(`${DS_API}/search/transaction/select/`),
+};
