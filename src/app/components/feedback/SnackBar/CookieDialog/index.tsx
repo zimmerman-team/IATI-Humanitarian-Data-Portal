@@ -70,7 +70,7 @@ const SnackBar = (props: SnackBarProps) => {
           <span id="client-snackbar">
             <Typo variant="body1">
               The website uses cookies for tracking statistics. Read{' '}
-              <Link>Grand Bargins data privacy</Link> for more details.
+              <Link>Grand Bargains data privacy</Link> for more details.
             </Typo>
           </span>
         }

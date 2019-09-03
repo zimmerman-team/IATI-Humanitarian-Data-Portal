@@ -5,9 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/providersPage/layout';
 /* state & utils */
 import get from 'lodash/get';
-import { mockData } from './mock';
 import { sigDataProvidersStore } from 'app/modules/signatory-data/submodules/providersPage/store';
-import { providersTypesCallValues } from 'app/modules/signatory-data/submodules/providersPage/consts';
+import {
+  baseProviderConfig,
+  providersTypesCallValues,
+  providersTableCallValues,
+} from 'app/modules/signatory-data/submodules/providersPage/consts';
+import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 
 export function ProvidersPageFunc(props) {
@@ -16,24 +20,45 @@ export function ProvidersPageFunc(props) {
   /* componentDidMount call */
   React.useEffect(() => {
     actions.orgtypecodelist.fetch({});
+    actions.humanitarianActivities.fetch({
+      values: {
+        q: `reporting_org_ref:${props.match.params.code} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
+        fl: 'iati_identifier',
+        rows: 100000,
+      },
+    });
   }, []);
   React.useEffect(() => {
     actions.sigdataproviderstypes.fetch({
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
         'json.facet': JSON.stringify(providersTypesCallValues),
         rows: 0,
       },
     });
-  }, [state.orgtypecodelist.data]);
+    actions.sigdataproviders.fetch({
+      values: providersTableCallValues(
+        props.match.params.code,
+        get(state.humanitarianActivities.data, 'data.response.docs', [])
+      ),
+    });
+  }, [state.orgtypecodelist.data, state.humanitarianActivities.data]);
+
+  const tableData = getTableData(
+    get(state.sigdataproviders.data, 'data', {}),
+    get(state.orgtypecodelist.data, 'data', {})
+  );
   return (
     <ProvidersPageLayout
-      activity={mockData.activity}
       barChartData={getBarChartData(
         get(state.sigdataproviderstypes.data, 'data', {}),
         get(state.orgtypecodelist.data, 'data', {})
       )}
-      tableData={mockData.tableData}
+      tableData={{
+        ...baseProviderConfig,
+        data: tableData.data,
+        expandableData: tableData.expData,
+      }}
     />
   );
 }

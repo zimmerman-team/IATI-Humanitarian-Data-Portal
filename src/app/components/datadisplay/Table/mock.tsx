@@ -12,8 +12,6 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
-import { ExpandedRow } from './common/ExpandedRow';
-import { ExpandedCell } from './common/ExpandedRow/model';
 
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated Signatory Data Publication Indicator Values',
@@ -333,159 +331,6 @@ export const mockDataVar3: TableModuleModel = {
   totalCell: false,
 };
 
-const expandableData = [
-  [
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '1',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights 2",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '2',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-  ],
-  [
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '1',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights 2",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '2',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-  ],
-  [
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '1',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-    [
-      {
-        value: "Promoting Opportunities for Women's Empowerment and Rights 2",
-        type: 'LinkCellModule',
-        link: '#',
-        colSpan: 4,
-      },
-      {
-        value: '2',
-        colSpan: 1,
-      },
-      {
-        value: 'Disburstment',
-        colSpan: 1,
-      },
-      {
-        value: '23 May 2018',
-        colSpan: 1,
-      },
-      {
-        value: '€000,000.00',
-        colSpan: 1,
-      },
-    ],
-  ],
-];
-
 export const mockDataVar4: TableModuleModel = {
   title: 'Providers',
   data: [
@@ -495,11 +340,24 @@ export const mockDataVar4: TableModuleModel = {
       'National NGO',
       '3',
       '',
-      '',
-      '€000,000.00',
+      { num: 0, currency: 'EUR' },
     ],
-    ['Aidsfonds', '000 000 00', 'National NGO', '3', '', '', '€000,000.00'],
-    ['UNESCO', '000 000 00', 'National NGO', '3', '', '', '€000,000.00'],
+    [
+      'Aidsfonds',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
+    [
+      'UNESCO',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
   ],
   columns: [
     {
@@ -515,11 +373,7 @@ export const mockDataVar4: TableModuleModel = {
       options: { filter: false },
     },
     {
-      name: 'Transactions',
-      options: { filter: false },
-    },
-    {
-      name: 'Transaction type',
+      name: 'Activites',
       options: { filter: false },
     },
     {
@@ -543,25 +397,131 @@ export const mockDataVar4: TableModuleModel = {
     expandableRows: true,
     selectableRows: 'none',
     expandableRowsOnClick: true,
-    renderExpandableRow: (rowData, rowMeta) => {
-      const expData = expandableData[rowMeta.rowIndex];
-      return (
-        <>
-          {expData.map((row, index) => {
-            return (
-              <ExpandedRow
-                key={`exp-row-${index}`}
-                data={row}
-                rowIndex={index}
-              />
-            );
-          })}
-        </>
-      );
-    },
   },
   columnsCell: ['', '', '', '', '', ''],
   totalCell: false,
+  expandableData: [
+    [
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '1',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '2',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+    ],
+    [
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '1',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '2',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+    ],
+    [
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '1',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+      [
+        {
+          value: "Promoting Opportunities for Women's Empowerment and Rights 2",
+          type: 'LinkCellModule',
+          colSpan: 3,
+        },
+        {
+          value: '2',
+          colSpan: 1,
+        },
+        {
+          value: '23 May 2018',
+          colSpan: 1,
+        },
+        {
+          value: '€000,000.00',
+          colSpan: 1,
+        },
+      ],
+    ],
+  ],
 };
 
 export const mockDataVar5: TableModuleModel = {
