@@ -14,10 +14,10 @@ if (rootElement != null) {
   }
 }
 
-if (process.env.REACT_APP_NODE_ENV === 'development') {
-  serviceWorker.unregister();
-} else {
-  serviceWorker.register();
-}
+// if (process.env.REACT_APP_NODE_ENV === 'development') {
+//   serviceWorker.unregister();
+// } else {
+//   serviceWorker.register();
+// }
 
 setupNotification();
