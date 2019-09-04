@@ -8,7 +8,7 @@ import { ProvidersPage } from './providersPage';
 import { SignatoryOutgoing } from './outgoing';
 import { Recipients } from './recipients';
 import { Timelines } from './timelines';
-import { Coverage } from './coverage';
+import { Coverage } from './coveragePage';
 
 export function SignatoryDataRoutes() {
   return (

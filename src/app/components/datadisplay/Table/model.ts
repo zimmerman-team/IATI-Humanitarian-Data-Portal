@@ -12,7 +12,13 @@ type moneyType = {
 
 export interface TableModuleModel {
   title: string;
-  data: (number | string | undefined | (string | number)[] | moneyType)[][];
+  data: (
+    | number
+    | string
+    | undefined
+    | null
+    | (string | number | null)[]
+    | moneyType)[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
   columnsCell?: string[];

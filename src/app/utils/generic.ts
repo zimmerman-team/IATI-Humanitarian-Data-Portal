@@ -28,6 +28,15 @@ interface ActualDateInterface {
   actualEnd: string;
 }
 
+// accepts string data of various formats
+// and reforamts it to 'Day shortMName Year'
+export function formatDate(strDate: string) {
+  const tempDate = new Date(strDate);
+  return `${tempDate.getDate()} ${
+    shortMonthNames[tempDate.getMonth()]
+  } ${tempDate.getFullYear()}`;
+}
+
 // util function to get actual start
 // and end dates according to the iati standard
 // http://reference.iatistandard.org/203/codelists/ActivityDateType/
@@ -47,17 +56,11 @@ export function getActualDates(
   const actualEndIndex = dateTypes.indexOf('4');
   if (actualStartIndex !== -1) {
     // and here we format the date
-    const tempDate = new Date(dates[actualStartIndex]);
-    actualStart = `${tempDate.getDate()} ${
-      shortMonthNames[tempDate.getMonth()]
-    } ${tempDate.getFullYear()}`;
+    actualStart = formatDate(dates[actualStartIndex]);
   }
   if (actualEndIndex !== -1) {
     // and here we format the date
-    const tempDate = new Date(dates[actualEndIndex]);
-    actualEnd = `${tempDate.getDate()} ${
-      shortMonthNames[tempDate.getMonth()]
-    } ${tempDate.getFullYear()}`;
+    actualEnd = formatDate(dates[actualEndIndex]);
   }
 
   return {
