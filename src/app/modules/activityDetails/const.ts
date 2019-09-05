@@ -8,6 +8,13 @@ export const actMetadataQuery: ActDetailQuery = {
     'iati_identifier,title,description,reporting_org_narrative,reporting_org_ref,activity_date_iso_date,activity_date_type',
 };
 
+export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {
+  return {
+    q: `iati_identifier:${activityIdentifier}`,
+    fl: 'result_title_narrative,result_reference,result_type',
+  };
+};
+
 export const inTransactionsQuery: ActDetailQuery = {
   q:
     'iati_identifier:{identifier_value} AND (transaction_type:1 OR transaction_type:11 OR transaction_type:13)',

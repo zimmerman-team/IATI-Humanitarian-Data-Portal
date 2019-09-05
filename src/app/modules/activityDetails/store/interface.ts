@@ -27,6 +27,12 @@ export interface ActTransactionModel {
   transaction_receiver_org_narrative: string;
 }
 
+export interface ActResultsModel {
+  result_type: string;
+  result_title_narrative: string[];
+  result_reference?: string[];
+}
+
 export interface ActDetailResponse<DocModel> {
   responseHeader: {
     status: number;
@@ -47,3 +53,7 @@ export interface ActMetadataInterface
 // activities transactions
 export interface ActTransactionsInterface
   extends ApiModel<ActDetailQuery, ActDetailResponse<ActTransactionModel>> {}
+
+// activities results
+export interface ActResultsInterface
+  extends ApiModel<ActDetailQuery, ActDetailResponse<ActResultsModel>> {}
