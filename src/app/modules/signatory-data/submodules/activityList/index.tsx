@@ -14,7 +14,6 @@ import get from 'lodash/get';
 
 function ActivityListz(props) {
   console.log('process.env.REACT_APP_PROD', process.env.REACT_APP_PROD);
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
 

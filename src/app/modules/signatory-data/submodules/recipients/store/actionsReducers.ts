@@ -5,19 +5,20 @@ import {
   RecipientsInterface,
   RecTypesInterface,
 } from './interfaces';
+import { endpoints } from 'app/__consts__/endpoints';
 
 export const recipients: RecipientsInterface = {
-  ...apiModel(`${DS_API}/search/transaction/select/`),
+  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
 };
 
 export const humActivities: HumActInterface = {
-  ...apiModel(`${DS_API}/search/activity/select/`),
+  ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
 };
 
 export const allRecTypes: RecTypesInterface = {
-  ...apiModel(`${DS_API}/search/transaction/select/`),
+  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
 };
 
 export const humRecTypes: RecTypesInterface = {
-  ...apiModel(`${DS_API}/search/transaction/select/`),
+  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
 };

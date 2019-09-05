@@ -35,6 +35,9 @@ function formatValue(currItem, defCurreny): ValCurrItem {
       // so if the transactions value is different
       // than the default value we convert it
       if (trans.val !== defCurr) {
+        console.log('defCurr', defCurr);
+        console.log('trans.val', trans.val);
+        console.log('trans.transaction_sum', trans.transaction_sum);
         convertedValue = fx.convert(trans.transaction_sum, {
           from: trans.val,
           to: defCurr,
