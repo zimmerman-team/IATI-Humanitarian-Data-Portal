@@ -22,6 +22,7 @@ import { actDetailStore } from './store';
 import { mockData } from './mock';
 import { formatSections } from './utils/formatSections';
 import { formatTransTable } from './utils/formatTransTable';
+import { formatResults } from './utils/formatResults';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
@@ -76,8 +77,6 @@ function ActivityDetail(props) {
 
   const resultData = get(state.actResults, 'data.data.response.docs', null);
 
-  console.log('resultData', resultData);
-
   /* ----------------------------------------------- */
 
   /* --------- FORMATTING DATA ----------------- */
@@ -99,23 +98,7 @@ function ActivityDetail(props) {
 
   const resultsCard = {
     title: 'Results',
-    items: [
-      [
-        { value: 'Title of Result', link: '#' },
-        { value: 'Reference code of Result' },
-        { value: 'Type of Result' },
-      ],
-      [
-        { value: 'Title of Result', link: '#' },
-        { value: 'Reference code of Result' },
-        { value: 'Type of Result' },
-      ],
-      [
-        { value: 'Title of Result', link: '#' },
-        { value: 'Reference code of Result' },
-        { value: 'Type of Result' },
-      ],
-    ],
+    items: formatResults(resultData),
   };
 
   return (

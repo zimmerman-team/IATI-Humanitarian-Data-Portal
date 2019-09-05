@@ -93,3 +93,10 @@ export const orgTypeNames = {
   // its added here for ease of use
   none: '',
 };
+
+export const resultTypeNames = {
+  '1': 'Output',
+  '2': 'Outcome',
+  '3': 'Impact',
+  '9': 'Other',
+};
