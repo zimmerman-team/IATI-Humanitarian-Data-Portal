@@ -5,7 +5,7 @@ export interface TotalRowColModel {
   dataType: 'money' | 'percentage' | 'count' | 'none';
 }
 
-type moneyType = {
+export type moneyType = {
   num: number;
   currency: string;
 };
