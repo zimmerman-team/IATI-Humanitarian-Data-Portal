@@ -13,32 +13,32 @@ import { Typography } from '@material-ui/core';
 // TODO:
 // - Optional highlight
 
-const Base = styled(props => <Paper {...props} />)`
+export const Base = styled(props => <Paper {...props} />)`
   padding: 18px 28px 32px 28px;
   && {
     box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
   }
 `;
 
-const TableHeader = styled(props => <TableCell {...props} />)`
+export const TableHeader = styled(props => <TableCell {...props} />)`
   && {
     padding-left: 0px;
   }
 `;
 
-const TableValueHeader = styled(props => <TableCell {...props} />)`
+export const TableValueHeader = styled(props => <TableCell {...props} />)`
   && {
     text-transform: capitalize;
   }
 `;
 
-const TableTitle = styled(props => <Typography {...props} />)`
+export const TableTitle = styled(props => <Typography {...props} />)`
   && {
     color: black;
   }
 `;
 
-const TableSubtitle = styled(props => <Typography {...props} />)``;
+export const TableSubtitle = styled(props => <Typography {...props} />)``;
 
 export const List = (props: ListModel) => {
   const listItems = props.items.map(item => (

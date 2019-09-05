@@ -9,6 +9,7 @@ import { formatHeader } from './utils/formatHeader';
 /* consts */
 import {
   actMetadataQuery,
+  actResultsQuery,
   baseTranstable,
   inTransactionsQuery,
   outTransactionsQuery,
@@ -28,6 +29,13 @@ function ActivityDetail(props) {
   /* ----------------------------------------------- */
 
   /* --------- CALLING API'S ----------------------- */
+  // calling activity results
+  useEffect(() => {
+    actions.actResults.fetch({
+      values: actResultsQuery(props.match.params.code),
+    });
+  }, []);
+
   // calling activity metadata
   useEffect(() => {
     actMetadataQuery.q = `iati_identifier:${props.match.params.code}`;
@@ -66,6 +74,10 @@ function ActivityDetail(props) {
     null
   );
 
+  const resultData = get(state.actResults, 'data.data.response.docs', null);
+
+  console.log('resultData', resultData);
+
   /* ----------------------------------------------- */
 
   /* --------- FORMATTING DATA ----------------- */
@@ -85,6 +97,27 @@ function ActivityDetail(props) {
 
   /* ----------------------------------------------- */
 
+  const resultsCard = {
+    title: 'Results',
+    items: [
+      [
+        { value: 'Title of Result', link: '#' },
+        { value: 'Reference code of Result' },
+        { value: 'Type of Result' },
+      ],
+      [
+        { value: 'Title of Result', link: '#' },
+        { value: 'Reference code of Result' },
+        { value: 'Type of Result' },
+      ],
+      [
+        { value: 'Title of Result', link: '#' },
+        { value: 'Reference code of Result' },
+        { value: 'Type of Result' },
+      ],
+    ],
+  };
+
   return (
     <ActivityDetailsLayout
       header={header}
@@ -93,6 +126,7 @@ function ActivityDetail(props) {
       outgoingTransactionsTableData={outTable}
       inPageNavigation={mockData.inPageNavigation}
       lists={mockData.lists}
+      tableCard={resultsCard}
     />
   );
 }

@@ -1,4 +1,8 @@
-import { ActMetadataInterface, ActTransactionsInterface } from './interface';
+import {
+  ActMetadataInterface,
+  ActResultsInterface,
+  ActTransactionsInterface,
+} from './interface';
 import { apiModel } from 'app/state/api/actionsReducers';
 import { DS_API } from 'app/config';
 
@@ -12,4 +16,8 @@ export const incTransactions: ActTransactionsInterface = {
 
 export const outTransactions: ActTransactionsInterface = {
   ...apiModel(`${DS_API}/search/transaction/select/`),
+};
+
+export const actResults: ActResultsInterface = {
+  ...apiModel(`${DS_API}/search/result/select/`),
 };
