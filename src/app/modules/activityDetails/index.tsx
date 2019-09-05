@@ -9,6 +9,7 @@ import { formatHeader } from './utils/formatHeader';
 /* consts */
 import {
   actMetadataQuery,
+  actResultsQuery,
   baseTranstable,
   inTransactionsQuery,
   outTransactionsQuery,
@@ -21,6 +22,7 @@ import { actDetailStore } from './store';
 import { mockData } from './mock';
 import { formatSections } from './utils/formatSections';
 import { formatTransTable } from './utils/formatTransTable';
+import { formatResults } from './utils/formatResults';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
@@ -28,6 +30,13 @@ function ActivityDetail(props) {
   /* ----------------------------------------------- */
 
   /* --------- CALLING API'S ----------------------- */
+  // calling activity results
+  useEffect(() => {
+    actions.actResults.fetch({
+      values: actResultsQuery(props.match.params.code),
+    });
+  }, []);
+
   // calling activity metadata
   useEffect(() => {
     actMetadataQuery.q = `iati_identifier:${props.match.params.code}`;
@@ -66,6 +75,8 @@ function ActivityDetail(props) {
     null
   );
 
+  const resultData = get(state.actResults, 'data.data.response.docs', null);
+
   /* ----------------------------------------------- */
 
   /* --------- FORMATTING DATA ----------------- */
@@ -85,6 +96,11 @@ function ActivityDetail(props) {
 
   /* ----------------------------------------------- */
 
+  const resultsCard = {
+    title: 'Results',
+    items: formatResults(resultData),
+  };
+
   return (
     <ActivityDetailsLayout
       header={header}
@@ -93,6 +109,7 @@ function ActivityDetail(props) {
       outgoingTransactionsTableData={outTable}
       inPageNavigation={mockData.inPageNavigation}
       lists={mockData.lists}
+      tableCard={resultsCard}
     />
   );
 }

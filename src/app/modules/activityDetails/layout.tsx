@@ -13,6 +13,7 @@ import { ActivityHeaderLayout } from './common/activityHeader';
 
 // Mock Data
 import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
+import { TableCard } from '../../components/datadisplay/Lists/variants/TableCard';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;
@@ -64,25 +65,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
         />
       </Grid>
 
-      <Box height="166px" width="100%" />
-
-      {/** --------------------------------------------------------------------------- */}
-      {/** Section2 */}
-      <Grid container lg={11} style={{ paddingLeft: '16px' }}>
-        <Typography variant="h4">{props.sections[1].title}</Typography>
-        <Box width="100%" height="25px" />
-        <Hidden only="md">
-          <ContentTypographyLG variant="body1">
-            {props.sections[1].content}
-          </ContentTypographyLG>
-        </Hidden>
-
-        <Hidden only={['lg', 'xl']}>
-          <Typography variant="body1">{props.sections[1].content}</Typography>
-        </Hidden>
-      </Grid>
-
-      <Box height="144px" width="100%" />
+      <Box height="112px" width="100%" />
 
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
@@ -100,6 +83,20 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
             </>
           ))}
         </Grid>
+      </Grid>
+
+      <Box height="144px" width="100%" />
+
+      {/** --------------------------------------------------------------------------- */}
+      {/** Section2 */}
+      <Grid container xs={12} style={{ paddingLeft: '16px' }}>
+        <Typography variant="h4">{props.sections[1].title}</Typography>
+        <Box width="100%" height="25px" />
+        <TableCard
+          title={props.tableCard ? props.tableCard.title : ''}
+          items={props.tableCard ? props.tableCard.items : []}
+        />
+        <Box width="100%" height="32px" />
       </Grid>
 
       <Box height="50px" />

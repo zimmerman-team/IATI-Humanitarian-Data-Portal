@@ -16,7 +16,7 @@ const Typo = styled(props => <Typography {...props} />)`
   margin-right: 14px !important;
 `;
 
-const RowHeader = styled(props => <TableCell {...props} />)`
+export const RowHeader = styled(props => <TableCell {...props} />)`
   && {
     padding-left: 0;
   }
