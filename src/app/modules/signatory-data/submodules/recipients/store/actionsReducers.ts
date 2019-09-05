@@ -1,10 +1,7 @@
 import { apiModel } from 'app/state/api/actionsReducers';
 import { DS_API } from 'app/config';
-import {
-  HumActInterface,
-  RecipientsInterface,
-  RecTypesInterface,
-} from './interfaces';
+import { RecipientsInterface, RecTypesInterface } from './interfaces';
+import { HumActInterface } from 'app/interfaces/general';
 
 export const recipients: RecipientsInterface = {
   ...apiModel(`${DS_API}/search/transaction/select/`),
