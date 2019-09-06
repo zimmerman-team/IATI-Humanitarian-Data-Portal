@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
 import { locations } from 'app/components/navigation/Signatory Navigation/mock';
@@ -43,11 +44,23 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
             <Box height="14px" width="100%" />
 
             <Grid container>
-              <InsertLink color="secondary" />
+              <InsertLink color={props.suppLink ? 'secondary' : 'disabled'} />
               <Box width="5px" />
-              <Typography variant="body1" color="secondary">
-                {/**  todo: add link icon and make link of text */}
-                Publisher Supplementary Information
+              <Typography
+                variant="body1"
+                color={props.suppLink ? 'secondary' : 'textSecondary'}
+              >
+                {props.suppLink ? (
+                  <a
+                    href={props.suppLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {props.linkText}
+                  </a>
+                ) : (
+                  props.linkText
+                )}
               </Typography>
             </Grid>
           </Grid>
