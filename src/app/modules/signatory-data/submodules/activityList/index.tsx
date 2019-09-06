@@ -10,10 +10,8 @@ import { activitiesQuery, activityBaseTable } from './const';
 
 /* utils */
 import { formatActivities } from './utils/formatActivities';
-import get from 'lodash/get';
 
 function ActivityListz(props) {
-  console.log('process.env.REACT_APP_PROD', process.env.REACT_APP_PROD);
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
 
