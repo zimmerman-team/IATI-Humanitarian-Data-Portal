@@ -1,7 +1,7 @@
 const devEndpoints = {
-  activity: 'mlt-activity',
-  transaction: 'mlt-transaction',
-  result: 'mlt-result',
+  activity: 'activity-mlt',
+  transaction: 'transaction-mlt',
+  result: 'result-mlt',
 };
 
 const prodEndpoints = {
@@ -10,6 +10,7 @@ const prodEndpoints = {
   result: 'result',
 };
 
-export const endpoints = process.env.REACT_APP_PROD
-  ? prodEndpoints
-  : devEndpoints;
+export const endpoints =
+  process.env.REACT_APP_PROD && process.env.REACT_APP_PROD === 'true'
+    ? prodEndpoints
+    : devEndpoints;
