@@ -14,6 +14,8 @@ export interface SubmoduleHeaderLayoutModel {
   organisationName: string;
   yearRange: string;
   code: string;
+  linkText: string;
+  suppLink?: string;
 }
 
 const submoduleHeaderConfig: SubmoduleHeader = {

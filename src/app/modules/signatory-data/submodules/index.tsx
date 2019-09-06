@@ -36,10 +36,22 @@ export function SubmoduleContainer(props) {
     };
     sigdataactivityyearsCall(callValues);
   }, [gbsignatoriesData]);
+
+  let suppLink = get(orgDetails, 'suppInfoUrl', '#');
+  suppLink =
+    suppLink.toLowerCase().indexOf('no url provided') !== -1
+      ? undefined
+      : suppLink;
+  const linkText = suppLink
+    ? 'Publisher Supplementary Information'
+    : 'No Publisher Supplementary Information Provided';
+
   return (
     <Container maxWidth="lg">
       {/** contains the header that is shown in every submodule */}
       <SubmoduleHeader
+        linkText={linkText}
+        suppLink={suppLink}
         code={props.match.params.code}
         organisationName={get(orgDetails, 'pubName', 'Not found')}
         yearRange={getYearRange(
