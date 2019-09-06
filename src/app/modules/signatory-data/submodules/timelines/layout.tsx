@@ -4,13 +4,14 @@ import { Container, Grid, Typography, Box } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 import styled from 'styled-components';
+import { TimeLinessModel } from './model';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;
   column-gap: 6rem;
 `;
 
-export const TimelinesLayout = () => {
+export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
     <>
       <Grid container spacing={4} direction="column">
@@ -74,7 +75,7 @@ export const TimelinesLayout = () => {
           <Box width="100%" height="16px" />
           <TableModule
             title={mockDataVar7.title}
-            data={mockDataVar7.data}
+            data={props.timelagData}
             columns={mockDataVar7.columns}
             options={mockDataVar7.options}
             columnsCell={mockDataVar7.columnsCell}

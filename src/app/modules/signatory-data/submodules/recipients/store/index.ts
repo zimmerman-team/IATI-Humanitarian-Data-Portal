@@ -1,15 +1,12 @@
 import { createComponentStore } from 'easy-peasy';
-import {
-  HumActInterface,
-  RecipientsInterface,
-  RecTypesInterface,
-} from './interfaces';
+import { RecipientsInterface, RecTypesInterface } from './interfaces';
 import {
   allRecTypes,
   humActivities,
   humRecTypes,
   recipients,
 } from './actionsReducers';
+import { HumActInterface } from 'app/interfaces/general';
 
 export interface RecipientsStoreModel {
   recipients: RecipientsInterface;

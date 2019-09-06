@@ -1,9 +1,6 @@
 import { ApiModel } from 'app/state/api/interfaces';
-
-export interface BaseQuery {
-  q: string;
-  rows: number;
-}
+import { BaseRespModel } from 'app/interfaces/response';
+import { BaseQuery } from 'app/interfaces/queries';
 
 export interface RecTypesQueryModel extends BaseQuery {
   'json.facet': string;
@@ -38,30 +35,8 @@ export interface PivotItemModel {
   };
 }
 
-export interface HumActQueryModel extends BaseQuery {
-  fl: string;
-}
-
-export interface ActivityItemModel {
-  iati_identifier: string;
-}
-
 export const pivotKey =
   'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency';
-
-export interface BaseRespModel<QueryModel, DocModel> {
-  responseHeader: {
-    status: number;
-    QTime: number;
-    params: QueryModel;
-  };
-  response: {
-    numFound: number;
-    start: number;
-    // this guy will be empty
-    docs: DocModel[];
-  };
-}
 
 export interface RecTypeRespModel<QueryModel, DocModel>
   extends BaseRespModel<QueryModel, DocModel> {
@@ -97,12 +72,4 @@ export interface RecTypesInterface
   extends ApiModel<
     RecTypesQueryModel,
     RecTypeRespModel<RecTypesQueryModel, any>
-  > {}
-
-// interface to get humanitarian activities
-// associated with the signatory
-export interface HumActInterface
-  extends ApiModel<
-    HumActQueryModel,
-    BaseRespModel<HumActQueryModel, ActivityItemModel>
   > {}
