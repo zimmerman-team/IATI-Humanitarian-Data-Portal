@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Set REACT_APP_PROJECT_URL env var
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_STAGING"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_TEST"' >> $BASH_ENV
@@ -46,12 +46,19 @@ jobs:
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
-            source $BASH_ENV
-      - run: yarn build
+            source $BASH_ENV0
       - run:
-          name: Check if master and build storybook
+          name: Check if master and build
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+               yarn build:production
+            else
+               yarn build
+            fi
+      - run:
+          name: Check if staging and build storybook
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
                yarn build-storybook
             fi
       - run:
@@ -67,7 +74,7 @@ jobs:
       - run:
           name: Upload build folder to target host
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
@@ -79,7 +86,7 @@ jobs:
       - run:
           name: Upload storybook build folder to target host
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               rsync -O -ave ssh ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
             fi
 
@@ -99,7 +106,7 @@ jobs:
       - run:
           name: Set CYPRESS_BASEURL
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_STAGING"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_TEST"' >> $BASH_ENV
@@ -127,7 +134,7 @@ jobs:
       - run:
           name: Run lighthouse against deployment
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
                lighthouse "$REACT_APP_PROJECT_URL_STAGING" \
                 --port=9222 \
                       --chrome-flags=\"--headless\" \
@@ -188,7 +195,7 @@ jobs:
       - run:
           name: Send report files to droplet
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/lighthouse-reports

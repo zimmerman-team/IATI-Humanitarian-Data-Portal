@@ -2,8 +2,8 @@
 import { CovTimeItemModel } from '../store/interfaces';
 
 /* utils */
-import fx from 'money';
 import { formatDate } from 'app/utils/generic';
+import { convertCurr } from 'app/utils/currency';
 
 interface ValCurrItem {
   value: number | null;
@@ -35,10 +35,7 @@ function formatValue(currItem, defCurreny): ValCurrItem {
       // so if the transactions value is different
       // than the default value we convert it
       if (trans.val !== defCurr) {
-        convertedValue = fx.convert(trans.transaction_sum, {
-          from: trans.val,
-          to: defCurr,
-        });
+        convertedValue = convertCurr(trans.transaction_sum, trans.val, defCurr);
       }
       incFundsValue += convertedValue;
     });
@@ -59,7 +56,6 @@ export function formatCovData(
   let defCurreny: string | null = null;
 
   if (covData) {
-    console.log(covData);
     covData.forEach(item => {
       const periodStart = formatDate(item.val);
 

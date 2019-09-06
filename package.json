@@ -182,9 +182,10 @@
     "workbox-webpack-plugin": "^4.2.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "start": "REACT_APP_PROD=false node scripts/start.js",
+    "build": "REACT_APP_PROD=false node scripts/build.js",
+    "build:production": "REACT_APP_PROD=true node scripts/build.js",
+    "test": "REACT_APP_PROD=false node scripts/test.js",
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "check-types": "tsc",
