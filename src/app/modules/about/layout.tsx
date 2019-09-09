@@ -27,7 +27,7 @@ export const AboutLayout = (props: AboutPageModel) => {
   // }, [fetch, { values: { q: 'iati_identifier:GB-CHC-202918-ARMA66' } }]);
 
   return (
-    <Page title={props.title}>
+    <Page title={props.title} footer>
       {/*SECTION*/}
       <Grid container spacing={2}>
         <Grid item lg={8} md={10}>

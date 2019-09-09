@@ -8,7 +8,7 @@ import { Footer } from 'app/components/surfaces/Footer';
 export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
-      <Page title={props.title}>
+      <Page title={props.title} footer>
         <Grid container>
           <ExpansionPanel faqItems={props.faqItems} />
         </Grid>
