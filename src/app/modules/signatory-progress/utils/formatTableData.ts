@@ -5,7 +5,8 @@ import { specPubsItemModel } from './intefaces';
 
 export function formatTableData(
   publisherData: FacetsModel | null,
-  specPubsData: Array<specPubsItemModel>
+  specPubsData: Array<specPubsItemModel>,
+  gbOrgRefs: string[]
 ): Array<Array<string>> {
   const tableData: Array<Array<string>> = [];
 

@@ -33,11 +33,13 @@ export function SignatoryProgress() {
   );
 
   const gbOrgRefs = iatigbsignatoriesData
-    ? map(iatigbsignatoriesData, item => item.IATIOrgRef).join(' ')
-    : '';
+    ? map(iatigbsignatoriesData, item => item.IATIOrgRef)
+    : [];
+
+  const gbOrgRefsSTR = gbOrgRefs.join(' ');
 
   useEffect(() => {
-    const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
+    const repOrgQuery = `reporting_org_ref:(${gbOrgRefsSTR})`;
     pubQuery.q = repOrgQuery;
     humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
 
@@ -87,9 +89,9 @@ export function SignatoryProgress() {
     },
   ];
 
-  const lineData = formatLineChart(pubFacets, specPublishers);
-  const barData = formatBarData(pubFacets, specPublishers);
-  baseTable.data = formatTableData(pubFacets, specPublishers);
+  const lineData = formatLineChart(pubFacets, specPublishers, gbOrgRefs);
+  const barData = formatBarData(pubFacets, specPublishers, gbOrgRefs);
+  baseTable.data = formatTableData(pubFacets, specPublishers, gbOrgRefs);
 
   return (
     <SignatoryProgressLayout

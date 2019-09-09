@@ -5,7 +5,8 @@ import { specPubsItemModel } from './intefaces';
 
 export function formatBarData(
   publisherData: FacetsModel | null,
-  specPubsData: Array<specPubsItemModel>
+  specPubsData: Array<specPubsItemModel>,
+  gbOrgRefs: string[]
 ): HorizontalBarChartCardModel {
   const barData: HorizontalBarChartCardModel = {
     title: 'Signatories meeting Data Publication CCTRIs',

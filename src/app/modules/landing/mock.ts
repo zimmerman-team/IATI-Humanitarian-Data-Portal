@@ -1,8 +1,10 @@
 export const humanitarianCallValues = {
   values: {
-    q: 'transaction_humanitarian:1',
+    q:
+      'humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])',
     facet: 'on',
-    'facet.field': 'reporting_org_ref',
-    fl: 'facet_counts',
+    'facet.pivot': 'reporting_org_ref',
+    rows: 0,
+    'facet.limit': -1,
   },
 };
