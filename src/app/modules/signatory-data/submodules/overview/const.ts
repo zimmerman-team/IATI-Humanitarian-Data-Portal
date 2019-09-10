@@ -104,6 +104,23 @@ export const humCallValues = {
     q:
       '(activity_date_type:[1 TO 4] AND activity_date_iso_date:[* TO *] AND budget_period_start_iso_date:[* TO *] AND (budget_period_end_iso_date:[* TO *] AND budget_value:*))',
   },
+  HRActivitiesRes: {
+    type: 'query',
+    q: 'result_title_narrative:*',
+  },
+  HRActDocLinks: {
+    type: 'query',
+    q: 'result_document_link_url:*',
+  },
+  HRActIndBase: {
+    type: 'query',
+    q:
+      'result_indicator_title_narrative:* AND result_indicator_baseline_value:* AND result_indicator_period_target_value:*',
+  },
+  HRIndDocLinks: {
+    type: 'query',
+    q: 'result_indicator_document_link_url:*',
+  },
 };
 
 export const activityStatusValues = {

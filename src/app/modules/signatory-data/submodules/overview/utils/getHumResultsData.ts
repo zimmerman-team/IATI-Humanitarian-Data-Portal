@@ -1,24 +1,26 @@
 import get from 'lodash/get';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
+import { percentage } from '../../../../../utils/percentage';
 
 export const getHumResultsData = (rawData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
-    get(rawData, 'facets.humResultsData_1.count', 0),
-    get(rawData, 'facets.humResultsData_2.count', 0),
-    get(rawData, 'facets.humResultsData_3.count', 0),
-    get(rawData, 'facets.humResultsData_4.count', 0),
+    get(rawData, 'facets.HRActivitiesRes.count', 0),
+    get(rawData, 'facets.HRActDocLinks.count', 0),
+    get(rawData, 'facets.HRActIndBase.count', 0),
+    get(rawData, 'facets.HRIndDocLinks.count', 0),
   ];
   return {
     title: 'Humanitarian results',
+    subtitle: 'Humanitarian results',
     items: [
       {
         label: 'Activities with results',
         tooltip: 'Activities with results',
         values: [
           {
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(itemCounts[0], allActCount),
+            qtc: itemCounts[0],
           },
         ],
       },
@@ -27,8 +29,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With results documents links',
         values: [
           {
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(itemCounts[1], allActCount),
+            qtc: itemCounts[1],
           },
         ],
       },
@@ -37,8 +39,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicators with baseline and target values',
         values: [
           {
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(itemCounts[2], allActCount),
+            qtc: itemCounts[2],
           },
         ],
       },
@@ -47,8 +49,8 @@ export const getHumResultsData = (rawData): ListModel => {
         tooltip: 'With result indicator documents links',
         values: [
           {
-            ptc: 'TBD',
-            qtc: 'TBD',
+            ptc: percentage(itemCounts[3], allActCount),
+            qtc: itemCounts[3],
           },
         ],
       },
