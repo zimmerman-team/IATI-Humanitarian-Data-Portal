@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getFinancialReportingData = (rawData): ListModel => {
+export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
   // const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [get(rawData, 'facets.currency.buckets[0].val', '')];
   return {
@@ -23,7 +23,7 @@ export const getFinancialReportingData = (rawData): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: 'TBD',
+            ptc: sigMetadata.reportsToFTS,
           },
         ],
       },
@@ -33,7 +33,7 @@ export const getFinancialReportingData = (rawData): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: 'TBD',
+            ptc: sigMetadata.reportsToFTSViaIATI,
           },
         ],
       },
@@ -43,7 +43,7 @@ export const getFinancialReportingData = (rawData): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: 'TBD',
+            ptc: sigMetadata.reportsToEU,
           },
         ],
       },

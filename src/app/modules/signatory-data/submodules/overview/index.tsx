@@ -1,11 +1,12 @@
 /* core */
-import React from 'react';
+import React, { useRef } from 'react';
 
 /* components */
 import { OverviewLayout } from './layout';
 
 /* state & utils */
 import get from 'lodash/get';
+import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
@@ -28,7 +29,13 @@ import { getFinancialReportingData } from 'app/modules/signatory-data/submodules
 import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
 
 export function OverviewPage(props) {
+  /* local state */
+  const [signatory, setSignatory] = React.useState({});
+
   /* redux store variables */
+  let gbsignatories: any = useStoreState(state => state.gbsignatories);
+  gbsignatories = get(gbsignatories, 'data', []);
+
   const sigdataactivityyearsData = useStoreState(
     state => state.sigdataactivityyears.data
   );
@@ -61,6 +68,12 @@ export function OverviewPage(props) {
 
   /* componentDidMount call */
   React.useEffect(() => {
+    const singlSign = find(gbsignatories, [
+      'IATIOrgRef',
+      props.match.params.code,
+    ]);
+    setSignatory(singlSign);
+
     const sigdataactivitystatuscallValues = {
       values: {
         q: `reporting_org_ref:${props.match.params.code}`,
@@ -103,6 +116,7 @@ export function OverviewPage(props) {
     yearsData,
     humData: get(sigdataoverviewhumData, 'data', []),
   });
+
   const humActFTSData = getHumActFTSData(
     get(sigdataoverviewhumData, 'data', {})
   );
@@ -123,7 +137,8 @@ export function OverviewPage(props) {
   );
   /* todo: implement this when available in OIPA solr */
   const financialReportingData = getFinancialReportingData(
-    get(sigdataactivitystatusData, 'data', {})
+    get(sigdataactivitystatusData, 'data', {}),
+    signatory
   );
 
   return (
