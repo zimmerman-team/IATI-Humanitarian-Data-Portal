@@ -46,7 +46,7 @@ jobs:
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
-            source $BASH_ENV0
+            source $BASH_ENV
       - run:
           name: Check if master and build
           command: |
