@@ -23,23 +23,22 @@ import get from 'lodash/get';
 import { formatLineChart } from './utils/formatLineChart';
 import { formatBarData } from './utils/formatBarData';
 import { formatTableData } from './utils/formatTableData';
+import { formatSignatories } from './utils/formatSignatories';
 
 export function SignatoryProgress() {
   useTitle(`MLT - ${SignatoryProgressMock.title}`);
   const [state, actions] = signProgStore();
 
   const iatigbsignatoriesData: any = useStoreState(
-    globalState => globalState.gbsignatories.data
+    globalState => globalState.gbsignatories
   );
 
-  const gbOrgRefs = iatigbsignatoriesData
-    ? map(iatigbsignatoriesData, item => item.IATIOrgRef)
-    : [];
+  const gbOrgData = get(iatigbsignatoriesData, 'data', []);
 
-  const gbOrgRefsSTR = gbOrgRefs.join(' ');
+  const gbOrgRefs = map(gbOrgData, item => item.IATIOrgRef).join(' ');
 
   useEffect(() => {
-    const repOrgQuery = `reporting_org_ref:(${gbOrgRefsSTR})`;
+    const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
     pubQuery.q = repOrgQuery;
     humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
 
@@ -89,9 +88,10 @@ export function SignatoryProgress() {
     },
   ];
 
-  const lineData = formatLineChart(pubFacets, specPublishers, gbOrgRefs);
-  const barData = formatBarData(pubFacets, specPublishers, gbOrgRefs);
-  baseTable.data = formatTableData(pubFacets, specPublishers, gbOrgRefs);
+  const sigWCounts = formatSignatories(pubFacets, gbOrgData);
+  const lineData = formatLineChart(sigWCounts, specPublishers, gbOrgData);
+  const barData = formatBarData(sigWCounts, specPublishers, gbOrgData);
+  baseTable.data = formatTableData(sigWCounts, specPublishers, gbOrgData);
 
   return (
     <SignatoryProgressLayout
