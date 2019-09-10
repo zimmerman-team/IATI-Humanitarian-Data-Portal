@@ -1,11 +1,16 @@
-import { FacetsModel } from 'app/modules/signatory-progress/store/interface';
-import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
+/* consts */
 import { dateRanges } from 'app/modules/signatory-progress/const';
-import { specPubsItemModel } from './intefaces';
+/* models/interfaces */
+import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
+import { SigItemModel, specPubsItemModel } from './intefaces';
+import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
+/* utils */
+import { getRealSigCount } from './general';
 
 export function formatBarData(
-  publisherData: FacetsModel | null,
-  specPubsData: Array<specPubsItemModel>
+  publisherData: SigItemModel,
+  specPubsData: Array<specPubsItemModel>,
+  gbsignatories: SingleDefGBSignatory[]
 ): HorizontalBarChartCardModel {
   const barData: HorizontalBarChartCardModel = {
     title: 'Signatories meeting Data Publication CCTRIs',
@@ -25,17 +30,20 @@ export function formatBarData(
         item.specPub &&
         item.specPub[rangeKey] &&
         publisherData[rangeKey] &&
-        item.specPub[rangeKey].org_count &&
-        publisherData[rangeKey].org_count
+        item.specPub[rangeKey].org_refs &&
+        publisherData[rangeKey].sigCount !== null
       ) {
+        const specSigCount = getRealSigCount(
+          gbsignatories,
+          item.specPub[rangeKey].org_refs.buckets
+        );
         // a simple proportion calculation is applied here
         // to get the percentage value
         percentage = Math.round(
-          (item.specPub[rangeKey].org_count * 100) /
-            publisherData[rangeKey].org_count
+          (specSigCount * 100) / publisherData[rangeKey].sigCount
         );
 
-        value = item.specPub[rangeKey].org_count;
+        value = specSigCount;
       }
 
       barData.data.values.push({

@@ -1,11 +1,12 @@
-import { FacetsModel } from 'app/modules/signatory-progress/store/interface';
 import { dateRanges } from 'app/modules/signatory-progress/const';
-import { checkIfValid } from './general';
-import { specPubsItemModel } from './intefaces';
+import { checkIfValid, getRealSigCount } from './general';
+import { SigItemModel, specPubsItemModel } from './intefaces';
+import { SingleDefGBSignatory } from '../../../state/api/interfaces/gbsignatoryInterface';
 
 export function formatTableData(
-  publisherData: FacetsModel | null,
-  specPubsData: Array<specPubsItemModel>
+  publisherData: SigItemModel,
+  specPubsData: Array<specPubsItemModel>,
+  gbsignatories: SingleDefGBSignatory[]
 ): Array<Array<string>> {
   const tableData: Array<Array<string>> = [];
 
@@ -26,9 +27,9 @@ export function formatTableData(
     let lastRangKey = '';
     let befLastRKey = '';
     // and here we push in the actual values for all the organisations
-    dateRanges.map((range, index) => {
+    dateRanges.forEach((range, index) => {
       const rangeKey = `orgs_[${range.value}]`;
-      tableData[1].push(`100% (${publisherData[rangeKey].org_count})`);
+      tableData[1].push(`100% (${publisherData[rangeKey].sigCount})`);
       if (index === dateRanges.length - 2) {
         befLastRKey = rangeKey;
       }
@@ -43,8 +44,7 @@ export function formatTableData(
     // and here we'll push in the calculation for changes between
     // may and today, aka changes between the last two items
     const change =
-      publisherData[lastRangKey].org_count -
-      publisherData[befLastRKey].org_count;
+      publisherData[lastRangKey].sigCount - publisherData[befLastRKey].sigCount;
     tableData[1].push(`${change}`);
 
     // and now we do the same for the rest of the data
@@ -56,29 +56,33 @@ export function formatTableData(
       // to which we'll push our current data
       const lastInd = tableData.length - 1;
 
-      lastRangKey = '';
-      befLastRKey = '';
+      let beforeLastSigC = 0;
+      let lastSigCount = 0;
       // and here we push in the actual values for all the organisations
-      dateRanges.map((range, index) => {
+      dateRanges.forEach((range, index) => {
         const rangeKey = `orgs_[${range.value}]`;
         let percentage = 0;
         let value = 0;
 
         if (checkIfValid(item, publisherData, rangeKey)) {
+          const specSigCount = getRealSigCount(
+            gbsignatories,
+            item.specPub[rangeKey].org_refs.buckets
+          );
+
           // a simple proportion calculation is applied here
           // to get the percentage value
           percentage = Math.round(
-            (item.specPub[rangeKey].org_count * 100) /
-              publisherData[rangeKey].org_count
+            (specSigCount * 100) / publisherData[rangeKey].sigCount
           );
 
-          value = item.specPub[rangeKey].org_count;
+          value = specSigCount;
 
           if (index === dateRanges.length - 2) {
-            befLastRKey = rangeKey;
+            beforeLastSigC = specSigCount;
           }
           if (index === dateRanges.length - 1) {
-            lastRangKey = rangeKey;
+            lastSigCount = specSigCount;
           }
         }
 
@@ -87,11 +91,7 @@ export function formatTableData(
 
       // and here we'll push in the calculation for changes between
       // may and today, aka changes between the last two items
-      const changez =
-        item.specPub && item.specPub[lastRangKey] && item.specPub[befLastRKey]
-          ? item.specPub[lastRangKey].org_count -
-            item.specPub[befLastRKey].org_count
-          : '';
+      const changez = lastSigCount - beforeLastSigC;
       tableData[lastInd].push(`${changez}`);
     });
   }

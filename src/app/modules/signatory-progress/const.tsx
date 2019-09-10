@@ -55,29 +55,52 @@ export const dateRanges = [
 
 // so this is mainly the result forming query that we need for the data
 // formed in a solr way responses are also solr like
-const jsonFacet = `
-        {"orgs_[1900-01-01_TO_2017-06-30]":
-          { "type":"query",
-            "q":"last_updated_datetime:[1900-01-01T00:00:00Z TO 2017-06-30T24:00:00Z]",
-            "facet":{"org_count":"unique(reporting_org_ref)"}
-            },
-         "orgs_[1900-01-01_TO_2018-12-31]":
-          { "type":"query",
-            "q":"last_updated_datetime:[1900-01-01T00:00:00Z TO 2018-12-31T24:00:00Z]",
-            "facet":{"org_count":"unique(reporting_org_ref)"}
-            },
-         "orgs_[1900-01-01_TO_2019-05-31]":
-          { "type":"query",
-            "q":"last_updated_datetime:[1900-01-01T00:00:00Z TO 2019-05-31T24:00:00Z]",
-            "facet":{"org_count":"unique(reporting_org_ref)"}
-            },
-         "orgs_[1900-01-01_TO_NOW]":
-          { "type":"query",
-            "q":"last_updated_datetime:[1900-01-01T00:00:00Z TO NOW]",
-            "facet":{"org_count":"unique(reporting_org_ref)"}
-            },
-        }
-      `;
+const jsonFacet = `{
+  'orgs_[1900-01-01_TO_2017-06-30]': {
+    type: 'query',
+    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2017-06-30T24:00:00Z]',
+    facet: {
+      org_refs: {
+        type: 'terms',
+        field: 'reporting_org_ref',
+        limit: -1,
+      },
+    },
+  },
+  'orgs_[1900-01-01_TO_2018-12-31]': {
+    type: 'query',
+    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2018-12-31T24:00:00Z]',
+    facet: {
+      org_refs: {
+        type: 'terms',
+        field: 'reporting_org_ref',
+        limit: -1,
+      },
+    },
+  },
+  'orgs_[1900-01-01_TO_2019-05-31]': {
+    type: 'query',
+    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2019-05-31T24:00:00Z]',
+    facet: {
+      org_refs: {
+        type: 'terms',
+        field: 'reporting_org_ref',
+        limit: -1,
+      },
+    },
+  },
+  'orgs_[1900-01-01_TO_NOW]': {
+    type: 'query',
+    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO NOW]',
+    facet: {
+      org_refs: {
+        type: 'terms',
+        field: 'reporting_org_ref',
+        limit: -1,
+      },
+    },
+  },
+}`;
 
 // so this is a modified version of the facets used for humanitarian
 // data(the above facet variable), because for most of other data, we don't need to check
