@@ -9,7 +9,7 @@ export interface SingleDefActivity {
   activity_status_code: string;
   collaboration_type_code: string;
   capital_spend_percentage: number;
-  iati_version: string;
+  dataset_iati_version: string;
   activity_scope_code: string;
   default_flow_type_code: string;
   default_tied_status_code: string;

@@ -109,7 +109,7 @@ export const humCallValues = {
 export const activityStatusValues = {
   latest_update: 'max(last_updated_datetime)',
   data_first_published: 'min(last_updated_datetime)',
-  latest_iati_version: 'max(iati_version)',
+  latest_iati_version: 'max(dataset_iati_version)',
   currentHumValuesData: {
     type: 'query',
     q:
