@@ -70,6 +70,7 @@ export const lineModel: LineProps | LineSvgProps | LineChartModel = {
       symbolShape: 'square',
       itemDirection: 'left-to-right',
       itemTextColor: '#777',
+      symbolSpacing: 20,
     },
   ],
   animate: false,
