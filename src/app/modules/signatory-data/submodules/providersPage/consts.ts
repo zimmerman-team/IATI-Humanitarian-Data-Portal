@@ -13,7 +13,7 @@ export const providersTableCallValues = (pubRef, humActivities) => {
     })`,
     stats: 'true',
     'facet.pivot':
-      '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency',
+      '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative',
     rows: 0,
     'facet.limit': -1,
     facet: 'on',
@@ -51,10 +51,6 @@ export const baseProviderConfig: TableModuleModel = {
     },
     {
       name: 'Activites',
-      options: { filter: false },
-    },
-    {
-      name: 'Start date',
       options: { filter: false },
     },
     {

@@ -84,7 +84,7 @@ function RecipientsF(props) {
     get(state.orgtypecodelist.data, 'data', null),
     sigAllReceivers,
     'Humanitarian recipient types',
-    `facet_counts.facet_pivot.transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency`
+    `facet_counts.facet_pivot.${pivotKey}`
   );
 
   recBaseTable.data = recTableData.tableData;
