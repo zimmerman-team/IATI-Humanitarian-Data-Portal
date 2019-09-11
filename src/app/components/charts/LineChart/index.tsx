@@ -23,6 +23,10 @@ const Linechart = styled(props => <ResponsiveLine {...props} />)`
 
 const ChartContainer = styled.div`
   height: 320px;
+  [y='7'] {
+    width: 16px;
+    height: 8px;
+  }
 `;
 
 export const LineChart = (props: LineChartModel) => {
