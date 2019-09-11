@@ -12,10 +12,6 @@ export const humActivities: HumActInterface = {
   ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
 };
 
-export const allRecTypes: RecTypesInterface = {
-  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
-};
-
 export const humRecTypes: RecTypesInterface = {
   ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
 };

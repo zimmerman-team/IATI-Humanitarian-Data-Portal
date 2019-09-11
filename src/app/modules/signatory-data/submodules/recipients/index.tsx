@@ -6,22 +6,17 @@ import { RecipientsLayout } from './layout';
 import { recStore } from './store';
 
 /* consts */
-import {
-  humActQuery,
-  recAllTypesQuery,
-  recBaseTable,
-  recHumTypesQuery,
-  recipientsQuery,
-} from './const';
+import { humActQuery, recBaseTable, recipientsQuery } from './const';
 import { pivotKey } from './store/interfaces';
+import { allProvidersQuery } from '../providersPage/consts';
 
 /* utils */
 import get from 'lodash/get';
 import { formatTableData } from './util/formatTableData';
+import { getBarChartData } from '../providersPage/utils/getBarChartData';
 
 /* components */
 import { ExpandedRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
-import { formatBarChart } from './util/formatBarChart';
 
 function RecipientsF(props) {
   const [state, actions] = recStore();
@@ -43,9 +38,15 @@ function RecipientsF(props) {
 
     // and here we get all the receiving organisation types
     // of the signatory
-    actions.allRecTypes.fetch({
-      values: recAllTypesQuery(props.match.params.code),
+    actions.sigAllReceivers.fetch({
+      values: allProvidersQuery(
+        props.match.params.code,
+        'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type'
+      ),
     });
+
+    // we also get the codelist here
+    actions.orgtypecodelist.fetch({});
   }, []);
 
   useEffect(() => {
@@ -62,12 +63,8 @@ function RecipientsF(props) {
       actions.recipients.fetch({
         values: recipientsQuery(props.match.params.code, iatiIdentifiers),
       });
-      // and here we call the humanitarian bar data
-      actions.humRecTypes.fetch({
-        values: recHumTypesQuery(props.match.params.code, iatiIdentifiers),
-      });
     }
-  }, [state.humActivities]);
+  }, [state.orgtypecodelist.data, state.humActivities]);
 
   const recData = get(
     state.recipients,
@@ -75,24 +72,24 @@ function RecipientsF(props) {
     null
   );
 
-  const allRecTypes = get(
-    state.allRecTypes,
-    `data.data.facets.orgTypes.buckets`,
-    null
-  );
-
-  const humRecTypes = get(
-    state.humRecTypes,
-    `data.data.facets.orgTypes.buckets`,
+  const sigAllReceivers = get(
+    state.sigAllReceivers,
+    'data.data.facet_counts.facet_pivot.transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type',
     null
   );
 
   const recTableData = formatTableData(recData);
-  const barChartData = formatBarChart(allRecTypes, humRecTypes);
+  const barChartData = getBarChartData(
+    get(state.recipients.data, 'data', null),
+    get(state.orgtypecodelist.data, 'data', null),
+    sigAllReceivers,
+    'Humanitarian recipient types',
+    `facet_counts.facet_pivot.transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency`
+  );
 
   recBaseTable.data = recTableData.tableData;
   recBaseTable.options.renderExpandableRow = (rowData, rowMeta) => {
-    const expData = recTableData.expRowData[rowMeta.rowIndex];
+    const expData = recTableData.expRowData[rowMeta.dataIndex];
     return (
       <>
         {expData.map((row, index) => {
