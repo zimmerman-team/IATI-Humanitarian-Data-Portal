@@ -3,22 +3,22 @@ import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInte
 import {
   orgtypecodelist,
   sigdataproviders,
-  sigdataproviderstypes,
   humanitarianActivities,
+  sigAllProviders,
 } from 'app/modules/signatory-data/submodules/providersPage/store/actionsReducers';
 
 export interface ApplicationStoreModel {
   orgtypecodelist: ActivityResponceInterface;
   sigdataproviders: ActivityResponceInterface;
-  sigdataproviderstypes: ActivityResponceInterface;
   humanitarianActivities: ActivityResponceInterface;
+  sigAllProviders: ActivityResponceInterface;
 }
 
 const sigDataProviders: ApplicationStoreModel = {
   orgtypecodelist,
   sigdataproviders,
-  sigdataproviderstypes,
   humanitarianActivities,
+  sigAllProviders,
 };
 
 export const sigDataProvidersStore = createComponentStore(sigDataProviders);
