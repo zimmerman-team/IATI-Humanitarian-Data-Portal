@@ -60,7 +60,7 @@ export function ProvidersPageFunc(props) {
         get(state.orgtypecodelist.data, 'data', null),
         sigAllProviders,
         'Humanitarian providers breakdown',
-        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency`
+        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative`
       )}
       tableData={{
         ...baseProviderConfig,

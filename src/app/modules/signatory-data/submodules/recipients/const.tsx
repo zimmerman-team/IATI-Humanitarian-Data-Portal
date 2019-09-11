@@ -12,7 +12,7 @@ export const recipientsQuery = (
     q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
     stats: true,
     'facet.pivot':
-      '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency',
+      '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency,title_narrative',
     rows: 0,
     facet: 'on',
     'stats.field': '{!tag=piv1 sum=true}transaction_value',
@@ -74,10 +74,6 @@ export const recBaseTable: TableModuleModel = {
     },
     {
       name: 'Transaction type',
-      options: { filter: false },
-    },
-    {
-      name: 'Start date',
       options: { filter: false },
     },
     {

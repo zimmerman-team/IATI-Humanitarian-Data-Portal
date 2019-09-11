@@ -34,11 +34,14 @@ function formatExpRows(typeItem: PivotItemModel): ExpandedCell[][] {
       // so we push in the activity
       // name(though currently iati_identifier cause we don't have the name
       // of the activity)
-      const iatiIdentifier = activity.value || '';
       expRowItem.push({
-        value: iatiIdentifier,
+        value: get(
+          activity,
+          'pivot[0].pivot[0].pivot[0].value',
+          'Not Provided'
+        ),
         type: 'LinkCellModule',
-        link: `/activity-detail/${iatiIdentifier}`,
+        link: `/activity-detail/${activity.value || ''}`,
         colSpan: 4,
       });
       // here we push in the transaction amount
@@ -52,13 +55,6 @@ function formatExpRows(typeItem: PivotItemModel): ExpandedCell[][] {
       // here we push in the transaction type name
       expRowItem.push({
         value: transTypeLabel,
-        colSpan: 1,
-      });
-      // here we push in the activity start date
-      // but currently we don't have this element
-      // so we'll just push in an empty string
-      expRowItem.push({
-        value: '',
         colSpan: 1,
       });
       // here we get the currency of the transaction
@@ -135,9 +131,6 @@ export function formatTableData(recData: PivotItemModel[] | null): TableResult {
             tableItem.push(type.count);
             // now there will be no transaction types for the organisation
             // itself so we push in an empty value
-            tableItem.push('');
-            // neither will there be any activity start dates
-            // for the organisation
             tableItem.push('');
             // here we'll get the currency from the first
             // activities transaction valuy currency
