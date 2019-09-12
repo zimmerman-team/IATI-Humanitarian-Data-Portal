@@ -1,8 +1,12 @@
+import { ListCellModel } from './common/SimpleListItem/model';
+
 export type ListModel = {
   title?: string;
   subtitle?: string;
   valueHeaders?: boolean;
-  items: ListItemModel[];
+  type?: 'Card' | 'TableCard' | 'ExpTableCard';
+  items?: ListItemModel[];
+  tableCItems?: ListCellModel[][];
 };
 
 export type ListItemModel = {

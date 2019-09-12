@@ -38,6 +38,45 @@ export const listMockData: ListModel = {
   ],
 };
 
+export const listCellItems: ListModel = {
+  title: 'Recipient Countries',
+  tableCItems: [
+    [
+      {
+        value: 'Countrycode',
+      },
+      {
+        value: 'Countryname',
+      },
+      {
+        value: '% value',
+      },
+    ],
+    [
+      {
+        value: 'Countrycode',
+      },
+      {
+        value: 'Countryname',
+      },
+      {
+        value: '% value',
+      },
+    ],
+    [
+      {
+        value: 'Countrycode',
+      },
+      {
+        value: 'Countryname',
+      },
+      {
+        value: '% value',
+      },
+    ],
+  ],
+};
+
 export const listMockData2: ListModel = {
   title: 'Extra Info',
   subtitle: 'Extra Info',

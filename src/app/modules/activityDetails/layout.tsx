@@ -76,12 +76,24 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
           </Grid>
         </Hidden>
         <Grid item lg={8} md={12}>
-          {props.lists.map(list => (
-            <>
-              <List title={list.title} items={list.items} />
-              <Box width="100%" height="32px" />
-            </>
-          ))}
+          {props.lists.map(list => {
+            const type = list.type || 'Card';
+            if (type === 'TableCard' || type === 'ExpTableCard') {
+              return (
+                <TableCard
+                  title={list.title || ''}
+                  items={list.tableCItems}
+                  expandable={type === 'ExpTableCard'}
+                />
+              );
+            }
+            return (
+              <>
+                <List title={list.title} items={list.items} />
+                <Box width="100%" height="32px" />
+              </>
+            );
+          })}
         </Grid>
       </Grid>
 

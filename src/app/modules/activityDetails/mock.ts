@@ -3,6 +3,7 @@ import { mockData as ActivityDetailsHeaderCardMockData } from 'app/components/su
 import { mockDataVar6 } from 'app/components/datadisplay/Table/mock';
 import { mockData as inPageNavigationMockData } from 'app/components/navigation/InPageNavigation/mock';
 import {
+  listCellItems,
   listMockData,
   listMockData2,
 } from 'app/components/datadisplay/Lists/mock';
@@ -35,6 +36,11 @@ export const mockData: ActivityDetailModel = {
     {
       title: listMockData2.title,
       items: listMockData2.items,
+    },
+    {
+      title: listCellItems.title,
+      type: 'ExpTableCard',
+      tableCItems: listCellItems.tableCItems,
     },
   ],
 };

@@ -2,8 +2,6 @@ import React from 'react';
 
 /* components */
 import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import { TableHeader } from '../../index';
 import { SimpleListItem } from '../../common/SimpleListItem';
@@ -12,28 +10,52 @@ import { SimpleListItem } from '../../common/SimpleListItem';
 import { TableCardModel } from './model';
 
 /* styles */
-import { CardContainer, CardTitle } from './style';
+import {
+  ArrowContainer,
+  ArrowStyleDown,
+  ArrowStyleUp,
+  CardContainer,
+  CardHead,
+  CardTitle,
+} from './style';
 
 export const TableCard = (props: TableCardModel) => {
+  const [open, setOpen] = React.useState(false);
+
+  const isOpen = (props.expandable && open) || !props.expandable;
+
+  const items = props.items || [];
+
   return (
-    <CardContainer>
+    <CardContainer open={isOpen}>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeader>
-              <CardTitle variant="h6">{props.title}</CardTitle>
+        <CardHead
+          border={isOpen}
+          expandable={props.expandable}
+          onClick={() => setOpen(!open)}
+        >
+          <TableHeader>
+            <CardTitle variant="h6">{props.title}</CardTitle>
+          </TableHeader>
+          {props.expandable && (
+            <TableHeader colSpan={3}>
+              <ArrowContainer>
+                {open ? <ArrowStyleUp /> : <ArrowStyleDown />}
+              </ArrowContainer>
             </TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.items.map((item, index) => (
-            <SimpleListItem
-              key={`simple-row-${index}`}
-              items={item}
-              index={index}
-            />
-          ))}
-        </TableBody>
+          )}
+        </CardHead>
+        {isOpen && (
+          <TableBody>
+            {items.map((item, index) => (
+              <SimpleListItem
+                key={`simple-row-${index}`}
+                items={item}
+                index={index}
+              />
+            ))}
+          </TableBody>
+        )}
       </Table>
     </CardContainer>
   );
