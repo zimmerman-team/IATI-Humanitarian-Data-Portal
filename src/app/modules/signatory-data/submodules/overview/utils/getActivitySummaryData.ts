@@ -6,6 +6,7 @@ export const getActivitySummaryData = (rawData): ListModel => {
   const allActivitiesCount = get(rawData.yearsData, 'count', 0);
   return {
     title: 'Activity Summary',
+    elName: 'incComms',
     subtitle: '',
     items: [
       {

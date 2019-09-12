@@ -27,7 +27,7 @@ export const TableCard = (props: TableCardModel) => {
   const items = props.items || [];
 
   return (
-    <CardContainer open={isOpen}>
+    <CardContainer open={isOpen} fullWidth={props.fullWidth}>
       <Table>
         <CardHead
           border={isOpen}

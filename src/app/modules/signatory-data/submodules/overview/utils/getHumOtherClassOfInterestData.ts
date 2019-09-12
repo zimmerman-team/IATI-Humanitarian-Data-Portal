@@ -12,6 +12,7 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
   ];
   return {
     title: 'Hum. other classifications of intererest',
+    elName: 'incComms',
     items: [
       {
         label: 'OECD DAC sector codes',

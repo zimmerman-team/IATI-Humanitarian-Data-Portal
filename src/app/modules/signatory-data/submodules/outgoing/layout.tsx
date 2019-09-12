@@ -38,9 +38,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
             <Grid container spacing={4}>
               <Grid item xs={12}>
                 {/** todo: add side menu */}
-                <InPageNavigation
-                  locations={props.inPageNavigation.locations}
-                />
+                <InPageNavigation lists={[]} />
               </Grid>
             </Grid>
           </Grid>

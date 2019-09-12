@@ -9,11 +9,13 @@ import color from 'app/theme/color';
 
 interface CardContainerModel extends PaperProps {
   open?: boolean;
+  fullWidth?: boolean;
 }
 
 export const CardContainer = styled(Base)`
   padding: ${(props: CardContainerModel) =>
     props.open ? '8px 28px 32px 28px' : '8px 28px'};
+  width: ${(props: CardContainerModel) => (props.fullWidth ? '100%' : 'unset')};
 `;
 
 export const CardTitle = styled(TableTitle)`

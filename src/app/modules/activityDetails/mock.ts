@@ -27,19 +27,21 @@ export const mockData: ActivityDetailModel = {
   ],
   incomingTransactionsTableData: mockDataVar6,
   outgoingTransactionsTableData: mockDataVar6,
-  inPageNavigation: inPageNavigationMockData,
   lists: [
     {
       title: listMockData.title,
+      elName: 'summary',
       items: listMockData.items,
     },
     {
       title: listMockData2.title,
+      elName: 'extra',
       items: listMockData2.items,
     },
     {
       title: listCellItems.title,
       type: 'ExpTableCard',
+      elName: 'countries',
       tableCItems: listCellItems.tableCItems,
     },
   ],

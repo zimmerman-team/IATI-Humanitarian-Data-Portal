@@ -10,6 +10,7 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
   const outDisbursement4 = get(rawData2, 'outDisbursement_4.count', 0);
   return {
     title: 'Outgoing disbursements',
+    elName: 'incComms',
     items: [
       {
         label: 'For humanitarian activities',

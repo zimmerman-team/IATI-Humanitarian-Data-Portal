@@ -11,6 +11,7 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
   ];
   return {
     title: 'Hum. activites with multi-year funding',
+    elName: 'incComms',
     items: [
       {
         label: 'Current hum. activities with duration > 24 months',

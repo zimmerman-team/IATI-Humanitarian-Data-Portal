@@ -6,6 +6,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
   const itemCounts = [get(rawData, 'facets.currency.buckets[0].val', '')];
   return {
     title: 'Financial reporting',
+    elName: 'incComms',
     items: [
       {
         label: 'Default currency',

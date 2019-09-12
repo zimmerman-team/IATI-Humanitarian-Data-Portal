@@ -4,6 +4,7 @@ export type ListModel = {
   title?: string;
   subtitle?: string;
   valueHeaders?: boolean;
+  elName: string;
   type?: 'Card' | 'TableCard' | 'ExpTableCard';
   items?: ListItemModel[];
   tableCItems?: ListCellModel[][];

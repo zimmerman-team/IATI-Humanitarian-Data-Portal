@@ -2,6 +2,7 @@ import { ListModel, ListItemModel } from './model';
 
 export const listMockData: ListModel = {
   title: 'Activity Summary',
+  elName: 'summary',
   subtitle: 'Activity Summary subtitle',
   // TODO: put most of the one time elements
   //  that don't have much data(like the collaboration-type) into this
@@ -40,6 +41,7 @@ export const listMockData: ListModel = {
 
 export const listCellItems: ListModel = {
   title: 'Recipient Countries',
+  elName: 'countries',
   tableCItems: [
     [
       {
@@ -79,6 +81,7 @@ export const listCellItems: ListModel = {
 
 export const listMockData2: ListModel = {
   title: 'Extra Info',
+  elName: 'extra',
   subtitle: 'Extra Info',
   items: [
     {

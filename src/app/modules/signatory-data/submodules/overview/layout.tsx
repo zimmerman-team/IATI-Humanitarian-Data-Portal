@@ -62,11 +62,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List items={props.statusData.slice(0, 2)} />
+          <List elName="incComms" items={props.statusData.slice(0, 2)} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List items={props.statusData.slice(2, 4)} />
+          <List elName="incComms" items={props.statusData.slice(2, 4)} />
         </Grid>
       </Grid>
       <Box height="50px" />
@@ -87,7 +87,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
           <Grid item xs={3}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                <InPageNavigation locations={inPageNavMock.locations} />
+                <InPageNavigation lists={[]} />
               </Grid>
             </Grid>
           </Grid>

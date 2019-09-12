@@ -36,9 +36,7 @@ export const IncomingLayout = (props: IncomingModel) => {
           <Grid item xs={3}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                <InPageNavigation
-                  locations={props.inPageNavigation.locations}
-                />
+                <InPageNavigation lists={props.lists} />
               </Grid>
             </Grid>
           </Grid>

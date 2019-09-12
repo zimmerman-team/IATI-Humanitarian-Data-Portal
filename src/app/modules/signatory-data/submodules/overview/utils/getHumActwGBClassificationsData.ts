@@ -12,6 +12,7 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
   ];
   return {
     title: 'Hum. activity with Grand Bargain classifications',
+    elName: 'incComms',
     subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {

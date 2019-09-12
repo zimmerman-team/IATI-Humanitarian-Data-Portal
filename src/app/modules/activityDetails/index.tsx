@@ -107,7 +107,6 @@ function ActivityDetail(props) {
       sections={sections}
       incomingTransactionsTableData={inTable}
       outgoingTransactionsTableData={outTable}
-      inPageNavigation={mockData.inPageNavigation}
       lists={mockData.lists}
       tableCard={resultsCard}
     />

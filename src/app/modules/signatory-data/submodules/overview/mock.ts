@@ -1,6 +1,7 @@
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const listMockData1: ListModel = {
+  elName: 'incComms',
   items: [
     {
       label: 'Latest version of the IATI standard used',
@@ -26,6 +27,7 @@ export const listMockData1: ListModel = {
 };
 
 export const listMockData2: ListModel = {
+  elName: 'incComms',
   items: [
     {
       label: 'Latest update',
