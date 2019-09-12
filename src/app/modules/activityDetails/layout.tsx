@@ -78,7 +78,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
         <Grid item lg={8} md={12}>
           {props.lists.map(list => (
             <>
-              <List items={list.items} />
+              <List title={list.title} items={list.items} />
               <Box width="100%" height="32px" />
             </>
           ))}

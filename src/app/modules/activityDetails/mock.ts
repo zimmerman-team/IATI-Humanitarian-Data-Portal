@@ -2,7 +2,10 @@
 import { mockData as ActivityDetailsHeaderCardMockData } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/mock';
 import { mockDataVar6 } from 'app/components/datadisplay/Table/mock';
 import { mockData as inPageNavigationMockData } from 'app/components/navigation/InPageNavigation/mock';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
+import {
+  listMockData,
+  listMockData2,
+} from 'app/components/datadisplay/Lists/mock';
 
 // Mock data
 import { ActivityDetailModel } from './model';
@@ -30,28 +33,8 @@ export const mockData: ActivityDetailModel = {
       items: listMockData.items,
     },
     {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
+      title: listMockData2.title,
+      items: listMockData2.items,
     },
   ],
 };
