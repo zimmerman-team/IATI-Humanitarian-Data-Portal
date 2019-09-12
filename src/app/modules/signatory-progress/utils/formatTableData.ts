@@ -1,5 +1,5 @@
 import { dateRanges } from 'app/modules/signatory-progress/const';
-import { checkIfValid, getRealSigCount } from './general';
+import { checkIfValid, getAllSigCount, getRealSigCount } from './general';
 import { SigItemModel, specPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from '../../../state/api/interfaces/gbsignatoryInterface';
 
@@ -7,20 +7,20 @@ export function formatTableData(
   publisherData: SigItemModel,
   specPubsData: Array<specPubsItemModel>,
   gbsignatories: SingleDefGBSignatory[]
-): Array<Array<string>> {
-  const tableData: Array<Array<string>> = [];
+): Array<Array<string | number>> {
+  const tableData: Array<Array<string | number>> = [];
 
   if (publisherData) {
-    // so here we push in some data for all of the grand bargain
-    // signatories. (Right now we have no data on all of them)
-    // divided by dates, so we just put in N/A
+    // so as discussed we only have a flat amount of them
+    // not associated with dates, so we put them in like so
+    const allSigCount = getAllSigCount(gbsignatories);
     tableData.push([
       'Total no. of Grand Bargain Signatories',
-      'N/A',
-      'N/A',
-      'N/A',
-      'N/A',
-      'N/A',
+      allSigCount,
+      allSigCount,
+      allSigCount,
+      allSigCount,
+      0,
     ]);
 
     tableData.push(['Organisations* publishing to IATI']);
@@ -29,7 +29,12 @@ export function formatTableData(
     // and here we push in the actual values for all the organisations
     dateRanges.forEach((range, index) => {
       const rangeKey = `orgs_[${range.value}]`;
-      tableData[1].push(`100% (${publisherData[rangeKey].sigCount})`);
+      const pubIatiPercent = Math.round(
+        (publisherData[rangeKey].sigCount * 100) / allSigCount
+      );
+      tableData[1].push(
+        `${pubIatiPercent}% (${publisherData[rangeKey].sigCount})`
+      );
       if (index === dateRanges.length - 2) {
         befLastRKey = rangeKey;
       }
