@@ -58,7 +58,7 @@ const Controls = styled(props => <Box {...props} />)`
 
 export function InPageNavigation(props: InPageNavModel) {
   const [currentLocation, setCurrentLocation] = React.useState(
-    props.lists[0].elName
+    props.lists[0] ? props.lists[0].elName : 'none'
   );
 
   const currLocInd = findIndex(props.lists, ['elName', currentLocation]);
