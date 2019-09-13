@@ -3,10 +3,15 @@ import React from 'react';
 
 import { Page } from 'app/modules/common/Page';
 import { AboutPageModel } from './model';
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';
 import { Footer } from 'app/components/surfaces/Footer';
+import { DecoAboutTopLeft } from 'app/modules/about/common/decorations/DecoAboutTopLeft';
+import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAboutMidLeft';
+import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
+import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
+import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
 
 // TODO: -Correct page title => @jim?
 //      -Correct outer container margins of MD size => @jim?
@@ -42,6 +47,21 @@ export const AboutLayout = (props: AboutPageModel) => {
             {parse(props.sections[0].content[0])}
           </Typography>
         </Grid>
+        <Box position="absolute" top="10px" left="10px">
+          <DecoAboutTopLeft />
+        </Box>
+
+        <Hidden mdDown>
+          <Box position="absolute" top="360px" right="100px">
+            <DecoAboutRight />
+          </Box>
+        </Hidden>
+
+        <Hidden mdDown>
+          <Box position="absolute" top="1050px" right="100px">
+            <DecoAboutMidRight />
+          </Box>
+        </Hidden>
       </Grid>
 
       {/* SECTION*/}
@@ -124,6 +144,19 @@ export const AboutLayout = (props: AboutPageModel) => {
         </Grid>
       </Grid>
       <Box height="50px" width="100%" />
+
+      <Hidden smDown>
+        <Box position="absolute" top="258px" left="0">
+          <DecoAboutMidLeft />
+        </Box>
+      </Hidden>
+
+      <Hidden smDown>
+        <Box position="absolute" bottom="-270px" right="0">
+          <DecoAboutBottomRight />
+        </Box>
+      </Hidden>
+
       <Footer />
     </Page>
   );
