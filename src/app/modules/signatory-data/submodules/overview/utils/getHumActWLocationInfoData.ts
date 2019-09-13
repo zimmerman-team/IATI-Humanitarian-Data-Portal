@@ -12,6 +12,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
   ];
   return {
     title: 'Hum. activites with location information',
+    elName: 'incComms',
     items: [
       {
         label: 'Activities with recipient countries',

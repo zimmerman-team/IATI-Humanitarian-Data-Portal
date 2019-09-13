@@ -37,18 +37,18 @@ export const incomingCallFacetValuesTrace = {
 };
 
 export const inPageNavigationItems = {
-  locations: [
+  lists: [
     {
-      label: 'Incoming Pledges',
-      url: '#incoming_pledges',
+      title: 'Incoming Pledges',
+      elName: '#incoming_pledges',
     },
     {
-      label: 'Incoming Commitments',
-      url: '#incoming_commitments',
+      title: 'Incoming Commitments',
+      elName: '#incoming_commitments',
     },
     {
-      label: 'Incoming Funds',
-      url: '#incoming_funds',
+      title: 'Incoming Funds',
+      elName: '#incoming_funds',
     },
   ],
 };

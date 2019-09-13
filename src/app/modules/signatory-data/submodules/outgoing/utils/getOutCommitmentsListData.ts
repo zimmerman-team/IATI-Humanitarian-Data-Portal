@@ -9,6 +9,7 @@ export const getOutCommitmentsListData = (rawData): ListModel => {
   const outCommitmentValue3 = get(rawData, 'outCommitment_3.count', 0);
   return {
     title: 'Incoming commitments',
+    elName: 'incComms',
     items: [
       {
         label: 'For humanitarian activities',

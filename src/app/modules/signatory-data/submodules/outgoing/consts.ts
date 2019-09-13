@@ -46,21 +46,25 @@ export const outgoingCallFacetValuesTrace = {
 };
 
 export const inPageNavigationItems = {
-  locations: [
+  lists: [
     {
       label: 'Pledges',
+      elName: 'incComms',
       url: '#pledges',
     },
     {
       label: 'Commitments',
+      elName: 'incComms',
       url: '#commitments',
     },
     {
       label: 'Disbursements',
+      elName: 'incComms',
       url: '#disbursements',
     },
     {
       label: 'Expenditure',
+      elName: 'incComms',
       url: '#expenditure',
     },
   ],

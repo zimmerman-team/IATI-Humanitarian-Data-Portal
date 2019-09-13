@@ -9,21 +9,25 @@ export const mockData: IncomingModel = {
   lists: [
     {
       title: listMockData.title,
+      elName: 'summary',
       subtitle: listMockData.subtitle,
       items: listMockData.items,
     },
     {
       title: listMockData.title,
+      elName: 'summary',
       subtitle: listMockData.subtitle,
       items: listMockData.items,
     },
     {
       title: listMockData.title,
+      elName: 'summary',
       subtitle: listMockData.subtitle,
       items: listMockData.items,
     },
     {
       title: listMockData.title,
+      elName: 'summary',
       subtitle: listMockData.subtitle,
       items: listMockData.items,
     },

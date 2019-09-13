@@ -14,7 +14,7 @@ import { Typography } from '@material-ui/core';
 // - Optional highlight
 
 export const Base = styled(props => <Paper {...props} />)`
-  padding: 18px 28px 32px 28px;
+  padding: 8px 28px 32px 28px;
   && {
     box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
   }
@@ -41,7 +41,9 @@ export const TableTitle = styled(props => <Typography {...props} />)`
 export const TableSubtitle = styled(props => <Typography {...props} />)``;
 
 export const List = (props: ListModel) => {
-  const listItems = props.items.map(item => (
+  const items = props.items || [];
+
+  const listItems = items.map(item => (
     <ListItem label={item.label} values={item.values} tooltip={item.tooltip} />
   ));
 
@@ -49,7 +51,7 @@ export const List = (props: ListModel) => {
   // TODO: Refactor code, this logic does not matches the headers with the actual value. Works for now but may cause problems.
   function valueHeaders(showHeadersText) {
     const tableHeadersSet = new Set();
-    props.items.map(item =>
+    items.map(item =>
       Object.keys(item.values[0]).map(header => tableHeadersSet.add(header))
     );
     // From Set to Array

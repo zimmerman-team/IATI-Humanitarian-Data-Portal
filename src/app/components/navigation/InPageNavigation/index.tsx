@@ -3,9 +3,13 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import styled from 'styled-components';
 import Colors from 'app/theme/color';
-import { InPageNavModel, LocationModel } from './model';
+import { InPageNavModel } from './model';
 import ButtonDown from '@material-ui/icons/ArrowDownward';
 import ButtonUp from '@material-ui/icons/ArrowUpward';
+import { scroller } from 'react-scroll';
+
+/* utils */
+import findIndex from 'lodash/findIndex';
 
 //TODO: FUNCTIONALITY LIST AFTER DISCUSSION
 // If this component hits the top of the page, the components sticks there.
@@ -52,24 +56,48 @@ const Controls = styled(props => <Box {...props} />)`
   }
 `;
 
-const LOCATION = '#activity_summary';
-
 export function InPageNavigation(props: InPageNavModel) {
-  const [currentLocation, setCurrentLocation] = React.useState(LOCATION);
+  const [currentLocation, setCurrentLocation] = React.useState(
+    props.lists[0] ? props.lists[0].elName : 'none'
+  );
 
-  function handleClickControl(direction: string) {
-    setCurrentLocation('');
+  const currLocInd = findIndex(props.lists, ['elName', currentLocation]);
+
+  function scrollToLoc(elName: string) {
+    scroller.scrollTo(elName, {
+      duration: 1000,
+      delay: 100,
+      smooth: true,
+      offset: -50, // Scrolls to element + 50 pixels down the page
+    });
   }
 
-  function handleClick(url: string) {
-    setCurrentLocation(url);
+  function handleClickControl(direction: string) {
+    let newLoc = currentLocation;
+
+    if (direction === 'down' && currLocInd + 1 !== props.lists.length) {
+      newLoc = props.lists[currLocInd + 1].elName;
+      scrollToLoc(newLoc);
+    }
+
+    if (direction === 'up' && currLocInd - 1 > -1) {
+      newLoc = props.lists[currLocInd - 1].elName;
+      scrollToLoc(newLoc);
+    }
+
+    setCurrentLocation(newLoc);
+  }
+
+  function handleClick(elName: string) {
+    setCurrentLocation(elName);
+    scrollToLoc(elName);
   }
 
   return (
     <>
       <Box display="flex" flexDirection="column">
-        {props.locations.map(location => {
-          if (location.url === currentLocation) {
+        {props.lists.map((list, index) => {
+          if (list.elName === currentLocation) {
             return (
               <Box
                 display="flex"
@@ -78,27 +106,32 @@ export function InPageNavigation(props: InPageNavModel) {
                 marginBottom="25px"
               >
                 <Rectangle />
-                <CurrentLink variant="subtitle2">{location.label}</CurrentLink>
+                <CurrentLink variant="subtitle2">{list.title}</CurrentLink>
               </Box>
             );
           }
 
           return (
             <BaseLink
+              key={`in-page-menu-item-${index}`}
               variant="subtitle2"
-              onClick={() => handleClick(location.url)}
+              onClick={() => handleClick(list.elName)}
             >
-              {location.label}
+              {list.title}
             </BaseLink>
           );
         })}
       </Box>
       <Controls>
-        <ButtonUp fontSize="large" onClick={() => handleClickControl('up')} />
+        <ButtonUp
+          fontSize="large"
+          onClick={() => handleClickControl('up')}
+          color={currLocInd === 0 ? 'disabled' : undefined}
+        />
         <ButtonDown
           fontSize="large"
           onClick={() => handleClickControl('down')}
-          color="disabled"
+          color={currLocInd === props.lists.length - 1 ? 'disabled' : undefined}
         />
       </Controls>
     </>
