@@ -4,8 +4,21 @@ import { formatMoney } from '../../components/datadisplay/Table/helpers';
 
 export const actMetadataQuery: ActDetailQuery = {
   q: '*:*',
-  fl:
-    'iati_identifier,title,description,reporting_org_narrative,reporting_org_ref,activity_date_iso_date,activity_date_type',
+  wt: 'json',
+  // So with this kind of fl we ignore the transaction data for an activity
+  // because we load in the actual transaction data via a separate endpoint
+  // and these transactions can be pretty massive so we don't want
+  // the same/extra transaction data with the activity meta data call
+  fl: `default_currency,activity_status_code,collaboration_type_code,
+        capital_spend_percentage,default_flow_type_code,hierarchy,
+        iati_identifier,default_finance_type_code,default_tied_status_code,
+        default_lang,reporting_org:[json],title,description,
+        participating_org:[json],activity_date:[json],contact_info:[json],
+        recipient_country:[json],sector:[json],country_budget_items:[json],
+        policy_marker:[json],default_aid_type:[json],
+        planned_disbursement:[json],
+        reporting_org_narrative,reporting_org_ref,
+        activity_date_type,activity_date_iso_date`,
 };
 
 export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {

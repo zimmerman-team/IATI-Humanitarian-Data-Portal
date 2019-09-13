@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import styled from 'styled-components';
@@ -60,6 +60,13 @@ export function InPageNavigation(props: InPageNavModel) {
   const [currentLocation, setCurrentLocation] = React.useState(
     props.lists[0] ? props.lists[0].elName : 'none'
   );
+
+  useEffect(() => {
+    console.log('NAVIGATION COMPONENT UPDATING');
+    if (currentLocation === 'none' && props.lists[0]) {
+      setCurrentLocation(props.lists[0].elName);
+    }
+  }, [props.lists]);
 
   const currLocInd = findIndex(props.lists, ['elName', currentLocation]);
 

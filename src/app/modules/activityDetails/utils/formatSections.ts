@@ -1,12 +1,12 @@
 /* interfaces/models */
-import { ActMetadataModel } from '../store/interface';
+import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 import { SectionsModel } from '../model';
 
 /* utils */
 import find from 'lodash/find';
 
 export function formatSections(
-  actDetail: ActMetadataModel | null
+  actDetail: SingleDefActivity | null
 ): SectionsModel[] {
   const sections: SectionsModel[] = [
     {
