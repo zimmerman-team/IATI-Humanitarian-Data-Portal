@@ -15,10 +15,11 @@ export const actMetadataQuery: ActDetailQuery = {
         default_lang,reporting_org:[json],title,description,
         participating_org:[json],activity_date:[json],contact_info:[json],
         recipient_country:[json],sector:[json],country_budget_items:[json],
-        policy_marker:[json],default_aid_type:[json],
-        planned_disbursement:[json],
-        reporting_org_narrative,reporting_org_ref,
-        activity_date_type,activity_date_iso_date`,
+        policy_marker:[json],default_aid_type:[json],recipient_region:[json],
+        planned_disbursement:[json],budget:[json],document_link:[json],
+        other_identifier:[json],humanitarian_scope:[json],
+        reporting_org_narrative,reporting_org_ref,crs_add:[json],
+        activity_date_type,activity_date_iso_date,fss:[json],`,
 };
 
 export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {

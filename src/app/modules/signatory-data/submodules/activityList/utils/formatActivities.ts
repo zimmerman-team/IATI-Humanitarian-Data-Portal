@@ -2,6 +2,7 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 
 /* utils */
 import { getActualDates, getEngText } from 'app/utils/generic';
+import get from 'lodash/get';
 
 /* consts */
 import { actStatusNames } from 'app/__consts__/iati_standard_code_names';
@@ -19,7 +20,7 @@ export function formatActivities(
       );
 
       // we get the english activity title here
-      const engTitle = getEngText(activity.title[0]);
+      const engTitle = getEngText(get(activity, 'title[0]', '""'));
 
       const resultCount = activity.result ? activity.result.length : 0;
 

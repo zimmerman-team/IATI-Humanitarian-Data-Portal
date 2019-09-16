@@ -3,7 +3,6 @@ import React from 'react';
 /* components */
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import { TableHeader } from '../../index';
 import { SimpleListItem } from '../../common/SimpleListItem';
 
 /* models */
@@ -16,8 +15,8 @@ import {
   ArrowStyleUp,
   CardContainer,
   CardHead,
-  CardTitle,
 } from './style';
+import { TableTitle } from '../../index';
 
 export const TableCard = (props: TableCardModel) => {
   const [open, setOpen] = React.useState(false);
@@ -28,23 +27,19 @@ export const TableCard = (props: TableCardModel) => {
 
   return (
     <CardContainer open={isOpen} fullWidth={props.fullWidth}>
+      <CardHead
+        border={isOpen}
+        expandable={props.expandable}
+        onClick={() => setOpen(!open)}
+      >
+        <TableTitle variant="h6">{props.title}</TableTitle>
+        {props.expandable && (
+          <ArrowContainer>
+            {open ? <ArrowStyleUp /> : <ArrowStyleDown />}
+          </ArrowContainer>
+        )}
+      </CardHead>
       <Table>
-        <CardHead
-          border={isOpen}
-          expandable={props.expandable}
-          onClick={() => setOpen(!open)}
-        >
-          <TableHeader>
-            <CardTitle variant="h6">{props.title}</CardTitle>
-          </TableHeader>
-          {props.expandable && (
-            <TableHeader colSpan={3}>
-              <ArrowContainer>
-                {open ? <ArrowStyleUp /> : <ArrowStyleDown />}
-              </ArrowContainer>
-            </TableHeader>
-          )}
-        </CardHead>
         {isOpen && (
           <TableBody>
             {items.map((item, index) => (

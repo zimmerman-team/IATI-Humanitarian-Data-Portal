@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Base, TableTitle } from '../../index';
 import { TableHeadProps } from '@material-ui/core/TableHead';
-import { TableHead } from '@material-ui/core';
 import ArrowDown from '@material-ui/icons/ArrowDropDown';
 import ArrowUp from '@material-ui/icons/ArrowDropUp';
 import { PaperProps } from '@material-ui/core/Paper';
@@ -16,10 +15,7 @@ export const CardContainer = styled(Base)`
   padding: ${(props: CardContainerModel) =>
     props.open ? '8px 28px 32px 28px' : '8px 28px'};
   width: ${(props: CardContainerModel) => (props.fullWidth ? '100%' : 'unset')};
-`;
-
-export const CardTitle = styled(TableTitle)`
-  padding-left: 22px;
+  overflow-x: auto;
 `;
 
 interface CardHeadModel extends TableHeadProps {
@@ -27,7 +23,9 @@ interface CardHeadModel extends TableHeadProps {
   expandable?: boolean;
 }
 
-export const CardHead = styled(TableHead)`
+export const CardHead = styled.div`
+  display: flex;
+  padding: 14px 0;
   border-bottom: ${(props: CardHeadModel) =>
     props.border ? `${color.paleGrey} 3px solid;` : 'none'};
   cursor: ${(props: CardHeadModel) =>
@@ -46,4 +44,5 @@ export const ArrowStyleUp = styled(ArrowUp)`
 
 export const ArrowContainer = styled.div`
   display: flex;
+  margin-left: auto;
 `;

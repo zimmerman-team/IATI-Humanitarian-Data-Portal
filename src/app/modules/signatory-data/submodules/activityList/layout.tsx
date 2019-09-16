@@ -9,7 +9,7 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
       <Grid container>
         {/** --------------------------------------------------------------------------- */}
         {/** Table */}
-        <Grid item>
+        <Grid item xs={12}>
           <Table
             title={props.activity.title}
             data={props.activity.data}

@@ -5,6 +5,10 @@ import { ActivityDetailsLayout } from './layout';
 /* utils */
 import get from 'lodash/get';
 import { formatHeader } from './utils/formatHeader';
+import { formatSections } from './utils/formatSections';
+import { formatTransTable } from './utils/formatTransTable';
+import { formatResults } from './utils/formatResults';
+import { formatActivityElements } from './utils/formatActivityElements';
 
 /* consts */
 import {
@@ -20,10 +24,6 @@ import { actDetailStore } from './store';
 
 /* mock */
 import { mockData } from './mock';
-import { formatSections } from './utils/formatSections';
-import { formatTransTable } from './utils/formatTransTable';
-import { formatResults } from './utils/formatResults';
-import { formatActivityElements } from './utils/formatActivityElements';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */

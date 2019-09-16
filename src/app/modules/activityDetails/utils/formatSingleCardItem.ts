@@ -8,6 +8,7 @@ import get from 'lodash/get';
 interface ElementItem {
   key: string;
   label: string;
+  arrayKey?: string;
 }
 
 export function formatSingleCardItem(
@@ -20,6 +21,10 @@ export function formatSingleCardItem(
     let value = get(actDetail, field.concat(element.key));
     if (!value) {
       value = 'No Data';
+    } else if (element.arrayKey) {
+      value = value
+        .map(arrVal => element.arrayKey && arrVal[element.arrayKey])
+        .join(', ');
     }
 
     items.push({

@@ -100,3 +100,115 @@ export const resultTypeNames = {
   '3': 'Impact',
   '9': 'Other',
 };
+
+export const orgRoleNames = {
+  '1': 'Funding',
+  '2': 'Accountable',
+  '3': 'Extending',
+  '4': 'Implementing',
+};
+
+export const othIDTypeNames = {
+  A1: 'Reporting Organisation’s internal activity identifier',
+  A2: 'CRS Activity identifier',
+  A3: 'Previous Activity Identifier',
+  A9: 'Other Activity Identifier',
+  B1: 'Previous Reporting Organisation Identifier',
+  B9: 'Other Organisation Identifier',
+};
+
+export const contactTypeNames = {
+  '1': 'General Enquiries',
+  '2': 'Project Management',
+  '3': 'Financial Management',
+  '4': 'Communications',
+};
+
+export const regVocNames = {
+  '1': 'OECD DAC',
+  '2': 'UN',
+  '99': 'Reporting Organisation',
+};
+
+export const tagVocNames = {
+  '1': 'Agrovoc',
+  '2': 'UN Sustainable Development Goals (SDG)',
+  '3': 'UN Sustainable Development Goals (SDG) Targets',
+  '99': 'Reporting Organisation',
+};
+
+export const budgItemVocNames = {
+  '1': '(withdrawn)IATI',
+  '2': 'Country Chart of Accounts',
+  '3': 'Other Country System',
+  '4': 'Reporting Organisation',
+  '5': 'Other',
+  none: 'No Data',
+};
+
+export const humScopTypeNames = {
+  '1': 'Emergency',
+  '2': 'Appeal',
+};
+
+export const humVocNames = {
+  '1-2': 'Glide',
+  '2-1': 'Humanitarian Plan',
+  '99': 'Reporting Organisation',
+};
+
+export const polMarkCodeNames = {
+  '1': 'Gender Equality',
+  '2': 'Aid to Environment',
+  '3': 'Participatory Development/Good Governance',
+  '4': 'Trade Development',
+  '5': 'Aid Targeting the Objectives of the Convention on Biological Diversity',
+  '6':
+    'Aid Targeting the Objectives of the Framework Convention on Climate Change - Mitigation',
+  '7':
+    'Aid Targeting the Objectives of the Framework Convention on Climate Change - Adaptation',
+  '8':
+    'Aid Targeting the Objectives of the Convention to Combat Desertification',
+  '9': 'Reproductive, Maternal, Newborn and Child Health (RMNCH)',
+  '10': 'Disaster Risk Reduction(DRR)',
+  '11': 'Disability',
+  '12': 'Nutrition',
+};
+
+export const policMSignificanceName = {
+  '0': 'not targeted',
+  '1': 'significant objective',
+  '2': 'principal objective',
+  '3': 'principal objective AND in support of an action programme',
+  '4': 'Explicit primary objective',
+};
+
+export const polMarkerVocabNames = {
+  '1': 'OECD DAC CRS',
+  '99': 'Reporting Organisation',
+};
+
+export const defAidTypeVocNames = {
+  '1': 'OECD DAC CRS',
+  '2': 'Earmarking Category',
+  '3': 'Earmarking Modality',
+  '4': 'Cash and Voucher Modalities',
+  '99': 'Reporting Organisation',
+};
+
+export const budgTypeNames = {
+  '1': 'Original',
+  '2': 'Revised',
+};
+
+export const budgStatusNames = {
+  '1': 'Indicative',
+  '2': 'Committed',
+};
+
+export const crsAddCodeNames = {
+  '1': 'Free standing technical cooperation',
+  '2': 'Programme-based approach',
+  '3': 'Investment project',
+  '4': 'Associated financing',
+};

@@ -20,7 +20,7 @@ export function formatSections(
     },
   ];
 
-  if (actDetail) {
+  if (actDetail && actDetail.description) {
     // here we will get the english description
     let engDesc: any = find(actDetail.description, descItem => {
       return descItem.indexOf('"lang":"en"') !== -1;

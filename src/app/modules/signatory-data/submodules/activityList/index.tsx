@@ -20,14 +20,9 @@ function ActivityListz(props) {
   const activities = actState ? actState.data.response : {};
 
   useEffect(() => {
-    activitiesQuery.q = activitiesQuery.q.replace(
-      '{rep_org_val}',
-      props.match.params.code
-    );
-
     activitiesAction({
       values: {
-        ...activitiesQuery,
+        ...activitiesQuery(props.match.params.code),
         rows,
         start: page * rows,
       },

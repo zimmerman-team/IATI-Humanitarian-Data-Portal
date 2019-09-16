@@ -4,6 +4,7 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 
 /* utils */
 import { getActualDates, getEngText } from 'app/utils/generic';
+import get from 'lodash/get';
 
 export function formatHeader(
   actDetail: SingleDefActivity | null
@@ -22,13 +23,13 @@ export function formatHeader(
   };
 
   if (actDetail) {
-    header.organisation.name = actDetail.reporting_org_narrative[0];
+    header.organisation.name = get(actDetail, 'reporting_org_narrative[0]', '');
     header.organisation.code = actDetail.reporting_org_ref;
     header.activity.code = actDetail.iati_identifier;
-    header.activity.title = getEngText(actDetail.title[0]);
+    header.activity.title = getEngText(get(actDetail, 'title[0]', '""'));
     const dates = getActualDates(
-      actDetail.activity_date_iso_date,
-      actDetail.activity_date_type
+      get(actDetail, 'activity_date_iso_date', []),
+      get(actDetail, 'activity_date_type', [])
     );
     header.activity.startDate = dates.actualStart;
     header.activity.endDate = dates.actualEnd;
