@@ -48,7 +48,7 @@ export function formatSingleCardItem(
       value = element.codeNames[value];
     }
 
-    if (value && element.suffix) {
+    if (value !== 'No Data' && element.suffix) {
       value += element.suffix;
     }
 
