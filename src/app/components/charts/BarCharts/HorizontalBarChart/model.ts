@@ -21,7 +21,7 @@ export const barModel: BarSvgProps = {
   layout: 'horizontal',
   axisTop: {
     tickValues: 5,
-    tickSize: 5,
+    tickSize: 15,
     tickPadding: 5,
     tickRotation: 0,
     legend: '',
@@ -56,6 +56,9 @@ export const barModel: BarSvgProps = {
           fontWeight: 500,
           fontFamily: 'Inter',
           fontSize: 12,
+        },
+        line: {
+          strokeWidth: 0,
         },
       },
     },
