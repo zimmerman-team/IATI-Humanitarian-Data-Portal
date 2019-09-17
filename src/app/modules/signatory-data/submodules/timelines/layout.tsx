@@ -5,6 +5,7 @@ import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 import styled from 'styled-components';
 import { TimeLinessModel } from './model';
+import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;
@@ -14,6 +15,12 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
 export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
     <>
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="100px" left="0">
+        <DecoSigTimelineTopLeft />
+      </Box>
+      {/* ---------- */}
       <Grid container spacing={4} direction="column">
         <Grid item md={6}>
           <Typography variant="h4">

@@ -7,16 +7,16 @@ module.exports = {
     },
     sourceType: 'module',
     useJSXTextNode: true,
-    project: './tsconfig.json',
+    // project: './tsconfig.json',
     tsconfigRootDir: './',
   },
   extends: [
     'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
     'prettier',
     'prettier/react',
-    'plugin:jest/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'jest-enzyme',
+    'prettier/@typescript-eslint',
   ],
 
   env: {
@@ -24,11 +24,11 @@ module.exports = {
     node: true,
     browser: true,
   },
-  plugins: ['prettier', 'react', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
   rules: {
     'react/jsx-filename-extension': [
       0,
-      { extensions: ['.js', '.jsx', '.tsx'] },
+      { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
     ],
     'react/jsx-no-duplicate-props': [
       'error',

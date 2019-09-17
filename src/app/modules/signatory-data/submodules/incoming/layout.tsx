@@ -5,11 +5,21 @@ import { List } from 'app/components/datadisplay/Lists';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import { IncomingModel } from './model';
+import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
+import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
+import { DecoSigIncomingTopLeft } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSigIncomingTopLeft';
 
 export const IncomingLayout = (props: IncomingModel) => {
   return (
     <>
-      {/** content */}
+      {/* content */}
+
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="0" left="0">
+        <DecoSigIncomingTopLeft />
+      </Box>
+      {/* ---------- */}
 
       <Grid container spacing={4}>
         <Grid item md={12}>
@@ -44,8 +54,9 @@ export const IncomingLayout = (props: IncomingModel) => {
 
         <Grid item xs={12} md={9}>
           <Grid container spacing={4}>
-            {/** 1 */}
+            {/* ---------------------------------------- */}
             {/** Incoming pledges */}
+            {/** 1 */}
             <Grid item xs={12}>
               {/**
                   Incoming pledges
@@ -58,8 +69,9 @@ export const IncomingLayout = (props: IncomingModel) => {
               <List valueHeaders {...props.lists[0]} />
             </Grid>
 
-            {/** 2 */}
+            {/* ---------------------------------------- */}
             {/** Incoming commitments */}
+            {/** 2 */}
             <Grid item xs={12}>
               {/**
                   Incoming commitments
@@ -72,9 +84,10 @@ export const IncomingLayout = (props: IncomingModel) => {
               <List valueHeaders {...props.lists[1]} />
             </Grid>
 
-            {/** 3 */}
+            {/* ---------------------------------------- */}
             {/** Incoming funds */}
-            <Grid item xs={12}>
+            {/** 3 */}
+            <Grid item xs={12} style={{ position: 'relative' }}>
               {/**
                   Incoming funds
 
@@ -85,10 +98,23 @@ export const IncomingLayout = (props: IncomingModel) => {
                 */}
 
               <List valueHeaders {...props.lists[2]} />
+
+              {/* ---------------------------------------- */}
+              {/* decoration: top left */}
+              <Box
+                position="absolute"
+                bottom="-200px"
+                right="-100px"
+                zIndex="-1"
+              >
+                <DecoSignIncomingBottomRight />
+              </Box>
+              {/* ---------- */}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+      <Box height="100px" width="100%" />
     </>
   );
 };

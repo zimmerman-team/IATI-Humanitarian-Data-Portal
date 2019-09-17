@@ -6,12 +6,45 @@ import { LineChartCard } from 'app/components/surfaces/Cards/LineChartCard';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import TableModule from 'app/components/datadisplay/Table';
 import parse from 'html-react-parser';
+import { DecoSigProgTopLeft } from 'app/modules/signatory-progress/common/decoration/DecoSigProgTopLeft';
+import { DecoSigProgTopRight } from 'app/modules/signatory-progress/common/decoration/DecoSigProgTopRight';
+import { DecoSigProgBottomRight } from 'app/modules/signatory-progress/common/decoration/DecoSigProgBottomRight';
+import { DecoSigProgMidLeft } from 'app/modules/signatory-progress/common/decoration/DecoSigProgMidLeft';
 
 export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
   return (
     <Container maxWidth="lg">
+      {/* -------------------------------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="0" left="0">
+        <DecoSigProgTopLeft />
+      </Box>
+      {/* -------------------------------------------------------------- */}
+
+      {/* -------------------------------------------------------------- */}
+      {/* decoration: mid left */}
+      <Box position="absolute" top="200px" left="0">
+        <DecoSigProgMidLeft />
+      </Box>
+      {/* -------------------------------------------------------------- */}
+
+      {/* -------------------------------------------------------------- */}
+      {/* decoration: bottom right */}
+      <Box position="absolute" bottom="-300px" right="0">
+        <DecoSigProgBottomRight />
+      </Box>
+      {/* -------------------------------------------------------------- */}
+
       <Grid container>
-        <Grid item lg={8} md={12}>
+        {/* -------------------------------------------------------------- */}
+        {/* description */}
+        <Grid item lg={8} md={12} style={{ position: 'relative' }}>
+          {/* -------------------------------------------------------------- */}
+          {/* decoration: top right */}
+          <Box position="absolute" top="125px" right="-405px">
+            <DecoSigProgTopRight />
+          </Box>
+          {/* -------------------------------------------------------------- */}
           <Typography variant="h3">{props.title}</Typography>
           <Box height="calc(64px - 16px)" width="100%" />
           <Typography variant="body1">{parse(props.description)}</Typography>
@@ -20,20 +53,28 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
         <Box height="calc(112px - 16px)" width="100%" />
 
         <Grid item lg={12} md={12}>
+          {/* -------------------------------------------------------------- */}
+          {/* Data Publication Aggregated Signatory Progress */}
           <LineChartCard
             title={props.lineChartCardData.title}
             values={props.lineChartCardData.values}
           />
+          {/* -------------------------------------------------------------- */}
 
           <Box height="64px" width="100%" />
 
+          {/* -------------------------------------------------------------- */}
+          {/* Signatories meeting Data Publication CCTRIs */}
           <HorizontalBarChartCard
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
           />
+          {/* -------------------------------------------------------------- */}
 
           <Box height="64px" width="100%" />
 
+          {/* -------------------------------------------------------------- */}
+          {/* Aggregated Signatory Data Publication Indicator Values */}
           <TableModule
             title={props.tableChartData.title}
             options={props.tableChartData.options}
@@ -41,6 +82,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
             columns={props.tableChartData.columns}
             columnsCell={props.tableChartData.columnsCell}
           />
+          {/* -------------------------------------------------------------- */}
 
           <Box height="28px" width="100%" />
 
@@ -49,6 +91,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
             its agencie or its affiliatess that is currently publishing to IATI
           </Typography>
         </Grid>
+        <Box width="100%" height="200px" />
       </Grid>
     </Container>
   );
