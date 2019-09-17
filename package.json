@@ -286,7 +286,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "echo pre && echo commit && echo police",
-      "pre-push": "echo pre push police"
+      "pre-push": "echo pre push police",
+      "post-merge": "yarn install"
     }
   },
   "lighthouse": {
