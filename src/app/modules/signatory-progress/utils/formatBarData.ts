@@ -29,7 +29,7 @@ export function formatBarData(
     barData.data.values.push({
       value: lastPubData.sigCount,
       percentage: Math.round((lastPubData.sigCount * 100) / allSigCount),
-      name: 'Singatories publishing to IATI',
+      name: 'Signatories publishing to IATI',
     });
     specPubsData.forEach(item => {
       // so here we'll use the latest data for the bar chart
