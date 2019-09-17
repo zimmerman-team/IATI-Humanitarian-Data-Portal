@@ -22,9 +22,6 @@ import {
 /* store */
 import { actDetailStore } from './store';
 
-/* mock */
-import { mockData } from './mock';
-
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
   const [state, actions] = actDetailStore();
@@ -97,12 +94,12 @@ function ActivityDetail(props) {
 
   const elementLists = formatActivityElements(actDetail);
 
-  /* ----------------------------------------------- */
-
   const resultsCard = {
     title: 'Results',
     items: formatResults(resultData),
   };
+
+  /* ----------------------------------------------- */
 
   return (
     <ActivityDetailsLayout

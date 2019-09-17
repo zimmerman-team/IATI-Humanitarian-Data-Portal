@@ -20,6 +20,7 @@ export interface ActTransactionModel {
 }
 
 export interface ActResultsModel {
+  id: string;
   result_type: string;
   result_title_narrative: string[];
   result_aggregation_status?: string;

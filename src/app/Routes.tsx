@@ -19,6 +19,7 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 // Signatory Data Sub Pages
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 import { ActivityDetails } from './modules/activityDetails';
+import { ResultDetail } from './modules/ResultDetails';
 
 export function Routes() {
   const gbsignatoriesData = useStoreState(
@@ -60,6 +61,12 @@ export function Routes() {
           exact
           path="/activity-detail/:code"
           render={() => <ActivityDetails />}
+        />
+
+        <Route
+          exact
+          path="/result-detail/:code"
+          render={() => <ResultDetail />}
         />
 
         {/* Signatory Data Container*/}
