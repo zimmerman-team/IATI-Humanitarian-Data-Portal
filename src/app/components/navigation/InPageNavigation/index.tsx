@@ -62,7 +62,6 @@ export function InPageNavigation(props: InPageNavModel) {
   );
 
   useEffect(() => {
-    console.log('NAVIGATION COMPONENT UPDATING');
     if (currentLocation === 'none' && props.lists[0]) {
       setCurrentLocation(props.lists[0].elName);
     }
