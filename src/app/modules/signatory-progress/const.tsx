@@ -230,7 +230,7 @@ export const baseTable: TableModuleModel = {
     download: true,
     rowHover: false,
     pagination: false,
-    viewColumns: true,
+    viewColumns: false,
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
