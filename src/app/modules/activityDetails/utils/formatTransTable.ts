@@ -5,6 +5,9 @@ import { transTypeNames } from 'app/__consts__/iati_standard_code_names';
 /* models/interfaces */
 import { ActTransactionModel } from '../store/interface';
 
+/* utils */
+import get from 'lodash/get';
+
 export function formatTransTable(
   transData: ActTransactionModel[] | null,
   incoming: boolean
@@ -28,7 +31,10 @@ export function formatTransTable(
         trans.transaction_provider_org_narrative,
         trans.transaction_receiver_org_narrative,
         transTypeNames[trans.transaction_type].label,
-        [trans.transaction_value_currency, trans.transaction_value],
+        [
+          get(trans, 'transaction_value_currency', 'USD'),
+          get(trans, 'transaction_value', 0),
+        ],
         traceId,
       ]);
     });

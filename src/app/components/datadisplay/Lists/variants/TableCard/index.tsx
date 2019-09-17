@@ -3,8 +3,8 @@ import React from 'react';
 /* components */
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import { TableHeader } from '../../index';
 import { SimpleListItem } from '../../common/SimpleListItem';
+import { Typography } from '@material-ui/core';
 
 /* models */
 import { TableCardModel } from './model';
@@ -16,11 +16,12 @@ import {
   ArrowStyleUp,
   CardContainer,
   CardHead,
-  CardTitle,
+  EmptyLabel,
 } from './style';
+import { TableTitle } from '../../index';
 
 export const TableCard = (props: TableCardModel) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const isOpen = (props.expandable && open) || !props.expandable;
 
@@ -28,35 +29,37 @@ export const TableCard = (props: TableCardModel) => {
 
   return (
     <CardContainer open={isOpen} fullWidth={props.fullWidth}>
-      <Table>
-        <CardHead
-          border={isOpen}
-          expandable={props.expandable}
-          onClick={() => setOpen(!open)}
-        >
-          <TableHeader>
-            <CardTitle variant="h6">{props.title}</CardTitle>
-          </TableHeader>
-          {props.expandable && (
-            <TableHeader colSpan={3}>
-              <ArrowContainer>
-                {open ? <ArrowStyleUp /> : <ArrowStyleDown />}
-              </ArrowContainer>
-            </TableHeader>
-          )}
-        </CardHead>
-        {isOpen && (
-          <TableBody>
-            {items.map((item, index) => (
-              <SimpleListItem
-                key={`simple-row-${index}`}
-                items={item}
-                index={index}
-              />
-            ))}
-          </TableBody>
+      <CardHead
+        border={isOpen}
+        expandable={props.expandable}
+        onClick={() => setOpen(!open)}
+      >
+        <TableTitle variant="h6">{props.title}</TableTitle>
+        {props.expandable && (
+          <ArrowContainer>
+            {open ? <ArrowStyleUp /> : <ArrowStyleDown />}
+          </ArrowContainer>
         )}
-      </Table>
+      </CardHead>
+      {isOpen && (
+        <Table>
+          {items.length > 0 ? (
+            <TableBody>
+              {items.map((item, index) => (
+                <SimpleListItem
+                  key={`simple-row-${index}`}
+                  items={item}
+                  index={index}
+                />
+              ))}
+            </TableBody>
+          ) : (
+            <EmptyLabel>
+              <Typography variant="subtitle1">No Data</Typography>
+            </EmptyLabel>
+          )}
+        </Table>
+      )}
     </CardContainer>
   );
 };

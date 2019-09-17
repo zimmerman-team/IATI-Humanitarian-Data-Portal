@@ -43,6 +43,7 @@ export interface InfoCellModuleModel {
 export interface LinkCellModuleModel {
   value: string | string[] | number;
   link: string;
+  extLink?: boolean;
   colSpan?: number;
 }
 
