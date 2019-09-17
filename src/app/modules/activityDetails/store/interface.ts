@@ -22,7 +22,7 @@ export interface ActTransactionModel {
 export interface ActResultsModel {
   result_type: string;
   result_title_narrative: string[];
-  result_reference?: string[];
+  result_aggregation_status?: string;
 }
 
 export interface ActDetailResponse<DocModel> {
