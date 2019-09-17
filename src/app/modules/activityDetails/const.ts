@@ -47,6 +47,7 @@ export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {
   return {
     q: `iati_identifier:${activityIdentifier}`,
     fl: 'result_title_narrative,result_reference,result_type',
+    rows: 10000,
   };
 };
 
