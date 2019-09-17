@@ -5,7 +5,7 @@ import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/Horiz
 import { SigItemModel, specPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
 /* utils */
-import { getRealSigCount } from './general';
+import { getAllSigCount, getRealSigCount } from './general';
 
 export function formatBarData(
   publisherData: SigItemModel,
@@ -18,6 +18,19 @@ export function formatBarData(
   };
 
   if (publisherData) {
+    // We'll get the all gb signatory count for comparison
+    // here
+    const allSigCount = getAllSigCount(gbsignatories);
+    // getting the latest dateRange key
+    const lastRKey = `orgs_[${dateRanges[dateRanges.length - 1].value}]`;
+    // getting the latest publisher data
+    const lastPubData = publisherData[lastRKey];
+    // We'll push the first bar data item here
+    barData.data.values.push({
+      value: lastPubData.sigCount,
+      percentage: Math.round((lastPubData.sigCount * 100) / allSigCount),
+      name: 'Singatories publishing to IATI',
+    });
     specPubsData.forEach(item => {
       // so here we'll use the latest data for the bar chart
       // and thats why we choose the last item from dateRanges
@@ -39,9 +52,7 @@ export function formatBarData(
         );
         // a simple proportion calculation is applied here
         // to get the percentage value
-        percentage = Math.round(
-          (specSigCount * 100) / publisherData[rangeKey].sigCount
-        );
+        percentage = Math.round((specSigCount * 100) / allSigCount);
 
         value = specSigCount;
       }

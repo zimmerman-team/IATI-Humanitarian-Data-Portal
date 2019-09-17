@@ -9,7 +9,6 @@ export type ActivityDetailModel = {
   sections: SectionsModel[];
   incomingTransactionsTableData: TableModuleModel;
   outgoingTransactionsTableData: TableModuleModel;
-  inPageNavigation: InPageNavModel;
   lists: ListModel[];
   tableCard?: TableCardModel;
 };

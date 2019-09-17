@@ -6,7 +6,7 @@ export const getTableData = (rawData, codelist) => {
   const expandableData = [];
   const arr = get(
     rawData,
-    'facet_counts.facet_pivot["transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency"]',
+    'facet_counts.facet_pivot["transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative"]',
     []
   );
   arr.forEach(facet => {
@@ -18,7 +18,6 @@ export const getTableData = (rawData, codelist) => {
           fpivot.value,
           get(find(codelist, { code: fpivotpivot.value }), 'name', ''),
           fpivotpivot.pivot.length,
-          '',
           {
             currency,
             num: fpivotpivot.stats.stats_fields.transaction_value.sum,
@@ -28,10 +27,10 @@ export const getTableData = (rawData, codelist) => {
         fpivotpivot.pivot.forEach(activity => {
           providerActivities.push([
             {
-              value: activity.value,
+              value: get(activity, 'pivot[0].pivot[0].value', 'Not Provided'),
               link: `/activity-detail/${activity.value}`,
               type: 'LinkCellModule',
-              colSpan: 4,
+              colSpan: 3,
             },
             {
               value: '',

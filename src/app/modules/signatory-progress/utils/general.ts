@@ -39,3 +39,13 @@ export function getRealSigCount(
 
   return realSignatories.length;
 }
+
+export function getAllSigCount(gbsignatories: SingleDefGBSignatory[]): number {
+  const realSigs: string[] = [];
+  gbsignatories.forEach(sigOrg => {
+    if (realSigs.indexOf(sigOrg.name) === -1) {
+      realSigs.push(sigOrg.name);
+    }
+  });
+  return realSigs.length;
+}

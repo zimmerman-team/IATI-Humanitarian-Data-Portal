@@ -12,6 +12,7 @@ export const getHumResultsData = (rawData): ListModel => {
   ];
   return {
     title: 'Humanitarian results',
+    elName: 'incComms',
     subtitle: 'Humanitarian results',
     items: [
       {

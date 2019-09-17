@@ -19,9 +19,9 @@ interface TableResult {
 
 // here we'll start forming data for the expandable rows for this
 // organisation
-function formatExpRows(refItem: PivotItemModel): ExpandedCell[][] {
+function formatExpRows(typeItem: PivotItemModel): ExpandedCell[][] {
   // we get the activity items through which we'll loop
-  const activities = get(refItem, 'pivot[0].pivot', []);
+  const activities = typeItem.pivot ? typeItem.pivot : [];
   const expRows: ExpandedCell[][] = [];
   activities.forEach(activity => {
     // and because we need to divide the activities
@@ -34,11 +34,14 @@ function formatExpRows(refItem: PivotItemModel): ExpandedCell[][] {
       // so we push in the activity
       // name(though currently iati_identifier cause we don't have the name
       // of the activity)
-      const iatiIdentifier = activity.value || '';
       expRowItem.push({
-        value: iatiIdentifier,
+        value: get(
+          activity,
+          'pivot[0].pivot[0].pivot[0].value',
+          'Not Provided'
+        ),
         type: 'LinkCellModule',
-        link: `/activity-detail/${iatiIdentifier}`,
+        link: `/activity-detail/${activity.value || ''}`,
         colSpan: 4,
       });
       // here we push in the transaction amount
@@ -46,16 +49,12 @@ function formatExpRows(refItem: PivotItemModel): ExpandedCell[][] {
         value: transType.count,
         colSpan: 1,
       });
+      const transTypeLabel = transType.value
+        ? transTypeNames[transType.value].label
+        : 'undefined';
       // here we push in the transaction type name
       expRowItem.push({
-        value: transTypeNames[transType.value].label,
-        colSpan: 1,
-      });
-      // here we push in the activity start date
-      // but currently we don't have this element
-      // so we'll just push in an empty string
-      expRowItem.push({
-        value: '',
+        value: transTypeLabel,
         colSpan: 1,
       });
       // here we get the currency of the transaction
@@ -83,7 +82,18 @@ export function formatTableData(recData: PivotItemModel[] | null): TableResult {
   const expRowData: ExpandedCell[][][] = [];
 
   if (recData) {
+    // now if an organisation doesn't have
+    // a title or a ref
+    // we need to skip it, cause it doesn't exists
+    // so we'll use this variable to skip
+    // the REALLY non-existant transaction organisation
+    let skip = false;
     recData.forEach(recItem => {
+      if (recItem.value && skip) {
+        skip = false;
+      } else if (!recItem.value) {
+        skip = true;
+      }
       // so because one organisation name
       // can have different org refs
       // according to the data that we get
@@ -95,40 +105,51 @@ export function formatTableData(recData: PivotItemModel[] | null): TableResult {
       const refArr = get(recItem, 'pivot', []);
 
       refArr.forEach(refItem => {
-        const tableItem: Array<string | number> = [];
-        // and here we push in the name of the organisation
-        tableItem.push(recItem.value || '');
-        // and its ref
-        tableItem.push(refItem.value || '');
-        // then we push the organisation type
-        // it will be the first pivot element
-        // and the ref, and it will occur only one time
-        const orgTypeCode = get(refItem, 'pivot[0].value', 'none');
-        tableItem.push(orgTypeNames[orgTypeCode]);
-        // here we push the amount of transactions for this organisation
-        tableItem.push(refItem.count);
-        // now there will be no transaction types for the organisation
-        // itself so we push in an empty value
-        tableItem.push('');
-        // neither will there be any activity start dates
-        // for the organisation
-        tableItem.push('');
-        // here we'll get the currency from the first
-        // activities transaction valuy currency
-        const currency = get(
-          refItem,
-          'pivot[0].pivot[0].pivot[0].pivot[0].value',
-          'USD'
-        );
-        // and we get the summed up transaction values
-        // for the organisation transactions
-        const transValue = refItem.stats.stats_fields.transaction_value.sum;
-        // and finally we push in the formatted currency value
-        tableItem.push(formatMoney(transValue, currency));
-        // -----------------------------------------------------------------
-        const expRows = formatExpRows(refItem);
-        expRowData.push(expRows);
-        tableData.push(tableItem);
+        if (skip && refItem.value) {
+          skip = false;
+        }
+        if (!skip) {
+          // cause apperantly organisation with the
+          // same title AND the same ref can have
+          // different organisation types,
+          // #JustIatiDataUploadeLogic,
+          // so we'll treat this as different
+          // organisations
+          const typeArr = get(refItem, 'pivot', []);
+          typeArr.forEach(type => {
+            const tableItem: Array<string | number> = [];
+            // and here we push in the name of the organisation
+            tableItem.push(recItem.value || '');
+            // and its ref
+            tableItem.push(refItem.value || '');
+            // then we push the organisation type
+            // it will be the first pivot element
+            // and the ref, and it will occur only one time
+            const orgTypeCode = type.value ? type.value : 'none';
+            tableItem.push(orgTypeNames[orgTypeCode]);
+            // here we push the amount of transactions for this organisation
+            tableItem.push(type.count);
+            // now there will be no transaction types for the organisation
+            // itself so we push in an empty value
+            tableItem.push('');
+            // here we'll get the currency from the first
+            // activities transaction valuy currency
+            const currency = get(
+              type,
+              'pivot[0].pivot[0].pivot[0].value',
+              'USD'
+            );
+            // and we get the summed up transaction values
+            // for the organisation transactions
+            const transValue = type.stats.stats_fields.transaction_value.sum;
+            // and finally we push in the formatted currency value
+            tableItem.push(formatMoney(transValue, currency));
+            // -----------------------------------------------------------------
+            const expRows = formatExpRows(type);
+            expRowData.push(expRows);
+            tableData.push(tableItem);
+          });
+        }
       });
     });
   }

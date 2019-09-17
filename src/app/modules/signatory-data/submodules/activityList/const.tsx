@@ -8,14 +8,16 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
 // base query to get the activities
-export const activitiesQuery = {
-  q: `reporting_org_ref:{rep_org_val} AND
+export const activitiesQuery = repOrgRef => {
+  return {
+    q: `reporting_org_ref:${repOrgRef} AND
       (humanitarian:1 OR
       transaction_humanitarian:1 OR
       sector_vocabulary:1 OR
       (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
-  fl: `iati_identifier,activity_status_code,title,recipient_country_narrative,
+    fl: `iati_identifier,activity_status_code,title,recipient_country_narrative,
         activity_date_type,activity_date_iso_date,result`,
+  };
 };
 
 export const activityBaseTable: TableModuleModel = {

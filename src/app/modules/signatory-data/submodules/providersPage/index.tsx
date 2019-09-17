@@ -7,8 +7,8 @@ import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/provi
 import get from 'lodash/get';
 import { sigDataProvidersStore } from 'app/modules/signatory-data/submodules/providersPage/store';
 import {
+  allProvidersQuery,
   baseProviderConfig,
-  providersTypesCallValues,
   providersTableCallValues,
 } from 'app/modules/signatory-data/submodules/providersPage/consts';
 import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
@@ -20,6 +20,12 @@ export function ProvidersPageFunc(props) {
   /* componentDidMount call */
   React.useEffect(() => {
     actions.orgtypecodelist.fetch({});
+    actions.sigAllProviders.fetch({
+      values: allProvidersQuery(
+        props.match.params.code,
+        'transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type'
+      ),
+    });
     actions.humanitarianActivities.fetch({
       values: {
         q: `reporting_org_ref:${props.match.params.code} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
@@ -29,13 +35,6 @@ export function ProvidersPageFunc(props) {
     });
   }, []);
   React.useEffect(() => {
-    actions.sigdataproviderstypes.fetch({
-      values: {
-        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
-        'json.facet': JSON.stringify(providersTypesCallValues),
-        rows: 0,
-      },
-    });
     actions.sigdataproviders.fetch({
       values: providersTableCallValues(
         props.match.params.code,
@@ -44,6 +43,12 @@ export function ProvidersPageFunc(props) {
     });
   }, [state.orgtypecodelist.data, state.humanitarianActivities.data]);
 
+  const sigAllProviders = get(
+    state.sigAllProviders,
+    'data.data.facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type',
+    null
+  );
+
   const tableData = getTableData(
     get(state.sigdataproviders.data, 'data', {}),
     get(state.orgtypecodelist.data, 'data', {})
@@ -51,8 +56,11 @@ export function ProvidersPageFunc(props) {
   return (
     <ProvidersPageLayout
       barChartData={getBarChartData(
-        get(state.sigdataproviderstypes.data, 'data', {}),
-        get(state.orgtypecodelist.data, 'data', {})
+        get(state.sigdataproviders.data, 'data', null),
+        get(state.orgtypecodelist.data, 'data', null),
+        sigAllProviders,
+        'Humanitarian providers breakdown',
+        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative`
       )}
       tableData={{
         ...baseProviderConfig,

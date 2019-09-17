@@ -5,6 +5,10 @@ import { ActivityDetailsLayout } from './layout';
 /* utils */
 import get from 'lodash/get';
 import { formatHeader } from './utils/formatHeader';
+import { formatSections } from './utils/formatSections';
+import { formatTransTable } from './utils/formatTransTable';
+import { formatResults } from './utils/formatResults';
+import { formatActivityElements } from './utils/formatActivityElements';
 
 /* consts */
 import {
@@ -20,9 +24,6 @@ import { actDetailStore } from './store';
 
 /* mock */
 import { mockData } from './mock';
-import { formatSections } from './utils/formatSections';
-import { formatTransTable } from './utils/formatTransTable';
-import { formatResults } from './utils/formatResults';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
@@ -94,6 +95,8 @@ function ActivityDetail(props) {
     data: formatTransTable(outTransData, false),
   };
 
+  const elementLists = formatActivityElements(actDetail);
+
   /* ----------------------------------------------- */
 
   const resultsCard = {
@@ -107,8 +110,7 @@ function ActivityDetail(props) {
       sections={sections}
       incomingTransactionsTableData={inTable}
       outgoingTransactionsTableData={outTable}
-      inPageNavigation={mockData.inPageNavigation}
-      lists={mockData.lists}
+      lists={elementLists}
       tableCard={resultsCard}
     />
   );

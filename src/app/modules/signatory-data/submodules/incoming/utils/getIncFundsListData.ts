@@ -10,6 +10,7 @@ export const getIncFundsListData = (rawData1, rawData2): ListModel => {
   const incFundsValue4 = get(rawData2, 'incFunds_4.count', 0);
   return {
     title: 'Incoming funds',
+    elName: 'incFunds',
     items: [
       {
         label: 'Total no. of activities with Incoming Funds',

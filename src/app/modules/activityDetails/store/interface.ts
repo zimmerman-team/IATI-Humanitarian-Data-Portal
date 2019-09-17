@@ -1,19 +1,11 @@
 import { ApiModel } from 'app/state/api/interfaces';
+import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 
 export interface ActDetailQuery {
   q: string;
   fl: string;
+  wt?: string;
   rows?: number;
-}
-
-export interface ActMetadataModel {
-  iati_identifier: string;
-  reporting_org_ref: string;
-  reporting_org_narrative: string[];
-  title: string[];
-  description: string[];
-  activity_date_iso_date: string[];
-  activity_date_type: string[];
 }
 
 export interface ActTransactionModel {
@@ -48,7 +40,7 @@ export interface ActDetailResponse<DocModel> {
 
 // activities metadata
 export interface ActMetadataInterface
-  extends ApiModel<ActDetailQuery, ActDetailResponse<ActMetadataModel>> {}
+  extends ApiModel<ActDetailQuery, ActDetailResponse<SingleDefActivity>> {}
 
 // activities transactions
 export interface ActTransactionsInterface

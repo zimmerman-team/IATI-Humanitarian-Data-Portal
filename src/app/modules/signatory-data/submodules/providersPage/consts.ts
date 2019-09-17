@@ -2,10 +2,6 @@ import orderBy from 'lodash/orderBy';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 
-export const providersTypesCallValues = {
-  orgTypes: { type: 'terms', field: 'transaction_provider_org_type' },
-};
-
 export const providersTableCallValues = (pubRef, humActivities) => {
   return {
     q: `reporting_org_ref:${pubRef} AND (transaction_humanitarian:1${
@@ -17,11 +13,23 @@ export const providersTableCallValues = (pubRef, humActivities) => {
     })`,
     stats: 'true',
     'facet.pivot':
-      '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency',
+      '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative',
     rows: 0,
+    'facet.limit': -1,
     facet: 'on',
     'facet.missing': 'true',
     'stats.field': '{!tag=piv1 sum=true}transaction_value',
+  };
+};
+
+export const allProvidersQuery = (pubRef: string, field: string) => {
+  return {
+    q: `reporting_org_ref:${pubRef}`,
+    'facet.limit': -1,
+    'facet.pivot': field,
+    'facet.missing': 'true',
+    rows: 0,
+    facet: 'on',
   };
 };
 
@@ -43,10 +51,6 @@ export const baseProviderConfig: TableModuleModel = {
     },
     {
       name: 'Activites',
-      options: { filter: false },
-    },
-    {
-      name: 'Start date',
       options: { filter: false },
     },
     {

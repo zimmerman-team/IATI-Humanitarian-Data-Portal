@@ -2,7 +2,11 @@
 import { mockData as ActivityDetailsHeaderCardMockData } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/mock';
 import { mockDataVar6 } from 'app/components/datadisplay/Table/mock';
 import { mockData as inPageNavigationMockData } from 'app/components/navigation/InPageNavigation/mock';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
+import {
+  listCellItems,
+  listMockData,
+  listMockData2,
+} from 'app/components/datadisplay/Lists/mock';
 
 // Mock data
 import { ActivityDetailModel } from './model';
@@ -23,35 +27,22 @@ export const mockData: ActivityDetailModel = {
   ],
   incomingTransactionsTableData: mockDataVar6,
   outgoingTransactionsTableData: mockDataVar6,
-  inPageNavigation: inPageNavigationMockData,
   lists: [
     {
       title: listMockData.title,
+      elName: 'summary',
       items: listMockData.items,
     },
     {
-      title: listMockData.title,
-      items: listMockData.items,
+      title: listMockData2.title,
+      elName: 'extra',
+      items: listMockData2.items,
     },
     {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
-    },
-    {
-      title: listMockData.title,
-      items: listMockData.items,
+      title: listCellItems.title,
+      type: 'ExpTableCard',
+      elName: 'countries',
+      tableCItems: listCellItems.tableCItems,
     },
   ],
 };

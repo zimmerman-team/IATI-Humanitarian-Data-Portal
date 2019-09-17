@@ -9,6 +9,7 @@ export const getIncPledgesListData = (rawData): ListModel => {
   const incPledgeValue3 = get(rawData, 'incPledge_3.count', 0);
   return {
     title: 'Incoming pledges',
+    elName: 'incPledge',
     items: [
       {
         label: 'Total no. of activities with Incoming Pledges',
