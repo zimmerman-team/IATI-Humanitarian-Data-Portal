@@ -1,6 +1,7 @@
 import React from 'react';
 import { ResponsiveLine, LineProps, LineSvgProps } from '@nivo/line';
 import styled from 'styled-components';
+import { Tooltip } from './common/Tooltip';
 import { LineChartModel, lineModel } from './model';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';
 // import { CustomSymbolShape } from '../common/CustomSymbolShape';
@@ -36,6 +37,7 @@ export const LineChart = (props: LineChartModel) => {
         {...lineModel}
         data={props.values}
         colors={colorScheme(props.colors)}
+        sliceTooltip={tProps => <Tooltip {...tProps} />}
       />
     </ChartContainer>
   );
