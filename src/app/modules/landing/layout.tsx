@@ -10,6 +10,7 @@ import { StatContainer } from 'app/modules/landing/common/StatContainer/StatCont
 import { LandingModel } from 'app/modules/landing/model';
 import { DecorationLanding } from 'app/modules/common/ModuleBackground/assets/DecorationLanding';
 import { DebugBox } from 'app/utils/layout';
+import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 
 const LandingPaper = styled.div`
   background-color: white;
@@ -70,6 +71,11 @@ export const LandingLayout = (props: LandingModel) => {
       <Box paddingLeft="40px">
         <StatContainer items={props.stats} />
       </Box>
+
+      <CookieDialog
+        message="The website uses cookies for tracking statistics. Read Grand Bargains data privacy for more details."
+        open
+      />
     </Container>
   );
 };

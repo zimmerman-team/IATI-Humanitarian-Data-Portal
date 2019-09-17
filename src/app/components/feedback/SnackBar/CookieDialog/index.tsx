@@ -42,7 +42,7 @@ const Typo = styled(props => <Typography {...props} />)`
   color: black;
 `;
 
-const SnackBar = (props: SnackBarProps) => {
+export const CookieDialog = (props: SnackBarProps) => {
   const [open, setOpen] = React.useState(props.open);
   const { message, onClose, ...other } = props;
 
@@ -80,4 +80,4 @@ const SnackBar = (props: SnackBarProps) => {
     </BaseSnackbar>
   );
 };
-export default SnackBar;
+
