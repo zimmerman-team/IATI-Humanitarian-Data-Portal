@@ -46,3 +46,8 @@ export const ArrowContainer = styled.div`
   display: flex;
   margin-left: auto;
 `;
+
+export const EmptyLabel = styled.div`
+  margin-top: 10px;
+  text-align: center;
+`;

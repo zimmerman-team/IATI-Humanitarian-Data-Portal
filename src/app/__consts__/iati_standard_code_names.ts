@@ -206,9 +206,43 @@ export const budgStatusNames = {
   '2': 'Committed',
 };
 
-export const crsAddCodeNames = {
-  '1': 'Free standing technical cooperation',
-  '2': 'Programme-based approach',
-  '3': 'Investment project',
-  '4': 'Associated financing',
+export const actScopeNames = {
+  '1': 'Global',
+  '2': 'Regional',
+  '3': 'Multi-national',
+  '4': 'National',
+  '5': 'Sub-national: Multi-first-level administrative areas',
+  '6': 'Sub-national: Single first-level administrative area',
+  '7': 'Sub-national: Single second-level administrative area',
+  '8': 'Single location',
+};
+
+export const colabTypeNames = {
+  '1': 'Bilateral',
+  '2': 'Multilateral (inflows)',
+  '3': 'Bilateral, core contributions to NGOs and other private bodies / PPPs',
+  '4': 'Multilateral outflows',
+  '6': 'Private Sector Outflows',
+  '7':
+    'Bilateral, ex-post reporting on NGOs’ activities funded through core contributions',
+  '8': 'Bilateral, triangular co-operation.',
+};
+
+export const defFlowTypeNames = {
+  '10': 'ODA',
+  '20': 'OOF(withdrawn)',
+  '21': 'Non-export credit OOF',
+  '22': 'Officially supported export credits',
+  '30': 'Private Development Finance',
+  '35': 'Private Market',
+  '36': 'Private Foreign Direct Investment',
+  '37': 'Other Private flows at market terms',
+  '40': 'Non flow',
+  '50': 'Other flows',
+};
+
+export const defTiedStatusName = {
+  '3': 'Partially tied',
+  '4': 'Tied',
+  '5': 'Untied',
 };
