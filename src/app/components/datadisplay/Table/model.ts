@@ -25,6 +25,7 @@ export interface TableModuleModel {
   totalCell?: boolean | undefined;
   expandableData?: any[][][] | undefined;
   totalRowColsDef?: TotalRowColModel[];
+  changeTableRowColor?: number;
 }
 
 export interface TableLayoutModel {
@@ -32,6 +33,7 @@ export interface TableLayoutModel {
   data: any[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
+  changeTableRowColor?: number;
 }
 
 export interface InfoCellModuleModel {

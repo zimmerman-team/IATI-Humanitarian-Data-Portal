@@ -76,6 +76,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
           {/* -------------------------------------------------------------- */}
           {/* Aggregated Signatory Data Publication Indicator Values */}
           <TableModule
+            changeTableRowColor={2}
             title={props.tableChartData.title}
             options={props.tableChartData.options}
             data={props.tableChartData.data}
