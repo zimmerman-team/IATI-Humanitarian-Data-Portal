@@ -13,29 +13,8 @@ export interface OrgRefItem {
 
 export interface FacetsModel {
   count: number;
-  'orgs_[1900-01-01_TO_2017-06-30]': {
-    count: number;
-    org_refs: {
-      buckets: OrgRefItem[];
-    };
-  };
-  'orgs_[1900-01-01_TO_2018-12-31]': {
-    count: number;
-    org_refs: {
-      buckets: OrgRefItem[];
-    };
-  };
-  'orgs_[1900-01-01_TO_2019-05-31]': {
-    count: number;
-    org_refs: {
-      buckets: OrgRefItem[];
-    };
-  };
-  'orgs_[1900-01-01_TO_NOW]': {
-    count: number;
-    org_refs: {
-      buckets: OrgRefItem[];
-    };
+  org_refs: {
+    buckets: OrgRefItem[];
   };
 }
 

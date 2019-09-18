@@ -2,32 +2,61 @@
 import { dateRanges } from 'app/modules/signatory-progress/const';
 /* models/interfaces */
 import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
-import { DataPoint, SigItemModel, specPubsItemModel } from './intefaces';
+import { DataPoint, SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
+import { OrgRefItem } from '../store/interface';
 
 /* utils */
-import { checkIfValid, getAllSigCount, getRealSigCount } from './general';
+import find from 'lodash/find';
+import {
+  getAllSigCount,
+  getIatiSigCount,
+  getRealSigCount,
+  getSpecFixedValues,
+} from './general';
+
+interface SigDateCountModel {
+  key: string;
+  value: number;
+}
 
 export interface FirstDataItemModel {
   data: DataPoint[];
   totalSigCount: number;
+  sigDateCounts: SigDateCountModel[];
 }
 
 function formatFirstLine(
-  publisherData: SigItemModel,
   gbsignatories: SingleDefGBSignatory[]
 ): FirstDataItemModel {
   // so first we get the actual amount of GB
   // signatories
   const allSigCount = getAllSigCount(gbsignatories);
   const firstData: DataPoint[] = [];
-  dateRanges.forEach(range => {
-    const rangeKey = `orgs_[${range.value}]`;
-    // a simple proportion calculation is applied here
-    // to get the percentage value
-    const percentage = Math.round(
-      (publisherData[rangeKey].sigCount * 100) / allSigCount
-    );
+  const sigDateCounts: SigDateCountModel[] = [];
+  dateRanges.forEach((range, index) => {
+    // so here we always load the fixed value data as the percentage
+    let percentage = range.allPerc !== undefined ? range.allPerc : 0;
+
+    // BUT if its the last item of the date ranges
+    // we load the todays data the one that actual data
+    // from datastore as the percentage
+    if (index === dateRanges.length - 1) {
+      // we get the iati sigCount
+      const iatiSigCount = getIatiSigCount(gbsignatories);
+      // a simple proportion calculation is applied here
+      // to get the percentage value
+      percentage = Math.round((iatiSigCount * 100) / allSigCount);
+    } else if (range.allCount && range.allPerc) {
+      const dateAllSigCount = Math.round(
+        (range.allCount * 100) / range.allPerc
+      );
+
+      sigDateCounts.push({
+        key: range.value,
+        value: dateAllSigCount,
+      });
+    }
 
     firstData.push({
       x: range.label,
@@ -38,73 +67,78 @@ function formatFirstLine(
   return {
     data: firstData,
     totalSigCount: allSigCount,
+    sigDateCounts,
   };
 }
 
 export function formatLineChart(
-  publisherData: SigItemModel,
-  specPubsData: Array<specPubsItemModel>,
-  gbsignatories: SingleDefGBSignatory[]
+  gbsignatories: SingleDefGBSignatory[],
+  specPubsData: Array<SpecPubsItemModel>
 ): LineChartCardModel {
   const lineData: LineChartCardModel = {
     title: 'Data Publication Aggregated Signatory Progress',
     values: { values: [] },
   };
 
-  if (publisherData) {
-    // first here we form Signatories publishing
-    // to IATI line by comparing
-    const firstDataItem = formatFirstLine(publisherData, gbsignatories);
+  // first here we form Signatories publishing
+  // to IATI line by comparing
+  const firstDataItem = formatFirstLine(gbsignatories);
+  lineData.values.values.push({
+    data: firstDataItem.data,
+    id: 'Signatories publish to IATI',
+  });
+
+  const allSigCount = firstDataItem.totalSigCount;
+
+  specPubsData.forEach(item => {
+    const data: DataPoint[] = [];
+
+    dateRanges.forEach((range, index) => {
+      const fixedData = getSpecFixedValues(range, item.key);
+
+      let percentage: null | number = null;
+
+      if (fixedData.percentage === 0) {
+        percentage = 0;
+      }
+
+      // so now here we need to calculate the overall percentage change
+      // for all remaining lines, and because we only get percentages
+      // which are 'of these' refering to the signatories publishing
+      // data to iati, we will need to get the signatory count for the specified
+      // date AND then make a percentage against the fixed value count
+      // and the signatory count for the specified date
+      const dateAllSigCount = find(firstDataItem.sigDateCounts, [
+        'key',
+        range.value,
+      ]);
+      if (
+        dateAllSigCount !== undefined &&
+        fixedData.count !== null &&
+        fixedData.percentage !== null &&
+        percentage !== 0
+      ) {
+        percentage = Math.round(
+          (fixedData.count * 100) / dateAllSigCount.value
+        );
+      }
+
+      if (index === dateRanges.length - 1 && item.specPub) {
+        const specSigCount = getRealSigCount(gbsignatories, item.specPub);
+        percentage = Math.round((specSigCount * 100) / allSigCount);
+      }
+
+      data.push({
+        x: range.label,
+        y: percentage,
+      });
+    });
+
     lineData.values.values.push({
-      data: firstDataItem.data,
-      id: 'Signatories publish to IATI',
+      data,
+      id: item.name,
     });
-
-    const allSigCount = firstDataItem.totalSigCount;
-
-    specPubsData.forEach(item => {
-      const data: DataPoint[] = [];
-
-      dateRanges.forEach(range => {
-        const rangeKey = `orgs_[${range.value}]`;
-
-        let percentage: null | number = null;
-
-        if (checkIfValid(item, publisherData, rangeKey)) {
-          const specSigCount = getRealSigCount(
-            gbsignatories,
-            item.specPub[rangeKey].org_refs.buckets
-          );
-
-          // a simple proportion calculation is applied here
-          // to get the percentage value
-          // This way the specific sig data would be compared to the
-          // Signatories publishing to IATI amount
-          // which would make the linechart make little sense
-          // cause we would have the signatories publishing humanitarian
-          // data have a bigger percentage than the signatories publishing
-          // data to IATI
-          // percentage = Math.round(
-          //   (specSigCount * 100) / publisherData[rangeKey].sigCount
-          // );
-          // so we'll use this percantage proportion instead
-          // we'll compare the flat amount of signatories to all specific data
-          // as that will be more accurate at least line chart wise
-          percentage = Math.round((specSigCount * 100) / allSigCount);
-        }
-
-        data.push({
-          x: range.label,
-          y: percentage,
-        });
-      });
-
-      lineData.values.values.push({
-        data,
-        id: item.name,
-      });
-    });
-  }
+  });
 
   return lineData;
 }

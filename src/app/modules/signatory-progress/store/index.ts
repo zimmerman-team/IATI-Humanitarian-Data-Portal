@@ -2,7 +2,6 @@ import { createComponentStore } from 'easy-peasy';
 import { PublisherInterface } from './interface';
 import {
   humPublishers,
-  publishers,
   publishers202,
   publishersTrac,
   publishers203,
@@ -10,7 +9,6 @@ import {
 
 export interface ApplicationStoreModel {
   humPublishers: PublisherInterface;
-  publishers: PublisherInterface;
   publishers202: PublisherInterface;
   publishers203: PublisherInterface;
   publishersTrac: PublisherInterface;
@@ -18,7 +16,6 @@ export interface ApplicationStoreModel {
 
 const signProgress: ApplicationStoreModel = {
   humPublishers,
-  publishers,
   publishers202,
   publishers203,
   publishersTrac,

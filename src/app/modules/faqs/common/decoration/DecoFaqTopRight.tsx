@@ -18,5 +18,3 @@ export const DecoFaqTopRight = props => (
     </g>
   </svg>
 );
-
-

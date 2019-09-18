@@ -20,4 +20,3 @@ export const DecoFaqTopLeft = props => (
     </g>
   </svg>
 );
-
