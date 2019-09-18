@@ -37,7 +37,7 @@
       "autoFix": true
     }
   ],
-  "prettier.eslintIntegration": true,
+  "prettier.eslintIntegration": false,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

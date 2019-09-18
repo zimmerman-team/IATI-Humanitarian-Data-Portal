@@ -18,7 +18,7 @@ export function SubmoduleContainer(props) {
     state => state.sigdataactivityyears.data
   );
   const orgDetails = find(gbsignatoriesData.data as any, {
-    IATIOrgRef: props.match.params.code,
+    IATIOrgRef: decodeURIComponent(props.match.params.code),
   });
   /* create the API call instances */
   const sigdataactivityyearsCall = useStoreActions(
@@ -28,14 +28,14 @@ export function SubmoduleContainer(props) {
   React.useEffect(() => {
     const callValues = {
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         facet: 'on',
         'facet.pivot': 'activity_date_iso_date,humanitarian',
         fl: 'facet_counts',
       },
     };
     sigdataactivityyearsCall(callValues);
-  }, [gbsignatoriesData]);
+  }, [gbsignatoriesData, props.match.params.code, sigdataactivityyearsCall]);
 
   let suppLink = get(orgDetails, 'suppInfoUrl', '#');
   suppLink =
