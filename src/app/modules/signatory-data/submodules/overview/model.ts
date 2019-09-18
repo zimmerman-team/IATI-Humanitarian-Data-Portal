@@ -6,6 +6,7 @@ import {
 export interface YearBarChartObjectModel {
   year: string;
   activities: number;
+  activitiesAct: number;
   activitiesColor: string;
   humanitarianActivities: number;
   humanitarianActivitiesColor: string;

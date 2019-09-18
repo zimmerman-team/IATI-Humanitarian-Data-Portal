@@ -10,7 +10,8 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
       if (typeof rawData[y] === 'object' && rawData[y]) {
         yearValues.push({
           year: y,
-          activities: rawData[y].count,
+          activitiesAct: rawData[y].count,
+          activities: rawData[y].count - get(rawData[y], 'hum_count.count', 0),
           activitiesColor: '#d7d8d9',
           humanitarianActivities: get(rawData[y], 'hum_count.count', 0),
           humanitarianActivitiesColor: '#5accbf',
