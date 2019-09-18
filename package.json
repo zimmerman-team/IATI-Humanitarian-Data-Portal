@@ -27,8 +27,8 @@
     "react-fetching-library": "^1.5.9",
     "react-highlight-words": "^0.16.0",
     "react-router-dom": "^5.0.1",
-    "react-use": "^12.2.0",
     "react-scroll": "^1.7.14",
+    "react-use": "^12.2.0",
     "redux-persist": "^5.10.0",
     "space-api": "^0.12.0",
     "styled-components": "^4.3.2"
