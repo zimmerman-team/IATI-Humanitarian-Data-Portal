@@ -9,7 +9,6 @@ export const DecoSigProgMidLeft = props => (
       fill="none"
       fillRule="evenodd"
     >
-
       <path transform="translate(0 208)" fill="#ED6060" d="M0 0H32V67H0z" />
     </g>
   </svg>

@@ -4,6 +4,7 @@ import { OrgRefItem } from '../store/interface';
 
 /* utils */
 import find from 'lodash/find';
+import { dateRanges } from '../const';
 
 // util function to check if data exists
 // and can be processed/formatted
@@ -48,4 +49,55 @@ export function getAllSigCount(gbsignatories: SingleDefGBSignatory[]): number {
     }
   });
   return realSigs.length;
+}
+
+export function getIatiSigCount(gbsignatories: SingleDefGBSignatory[]): number {
+  const iatiSigs: string[] = [];
+  gbsignatories.forEach(sigOrg => {
+    if (
+      iatiSigs.indexOf(sigOrg.name) === -1 &&
+      sigOrg.IATIOrgRef &&
+      sigOrg.IATIOrgRef.length > 0
+    ) {
+      iatiSigs.push(sigOrg.name);
+    }
+  });
+  return iatiSigs.length;
+}
+
+interface SpecKeyModel {
+  count: number | null;
+  percentage: number | null;
+}
+
+// helper function to get the specific keys values from dateRanges
+// according to the passed in items key
+export function getSpecFixedValues(rangeItem, key: string): SpecKeyModel {
+  switch (key) {
+    case 'hum':
+      return {
+        count: rangeItem.humCount,
+        percentage: rangeItem.humPerc,
+      };
+    case '202':
+      return {
+        count: rangeItem.count202,
+        percentage: rangeItem.perc202,
+      };
+    case 'trac':
+      return {
+        count: rangeItem.tracCount,
+        percentage: rangeItem.tracPerc,
+      };
+    case '203':
+      return {
+        count: rangeItem.count203,
+        percentage: rangeItem.perc203,
+      };
+  }
+
+  return {
+    count: null,
+    percentage: null,
+  };
 }

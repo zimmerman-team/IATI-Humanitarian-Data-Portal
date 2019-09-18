@@ -1,23 +1,21 @@
-import {
-  FacetsModel,
-  OrgRefItem,
-} from 'app/modules/signatory-progress/store/interface';
+import { OrgRefItem } from 'app/modules/signatory-progress/store/interface';
 
 export interface DataPoint {
   x: string;
   y: number | null;
 }
 
-export interface specPubsItemModel {
+export interface SpecPubsItemModel {
   name: string;
-  specPub: Array<FacetsModel | null>;
+  key: string;
+  specPub: Array<OrgRefItem> | null;
 }
 
 export interface SigItemModel {
   'orgs_[1900-01-01_TO_2017-06-30]': {
     sigCount: number | null;
   };
-  'orgs_[1900-01-01_TO_2018-12-31]': {
+  'orgs_[1900-01-01_TO_2018-05-01]': {
     sigCount: number | null;
   };
   'orgs_[1900-01-01_TO_2019-05-31]': {

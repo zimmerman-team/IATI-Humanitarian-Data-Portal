@@ -7,10 +7,6 @@ export const humPublishers: PublisherInterface = {
   ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
 };
 
-export const publishers: PublisherInterface = {
-  ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
-};
-
 export const publishers202: PublisherInterface = {
   ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
 };

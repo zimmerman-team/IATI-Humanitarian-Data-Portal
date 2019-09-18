@@ -1,5 +1,5 @@
 /* interfaces */
-import { FacetsModel } from '../store/interface';
+import { OrgRefItem } from '../store/interface';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
 import { dateRanges } from '../const';
 import { SigItemModel } from './intefaces';
@@ -13,14 +13,14 @@ import { getRealSigCount } from './general';
 // actual signatories from the org_ref list
 // per date period. Signatory !== Reporting Organisation
 export function formatSignatories(
-  publisherData: FacetsModel | null,
+  publisherData: OrgRefItem[] | null,
   gbsignatories: SingleDefGBSignatory[]
 ): SigItemModel {
   const sigCounts: SigItemModel = {
     'orgs_[1900-01-01_TO_2017-06-30]': {
       sigCount: null,
     },
-    'orgs_[1900-01-01_TO_2018-12-31]': {
+    'orgs_[1900-01-01_TO_2018-05-01]': {
       sigCount: null,
     },
     'orgs_[1900-01-01_TO_2019-05-31]': {
