@@ -24,7 +24,7 @@ function RecipientsF(props) {
   useEffect(() => {
     humActQuery.q = humActQuery.q.replace(
       '{rep_org_ref}',
-      props.match.params.code
+      decodeURIComponent(props.match.params.code)
     );
     // so here we get the humanitarian activities of the signatory
     // and we will use the activity identifiers as filters for the
@@ -40,7 +40,7 @@ function RecipientsF(props) {
     // of the signatory
     actions.sigAllReceivers.fetch({
       values: allProvidersQuery(
-        props.match.params.code,
+        decodeURIComponent(props.match.params.code),
         'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type'
       ),
     });
@@ -61,7 +61,10 @@ function RecipientsF(props) {
         .join(' ');
       // so we call table data here
       actions.recipients.fetch({
-        values: recipientsQuery(props.match.params.code, iatiIdentifiers),
+        values: recipientsQuery(
+          decodeURIComponent(props.match.params.code),
+          iatiIdentifiers
+        ),
       });
     }
   }, [state.orgtypecodelist.data, state.humActivities]);

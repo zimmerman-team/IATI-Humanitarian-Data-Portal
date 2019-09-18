@@ -36,7 +36,9 @@ export function SignatoryOutgoingPage(props) {
   React.useEffect(() => {
     const sigdataoutgoingcallValues = {
       values: {
-        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        q: `(reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
         'json.facet': JSON.stringify(outgoingCallFacetValues),
         rows: 0,
       },
@@ -45,7 +47,9 @@ export function SignatoryOutgoingPage(props) {
     const sigdataoutgoingtracecallValues = {
       values: {
         q: 'transaction_receiver_org_receiver_activity_id:*',
-        fq: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        fq: `(reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
         'json.facet': JSON.stringify(outgoingCallFacetValuesTrace),
         rows: 0,
       },

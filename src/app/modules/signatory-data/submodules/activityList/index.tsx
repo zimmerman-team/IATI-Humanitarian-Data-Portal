@@ -22,7 +22,7 @@ function ActivityListz(props) {
   useEffect(() => {
     activitiesAction({
       values: {
-        ...activitiesQuery(props.match.params.code),
+        ...activitiesQuery(decodeURIComponent(props.match.params.code)),
         rows,
         start: page * rows,
       },

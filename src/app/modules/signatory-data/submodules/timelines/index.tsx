@@ -17,7 +17,7 @@ function TimelinesF(props) {
 
   useEffect(() => {
     actions.timeLag.fetch({
-      values: timlagQuery(props.match.params.code),
+      values: timlagQuery(decodeURIComponent(props.match.params.code)),
     });
   }, []);
 

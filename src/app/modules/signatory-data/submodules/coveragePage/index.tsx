@@ -18,7 +18,9 @@ export function CoverageF(props) {
   const [state, actions] = covStore();
 
   useEffect(() => {
-    actions.coverage.fetch({ values: covQuery(props.match.params.code) });
+    actions.coverage.fetch({
+      values: covQuery(decodeURIComponent(props.match.params.code)),
+    });
   }, []);
 
   const covData = get(
