@@ -29,7 +29,7 @@ export const LoadingComp = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 100000;
   position: fixed;
   background: rgba(0, 0, 0, 0.2);
 `;

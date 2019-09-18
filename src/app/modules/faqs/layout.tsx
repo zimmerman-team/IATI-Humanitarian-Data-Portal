@@ -10,7 +10,7 @@ import { DecoFaqTopRight } from 'app/modules/faqs/common/decoration/DecoFaqTopRi
 export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
-      <Box position="absolute" top="0" left="0" zIndex="-1">
+      <Box position="absolute" top="0" left="0" zIndex="10000">
         <DecoFaqTopLeft />
       </Box>
 

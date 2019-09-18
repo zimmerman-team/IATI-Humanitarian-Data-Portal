@@ -47,7 +47,7 @@ export const AboutLayout = (props: AboutPageModel) => {
             {parse(props.sections[0].content[0])}
           </Typography>
         </Grid>
-        <Box position="absolute" top="10px" left="10px">
+        <Box position="absolute" top="10px" left="10px" zIndex="10000">
           <DecoAboutTopLeft />
         </Box>
 

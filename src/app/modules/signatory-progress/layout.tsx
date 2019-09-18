@@ -16,7 +16,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
     <Container maxWidth="lg">
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0">
+      <Box position="absolute" top="0" left="0" zIndex="10000">
         <DecoSigProgTopLeft />
       </Box>
       {/* -------------------------------------------------------------- */}
@@ -30,7 +30,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
 
       {/* -------------------------------------------------------------- */}
       {/* decoration: bottom right */}
-      <Box position="absolute" bottom="-300px" right="0">
+      <Box position="fixed" bottom="0" right="0">
         <DecoSigProgBottomRight />
       </Box>
       {/* -------------------------------------------------------------- */}
@@ -52,7 +52,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
 
         <Box height="calc(112px - 16px)" width="100%" />
 
-        <Grid item lg={12} md={12}>
+        <Grid item lg={12} md={12} style={{ zIndex: 1001 }}>
           {/* -------------------------------------------------------------- */}
           {/* Data Publication Aggregated Signatory Progress */}
           <LineChartCard
