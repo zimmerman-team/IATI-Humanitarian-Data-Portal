@@ -9,7 +9,9 @@ import {
 
 export const covQuery = (repOrgRef: string) => {
   return {
-    q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4)`,
+    q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) AND (transaction_humanitarian:1 
+        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
     rows: 0,
     'json.facet': `{
       transactions: {

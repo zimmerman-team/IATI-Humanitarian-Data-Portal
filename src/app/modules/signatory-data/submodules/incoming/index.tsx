@@ -35,9 +35,9 @@ function SignatoryIncomingPage(props) {
   React.useEffect(() => {
     const sigdataincomingcallValues = {
       values: {
-        q: `(reporting_org_ref:${decodeURIComponent(
+        q: `reporting_org_ref:${decodeURIComponent(
           props.match.params.code
-        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(incomingCallFacetValues),
         rows: 0,
       },
@@ -46,9 +46,9 @@ function SignatoryIncomingPage(props) {
     const sigdataincomingtracecallValues = {
       values: {
         q: 'transaction_provider_org_provider_activity_id:*',
-        fq: `(reporting_org_ref:${decodeURIComponent(
+        fq: `reporting_org_ref:${decodeURIComponent(
           props.match.params.code
-        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(incomingCallFacetValuesTrace),
         rows: 0,
       },

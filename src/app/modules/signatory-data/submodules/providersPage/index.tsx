@@ -30,7 +30,7 @@ export function ProvidersPageFunc(props) {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(
           props.match.params.code
-        )} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
+        )} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])))`,
         fl: 'iati_identifier',
         rows: 100000,
       },
