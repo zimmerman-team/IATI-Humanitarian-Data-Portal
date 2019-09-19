@@ -11,6 +11,10 @@ export const RowContainer = styled.tr`
     props.hover ? 'pointer' : 'initial'};
   background-color: ${color.whiteOrFontlightbase};
   border-bottom: 3px solid rgba(224, 224, 224, 0.4);
+  &:hover {
+    background-color: ${(props: RowContainerModel) =>
+      props.hover ? Palette.action.hover : color.whiteOrFontlightbase};
+  }
 `;
 
 export const LinkContainer = styled.div`
