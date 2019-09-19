@@ -34,13 +34,15 @@ function ActivityDetail(props) {
   // calling activity results
   useEffect(() => {
     actions.actResults.fetch({
-      values: actResultsQuery(props.match.params.code),
+      values: actResultsQuery(decodeURIComponent(props.match.params.code)),
     });
   }, []);
 
   // calling activity metadata
   useEffect(() => {
-    actMetadataQuery.q = `iati_identifier:${props.match.params.code}`;
+    actMetadataQuery.q = `iati_identifier:${decodeURIComponent(
+      props.match.params.code
+    )}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
   }, []);
@@ -49,7 +51,7 @@ function ActivityDetail(props) {
   useEffect(() => {
     inTransactionsQuery.q = inTransactionsQuery.q.replace(
       '{identifier_value}',
-      props.match.params.code
+      decodeURIComponent(props.match.params.code)
     );
     actions.incTransactions.fetch({ values: inTransactionsQuery });
   }, []);
@@ -58,7 +60,7 @@ function ActivityDetail(props) {
   useEffect(() => {
     outTransactionsQuery.q = outTransactionsQuery.q.replace(
       '{identifier_value}',
-      props.match.params.code
+      decodeURIComponent(props.match.params.code)
     );
     actions.outTransactions.fetch({ values: outTransactionsQuery });
   }, []);
