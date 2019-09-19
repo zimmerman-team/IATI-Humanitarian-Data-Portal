@@ -28,7 +28,7 @@ export const LineChartCard = (props: LineChartCardModel) => {
     <Card>
       <Content>
         <Typo variant="h6">{props.title}</Typo>
-        <LineChart values={props.values.values} />
+        <LineChart values={props.values.values} colors={props.colors} />
       </Content>
     </Card>
   );

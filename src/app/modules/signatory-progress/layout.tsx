@@ -56,6 +56,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
           {/* -------------------------------------------------------------- */}
           {/* Data Publication Aggregated Signatory Progress */}
           <LineChartCard
+            colors="multi"
             title={props.lineChartCardData.title}
             values={props.lineChartCardData.values}
           />
@@ -66,6 +67,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
           {/* -------------------------------------------------------------- */}
           {/* Signatories meeting Data Publication CCTRIs */}
           <HorizontalBarChartCard
+            colors="multi"
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
           />
