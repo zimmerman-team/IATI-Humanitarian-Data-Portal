@@ -2,6 +2,7 @@ import { apiModel } from 'app/state/api/actionsReducers';
 import { RecipientsInterface, RecTypesInterface } from './interfaces';
 import { HumActInterface } from 'app/interfaces/general';
 import { endpoints } from 'app/__consts__/endpoints';
+import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 
 export const recipients: RecipientsInterface = {
   ...apiModel(

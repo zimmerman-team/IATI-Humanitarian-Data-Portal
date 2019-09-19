@@ -24,7 +24,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: sigMetadata.reportsToFTS,
+            ptc: sigMetadata ? sigMetadata.reportsToFTS : 'No Data',
           },
         ],
       },
@@ -34,7 +34,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: sigMetadata.reportsToFTSViaIATI,
+            ptc: sigMetadata ? sigMetadata.reportsToFTSViaIATI : 'No Data',
           },
         ],
       },
@@ -44,7 +44,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: sigMetadata.reportsToEU,
+            ptc: sigMetadata ? sigMetadata.reportsToEU : 'No Data',
           },
         ],
       },

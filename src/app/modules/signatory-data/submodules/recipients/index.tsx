@@ -6,17 +6,14 @@ import { RecipientsLayout } from './layout';
 import { recStore } from './store';
 
 /* consts */
-import { humActQuery, recBaseTable, recipientsQuery } from './const';
+import { humActQuery, recipientsQuery } from './const';
 import { pivotKey } from './store/interfaces';
-import { allProvidersQuery } from '../providersPage/consts';
+import { allProvidersQuery, baseProviderConfig } from '../providersPage/consts';
 
 /* utils */
 import get from 'lodash/get';
-import { formatTableData } from './util/formatTableData';
 import { getBarChartData } from '../providersPage/utils/getBarChartData';
-
-/* components */
-import { ExpandedRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
+import { getTableData } from '../providersPage/utils/getTableData';
 
 function RecipientsF(props) {
   const [state, actions] = recStore();
@@ -69,11 +66,7 @@ function RecipientsF(props) {
     }
   }, [state.orgtypecodelist.data, state.humActivities]);
 
-  const recData = get(
-    state.recipients,
-    `data.data.facet_counts.facet_pivot.${pivotKey}`,
-    null
-  );
+  const recData = get(state.recipients, `data.data`, null);
 
   const sigAllReceivers = get(
     state.sigAllReceivers,
@@ -81,7 +74,13 @@ function RecipientsF(props) {
     null
   );
 
-  const recTableData = formatTableData(recData);
+  const recTableData = getTableData(
+    recData,
+    `facet_counts.facet_pivot.${pivotKey}`,
+    get(state.orgtypecodelist.data, 'data', {}),
+    '3'
+  );
+
   const barChartData = getBarChartData(
     get(state.recipients.data, 'data', null),
     get(state.orgtypecodelist.data, 'data', null),
@@ -90,22 +89,14 @@ function RecipientsF(props) {
     `facet_counts.facet_pivot.${pivotKey}`
   );
 
-  recBaseTable.data = recTableData.tableData;
-  recBaseTable.options.renderExpandableRow = (rowData, rowMeta) => {
-    const expData = recTableData.expRowData[rowMeta.dataIndex];
-    return (
-      <>
-        {expData.map((row, index) => {
-          return (
-            <ExpandedRow key={`exp-row-${index}`} data={row} rowIndex={index} />
-          );
-        })}
-      </>
-    );
-  };
-
   return (
-    <RecipientsLayout barChartData={barChartData} tableData={recBaseTable} />
+    <RecipientsLayout
+      barChartData={barChartData}
+      tableData={{
+        ...baseProviderConfig(props.history),
+        data: recTableData,
+      }}
+    />
   );
 }
 
