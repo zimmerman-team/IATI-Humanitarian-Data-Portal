@@ -57,7 +57,7 @@ const BarChart = styled(props => <ResponsiveBar {...props} />)`
 `;
 
 const ChartContainer = styled.div`
-  height: 270px;
+  height: 400px;
 `;
 
 // https://nivo.rocks/bar/
