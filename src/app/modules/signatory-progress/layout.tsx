@@ -16,7 +16,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
     <Container maxWidth="lg">
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
+      <Box position="absolute" top="10px" left="10px" zIndex="10000">
         <DecoSigProgTopLeft />
       </Box>
       {/* -------------------------------------------------------------- */}

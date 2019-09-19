@@ -1,5 +1,7 @@
+import React from 'react';
 import { ColorSchemeType } from '../common/colorUtil';
 import { BarSvgProps } from '@nivo/bar';
+import colors from 'app/theme/color';
 
 export type HorizontalBarChartValueModel = {
   name: string;
@@ -12,17 +14,18 @@ export type HorizontalBarChartModel = {
   colors?: ColorSchemeType;
 };
 
-export const barModel: BarSvgProps = {
+// todo: add BarSvgProps when axis/renderTick function declaration is included
+export const barModel: any = {
   data: [],
   keys: ['percentage'],
   indexBy: 'name',
-  margin: { top: 32, right: 50, bottom: 0, left: 200 },
+  margin: { top: 40, right: 50, bottom: 0, left: 200 },
   padding: 0.4,
   layout: 'horizontal',
   axisTop: {
     tickValues: 5,
     tickSize: 15,
-    tickPadding: 5,
+    tickPadding: 10,
     tickRotation: 0,
     legend: '',
     legendOffset: 36,
@@ -37,6 +40,35 @@ export const barModel: BarSvgProps = {
     legend: '',
     legendPosition: 'middle',
     legendOffset: -40,
+    renderTick: ({ textX, value, x, y }) => {
+      return (
+        <g transform={`translate(${x},${y})`}>
+          <text
+            style={{
+              fontWeight: 500,
+              fontFamily: 'Inter',
+              fontSize: 12,
+              dominantBaseline: 'auto',
+            }}
+            x="-16%"
+            textAnchor="start"
+            transform={`translate(${textX}, -5)`}
+          >
+            {value}
+          </text>
+          <line
+            x1="0"
+            x2="-200"
+            y1="0"
+            y2="0"
+            style={{
+              stroke: colors.greylight30OrFontdisablet,
+              strokeWidth: 1,
+            }}
+          />
+        </g>
+      );
+    },
   },
   labelSkipWidth: 9,
   labelSkipHeight: 17,
@@ -56,6 +88,7 @@ export const barModel: BarSvgProps = {
           fontWeight: 500,
           fontFamily: 'Inter',
           fontSize: 12,
+          dominantBaseline: 'auto',
         },
         line: {
           strokeWidth: 0,
