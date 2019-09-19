@@ -9,7 +9,10 @@ export const recipientsQuery = (
   iatiIdentifiers: string
 ): RecipientsQueryModel => {
   return {
-    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
+    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR 
+        transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+        AND (transaction_sector_code:[70000 TO 79999] OR
+         transaction_sector_code:[93010 TO 93018])) OR iati_identifier:(${iatiIdentifiers}))`,
     stats: true,
     'facet.pivot':
       '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency,title_narrative',
@@ -26,7 +29,10 @@ export const recHumTypesQuery = (
   iatiIdentifiers: string
 ): RecTypesQueryModel => {
   return {
-    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR iati_identifier:(${iatiIdentifiers}))`,
+    q: `reporting_org_ref:${repOrgRef} AND (transaction_humanitarian:1 OR 
+        transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+        AND (transaction_sector_code:[70000 TO 79999] OR
+         transaction_sector_code:[93010 TO 93018])) OR iati_identifier:(${iatiIdentifiers}))`,
     rows: 0,
     'json.facet':
       "{ orgTypes: { type: 'terms', field: 'transaction_receiver_org_type', facet: { org_count: 'unique(transaction_receiver_org_narrative)' }, }, }",
@@ -47,7 +53,9 @@ export const recAllTypesQuery = (repOrgRef: string): RecTypesQueryModel => {
 // which do have 'transaction_receiver'(recipient) data
 export const humActQuery = {
   q:
-    'reporting_org_ref:{rep_org_ref} AND (transaction_receiver_org_narrative:* OR transaction_receiver_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))',
+    'reporting_org_ref:{rep_org_ref} AND (transaction_receiver_org_narrative:* ' +
+    'OR transaction_receiver_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 ' +
+    'OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])))',
   fl: 'iati_identifier',
   rows: 100000,
 };

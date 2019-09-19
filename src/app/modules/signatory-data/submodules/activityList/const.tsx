@@ -11,10 +11,11 @@ import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValues
 export const activitiesQuery = repOrgRef => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND
-      (humanitarian:1 OR
-      transaction_humanitarian:1 OR
-      sector_vocabulary:1 OR
-      (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
+      (humanitarian:1 OR transaction_humanitarian:1 
+        OR sector_vocabulary:1 OR (-sector_vocabulary:* 
+        AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
+        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
     fl: `iati_identifier,activity_status_code,title,recipient_country_narrative,
         activity_date_type,activity_date_iso_date,result`,
   };
