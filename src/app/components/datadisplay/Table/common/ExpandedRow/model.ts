@@ -7,5 +7,7 @@ export interface ExpandedCell {
 
 export interface ExpendedRowModel {
   data: ExpandedCell[];
+  onClick?: Function;
+  hover?: boolean;
   rowIndex: number;
 }

@@ -37,7 +37,7 @@ export function SubmoduleContainer(props) {
     sigdataactivityyearsCall(callValues);
   }, [gbsignatoriesData, props.match.params.code, sigdataactivityyearsCall]);
 
-  let suppLink = get(orgDetails, 'suppInfoUrl', '#');
+  let suppLink = get(orgDetails, 'suppInfoUrl', 'no url provided');
   suppLink =
     suppLink.toLowerCase().indexOf('no url provided') !== -1
       ? undefined

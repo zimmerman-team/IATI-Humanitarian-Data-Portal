@@ -36,7 +36,7 @@ export interface PivotItemModel {
 }
 
 export const pivotKey =
-  'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency,title_narrative';
+  'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency';
 
 export interface RecTypeRespModel<QueryModel, DocModel>
   extends BaseRespModel<QueryModel, DocModel> {

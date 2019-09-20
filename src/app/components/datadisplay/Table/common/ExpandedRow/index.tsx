@@ -11,7 +11,10 @@ import LinkCellModule from '../LinkCell';
 
 export const ExpandedRow = (props: ExpendedRowModel) => {
   return (
-    <RowContainer>
+    <RowContainer
+      hover={props.hover}
+      onClick={() => props.onClick && props.onClick()}
+    >
       {props.data.map((cell, index) => {
         if (cell.type === 'LinkCellModule') {
           return (

@@ -53,7 +53,9 @@ export function ProvidersPageFunc(props) {
 
   const tableData = getTableData(
     get(state.sigdataproviders.data, 'data', {}),
-    get(state.orgtypecodelist.data, 'data', {})
+    'facet_counts.facet_pivot["transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency"]',
+    get(state.orgtypecodelist.data, 'data', {}),
+    '1'
   );
   return (
     <ProvidersPageLayout
@@ -62,12 +64,11 @@ export function ProvidersPageFunc(props) {
         get(state.orgtypecodelist.data, 'data', null),
         sigAllProviders,
         'Humanitarian providers breakdown',
-        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_value_currency,title_narrative`
+        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
       )}
       tableData={{
-        ...baseProviderConfig,
-        data: tableData.data,
-        expandableData: tableData.expData,
+        ...baseProviderConfig(props.history),
+        data: tableData,
       }}
     />
   );

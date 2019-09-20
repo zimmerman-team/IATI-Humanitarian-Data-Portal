@@ -50,7 +50,7 @@ export const activityBaseTable: TableModuleModel = {
         filter: true,
         filterType: 'checkbox',
         customBodyRender: (value, tableMeta, updateValue) => {
-          const link = `/activity-detail/${value[0]}`;
+          const link = `/activity-detail/${encodeURIComponent(value[0])}`;
           return <LinkCellModule link={link} value={value[1]} />;
         },
       },
