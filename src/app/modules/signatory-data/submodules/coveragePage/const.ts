@@ -7,44 +7,32 @@ import {
   getInfoTHead,
 } from 'app/components/datadisplay/Table/helpers';
 
-export const covQuery = (repOrgRef: string) => {
+export const covQuery = (repOrgRef: string, monthRange: number) => {
   return {
-    q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) AND (transaction_humanitarian:1 
+    q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) 
+        AND (humanitarian:1 OR sector_vocabulary:1 
+        OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] 
+        OR sector_code:[93010 TO 93018])) OR transaction_humanitarian:1 
         OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
         AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
     rows: 0,
     'json.facet': `{
-      transactions: {
-        type: 'range',
-        field: 'transaction_date_iso_date',
-        start: '1900-01-01T00:00:00Z',
-        end: 'NOW',
-        gap: '+1YEARS',
-        mincount: 1,
+      disbs_expends: {
+        type: 'query',
+        q: 'transaction_type:(3 4)',
         facet: {
-          incom_funds: {
-            type: 'query',
-            q: 'transaction_type:1',
+          date_range: {
+            type: 'range',
+            field: 'transaction_date_iso_date',
+            start: '1900-04-01T00:00:00Z',
+            end: 'NOW',
+            gap: '+${monthRange}MONTHS',
+            mincount: 1,
             facet: {
               trans_currency: {
                 type: 'terms',
                 field: 'transaction_value_currency',
-                facet: {
-                  transaction_sum: 'sum(transaction_value)',
-                },
-              },
-            },
-          },
-          disbs_expends: {
-            type: 'query',
-            q: 'transaction_type:(3 4)',
-            facet: {
-              trans_currency: {
-                type: 'terms',
-                field: 'transaction_value_currency',
-                facet: {
-                  transaction_sum: 'sum(transaction_value)',
-                },
+                facet: { transaction_sum: 'sum(transaction_value)' },
               },
             },
           },
@@ -52,6 +40,41 @@ export const covQuery = (repOrgRef: string) => {
       },
     }`,
   };
+};
+
+export const covOrgQuery = (repOrgRef: string) => {
+  return {
+    q: `organisation_identifier:${repOrgRef}`,
+    fl:
+      'organisation_total_expenditure:[json],organisation_identifier,organisation_default_currency_code',
+    wt: 'json',
+  };
+};
+
+// TODO: DELETE THIS TEST VARIABLE
+const test = {
+  disbs_expends: {
+    type: 'query',
+    q: 'transaction_type:(3 4)',
+    facet: {
+      date_range: {
+        type: 'range',
+        field: 'transaction_date_iso_date',
+        start: '1900-04-01T00:00:00Z',
+        end: 'NOW',
+        gap: '%2B12MONTHS',
+        hardend: true,
+        mincount: 1,
+        facet: {
+          trans_currency: {
+            type: 'terms',
+            field: 'transaction_value_currency',
+            facet: { transaction_sum: 'sum(transaction_value)' },
+          },
+        },
+      },
+    },
+  },
 };
 
 export const baseCovTable: TableModuleModel = {

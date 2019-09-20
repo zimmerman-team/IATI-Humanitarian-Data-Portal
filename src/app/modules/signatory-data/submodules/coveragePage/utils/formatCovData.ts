@@ -1,5 +1,5 @@
 /* interfaces/models */
-import { CovTimeItemModel } from '../store/interfaces';
+import { CovTimeItemModel, OrgTotExpItemModel } from '../store/interfaces';
 
 /* utils */
 import { formatDate } from 'app/utils/generic';
@@ -47,13 +47,15 @@ function formatValue(currItem, defCurreny): ValCurrItem {
 }
 
 export function formatCovData(
-  covData: CovTimeItemModel[] | null
+  covData: CovTimeItemModel[] | null,
+  covOrgData: OrgTotExpItemModel[] | null,
+  defCurr: string | null
 ): Array<Array<string | number | null | Array<string | number | null>>> {
   const tableData: Array<
     Array<string | number | null | Array<string | number | null>>
   > = [];
 
-  let defCurreny: string | null = null;
+  let defCurreny: string | null = defCurr;
 
   if (covData) {
     covData.forEach(item => {
@@ -70,16 +72,13 @@ export function formatCovData(
       );
 
       // we get the incomind funds
-      const incFunds = formatValue(item.incom_funds.trans_currency, defCurreny);
+      const incFunds = formatValue(item.trans_currency, defCurreny);
 
       const incFundsValue = incFunds.value;
       defCurreny = incFunds.currency;
 
       // we get the disbursments and expenditures summed up
-      const disbsExp = formatValue(
-        item.disbs_expends.trans_currency,
-        defCurreny
-      );
+      const disbsExp = formatValue(item.trans_currency, defCurreny);
 
       const disbsExpValue = disbsExp.value;
       defCurreny = disbsExp.currency;

@@ -1,13 +1,15 @@
 import { createComponentStore } from 'easy-peasy';
-import { CoverageInterface } from './interfaces';
-import { coverage } from './actionsReducers';
+import { CoverageInterface, CovOrgInterface } from './interfaces';
+import { coverage, covOrg } from './actionsReducers';
 
 export interface CoverageStoreModel {
   coverage: CoverageInterface;
+  covOrg: CovOrgInterface;
 }
 
 const coverageStore: CoverageStoreModel = {
   coverage,
+  covOrg,
 };
 
 export const covStore = createComponentStore(coverageStore);
