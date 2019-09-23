@@ -1,10 +1,6 @@
 import { ApiModel } from 'app/state/api/interfaces';
-
-export interface CovQueryModel {
-  q: string;
-  'json.facet': string;
-  rows: number;
-}
+import { BaseQuery } from 'app/interfaces/queries';
+import { BaseRespModel } from 'app/interfaces/response';
 
 export interface CovItemModel {
   val: string;
@@ -12,20 +8,27 @@ export interface CovItemModel {
   transaction_sum: number;
 }
 
+export interface OrgTotExpItemModel {
+  period_start: string;
+  period_end: string;
+  value: number;
+  currency?: string;
+  value_date: string;
+  // this is any cause it shouldn't even exist in the
+  // response and we will definetely NOT gonna use it
+  budget_line: any;
+}
+
+export interface CovOrgItemModel {
+  organisation_default_currency_code: string;
+  organisation_total_expenditure?: OrgTotExpItemModel[];
+}
+
 export interface CovTimeItemModel {
   val: string;
   count: number;
-  incom_funds: {
-    count: number;
-    trans_currency?: {
-      buckets: CovItemModel[];
-    };
-  };
-  disbs_expends: {
-    count: number;
-    trans_currency?: {
-      buckets: CovItemModel[];
-    };
+  trans_currency?: {
+    buckets: CovItemModel[];
   };
 }
 
@@ -33,7 +36,7 @@ export interface CovRespModel {
   responseHeader: {
     status: number;
     QTime: number;
-    params: CovQueryModel;
+    params: BaseQuery;
   };
   response: {
     numFound: number;
@@ -42,14 +45,17 @@ export interface CovRespModel {
     docs: any[];
   };
   facets: {
-    counts: number;
-    transactions: {
-      buckets: CovTimeItemModel[];
+    count: number;
+    disbs_expends: {
+      count: number;
+      date_range: {
+        buckets: CovTimeItemModel[];
+      };
     };
   };
 }
 
-// interface to get humanitarian activities
-// associated with the signatory
-export interface CoverageInterface
-  extends ApiModel<CovQueryModel, CovRespModel> {}
+export interface CoverageInterface extends ApiModel<BaseQuery, CovRespModel> {}
+
+export interface CovOrgInterface
+  extends ApiModel<BaseQuery, BaseRespModel<BaseQuery, CovOrgItemModel>> {}

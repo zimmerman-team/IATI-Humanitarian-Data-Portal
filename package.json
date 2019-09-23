@@ -17,6 +17,7 @@
     "dexie": "^2.0.4",
     "easy-peasy": "3.0.2",
     "html-react-parser": "^0.9.1",
+    "moment": "^2.24.0",
     "money": "^0.2.0",
     "mui-datatables": "^2.7.0",
     "react": "^16.9.0",
