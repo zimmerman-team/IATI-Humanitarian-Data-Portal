@@ -1,6 +1,11 @@
 export type SignatoryNavigationModel = {
-  locations: LocationModel[];
+  locations: LineModel[];
   activity: string; //or whole activity
+};
+
+export type LineModel = {
+  fontSize?: number;
+  items: LocationModel[];
 };
 
 export type LocationModel = {

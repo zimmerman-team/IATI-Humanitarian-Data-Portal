@@ -23,6 +23,10 @@ const LocationLink = styled(props => <NavLink {...props} />)`
       cursor: pointer;
       text-decoration: none;
     }
+
+    &:last-child {
+      padding: 0;
+    }
   }
 `;
 
@@ -41,6 +45,10 @@ const CurrentLocationLink = styled(props => <NavLink {...props} />)`
       cursor: default;
       text-decoration: none;
     }
+
+    &:last-child {
+      padding: 0;
+    }
   }
 `;
 
@@ -55,30 +63,36 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
   const state = useLocation();
 
   return (
-    <Grid container justify="flex-end" wrap="wrap">
-      {props.locations.map(location => {
-        if (get(state, 'pathname', '').includes(location.url)) {
-          return (
-            <CurrentLocationLink
-              variant="button"
-              key={location.label}
-              to={`/signatory-data/${props.activity}/${location.url}`}
-            >
-              {location.label}
-              <Underline show="true" />
-            </CurrentLocationLink>
-          );
-        }
+    <>
+      {props.locations.map(lines => {
         return (
-          <LocationLink
-            key={location.label}
-            to={`/signatory-data/${props.activity}/${location.url}`}
-          >
-            {location.label}
-            <Underline />
-          </LocationLink>
+          <Grid container justify="flex-end" xs={12}>
+            {lines.items.map(location => {
+              if (get(state, 'pathname', '').includes(location.url)) {
+                return (
+                  <CurrentLocationLink
+                    variant="button"
+                    key={location.label}
+                    to={`/signatory-data/${props.activity}/${location.url}`}
+                  >
+                    {location.label}
+                    <Underline show="true" />
+                  </CurrentLocationLink>
+                );
+              }
+              return (
+                <LocationLink
+                  key={location.label}
+                  to={`/signatory-data/${props.activity}/${location.url}`}
+                >
+                  {location.label}
+                  <Underline />
+                </LocationLink>
+              );
+            })}
+          </Grid>
         );
       })}
-    </Grid>
+    </>
   );
 }

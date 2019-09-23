@@ -3,36 +3,45 @@ import { SignatoryNavigationModel } from './model';
 export const locations: SignatoryNavigationModel = {
   locations: [
     {
-      label: 'Overview',
-      url: 'overview',
+      items: [
+        {
+          label: 'Overview',
+          url: 'overview',
+        },
+        {
+          label: 'Activity List',
+          url: 'activity-list',
+        },
+        {
+          label: 'Timelines',
+          url: 'timelines',
+        },
+        {
+          label: 'Coverage',
+          url: 'coverage',
+        },
+      ],
     },
     {
-      label: 'Activity List',
-      url: 'activity-list',
-    },
-    {
-      label: 'Incoming',
-      url: 'incoming',
-    },
-    {
-      label: 'Providers',
-      url: 'providers',
-    },
-    {
-      label: 'Outgoing',
-      url: 'outgoing',
-    },
-    {
-      label: 'Recipients',
-      url: 'recipients',
-    },
-    {
-      label: 'Timelines',
-      url: 'timelines',
-    },
-    {
-      label: 'Coverage',
-      url: 'coverage',
+      fontSize: 5,
+      items: [
+        {
+          label: 'Incoming',
+          url: 'incoming',
+        },
+        {
+          label: 'Providers',
+          url: 'providers',
+        },
+        {
+          label: 'Outgoing',
+          url: 'outgoing',
+        },
+        {
+          label: 'Recipients',
+          url: 'recipients',
+        },
+      ],
     },
   ],
   activity: 'ActionAid UK',
