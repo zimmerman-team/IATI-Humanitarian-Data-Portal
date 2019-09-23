@@ -23,7 +23,7 @@ export const locations: SignatoryNavigationModel = {
       ],
     },
     {
-      fontSize: 5,
+      fontSize: '13px',
       items: [
         {
           label: 'Incoming',

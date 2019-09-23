@@ -11,7 +11,7 @@ import get from 'lodash/get';
 const LocationLink = styled(props => <NavLink {...props} />)`
   && {
     font-family: Inter;
-    font-size: 14px;
+    font-size: ${props => (props.fontSize ? props.fontSize : '14px')};
     font-weight: 600;
     line-height: 1.71;
     letter-spacing: 1.25px;
@@ -33,7 +33,7 @@ const LocationLink = styled(props => <NavLink {...props} />)`
 const CurrentLocationLink = styled(props => <NavLink {...props} />)`
   && {
     font-family: Inter;
-    font-size: 14px;
+    font-size: ${props => (props.fontSize ? props.fontSize : '14px')};
     font-weight: 600;
     line-height: 1.71;
     letter-spacing: 1.25px;
@@ -71,6 +71,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
               if (get(state, 'pathname', '').includes(location.url)) {
                 return (
                   <CurrentLocationLink
+                    fontSize={lines.fontSize}
                     variant="button"
                     key={location.label}
                     to={`/signatory-data/${props.activity}/${location.url}`}
@@ -82,6 +83,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
               }
               return (
                 <LocationLink
+                  fontSize={lines.fontSize}
                   key={location.label}
                   to={`/signatory-data/${props.activity}/${location.url}`}
                 >

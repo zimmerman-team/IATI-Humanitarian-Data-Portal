@@ -4,7 +4,7 @@ export type SignatoryNavigationModel = {
 };
 
 export type LineModel = {
-  fontSize?: number;
+  fontSize?: string;
   items: LocationModel[];
 };
 
