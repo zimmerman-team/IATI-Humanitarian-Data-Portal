@@ -134,7 +134,7 @@ export function formatCovData(
         orgDataz &&
         find(orgDataz, oItem => {
           // oke so here we do need to do these return trues/false
-          // cause if we only return the if condition type script
+          // cause if we only return the if condition, type script
           // goes haywire #JustTypeScriptThings
           if (
             oItem.period_end &&
