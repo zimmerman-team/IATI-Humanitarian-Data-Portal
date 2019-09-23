@@ -17,6 +17,8 @@ import { formatCovData } from './utils/formatCovData';
 export function CoverageF(props) {
   const [state, actions] = covStore();
 
+  const [perRange, setPerRange] = React.useState(12);
+
   // so on component mount we fetch the organisations total expenditures
   // AND the organisations default currency
   useEffect(() => {
@@ -30,22 +32,30 @@ export function CoverageF(props) {
   useEffect(() => {
     const orgData = get(state.covOrg, 'data.data.response.docs[0]', null);
     if (orgData) {
-      let periodRange = 12;
+      let periodRange = perRange;
       const totExps = get(orgData, 'organisation_total_expenditure', []);
+      let startDateTxt = '1900-01-01T00:00:00Z';
       if (totExps.length > 0) {
         const lastItem = totExps[totExps.length - 1];
 
         const startDate = moment(lastItem.period_start);
+        let startMonth = startDate.month() + 1 + '';
+        startMonth = startMonth.length < 2 ? `0${startMonth}` : startMonth;
+        let startDay = startDate.date() + '';
+        startDay = startDay.length < 2 ? `0${startDay}` : startDay;
+        startDateTxt = `1900-${startMonth}-${startDay}T00:00:00Z`;
         // we also add one day here so that moment would include the
         // last day into the difference calculation
         const endDate = moment(lastItem.period_end).add(1, 'days');
         periodRange = endDate.diff(startDate, 'months');
+        setPerRange(periodRange);
       }
 
       actions.coverage.fetch({
         values: covQuery(
           decodeURIComponent(props.match.params.code),
-          periodRange
+          periodRange,
+          startDateTxt
         ),
       });
     }
@@ -69,7 +79,12 @@ export function CoverageF(props) {
     null
   );
 
-  baseCovTable.data = formatCovData(covData, covOrgData, covOrgDefCurr);
+  baseCovTable.data = formatCovData(
+    covData,
+    covOrgData,
+    covOrgDefCurr,
+    perRange
+  );
 
   return <CoverageLayout tableData={baseCovTable} />;
 }

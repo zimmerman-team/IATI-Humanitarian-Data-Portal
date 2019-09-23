@@ -7,7 +7,11 @@ import {
   getInfoTHead,
 } from 'app/components/datadisplay/Table/helpers';
 
-export const covQuery = (repOrgRef: string, monthRange: number) => {
+export const covQuery = (
+  repOrgRef: string,
+  monthRange: number,
+  dateStart: string
+) => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) 
         AND (humanitarian:1 OR sector_vocabulary:1 
@@ -24,7 +28,7 @@ export const covQuery = (repOrgRef: string, monthRange: number) => {
           date_range: {
             type: 'range',
             field: 'transaction_date_iso_date',
-            start: '1900-04-01T00:00:00Z',
+            start: '${dateStart}',
             end: 'NOW',
             gap: '+${monthRange}MONTHS',
             mincount: 1,
@@ -49,32 +53,6 @@ export const covOrgQuery = (repOrgRef: string) => {
       'organisation_total_expenditure:[json],organisation_identifier,organisation_default_currency_code',
     wt: 'json',
   };
-};
-
-// TODO: DELETE THIS TEST VARIABLE
-const test = {
-  disbs_expends: {
-    type: 'query',
-    q: 'transaction_type:(3 4)',
-    facet: {
-      date_range: {
-        type: 'range',
-        field: 'transaction_date_iso_date',
-        start: '1900-04-01T00:00:00Z',
-        end: 'NOW',
-        gap: '%2B12MONTHS',
-        hardend: true,
-        mincount: 1,
-        facet: {
-          trans_currency: {
-            type: 'terms',
-            field: 'transaction_value_currency',
-            facet: { transaction_sum: 'sum(transaction_value)' },
-          },
-        },
-      },
-    },
-  },
 };
 
 export const baseCovTable: TableModuleModel = {
