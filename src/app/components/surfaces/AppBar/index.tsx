@@ -34,7 +34,7 @@ const AppBar = (props: AppBarProps) => {
 
   return (
     <BaseComponent
-      position="static"
+      position="sticky"
       elevation={0}
       location={state.pathname}
       {...props}

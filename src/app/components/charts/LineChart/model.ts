@@ -1,5 +1,6 @@
 import { ColorSchemeType } from 'app/components/charts/BarCharts/common/colorUtil';
 import { LineProps, LineSvgProps } from '@nivo/line';
+import colors from 'app/theme/color';
 
 export type DataModel = {
   x: any;
@@ -81,6 +82,9 @@ export const lineModel: LineProps | LineSvgProps | LineChartModel = {
           fontWeight: 500,
           fontFamily: 'Inter',
           fontSize: 12,
+        },
+        line: {
+          stroke: colors.greylight30OrFontdisablet,
         },
       },
     },

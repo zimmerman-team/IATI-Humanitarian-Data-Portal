@@ -30,7 +30,7 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
             </Typography>
             {/** todo: style */}
             <Typography variant="overline" color="textPrimary">
-              {props.code} | {props.yearRange}
+              {decodeURIComponent(props.code)} | {props.yearRange}
             </Typography>
             {/** todo: style */}
             <Typography

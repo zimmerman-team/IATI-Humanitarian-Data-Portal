@@ -1,11 +1,11 @@
-import React, { SyntheticEvent } from 'react';
-import clsx from 'clsx';
+import React, { SyntheticEvent, useState } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import styled from 'styled-components';
 import ContainedButton from 'app/components/inputs/buttons/ContainedButton';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import useCookie from '@devhammed/use-cookie';
 
 type SnackBarProps = {
   message?: string;
@@ -42,42 +42,52 @@ const Typo = styled(props => <Typography {...props} />)`
   color: black;
 `;
 
-const SnackBar = (props: SnackBarProps) => {
+export const CookieDialog = (props: SnackBarProps) => {
+  /* this hook is for setting the cookie */
+  const [cookie, setCookie] = useCookie('cookieNotice', 'true');
+  /* this hook is for visually hiding the component */
+  const [visible, setVisibility] = useState(cookie);
+
   const [open, setOpen] = React.useState(props.open);
   const { message, onClose, ...other } = props;
 
   function handleClose(event?: SyntheticEvent, reason?: string) {
-    if (reason === 'clickaway') {
+    setCookie('false');
+    setVisibility(!visible);
+
+    /*    if (reason === 'clickaway') {
       return;
     }
 
-    setOpen(false);
+    setOpen(false);*/
   }
 
   return (
-    <BaseSnackbar
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      open={open}
-      autoHideDuration={null}
-      onClose={handleClose}
-    >
-      <SnackbarContent
-        aria-describedby="client-snackbar"
-        message={
-          <span id="client-snackbar">
-            <Typo variant="body1">
-              The website uses cookies for tracking statistics. Read{' '}
-              <Link>Grand Bargains data privacy</Link> for more details.
-            </Typo>
-          </span>
-        }
-        action={[<ContainedButton text="Accept" onClick={handleClose} />]}
-        {...other}
-      />
-    </BaseSnackbar>
+    visible &&
+    (cookie && (
+      <BaseSnackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={null}
+        onClose={handleClose}
+      >
+        <SnackbarContent
+          aria-describedby="client-snackbar"
+          message={
+            <span id="client-snackbar">
+              <Typo variant="body1">
+                The website uses cookies for tracking statistics. Read{' '}
+                <Link>Grand Bargains data privacy</Link> for more details.
+              </Typo>
+            </span>
+          }
+          action={[<ContainedButton text="Accept" onClick={handleClose} />]}
+          {...other}
+        />
+      </BaseSnackbar>
+    ))
   );
 };
-export default SnackBar;

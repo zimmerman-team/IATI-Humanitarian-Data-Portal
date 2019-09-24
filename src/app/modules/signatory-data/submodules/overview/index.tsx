@@ -70,20 +70,22 @@ export function OverviewPage(props) {
   React.useEffect(() => {
     const singlSign = find(gbsignatories, [
       'IATIOrgRef',
-      props.match.params.code,
+      decodeURIComponent(props.match.params.code),
     ]);
     setSignatory(singlSign);
 
     const sigdataactivitystatuscallValues = {
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify(activityStatusValues),
         rows: 0,
       },
     };
     const sigdataoverviewhumcallValues = {
       values: {
-        q: `reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
+        q: `reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(humCallValues),
         rows: 0,
       },
@@ -96,7 +98,7 @@ export function OverviewPage(props) {
   React.useEffect(() => {
     const sigdataactivitiesbyyearcallValues = {
       values: {
-        q: `reporting_org_ref:${props.match.params.code}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify(barJsonFacet(years)),
         rows: 0,
       },

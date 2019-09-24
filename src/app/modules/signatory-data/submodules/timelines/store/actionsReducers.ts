@@ -1,7 +1,9 @@
 import { apiModel } from 'app/state/api/actionsReducers';
-import { DS_API } from 'app/config';
 import { TimelagInterface } from './interfaces';
+import { endpoints } from 'app/__consts__/endpoints';
 
 export const timeLag: TimelagInterface = {
-  ...apiModel(`${DS_API}/search/transaction/select/`),
+  ...apiModel(
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+  ),
 };

@@ -10,10 +10,10 @@ const barModel: BarSvgProps = {
   data: [],
   keys: ['humanitarianActivities', 'activities'],
   indexBy: 'year',
-  margin: { top: 0, right: 0, bottom: 50, left: 60 },
+  margin: { top: 15, right: 0, bottom: 50, left: 60 },
   padding: 0.5,
   colors: ({ id, data }) => data[`${id}Color`],
-  groupMode: 'grouped',
+  groupMode: 'stacked',
   axisRight: null,
   axisBottom: {
     tickSize: 0,
@@ -57,7 +57,7 @@ const barModel: BarSvgProps = {
     const items = [
       {
         label: 'All activities', //Object.keys(data)[0]
-        value: data.activities ? data.activities : 'No data',
+        value: data.activitiesAct ? data.activitiesAct : 'No data',
         color: data.activitiesColor,
       },
       {

@@ -1,4 +1,7 @@
 export interface BaseQuery {
   q: string;
-  rows: number;
+  rows?: number;
+  fl?: string;
+  wt?: string;
+  'json.facet'?: string;
 }

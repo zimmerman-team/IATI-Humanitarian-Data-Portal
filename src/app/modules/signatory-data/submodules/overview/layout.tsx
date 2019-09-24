@@ -2,12 +2,15 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard/index';
-import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard/index';
+import { DonutChartCard } from 'app/components/surfaces/Cards/DonutChartCard';
+import { VerticalBarChartCard } from 'app/components/surfaces/Cards/VerticalBarChartCard';
 import { List } from 'app/components/datadisplay/Lists';
 import { OverviewLayoutModel } from 'app/modules/signatory-data/submodules/overview/model';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { mockData as inPageNavMock } from 'app/components/navigation/InPageNavigation/mock';
+import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
+import { DecoSigOverviewMidRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewMidRight';
+import { DecoSigOverviewBottomRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewBottomRight';
 
 /**
  * todo:'s
@@ -19,14 +22,16 @@ import { mockData as inPageNavMock } from 'app/components/navigation/InPageNavig
  * - make top menu functional
  */
 
-const cardMockData = {
-  activity: 'Hum. activities with UN HRP codes',
-  value: 76,
-};
-
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
     <>
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="0" left="0" zIndex="10000">
+        <DecoSigOverviewTopLeft />
+      </Box>
+      {/* ---------- */}
+
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
@@ -37,7 +42,8 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
       </Grid>
       <Box height="50px" />
-      {/** --------------------------------------------------------------------------- */}
+
+      {/** ---------------------------------------- */}
       {/** Humanitarian elements */}
       <Grid container spacing={4}>
         <Grid item xs={12}>
@@ -52,9 +58,10 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         ))}
       </Grid>
       <Box height="50px" />
-      {/** --------------------------------------------------------------------------- */}
+
+      {/** ---------------------------------------- */}
       {/** Status */}
-      <Grid container spacing={4}>
+      <Grid container spacing={4} style={{ position: 'relative' }}>
         <Grid item xs={12}>
           <Typography variant="h4" color="textPrimary">
             Status
@@ -71,7 +78,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       </Grid>
       <Box height="50px" />
 
-      {/** --------------------------------------------------------------------------- */}
+      {/** ---------------------------------------- */}
       <Grid container spacing={4}>
         {/** side menu
 
@@ -93,9 +100,9 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
           </Grid>
         </Hidden>
 
-        {/** --------------------------------------------------------------------------- */}
+        {/** ---------------------------------------- */}
         <Grid item xs={12} md={9}>
-          <Grid container spacing={4}>
+          <Grid container spacing={4} style={{ position: 'relative' }}>
             {/** 1 */}
             {/** Activity Summary */}
             <Grid item xs={12}>
@@ -126,6 +133,12 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
                 */}
 
               <List valueHeaders {...props.humActFTSData} />
+              {/* ---------------------------------------- */}
+              {/* decoration: mid right */}
+              <Box position="absolute" top="-20px" right="-100px" zIndex="-1">
+                <DecoSigOverviewMidRight />
+              </Box>
+              {/* ---------- */}
             </Grid>
 
             {/** 3 */}
@@ -205,7 +218,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
             {/** 8 */}
             {/** Financial reporting */}
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{ position: 'relative' }}>
               {/**
                   Financial reporting
 
@@ -218,10 +231,18 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
                 */}
 
               <List {...props.financialReportingData} />
+
+              {/* ---------------------------------------- */}
+              {/* decoration: bottom right */}
+              <Box position="absolute" bottom="-40px" right="-50px" zIndex="-1">
+                <DecoSigOverviewBottomRight />
+              </Box>
+              {/* ---------- */}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+      <Box height="100px" width="100%" />
     </>
   );
 };
