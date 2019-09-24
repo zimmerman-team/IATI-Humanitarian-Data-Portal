@@ -27,10 +27,10 @@ export function SignatoryOutgoingPage(props) {
   );
   /* create the API call instances */
   const sigdataoutgoingCall = useStoreActions(
-    state => state.sigdataoutgoing.fetch
+    action => action.sigdataoutgoing.fetch
   );
   const sigdataoutgoingtraceCall = useStoreActions(
-    state => state.sigdataoutgoingdisbtrace.fetch
+    action => action.sigdataoutgoingdisbtrace.fetch
   );
   /* componentDidMount call */
   React.useEffect(() => {
