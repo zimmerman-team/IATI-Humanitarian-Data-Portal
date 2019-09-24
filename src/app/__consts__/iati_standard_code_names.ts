@@ -246,3 +246,37 @@ export const defTiedStatusName = {
   '4': 'Tied',
   '5': 'Untied',
 };
+
+export const locReachNames = {
+  '1': 'Actvity',
+  '2': 'Intended Beneficiaries',
+};
+
+export const locVocNames = {
+  A1: 'Global Admininistrative Unit Layers',
+  A2: 'UN Second Administrative Level Boundary Project',
+  A3: 'Global Administrative Areas',
+  A4: 'ISO Country (3166-1 alpha-2)',
+  G1: 'Geonames',
+  G2: 'OpenStreetMap',
+};
+
+export const locExNames = {
+  '1': 'Exact',
+  '2': 'Approximate',
+};
+
+export const locClassNames = {
+  '1': 'Administrative Region',
+  '2': 'Populated Place',
+  '3': 'Structure',
+  '4': 'Other Topographical Feature',
+};
+
+export const relActTypes = {
+  '1': 'Parent',
+  '2': 'Child',
+  '3': 'Sibling',
+  '4': 'Co-funded',
+  '5': 'Third Party',
+};

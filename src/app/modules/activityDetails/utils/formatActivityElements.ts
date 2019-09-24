@@ -15,11 +15,14 @@ import {
   docLinkFields,
   fssFields,
   humScopeFields,
+  legDataFields,
+  locationFields,
   othIdFields,
   partOrgFields,
   polMarkerFields,
   recCountFields,
   recRegFields,
+  relActFields,
   repOrgFields,
   sectorFields,
   tagFields,
@@ -228,6 +231,54 @@ export function formatActivityElements(
       type: 'ExpTableCard',
       elName: 'fssEl',
       tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
+    });
+
+    // pushing locations
+    elementLists.push({
+      title: 'Locations',
+      type: 'ExpTableCard',
+      elName: 'locations',
+      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
+    });
+
+    // pushing locations
+    elementLists.push({
+      title: 'Locations',
+      type: 'ExpTableCard',
+      elName: 'locations',
+      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
+    });
+
+    // pushing related activities
+    elementLists.push({
+      title: 'Related activities',
+      type: 'ExpTableCard',
+      elName: 'relActs',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'related_activity',
+        relActFields
+      ),
+    });
+
+    // pushing legacy data
+    elementLists.push({
+      title: 'Legacy data',
+      type: 'ExpTableCard',
+      elName: 'legData',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'legacy_data',
+        legDataFields
+      ),
+    });
+
+    // pushing conditions
+    elementLists.push({
+      title: 'Conditions',
+      type: 'ExpTableCard',
+      elName: 'conditions',
+      tableCItems: formatTableCardItems(actDetail, 'conditions', legDataFields),
     });
   }
   return sortBy(elementLists, 'title');

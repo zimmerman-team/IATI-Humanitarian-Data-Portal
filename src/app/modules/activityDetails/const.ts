@@ -13,6 +13,10 @@ import {
   defTiedStatusName,
   humScopTypeNames,
   humVocNames,
+  locClassNames,
+  locExNames,
+  locReachNames,
+  locVocNames,
   orgRoleNames,
   orgTypeNames,
   othIDTypeNames,
@@ -20,6 +24,7 @@ import {
   polMarkCodeNames,
   polMarkerVocabNames,
   regVocNames,
+  relActTypes,
   tagVocNames,
 } from 'app/__consts__/iati_standard_code_names';
 
@@ -38,9 +43,10 @@ export const actMetadataQuery: ActDetailQuery = {
         recipient_country:[json],sector:[json],country_budget_items:[json],
         policy_marker:[json],default_aid_type:[json],recipient_region:[json],
         planned_disbursement:[json],budget:[json],document_link:[json],
-        other_identifier:[json],humanitarian_scope:[json],
+        other_identifier:[json],humanitarian_scope:[json],location:[json],
         reporting_org_narrative,reporting_org_ref,crs_add:[json],
-        activity_date_type,activity_date_iso_date,fss:[json],`,
+        activity_date_type,activity_date_iso_date,fss:[json],related_activity:[json],
+        legacy_data:[json],conditions:[json]`,
 };
 
 export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {
@@ -537,5 +543,76 @@ export const actSummFields = [
     searchKey: 'type',
     searchValue: '4',
     foundKey: 'iso_date',
+  },
+];
+
+export const locationFields = [
+  {
+    key: 'name_narrative',
+  },
+  {
+    key: 'ref',
+  },
+  {
+    key: 'location_reach_code',
+    codeNames: locReachNames,
+  },
+  {
+    key: 'location_id_vocabulary',
+    codeNames: locVocNames,
+  },
+  {
+    key: 'description_narrative',
+  },
+  {
+    key: 'activity_description_narrative',
+  },
+  {
+    key: 'point_pos',
+  },
+  {
+    key: 'exactness_code',
+    codeNames: locExNames,
+  },
+  {
+    key: 'location_class_code',
+    codeNames: locClassNames,
+  },
+  {
+    key: 'feature_designation_code',
+  },
+];
+
+export const relActFields = [
+  {
+    key: 'ref',
+    intLink: 'ref',
+    intLinkForm: '/activity-detail/{id}',
+  },
+  {
+    key: 'type',
+    codeNames: relActTypes,
+  },
+];
+
+export const legDataFields = [
+  {
+    key: 'name',
+  },
+  {
+    key: 'value',
+  },
+  {
+    key: 'iati_equivalent',
+  },
+];
+
+export const conditionsFields = [
+  {
+    key: 'attached',
+  },
+  {
+    key: 'condition',
+    jsonString: true,
   },
 ];
