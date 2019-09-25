@@ -117,7 +117,6 @@ export function InPageNavigation(props: InPageNavModel) {
         {props.lists.map((list, index) => {
           if (
             !props.dontShow ||
-            !props.dontShow ||
             (list.items && list.items.length > 0) ||
             (list.tableCItems && list.tableCItems.length > 0)
           ) {
