@@ -1,5 +1,6 @@
 /* utils */
 import find from 'lodash/find';
+import get from 'lodash/get';
 
 /* consts */
 import { shortMonthNames } from 'app/__consts__/dates';
@@ -67,4 +68,36 @@ export function getActualDates(
     actualStart,
     actualEnd,
   };
+}
+
+// helper function to get the english narrative from
+// narrative arrays
+export function getNarrativeText(narArray, doubleArray?: boolean) {
+  let engNarr = find(narArray, ['lang', 'en']);
+
+  if (doubleArray) {
+    // ye so because the response structure is bad
+    // it uses double arrays for no reason
+    // we need to use the first arrays items key
+    engNarr = find(narArray, ['[0]lang', 'en']);
+
+    engNarr = engNarr && engNarr[0];
+  }
+
+  if (engNarr) {
+    return engNarr.narrative || engNarr.text || 'No Data';
+  } else if (doubleArray) {
+    // ye so because the response structure is bad
+    // it uses double arrays for no reason
+    // we need to use the first arrays items key
+    return (
+      get(narArray, '[0][0].narrative', 'No Data') ||
+      get(narArray, '[0][0].text', 'No Data')
+    );
+  }
+
+  return (
+    get(narArray, '[0].narrative', 'No Data') ||
+    get(narArray, '[0].text', 'No Data')
+  );
 }

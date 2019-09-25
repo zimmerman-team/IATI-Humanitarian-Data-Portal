@@ -16,30 +16,36 @@ export const NavLists = (props: NavListsModel) => (
   <Grid container spacing={4}>
     <Hidden only="md">
       <Grid item lg={3}>
-        <InPageNavigation lists={props.lists} />
+        <InPageNavigation dontShow={props.dontShow} lists={props.lists} />
       </Grid>
     </Hidden>
     <Grid item lg={8} md={12}>
       {props.lists.map((list, index) => {
-        const type = list.type || 'Card';
-        return (
-          <Element name={list.elName} key={`act-element-${index}`}>
-            {type === 'TableCard' || type === 'ExpTableCard' ? (
-              <TableCard
-                title={list.title || ''}
-                items={list.tableCItems}
-                expandable={type === 'ExpTableCard'}
-              />
-            ) : (
-              <List
-                elName={list.elName}
-                title={list.title}
-                items={list.items}
-              />
-            )}
-            <Box width="100%" height="32px" />
-          </Element>
-        );
+        if (
+          !props.dontShow ||
+          (list.items && list.items.length > 0) ||
+          (list.tableCItems && list.tableCItems.length > 0)
+        ) {
+          const type = list.type || 'Card';
+          return (
+            <Element name={list.elName} key={`act-element-${index}`}>
+              {type === 'TableCard' || type === 'ExpTableCard' ? (
+                <TableCard
+                  title={list.title || ''}
+                  items={list.tableCItems}
+                  expandable={type === 'ExpTableCard'}
+                />
+              ) : (
+                <List
+                  elName={list.elName}
+                  title={list.title}
+                  items={list.items}
+                />
+              )}
+              <Box width="100%" height="32px" />
+            </Element>
+          );
+        }
       })}
     </Grid>
   </Grid>

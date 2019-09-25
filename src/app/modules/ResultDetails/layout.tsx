@@ -12,6 +12,6 @@ export const ResultDetailLayout = (props: ResultDetailModel) => (
   <Container maxWidth="lg">
     <SimpleHeader title={props.title} description={props.description} />
     <Box height="144px" width="100%" />
-    <NavLists lists={props.lists} />
+    <NavLists dontShow lists={props.lists} />
   </Container>
 );

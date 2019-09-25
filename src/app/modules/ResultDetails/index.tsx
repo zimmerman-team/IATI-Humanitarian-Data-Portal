@@ -5,12 +5,39 @@ import { ResultDetailLayout } from './layout';
 /* mock */
 import { mockData } from '../activityDetails/mock';
 
+/* store */
+import { resStore } from './store';
+
+/* consts */
+import { ResultQuery } from './const';
+
+/* utils */
+import get from 'lodash/get';
+import { getNarrativeText } from 'app/utils/generic';
+import { formatResultElements } from './utils/formatResultElements';
+
 function ResultDetailF(props) {
+  const [state, action] = resStore();
+
+  React.useEffect(() => {
+    action.results.fetch({
+      values: ResultQuery(decodeURIComponent(props.match.params.code)),
+    });
+  }, []);
+
+  const resDetail = get(state.results, 'data.data.response.docs[0]', null);
+
+  const title =
+    resDetail && getNarrativeText(get(resDetail, 'result_title', []), true);
+  const description =
+    resDetail &&
+    getNarrativeText(get(resDetail, 'result_description', []), true);
+
   return (
     <ResultDetailLayout
-      title="Specific Results"
-      description="Support drought affected communities to access essential food support By improving the immediate food security of vulnerable households School feeding Support drought affected communities to access potable water ActionAid s activities will include water point s rehabilitation and maintenance de silting of pans as above provision of storage tanks and trucking Support women and girls protection in emergencies ActionAid will build capacity of women affected by the drought to develop community based protection plans Also to enhance protection spaces will be created to actively involve them in the design and implementation of women led local level protection responses provide psychosocial counselling to women affected by GBV and provide support and linkages to referral mechanisms and institutions including medical and legal support Safe spaces in schools through the girls forums and at food and water distribution points for women will be utilized Dignity kits to affected women and girls will be provided Strengthen accountability in the drought response AA realize the important role that participation and inclusion information sharing complaints and resolution mechanism and holding others to account plays in promoting accountability in delivery of emergency response"
-      lists={mockData.lists}
+      title={title}
+      description={description}
+      lists={formatResultElements(resDetail)}
     />
   );
 }

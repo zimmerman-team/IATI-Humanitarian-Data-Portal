@@ -246,3 +246,24 @@ export const defTiedStatusName = {
   '4': 'Tied',
   '5': 'Untied',
 };
+
+export const measCodeName = {
+  '1': 'Unit',
+  '2': 'Percentage',
+  '3': 'Nominal',
+  '4': 'Ordinal',
+  '5': 'Qualitative',
+};
+
+export const indVocCodeNames = {
+  '1': 'WHO Registry',
+  '2': 'Sphere Handbook',
+  '3': 'US Foreign Assistance Framework',
+  '4': 'World Bank World Development Indicators',
+  '5': 'UN Millennium Development Goals Indicators',
+  '6': 'UNOCHA Humanitarian Response Indicators',
+  '7': 'HIV/AIDS Indicator Registry',
+  '8': 'Harmonized Indicators for Private Sector (HIPSO)',
+  '9': 'UN Sustainable Development Goals (SDG) Indicators',
+  '99': 'Reporting Organisation',
+};

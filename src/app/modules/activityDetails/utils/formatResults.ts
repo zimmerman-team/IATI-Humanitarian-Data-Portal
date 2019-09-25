@@ -10,11 +10,10 @@ export function formatResults(
 ): ListCellModel[][] {
   const results: ListCellModel[][] = [];
   if (resultData) {
-    console.log('resultData', resultData);
     resultData.forEach(result => {
       results.push([
         {
-          link: `/result-detail/${result.id}`,
+          link: `/result-detail/${encodeURIComponent(result.id)}`,
           value: result.result_title_narrative[0],
         },
         {
