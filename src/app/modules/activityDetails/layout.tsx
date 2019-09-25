@@ -1,25 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 
 // Model
 import { ActivityDetailModel } from './model';
 
 // Components
-import { Grid, Typography, Box, Hidden, Container } from '@material-ui/core';
-import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
-import { List } from 'app/components/datadisplay/Lists';
+import { Grid, Typography, Box, Container } from '@material-ui/core';
 import Table from 'app/components/datadisplay/Table';
 import { ActivityHeaderLayout } from './common/activityHeader';
-import { Element } from 'react-scroll/modules';
 
 // Mock Data
-import { mockData as inPageNavMockData } from 'app/components/navigation/InPageNavigation/mock';
 import { TableCard } from '../../components/datadisplay/Lists/variants/TableCard';
-
-const ContentTypographyLG = styled(props => <Typography {...props} />)`
-  column-count: 2;
-  column-gap: 6rem;
-`;
+import { NavLists } from '../../components/datadisplay/NavLists';
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
@@ -70,36 +61,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
 
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
-      <Grid container spacing={4}>
-        <Hidden only="md">
-          <Grid item lg={3}>
-            <InPageNavigation lists={props.lists} />
-          </Grid>
-        </Hidden>
-        <Grid item lg={8} md={12}>
-          {props.lists.map((list, index) => {
-            const type = list.type || 'Card';
-            return (
-              <Element name={list.elName} key={`act-element-${index}`}>
-                {type === 'TableCard' || type === 'ExpTableCard' ? (
-                  <TableCard
-                    title={list.title || ''}
-                    items={list.tableCItems}
-                    expandable={type === 'ExpTableCard'}
-                  />
-                ) : (
-                  <List
-                    elName={list.elName}
-                    title={list.title}
-                    items={list.items}
-                  />
-                )}
-                <Box width="100%" height="32px" />
-              </Element>
-            );
-          })}
-        </Grid>
-      </Grid>
+      <NavLists lists={props.lists} />
 
       <Box height="144px" width="100%" />
 
