@@ -104,6 +104,7 @@ interface ActivityQuery {
   q: string;
   facet?: string;
   'facet.field'?: string;
+  sort?: string;
   fl?: string;
   rows?: number;
   start?: number;
