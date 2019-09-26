@@ -1,7 +1,6 @@
 // Models
 import { mockData as ActivityDetailsHeaderCardMockData } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/mock';
 import { mockDataVar6 } from 'app/components/datadisplay/Table/mock';
-import { mockData as inPageNavigationMockData } from 'app/components/navigation/InPageNavigation/mock';
 import {
   listCellItems,
   listMockData,

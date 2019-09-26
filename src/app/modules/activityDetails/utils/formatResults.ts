@@ -13,14 +13,17 @@ export function formatResults(
     resultData.forEach(result => {
       results.push([
         {
-          link: '#',
+          link: `/result-detail/${encodeURIComponent(result.id)}`,
           value: result.result_title_narrative[0],
         },
         {
-          value: result.result_reference ? result.result_reference[0] : '',
+          value: resultTypeNames[result.result_type],
         },
         {
-          value: resultTypeNames[result.result_type],
+          value:
+            result.result_aggregation_status === '0'
+              ? 'Cannot be aggregated'
+              : 'Can be aggregated',
         },
       ]);
     });
