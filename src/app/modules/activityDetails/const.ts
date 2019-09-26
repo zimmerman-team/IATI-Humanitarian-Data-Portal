@@ -7,6 +7,7 @@ import {
   budgStatusNames,
   budgTypeNames,
   colabTypeNames,
+  condCodeNames,
   contactTypeNames,
   defAidTypeVocNames,
   defFlowTypeNames,
@@ -610,10 +611,10 @@ export const legDataFields = [
 
 export const conditionsFields = [
   {
-    key: 'attached',
+    key: 'type',
+    codeNames: condCodeNames,
   },
   {
-    key: 'condition',
-    jsonString: true,
+    key: 'narrative',
   },
 ];

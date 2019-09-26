@@ -1,4 +1,10 @@
 import { ApiModel } from './index';
+import { NarrativeItem } from 'app/modules/ResultDetails/store/interface';
+
+export interface ConditionItem {
+  type: string;
+  narrative: NarrativeItem[];
+}
 
 // so this is the interface for a single activity response data
 // describing all of the activity fields returned without
@@ -71,6 +77,10 @@ export interface SingleDefActivity {
   related_activity_ref: string[];
   related_activity_type: string[];
   recipient_country_narrative?: string[];
+  conditions?: {
+    attached: string;
+    condition: ConditionItem[];
+  };
   result: any[];
   _version_: number;
 }

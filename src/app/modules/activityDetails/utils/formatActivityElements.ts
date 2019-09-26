@@ -7,6 +7,7 @@ import { budgItemVocNames } from 'app/__consts__/iati_standard_code_names';
 import {
   actSummFields,
   budgetFields,
+  conditionsFields,
   contInfoFields,
   countBufgItFields,
   crsAddFields,
@@ -273,13 +274,21 @@ export function formatActivityElements(
       ),
     });
 
-    // pushing conditions
-    elementLists.push({
-      title: 'Conditions',
-      type: 'ExpTableCard',
-      elName: 'conditions',
-      tableCItems: formatTableCardItems(actDetail, 'conditions', legDataFields),
-    });
+    if (actDetail.conditions) {
+      const condAttached =
+        actDetail.conditions.attached === '1' ? 'Attached' : 'Not attached';
+      // pushing conditions
+      elementLists.push({
+        title: `Conditions - ${condAttached}`,
+        type: 'ExpTableCard',
+        elName: 'conditions',
+        tableCItems: formatTableCardItems(
+          actDetail,
+          'conditions.condition',
+          conditionsFields
+        ),
+      });
+    }
   }
   return sortBy(elementLists, 'title');
 }

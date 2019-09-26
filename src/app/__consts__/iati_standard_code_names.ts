@@ -301,3 +301,9 @@ export const relActTypes = {
   '4': 'Co-funded',
   '5': 'Third Party',
 };
+
+export const condCodeNames = {
+  '1': 'Policy',
+  '2': 'Performance',
+  '3': 'Fiduciary',
+};
