@@ -19,6 +19,8 @@ interface KeyItemModel {
   codeNames?: object;
   // key of external link
   extLink?: string;
+  intLink?: string;
+  intLinkForm?: string;
   suffix?: string;
   narrative?: boolean;
   value?: boolean;
@@ -97,6 +99,10 @@ export function formatTableCardItems(
       if (fkey.extLink && keyVal) {
         cellItem.link = get(fItem, fkey.extLink, '#');
         cellItem.extLink = true;
+      }
+
+      if (fkey.intLink && fkey.intLinkForm && fItem[fkey.intLink]) {
+        cellItem.link = fkey.intLinkForm.replace('{id}', fItem[fkey.intLink]);
       }
 
       listRow.push(cellItem);

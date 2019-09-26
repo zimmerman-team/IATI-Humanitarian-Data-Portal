@@ -7,6 +7,7 @@ import { budgItemVocNames } from 'app/__consts__/iati_standard_code_names';
 import {
   actSummFields,
   budgetFields,
+  conditionsFields,
   contInfoFields,
   countBufgItFields,
   crsAddFields,
@@ -15,11 +16,14 @@ import {
   docLinkFields,
   fssFields,
   humScopeFields,
+  legDataFields,
+  locationFields,
   othIdFields,
   partOrgFields,
   polMarkerFields,
   recCountFields,
   recRegFields,
+  relActFields,
   repOrgFields,
   sectorFields,
   tagFields,
@@ -229,6 +233,62 @@ export function formatActivityElements(
       elName: 'fssEl',
       tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
     });
+
+    // pushing locations
+    elementLists.push({
+      title: 'Locations',
+      type: 'ExpTableCard',
+      elName: 'locations',
+      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
+    });
+
+    // pushing locations
+    elementLists.push({
+      title: 'Locations',
+      type: 'ExpTableCard',
+      elName: 'locations',
+      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
+    });
+
+    // pushing related activities
+    elementLists.push({
+      title: 'Related activities',
+      type: 'ExpTableCard',
+      elName: 'relActs',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'related_activity',
+        relActFields
+      ),
+    });
+
+    // pushing legacy data
+    elementLists.push({
+      title: 'Legacy data',
+      type: 'ExpTableCard',
+      elName: 'legData',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'legacy_data',
+        legDataFields
+      ),
+    });
+
+    if (actDetail.conditions) {
+      const condAttached =
+        actDetail.conditions.attached === '1' ? 'Attached' : 'Not attached';
+      // pushing conditions
+      elementLists.push({
+        title: `Conditions - ${condAttached}`,
+        type: 'ExpTableCard',
+        elName: 'conditions',
+        tableCItems: formatTableCardItems(
+          actDetail,
+          'conditions.condition',
+          conditionsFields
+        ),
+      });
+    }
   }
   return sortBy(elementLists, 'title');
 }

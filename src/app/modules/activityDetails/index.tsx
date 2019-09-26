@@ -33,7 +33,7 @@ function ActivityDetail(props) {
     actions.actResults.fetch({
       values: actResultsQuery(decodeURIComponent(props.match.params.code)),
     });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling activity metadata
   useEffect(() => {
@@ -42,7 +42,7 @@ function ActivityDetail(props) {
     )}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling incoming transactions
   useEffect(() => {
@@ -51,7 +51,7 @@ function ActivityDetail(props) {
       decodeURIComponent(props.match.params.code)
     );
     actions.incTransactions.fetch({ values: inTransactionsQuery });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling outgoing transactions
   useEffect(() => {
@@ -60,7 +60,7 @@ function ActivityDetail(props) {
       decodeURIComponent(props.match.params.code)
     );
     actions.outTransactions.fetch({ values: outTransactionsQuery });
-  }, []);
+  }, [props.match.params.code]);
   /* ----------------------------------------------- */
   /* --------- INITIALIZING STATES ----------------- */
   const actDetail = get(state.actMetadata, 'data.data.response.docs[0]', null);
