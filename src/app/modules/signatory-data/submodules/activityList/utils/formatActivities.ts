@@ -1,7 +1,7 @@
 import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 
 /* utils */
-import { getActualDates, getEngText } from 'app/utils/generic';
+import { formatDate, getEngText } from 'app/utils/generic';
 import get from 'lodash/get';
 
 /* consts */
@@ -14,22 +14,17 @@ export function formatActivities(
 
   if (activities) {
     activities.forEach(activity => {
-      const dates = getActualDates(
-        activity.activity_date_iso_date,
-        activity.activity_date_type
-      );
-
       // we get the english activity title here
       const engTitle = getEngText(get(activity, 'title[0]', '""'));
 
       const resultCount = activity.result ? activity.result.length : 0;
 
       tableData.push([
-        dates.actualStart,
-        dates.actualEnd,
+        formatDate(activity.activity_date_start_actual),
+        formatDate(activity.activity_date_end_actual),
         actStatusNames[activity.activity_status_code],
         [activity.iati_identifier, engTitle],
-        activity.recipient_country_narrative || [],
+        activity.recipient_country_name || [],
         resultCount,
       ]);
     });

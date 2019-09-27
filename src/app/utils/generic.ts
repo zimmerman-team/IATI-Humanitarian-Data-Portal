@@ -31,11 +31,14 @@ interface ActualDateInterface {
 
 // accepts string data of various formats
 // and reforamts it to 'Day shortMName Year'
-export function formatDate(strDate: string) {
-  const tempDate = new Date(strDate);
-  return `${tempDate.getDate()} ${
-    shortMonthNames[tempDate.getMonth()]
-  } ${tempDate.getFullYear()}`;
+export function formatDate(strDate: string | null | undefined) {
+  if (strDate) {
+    const tempDate = new Date(strDate);
+    return `${tempDate.getDate()} ${
+      shortMonthNames[tempDate.getMonth()]
+    } ${tempDate.getFullYear()}`;
+  }
+  return '';
 }
 
 // util function to get actual start

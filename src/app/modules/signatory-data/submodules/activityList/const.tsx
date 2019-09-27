@@ -8,17 +8,25 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
 // base query to get the activities
-export const activitiesQuery = repOrgRef => {
+export const activitiesQuery = (repOrgRef, searchTerm, actStatusFilters) => {
   return {
-    q: `reporting_org_ref:${repOrgRef} AND
+    q: `reporting_org_ref:${repOrgRef} AND title_narrative:${searchTerm} AND 
+      (${actStatusFilters}) AND 
       (humanitarian:1 OR transaction_humanitarian:1 
         OR sector_vocabulary:1 OR (-sector_vocabulary:* 
         AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
         OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
         AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
-    fl: `iati_identifier,activity_status_code,title,recipient_country_narrative,
-        activity_date_type,activity_date_iso_date,result`,
+    fl: `iati_identifier,activity_status_code,title,recipient_country_name,
+        activity_date_start_actual,activity_date_end_actual,result`,
   };
+};
+
+export const colSortNames = {
+  'Start date': 'activity_date_start_actual',
+  'End date': 'activity_date_end_actual',
+  Status: 'activity_status_code',
+  'Activity title': 'title_narrative',
 };
 
 export const activityBaseTable: TableModuleModel = {
@@ -29,6 +37,7 @@ export const activityBaseTable: TableModuleModel = {
       name: 'Start date',
       options: {
         filter: false,
+        sortDirection: 'desc',
       },
     },
     {
@@ -47,7 +56,7 @@ export const activityBaseTable: TableModuleModel = {
     {
       name: 'Activity title',
       options: {
-        filter: true,
+        filter: false,
         filterType: 'checkbox',
         customBodyRender: (value, tableMeta, updateValue) => {
           const link = `/activity-detail/${encodeURIComponent(value[0])}`;
@@ -58,7 +67,9 @@ export const activityBaseTable: TableModuleModel = {
     {
       name: 'Country(s)',
       options: {
-        filter: true,
+        // TODO add this filter back in once we get the Country code list
+        filter: false,
+        sort: false,
         filterType: 'checkbox',
         customBodyRender: (value, tableMeta, updateValue) => {
           return <MultiValuesCell value={value} />;
@@ -68,7 +79,8 @@ export const activityBaseTable: TableModuleModel = {
     {
       name: 'Result',
       options: {
-        filter: true,
+        filter: false,
+        sort: false,
         filterType: 'checkbox',
       },
     },
@@ -88,6 +100,8 @@ export const activityBaseTable: TableModuleModel = {
     serverSide: true,
     onChangePage: e => console.log('e', e),
     onChangeRowsPerPage: e => console.log('e', e),
+    onColumnSortChange: e => console.log('e', e),
+    customSort: () => [],
   },
   columnsCell: ['', '', '', 'LinkCellModule', 'MultiValuesCellModule', ''],
   totalCell: false,

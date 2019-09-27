@@ -19,6 +19,8 @@ import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivity
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
 import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
+import { StatusListApiInterface } from '../api/interfaces/codeListsInterface';
+import { actStatus } from '../api/actionsReducers/codeLists';
 
 const persistSessionConfig = {
   key: 'session',
@@ -38,9 +40,11 @@ export interface ApplicationStoreModel {
   sigdataactivitiesbyyear: ActivityResponceInterface;
   sigdataincomingfundtrace: ActivityResponceInterface;
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
+  actStatus: StatusListApiInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
+  actStatus,
   activities,
   humanitarian,
   gbsignatories,

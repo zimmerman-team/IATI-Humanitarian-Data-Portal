@@ -12,6 +12,9 @@ export interface ConditionItem {
 export interface SingleDefActivity {
   id: string;
   iati_identifier: string;
+  recipient_country_name?: string[];
+  activity_date_start_actual?: string;
+  activity_date_end_actual?: string;
   activity_status_code: string;
   collaboration_type_code: string;
   capital_spend_percentage: number;
@@ -104,6 +107,7 @@ interface ActivityQuery {
   q: string;
   facet?: string;
   'facet.field'?: string;
+  sort?: string;
   fl?: string;
   rows?: number;
   start?: number;
@@ -113,6 +117,7 @@ interface ActivityQuery {
   'stats.field'?: string;
   stats?: string;
   'facet.pivot'?: string;
+  wt?: string;
 }
 
 export interface ActivityResponceInterface

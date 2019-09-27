@@ -21,15 +21,11 @@ import { SubmoduleContainer } from './modules/signatory-data/submodules';
 import { ActivityDetails } from './modules/activityDetails';
 import { ResultDetail } from './modules/ResultDetails';
 
-export function Routes() {
-  const gbsignatoriesData = useStoreState(
-    reduxstate => reduxstate.gbsignatories
-  );
+/* utils */
+import { InitialDataLoad } from './utils/initialLoad';
 
-  if (!gbsignatoriesData.data) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useStoreActions(actions => actions.gbsignatories.fetch)({});
-  }
+export function Routes() {
+  InitialDataLoad();
 
   return (
     <Suspense fallback={<PageLoader />}>
