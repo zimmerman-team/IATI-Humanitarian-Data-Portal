@@ -22,7 +22,7 @@ function ActivityListz(props) {
   const [sortBy, setSortBy] = useState('activity_date_start_actual desc');
   const [searchTerm, setSearchTerm] = useState('*');
   const [status, setStatus] = useState('activity_status_code:*');
-  const actStatus = useStoreState(reduxstate => reduxstate.actStatus);
+  const actStatus = useStoreState(reduxstate => reduxstate.codelists.actStatus);
   const actStatusCodeList = get(actStatus, 'data.data', []);
   const [debouncedCallback] = useDebouncedCallback(
     // function
