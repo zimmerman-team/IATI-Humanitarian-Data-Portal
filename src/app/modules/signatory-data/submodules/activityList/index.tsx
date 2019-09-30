@@ -56,7 +56,7 @@ function ActivityListz(props) {
     });
   }, [page, rows, sortBy, searchTerm, status]);
 
-  activityBaseTable.data = formatActivities(activities.docs);
+  activityBaseTable.data = formatActivities(actStatusCodeList, activities.docs);
   // here we load the filters retrieved from the codelists
   // into appropriate columns
   // we load the status names

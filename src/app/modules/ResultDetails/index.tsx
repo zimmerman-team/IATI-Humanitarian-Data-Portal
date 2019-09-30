@@ -7,6 +7,7 @@ import { mockData } from '../activityDetails/mock';
 
 /* store */
 import { resStore } from './store';
+import { useStoreState } from 'easy-peasy';
 
 /* consts */
 import { ResultQuery } from './const';
@@ -18,6 +19,14 @@ import { formatResultElements } from './utils/formatResultElements';
 
 function ResultDetailF(props) {
   const [state, action] = resStore();
+
+  const measCodeName = useStoreState(
+    reduxstate => reduxstate.codelists.measCodeName
+  );
+
+  const indVocCodeNames = useStoreState(
+    reduxstate => reduxstate.codelists.indVocCodeNames
+  );
 
   React.useEffect(() => {
     action.results.fetch({
@@ -37,7 +46,11 @@ function ResultDetailF(props) {
     <ResultDetailLayout
       title={title}
       description={description}
-      lists={formatResultElements(resDetail)}
+      lists={formatResultElements(
+        resDetail,
+        get(measCodeName, 'data.data', []),
+        get(indVocCodeNames, 'data.data', [])
+      )}
     />
   );
 }

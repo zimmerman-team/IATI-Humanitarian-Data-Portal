@@ -3,13 +3,9 @@ import { RecipientsInterface, RecTypesInterface } from './interfaces';
 import { humActivities, humRecTypes, recipients } from './actionsReducers';
 import { HumActInterface } from 'app/interfaces/general';
 import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
-import {
-  orgtypecodelist,
-  sigAllProviders,
-} from '../../providersPage/store/actionsReducers';
+import { sigAllProviders } from '../../providersPage/store/actionsReducers';
 
 export interface RecipientsStoreModel {
-  orgtypecodelist: ActivityResponceInterface;
   recipients: RecipientsInterface;
   humActivities: HumActInterface;
   humRecTypes: RecTypesInterface;
@@ -17,7 +13,6 @@ export interface RecipientsStoreModel {
 }
 
 const recipientsSt: RecipientsStoreModel = {
-  orgtypecodelist,
   recipients,
   humActivities,
   humRecTypes,

@@ -1,6 +1,7 @@
 /* models/interfaces */
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { ResultItem } from '../store/interface';
+import { ListCellModel } from '../../../components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* utils */
 import { formatTableCardItems } from '../../activityDetails/utils/formatTableCardItems';
@@ -17,10 +18,11 @@ import {
   resRefFields,
   targActFields,
 } from '../const';
-import { ListCellModel } from '../../../components/datadisplay/Lists/common/SimpleListItem/model';
 
 export function formatResultElements(
-  resDetail: ResultItem | null
+  resDetail: ResultItem | null,
+  measCodeName,
+  indVocCodeNames
 ): ListModel[] {
   const elementLists: ListModel[] = [];
   if (resDetail) {
@@ -58,7 +60,7 @@ export function formatResultElements(
       tableCItems: formatTableCardItems(
         resDetail,
         'result_indicator',
-        indicatorFields,
+        indicatorFields(measCodeName),
         true
       ),
     });
@@ -95,7 +97,7 @@ export function formatResultElements(
           tableCItems: formatTableCardItems(
             indicator[0],
             'reference',
-            indicatorRefFields
+            indicatorRefFields(indVocCodeNames)
           ),
         });
 

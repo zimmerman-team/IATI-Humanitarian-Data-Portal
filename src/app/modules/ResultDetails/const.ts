@@ -1,11 +1,5 @@
 import { BaseQuery } from 'app/interfaces/queries';
 
-/* consts */
-import {
-  indVocCodeNames,
-  measCodeName,
-} from 'app/__consts__/iati_standard_code_names';
-
 export const ResultQuery = (resId): BaseQuery => {
   return {
     q: `id:${resId}`,
@@ -42,36 +36,58 @@ export const resRefFields = [
   },
 ];
 
-export const indicatorRefFields = [
-  {
-    key: 'code',
-  },
-  {
-    key: 'vocabulary',
-    codeNames: indVocCodeNames,
-  },
-];
+export const indicatorRefFields = indVocCodeNames => {
+  return [
+    {
+      key: 'code',
+    },
+    {
+      key: 'vocabulary',
+      codeNames: indVocCodeNames,
+    },
+  ];
+};
 
-export const indicatorFields = [
-  {
-    key: 'title.narrative',
-  },
-  {
-    key: 'description.narrative',
-  },
-  {
-    key: 'measure',
-    codeNames: measCodeName,
-  },
-  {
-    key: 'ascending',
-    codeNames: { '0': 'descending', '1': 'ascending' },
-  },
-  {
-    key: 'aggregation_status',
-    codeNames: { '0': 'Cannot be aggregated', '1': 'Can be aggregated' },
-  },
-];
+export const indicatorFields = measCodeName => {
+  return [
+    {
+      key: 'title.narrative',
+    },
+    {
+      key: 'description.narrative',
+    },
+    {
+      key: 'measure',
+      codeNames: measCodeName,
+    },
+    {
+      key: 'ascending',
+      codeNames: [
+        {
+          code: '0',
+          name: 'descending',
+        },
+        {
+          code: '1',
+          name: 'ascending',
+        },
+      ],
+    },
+    {
+      key: 'aggregation_status',
+      codeNames: [
+        {
+          code: '0',
+          name: 'Cannot be aggregated',
+        },
+        {
+          code: '1',
+          name: 'Can be aggregated',
+        },
+      ],
+    },
+  ];
+};
 
 export const baselineFields = [
   {
