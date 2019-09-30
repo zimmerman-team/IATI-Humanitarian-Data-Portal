@@ -13,13 +13,17 @@ import {
 } from 'app/modules/signatory-data/submodules/providersPage/consts';
 import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
+import { useStoreState } from 'easy-peasy';
 
 export function ProvidersPageFunc(props) {
   /* component store */
   const [state, actions] = sigDataProvidersStore();
+
+  const orgTypeNames = useStoreState(
+    reduxstate => reduxstate.codelists.orgTypeNames
+  );
   /* componentDidMount call */
   React.useEffect(() => {
-    actions.orgtypecodelist.fetch({});
     actions.sigAllProviders.fetch({
       values: allProvidersQuery(
         decodeURIComponent(props.match.params.code),
@@ -43,7 +47,7 @@ export function ProvidersPageFunc(props) {
         get(state.humanitarianActivities.data, 'data.response.docs', [])
       ),
     });
-  }, [state.orgtypecodelist.data, state.humanitarianActivities.data]);
+  }, [orgTypeNames.data, state.humanitarianActivities.data]);
 
   const sigAllProviders = get(
     state.sigAllProviders,
@@ -54,14 +58,14 @@ export function ProvidersPageFunc(props) {
   const tableData = getTableData(
     get(state.sigdataproviders.data, 'data', {}),
     'facet_counts.facet_pivot["transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency"]',
-    get(state.orgtypecodelist.data, 'data', {}),
+    get(orgTypeNames.data, 'data', {}),
     '1'
   );
   return (
     <ProvidersPageLayout
       barChartData={getBarChartData(
         get(state.sigdataproviders.data, 'data', null),
-        get(state.orgtypecodelist.data, 'data', null),
+        get(orgTypeNames.data, 'data', null),
         sigAllProviders,
         'Humanitarian providers breakdown',
         `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`

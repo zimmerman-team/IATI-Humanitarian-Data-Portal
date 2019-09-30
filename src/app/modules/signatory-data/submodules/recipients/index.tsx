@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { RecipientsLayout } from './layout';
 
-/* local store */
+/* store */
 import { recStore } from './store';
+import { useStoreState } from 'app/state/store/hooks';
 
 /* consts */
 import { humActQuery, recipientsQuery } from './const';
@@ -17,7 +18,9 @@ import { getTableData } from '../providersPage/utils/getTableData';
 
 function RecipientsF(props) {
   const [state, actions] = recStore();
-
+  const orgTypeNames = useStoreState(
+    reduxstate => reduxstate.codelists.orgTypeNames.data
+  );
   useEffect(() => {
     humActQuery.q = humActQuery.q.replace(
       '{rep_org_ref}',
@@ -41,9 +44,6 @@ function RecipientsF(props) {
         'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type'
       ),
     });
-
-    // we also get the codelist here
-    actions.orgtypecodelist.fetch({});
   }, []);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function RecipientsF(props) {
         ),
       });
     }
-  }, [state.orgtypecodelist.data, state.humActivities]);
+  }, [orgTypeNames, state.humActivities]);
 
   const recData = get(state.recipients, `data.data`, null);
 
@@ -77,13 +77,13 @@ function RecipientsF(props) {
   const recTableData = getTableData(
     recData,
     `facet_counts.facet_pivot.${pivotKey}`,
-    get(state.orgtypecodelist.data, 'data', {}),
+    get(orgTypeNames, 'data', {}),
     '3'
   );
 
   const barChartData = getBarChartData(
     get(state.recipients.data, 'data', null),
-    get(state.orgtypecodelist.data, 'data', null),
+    get(orgTypeNames, 'data', null),
     sigAllReceivers,
     'Humanitarian recipient types',
     `facet_counts.facet_pivot.${pivotKey}`

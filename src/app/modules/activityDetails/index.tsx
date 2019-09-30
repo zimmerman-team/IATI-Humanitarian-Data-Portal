@@ -21,10 +21,14 @@ import {
 
 /* store */
 import { actDetailStore } from './store';
+import { useStoreState } from 'easy-peasy';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
   const [state, actions] = actDetailStore();
+
+  const codeLists = useStoreState(reduxstate => reduxstate.codelists);
+
   /* ----------------------------------------------- */
 
   /* --------- CALLING API'S ----------------------- */
@@ -85,20 +89,31 @@ function ActivityDetail(props) {
   const inTable = {
     ...baseTranstable,
     title: 'Incoming transactions',
-    data: formatTransTable(incTranData, true),
+    data: formatTransTable(
+      incTranData,
+      true,
+      get(codeLists, 'transTypeNames.data.data', [])
+    ),
   };
 
   const outTable = {
     ...baseTranstable,
     title: 'Outgoing transactions',
-    data: formatTransTable(outTransData, false),
+    data: formatTransTable(
+      outTransData,
+      false,
+      get(codeLists, 'transTypeNames.data.data', [])
+    ),
   };
 
-  const elementLists = formatActivityElements(actDetail);
+  const elementLists = formatActivityElements(actDetail, codeLists);
 
   const resultsCard = {
     title: 'Results',
-    items: formatResults(resultData),
+    items: formatResults(
+      resultData,
+      get(codeLists, 'resultTypeNames.data.data', [])
+    ),
   };
 
   /* ----------------------------------------------- */

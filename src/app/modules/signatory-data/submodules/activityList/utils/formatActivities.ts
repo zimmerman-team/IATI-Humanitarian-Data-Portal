@@ -3,11 +3,10 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 /* utils */
 import { formatDate, getEngText } from 'app/utils/generic';
 import get from 'lodash/get';
-
-/* consts */
-import { actStatusNames } from 'app/__consts__/iati_standard_code_names';
+import find from 'lodash/find';
 
 export function formatActivities(
+  actStatusCodeList,
   activities?: SingleDefActivity[]
 ): Array<Array<string | Array<string>>> {
   const tableData: Array<Array<string | Array<string>>> = [];
@@ -19,10 +18,14 @@ export function formatActivities(
 
       const resultCount = activity.result ? activity.result.length : 0;
 
+      const statusName = find(actStatusCodeList, [
+        'code',
+        activity.activity_status_code,
+      ]);
       tableData.push([
         formatDate(activity.activity_date_start_actual),
         formatDate(activity.activity_date_end_actual),
-        actStatusNames[activity.activity_status_code],
+        statusName ? statusName.name : 'No Data',
         [activity.iati_identifier, engTitle],
         activity.recipient_country_name || [],
         resultCount,

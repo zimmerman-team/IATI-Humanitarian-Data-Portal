@@ -11,6 +11,7 @@ import {
 
 /* utils */
 import get from 'lodash/get';
+import find from 'lodash/find';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { getNarrativeText } from 'app/utils/generic';
 
@@ -71,7 +72,8 @@ export function formatTableCardItems(
         }
 
         if (fkey.codeNames) {
-          value = fkey.codeNames[value];
+          value = find(fkey.codeNames, ['code', value]);
+          value = value ? value.name : 'No Data';
         }
 
         if (fkey.suffix) {

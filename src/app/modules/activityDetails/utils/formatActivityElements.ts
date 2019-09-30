@@ -1,9 +1,12 @@
 /* models and interfaces */
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
+import { CodeListInterface } from 'app/state/api/interfaces/codeListsInterface';
+
+/* utils */
+import find from 'lodash/find';
 
 /* consts */
-import { budgItemVocNames } from 'app/__consts__/iati_standard_code_names';
 import {
   actSummFields,
   budgetFields,
@@ -38,7 +41,8 @@ import { formatTableCardItems } from './formatTableCardItems';
 // so this formating function will format all of the existing elements of the activity
 //
 export function formatActivityElements(
-  actDetail: SingleDefActivity | null
+  actDetail: SingleDefActivity | null,
+  codeLists: CodeListInterface
 ): ListModel[] {
   const elementLists: ListModel[] = [];
   if (actDetail) {
@@ -47,7 +51,17 @@ export function formatActivityElements(
       title: 'Activity Summary',
       type: 'Card',
       elName: 'summary',
-      items: formatSingleCardItem(actDetail, '', actSummFields),
+      items: formatSingleCardItem(
+        actDetail,
+        '',
+        actSummFields(
+          get(codeLists, 'actStatus.data.data', []),
+          get(codeLists, 'actScopeNames.data.data', []),
+          get(codeLists, 'colabTypeNames.data.data', []),
+          get(codeLists, 'defFlowTypeNames.data.data', []),
+          get(codeLists, 'defTiedStatusName.data.data', [])
+        )
+      ),
     });
 
     // pushing rep org
@@ -66,7 +80,10 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'participating_org',
-        partOrgFields
+        partOrgFields(
+          get(codeLists, 'orgTypeNames.data.data', []),
+          get(codeLists, 'orgRoleNames.data.data', [])
+        )
       ),
     });
 
@@ -78,7 +95,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'other_identifier',
-        othIdFields
+        othIdFields(get(codeLists, 'othIDTypeNames.data.data', []))
       ),
     });
 
@@ -90,7 +107,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'contact_info',
-        contInfoFields
+        contInfoFields(get(codeLists, 'contactTypeNames.data.data', []))
       ),
     });
 
@@ -114,7 +131,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'recipient_region',
-        recRegFields
+        recRegFields(get(codeLists, 'regVocNames.data.data', []))
       ),
     });
 
@@ -131,15 +148,25 @@ export function formatActivityElements(
       title: 'Tags',
       type: 'ExpTableCard',
       elName: 'tags',
-      tableCItems: formatTableCardItems(actDetail, 'tag', tagFields),
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'tag',
+        tagFields(get(codeLists, 'tagVocNames.data.data', []))
+      ),
     });
+
+    const budgItVCode = get(
+      actDetail,
+      'country_budget_items.vocabulary',
+      'none'
+    );
+    const budgItCodeList = get(codeLists, 'budgItemVocNames.data.data', []);
+    const budgVocName = find(budgItCodeList, ['code', budgItVCode]);
 
     // pushing country budget items
     elementLists.push({
       title: `Country Budget Items - ${
-        budgItemVocNames[
-          get(actDetail, 'country_budget_items.vocabulary', 'none')
-        ]
+        budgVocName ? budgVocName.name : 'No Data'
       }`,
       type: 'ExpTableCard',
       elName: 'countBudgIt',
@@ -158,7 +185,10 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'humanitarian_scope',
-        humScopeFields
+        humScopeFields(
+          get(codeLists, 'humScopTypeNames.data.data', []),
+          get(codeLists, 'humVocNames.data.data', [])
+        )
       ),
     });
 
@@ -170,7 +200,11 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'policy_marker',
-        polMarkerFields
+        polMarkerFields(
+          get(codeLists, 'polMarkCodeNames.data.data', []),
+          get(codeLists, 'policMSignificanceName.data.data', []),
+          get(codeLists, 'polMarkerVocabNames.data.data', [])
+        )
       ),
     });
 
@@ -182,7 +216,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'default_aid_type',
-        defAidTypeFields
+        defAidTypeFields(get(codeLists, 'defAidTypeVocNames.data.data', []))
       ),
     });
 
@@ -191,7 +225,14 @@ export function formatActivityElements(
       title: 'Budget',
       type: 'ExpTableCard',
       elName: 'budget',
-      tableCItems: formatTableCardItems(actDetail, 'budget', budgetFields),
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'budget',
+        budgetFields(
+          get(codeLists, 'budgTypeNames.data.data', []),
+          get(codeLists, 'budgStatusNames.data.data', [])
+        )
+      ),
     });
 
     // pushing planned disbursements
@@ -202,7 +243,10 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'planned_disbursement',
-        disbursFields
+        disbursFields(
+          get(codeLists, 'orgTypeNames.data.data', []),
+          get(codeLists, 'budgTypeNames.data.data', [])
+        )
       ),
     });
 
@@ -239,15 +283,16 @@ export function formatActivityElements(
       title: 'Locations',
       type: 'ExpTableCard',
       elName: 'locations',
-      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
-    });
-
-    // pushing locations
-    elementLists.push({
-      title: 'Locations',
-      type: 'ExpTableCard',
-      elName: 'locations',
-      tableCItems: formatTableCardItems(actDetail, 'location', locationFields),
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'location',
+        locationFields(
+          get(codeLists, 'locReachNames.data.data', []),
+          get(codeLists, 'locVocNames.data.data', []),
+          get(codeLists, 'locExNames.data.data', []),
+          get(codeLists, 'locClassNames.data.data', [])
+        )
+      ),
     });
 
     // pushing related activities
@@ -258,7 +303,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(
         actDetail,
         'related_activity',
-        relActFields
+        relActFields(get(codeLists, 'relActTypes.data.data', []))
       ),
     });
 
@@ -285,7 +330,7 @@ export function formatActivityElements(
         tableCItems: formatTableCardItems(
           actDetail,
           'conditions.condition',
-          conditionsFields
+          conditionsFields(get(codeLists, 'condCodeNames.data.data', []))
         ),
       });
     }

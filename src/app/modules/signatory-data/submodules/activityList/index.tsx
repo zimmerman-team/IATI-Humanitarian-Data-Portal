@@ -22,7 +22,7 @@ function ActivityListz(props) {
   const [sortBy, setSortBy] = useState('activity_date_start_actual desc');
   const [searchTerm, setSearchTerm] = useState('*');
   const [status, setStatus] = useState('activity_status_code:*');
-  const actStatus = useStoreState(reduxstate => reduxstate.actStatus);
+  const actStatus = useStoreState(reduxstate => reduxstate.codelists.actStatus);
   const actStatusCodeList = get(actStatus, 'data.data', []);
   const [debouncedCallback] = useDebouncedCallback(
     // function
@@ -56,7 +56,7 @@ function ActivityListz(props) {
     });
   }, [page, rows, sortBy, searchTerm, status]);
 
-  activityBaseTable.data = formatActivities(activities.docs);
+  activityBaseTable.data = formatActivities(actStatusCodeList, activities.docs);
   // here we load the filters retrieved from the codelists
   // into appropriate columns
   // we load the status names
