@@ -163,15 +163,15 @@ export function formatCovData(
         }
       }
 
-      tableData.push([
-        formatDate(transPerStart.format()),
-        formatDate(transPerEnd.format()),
-        opFunds,
-        disbsExpValue,
-        rating,
-      ]);
+      // tableData.push([
+      //   formatDate(transPerStart.format()),
+      //   formatDate(transPerEnd.format()),
+      //   opFunds,
+      //   disbsExpValue,
+      //   rating,
+      // ]);
     });
   }
 
-  return tableData.concat(lastOrgDataz);
+  return tableData;
 }

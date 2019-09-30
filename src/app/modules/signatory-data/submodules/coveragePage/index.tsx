@@ -12,12 +12,9 @@ import { baseCovTable, covOrgQuery, covQuery } from './const';
 /* utils */
 import get from 'lodash/get';
 import { formatCovData } from './utils/formatCovData';
-import { getRangeStart } from './utils/getRangeStart';
 
 export function CoverageF(props) {
   const [state, actions] = covStore();
-
-  const [perRange, setPerRange] = React.useState(12);
 
   // so on component mount we fetch the organisations total expenditures
   // AND the organisations default currency
@@ -30,26 +27,21 @@ export function CoverageF(props) {
   // and once the covOrg data updates we get the date range period
   // and make a request to them transactions
   useEffect(() => {
-    const orgData = get(state.covOrg, 'data.data.response.docs[0]', null);
+    const orgData = get(
+      state.covOrg,
+      'data.data.response.docs[0].organisation_total_expenditure',
+      null
+    );
     if (orgData) {
-      const dateData = getRangeStart(orgData, perRange);
-      setPerRange(dateData.periodRange);
-
       actions.coverage.fetch({
-        values: covQuery(
-          decodeURIComponent(props.match.params.code),
-          dateData.periodRange,
-          dateData.startDateTxt
-        ),
+        values: covQuery(decodeURIComponent(props.match.params.code), orgData),
       });
     }
   }, [state.covOrg.data]);
 
-  const covData = get(
-    state.coverage,
-    'data.data.facets.disbs_expends.date_range.buckets',
-    null
-  );
+  const covData = get(state.coverage, 'data.data.facets.disbs_expends', null);
+
+  console.log('covData', state.coverage);
 
   const covOrgData = get(
     state.covOrg,
@@ -63,12 +55,11 @@ export function CoverageF(props) {
     null
   );
 
-  baseCovTable.data = formatCovData(
-    covData,
-    covOrgData,
-    covOrgDefCurr,
-    perRange
-  );
+  // baseCovTable.data = formatCovData(
+  //   covData,
+  //   covOrgData,
+  //   covOrgDefCurr
+  // );
 
   return <CoverageLayout tableData={baseCovTable} />;
 }

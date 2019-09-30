@@ -1,16 +1,17 @@
 /* models/interfaces */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
+import { OrgTotExpItemModel } from './store/interfaces';
 
 /* utils */
 import {
   formatMoney,
   getInfoTHead,
 } from 'app/components/datadisplay/Table/helpers';
+import { formatTransFacets } from './utils/formatTransFacets';
 
 export const covQuery = (
   repOrgRef: string,
-  monthRange: number,
-  dateStart: string
+  covOrgData: OrgTotExpItemModel[] | null
 ) => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) 
@@ -25,21 +26,7 @@ export const covQuery = (
         type: 'query',
         q: 'transaction_type:(3 4)',
         facet: {
-          date_range: {
-            type: 'range',
-            field: 'transaction_date_iso_date',
-            start: '${dateStart}',
-            end: 'NOW',
-            gap: '+${monthRange}MONTHS',
-            mincount: 1,
-            facet: {
-              trans_currency: {
-                type: 'terms',
-                field: 'transaction_value_currency',
-                facet: { transaction_sum: 'sum(transaction_value)' },
-              },
-            },
-          },
+          ${formatTransFacets(covOrgData)}
         },
       },
     }`,
