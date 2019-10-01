@@ -1,13 +1,11 @@
-/* interfaces/models */
 import { CovTimeItemModel, OrgTotExpItemModel } from '../store/interfaces';
 
 /* utils */
+import get from 'lodash/get';
+import find from 'lodash/find';
 import { formatDate } from 'app/utils/generic';
 import { convertCurr } from 'app/utils/currency';
 import moment from 'moment';
-import sortBy from 'lodash/sortBy';
-import find from 'lodash/find';
-import get from 'lodash/get';
 
 // helper function to convert/sum up the transaction
 // values from the data
@@ -58,120 +56,85 @@ function convertHelper(
 export function formatCovData(
   covData: CovTimeItemModel[] | null,
   covOrgData: OrgTotExpItemModel[] | null,
-  defCurr: string | null,
-  perRange: number
+  defCurr: string | null
 ): Array<Array<string | number | null | Array<string | number | null>>> {
   const tableData: Array<
     Array<string | number | null | Array<string | number | null>>
   > = [];
 
-  const defCurreny: string =
-    defCurr || get(covData, '[0].trans_currency.buckets[0].val', 'USD');
-
-  // we ofcourse sort the org data by date so it would be correct
-  const orgDataz = covOrgData && sortBy(covOrgData, ['period_start']);
-
-  const lastOrgDataz: Array<
-    Array<string | number | null | Array<string | number | null>>
-  > = [];
-  if (orgDataz) {
-    orgDataz.forEach(orgItem => {
-      if (orgItem.period_end && orgItem.period_start) {
-        const rangeVal = get(covData, '[0].val');
-        const transPerStart = moment(rangeVal, 'YYYY-MM-DD');
-        if (
-          !covData ||
-          (rangeVal &&
-            moment(orgItem.period_end).isBefore(transPerStart, 'day'))
-        ) {
-          // so here we'll first push in all of the org_tot_exp
-          // data that apears before the transactions
-          // and ofcourse we'll add 'No data' in those transaction places
-          // OR if there's no trans data found we just simply push in all
-          // of the org data
-          tableData.push([
-            formatDate(orgItem.period_start),
-            formatDate(orgItem.period_end),
-            convertHelper(orgItem.value, orgItem.currency, defCurreny),
-            null,
-            'No Data',
-          ]);
-        } else if (covData) {
-          const lastRange = get(covData, `[${covData.length - 1}].val`);
-          const transLastdate = moment(lastRange, 'YYYY-MM-DD')
-            .add(perRange, 'months')
-            .subtract(1, 'days');
-
-          if (
-            lastRange &&
-            moment(orgItem.period_start).isAfter(transLastdate, 'day')
-          ) {
-            // so here if we have any org dates which precedes the last trans date
-            // we push them into this lastOrgDataz array and will concat
-            // it to the main tableData AFTER the main org trans item
-            // formating is done
-            lastOrgDataz.push([
-              formatDate(orgItem.period_start),
-              formatDate(orgItem.period_end),
-              convertHelper(orgItem.value, orgItem.currency, defCurreny),
-              null,
-              'No Data',
-            ]);
-          }
-        }
-      }
-    });
-  }
-
   if (covData) {
-    covData.forEach(item => {
-      const transPerStart = moment(item.val, 'YYYY-MM-DD');
-      const transPerEnd = moment(item.val, 'YYYY-MM-DD')
-        .add(perRange, 'months')
-        .subtract(1, 'days');
+    let defCurreny = defCurr;
 
-      const orgItem =
-        orgDataz &&
-        find(orgDataz, oItem => {
-          // oke so here we do need to do these return trues/false
-          // cause if we only return the if condition, type script
-          // goes haywire #JustTypeScriptThings
-          if (
-            oItem.period_end &&
-            oItem.period_start &&
-            ((moment(oItem.period_start).isSameOrBefore(transPerStart, 'day') &&
-              moment(oItem.period_end).isSameOrAfter(transPerEnd, 'day')) ||
-              moment(oItem.period_start).isBetween(
-                transPerStart,
-                transPerEnd
-              ) ||
-              moment(oItem.period_end).isBetween(transPerStart, transPerEnd))
-          ) {
-            return true;
-          }
-          return false;
-        });
+    let covDataz = covData;
+    if (!covOrgData) {
+      // so if there's no organisation total expenditure data
+      // what we will get from the transaction endpoint is
+      // annual date range values and it will be formed as an array
+      covDataz = get(covData, 'date_range_unsepcified.buckets', []);
+    }
 
-      const disbsExpValue = formatValue(item.trans_currency, defCurreny);
-      let opFunds: [number, string] | null = null;
-      let rating = 'No Data';
+    Object.entries(covDataz).forEach(covItem => {
+      const covKey = covItem[0];
+      // first key is always count so we ignore it
+      if (covKey !== 'count') {
+        const covValue = covItem[1];
+        let opFunds: [number, string] | null = null;
+        let rating = 'No Data';
+        let startDate = '';
+        let endDate = '';
 
-      if (orgItem) {
-        opFunds = convertHelper(orgItem.value, orgItem.currency, defCurreny);
-        if (opFunds !== null && disbsExpValue !== null) {
+        if (covOrgData) {
+          // specific way to get the start and end date from the facet keys
+          // according to how they are formed in 'formatTransFacets' function
+          startDate = covKey.substring(11, 21);
+          endDate = covKey.substring(32, 42);
+        } else {
+          startDate = covValue.val;
+          endDate = moment(covValue.val, 'YYYY-MM-DD')
+            .add(12, 'months')
+            .subtract(1, 'days')
+            .format();
+        }
+
+        if (!defCurreny) {
+          defCurreny = get(covValue, 'trans_currency.buckets[0].val', 'USD');
+        }
+
+        // we get the trans value
+        const disbsExpValue =
+          covValue.trans_currency && defCurreny
+            ? formatValue(covValue.trans_currency, defCurreny)
+            : null;
+
+        // we get the org value
+        if (covOrgData) {
+          const orgTotExp = find(covOrgData, orgItem => {
+            return (
+              orgItem.period_start === startDate &&
+              orgItem.period_end === endDate
+            );
+          });
+          opFunds =
+            orgTotExp && defCurreny
+              ? convertHelper(orgTotExp.value, orgTotExp.currency, defCurreny)
+              : null;
+        }
+
+        // aaand we calculate the rating
+        if (disbsExpValue !== null && opFunds !== null) {
           rating = `${((100 * disbsExpValue[0]) / opFunds[0]).toFixed(2)} %`;
         }
-      }
 
-      tableData.push([
-        formatDate(transPerStart.format()),
-        formatDate(transPerEnd.format()),
-        opFunds,
-        disbsExpValue,
-        rating,
-      ]);
+        tableData.push([
+          formatDate(startDate),
+          formatDate(endDate),
+          opFunds,
+          disbsExpValue,
+          rating,
+        ]);
+      }
     });
   }
 
-  return tableData.concat(lastOrgDataz);
+  return tableData;
 }
