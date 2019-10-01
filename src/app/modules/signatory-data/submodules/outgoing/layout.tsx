@@ -7,6 +7,10 @@ import { OutgoingModel } from './model';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
+import { OutgoingPledgesFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingPledgesFragment';
+import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/IncomingCommitmentsFragment';
+import { OutgoingDisbursements } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingDisbursements';
+import { ExpenditureFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/ExpenditureFragment';
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (
@@ -46,7 +50,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
               <Grid container spacing={4}>
                 <Grid item xs={12}>
                   {/** todo: add side menu */}
-                  <InPageNavigation lists={[]} />
+                  <InPageNavigation lists={props.lists} />
                 </Grid>
               </Grid>
             </div>
@@ -58,76 +62,22 @@ export const OutgoingLayout = (props: OutgoingModel) => {
             {/* ---------------------------------------- */}
             {/** 1 */}
             {/** Outgoing pledges */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing pledges
-
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List valueHeaders {...props.lists[0]} />
-            </Grid>
+            <OutgoingPledgesFragment lists={props.lists[0]} />
 
             {/* ---------------------------------------- */}
             {/** 2 */}
-            {/** Outgoing commitments */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing commitments
-
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List valueHeaders {...props.lists[1]} />
-            </Grid>
+            {/** Incoming commitments */}
+            <IncomingCommitmentsFragment lists={props.lists[1]} />
 
             {/* ---------------------------------------- */}
             {/** 3 */}
-            {/** Outgoing funds */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing disbursements
-
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List valueHeaders {...props.lists[2]} />
-            </Grid>
+            {/** Outgoing disbursements */}
+            <OutgoingDisbursements lists={props.lists[2]} />
 
             {/* ---------------------------------------- */}
             {/** 4 */}
             {/** Expenditure */}
-            <Grid item xs={12} style={{ position: 'relative' }}>
-              {/**
-                  Expenditure
-
-                    - Total
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List valueHeaders {...props.lists[3]} />
-
-              {/* ---------------------------------------- */}
-              {/* decoration: bottom rightt */}
-              <Box
-                position="absolute"
-                bottom="-200px"
-                right="-100px"
-                zIndex="-1"
-              >
-                <DecoSignIncomingBottomRight />
-              </Box>
-              {/* ---------- */}
-            </Grid>
+            <ExpenditureFragment lists={props.lists[3]} />
           </Grid>
         </Grid>
       </Grid>
