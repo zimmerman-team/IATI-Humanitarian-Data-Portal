@@ -32,14 +32,14 @@ export function formatTransTable(
 
       tableData.push([
         formattedDate,
-        trans.transaction_provider_org_narrative,
-        trans.transaction_receiver_org_narrative,
+        trans.transaction_provider_org_narrative || 'No Data',
+        trans.transaction_receiver_org_narrative || 'No Data',
         transTName ? transTName.name : 'No Data',
         [
           get(trans, 'transaction_value_currency', 'USD'),
           get(trans, 'transaction_value', 0),
         ],
-        traceId,
+        traceId || 'No Data',
       ]);
     });
   }
