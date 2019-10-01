@@ -7,10 +7,12 @@ import { ActivityDetailModel } from './model';
 import { Grid, Typography, Box, Container } from '@material-ui/core';
 import Table from 'app/components/datadisplay/Table';
 import { ActivityHeaderLayout } from './common/activityHeader';
+import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 
 // Mock Data
-import { TableCard } from '../../components/datadisplay/Lists/variants/TableCard';
-import { NavLists } from '../../components/datadisplay/NavLists';
+import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
+import { NavLists } from 'app/components/datadisplay/NavLists';
+import { tableInfoItems } from 'app/components/datadisplay/TableWTotal/mock';
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
@@ -38,22 +40,25 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       <Grid container lg={12} md={12}>
         {/*TODO: where is the black total sum up bar?*/}
         {/*TODO: Tables need to be horizontally scrollable and may not exceed parent width*/}
-        <Table
+
+        <TableWTotal
           title={props.incomingTransactionsTableData.title}
           data={props.incomingTransactionsTableData.data}
           columns={props.incomingTransactionsTableData.columns}
           options={props.incomingTransactionsTableData.options}
           columnsCell={props.incomingTransactionsTableData.columnsCell}
+          infoItems={tableInfoItems}
         />
 
         <Box height="80px" width="100%" />
 
-        <Table
+        <TableWTotal
           title={props.outgoingTransactionsTableData.title}
           data={props.outgoingTransactionsTableData.data}
           columns={props.outgoingTransactionsTableData.columns}
           options={props.outgoingTransactionsTableData.options}
           columnsCell={props.outgoingTransactionsTableData.columnsCell}
+          infoItems={[]}
         />
       </Grid>
 
