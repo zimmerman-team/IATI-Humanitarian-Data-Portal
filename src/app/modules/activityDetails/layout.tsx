@@ -5,14 +5,12 @@ import { ActivityDetailModel } from './model';
 
 // Components
 import { Grid, Typography, Box, Container } from '@material-ui/core';
-import Table from 'app/components/datadisplay/Table';
 import { ActivityHeaderLayout } from './common/activityHeader';
 import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 
 // Mock Data
 import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
 import { NavLists } from 'app/components/datadisplay/NavLists';
-import { tableInfoItems } from 'app/components/datadisplay/TableWTotal/mock';
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
@@ -47,7 +45,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
           columns={props.incomingTransactionsTableData.columns}
           options={props.incomingTransactionsTableData.options}
           columnsCell={props.incomingTransactionsTableData.columnsCell}
-          infoItems={tableInfoItems}
+          infoItems={props.incomingTransactionsTableData.infoItems}
         />
 
         <Box height="80px" width="100%" />
@@ -58,7 +56,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
           columns={props.outgoingTransactionsTableData.columns}
           options={props.outgoingTransactionsTableData.options}
           columnsCell={props.outgoingTransactionsTableData.columnsCell}
-          infoItems={[]}
+          infoItems={props.outgoingTransactionsTableData.infoItems}
         />
       </Grid>
 

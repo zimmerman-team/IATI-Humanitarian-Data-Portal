@@ -89,20 +89,22 @@ function ActivityDetail(props) {
   const inTable = {
     ...baseTranstable,
     title: 'Incoming transactions',
-    data: formatTransTable(
+    ...formatTransTable(
       incTranData,
       true,
-      get(codeLists, 'transTypeNames.data.data', [])
+      get(codeLists, 'transTypeNames.data.data', []),
+      actDetail ? actDetail.default_currency : null
     ),
   };
 
   const outTable = {
     ...baseTranstable,
     title: 'Outgoing transactions',
-    data: formatTransTable(
+    ...formatTransTable(
       outTransData,
       false,
-      get(codeLists, 'transTypeNames.data.data', [])
+      get(codeLists, 'transTypeNames.data.data', []),
+      actDetail ? actDetail.default_currency : null
     ),
   };
 
