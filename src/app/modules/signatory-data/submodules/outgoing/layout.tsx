@@ -36,12 +36,20 @@ export const OutgoingLayout = (props: OutgoingModel) => {
         */}
         <Hidden smDown>
           <Grid item xs={3}>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <InPageNavigation lists={[]} />
+            <div
+              css={`
+                position: sticky;
+                top: 50px;
+                height: 400px;
+              `}
+            >
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  {/** todo: add side menu */}
+                  <InPageNavigation lists={[]} />
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Grid>
         </Hidden>
 

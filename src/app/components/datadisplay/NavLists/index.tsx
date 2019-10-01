@@ -16,7 +16,15 @@ export const NavLists = (props: NavListsModel) => (
   <Grid container spacing={4}>
     <Hidden only="md">
       <Grid item lg={3}>
-        <InPageNavigation dontShow={props.dontShow} lists={props.lists} />
+        <div
+          css={`
+            position: sticky;
+            top: 50px;
+            height: 400px;
+          `}
+        >
+          <InPageNavigation dontShow={props.dontShow} lists={props.lists} />
+        </div>
       </Grid>
     </Hidden>
     <Grid item lg={8} md={12}>

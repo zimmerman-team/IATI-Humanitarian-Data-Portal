@@ -5,6 +5,11 @@ export type InPageNavModel = {
   dontShow?: boolean;
 };
 
+export type InpaheNavItemModel = {
+  label: string;
+  path: string;
+};
+
 export type LocationModel = {
   label: string;
   url: string;

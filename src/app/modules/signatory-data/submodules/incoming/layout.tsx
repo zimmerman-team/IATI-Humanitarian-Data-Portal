@@ -44,11 +44,19 @@ export const IncomingLayout = (props: IncomingModel) => {
         */}
         <Hidden smDown>
           <Grid item xs={3}>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <InPageNavigation lists={props.lists} />
+            <div
+              css={`
+                position: sticky;
+                top: 50px;
+                height: 400px;
+              `}
+            >
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  <InPageNavigation lists={props.lists} />
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Grid>
         </Hidden>
 
