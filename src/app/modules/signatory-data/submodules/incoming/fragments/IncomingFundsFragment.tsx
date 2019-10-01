@@ -3,8 +3,8 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Box, Grid } from '@material-ui/core';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
 
-export const IncomingFundsFragment = ({ lists, id }) => (
-  <Grid item xs={12} style={{ position: 'relative' }} id={id}>
+export const IncomingFundsFragment = ({ lists }) => (
+  <Grid item xs={12} style={{ position: 'relative' }} id={lists.elName}>
     {/**
      Incoming funds
 

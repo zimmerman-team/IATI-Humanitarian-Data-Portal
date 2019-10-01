@@ -2,8 +2,8 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Grid } from '@material-ui/core';
 import React from 'react';
 
-export const IncomingCommitmentsFragment = ({lists}) => (
-  <Grid item xs={12} id="incComms">
+export const IncomingCommitmentsFragment = ({ lists }) => (
+  <Grid item xs={12} id={lists.elName}>
     {/**
      Incoming commitments
 
@@ -14,4 +14,4 @@ export const IncomingCommitmentsFragment = ({lists}) => (
 
     <List valueHeaders {...lists} />
   </Grid>
-)
+);

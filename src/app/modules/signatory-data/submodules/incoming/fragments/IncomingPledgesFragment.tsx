@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 
 export const IncomingPledgesFragment = ({ lists }) => (
-  <Grid item xs={12} id="incPledge">
+  <Grid item xs={12} id={lists.elName}>
     {/**
      Incoming pledges
 
