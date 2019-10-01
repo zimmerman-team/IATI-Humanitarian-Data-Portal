@@ -1,4 +1,5 @@
 import { ListModel } from 'app/components/datadisplay/Lists/model';
+import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
 export const listMockData1: ListModel = {
   elName: 'incComms',
@@ -48,6 +49,36 @@ export const listMockData2: ListModel = {
           version: '12 07 2009',
         },
       ],
+    },
+  ],
+};
+
+
+export const sigDataOverviewNavItems: InPageNavModel = {
+  lists: [
+    {
+      title: 'Activity Summary',
+      elName: 'summary',
+    },
+    {
+      title: 'FTS Import related',
+      elName: 'fts',
+    },
+    {
+      title: 'Grand Bargain classifications',
+      elName: 'GBClass',
+    },
+    {
+      title: 'Other classifications of intererest',
+      elName: 'otherClass',
+    },
+    {
+      title: 'Humanitarian results',
+      elName: 'humanitarian',
+    },
+    {
+      title: 'Location information',
+      elName: 'location',
     },
   ],
 };

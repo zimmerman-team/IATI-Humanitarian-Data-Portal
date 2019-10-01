@@ -113,7 +113,12 @@ export function InPageNavigation(props: InPageNavModel) {
 
   return (
     <>
-      <Box display="flex" flexDirection="column">
+      <div
+        css={`
+          display: flex;
+          flex-direction: column;
+        `}
+      >
         {props.lists.map((list, index) => {
           if (
             !props.dontShow ||
@@ -145,7 +150,7 @@ export function InPageNavigation(props: InPageNavModel) {
             );
           }
         })}
-      </Box>
+      </div>
       <Controls>
         <ButtonUp
           fontSize="large"
