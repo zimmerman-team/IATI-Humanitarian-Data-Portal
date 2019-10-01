@@ -16,7 +16,9 @@ export function formatActivities(
       // we get the english activity title here
       const engTitle = getEngText(get(activity, 'title[0]', '""'));
 
-      const resultCount = activity.result ? activity.result.length : 0;
+      const resultCount = activity.result_type
+        ? activity.result_type.length
+        : 0;
 
       const statusName = find(actStatusCodeList, [
         'code',

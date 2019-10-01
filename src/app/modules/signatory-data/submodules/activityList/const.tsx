@@ -18,7 +18,7 @@ export const activitiesQuery = (repOrgRef, searchTerm, actStatusFilters) => {
         OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
         AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
     fl: `iati_identifier,activity_status_code,title,recipient_country_name,
-        activity_date_start_actual,activity_date_end_actual,result`,
+        activity_date_start_actual,activity_date_end_actual,result_type`,
   };
 };
 
