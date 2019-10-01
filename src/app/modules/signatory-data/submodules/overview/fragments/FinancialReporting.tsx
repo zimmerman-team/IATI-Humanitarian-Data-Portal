@@ -3,8 +3,8 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Box, Grid } from '@material-ui/core';
 import { DecoSigOverviewBottomRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewBottomRight';
 
-export const FinancialReporting = ({financialReportingData}) => (
-  <Grid item xs={12} style={{ position: 'relative' }}>
+export const FinancialReporting = ({ financialReportingData }) => (
+  <Grid item xs={12} style={{ position: 'relative' }} id="reporting">
     {/**
      Financial reporting
 
@@ -25,4 +25,4 @@ export const FinancialReporting = ({financialReportingData}) => (
     </Box>
     {/* ---------- */}
   </Grid>
-)
+);

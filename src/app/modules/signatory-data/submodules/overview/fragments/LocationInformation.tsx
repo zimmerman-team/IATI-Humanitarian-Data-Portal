@@ -2,8 +2,8 @@ import React from 'react';
 import { List } from 'app/components/datadisplay/Lists';
 import { Grid } from '@material-ui/core';
 
-export const LocationInformation = ({humActWLocationInfoData}) => (
-  <Grid item xs={12}>
+export const LocationInformation = ({ humActWLocationInfoData }) => (
+  <Grid item xs={12} id="location">
     {/**    Hum. activites with location information
 
      - Activities with recipient countries
