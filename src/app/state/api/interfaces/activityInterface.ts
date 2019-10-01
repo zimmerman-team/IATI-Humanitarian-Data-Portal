@@ -28,6 +28,7 @@ export interface SingleDefActivity {
   reporting_org_narrative: string[];
   title: string[];
   description: string[];
+  result_type?: string[];
   participating_org_ref: string[];
   participating_org_role: string[];
   participating_org_type: string[];
