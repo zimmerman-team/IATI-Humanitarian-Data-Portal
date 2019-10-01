@@ -8,8 +8,13 @@ import { IncomingModel } from './model';
 import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
 import { DecoSigIncomingTopLeft } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSigIncomingTopLeft';
+import { IncomingPledgesFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingPledgesFragment';
+import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingCommitmentsFragment';
+import { IncomingFundsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingFundsFragment';
 
 export const IncomingLayout = (props: IncomingModel) => {
+  console.log(props);
+
   return (
     <>
       {/* content */}
@@ -65,60 +70,17 @@ export const IncomingLayout = (props: IncomingModel) => {
             {/* ---------------------------------------- */}
             {/** Incoming pledges */}
             {/** 1 */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming pledges
-
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List valueHeaders {...props.lists[0]} />
-            </Grid>
+            <IncomingPledgesFragment lists={props.lists[0]} />
 
             {/* ---------------------------------------- */}
             {/** Incoming commitments */}
             {/** 2 */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming commitments
-
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List valueHeaders {...props.lists[1]} />
-            </Grid>
+            <IncomingCommitmentsFragment lists={props.lists[1]} />
 
             {/* ---------------------------------------- */}
             {/** Incoming funds */}
             {/** 3 */}
-            <Grid item xs={12} style={{ position: 'relative' }}>
-              {/**
-                  Incoming funds
-
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List valueHeaders {...props.lists[2]} />
-
-              {/* ---------------------------------------- */}
-              {/* decoration: top left */}
-              <Box
-                position="absolute"
-                bottom="-200px"
-                right="-100px"
-                zIndex="-1"
-              >
-                <DecoSignIncomingBottomRight />
-              </Box>
-              {/* ---------- */}
-            </Grid>
+            <IncomingFundsFragment lists={props.lists[2]} />
           </Grid>
         </Grid>
       </Grid>
