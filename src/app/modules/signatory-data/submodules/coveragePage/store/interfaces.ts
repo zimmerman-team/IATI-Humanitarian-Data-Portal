@@ -24,6 +24,10 @@ export interface CovOrgItemModel {
   organisation_total_expenditure?: OrgTotExpItemModel[];
 }
 
+export interface TransDateItemModel {
+  transaction_date_iso_date: string;
+}
+
 export interface CovTimeItemModel {
   val: string;
   count: number;
@@ -59,3 +63,6 @@ export interface CoverageInterface extends ApiModel<BaseQuery, CovRespModel> {}
 
 export interface CovOrgInterface
   extends ApiModel<BaseQuery, BaseRespModel<BaseQuery, CovOrgItemModel>> {}
+
+export interface TransDateInterface
+  extends ApiModel<BaseQuery, BaseRespModel<BaseQuery, TransDateItemModel>> {}

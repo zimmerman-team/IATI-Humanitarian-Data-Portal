@@ -1,6 +1,6 @@
 /* models/interfaces */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
-import { OrgTotExpItemModel } from './store/interfaces';
+import { CovOrgItemModel } from './store/interfaces';
 
 /* utils */
 import {
@@ -11,7 +11,8 @@ import { formatTransFacets } from './utils/formatTransFacets';
 
 export const covQuery = (
   repOrgRef: string,
-  covOrgData: OrgTotExpItemModel[] | null
+  covOrgData: CovOrgItemModel[] | null,
+  firstTransDate: string
 ) => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) 
@@ -26,10 +27,19 @@ export const covQuery = (
         type: 'query',
         q: 'transaction_type:(3 4)',
         facet: {
-          ${formatTransFacets(covOrgData)}
+          ${formatTransFacets(covOrgData, firstTransDate)}
         },
       },
     }`,
+  };
+};
+
+export const transDateQuery = (repOrgRef: string) => {
+  return {
+    q: `reporting_org_ref:${repOrgRef}`,
+    fl: 'transaction_date_iso_date',
+    sort: 'transaction_date_iso_date asc',
+    rows: 1,
   };
 };
 

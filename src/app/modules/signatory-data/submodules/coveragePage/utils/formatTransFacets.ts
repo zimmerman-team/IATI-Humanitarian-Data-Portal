@@ -1,7 +1,9 @@
-import { OrgTotExpItemModel } from '../store/interfaces';
+import { CovOrgItemModel } from '../store/interfaces';
 
 /* utils */
+import get from 'lodash/get';
 import moment from 'moment';
+import sortBy from 'lodash/sortBy';
 
 // forms a query acceptable date out of the passed in date
 function getQueryDate(rawDate: string): string {
@@ -54,15 +56,21 @@ function getGapPeriod(prevDate: string, currRawDate: string): string | null {
 // mainly will be forming period query facets, according to the
 // organisations expenditure periods mentioned
 export function formatTransFacets(
-  covOrgData: OrgTotExpItemModel[] | null
+  covOrgItem: CovOrgItemModel[] | null,
+  firstTransDate: string
 ): string {
-  if (covOrgData && covOrgData.length > 0) {
+  const covOrgDataz =
+    covOrgItem && get(covOrgItem, '[0].organisation_total_expenditure');
+
+  if (covOrgDataz && covOrgDataz.length > 0) {
+    // we sort the org data by period start so that everything would be definetely correct
+    const covOrgData = sortBy(covOrgDataz, ['period_start']);
     // formatDate(transPerStart.format()),
     // so first we add the facet from the start of the internet
     // to the start of the very first mentioned period
     const startDate = moment(covOrgData[0].period_start).subtract(1, 'days');
     let transfacets = dateRangeFacet(
-      '1900-01-01T00:00:00Z',
+      firstTransDate,
       getQueryDate(startDate.format())
     );
 
