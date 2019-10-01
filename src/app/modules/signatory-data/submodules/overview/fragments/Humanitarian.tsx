@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 
 
 export const Humanitarian = ({humResultsData}) => (
-  <Grid item xs={12}>
+  <Grid item xs={12} id="humanitarian">
     {/**   Humanitarian results
 
      - Activities with results

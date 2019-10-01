@@ -17,6 +17,7 @@ import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fra
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
 import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
+import { Element } from 'react-scroll/modules';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
@@ -76,18 +77,6 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
       {/** ---------------------------------------- */}
 
-      {/*<div
-        css={`
-          position: sticky;
-          top: 500px;
-          width: 300px;
-          height: 300px;
-          background-color: yellow;
-        `}
-      >
-        with content
-      </div>*/}
-
       {/** side nav */}
 
       <Grid container spacing={4}>
@@ -114,9 +103,12 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
           <Grid container spacing={4} style={{ position: 'relative' }}>
             {/** 1 */}
             {/** Activity Summary */}
+
+            {/*<Element name={'summary'} key={`act-element-${0}`}>*/}
             <ActivitySummaryFragment
               activitySummaryData={props.activitySummaryData}
             />
+            {/*</Element>*/}
 
             {/** 2 */}
             {/** Hum. activities with FTS Import related */}

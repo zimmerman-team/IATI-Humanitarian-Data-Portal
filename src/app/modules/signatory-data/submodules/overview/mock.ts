@@ -53,7 +53,6 @@ export const listMockData2: ListModel = {
   ],
 };
 
-
 export const sigDataOverviewNavItems: InPageNavModel = {
   lists: [
     {
@@ -79,6 +78,14 @@ export const sigDataOverviewNavItems: InPageNavModel = {
     {
       title: 'Location information',
       elName: 'location',
+    },
+    {
+      title: 'Activites with multi-year funding',
+      elName: 'multiyear',
+    },
+    {
+      title: 'Financial reporting',
+      elName: 'reporting',
     },
   ],
 };

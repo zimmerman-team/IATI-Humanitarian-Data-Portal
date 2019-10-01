@@ -3,7 +3,7 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Grid } from '@material-ui/core';
 
 export const OtherClass = ({ humOtherClassOfInterestData }) => (
-  <Grid item xs={12}>
+  <Grid item xs={12} id="otherClass">
     {/** Hum. other classifications of intererest
 
      - OECD DAC sector codes

@@ -3,7 +3,7 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Grid } from '@material-ui/core';
 
 export const GBClass = ({ humActwGBClassificationsData }) => (
-  <Grid item xs={12}>
+  <Grid item xs={12} id="GBClass">
     {/**
      Hum. activity with Grand Bargain classifications
 

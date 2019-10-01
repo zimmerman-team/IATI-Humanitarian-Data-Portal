@@ -3,8 +3,8 @@ import { List } from 'app/components/datadisplay/Lists';
 import { Box, Grid } from '@material-ui/core';
 import { DecoSigOverviewMidRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewMidRight';
 
-export const FtsImportRelated = ({humActFTSData}) => (
-  <Grid item xs={12}>
+export const FtsImportRelated = ({ humActFTSData }) => (
+  <Grid item xs={12} id="fts">
     {/**
      Hum. activities with FTS Import related
 
@@ -25,4 +25,4 @@ export const FtsImportRelated = ({humActFTSData}) => (
     </Box>
     {/* ---------- */}
   </Grid>
-)
+);
