@@ -23,7 +23,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       {/* ---------- */}
       <Grid container spacing={4} direction="column">
         <Grid item md={6}>
-          <Typography variant="h4">publishing frequency</Typography>
+          <Typography variant="h4">Publishing frequency</Typography>
         </Grid>
         <Grid item md={6}>
           <Typography variant="body1">
