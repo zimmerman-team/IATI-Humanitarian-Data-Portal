@@ -3,7 +3,7 @@ import React from 'react';
 export const DecoFaqTopLeft = props => (
   <svg width="320px" height="793px" viewBox="0 0 320 793" {...props}>
     <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-      <path fill="#F7F7F7" d="M0 0H1440V1894H0z" />
+      {/* <path fill="#F7F7F7" d="M0 0H1440V1894H0z" /> */}
       <g transform="translate(0 -48)">
         <path d="M0 0H336V176H0z" />
         <path
@@ -20,4 +20,3 @@ export const DecoFaqTopLeft = props => (
     </g>
   </svg>
 );
-

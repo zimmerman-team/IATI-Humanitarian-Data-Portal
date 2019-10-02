@@ -17,7 +17,6 @@ storiesOf('Modules|Page', module).add(
           sections={mockData.sections}
           incomingTransactionsTableData={mockData.incomingTransactionsTableData}
           outgoingTransactionsTableData={mockData.outgoingTransactionsTableData}
-          inPageNavigation={mockData.inPageNavigation}
           lists={mockData.lists}
         />
       </Providers>

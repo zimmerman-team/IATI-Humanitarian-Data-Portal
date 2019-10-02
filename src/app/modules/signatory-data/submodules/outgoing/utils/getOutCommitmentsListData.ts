@@ -8,8 +8,8 @@ export const getOutCommitmentsListData = (rawData): ListModel => {
   const outCommitmentValue2 = get(rawData, 'outCommitment_2.count', 0);
   const outCommitmentValue3 = get(rawData, 'outCommitment_3.count', 0);
   return {
-    title: 'Incoming commitments',
-    elName: 'incComms',
+    title: 'Outgoing commitments',
+    elName: 'outComms',
     items: [
       {
         label: 'For humanitarian activities',

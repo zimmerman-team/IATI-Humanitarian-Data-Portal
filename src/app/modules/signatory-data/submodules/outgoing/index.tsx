@@ -27,16 +27,18 @@ export function SignatoryOutgoingPage(props) {
   );
   /* create the API call instances */
   const sigdataoutgoingCall = useStoreActions(
-    state => state.sigdataoutgoing.fetch
+    action => action.sigdataoutgoing.fetch
   );
   const sigdataoutgoingtraceCall = useStoreActions(
-    state => state.sigdataoutgoingdisbtrace.fetch
+    action => action.sigdataoutgoingdisbtrace.fetch
   );
   /* componentDidMount call */
   React.useEffect(() => {
     const sigdataoutgoingcallValues = {
       values: {
-        q: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        q: `reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(outgoingCallFacetValues),
         rows: 0,
       },
@@ -45,7 +47,9 @@ export function SignatoryOutgoingPage(props) {
     const sigdataoutgoingtracecallValues = {
       values: {
         q: 'transaction_receiver_org_receiver_activity_id:*',
-        fq: `(reporting_org_ref:${props.match.params.code} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND sector_code:[70000 TO 79999])))`,
+        fq: `reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(outgoingCallFacetValuesTrace),
         rows: 0,
       },
@@ -63,7 +67,6 @@ export function SignatoryOutgoingPage(props) {
         ),
         getExpenditureListData(get(sigdataoutgoingData, 'data.facets', {})),
       ]}
-      inPageNavigation={inPageNavigationItems}
       horizontalBarChartCardData={getBarChartData(
         get(sigdataoutgoingData, 'data.facets', {})
       )}

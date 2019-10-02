@@ -1,4 +1,10 @@
 import { ApiModel } from './index';
+import { NarrativeItem } from 'app/modules/ResultDetails/store/interface';
+
+export interface ConditionItem {
+  type: string;
+  narrative: NarrativeItem[];
+}
 
 // so this is the interface for a single activity response data
 // describing all of the activity fields returned without
@@ -6,6 +12,9 @@ import { ApiModel } from './index';
 export interface SingleDefActivity {
   id: string;
   iati_identifier: string;
+  recipient_country_name?: string[];
+  activity_date_start_actual?: string;
+  activity_date_end_actual?: string;
   activity_status_code: string;
   collaboration_type_code: string;
   capital_spend_percentage: number;
@@ -19,6 +28,7 @@ export interface SingleDefActivity {
   reporting_org_narrative: string[];
   title: string[];
   description: string[];
+  result_type?: string[];
   participating_org_ref: string[];
   participating_org_role: string[];
   participating_org_type: string[];
@@ -71,6 +81,10 @@ export interface SingleDefActivity {
   related_activity_ref: string[];
   related_activity_type: string[];
   recipient_country_narrative?: string[];
+  conditions?: {
+    attached: string;
+    condition: ConditionItem[];
+  };
   result: any[];
   _version_: number;
 }
@@ -94,6 +108,7 @@ interface ActivityQuery {
   q: string;
   facet?: string;
   'facet.field'?: string;
+  sort?: string;
   fl?: string;
   rows?: number;
   start?: number;
@@ -103,6 +118,7 @@ interface ActivityQuery {
   'stats.field'?: string;
   stats?: string;
   'facet.pivot'?: string;
+  wt?: string;
 }
 
 export interface ActivityResponceInterface

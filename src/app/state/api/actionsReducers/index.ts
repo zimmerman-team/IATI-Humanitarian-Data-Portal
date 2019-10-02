@@ -30,6 +30,10 @@ export const apiModel = <QueryModel, ResponseModel>(
     state.success = true;
     state.data = payload;
   }),
+  setSuccess: action(state => {
+    state.loading = false;
+    state.success = true;
+  }),
   onRequest: action(state => {
     state.loading = true;
     state.success = false;
@@ -73,6 +77,28 @@ export const apiModel = <QueryModel, ResponseModel>(
         );
     }
   }),
+  // so this basically will work as fetch just that it will not set new data
+  // in the reducer
+  download: thunk(async (actions, query: RequestValues<QueryModel>) => {
+    actions.onRequest();
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      const qValues = query.values as QueryModel;
+      Object.keys(qValues).forEach(key => {
+        formData.append(key, qValues[key]);
+      });
+
+      axios.post(url, formData).then(
+        (resp: AxiosResponse) => {
+          resolve(resp.data);
+          actions.setSuccess();
+        },
+        (error: any) => {
+          reject(error.response);
+        }
+      );
+    });
+  }),
 });
 
 export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
@@ -86,6 +112,10 @@ export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
     state.loading = false;
     state.errorData = payload;
   }),
+  setSuccess: action(state => {
+    state.loading = false;
+    state.success = true;
+  }),
   onSuccess: action((state, payload) => {
     state.loading = false;
     state.success = true;
@@ -96,6 +126,17 @@ export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
     state.success = false;
   }),
   fetch: thunk(async (actions, query) => {
+    actions.onRequest();
+    const res = await db.get(endpoint).apply();
+    if (res.status === 200) {
+      actions.onSuccess(res.data.result);
+    } else {
+      actions.onError(res);
+    }
+  }),
+  // so this basically will work as fetch just that it will not set new data
+  // in the reducer
+  download: thunk(async (actions, query: RequestValues<QueryModel>) => {
     actions.onRequest();
     const res = await db.get(endpoint).apply();
     if (res.status === 200) {
@@ -117,6 +158,10 @@ export const apiPOSTModel = <QueryModel, ResponseModel>(
   onError: action((state, payload: Errors) => {
     state.loading = false;
     state.errorData = payload;
+  }),
+  setSuccess: action(state => {
+    state.loading = false;
+    state.success = true;
   }),
   onSuccess: action((state, payload: ResponseData<ResponseModel>) => {
     state.loading = false;
@@ -144,5 +189,27 @@ export const apiPOSTModel = <QueryModel, ResponseModel>(
         actions.onError(error.response);
       }
     );
+  }),
+  // so this basically will work as fetch just that it will not set new data
+  // in the reducer
+  download: thunk(async (actions, query: RequestValues<QueryModel>) => {
+    actions.onRequest();
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      const qValues = query.values as QueryModel;
+      Object.keys(qValues).forEach(key => {
+        formData.append(key, qValues[key]);
+      });
+
+      axios.post(url, formData).then(
+        (resp: AxiosResponse) => {
+          resolve(resp.data);
+          actions.setSuccess();
+        },
+        (error: any) => {
+          reject(error.response);
+        }
+      );
+    });
   }),
 });

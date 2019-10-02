@@ -20,16 +20,13 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 import { ActivityDetails } from './modules/activityDetails';
 import { PrivacyModule } from 'app/modules/privacy';
+import { ResultDetail } from './modules/ResultDetails';
+
+/* utils */
+import { InitialDataLoad } from './utils/initialLoad';
 
 export function Routes() {
-  const gbsignatoriesData = useStoreState(
-    reduxstate => reduxstate.gbsignatories
-  );
-
-  if (!gbsignatoriesData.data) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useStoreActions(actions => actions.gbsignatories.fetch)({});
-  }
+  InitialDataLoad();
 
   return (
     <Suspense fallback={<PageLoader />}>
@@ -64,6 +61,11 @@ export function Routes() {
         />
 
         <Route exact path="/privacy" render={() => <PrivacyModule />} />
+        <Route
+          exact
+          path="/result-detail/:code"
+          render={() => <ResultDetail />}
+        />
 
         {/* Signatory Data Container*/}
         {/* <SubmoduleContainer /> */}

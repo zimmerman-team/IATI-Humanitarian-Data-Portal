@@ -34,7 +34,7 @@ const BarComponent = props => {
   } = props;
   return (
     <g {...fprops}>
-      <rect {...fprops} fill={Colours.primaryBase} height={props.height / 2} />
+      <rect {...fprops} fill={props.color} height={props.height / 2} />
       <text
         x={props.width - 64}
         y={props.y - 5}
@@ -57,7 +57,7 @@ const BarChart = styled(props => <ResponsiveBar {...props} />)`
 `;
 
 const ChartContainer = styled.div`
-  height: 270px;
+  height: 400px;
 `;
 
 // https://nivo.rocks/bar/
@@ -66,6 +66,7 @@ export const HorizontalBarChart = (props: HorizontalBarChartModel) => {
     <ChartContainer>
       <BarChart
         {...barModel}
+        colorBy="index"
         data={props.values}
         colors={colorScheme(props.colors)}
         barComponent={BarComponent}

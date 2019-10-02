@@ -10,7 +10,7 @@ export const outgoingCallFacetValues = {
   },
   outPledge_3: {
     type: 'query',
-    q: '(transaction_type:12 AND transaction_receiver_org_type:*)',
+    q: '(transaction_type:12 AND transaction_receiver_org_type_code:*)',
   },
   outCommitment_2: {
     type: 'query',
@@ -18,7 +18,7 @@ export const outgoingCallFacetValues = {
   },
   outCommitment_3: {
     type: 'query',
-    q: '(transaction_type:2 AND transaction_receiver_org_type:*)',
+    q: '(transaction_type:2 AND transaction_receiver_org_type_code:*)',
   },
   outDisbursement_2: {
     type: 'query',
@@ -26,15 +26,16 @@ export const outgoingCallFacetValues = {
   },
   outDisbursement_3: {
     type: 'query',
-    q: '(transaction_type:3 AND transaction_receiver_org_type:*)',
+    q: '(transaction_type:3 AND transaction_receiver_org_type_code:*)',
   },
   expenditure_3: {
     type: 'query',
-    q: '(transaction_type:4 AND transaction_receiver_org_narrative:*)',
+    q:
+      '(transaction_type:4 AND (transaction_receiver_org_narrative:* OR transaction_receiver_org_ref:*))',
   },
   expenditure_4: {
     type: 'query',
-    q: '(transaction_type:4 AND transaction_receiver_org_type:*)',
+    q: '(transaction_type:4 AND transaction_receiver_org_type_code:*)',
   },
 };
 

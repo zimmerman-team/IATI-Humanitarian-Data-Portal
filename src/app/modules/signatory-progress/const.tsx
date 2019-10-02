@@ -26,14 +26,43 @@ export const dateRanges = [
     colLabel: 'Baseline June 2017',
     // value in the response and query
     value: '1900-01-01_TO_2017-06-30',
+    // and here we'll have the fixed values
+    allCount: 37,
+    allPerc: 73,
+    humCount: 31,
+    humPerc: 84,
+    count202: 0,
+    perc202: 0,
+    count203: null,
+    perc203: null,
+    tracCount: null,
+    tracPerc: null,
   },
+  // {
+  //   // label used for the linechart
+  //   label: '31.Dec.2018',
+  //   // label for the column header in the table
+  //   colLabel: 'Dec 2018',
+  //   // value in the response and query
+  //   value: '1900-01-01_TO_2018-12-31',
+  // },
   {
     // label used for the linechart
-    label: '31.Dec.2018',
+    label: '1.May.2018',
     // label for the column header in the table
-    colLabel: 'Dec 2018',
+    colLabel: 'May 2018',
     // value in the response and query
-    value: '1900-01-01_TO_2018-12-31',
+    value: '1900-01-01_TO_2018-05-01',
+    allCount: 44,
+    allPerc: 75,
+    humCount: 36,
+    humPerc: 82,
+    count202: 8,
+    perc202: 18,
+    count203: null,
+    perc203: null,
+    tracCount: null,
+    tracPerc: null,
   },
   {
     // label used for the linechart
@@ -42,6 +71,16 @@ export const dateRanges = [
     colLabel: 'May 2019',
     // value in the response and query
     value: '1900-01-01_TO_2019-05-31',
+    allCount: 48,
+    allPerc: 81,
+    humCount: 43,
+    humPerc: 90,
+    count202: 14,
+    perc202: 29,
+    count203: null,
+    perc203: null,
+    tracCount: null,
+    tracPerc: null,
   },
   {
     // label used for the linechart
@@ -56,50 +95,11 @@ export const dateRanges = [
 // so this is mainly the result forming query that we need for the data
 // formed in a solr way responses are also solr like
 const jsonFacet = `{
-  'orgs_[1900-01-01_TO_2017-06-30]': {
-    type: 'query',
-    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2017-06-30T24:00:00Z]',
-    facet: {
       org_refs: {
         type: 'terms',
         field: 'reporting_org_ref',
         limit: -1,
       },
-    },
-  },
-  'orgs_[1900-01-01_TO_2018-12-31]': {
-    type: 'query',
-    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2018-12-31T24:00:00Z]',
-    facet: {
-      org_refs: {
-        type: 'terms',
-        field: 'reporting_org_ref',
-        limit: -1,
-      },
-    },
-  },
-  'orgs_[1900-01-01_TO_2019-05-31]': {
-    type: 'query',
-    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO 2019-05-31T24:00:00Z]',
-    facet: {
-      org_refs: {
-        type: 'terms',
-        field: 'reporting_org_ref',
-        limit: -1,
-      },
-    },
-  },
-  'orgs_[1900-01-01_TO_NOW]': {
-    type: 'query',
-    q: 'last_updated_datetime:[1900-01-01T00:00:00Z TO NOW]',
-    facet: {
-      org_refs: {
-        type: 'terms',
-        field: 'reporting_org_ref',
-        limit: -1,
-      },
-    },
-  },
 }`;
 
 // so this is a modified version of the facets used for humanitarian
@@ -140,18 +140,10 @@ const jsonFacet = `{
 // so this is the full query to get humanitarian
 // publishers divided by fixed date ranges
 export const humPubQuery = {
-  q: `(humanitarian:1 OR
-      transaction_humanitarian:1 OR
-      sector_vocabulary:1 OR
-      (-sector_vocabulary:* AND sector_code:[70000 TO 79999]))`,
-  rows: 0,
-  'json.facet': jsonFacet,
-};
-
-// and this is the query for all publishers
-// divided by the same date ranges so we could compare them
-export const pubQuery = {
-  q: '*:*',
+  q: `(humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 
+      OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
+      OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+      AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
@@ -230,7 +222,7 @@ export const baseTable: TableModuleModel = {
     download: true,
     rowHover: false,
     pagination: false,
-    viewColumns: true,
+    viewColumns: false,
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',

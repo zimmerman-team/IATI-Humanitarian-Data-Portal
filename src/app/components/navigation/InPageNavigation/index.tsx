@@ -10,6 +10,8 @@ import { scroller } from 'react-scroll';
 
 /* utils */
 import findIndex from 'lodash/findIndex';
+import find from 'lodash/find';
+import get from 'lodash/get';
 
 //TODO: FUNCTIONALITY LIST AFTER DISCUSSION
 // If this component hits the top of the page, the components sticks there.
@@ -57,14 +59,23 @@ const Controls = styled(props => <Box {...props} />)`
 `;
 
 export function InPageNavigation(props: InPageNavModel) {
-  const [currentLocation, setCurrentLocation] = React.useState(
-    props.lists[0] ? props.lists[0].elName : 'none'
-  );
+  const initVal = props.lists[0] ? props.lists[0].elName : 'none';
+
+  const [currentLocation, setCurrentLocation] = React.useState(initVal);
 
   useEffect(() => {
-    console.log('NAVIGATION COMPONENT UPDATING');
     if (currentLocation === 'none' && props.lists[0]) {
-      setCurrentLocation(props.lists[0].elName);
+      let defSelect = props.lists[0].elName;
+      if (props.dontShow) {
+        const itemWData = find(
+          props.lists,
+          list =>
+            (list.items && list.items.length > 0) ||
+            (list.tableCItems && list.tableCItems.length > 0)
+        );
+        defSelect = get(itemWData, 'elName', 'none');
+      }
+      setCurrentLocation(defSelect);
     }
   }, [props.lists]);
 
@@ -102,33 +113,44 @@ export function InPageNavigation(props: InPageNavModel) {
 
   return (
     <>
-      <Box display="flex" flexDirection="column">
+      <div
+        css={`
+          display: flex;
+          flex-direction: column;
+        `}
+      >
         {props.lists.map((list, index) => {
-          if (list.elName === currentLocation) {
+          if (
+            !props.dontShow ||
+            (list.items && list.items.length > 0) ||
+            (list.tableCItems && list.tableCItems.length > 0)
+          ) {
+            if (list.elName === currentLocation) {
+              return (
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  marginBottom="25px"
+                >
+                  <Rectangle />
+                  <CurrentLink variant="subtitle2">{list.title}</CurrentLink>
+                </Box>
+              );
+            }
+
             return (
-              <Box
-                display="flex"
-                flexDirection="row"
-                alignItems="center"
-                marginBottom="25px"
+              <BaseLink
+                key={`in-page-menu-item-${index}`}
+                variant="subtitle2"
+                onClick={() => handleClick(list.elName)}
               >
-                <Rectangle />
-                <CurrentLink variant="subtitle2">{list.title}</CurrentLink>
-              </Box>
+                {list.title}
+              </BaseLink>
             );
           }
-
-          return (
-            <BaseLink
-              key={`in-page-menu-item-${index}`}
-              variant="subtitle2"
-              onClick={() => handleClick(list.elName)}
-            >
-              {list.title}
-            </BaseLink>
-          );
         })}
-      </Box>
+      </div>
       <Controls>
         <ButtonUp
           fontSize="large"

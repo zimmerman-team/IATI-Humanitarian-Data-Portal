@@ -16,7 +16,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0">
+      <Box position="absolute" top="0" left="0" zIndex="10000">
         <DecoSigProviderTopLeft />
       </Box>
       {/* ---------- */}

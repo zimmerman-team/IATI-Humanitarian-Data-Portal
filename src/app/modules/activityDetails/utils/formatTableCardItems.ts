@@ -1,53 +1,70 @@
 /* models/interfaces */
 import { ListCellModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
+import {
+  BaseItem,
+  PeriodItem,
+  PerTargActItem,
+  ResIndItem,
+  ResultItem,
+} from '../../ResultDetails/store/interface';
 
 /* utils */
-import find from 'lodash/find';
 import get from 'lodash/get';
+import find from 'lodash/find';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
+import { getNarrativeText } from 'app/utils/generic';
 
 interface KeyItemModel {
   key: string;
   codeNames?: object;
   // key of external link
   extLink?: string;
+  intLink?: string;
+  intLinkForm?: string;
   suffix?: string;
   narrative?: boolean;
   value?: boolean;
   arrayKey?: string;
+  emptyValString?: string;
 }
 
 export function formatTableCardItems(
-  actDetail: SingleDefActivity,
+  actDetail:
+    | SingleDefActivity
+    | ResultItem
+    | ResIndItem
+    | BaseItem
+    | PerTargActItem
+    | PeriodItem,
   field: string,
-  keyFields: KeyItemModel[]
+  keyFields: KeyItemModel[],
+  doubleArray?: boolean,
+  // this gets pushed in as the first column
+  extraCol?: string
 ): ListCellModel[][] {
   const tableRows: ListCellModel[][] = [];
 
-  const actField = get(actDetail, field, []);
+  const actField = get(actDetail, field) || [];
 
   actField.forEach(fItem => {
     const listRow: ListCellModel[] = [];
     keyFields.forEach(fkey => {
-      const keyVal = get(fItem, fkey.key, null);
+      let keyVal = get(fItem, fkey.key, null);
+
+      if (doubleArray) {
+        // ye so because the response structure is bad
+        // it uses double arrays for no reason
+        // we need to use the first arrays items key
+        keyVal = get(fItem, `[0]${fkey.key}`, null);
+      }
+
       let value = keyVal || 'No Data';
 
       if (keyVal) {
         if (fkey.key.indexOf('narrative') !== -1 || fkey.narrative) {
-          // so if the key that we want to get is
-          // actually narrative we will want to
-          // get the english narrative if one is provided
-          // or otherwise we'll just use the first
-          // narrative item
-          const engNarr = find(keyVal, ['lang', 'en']);
-          if (engNarr) {
-            value = engNarr.narrative || engNarr.text || 'No Data';
-          } else {
-            value =
-              get(keyVal, '[0].narrative', null) ||
-              get(keyVal, '[0].text', 'No Data');
-          }
+          // we get the english narrative
+          value = getNarrativeText(keyVal);
         }
 
         if (fkey.value) {
@@ -55,7 +72,8 @@ export function formatTableCardItems(
         }
 
         if (fkey.codeNames) {
-          value = fkey.codeNames[value];
+          value = find(fkey.codeNames, ['code', value]);
+          value = value ? value.name : 'No Data';
         }
 
         if (fkey.suffix) {
@@ -72,6 +90,10 @@ export function formatTableCardItems(
         }
       }
 
+      if (fkey.emptyValString && value === 'No Data') {
+        value = fkey.emptyValString;
+      }
+
       const cellItem: ListCellModel = {
         value,
       };
@@ -81,8 +103,18 @@ export function formatTableCardItems(
         cellItem.extLink = true;
       }
 
+      if (fkey.intLink && fkey.intLinkForm && fItem[fkey.intLink]) {
+        cellItem.link = fkey.intLinkForm.replace('{id}', fItem[fkey.intLink]);
+      }
+
       listRow.push(cellItem);
     });
+    if (extraCol) {
+      listRow.unshift({
+        value: extraCol,
+      });
+    }
+
     tableRows.push(listRow);
   });
 

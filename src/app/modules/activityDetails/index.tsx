@@ -21,47 +21,50 @@ import {
 
 /* store */
 import { actDetailStore } from './store';
-
-/* mock */
-import { mockData } from './mock';
+import { useStoreState } from 'easy-peasy';
 
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
   const [state, actions] = actDetailStore();
+
+  const codeLists = useStoreState(reduxstate => reduxstate.codelists);
+
   /* ----------------------------------------------- */
 
   /* --------- CALLING API'S ----------------------- */
   // calling activity results
   useEffect(() => {
     actions.actResults.fetch({
-      values: actResultsQuery(props.match.params.code),
+      values: actResultsQuery(decodeURIComponent(props.match.params.code)),
     });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling activity metadata
   useEffect(() => {
-    actMetadataQuery.q = `iati_identifier:${props.match.params.code}`;
+    actMetadataQuery.q = `iati_identifier:${decodeURIComponent(
+      props.match.params.code
+    )}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling incoming transactions
   useEffect(() => {
     inTransactionsQuery.q = inTransactionsQuery.q.replace(
       '{identifier_value}',
-      props.match.params.code
+      decodeURIComponent(props.match.params.code)
     );
     actions.incTransactions.fetch({ values: inTransactionsQuery });
-  }, []);
+  }, [props.match.params.code]);
 
   // calling outgoing transactions
   useEffect(() => {
     outTransactionsQuery.q = outTransactionsQuery.q.replace(
       '{identifier_value}',
-      props.match.params.code
+      decodeURIComponent(props.match.params.code)
     );
     actions.outTransactions.fetch({ values: outTransactionsQuery });
-  }, []);
+  }, [props.match.params.code]);
   /* ----------------------------------------------- */
   /* --------- INITIALIZING STATES ----------------- */
   const actDetail = get(state.actMetadata, 'data.data.response.docs[0]', null);
@@ -86,23 +89,36 @@ function ActivityDetail(props) {
   const inTable = {
     ...baseTranstable,
     title: 'Incoming transactions',
-    data: formatTransTable(incTranData, true),
+    ...formatTransTable(
+      incTranData,
+      true,
+      get(codeLists, 'transTypeNames.data.data', []),
+      actDetail ? actDetail.default_currency : null
+    ),
   };
 
   const outTable = {
     ...baseTranstable,
     title: 'Outgoing transactions',
-    data: formatTransTable(outTransData, false),
+    ...formatTransTable(
+      outTransData,
+      false,
+      get(codeLists, 'transTypeNames.data.data', []),
+      actDetail ? actDetail.default_currency : null
+    ),
   };
 
-  const elementLists = formatActivityElements(actDetail);
-
-  /* ----------------------------------------------- */
+  const elementLists = formatActivityElements(actDetail, codeLists);
 
   const resultsCard = {
     title: 'Results',
-    items: formatResults(resultData),
+    items: formatResults(
+      resultData,
+      get(codeLists, 'resultTypeNames.data.data', [])
+    ),
   };
+
+  /* ----------------------------------------------- */
 
   return (
     <ActivityDetailsLayout

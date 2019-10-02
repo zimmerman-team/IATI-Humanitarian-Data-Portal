@@ -13,7 +13,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* ------------------------------------------------------------------ */}
       {/* decoration: top left */}
       <Hidden mdDown>
-        <Box position="absolute" top="0" left="0" zIndex="1">
+        <Box position="absolute" top="0" left="0" zIndex="10000">
           <DecoSigDataTopLeft />
         </Box>
       </Hidden>
@@ -32,6 +32,13 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
           <TableModule {...mockDataVar2} data={props.signatories} />
         </Grid>
       </Grid>
+      <Box height="20px" />
+      <Typography variant="caption">* NA stands for Not Applicable</Typography>
+      <Box height="10px" />
+      <Typography variant="caption">
+        ** %s and totals relate to publishing organisations
+      </Typography>
+      <Box height="50px" />
     </Container>
   );
 };

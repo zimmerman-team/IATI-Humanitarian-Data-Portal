@@ -1,22 +1,21 @@
 import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 import { apiModel } from 'app/state/api/actionsReducers';
-import { DS_API } from 'app/config';
 import { endpoints } from 'app/__consts__/endpoints';
 
-export const orgtypecodelist: ActivityResponceInterface = {
+export const humanitarianActivities: ActivityResponceInterface = {
   ...apiModel(
-    `${process.env.REACT_APP_DS_API}/api/codelists/OrganisationType/?format=json`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
   ),
 };
 
-export const humanitarianActivities: ActivityResponceInterface = {
-  ...apiModel(`${DS_API}/search/${endpoints.activity}/select/`),
-};
-
 export const sigdataproviders: ActivityResponceInterface = {
-  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
+  ...apiModel(
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+  ),
 };
 
 export const sigAllProviders: ActivityResponceInterface = {
-  ...apiModel(`${DS_API}/search/${endpoints.transaction}/select/`),
+  ...apiModel(
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+  ),
 };

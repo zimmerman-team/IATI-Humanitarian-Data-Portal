@@ -86,3 +86,7 @@ ol{
   color: #ffffff !important;
   background: #3d3d3d !important;
 }
+
+.TransparentCell {
+  background: transparent !important;
+}

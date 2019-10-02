@@ -7,7 +7,6 @@ export interface BaseRespModel<QueryModel, DocModel> {
   response: {
     numFound: number;
     start: number;
-    // this guy will be empty
     docs: DocModel[];
   };
 }

@@ -45,10 +45,11 @@ export function formatSingleCardItem(
         value = 'No Data';
       }
     } else if (element.codeNames) {
-      value = element.codeNames[value];
+      value = find(element.codeNames, ['code', value]);
+      value = value ? value.name : 'No Data';
     }
 
-    if (value && element.suffix) {
+    if (value !== 'No Data' && element.suffix) {
       value += element.suffix;
     }
 
