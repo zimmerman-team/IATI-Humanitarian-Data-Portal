@@ -1,4 +1,5 @@
 import { MUIDataTableOptions, MUIDataTableColumnDef } from 'mui-datatables';
+import { TableInfoItemModel } from '../TableWTotal/common/TableInfo/model';
 
 export interface TotalRowColModel {
   percValue?: number | string;
@@ -26,6 +27,7 @@ export interface TableModuleModel {
   expandableData?: any[][][] | undefined;
   totalRowColsDef?: TotalRowColModel[];
   changeTableRowColor?: number;
+  infoItems?: TableInfoItemModel[];
 }
 
 export interface TableLayoutModel {

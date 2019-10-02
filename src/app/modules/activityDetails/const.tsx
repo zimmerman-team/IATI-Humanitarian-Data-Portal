@@ -1,3 +1,4 @@
+import React from 'react';
 /* models/ interfaces */
 import { ActDetailQuery } from './store/interface';
 import { TableModuleModel } from '../../components/datadisplay/Table/model';
@@ -106,14 +107,11 @@ export const baseTranstable: TableModuleModel = {
     search: true,
     filter: true,
     download: true,
-    rowHover: false,
+    rowHover: true,
     pagination: true,
     viewColumns: true,
-    responsive: 'scroll',
-    filterType: 'checkbox',
     selectableRows: 'none',
   },
-  totalCell: true,
 };
 
 export const fssFields = [

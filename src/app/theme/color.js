@@ -3,6 +3,7 @@
 export default {
   background: '#979797',
   black: '#000000',
+  tableInfoDark: '#3d3d3d',
   bluebase: '#5ca2d5',
   bluedark: '#4382b0',
   bluelight: '#77bef2',

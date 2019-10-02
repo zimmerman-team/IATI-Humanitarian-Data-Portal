@@ -4,7 +4,7 @@ import { CovTimeItemModel, OrgTotExpItemModel } from '../store/interfaces';
 import get from 'lodash/get';
 import find from 'lodash/find';
 import { formatDate } from 'app/utils/generic';
-import { convertCurr } from 'app/utils/currency';
+import { convertCurr, convertHelper } from 'app/utils/currency';
 import moment from 'moment';
 
 // helper function to convert/sum up the transaction
@@ -35,22 +35,6 @@ function formatValue(currItem, defCurreny: string): [number, string] | null {
   }
 
   return disExpVal !== null ? [disExpVal, defCurreny] : null;
-}
-
-// simple helper function to convert values
-// and check if appropriate values have been passed in
-function convertHelper(
-  value: number | null,
-  from: string | undefined,
-  to: string
-): [number, string] | null {
-  let convertedValue = value;
-
-  if (value !== null && to !== from && from) {
-    convertedValue = convertCurr(value, from, to);
-  }
-
-  return convertedValue !== null ? [convertedValue, to] : null;
 }
 
 export function formatCovData(
