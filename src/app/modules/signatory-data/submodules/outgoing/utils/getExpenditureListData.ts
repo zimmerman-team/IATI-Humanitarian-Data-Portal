@@ -32,8 +32,8 @@ export const getExpenditureListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Has funding recipient details',
-        tooltip: 'Has funding recipient details',
+        label: 'Funding recipient details',
+        tooltip: 'Funding recipient details',
         values: [
           {
             ptc: percentage(outExpenditure3, allHumActCount),
@@ -42,8 +42,8 @@ export const getExpenditureListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With organisation type provided',
-        tooltip: 'With organisation type provided',
+        label: 'Organisation type provided',
+        tooltip: 'Organisation type provided',
         values: [
           {
             ptc: percentage(outExpenditure4, allHumActCount),

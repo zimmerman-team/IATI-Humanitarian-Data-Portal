@@ -23,8 +23,8 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'Has funding recipient details',
-        tooltip: 'Has funding recipient details',
+        label: 'Funding recipient details',
+        tooltip: 'Funding recipient details',
         values: [
           {
             ptc: percentage(outDisbursement2, allHumActCount),
@@ -33,8 +33,8 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'With organisation type provided',
-        tooltip: 'With organisation type provided',
+        label: 'Organisation type provided',
+        tooltip: 'Organisation type provided',
         values: [
           {
             ptc: percentage(outDisbursement3, allHumActCount),
@@ -44,8 +44,8 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
       },
 
       {
-        label: 'With source traceability information',
-        tooltip: 'With source traceability information',
+        label: 'Source traceability information',
+        tooltip: 'Source traceability information',
         values: [
           {
             ptc: percentage(outDisbursement4, allHumActCount),
