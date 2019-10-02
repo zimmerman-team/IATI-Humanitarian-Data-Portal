@@ -59,7 +59,9 @@ export const List = (props: ListModel) => {
 
     return tableHeadersArray.map(header => (
       <TableValueHeader align="right" key={header as string}>
-        {showHeadersText ? (header as string) : ''}
+        {showHeadersText
+          ? (header === 'ptc' && 'Percentage') || (header === 'qtc' && 'Total')
+          : ''}
       </TableValueHeader>
     ));
   }
