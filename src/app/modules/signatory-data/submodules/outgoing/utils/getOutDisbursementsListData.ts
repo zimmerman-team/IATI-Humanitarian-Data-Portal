@@ -9,7 +9,7 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
   const outDisbursement3 = get(rawData1, 'outDisbursement_3.count', 0);
   const outDisbursement4 = get(rawData2, 'outDisbursement_4.count', 0);
   return {
-    title: 'Outgoing disbursements',
+    title: 'Disbursements',
     elName: 'outDisbs',
     items: [
       {
