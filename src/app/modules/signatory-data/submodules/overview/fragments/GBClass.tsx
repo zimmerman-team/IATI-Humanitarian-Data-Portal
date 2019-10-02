@@ -9,7 +9,7 @@ export const GBClass = ({ humActwGBClassificationsData }) => (
 
      - Earmarked for Grand Bargain (Categories)
      - Earmarked for Grand Bargain (Modalities)
-     - Where a Partner Country Based NGO is referenced
+     - Partner Country Based (I)NGO organisation type used
      - Cash transfer (Not yet available in IATI Standard)
 
      */}

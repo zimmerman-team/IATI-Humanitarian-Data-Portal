@@ -36,8 +36,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Where a Partner Country Based NGO is referenced',
-        tooltip: 'Where a Partner Country Based NGO is referenced',
+        label: 'Partner Country Based (I)NGO organisation type used',
+        tooltip: 'Partner Country Based (I)NGO organisation type used',
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
