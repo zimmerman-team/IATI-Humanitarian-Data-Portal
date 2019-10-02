@@ -9,7 +9,7 @@ export const getExpenditureListData = (rawData): ListModel => {
   const outExpenditure4 = get(rawData, 'outExpenditure_4.count', 0);
   return {
     title: 'Expenditure',
-    elName: 'incComms',
+    elName: 'exp',
     items: [
       {
         label: 'Total',

@@ -12,8 +12,6 @@ storiesOf('Modules|Page', module).add('Page - Signatory / Outgoing', () => (
   <>
     <Providers>
       <OutgoingLayout
-        inPageNavigation={mockData.inPageNavigation}
-        activity={mockData.activity}
         horizontalBarChartCardData={mockData.horizontalBarChartCardData}
         lists={mockData.lists}
       />

@@ -67,7 +67,6 @@ export function SignatoryOutgoingPage(props) {
         ),
         getExpenditureListData(get(sigdataoutgoingData, 'data.facets', {})),
       ]}
-      inPageNavigation={inPageNavigationItems}
       horizontalBarChartCardData={getBarChartData(
         get(sigdataoutgoingData, 'data.facets', {})
       )}

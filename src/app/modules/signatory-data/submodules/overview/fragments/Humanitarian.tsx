@@ -2,8 +2,7 @@ import React from 'react';
 import { List } from 'app/components/datadisplay/Lists';
 import { Grid } from '@material-ui/core';
 
-
-export const Humanitarian = ({humResultsData}) => (
+export const Humanitarian = ({ humResultsData }) => (
   <Grid item xs={12} id="humanitarian">
     {/**   Humanitarian results
 
@@ -16,4 +15,4 @@ export const Humanitarian = ({humResultsData}) => (
 
     <List valueHeaders {...humResultsData} />
   </Grid>
-)
+);
