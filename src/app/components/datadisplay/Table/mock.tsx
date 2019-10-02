@@ -12,6 +12,8 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
+import { activitiesQuery } from '../../../modules/signatory-data/submodules/activityList/const';
+import fileDownload from 'js-file-download';
 
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated Signatory Data Publication Indicator Values',
@@ -197,6 +199,30 @@ export const mockDataVar2: TableModuleModel = {
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
+    onDownload: (
+      buildHead: (whatever) => string,
+      buildBody: (nodata) => string,
+      columns: any[],
+      data: any[]
+    ) => {
+      let csvData = '';
+      // building header
+      columns.forEach(column => {
+        csvData = csvData
+          .concat('"'.concat(column.name).concat('"'))
+          .concat(',');
+      });
+      csvData = csvData.concat('\n');
+      // building body
+      data.forEach(row => {
+        row.data.forEach((cell, index) => {
+          const cellVal = index === 0 ? cell.name : cell;
+          csvData = csvData.concat('"'.concat(cellVal).concat('"')).concat(',');
+        });
+        csvData = csvData.concat('\n');
+      });
+      return csvData;
+    },
     customSort: (data, colIndex, order) => {
       let indexStr = colIndex.toString();
       if (colIndex === 0) {
