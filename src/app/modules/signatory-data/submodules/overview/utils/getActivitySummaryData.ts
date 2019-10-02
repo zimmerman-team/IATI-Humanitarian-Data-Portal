@@ -20,7 +20,7 @@ export const getActivitySummaryData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Humanitarian activities',
+        label: 'Hum. activities',
         values: [
           {
             ptc: percentage(

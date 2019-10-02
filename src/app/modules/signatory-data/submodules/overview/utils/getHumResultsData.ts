@@ -11,9 +11,9 @@ export const getHumResultsData = (rawData): ListModel => {
     get(rawData, 'facets.HRIndDocLinks.count', 0),
   ];
   return {
-    title: 'Humanitarian results',
+    title: 'Hum. activities',
     elName: 'incComms',
-    subtitle: 'Humanitarian results',
+    // subtitle: 'Hum results',
     items: [
       {
         label: 'Results',
