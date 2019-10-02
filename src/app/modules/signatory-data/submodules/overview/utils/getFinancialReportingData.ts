@@ -48,7 +48,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
           },
         ],
       },
-      {
+      /*{
         label: 'Coverage for [2019]',
         tooltip: 'Coverage for [2019]',
         values: [
@@ -57,7 +57,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
             ptc: 'TBD',
           },
         ],
-      },
+      },*/
     ],
   };
 };
