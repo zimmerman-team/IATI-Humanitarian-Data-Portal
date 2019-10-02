@@ -48,8 +48,8 @@ const submoduleHeaderConfig: SubmoduleHeader = {
       path: 'recipients',
     },
     {
-      name: 'Timelines',
-      path: 'timelines',
+      name: 'Timeliness',
+      path: 'timeliness',
     },
     {
       name: 'Coverage',

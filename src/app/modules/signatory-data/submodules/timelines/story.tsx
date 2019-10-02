@@ -9,7 +9,7 @@ import { TimelinesLayout } from './layout';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 
 storiesOf('Modules|Page', module).add(
-  'Page - Signatory Data / Timelines',
+  'Page - Signatory Data / Timeliness',
   () => (
     <>
       <ProvidersPage>

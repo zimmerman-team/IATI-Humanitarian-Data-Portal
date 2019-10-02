@@ -13,8 +13,8 @@ export const locations: SignatoryNavigationModel = {
           url: 'activity-list',
         },
         {
-          label: 'Timelines',
-          url: 'timelines',
+          label: 'Timeliness',
+          url: 'timeliness',
         },
         {
           label: 'Coverage',

@@ -46,7 +46,7 @@ export function SignatoryDataRoutes() {
         />
         <Route
           exact
-          path="/signatory-data/:code/timelines"
+          path="/signatory-data/:code/timeliness"
           render={() => <Timelines />}
         />
         {/*TODO: im missing!*/}
