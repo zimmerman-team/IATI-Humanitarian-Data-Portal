@@ -60,15 +60,15 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       elName: 'summary',
     },
     {
-      title: 'FTS Import related',
+      title: 'Hum. activities with FTS Import related',
       elName: 'fts',
     },
     {
-      title: 'Grand Bargain classifications',
+      title: 'Hum. activity with Grand Bargain classifications',
       elName: 'GBClass',
     },
     {
-      title: 'Other classifications of intererest',
+      title: 'Hum. other classifications of intererest',
       elName: 'otherClass',
     },
     {
@@ -76,11 +76,11 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       elName: 'humanitarian',
     },
     {
-      title: 'Location information',
+      title: 'Hum. activites with location information',
       elName: 'location',
     },
     {
-      title: 'Activites with multi-year funding',
+      title: 'Hum. activites with multi-year funding',
       elName: 'multiyear',
     },
     {
