@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { ResponsiveBar, BarSvgProps } from '@nivo/bar';
+import { ResponsiveBar } from '@nivo/bar';
 import styled from 'styled-components';
 import Colours from 'app/theme/color';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';

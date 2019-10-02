@@ -5,6 +5,12 @@ import { Page } from 'app/modules/common/Page';
 import { PrivacyModel } from './model';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
+import { DecoAboutTopLeft } from 'app/modules/about/common/decorations/DecoAboutTopLeft';
+import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAboutMidLeft';
+import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
+import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
+import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
+
 export const PrivacyModuleLayout = (props: PrivacyModel) => {
   return (
     <Page title={props.title} footer>
@@ -20,8 +26,22 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
             {parse(props.sections[0].content[0])}
           </Typography>
         </Grid>
-      </Grid>
+        <Box position="absolute" top="10px" left="10px">
+          <DecoAboutTopLeft />
+        </Box>
 
+        <Hidden mdDown>
+          <Box position="absolute" top="360px" right="100px">
+            <DecoAboutRight />
+          </Box>
+        </Hidden>
+
+        <Hidden mdDown>
+          <Box position="absolute" top="1050px" right="100px">
+            <DecoAboutMidRight />
+          </Box>
+        </Hidden>
+      </Grid>
       {/* -------------------- */}
       {/* SECTION 1 */}
       <Box height="50px" width="100%" />
@@ -47,7 +67,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         </Grid>
       </Grid>
       {/* ---------- */}
-
       {/* -------------------- */}
       {/* SECTION 2 */}
       <Box height="50px" width="100%" />
@@ -84,7 +103,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
       </Grid>
       {/* ---------- */}
       <Box height="50px" width="100%" />
-
       {/* -------------------- */}
       {/* SECTION 3 */}
       <Box height="50px" width="100%" />
@@ -135,7 +153,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         </Grid>
       </Grid>
       {/* ---------- */}
-
       {/* -------------------- */}
       {/* SECTION 4 */}
       <Box height="50px" width="100%" />
@@ -151,7 +168,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         </Grid>
       </Grid>
       {/* ---------- */}
-
       {/* -------------------- */}
       {/* SECTION 5 */}
       <Box height="50px" width="100%" />
@@ -182,7 +198,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         </Grid>
       </Grid>
       {/* ---------- */}
-
       {/* -------------------- */}
       {/* SECTION 6 */}
       <Box height="50px" width="100%" />
@@ -208,7 +223,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         </Grid>
       </Grid>
       {/* ---------- */}
-
       {/* -------------------- */}
       {/* SECTION 7 */}
       <Box height="50px" width="100%" />
@@ -233,7 +247,17 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
           </Typography>
         </Grid>
       </Grid>
-      {/* ---------- */}
+      <Hidden smDown>
+        <Box position="absolute" top="258px" left="0">
+          <DecoAboutMidLeft />
+        </Box>
+      </Hidden>
+      {/*<Hidden smDown>
+        <Box position="absolute" bottom="-270px" right="0">
+          <DecoAboutBottomRight />
+        </Box>
+      </Hidden*/}
+      >{/* ---------- */}
     </Page>
   );
 };

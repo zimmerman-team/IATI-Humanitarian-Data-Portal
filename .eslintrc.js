@@ -84,5 +84,6 @@ module.exports = {
     'no-console': 0,
     'object-shorthand': 0,
     'import/no-extraneous-dependencies': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };
