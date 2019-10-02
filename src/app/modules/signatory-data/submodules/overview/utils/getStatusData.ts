@@ -10,8 +10,8 @@ export const getStatusData = (rawData): ListItemModel[] => {
       values: [{ version: get(rawData, 'facets.latest_iati_version', '') }],
     },
     {
-      label: 'Activities with data errors',
-      tooltip: 'Activities with data errors',
+      label: 'Data errors',
+      tooltip: 'Data errors',
       values: [{ version: '' }],
     },
     {

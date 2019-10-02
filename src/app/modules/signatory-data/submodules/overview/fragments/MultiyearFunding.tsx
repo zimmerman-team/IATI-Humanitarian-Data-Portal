@@ -7,7 +7,7 @@ export const MultiyearFunding = ({ humActWMultiYearFundData }) => (
     {/**
      Hum. acitivites with multi-year funding
 
-     - Current hum. activities with duration > 24 months
+     - Duration > 24 months
      - Current Hum. Activities > 24 months with budget exempt
      - Current hum. activities > 24 months & budgets for > 'next' 12 months
 

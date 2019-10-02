@@ -16,8 +16,8 @@ export const getHumResultsData = (rawData): ListModel => {
     subtitle: 'Humanitarian results',
     items: [
       {
-        label: 'Activities with results',
-        tooltip: 'Activities with results',
+        label: 'Results',
+        tooltip: 'Results',
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),

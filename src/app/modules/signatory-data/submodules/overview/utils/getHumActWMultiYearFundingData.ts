@@ -14,8 +14,8 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
     elName: 'incComms',
     items: [
       {
-        label: 'Current hum. activities with duration > 24 months',
-        tooltip: 'Current hum. activities with duration > 24 months',
+        label: 'Duration > 24 months',
+        tooltip: 'Duration > 24 months',
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),

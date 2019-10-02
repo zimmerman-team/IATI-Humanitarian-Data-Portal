@@ -15,8 +15,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
     elName: 'incComms',
     items: [
       {
-        label: 'Activities with recipient countries',
-        tooltip: 'Activities with recipient countries',
+        label: 'Recipient countries',
+        tooltip: 'Recipient countries',
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
