@@ -15,7 +15,7 @@ export const getHumActFTSData = (rawData): ListModel => {
   return {
     title: 'Hum. activities with FTS Import related',
     elName: 'incComms',
-    subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
+    // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {
         label:
