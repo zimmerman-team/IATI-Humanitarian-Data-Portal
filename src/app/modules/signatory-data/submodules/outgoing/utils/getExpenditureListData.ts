@@ -5,11 +5,11 @@ import { ListModel } from 'app/components/datadisplay/Lists/model';
 export const getExpenditureListData = (rawData): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const outExpenditure1 = get(rawData, 'outExpenditureBar.count', 0);
-  const outExpenditure3 = get(rawData, 'outExpenditure_3.count', 0);
-  const outExpenditure4 = get(rawData, 'outExpenditure_4.count', 0);
+  const outExpenditure3 = get(rawData, 'expenditure_3.count', 0);
+  const outExpenditure4 = get(rawData, 'expenditure_4.count', 0);
   return {
     title: 'Expenditure',
-    elName: 'incComms',
+    elName: 'exp',
     items: [
       {
         label: 'Total',

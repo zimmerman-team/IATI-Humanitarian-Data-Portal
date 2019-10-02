@@ -30,7 +30,8 @@ export const outgoingCallFacetValues = {
   },
   expenditure_3: {
     type: 'query',
-    q: '(transaction_type:4 AND transaction_receiver_org_narrative:*)',
+    q:
+      '(transaction_type:4 AND (transaction_receiver_org_narrative:* OR transaction_receiver_org_ref:*))',
   },
   expenditure_4: {
     type: 'query',
