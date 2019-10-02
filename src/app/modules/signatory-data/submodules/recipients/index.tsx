@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { RecipientsLayout } from './layout';
+import { RecipientsLayout } from 'app/modules/signatory-data/submodules/recipients/layout';
 
 /* store */
-import { recStore } from './store';
+import { recStore } from 'app/modules/signatory-data/submodules/recipients/store';
 import { useStoreState } from 'app/state/store/hooks';
 
 /* consts */
-import { humActQuery, recipientsQuery } from './const';
-import { pivotKey } from './store/interfaces';
-import { allProvidersQuery, baseProviderConfig } from '../providersPage/consts';
+import {
+  humActQuery,
+  recipientsQuery,
+} from 'app/modules/signatory-data/submodules/recipients/const';
+import { pivotKey } from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
+import {
+  allProvidersQuery,
+  baseProviderConfig,
+} from 'app/modules/signatory-data/submodules/providersPage/consts';
 
 /* utils */
 import get from 'lodash/get';
-import { getBarChartData } from '../providersPage/utils/getBarChartData';
-import { getTableData } from '../providersPage/utils/getTableData';
+import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
+import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 
 function RecipientsF(props) {
   const [state, actions] = recStore();

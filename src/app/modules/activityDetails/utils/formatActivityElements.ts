@@ -30,7 +30,7 @@ import {
   repOrgFields,
   sectorFields,
   tagFields,
-} from '../const';
+} from 'app/modules/activityDetails/const';
 
 /* utils */
 import get from 'lodash/get';

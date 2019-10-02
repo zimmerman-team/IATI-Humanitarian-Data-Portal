@@ -1,10 +1,9 @@
-import React from 'react';
 /* models/ interfaces */
-import { ActDetailQuery } from './store/interface';
-import { TableModuleModel } from '../../components/datadisplay/Table/model';
+import { ActDetailQuery } from 'app/modules/activityDetails/store/interface';
+import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 
 /* helpers */
-import { formatMoney } from '../../components/datadisplay/Table/helpers';
+import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 
 export const actMetadataQuery: ActDetailQuery = {
   q: '*:*',

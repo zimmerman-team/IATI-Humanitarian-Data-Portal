@@ -4,7 +4,6 @@ import { ProvidersPageModel } from './model';
 import TableModule from 'app/components/datadisplay/Table/index';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import Box from '@material-ui/core/Box';
-import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import { DecoSigProviderTopLeft } from 'app/modules/signatory-data/submodules/providersPage/common/decoration/DecoSigProviderTopLeft';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
 

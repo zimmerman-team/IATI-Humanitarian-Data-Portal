@@ -4,7 +4,10 @@ import { ResponsiveBar } from '@nivo/bar';
 import styled from 'styled-components';
 import Colours from 'app/theme/color';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';
-import { HorizontalBarChartModel, barModel } from './model';
+import {
+  HorizontalBarChartModel,
+  barModel,
+} from 'app/components/charts/BarCharts/HorizontalBarChart/model';
 
 //TODO:
 //  - Find a way to implement the colouring.

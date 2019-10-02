@@ -1,6 +1,5 @@
 import React from 'react';
 import { ColorSchemeType } from '../common/colorUtil';
-import { BarSvgProps } from '@nivo/bar';
 import colors from 'app/theme/color';
 
 export type HorizontalBarChartValueModel = {
