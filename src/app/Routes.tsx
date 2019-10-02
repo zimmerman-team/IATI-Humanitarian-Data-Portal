@@ -19,6 +19,7 @@ import { SignatoryProgress } from 'app/modules/signatory-progress';
 // Signatory Data Sub Pages
 import { SubmoduleContainer } from './modules/signatory-data/submodules';
 import { ActivityDetails } from './modules/activityDetails';
+import { PrivacyModule } from 'app/modules/privacy';
 import { ResultDetail } from './modules/ResultDetails';
 
 /* utils */
@@ -59,6 +60,7 @@ export function Routes() {
           render={() => <ActivityDetails />}
         />
 
+        <Route exact path="/privacy" render={() => <PrivacyModule />} />
         <Route
           exact
           path="/result-detail/:code"
