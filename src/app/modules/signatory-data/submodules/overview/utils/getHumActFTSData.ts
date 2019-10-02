@@ -30,8 +30,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With humanitarian indicator',
-        tooltip: 'With humanitarian indicator',
+        label: 'Humanitarian indicator',
+        tooltip: 'Humanitarian indicator',
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -40,8 +40,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With UN Humanitarian Response Plan(s)',
-        tooltip: 'With UN Humanitarian Response Plan(s)',
+        label: 'UN Humanitarian Response Plan(s)',
+        tooltip: 'UN Humanitarian Response Plan(s)',
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -50,8 +50,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With GLIDE code(s)',
-        tooltip: 'With GLIDE code(s)',
+        label: 'GLIDE code(s)',
+        tooltip: 'GLIDE code(s)',
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
@@ -60,10 +60,9 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label:
-          "With organisation's own internal crisis codes(ie using vocab '99')",
+        label: "Organisation's own internal crisis codes(ie using vocab '99')",
         tooltip:
-          "With organisation's own internal crisis codes(ie using vocab '99')",
+          "Organisation's own internal crisis codes(ie using vocab '99')",
         values: [
           {
             ptc: percentage(itemCounts[4], allActCount),
@@ -72,8 +71,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With clusters',
-        tooltip: 'With clusters',
+        label: 'Clusters',
+        tooltip: 'Clusters',
         values: [
           {
             ptc: percentage(itemCounts[5], allActCount),

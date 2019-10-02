@@ -25,8 +25,8 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With latitude / longitude coordinates',
-        tooltip: 'With latitude / longitude coordinates',
+        label: 'Latitude / longitude coordinates',
+        tooltip: 'Latitude / longitude coordinates',
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),

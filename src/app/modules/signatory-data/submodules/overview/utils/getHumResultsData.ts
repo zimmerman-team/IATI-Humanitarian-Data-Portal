@@ -26,8 +26,8 @@ export const getHumResultsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With results documents links',
-        tooltip: 'With results documents links',
+        label: 'Results documents links',
+        tooltip: 'Results documents links',
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -36,8 +36,8 @@ export const getHumResultsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With result indicators with baseline and target values',
-        tooltip: 'With result indicators with baseline and target values',
+        label: 'Result indicators with baseline and target values',
+        tooltip: 'Result indicators with baseline and target values',
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -46,8 +46,8 @@ export const getHumResultsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With result indicator documents links',
-        tooltip: 'With result indicator documents links',
+        label: 'Result indicator documents links',
+        tooltip: 'Result indicator documents links',
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
