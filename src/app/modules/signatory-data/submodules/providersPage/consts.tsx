@@ -40,11 +40,11 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
 
 export const baseProviderConfig = (history): TableModuleModel => {
   return {
-    title: 'Providers',
+    title: 'Funding Organisations',
     data: [],
     columns: [
       {
-        name: 'Organisation / type / activity',
+        name: 'Organisation',
         options: { filter: false },
       },
       {
@@ -60,7 +60,7 @@ export const baseProviderConfig = (history): TableModuleModel => {
         options: { filter: false },
       },
       {
-        name: 'Amount',
+        name: 'Total amount',
         options: {
           filter: false,
           customBodyRender: (value, tableMeta, updateValue) => {
