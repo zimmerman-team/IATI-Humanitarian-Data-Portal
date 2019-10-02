@@ -1,7 +1,7 @@
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
-export const listMockData1: ListModel = {
+/*export const listMockData1: ListModel = {
   elName: 'incComms',
   items: [
     {
@@ -25,9 +25,9 @@ export const listMockData1: ListModel = {
       ],
     },
   ],
-};
+};*/
 
-export const listMockData2: ListModel = {
+/*export const listMockData2: ListModel = {
   elName: 'incComms',
   items: [
     {
@@ -51,7 +51,7 @@ export const listMockData2: ListModel = {
       ],
     },
   ],
-};
+};*/
 
 export const sigDataOverviewNavItems: InPageNavModel = {
   lists: [

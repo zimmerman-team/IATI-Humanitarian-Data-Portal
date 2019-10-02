@@ -35,22 +35,22 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Sustainable Development Goals (SDGs)',
-        tooltip: 'Sustainable Development Goals (SDGs)',
-        values: [
-          {
-            ptc: percentage(itemCounts[2], allActCount),
-            qtc: itemCounts[2],
-          },
-        ],
-      },
-      {
         label: 'OECD DAC gender marker',
         tooltip: 'OECD DAC gender marker',
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
             qtc: itemCounts[3],
+          },
+        ],
+      },
+      {
+        label: 'Sustainable Development Goals (SDGs)',
+        tooltip: 'Sustainable Development Goals (SDGs)',
+        values: [
+          {
+            ptc: percentage(itemCounts[2], allActCount),
+            qtc: itemCounts[2],
           },
         ],
       },
