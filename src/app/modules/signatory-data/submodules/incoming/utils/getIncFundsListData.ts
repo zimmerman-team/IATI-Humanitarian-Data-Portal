@@ -13,8 +13,8 @@ export const getIncFundsListData = (rawData1, rawData2): ListModel => {
     elName: 'incFunds',
     items: [
       {
-        label: 'Total no. of activities with Incoming Funds',
-        tooltip: 'Total no. of activities with Incoming Funds',
+        label: 'Total no. of activities',
+        tooltip: 'Total no. of activities',
         values: [
           {
             ptc: percentage(incFundsValue1, allHumActCount),
@@ -23,8 +23,8 @@ export const getIncFundsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'With funding provider details specified',
-        tooltip: 'With funding provider details specified',
+        label: 'Funding provider details',
+        tooltip: 'Funding provider details',
         values: [
           {
             ptc: percentage(incFundsValue2, allHumActCount),
@@ -33,8 +33,8 @@ export const getIncFundsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'With funding organisation type provided',
-        tooltip: 'With funding organisation type provided',
+        label: 'Organisation type provided',
+        tooltip: 'Organisation type provided',
         values: [
           {
             ptc: percentage(incFundsValue3, allHumActCount),
@@ -43,8 +43,8 @@ export const getIncFundsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'With source traceability information',
-        tooltip: 'With source traceability information',
+        label: 'Source traceability information',
+        tooltip: 'Source traceability information',
         values: [
           {
             ptc: percentage(incFundsValue4, allHumActCount),

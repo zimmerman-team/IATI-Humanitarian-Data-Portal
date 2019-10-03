@@ -12,8 +12,8 @@ export const getIncPledgesListData = (rawData): ListModel => {
     elName: 'incPledge',
     items: [
       {
-        label: 'Total no. of activities with Incoming Pledges',
-        tooltip: 'Total no. of activities with Incoming Pledges',
+        label: 'Total no. of activities',
+        tooltip: 'Total no. of activities',
         values: [
           {
             ptc: percentage(incPledgeValue1, allHumActCount),
@@ -22,8 +22,8 @@ export const getIncPledgesListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With funding provider details specified',
-        tooltip: 'With funding provider details specified',
+        label: 'Funding provider details',
+        tooltip: 'Funding provider details',
         values: [
           {
             ptc: percentage(incPledgeValue2, allHumActCount),
@@ -32,8 +32,8 @@ export const getIncPledgesListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With funding organisation type provided',
-        tooltip: 'With funding organisation type provided',
+        label: 'Organisation type provided',
+        tooltip: 'Organisation type provided',
         values: [
           {
             ptc: percentage(incPledgeValue3, allHumActCount),
