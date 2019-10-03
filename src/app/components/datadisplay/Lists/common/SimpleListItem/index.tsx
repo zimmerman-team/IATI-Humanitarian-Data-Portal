@@ -8,7 +8,7 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import { SimpleListItemModel } from './model';
 
 /* styles */
-import { SimpleListCell } from './styles';
+import { HeadingCell, SimpleListCell } from './styles';
 
 // TODO: aqdjust this guy to look properly
 
@@ -27,6 +27,8 @@ export const SimpleListItem = (props: SimpleListItemModel) => {
               value={item.value}
               extLink={item.extLink}
             />
+          ) : item.heading ? (
+            <HeadingCell>{item.value}</HeadingCell>
           ) : (
             item.value
           )}
