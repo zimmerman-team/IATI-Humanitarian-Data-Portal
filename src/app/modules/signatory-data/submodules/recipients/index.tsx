@@ -7,10 +7,7 @@ import { recStore } from 'app/modules/signatory-data/submodules/recipients/store
 import { useStoreState } from 'app/state/store/hooks';
 
 /* consts */
-import {
-  humActQuery,
-  recipientsQuery,
-} from 'app/modules/signatory-data/submodules/recipients/const';
+import { recipientsQuery } from 'app/modules/signatory-data/submodules/recipients/const';
 import { pivotKey } from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
 import {
   allProvidersQuery,
@@ -28,20 +25,6 @@ function RecipientsF(props) {
     reduxstate => reduxstate.codelists.orgTypeNames.data
   );
   useEffect(() => {
-    humActQuery.q = humActQuery.q.replace(
-      '{rep_org_ref}',
-      decodeURIComponent(props.match.params.code)
-    );
-    // so here we get the humanitarian activities of the signatory
-    // and we will use the activity identifiers as filters for the
-    // transactions BUT one thing is left out of the query for these activities
-    // it is the 'transaction/@humanitarion' query check as it makes more
-    // sense to check if the transaction is humanitarian when
-    // checking the transactions endpoint, as some of the activities
-    // transactions may not be humanitarian, so it would be not
-    // accurate data in that sense
-    actions.humActivities.fetch({ values: humActQuery });
-
     // and here we get all the receiving organisation types
     // of the signatory
     actions.sigAllReceivers.fetch({
@@ -53,24 +36,11 @@ function RecipientsF(props) {
   }, []);
 
   useEffect(() => {
-    const humIdentifiers = get(
-      state.humActivities,
-      `data.data.response.docs`,
-      []
-    );
-    if (humIdentifiers.length > 0) {
-      const iatiIdentifiers = humIdentifiers
-        .map(hum => hum.iati_identifier)
-        .join(' ');
-      // so we call table data here
-      actions.recipients.fetch({
-        values: recipientsQuery(
-          decodeURIComponent(props.match.params.code),
-          iatiIdentifiers
-        ),
-      });
-    }
-  }, [orgTypeNames, state.humActivities]);
+    // so we call table data here
+    actions.recipients.fetch({
+      values: recipientsQuery(decodeURIComponent(props.match.params.code)),
+    });
+  }, [orgTypeNames]);
 
   const recData = get(state.recipients, `data.data`, null);
 
