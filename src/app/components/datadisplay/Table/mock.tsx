@@ -588,13 +588,13 @@ export const mockDataVar5: TableModuleModel = {
       },
     },
     {
-      name: 'Disbursements & Expenditure',
+      name: 'Disbursements & expenditure',
       options: {
         filter: false,
         customHeadRender: (columnMeta, updateDirection) =>
           getInfoTHead(
-            'Disbursements & Expenditure',
-            'Disbursements & Expenditure'
+            'Disbursements & expenditure',
+            'Disbursements & expenditure'
           ),
         customBodyRender: (value, tableMeta, updateValue) => {
           if (value && value > 0) return formatMoney(value);

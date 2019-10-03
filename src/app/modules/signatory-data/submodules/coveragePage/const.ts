@@ -86,13 +86,13 @@ export const baseCovTable: TableModuleModel = {
       },
     },
     {
-      name: 'Disbursements & Expenditure',
+      name: 'Disbursements & expenditure',
       options: {
         filter: false,
         customHeadRender: (columnMeta, updateDirection) =>
           getInfoTHead(
-            'Disbursements & Expenditure',
-            'Disbursements & Expenditure'
+            'Disbursements & expenditure',
+            'Disbursements & expenditure'
           ),
         customBodyRender: (value, tableMeta, updateValue) => {
           if (value && value.length > 0) {

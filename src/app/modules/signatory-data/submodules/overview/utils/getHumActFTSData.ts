@@ -38,8 +38,8 @@ export const getHumActFTSData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'UN Humanitarian Response Plan(s)',
-        tooltip: 'UN Humanitarian Response Plan(s)',
+        label: 'UN humanitarian response plan(s)',
+        tooltip: 'UN humanitarian response plan(s)',
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),

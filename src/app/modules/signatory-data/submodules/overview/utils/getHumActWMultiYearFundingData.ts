@@ -24,8 +24,8 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Current Hum. Activities > 24 months budget exempt',
-        tooltip: 'Current Hum. Activities > 24 months budget exempt',
+        label: 'Current hum. activities > 24 months budget exempt',
+        tooltip: 'Current hum. activities > 24 months budget exempt',
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),

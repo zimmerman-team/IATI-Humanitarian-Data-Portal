@@ -16,8 +16,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {
-        label: 'Earmarked for Grand Bargain (Categories)',
-        tooltip: 'Earmarked for Grand Bargain (Categories)',
+        label: 'Earmarked for Grand Bargain (categories)',
+        tooltip: 'Earmarked for Grand Bargain (categories)',
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -26,8 +26,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Earmarked for Grand Bargain (Modalities)',
-        tooltip: 'Earmarked for Grand Bargain (Modalities)',
+        label: 'Earmarked for Grand Bargain (modalities)',
+        tooltip: 'Earmarked for Grand Bargain (modalities)',
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -36,8 +36,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Partner Country Based (I)NGO organisation type used',
-        tooltip: 'Partner Country Based (I)NGO organisation type used',
+        label: 'Partner country based (I)NGO organisation type used',
+        tooltip: 'Partner country based (I)NGO organisation type used',
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -46,8 +46,8 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Cash transfer (Not yet available in IATI Standard)',
-        tooltip: 'Cash transfer (Not yet available in IATI Standard)',
+        label: 'Cash transfer (not yet available in IATI standard)',
+        tooltip: 'Cash transfer (not yet available in IATI standard)',
         values: [{ ptc: 'TBD', qtc: 'TBD' }],
       },
     ],
