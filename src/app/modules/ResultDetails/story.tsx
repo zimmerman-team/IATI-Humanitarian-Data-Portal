@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
-import Providers from '../../Providers';
+import Providers from 'app/Providers';
 import React from 'react';
-import { mockData } from '../activityDetails/mock';
-import { ResultDetailLayout } from './layout';
+import { mockData } from 'app/modules/activityDetails/mock';
+import { ResultDetailLayout } from 'app/modules/ResultDetails/layout';
 
 storiesOf('Modules | Result Detail', module).add('layout', () => (
   <>

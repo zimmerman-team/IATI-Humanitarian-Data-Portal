@@ -1,6 +1,6 @@
 /* interfaces/models */
 import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
-import { SectionsModel } from '../model';
+import { SectionsModel } from 'app/modules/activityDetails/model';
 
 /* utils */
 import find from 'lodash/find';

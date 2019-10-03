@@ -4,11 +4,11 @@ import { ActivityDetailsLayout } from './layout';
 
 /* utils */
 import get from 'lodash/get';
-import { formatHeader } from './utils/formatHeader';
-import { formatSections } from './utils/formatSections';
-import { formatTransTable } from './utils/formatTransTable';
-import { formatResults } from './utils/formatResults';
-import { formatActivityElements } from './utils/formatActivityElements';
+import { formatHeader } from 'app/modules/activityDetails/utils/formatHeader';
+import { formatSections } from 'app/modules/activityDetails/utils/formatSections';
+import { formatTransTable } from 'app/modules/activityDetails/utils/formatTransTable';
+import { formatResults } from 'app/modules/activityDetails/utils/formatResults';
+import { formatActivityElements } from 'app/modules/activityDetails/utils/formatActivityElements';
 
 /* consts */
 import {

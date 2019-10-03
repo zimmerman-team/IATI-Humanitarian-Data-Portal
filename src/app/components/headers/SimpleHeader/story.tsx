@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import Providers from 'app/Providers';
 import React from 'react';
-import { SimpleHeader } from './index';
+import { SimpleHeader } from 'app/components/headers/SimpleHeader';
 
 storiesOf('Components', module).add('Simple Header', () => (
   <>

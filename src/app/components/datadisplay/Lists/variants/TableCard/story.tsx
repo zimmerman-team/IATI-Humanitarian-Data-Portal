@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TableCard } from '.';
+import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
 import Providers from 'app/Providers';
 
 storiesOf('Data Display|variants/', module).add('Table Card', () => (

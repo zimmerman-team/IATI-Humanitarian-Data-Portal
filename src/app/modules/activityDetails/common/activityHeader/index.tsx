@@ -22,49 +22,85 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
   return (
     <>
       <Grid container>
-        <BreadCrumbs
-          currentLocation="Details Activity"
-          previousLocations={[
-            { url: '/signatory-data', label: 'Signatory Data' },
-            {
-              url: `/signatory-data/${props.organisation.code}/activity-list`,
-              label: props.organisation.name,
-            },
-          ]}
-        />
-        <Box height="24px" width="100%" />
+        <Grid item md={12}>
+          <BreadCrumbs
+            currentLocation="Details Activity"
+            previousLocations={[
+              { url: '/signatory-data', label: 'Signatory Data' },
+              {
+                url: `/signatory-data/${props.organisation.code}/activity-list`,
+                label: props.organisation.name,
+              },
+            ]}
+          />
+          <Box height="24px" width="100%" />
+        </Grid>
       </Grid>
       {/** --------------------------------------------------------------------------- */}
       {/** Header */}
       <Grid container>
+        <Grid item md={12}>
+          <Typography variant="overline" color="textPrimary">
+            {props.organisation.name} {props.organisation.code}
+          </Typography>
+          <Box height="24px" width="100%" />
+        </Grid>
         <Grid item xs={12} md={6}>
-          <Grid container direction="column">
-            {/** todo: style */}
-            <Typography variant="overline" color="textPrimary">
-              {props.organisation.name} {props.organisation.code}
-            </Typography>
-            <Typography variant="h3" color="textPrimary">
-              {props.activity.title}
-            </Typography>
-            <Box height="14px" width="100%" />
-            <Grid container direction="row">
-              <IdentifierContainer>
-                <Typography variant="overline" color="textPrimary">
-                  {props.activity.code}
-                </Typography>
-              </IdentifierContainer>
-              <DatesContainer>
-                <DatesLabel>
-                  <Typography variant="subtitle1" color="textPrimary">
-                    Activity dates
-                  </Typography>
-                </DatesLabel>
-                <Typography variant="overline" color="textPrimary">
-                  {props.activity.startDate} to {props.activity.endDate}
-                </Typography>
-              </DatesContainer>
-            </Grid>
-          </Grid>
+          <Typography variant="h3" color="textPrimary">
+            {props.activity.title}
+          </Typography>
+          <Box height="24px" width="100%" />
+        </Grid>
+        <Grid item md={12}>
+          <div
+            css={`
+              display: flex;
+              flex-direction: row;
+            `}
+          >
+            {/* identier */}
+            <div
+              css={`
+                margin-right: 58px;
+                display: flex;
+                align-items: center;
+              `}
+            >
+              <Typography variant="overline" color="textPrimary">
+                {props.activity.code}
+              </Typography>
+            </div>
+
+            {/* dates container*/}
+            <div
+              css={`
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+              `}
+            >
+              <Typography
+                variant="overline"
+                color="textPrimary"
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  textTransform: 'capitalize',
+                  marginRight: '8px',
+                }}
+              >
+                Activity dates
+              </Typography>
+
+              <Typography
+                variant="overline"
+                color="textPrimary"
+                style={{ textTransform: 'capitalize' }}
+              >
+                {props.activity.startDate} to {props.activity.endDate}
+              </Typography>
+            </div>
+          </div>
         </Grid>
       </Grid>
     </>

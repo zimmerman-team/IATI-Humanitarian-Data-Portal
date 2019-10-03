@@ -1,4 +1,4 @@
-import { SignatoryDataModel } from './model';
+import { SignatoryDataModel } from 'app/modules/signatory-data/model';
 
 export const signatoryDataMock: SignatoryDataModel = {
   loading: false,

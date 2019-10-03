@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 import styled from 'styled-components';
@@ -37,6 +37,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             Frequency Rating: Monthly
           </Typography>
           <Box width="100%" height="16px" />
+
           <TableModule
             title={mockDataVar7.title}
             data={mockDataVar7.data}
@@ -78,6 +79,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             Timelag value: Monthly
           </Typography>
           <Box width="100%" height="16px" />
+          {console.log('mockDataVar7.options', props.timelagData)}
           <TableModule
             title={mockDataVar7.title}
             data={props.timelagData}

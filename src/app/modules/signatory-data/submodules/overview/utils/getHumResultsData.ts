@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
-import { percentage } from '../../../../../utils/percentage';
+import { percentage } from 'app/utils/percentage';
 
 export const getHumResultsData = (rawData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;

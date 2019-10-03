@@ -5,12 +5,12 @@ import { ActivityDetailModel } from './model';
 
 // Components
 import { Grid, Typography, Box, Container } from '@material-ui/core';
-import { ActivityHeaderLayout } from './common/activityHeader';
+import { ActivityHeaderLayout } from 'app/modules/activityDetails/common/activityHeader';
 import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 
 // Mock Data
 import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
-import { NavLists } from 'app/components/datadisplay/NavLists';
+import { TableCardContainer } from 'app/components/datadisplay/NavLists';
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
@@ -25,60 +25,66 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       <Box width="100%" height="91px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
-      <Grid container lg={7} md={12}>
-        <Typography variant="subtitle1">{props.sections[0].title}</Typography>
-        <Box width="100%" height="25px" />
-        <Typography variant="body1">{props.sections[0].content}</Typography>
+      {/*<Box width="50px" height="50px" bgcolor="yellow" />*/}
+      <Grid container>
+        <Grid item md={12}>
+          <Typography variant="subtitle1">{props.sections[0].title}</Typography>
+          <Box width="100%" height="25px" />
+          <Typography variant="body1">{props.sections[0].content}</Typography>
+        </Grid>
       </Grid>
 
       <Box width="100%" height="91px" />
 
       {/** --------------------------------------------------------------------------- */}
       {/** Tables */}
-      <Grid container lg={12} md={12}>
-        {/*TODO: where is the black total sum up bar?*/}
-        {/*TODO: Tables need to be horizontally scrollable and may not exceed parent width*/}
 
-        <TableWTotal
-          title={props.incomingTransactionsTableData.title}
-          data={props.incomingTransactionsTableData.data}
-          columns={props.incomingTransactionsTableData.columns}
-          options={props.incomingTransactionsTableData.options}
-          columnsCell={props.incomingTransactionsTableData.columnsCell}
-          infoItems={props.incomingTransactionsTableData.infoItems}
-        />
+      <Grid container>
+        <Grid item md={12}>
+          {/*TODO: where is the black total sum up bar?*/}
+          {/*TODO: Tables need to be horizontally scrollable and may not exceed parent width*/}
 
-        <Box height="80px" width="100%" />
+          <TableWTotal
+            title={props.incomingTransactionsTableData.title}
+            data={props.incomingTransactionsTableData.data}
+            columns={props.incomingTransactionsTableData.columns}
+            options={props.incomingTransactionsTableData.options}
+            columnsCell={props.incomingTransactionsTableData.columnsCell}
+            infoItems={props.incomingTransactionsTableData.infoItems}
+          />
 
-        <TableWTotal
-          title={props.outgoingTransactionsTableData.title}
-          data={props.outgoingTransactionsTableData.data}
-          columns={props.outgoingTransactionsTableData.columns}
-          options={props.outgoingTransactionsTableData.options}
-          columnsCell={props.outgoingTransactionsTableData.columnsCell}
-          infoItems={props.outgoingTransactionsTableData.infoItems}
-        />
+          <Box height="80px" width="100%" />
+
+          <TableWTotal
+            title={props.outgoingTransactionsTableData.title}
+            data={props.outgoingTransactionsTableData.data}
+            columns={props.outgoingTransactionsTableData.columns}
+            options={props.outgoingTransactionsTableData.options}
+            columnsCell={props.outgoingTransactionsTableData.columnsCell}
+            infoItems={props.outgoingTransactionsTableData.infoItems}
+          />
+        </Grid>
       </Grid>
 
       <Box height="112px" width="100%" />
 
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
-      <NavLists lists={props.lists} />
 
-      <Box height="144px" width="100%" />
-
+      <TableCardContainer lists={props.lists} />
       {/** --------------------------------------------------------------------------- */}
-      {/** Section2 */}
-      <Grid container xs={12} style={{ paddingLeft: '16px' }}>
-        <Typography variant="h4">{props.sections[1].title}</Typography>
-        <Box width="100%" height="25px" />
-        <TableCard
-          fullWidth
-          title={props.tableCard ? props.tableCard.title : ''}
-          items={props.tableCard ? props.tableCard.items : []}
-        />
-        <Box width="100%" height="32px" />
+      {/** Results */}
+      <Grid container spacing={4} justify="flex-end">
+        <Grid xs={12} md={9} item>
+          <Typography variant="h4">{props.sections[1].title}</Typography>
+          <Box width="100%" height="25px" />
+          <TableCard
+            fullWidth
+            title={props.tableCard ? props.tableCard.title : ''}
+            items={props.tableCard ? props.tableCard.items : []}
+          />
+          <Box width="100%" height="32px" />
+        </Grid>
       </Grid>
 
       <Box height="50px" />
