@@ -144,11 +144,11 @@ export function formatTransTable(
 
       tableData.push([
         formattedDate,
-        trans.transaction_provider_org_narrative || 'No Data',
-        trans.transaction_receiver_org_narrative || 'No Data',
-        transTName ? transTName.name : 'No Data',
+        trans.transaction_provider_org_narrative || 'no data',
+        trans.transaction_receiver_org_narrative || 'no data',
+        transTName ? transTName.name : 'no data',
         value ? [value[1], value[0]] : null,
-        traceId || 'No Data',
+        traceId || 'no data',
       ]);
     });
   }

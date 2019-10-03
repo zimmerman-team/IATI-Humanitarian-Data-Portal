@@ -20,7 +20,7 @@ export function formatResults(
           value: result.result_title_narrative[0],
         },
         {
-          value: resTypeName ? resTypeName.name : 'No Data',
+          value: resTypeName ? resTypeName.name : 'no data',
         },
         {
           value:

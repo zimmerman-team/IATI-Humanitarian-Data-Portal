@@ -126,58 +126,58 @@ export const fssFields = [
 export const crsAddFields = [
   {
     key: 'channel_code',
-    label: 'Channel Code',
+    label: 'Channel code',
   },
-  { key: 'other_flags', label: 'Other Flag Codes', arrayKey: 'code' },
-  { key: 'loan_terms.rate.1', label: 'Loan Term Rates 1' },
-  { key: 'loan_terms.rate.2', label: 'Loan Term Rates 2' },
+  { key: 'other_flags', label: 'Other flag codes', arrayKey: 'code' },
+  { key: 'loan_terms.rate.1', label: 'Loan term rates 1' },
+  { key: 'loan_terms.rate.2', label: 'Loan term rates 2' },
   {
     key: 'loan_terms.repayment.type_code',
-    label: 'Loan Terms Repayment Code',
+    label: 'Loan terms repayment code',
   },
   {
     key: 'loan_terms.repayment.plan_code',
-    label: 'Loan Terms Repayment Plan',
+    label: 'Loan terms repayment plan',
   },
   {
     key: 'loan_terms.repayment.first_date_iso_date',
-    label: 'Loan Terms Repayment Start',
+    label: 'Loan terms repayment start',
   },
   {
     key: 'loan_terms.repayment.final_date_iso_date',
-    label: 'Loan Terms Repayment End',
+    label: 'Loan terms repayment end',
   },
   {
     key: 'loan_terms.commitment.date_iso_date',
-    label: 'Loan Terms Commitment Date',
+    label: 'Loan terms commitment date',
   },
   {
     key: 'loan_terms.commitment.date_iso_date',
-    label: 'Loan Terms Commitment Date',
+    label: 'Loan terms commitment date',
   },
   {
     key: 'loan_status.year',
-    label: 'Loan Date',
+    label: 'Loan date',
   },
   {
     key: 'loan_status.currency',
-    label: 'Loan Currency',
+    label: 'Loan currency',
   },
   {
     key: 'loan_status.interest_received',
-    label: 'Loan Interest Received',
+    label: 'Loan interest received',
   },
   {
     key: 'loan_status.principal_outstanding',
-    label: 'Loan Principal Outstanding',
+    label: 'Loan principal outstanding',
   },
   {
     key: 'loan_status.principal_arrears',
-    label: 'Loan Principal Arrears',
+    label: 'Loan principal arrears',
   },
   {
     key: 'loan_status.interest_arrears',
-    label: 'Loan Interest Arrears',
+    label: 'Loan interest arrears',
   },
 ];
 
@@ -500,26 +500,26 @@ export const actSummFields = (
     },
     {
       key: 'collaboration_type_code',
-      label: 'Collaboration Type',
+      label: 'Collaboration type',
       codeNames: colabTypeNames,
     },
     {
       key: 'default_flow_type_code',
-      label: 'Default Flow Type',
+      label: 'Default flow type',
       codeNames: defFlowTypeNames,
     },
     {
       key: 'default_finance_type_code',
-      label: 'Default Finance Type',
+      label: 'Default finance type',
     },
     {
       key: 'default_tied_status_code',
-      label: 'Default Tied Status',
+      label: 'Default tied status',
       codeNames: defTiedStatusName,
     },
     {
       key: 'capital_spend_percentage',
-      label: 'Capital Spend',
+      label: 'Capital spend',
       suffix: '%',
     },
     {
@@ -538,14 +538,14 @@ export const actSummFields = (
     },
     {
       key: 'activity_date',
-      label: 'Planned End',
+      label: 'Planned end',
       searchKey: 'type',
       searchValue: '3',
       foundKey: 'iso_date',
     },
     {
       key: 'activity_date',
-      label: 'Actual End',
+      label: 'Actual end',
       searchKey: 'type',
       searchValue: '4',
       foundKey: 'iso_date',

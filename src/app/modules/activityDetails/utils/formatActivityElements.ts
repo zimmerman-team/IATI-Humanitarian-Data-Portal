@@ -113,7 +113,7 @@ export function formatActivityElements(
 
     // pushing recipient countries
     elementLists.push({
-      title: 'Recipient Countries',
+      title: 'Recipient countries',
       type: 'ExpTableCard',
       elName: 'recCount',
       tableCItems: formatTableCardItems(
@@ -125,7 +125,7 @@ export function formatActivityElements(
 
     // pushing recipient regions
     elementLists.push({
-      title: 'Recipient Regions',
+      title: 'Recipient regions',
       type: 'ExpTableCard',
       elName: 'recReg',
       tableCItems: formatTableCardItems(
@@ -165,8 +165,8 @@ export function formatActivityElements(
 
     // pushing country budget items
     elementLists.push({
-      title: `Country Budget Items - ${
-        budgVocName ? budgVocName.name : 'No Data'
+      title: `Country budget items - ${
+        budgVocName ? budgVocName.name : 'no data'
       }`,
       type: 'ExpTableCard',
       elName: 'countBudgIt',
@@ -194,7 +194,7 @@ export function formatActivityElements(
 
     // pushing policy marker
     elementLists.push({
-      title: 'Policy Marker',
+      title: 'Policy marker',
       type: 'ExpTableCard',
       elName: 'polMark',
       tableCItems: formatTableCardItems(
@@ -210,7 +210,7 @@ export function formatActivityElements(
 
     // pushing default aid type
     elementLists.push({
-      title: 'Default Aid Type',
+      title: 'Default aid type',
       type: 'ExpTableCard',
       elName: 'defAidTyp',
       tableCItems: formatTableCardItems(
@@ -237,7 +237,7 @@ export function formatActivityElements(
 
     // pushing planned disbursements
     elementLists.push({
-      title: 'Planned Disbursements',
+      title: 'Planned disbursements',
       type: 'ExpTableCard',
       elName: 'plannedDis',
       tableCItems: formatTableCardItems(
@@ -252,7 +252,7 @@ export function formatActivityElements(
 
     // pushing document links
     elementLists.push({
-      title: 'Document Links',
+      title: 'Document links',
       type: 'ExpTableCard',
       elName: 'docLinks',
       tableCItems: formatTableCardItems(
@@ -264,7 +264,7 @@ export function formatActivityElements(
 
     // pushing crs_add
     elementLists.push({
-      title: 'CRS Add',
+      title: 'CRS add',
       type: 'Card',
       elName: 'crsAdd',
       items: formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
@@ -272,7 +272,7 @@ export function formatActivityElements(
 
     // Pushing FSS
     elementLists.push({
-      title: `FSS - ${get(actDetail, 'fss.extraction_date', 'No Data')}`,
+      title: `FSS - ${get(actDetail, 'fss.extraction_date', 'no data')}`,
       type: 'ExpTableCard',
       elName: 'fssEl',
       tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
@@ -321,7 +321,7 @@ export function formatActivityElements(
 
     if (actDetail.conditions) {
       const condAttached =
-        actDetail.conditions.attached === '1' ? 'Attached' : 'Not attached';
+        actDetail.conditions.attached === '1' ? 'attached' : 'not attached';
       // pushing conditions
       elementLists.push({
         title: `Conditions - ${condAttached}`,

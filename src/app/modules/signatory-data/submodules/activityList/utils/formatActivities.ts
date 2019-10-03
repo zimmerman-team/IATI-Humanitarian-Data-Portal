@@ -27,7 +27,7 @@ export function formatActivities(
       tableData.push([
         formatDate(activity.activity_date_start_actual),
         formatDate(activity.activity_date_end_actual),
-        statusName ? statusName.name : 'No Data',
+        statusName ? statusName.name : 'no data',
         [activity.iati_identifier, engTitle],
         activity.recipient_country_name || [],
         resultCount,
