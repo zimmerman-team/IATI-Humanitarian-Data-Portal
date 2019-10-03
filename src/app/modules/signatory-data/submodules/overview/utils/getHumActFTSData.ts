@@ -18,10 +18,8 @@ export const getHumActFTSData = (rawData): ListModel => {
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {
-        label:
-          'Humanitarian OECD DAC sector code 700 or 70000 range',
-        tooltip:
-          'Humanitarian OECD DAC sector code 700 or 70000 range',
+        label: 'Humanitarian OECD DAC sector code 700 or 70000 range',
+        tooltip: 'Humanitarian OECD DAC sector code 700 or 70000 range',
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),

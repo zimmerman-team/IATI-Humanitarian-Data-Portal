@@ -108,7 +108,7 @@ export const getBarChartData = (
               if (typeName) {
                 typeName = typeName.name;
               } else {
-                typeName = 'undefined';
+                typeName = 'Not Provided';
               }
 
               values.push({

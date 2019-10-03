@@ -4,18 +4,13 @@ import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { ExpandedRow as CustomRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
 
-export const providersTableCallValues = (pubRef, humActivities) => {
+export const providersTableCallValues = pubRef => {
   return {
-    q: `reporting_org_ref:${pubRef} AND transaction_type:(13 11 1) AND (transaction_sector_vocabulary:1 
-      OR (-transaction_sector_vocabulary:* 
-      AND (transaction_sector_code:[70000 TO 79999] 
-      OR transaction_sector_code:[93010 TO 93018])) OR transaction_humanitarian:1${
-        humActivities.length > 0
-          ? ` OR iati_identifier:(${humActivities
-              .map(act => act.iati_identifier)
-              .join(',')})`
-          : ''
-      })`,
+    q: `reporting_org_ref:${pubRef} AND transaction_type:(13 11 1) AND (humanitarian:1 OR transaction_humanitarian:1 
+        OR sector_vocabulary:1 OR (-sector_vocabulary:* 
+        AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
+        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
+        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
     stats: 'true',
     'facet.pivot':
       '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency',
