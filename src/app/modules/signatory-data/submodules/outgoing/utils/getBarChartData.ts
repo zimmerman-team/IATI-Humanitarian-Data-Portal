@@ -22,12 +22,12 @@ export const getBarChartData = (rawData): HorizontalBarChartCardModel => {
           percentage: Math.round((disbursementsValue * 100) / allHumActCount),
         },
         {
-          name: 'Outgoing Commitments',
+          name: 'Outgoing commitments',
           value: outCommitmentValue,
           percentage: Math.round((outCommitmentValue * 100) / allHumActCount),
         },
         {
-          name: 'Outgoing Pledges',
+          name: 'Outgoing pledges',
           value: outPledgeValue,
           percentage: Math.round((outPledgeValue * 100) / allHumActCount),
         },

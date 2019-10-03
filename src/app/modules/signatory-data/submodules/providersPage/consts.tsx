@@ -40,7 +40,7 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
 
 export const baseProviderConfig = (history): TableModuleModel => {
   return {
-    title: 'Funding Organisations',
+    title: 'Funding organisations',
     data: [],
     columns: [
       {

@@ -16,9 +16,9 @@ import { activitiesQuery } from '../../../modules/signatory-data/submodules/acti
 import fileDownload from 'js-file-download';
 
 export const mockDataVar1: TableModuleModel = {
-  title: 'Aggregated Signatory Data Publication Indicator Values',
+  title: 'Aggregated signatory data publication indicator values',
   data: [
-    ['Total no. of Grand Bargain Signatories', '51', '59', '20', '4'],
+    ['Total no. of Grand Bargain signatories', '51', '59', '20', '4'],
     [
       'Organisations* publishing to IATI',
       '73% (37)',
@@ -83,7 +83,7 @@ export const mockDataVar1: TableModuleModel = {
 };
 
 export const mockDataVar2: TableModuleModel = {
-  title: 'Signatories or their Affiliate Organisations ',
+  title: 'Signatories or their affiliate organisations ',
   data: [
     [
       'ActionAid UK',
@@ -108,7 +108,7 @@ export const mockDataVar2: TableModuleModel = {
   ],
   columns: [
     {
-      name: 'Publishing Organisation',
+      name: 'Publishing organisation',
       options: {
         filter: true,
         filterType: 'dropdown',
@@ -144,7 +144,7 @@ export const mockDataVar2: TableModuleModel = {
       },
     },
     {
-      name: 'Publishing Hum.Data?',
+      name: 'Publishing hum.data?',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -155,7 +155,7 @@ export const mockDataVar2: TableModuleModel = {
       },
     },
     {
-      name: 'Publishing v2.02 Hum. Data?',
+      name: 'Publishing v2.02 hum. data?',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -166,7 +166,7 @@ export const mockDataVar2: TableModuleModel = {
       },
     },
     {
-      name: 'Publishing v2.03 Hum. Data?',
+      name: 'Publishing v2.03 hum. data?',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -177,7 +177,7 @@ export const mockDataVar2: TableModuleModel = {
       },
     },
     {
-      name: 'Incoming TS Traceability',
+      name: 'Incoming TS traceability',
       options: {
         filter: true,
         filterType: 'checkbox',

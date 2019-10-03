@@ -76,7 +76,7 @@ export function formatLineChart(
   specPubsData: Array<SpecPubsItemModel>
 ): LineChartCardModel {
   const lineData: LineChartCardModel = {
-    title: 'Data Publication Aggregated Signatory Progress',
+    title: 'Data publication aggregated signatory progress',
     values: { values: [] },
   };
 

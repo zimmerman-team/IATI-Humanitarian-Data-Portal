@@ -204,7 +204,7 @@ columns.unshift({
 
 // and we push in changes made as the last column
 columns.push({
-  name: 'Changes [31. May] to Today',
+  name: 'Changes [31. May] to today',
   options: {
     filter: true,
     filterType: 'checkbox',
@@ -213,7 +213,7 @@ columns.push({
 
 export const baseTable: TableModuleModel = {
   columns,
-  title: 'Aggregated Signatory Data Publication Indicator Values',
+  title: 'Aggregated signatory data publication indicator values',
   data: [],
   options: {
     print: true,

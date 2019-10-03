@@ -24,7 +24,7 @@ export function formatTableData(
   // as we can apply a percentage proportion according to that data
   // to actually get the amount of GB signatories for the specified year
   const totGBSigs: (string | number)[] = [
-    'Total no. of Grand Bargain Signatories',
+    'Total no. of Grand Bargain signatories',
   ];
 
   tableData.push(['Organisations* publishing to IATI']);

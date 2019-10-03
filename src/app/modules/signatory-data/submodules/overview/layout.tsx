@@ -32,8 +32,8 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
-            title="Activity Timeline"
-            tooltip="Lorem ipsum dolor"
+            title="Activity timeline"
+            tooltip="activity timeline"
             data={props.activityTimelineData}
           />
         </Grid>

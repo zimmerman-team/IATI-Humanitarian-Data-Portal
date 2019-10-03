@@ -2,7 +2,7 @@ import { LineChartCardModel } from './model';
 
 //TODO: refactor to not use values.values
 export const mockData: LineChartCardModel = {
-  title: 'Data Publication Aggregated Signatory Progress',
+  title: 'Data publication aggregated signatory progress',
   values: {
     values: [
       {

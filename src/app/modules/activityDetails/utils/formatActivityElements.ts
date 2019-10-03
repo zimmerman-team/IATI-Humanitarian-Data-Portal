@@ -48,7 +48,7 @@ export function formatActivityElements(
   if (actDetail) {
     // pushing activity summary
     elementLists.push({
-      title: 'Activity Summary',
+      title: 'Activity summary',
       type: 'Card',
       elName: 'summary',
       items: formatSingleCardItem(

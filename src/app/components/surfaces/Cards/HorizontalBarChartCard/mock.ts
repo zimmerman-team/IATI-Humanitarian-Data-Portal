@@ -1,7 +1,7 @@
 import { HorizontalBarChartCardModel } from './model';
 
 export const mockData: HorizontalBarChartCardModel = {
-  title: 'Signatories meeting Data Publication CCTRIs',
+  title: 'Signatories meeting data publication CCTRIs',
   data: {
     values: [
       {

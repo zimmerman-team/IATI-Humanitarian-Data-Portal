@@ -5,7 +5,7 @@ import { ListModel } from 'app/components/datadisplay/Lists/model';
 export const getActivitySummaryData = (rawData): ListModel => {
   const allActivitiesCount = get(rawData.yearsData, 'count', 0);
   return {
-    title: 'Activity Summary',
+    title: 'Activity summary',
     elName: 'incComms',
     subtitle: '',
     items: [

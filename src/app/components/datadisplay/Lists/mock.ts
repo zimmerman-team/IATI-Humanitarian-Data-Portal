@@ -1,9 +1,9 @@
 import { ListModel, ListItemModel } from './model';
 
 export const listMockData: ListModel = {
-  title: 'Activity Summary',
+  title: 'Activity summary',
   elName: 'summary',
-  subtitle: 'Activity Summary subtitle',
+  subtitle: 'Activity summary subtitle',
   // TODO: put most of the one time elements
   //  that don't have much data(like the collaboration-type) into this
   //  activity summary, put the ones

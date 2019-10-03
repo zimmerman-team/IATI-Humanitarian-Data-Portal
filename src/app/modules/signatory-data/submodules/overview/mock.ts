@@ -56,7 +56,7 @@ import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model
 export const sigDataOverviewNavItems: InPageNavModel = {
   lists: [
     {
-      title: 'Activity Summary',
+      title: 'Activity summary',
       elName: 'summary',
     },
     {

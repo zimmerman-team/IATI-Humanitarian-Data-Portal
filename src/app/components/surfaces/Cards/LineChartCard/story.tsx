@@ -8,7 +8,7 @@ import { mockData } from 'app/components/charts/LineChart/mock';
 storiesOf('Surfaces|Cards/', module).add('Line chart card', () => (
   <Providers>
     <Grid container>
-      <LineChartCard values={mockData} title="Data Publication Aggregated Signatory Progress" />
+      <LineChartCard values={mockData} title="Data publication aggregated signatory progress" />
     </Grid>
   </Providers>
 ));

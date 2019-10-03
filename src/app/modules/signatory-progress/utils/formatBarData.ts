@@ -12,7 +12,7 @@ export function formatBarData(
   specPubsData: Array<SpecPubsItemModel>
 ): HorizontalBarChartCardModel {
   const barData: HorizontalBarChartCardModel = {
-    title: 'Signatories meeting Data Publication CCTRIs',
+    title: 'Signatories meeting data publication CCTRIs',
     data: { values: [] },
   };
 

@@ -34,7 +34,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
         </Grid>
         <Grid item md={12}>
           <Typography variant="h6" align="right">
-            Frequency Rating: Monthly
+            Frequency rating: monthly
           </Typography>
           <Box width="100%" height="16px" />
 

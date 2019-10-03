@@ -3,7 +3,7 @@ import { InPageNavModel } from './model';
 export const mockData: InPageNavModel = {
   lists: [
     {
-      title: 'Activity Summary',
+      title: 'Activity summary',
       elName: 'summary',
     },
     {
