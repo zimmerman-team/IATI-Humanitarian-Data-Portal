@@ -71,21 +71,25 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
 
-      <TableCardContainer lists={props.lists} />
+      <TableCardContainer dontShow lists={props.lists} />
       {/** --------------------------------------------------------------------------- */}
       {/** Results */}
-      <Grid container spacing={4} justify="flex-end">
-        <Grid xs={12} md={9} item>
-          <Typography variant="h4">{props.sections[1].title}</Typography>
-          <Box width="100%" height="25px" />
-          <TableCard
-            fullWidth
-            title={props.tableCard ? props.tableCard.title : ''}
-            items={props.tableCard ? props.tableCard.items : []}
-          />
-          <Box width="100%" height="32px" />
-        </Grid>
-      </Grid>
+      {props.tableCard &&
+        props.tableCard.items &&
+        props.tableCard.items.length > 0 && (
+          <Grid container spacing={4} justify="flex-end">
+            <Grid xs={12} md={9} item>
+              <Typography variant="h4">{props.sections[1].title}</Typography>
+              <Box width="100%" height="25px" />
+              <TableCard
+                fullWidth
+                title={props.tableCard ? props.tableCard.title : ''}
+                items={props.tableCard ? props.tableCard.items : []}
+              />
+              <Box width="100%" height="32px" />
+            </Grid>
+          </Grid>
+        )}
 
       <Box height="50px" />
     </Container>
