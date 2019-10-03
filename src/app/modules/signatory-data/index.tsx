@@ -37,11 +37,7 @@ export function SignatoryData() {
   }, [gbsignatoriesData]);
 
   const signatories = formatTableSignatories(
-    get(
-      get(iatigbsignatoriesData, 'data.data', []),
-      'facet_counts.facet_pivot["reporting_org_ref,reporting_org_type_code,dataset_iati_version,humanitarian,transaction_type,transaction_provider_org_ref"]',
-      []
-    ),
+    get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []),
     get(gbsignatoriesData, 'data', [])
   );
   return (

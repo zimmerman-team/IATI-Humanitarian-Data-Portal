@@ -9,7 +9,6 @@ import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import {
   outgoingCallFacetValues,
   outgoingCallFacetValuesTrace,
-  inPageNavigationItems,
 } from './consts';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/outgoing/utils/getBarChartData';
 import { getOutPledgesListData } from 'app/modules/signatory-data/submodules/outgoing/utils/getOutPledgesListData';
