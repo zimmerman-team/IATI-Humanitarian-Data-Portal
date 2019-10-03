@@ -43,8 +43,8 @@ export function SubmoduleContainer(props) {
       ? undefined
       : suppLink;
   const linkText = suppLink
-    ? 'Publisher Supplementary Information'
-    : 'No Publisher Supplementary Information Provided';
+    ? 'Publisher supplementary information'
+    : 'No publisher supplementary information provided';
 
   return (
     <Container maxWidth="lg">
