@@ -79,7 +79,6 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             Timelag value: Monthly
           </Typography>
           <Box width="100%" height="16px" />
-          {console.log('mockDataVar7.options', props.timelagData)}
           <TableModule
             title={mockDataVar7.title}
             data={props.timelagData}

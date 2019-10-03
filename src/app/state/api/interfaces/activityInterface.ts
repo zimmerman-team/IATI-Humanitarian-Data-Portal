@@ -13,6 +13,16 @@ export interface SingleDefActivity {
   id: string;
   iati_identifier: string;
   recipient_country_name?: string[];
+  reporting_org: {
+    ref: string;
+    secondary_reporter: string;
+    narrative: string;
+    type: {
+      code: string;
+      name: string;
+    };
+  };
+  crs_add: any;
   activity_date_start_actual?: string;
   activity_date_end_actual?: string;
   activity_status_code: string;
