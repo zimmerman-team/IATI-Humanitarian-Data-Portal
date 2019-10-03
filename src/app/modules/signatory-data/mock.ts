@@ -37,53 +37,43 @@ export const iatigbsignatoriesCallValues = {
   values: {
     q: '*:*',
     rows: 0,
-    facet: 'on',
-    fl: 'facet_count',
-    'facet.pivot':
-      'reporting_org_ref,reporting_org_type_code,dataset_iati_version,humanitarian,transaction_type,transaction_provider_org_ref',
-  },
-};
-
-const addMeLast = `facet: {
-  pubHumData: {
-    type: 'query',
-      q: 'humanitarian:1 OR transaction_humanitarian:1 
-    OR sector_vocabulary:1 OR (-sector_vocabulary:*
-    AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018]))
-    OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:*
-    AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))',
-  },
-},`;
-
-// TODO: use this to get correct values
-const test = {
-  iati_orgs: {
-    type: 'terms',
-    limit: -1,
-    field: 'reporting_org_ref',
-    facet: {
-      latest_iati_version: 'max(dataset_iati_version)',
-      pubHumData: {
-        type: 'query',
-        q:
-          'humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))',
+    'json.facet': `{
+      iati_orgs: {
+        type: 'terms',
+        limit: -1,
+        field: 'reporting_org_ref',
         facet: {
-          v202: {
+          latest_iati_version: 'max(dataset_iati_version)',
+          pubHumData: {
             type: 'query',
-            q:
-              '(humanitarian_scope_vocabulary:"2-1" AND humanitarian_scope_code:*) OR (sector:* AND sector_vocabulary:10) OR (humanitarian_scope_vocabulary:"1-2" AND humanitarian_scope_code:*)',
+            q: 'humanitarian:1 OR transaction_humanitarian:1 
+              OR sector_vocabulary:1 OR (-sector_vocabulary:*
+              AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018]))
+              OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:*
+              AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))',
+            facet: {
+              v202: {
+                type: 'query',
+                q:
+                  '(humanitarian_scope_vocabulary:"2-1" AND humanitarian_scope_code:*) 
+                  OR (sector:* AND sector_vocabulary:10) OR (humanitarian_scope_vocabulary:"1-2" 
+                  AND humanitarian_scope_code:*)',
+              },
+              v203: {
+                type: 'query',
+                q:
+                  'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) 
+                  OR ((participating_org_type:24 AND participating_org_role:4) 
+                  OR transaction_receiver_org_type_code:24)',
+              },
+            },
           },
-          v203: {
+          traec: {
             type: 'query',
-            q:
-              'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) OR ((participating_org_type:24 AND participating_org_role:4) OR transaction_receiver_org_type_code:24)',
+            q: 'transaction_provider_org_provider_activity_id: *',
           },
         },
       },
-      traec: {
-        type: 'query',
-        q: 'transaction_provider_org_provider_activity_id: *',
-      },
-    },
+    }`,
   },
 };

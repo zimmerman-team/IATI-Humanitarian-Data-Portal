@@ -1,7 +1,6 @@
 /* utils */
 import get from 'lodash/get';
 import find from 'lodash/find';
-import findIndex from 'lodash/findIndex';
 
 const returnFlagValue = value => {
   switch (value) {
@@ -22,57 +21,18 @@ const returnFlagValue = value => {
 
 export const formatTableSignatories = (signatories, gbsignatoriesFromCMS) => {
   const formatSigs: any = [];
+
   signatories.forEach((sig: any) => {
-    const versions = sig.pivot[0].pivot;
-    const fSig = find(
-      gbsignatoriesFromCMS,
-      gbsig => gbsig.IATIOrgRef === sig.value
-    );
+    const fSig = find(gbsignatoriesFromCMS, ['IATIOrgRef', sig.val]);
     formatSigs.push([
-      { name: get(fSig, 'pubName', ''), code: encodeURIComponent(sig.value) },
+      { name: get(fSig, 'pubName', ''), code: encodeURIComponent(sig.val) },
       get(fSig, 'name', ''),
       get(fSig, 'orgType', ''),
-      versions[0].value,
-      returnFlagValue(
-        findIndex(
-          versions,
-          (v: any) =>
-            findIndex(
-              v.pivot,
-              (humanitarian: any) => humanitarian.value === '1'
-            ) > -1
-        ) > -1
-      ),
-      returnFlagValue(
-        findIndex(
-          versions,
-          (v: any) =>
-            v.value === '2.02' && get(v, 'pivot[0].value', '0') === '1'
-        ) > -1
-      ),
-      returnFlagValue(
-        findIndex(
-          versions,
-          (v: any) =>
-            v.value === '2.03' && get(v, 'pivot[0].value', '0') === '1'
-        ) > -1
-      ),
-      returnFlagValue(
-        findIndex(
-          versions,
-          (v: any) =>
-            findIndex(
-              v.pivot,
-              (humanitarian: any) =>
-                findIndex(
-                  humanitarian.pivot,
-                  (transactionType: any) =>
-                    transactionType.value === '1' &&
-                    get(transactionType, 'pivot', []).length > 0
-                ) > -1
-            ) > -1
-        ) > -1
-      ),
+      sig.latest_iati_version,
+      returnFlagValue(sig.pubHumData.count > 0),
+      returnFlagValue(sig.pubHumData.v202 && sig.pubHumData.v202.count > 0),
+      returnFlagValue(sig.pubHumData.v203 && sig.pubHumData.v203.count > 0),
+      returnFlagValue(sig.traec.count > 0),
     ]);
   });
   return formatSigs;
