@@ -69,7 +69,9 @@ export function formatActivityElements(
       title: 'Reporting organisation',
       type: 'Card',
       elName: 'repOrg',
-      items: formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
+      items:
+        actDetail.reporting_org &&
+        formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
     });
 
     // pushing participating organisations
@@ -267,7 +269,9 @@ export function formatActivityElements(
       title: 'CRS Add',
       type: 'Card',
       elName: 'crsAdd',
-      items: formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
+      items:
+        actDetail.crs_add &&
+        formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
     });
 
     // Pushing FSS
