@@ -30,24 +30,14 @@ export function ProvidersPageFunc(props) {
         'transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type'
       ),
     });
-    actions.humanitarianActivities.fetch({
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(
-          props.match.params.code
-        )} AND (transaction_provider_org_narrative:* OR transaction_provider_org_ref:*) AND (humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])))`,
-        fl: 'iati_identifier',
-        rows: 100000,
-      },
-    });
   }, []);
   React.useEffect(() => {
     actions.sigdataproviders.fetch({
       values: providersTableCallValues(
-        decodeURIComponent(props.match.params.code),
-        get(state.humanitarianActivities.data, 'data.response.docs', [])
+        decodeURIComponent(props.match.params.code)
       ),
     });
-  }, [orgTypeNames.data, state.humanitarianActivities.data]);
+  }, [orgTypeNames.data]);
 
   const sigAllProviders = get(
     state.sigAllProviders,

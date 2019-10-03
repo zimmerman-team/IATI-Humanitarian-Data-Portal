@@ -66,9 +66,13 @@ export const getTableData = (rawData, facetKey, codelist, typeSum) => {
           });
 
           providers.push([
-            facet.value,
-            fpivot.value,
-            get(find(codelist, { code: fpivotpivot.value }), 'name', ''),
+            facet.value || 'Not Provided',
+            fpivot.value || 'Not Provided',
+            get(
+              find(codelist, { code: fpivotpivot.value }),
+              'name',
+              'Not Provided'
+            ),
             fpivotpivot.pivot.length,
             {
               currency: currency || 'USD',
