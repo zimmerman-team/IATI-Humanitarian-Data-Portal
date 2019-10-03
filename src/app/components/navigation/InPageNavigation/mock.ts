@@ -27,7 +27,7 @@ export const mockData: InPageNavModel = {
       elName: 'location',
     },
     {
-      title: 'Activites with multi-year funding',
+      title: 'Multi-year funding',
       elName: 'multiyear',
     },
     {
