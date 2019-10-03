@@ -262,21 +262,23 @@ export function formatActivityElements(
       ),
     });
 
+    /* temporarily disabled */
     // pushing crs_add
-    elementLists.push({
+    /*elementLists.push({
       title: 'CRS add',
       type: 'Card',
       elName: 'crsAdd',
       items: formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
-    });
+    });*/
 
+    /* temporarily disabled */
     // Pushing FSS
-    elementLists.push({
+    /*elementLists.push({
       title: `FSS - ${get(actDetail, 'fss.extraction_date', 'no data')}`,
       type: 'ExpTableCard',
       elName: 'fssEl',
       tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
-    });
+    });*/
 
     // pushing locations
     elementLists.push({
