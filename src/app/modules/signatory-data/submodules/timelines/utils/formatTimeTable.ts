@@ -47,5 +47,5 @@ export function formatTimeTable(
     });
   }
 
-  return timelagData;
+  return timelagData.reverse();
 }
