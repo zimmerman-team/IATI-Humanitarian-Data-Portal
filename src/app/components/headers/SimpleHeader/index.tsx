@@ -13,7 +13,8 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
 `;
 
 export const SimpleHeader = (props: SimpleHeaderModel) => (
-  <Grid container lg={11} style={{ paddingLeft: '16px' }}>
+  <Grid container >
+    <Grid item lg={11}>
     <Typography variant="h4">{props.title}</Typography>
     <Box width="100%" height="25px" />
     <Hidden only="md">
@@ -25,5 +26,6 @@ export const SimpleHeader = (props: SimpleHeaderModel) => (
     <Hidden only={['lg', 'xl']}>
       <Typography variant="body1">{props.description}</Typography>
     </Hidden>
+    </Grid>
   </Grid>
 );

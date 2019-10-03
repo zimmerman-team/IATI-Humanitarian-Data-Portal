@@ -66,6 +66,7 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
     <>
       {props.locations.map(lines => {
         return (
+          /* todo: serious layout flaw, needs to be fixed */
           <Grid container justify="flex-end" xs={12}>
             {lines.items.map(location => {
               if (get(state, 'pathname', '').includes(location.url)) {

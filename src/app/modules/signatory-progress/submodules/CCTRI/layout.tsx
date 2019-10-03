@@ -20,7 +20,8 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
-      <Grid container lg={8} md={12}>
+      <Grid container>
+        <Grid item lg={8} md={12}>
         {/* TITLE + INTRODUCTION */}
         <Box height="20px" width="100%" />
         <BreadCrumbs
@@ -54,6 +55,7 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
           {parse(props.sections[1].content[12])}
           {parse(props.sections[1].content[13])}
         </BodyText>
+        </Grid>
       </Grid>
     </Container>
   );

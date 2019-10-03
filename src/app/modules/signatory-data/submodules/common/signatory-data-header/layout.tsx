@@ -3,8 +3,8 @@ import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { InsertLink } from '@material-ui/icons';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
+import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
+import { locations } from 'app/components/navigation/SignatoryNavigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
 
