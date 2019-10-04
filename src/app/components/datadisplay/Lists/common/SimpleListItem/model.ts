@@ -4,6 +4,7 @@ export interface SimpleListItemModel {
 }
 
 export interface ListCellModel {
+  heading?: boolean;
   value: string;
   link?: string;
   extLink?: boolean;

@@ -15,7 +15,8 @@ import find from 'lodash/find';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { getNarrativeText } from 'app/utils/generic';
 
-interface KeyItemModel {
+export interface KeyItemModel {
+  colHeading?: string;
   key: string;
   codeNames?: object;
   // key of external link
@@ -41,11 +42,28 @@ export function formatTableCardItems(
   keyFields: KeyItemModel[],
   doubleArray?: boolean,
   // this gets pushed in as the first column
-  extraCol?: string
+  extraCol?: string,
+  extraColHead?: string,
+  extraColInd?: number
 ): ListCellModel[][] {
   const tableRows: ListCellModel[][] = [];
 
   const actField = get(actDetail, field) || [];
+
+  // so if there are activity fields
+  // we push in the provided column headings as first row
+  if (actField.length > 0) {
+    const listRow: ListCellModel[] = [];
+    keyFields.forEach(keyField => {
+      if (keyField.colHeading) {
+        listRow.push({
+          heading: true,
+          value: keyField.colHeading,
+        });
+      }
+    });
+    tableRows.push(listRow);
+  }
 
   actField.forEach(fItem => {
     const listRow: ListCellModel[] = [];
@@ -117,6 +135,10 @@ export function formatTableCardItems(
 
     tableRows.push(listRow);
   });
+
+  if (extraColHead && extraColInd === 0) {
+    tableRows[0].unshift({ value: extraColHead, heading: true });
+  }
 
   return tableRows;
 }

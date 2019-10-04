@@ -83,203 +83,199 @@ export const mockDataVar1: TableModuleModel = {
 };
 
 export const mockDataVar2: TableModuleModel = {
-         title: 'Signatories or their affiliate organisations ',
-         data: [
-           [
-             'ActionAid UK',
-             'ActionAid UK',
-             'International NGO',
-             '2.03',
-             'true',
-             'true',
-             'true',
-             'false',
-           ],
-           [
-             'ActionAid UK',
-             'ActionAid UK',
-             'Multilateral',
-             '2.03',
-             'true',
-             'false',
-             'true',
-             'na',
-           ],
-         ],
-         columns: [
-           {
-             name: 'Publishing organisation',
-             options: {
-               filter: true,
-               filterType: 'dropdown',
-               customBodyRender: (value, tableMeta, updateValue) => {
-                 return (
-                   <LinkCellModule
-                     link={`/signatory-data/${value.code}/overview`}
-                     value={value.name}
-                   />
-                 );
-               },
-               customFilterListRender: value =>
-                 `Publishing organisation: ${value}`,
-             },
-           },
-           {
-             name: 'GB signatory',
-             options: {
-               filter: true,
-               filterType: 'dropdown',
-               customFilterListRender: value => `GB signatory: ${value}`,
-             },
-           },
-           {
-             name: 'Organisation type',
-             options: {
-               filter: true,
-               filterType: 'dropdown',
-               customFilterListRender: value => `Organisation type: ${value}`,
-             },
-           },
-           {
-             name: 'Latest IATI version',
-             options: {
-               filter: true,
-               filterType: 'checkbox',
-               customFilterListRender: value => `Latest IATI version: ${value}`,
-             },
-           },
-           {
-             name: 'Publishing hum.data?',
-             options: {
-               filter: true,
-               filterType: 'checkbox',
-               filterOptions: { names: ['True', 'False', 'NA'] },
-               customBodyRender: (value, tableMeta, updateValue) => {
-                 return <IconCellModule value={value} />;
-               },
-               customFilterListRender: value =>
-                 `Publishing hum.data?: ${value}`,
-             },
-           },
-           {
-             name: 'Publishing v2.02 hum. data?',
-             options: {
-               filter: true,
-               filterType: 'checkbox',
-               filterOptions: { names: ['True', 'False', 'NA'] },
-               customBodyRender: (value, tableMeta, updateValue) => {
-                 return <IconCellModule value={value} />;
-               },
-               customFilterListRender: value =>
-                 `Publishing v2.02 hum. data?: ${value}`,
-             },
-           },
-           {
-             name: 'Publishing v2.03 hum. data?',
-             options: {
-               filter: true,
-               filterType: 'checkbox',
-               filterOptions: { names: ['True', 'False', 'NA'] },
-               customBodyRender: (value, tableMeta, updateValue) => {
-                 return <IconCellModule value={value} />;
-               },
-               customFilterListRender: value =>
-                 `Publishing v2.03 hum. data?: ${value}`,
-             },
-           },
-           {
-             name: 'Incoming TS traceability',
-             options: {
-               filter: true,
-               filterType: 'checkbox',
-               filterOptions: { names: ['True', 'False', 'NA'] },
-               customBodyRender: (value, tableMeta, updateValue) => {
-                 return <IconCellModule value={value} />;
-               },
-               customFilterListRender: value =>
-                 `Incoming TS traceability: ${value}`,
-             },
-           },
-         ],
-         options: {
-           print: false,
-           search: true,
-           filter: true,
-           download: true,
-           rowHover: true,
-           pagination: false,
-           viewColumns: true,
-           responsive: 'scroll',
-           filterType: 'checkbox',
-           selectableRows: 'none',
-           sortFilterList: false,
-           onDownload: (
-             buildHead: (whatever) => string,
-             buildBody: (nodata) => string,
-             columns: any[],
-             data: any[]
-           ) => {
-             let csvData = '';
-             // building header
-             columns.forEach(column => {
-               csvData = csvData
-                 .concat('"'.concat(column.name).concat('"'))
-                 .concat(',');
-             });
-             csvData = csvData.concat('\n');
-             // building body
-             data.forEach(row => {
-               row.data.forEach((cell, index) => {
-                 const cellVal = index === 0 ? cell.name : cell;
-                 csvData = csvData
-                   .concat('"'.concat(cellVal).concat('"'))
-                   .concat(',');
-               });
-               csvData = csvData.concat('\n');
-             });
-             return csvData;
-           },
-           customSort: (data, colIndex, order) => {
-             let indexStr = colIndex.toString();
-             if (colIndex === 0) {
-               indexStr = `[${colIndex}].name`;
-             }
-             const sortedData = data.sort((a, b) => {
-               const v1 = get(a.data, indexStr, '');
-               const v2 = get(b.data, indexStr, '');
-               if (v1 < v2) {
-                 return -1;
-               }
-               if (v1 > v2) {
-                 return 1;
-               }
-               return 0;
-             });
-             return order === 'asc' ? sortedData : sortedData.reverse();
-           },
-         },
-         columnsCell: [
-           'LinkCellModule',
-           '',
-           '',
-           '',
-           'IconCellModule',
-           'IconCellModule',
-           'IconCellModule',
-           'IconCellModule',
-         ],
-         totalCell: true,
-         totalRowColsDef: [
-           { dataType: 'none' },
-           { dataType: 'none' },
-           { dataType: 'count' },
-           { dataType: 'percentage', percValue: '2.03' },
-           { dataType: 'percentage', percValue: 'true' },
-           { dataType: 'percentage', percValue: 'true' },
-           { dataType: 'percentage', percValue: 'true' },
-           { dataType: 'percentage', percValue: 'true' },
-         ],
-       };
+  title: 'Signatories or their affiliate organisations ',
+  data: [
+    [
+      'ActionAid UK',
+      'ActionAid UK',
+      'International NGO',
+      '2.03',
+      'true',
+      'true',
+      'true',
+      'false',
+    ],
+    [
+      'ActionAid UK',
+      'ActionAid UK',
+      'Multilateral',
+      '2.03',
+      'true',
+      'false',
+      'true',
+      'na',
+    ],
+  ],
+  columns: [
+    {
+      name: 'Publishing organisation',
+      options: {
+        sortDirection: 'asc',
+        filter: true,
+        filterType: 'dropdown',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <LinkCellModule
+              link={`/signatory-data/${value.code}/overview`}
+              value={value.name}
+            />
+          );
+        },
+        customFilterListRender: value => `Publishing organisation: ${value}`,
+      },
+    },
+    {
+      name: 'GB signatory',
+      options: {
+        filter: true,
+        filterType: 'dropdown',
+        customFilterListRender: value => `GB signatory: ${value}`,
+      },
+    },
+    {
+      name: 'Organisation type',
+      options: {
+        filter: true,
+        filterType: 'dropdown',
+        customFilterListRender: value => `Organisation type: ${value}`,
+      },
+    },
+    {
+      name: 'Latest IATI version',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        customFilterListRender: value => `Latest IATI version: ${value}`,
+      },
+    },
+    {
+      name: 'Publishing hum.data?',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customFilterListRender: value => `Publishing hum.data?: ${value}`,
+      },
+    },
+    {
+      name: 'Publishing v2.02 hum. data?',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customFilterListRender: value =>
+          `Publishing v2.02 hum. data?: ${value}`,
+      },
+    },
+    {
+      name: 'Publishing v2.03 hum. data?',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customFilterListRender: value =>
+          `Publishing v2.03 hum. data?: ${value}`,
+      },
+    },
+    {
+      name: 'Incoming TS traceability',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customFilterListRender: value => `Incoming TS traceability: ${value}`,
+      },
+    },
+  ],
+  options: {
+    print: false,
+    search: true,
+    filter: true,
+    download: true,
+    rowHover: true,
+    pagination: false,
+    viewColumns: true,
+    responsive: 'scroll',
+    filterType: 'checkbox',
+    selectableRows: 'none',
+    sortFilterList: false,
+    onDownload: (
+      buildHead: (whatever) => string,
+      buildBody: (nodata) => string,
+      columns: any[],
+      data: any[]
+    ) => {
+      let csvData = '';
+      // building header
+      columns.forEach(column => {
+        csvData = csvData
+          .concat('"'.concat(column.name).concat('"'))
+          .concat(',');
+      });
+      csvData = csvData.concat('\n');
+      // building body
+      data.forEach(row => {
+        row.data.forEach((cell, index) => {
+          const cellVal = index === 0 ? cell.name : cell;
+          csvData = csvData.concat('"'.concat(cellVal).concat('"')).concat(',');
+        });
+        csvData = csvData.concat('\n');
+      });
+      return csvData;
+    },
+    customSort: (data, colIndex, order) => {
+      let indexStr = colIndex.toString();
+      if (colIndex === 0) {
+        indexStr = `[${colIndex}].name`;
+      }
+      const sortedData = data.sort((a, b) => {
+        const v1 = get(a.data, indexStr, '');
+        const v2 = get(b.data, indexStr, '');
+        if (v1 < v2) {
+          return -1;
+        }
+        if (v1 > v2) {
+          return 1;
+        }
+        return 0;
+      });
+      return order === 'asc' ? sortedData : sortedData.reverse();
+    },
+  },
+  columnsCell: [
+    'LinkCellModule',
+    '',
+    '',
+    '',
+    'IconCellModule',
+    'IconCellModule',
+    'IconCellModule',
+    'IconCellModule',
+  ],
+  totalCell: true,
+  totalRowColsDef: [
+    { dataType: 'none' },
+    { dataType: 'none' },
+    { dataType: 'count' },
+    { dataType: 'percentage', percValue: '2.03' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'true' },
+  ],
+};
 
 export const mockDataVar3: TableModuleModel = {
   title: 'Humanitarian activities',
