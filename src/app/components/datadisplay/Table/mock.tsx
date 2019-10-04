@@ -110,6 +110,7 @@ export const mockDataVar2: TableModuleModel = {
     {
       name: 'Publishing organisation',
       options: {
+        sortDirection: 'asc',
         filter: true,
         filterType: 'dropdown',
         customBodyRender: (value, tableMeta, updateValue) => {
