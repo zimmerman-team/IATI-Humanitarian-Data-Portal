@@ -3,7 +3,11 @@ import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 import { dateFormat } from './dateFormat';
 import { percentage } from 'app/utils/percentage';
 
-export const getStatusData = (rawData, dataErrors, allActCount): ListItemModel[] => {
+export const getStatusData = (
+  rawData,
+  dataErrors,
+  allActCount
+): ListItemModel[] => {
   return [
     {
       label: 'Latest version of the IATI standard used',
@@ -13,7 +17,9 @@ export const getStatusData = (rawData, dataErrors, allActCount): ListItemModel[]
     {
       label: 'Data errors',
       tooltip: 'Data errors',
-      values: [{ version: percentage(get(dataErrors, 'facets.x', 0), allActCount) }],
+      values: [
+        { version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
+      ],
     },
     {
       label: 'Latest update',
