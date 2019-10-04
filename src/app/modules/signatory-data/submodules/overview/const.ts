@@ -78,6 +78,10 @@ export const humCallValues = {
     type: 'query',
     q: 'recipient_country_code:*',
   },
+  humActWLocationInfoData_region: {
+    type: 'query',
+    q: 'recipient_region_code:*',
+  },
   humActWLocationInfoData_2: {
     type: 'query',
     q: 'location_point_pos:*',
