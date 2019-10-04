@@ -1,5 +1,5 @@
 import { MUIDataTableOptions, MUIDataTableColumnDef } from 'mui-datatables';
-import { TableInfoItemModel } from '../TableWTotal/common/TableInfo/model';
+import { TableInfoItemModel } from 'app/components/datadisplay/TableWTotal/common/TableInfo/model';
 
 export interface TotalRowColModel {
   percValue?: number | string;

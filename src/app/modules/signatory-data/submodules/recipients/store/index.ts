@@ -1,8 +1,14 @@
 import { createComponentStore } from 'easy-peasy';
-import { RecipientsInterface, RecTypesInterface } from './interfaces';
-import { humRecTypes, recipients } from './actionsReducers';
+import {
+  RecipientsInterface,
+  RecTypesInterface,
+} from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
+import {
+  humRecTypes,
+  recipients,
+} from 'app/modules/signatory-data/submodules/recipients/store/actionsReducers';
 import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
-import { sigAllProviders } from '../../providersPage/store/actionsReducers';
+import { sigAllProviders } from 'app/modules/signatory-data/submodules/providersPage/store/actionsReducers';
 
 export interface RecipientsStoreModel {
   recipients: RecipientsInterface;

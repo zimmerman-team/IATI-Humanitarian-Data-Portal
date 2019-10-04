@@ -1,5 +1,8 @@
 import { apiPOSTModel } from 'app/state/api/actionsReducers';
-import { RecipientsInterface, RecTypesInterface } from './interfaces';
+import {
+  RecipientsInterface,
+  RecTypesInterface,
+} from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
 import { endpoints } from 'app/__consts__/endpoints';
 
 export const recipients: RecipientsInterface = {

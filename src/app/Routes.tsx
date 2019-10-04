@@ -24,6 +24,7 @@ import { ResultDetail } from './modules/ResultDetails';
 
 /* utils */
 import { InitialDataLoad } from './utils/initialLoad';
+import { NoMatchPage } from 'app/modules/common/NoMatchPage';
 
 export function Routes() {
   InitialDataLoad();
@@ -67,6 +68,7 @@ export function Routes() {
           render={() => <ResultDetail />}
         />
 
+        <Route component={NoMatchPage} />
         {/* Signatory Data Container*/}
         {/* <SubmoduleContainer /> */}
       </Switch>
