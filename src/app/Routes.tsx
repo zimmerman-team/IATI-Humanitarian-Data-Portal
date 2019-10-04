@@ -28,6 +28,8 @@ import { InitialDataLoad } from './utils/initialLoad';
 export function Routes() {
   InitialDataLoad();
 
+  const tableOptions = useStoreState(state => state.sigDataOpts);
+
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
@@ -35,7 +37,11 @@ export function Routes() {
         <Route exact path="/" render={() => <Landing />} />
         <Route exact path="/about" render={() => <About />} />
         <Route exact path="/faq" render={() => <Faqs />} />
-        <Route exact path="/signatory-data" render={() => <SignatoryData />} />
+        <Route
+          exact
+          path="/signatory-data"
+          render={() => <SignatoryData tableOptions={tableOptions} />}
+        />
         <Route
           path="/signatory-data/:code"
           render={props => <SubmoduleContainer {...props} />}
