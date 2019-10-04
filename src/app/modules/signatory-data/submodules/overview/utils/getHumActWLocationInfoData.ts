@@ -9,7 +9,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
     get(rawData, 'facets.humActWLocationInfoData_2.count', 0),
     get(rawData, 'facets.humActWLocationInfoData_3.count', 0),
     get(rawData, 'facets.humActWLocationInfoData_4.count', 0),
-    get(rawData, 'facets.humActWLocationInfoData_region.count', 0)
+    get(rawData, 'facets.humActWLocationInfoData_region.count', 0),
   ];
   return {
     title: 'Hum. activites with location information',
