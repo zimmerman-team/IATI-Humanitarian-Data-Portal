@@ -1,4 +1,6 @@
 import { ApiModel } from './index';
+import { BaseQuery } from 'app/interfaces/queries';
+import { BaseRespModel } from 'app/interfaces/response';
 
 export interface CodeItemInterface {
   code: string;
@@ -37,4 +39,5 @@ export interface CodeListInterface {
   relActTypes: ApiModel<any, CodeItemInterface[]>;
   condCodeNames: ApiModel<any, CodeItemInterface[]>;
   sectorVocabs: ApiModel<any, CodeItemInterface[]>;
+  countNames: ApiModel<BaseQuery, BaseRespModel<BaseQuery, CodeItemInterface>>;
 }

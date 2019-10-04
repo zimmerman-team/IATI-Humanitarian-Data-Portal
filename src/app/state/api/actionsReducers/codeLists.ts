@@ -1,5 +1,6 @@
 import { apiModel } from './index';
 import { CodeListInterface } from '../interfaces/codeListsInterface';
+import { endpoints } from 'app/__consts__/endpoints';
 
 export const codelists: CodeListInterface = {
   actStatus: {
@@ -155,6 +156,12 @@ export const codelists: CodeListInterface = {
   sectorVocabs: {
     ...apiModel(
       `${process.env.REACT_APP_DS_API}/api/codelists/SectorVocabulary/?format=json`
+    ),
+  },
+  // TODO last item edited was this
+  countNames: {
+    ...apiModel(
+      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/`
     ),
   },
 };
