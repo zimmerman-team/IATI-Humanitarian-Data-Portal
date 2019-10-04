@@ -44,7 +44,13 @@ export const List = (props: ListModel) => {
   const items = props.items || [];
 
   const listItems = items.map(item => (
-    <ListItem label={item.label} values={item.values} tooltip={item.tooltip} />
+    <ListItem
+      key={item.label}
+      label={item.label}
+      values={item.values}
+      tooltip={item.tooltip}
+      highlight={item.highlight}
+    />
   ));
 
   // https://dev.to/claireparkerjones/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6

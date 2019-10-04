@@ -12,6 +12,10 @@ const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-gap: 6rem;
 `;
 
+const HighlightedTypography = styled.span`
+  background-color: yellow;
+`;
+
 export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
     <>
@@ -23,18 +27,24 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       {/* ---------- */}
       <Grid container spacing={4} direction="column">
         <Grid item md={6}>
-          <Typography variant="h4">Publishing frequency</Typography>
+          <Typography variant="h4">
+            <HighlightedTypography>Publishing frequency</HighlightedTypography>
+          </Typography>
         </Grid>
         <Grid item md={6}>
           <Typography variant="body1">
-            The table records the number of days in each of the last twelve
-            months on which the most recently recorded transaction date was
-            observed by the Dashboard to have changed.
+            <HighlightedTypography>
+              The table records the number of days in each of the last twelve
+              months on which the most recently recorded transaction date was
+              observed by the Dashboard to have changed.
+            </HighlightedTypography>
           </Typography>
         </Grid>
         <Grid item md={12}>
           <Typography variant="h6" align="right">
-            Frequency rating: monthly
+            <HighlightedTypography>
+              Frequency rating: monthly
+            </HighlightedTypography>
           </Typography>
           <Box width="100%" height="16px" />
 
@@ -76,7 +86,9 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
         </Grid>
         <Grid item md={12}>
           <Typography variant="h6" align="right">
-            Timelag value: Monthly
+            <HighlightedTypography>
+              Timelag value: Monthly
+            </HighlightedTypography>
           </Typography>
           <Box width="100%" height="16px" />
           <TableModule

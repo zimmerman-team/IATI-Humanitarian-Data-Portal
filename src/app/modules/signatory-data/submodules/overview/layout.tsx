@@ -21,7 +21,7 @@ import { Element } from 'react-scroll/modules';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
-    <React.Fragment>
+    <>
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="0" left="0" zIndex="10000">
@@ -151,6 +151,6 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
       </Grid>
       <Box height="100px" width="100%" />
-    </React.Fragment>
+    </>
   );
 };
