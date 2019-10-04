@@ -17,11 +17,11 @@ export const TableCardContainer = (props: NavListsModel) => (
   <Grid container spacing={4}>
     <Hidden smDown>
       <Grid item md={3}>
+        {/* //cc:move inline css to styled component */}
         <div
           css={`
             position: sticky;
-            top: 50px;
-            height: 400px;
+            top: 60px;
           `}
         >
           <InPageNavigation dontShow={props.dontShow} lists={props.lists} />
