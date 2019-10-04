@@ -10,7 +10,23 @@ export function formatResults(
   resultTypeNames
 ): ListCellModel[][] {
   const results: ListCellModel[][] = [];
-  if (resultData) {
+  if (resultData && resultData.length > 0) {
+    // we push in the headings here
+    results.push([
+      {
+        value: 'Title',
+        heading: true,
+      },
+      {
+        value: 'Type',
+        heading: true,
+      },
+      {
+        value: 'Aggregation status',
+        heading: true,
+      },
+    ]);
+
     resultData.forEach(result => {
       const resTypeName = find(resultTypeNames, ['code', result.result_type]);
 

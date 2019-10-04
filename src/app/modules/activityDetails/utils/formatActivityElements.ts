@@ -340,7 +340,5 @@ export function formatActivityElements(
     }
   }
 
-  console.log('elementLists', elementLists);
-
   return sortBy(elementLists, 'title');
 }

@@ -42,7 +42,9 @@ export function formatTableCardItems(
   keyFields: KeyItemModel[],
   doubleArray?: boolean,
   // this gets pushed in as the first column
-  extraCol?: string
+  extraCol?: string,
+  extraColHead?: string,
+  extraColInd?: number
 ): ListCellModel[][] {
   const tableRows: ListCellModel[][] = [];
 
@@ -133,6 +135,10 @@ export function formatTableCardItems(
 
     tableRows.push(listRow);
   });
+
+  if (extraColHead && extraColInd === 0) {
+    tableRows[0].unshift({ value: extraColHead, heading: true });
+  }
 
   return tableRows;
 }

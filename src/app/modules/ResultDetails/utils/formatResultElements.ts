@@ -205,7 +205,9 @@ export function formatResultElements(
                 'target',
                 correctFields(perIndex),
                 false,
-                `${period.period_start.iso_date} to ${period.period_end.iso_date}`
+                `${period.period_start.iso_date} to ${period.period_end.iso_date}`,
+                'Period',
+                perIndex
               )
             );
 
@@ -273,7 +275,9 @@ export function formatResultElements(
                 'actual',
                 correctFields(perIndex),
                 false,
-                `${period.period_start.iso_date} to ${period.period_end.iso_date}`
+                `${period.period_start.iso_date} to ${period.period_end.iso_date}`,
+                'Period',
+                perIndex
               )
             );
 
