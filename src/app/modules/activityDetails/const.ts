@@ -65,6 +65,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `From: ${value}`,
       },
     },
     {
@@ -72,6 +73,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `To: ${value}`,
       },
     },
     {
@@ -79,6 +81,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Transaction Type: ${value}`,
       },
     },
     {
@@ -98,6 +101,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Trace ID.: ${value}`,
       },
     },
   ],

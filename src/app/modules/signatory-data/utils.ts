@@ -5,17 +5,17 @@ import find from 'lodash/find';
 const returnFlagValue = value => {
   switch (value) {
     case 'na':
-      return 'na';
+      return 'NA';
     case '0':
-      return 'false';
+      return 'False';
     case '1':
-      return 'true';
+      return 'True';
     case false:
-      return 'false';
+      return 'False';
     case true:
-      return 'true';
+      return 'True';
     default:
-      return 'na';
+      return 'NA';
   }
 };
 
