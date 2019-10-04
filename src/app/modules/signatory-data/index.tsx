@@ -11,7 +11,7 @@ import map from 'lodash/map';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 /* mock */
-import { signatoryDataMock, iatigbsignatoriesCallValues } from './mock';
+import { signatoryDataMock, iatigbsignatoriesCallValues, helloTesting } from './mock';
 import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 
 export function SignatoryData() {
@@ -35,6 +35,19 @@ export function SignatoryData() {
     };
     iatigbsignatoriesCall(callValues);
   }, [gbsignatoriesData]);
+
+  React.useEffect(() => {
+    const publishers = map(get(gbsignatoriesData, 'data', []), sig =>
+      get(sig, 'IATIOrgRef', '')
+    ).join(' ');
+    const callValues = {
+      values: {
+        ...helloTesting.values,
+        q: `reporting_org_ref:(${publishers})`,
+      },
+    };
+    iatigbsignatoriesCall(callValues);
+  }, )
 
   const signatories = formatTableSignatories(
     get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []),
