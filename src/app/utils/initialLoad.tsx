@@ -187,6 +187,12 @@ export function InitialDataLoad() {
   const getCondCodes = useStoreActions(
     actions => actions.codelists.condCodeNames.fetch
   );
+  const sectorVocabs = useStoreState(
+    reduxstate => reduxstate.codelists.sectorVocabs
+  );
+  const getSectorVocabs = useStoreActions(
+    actions => actions.codelists.sectorVocabs.fetch
+  );
 
   React.useEffect(() => {
     if (!gbsignatoriesData.data) {
@@ -281,6 +287,9 @@ export function InitialDataLoad() {
     }
     if (!condCodeNames.data) {
       getCondCodes({});
+    }
+    if (!sectorVocabs.data) {
+      getSectorVocabs({});
     }
   }, []);
 }
