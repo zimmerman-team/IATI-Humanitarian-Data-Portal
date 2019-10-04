@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* core */
 import React, { useRef } from 'react';
 
@@ -48,6 +49,9 @@ export function OverviewPage(props) {
   const sigdataoverviewhumData = useStoreState(
     state => state.sigdataoverviewhum.data
   );
+  const sigdataoverviewdataerrorsData = useStoreState(
+    state => state.sigdataoverviewdataerrors.data
+  );
   /* create the API call instances */
   const sigdataactivitiesbyyearCall = useStoreActions(
     actions => actions.sigdataactivitiesbyyear.fetch
@@ -57,6 +61,9 @@ export function OverviewPage(props) {
   );
   const sigdataoverviewhumCall = useStoreActions(
     actions => actions.sigdataoverviewhum.fetch
+  );
+  const sigdataoverviewdataerrorsCall = useStoreActions(
+    actions => actions.sigdataoverviewdataerrors.fetch
   );
   const years = getAllYears(
     get(
@@ -90,8 +97,16 @@ export function OverviewPage(props) {
         rows: 0,
       },
     };
+    const sigdataoverviewdataerrorscallValues = {
+      values: {
+        q: `publisher_iati_id:${decodeURIComponent(props.match.params.code)}`,
+        'json.facet.x': '"unique(iati_identifier)"',
+        rows: 0,
+      },
+    };
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
+    sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
   }, []);
 
   /* componentDidUpdate based on sigdataactivityyearsData */
@@ -113,7 +128,11 @@ export function OverviewPage(props) {
   const humanitarianElementsData = getHumanitarianElementsData(
     get(sigdataoverviewhumData, 'data', [])
   );
-  const statusData = getStatusData(get(sigdataactivitystatusData, 'data', []));
+  const statusData = getStatusData(
+    get(sigdataactivitystatusData, 'data', []),
+    get(sigdataoverviewdataerrorsData, 'data', []),
+    get(yearsData, 'count', 0)
+  );
   const activitySummaryData = getActivitySummaryData({
     yearsData,
     humData: get(sigdataoverviewhumData, 'data', []),
