@@ -1,3 +1,5 @@
+import { TableModuleModel } from 'app/components/datadisplay/Table/model';
+
 type HumanitarianCheckup = {
   primary: boolean | string;
   secondary: boolean | string;
@@ -16,6 +18,15 @@ type Signatory = {
 export type SignatoryDataModel = {
   title: string;
   loading: boolean;
-  signatories: any[];
+  sigTable: TableModuleModel;
   description: string;
 };
+
+export interface SignatoryDataModule {
+  tableOptions: {
+    filterLists: string[][];
+    sortCol: string;
+    sortDir: string;
+    searchTerm: string;
+  };
+}
