@@ -34,7 +34,6 @@ import {
 
 /* utils */
 import get from 'lodash/get';
-import sortBy from 'lodash/sortBy';
 import { formatSingleCardItem } from './formatSingleCardItem';
 import { formatTableCardItems } from './formatTableCardItems';
 

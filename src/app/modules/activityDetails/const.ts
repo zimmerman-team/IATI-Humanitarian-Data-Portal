@@ -65,6 +65,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `From: ${value}`,
       },
     },
     {
@@ -72,6 +73,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `To: ${value}`,
       },
     },
     {
@@ -79,6 +81,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Transaction Type: ${value}`,
       },
     },
     {
@@ -98,6 +101,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Trace ID.: ${value}`,
       },
     },
   ],
@@ -115,9 +119,11 @@ export const baseTranstable: TableModuleModel = {
 
 export const fssFields = [
   {
+    colHeading: 'Year',
     key: 'year',
   },
   {
+    colHeading: 'Value',
     key: 'value',
     value: true,
   },
@@ -183,15 +189,18 @@ export const crsAddFields = [
 
 export const docLinkFields = [
   {
+    colHeading: 'Title',
     key: 'title',
     narrative: true,
     extLink: 'url',
   },
   {
+    colHeading: 'Categories',
     key: 'category',
     arrayKey: 'name',
   },
   {
+    colHeading: 'Date',
     key: 'document_date.iso_date',
   },
 ];
@@ -199,36 +208,46 @@ export const docLinkFields = [
 export const disbursFields = (orgTypeNames, budgTypeNames) => {
   return [
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: budgTypeNames,
     },
     {
+      colHeading: 'Start date',
       key: 'period_start',
     },
     {
+      colHeading: 'End date',
       key: 'period_end',
     },
     {
+      colHeading: 'Value',
       key: 'value',
       value: true,
     },
     {
+      colHeading: 'Provider organisation',
       key: 'provider_org.narrative',
     },
     {
+      colHeading: 'Provider organisation reference',
       key: 'provider_org.ref',
     },
     {
+      colHeading: 'Provider organisation type',
       key: 'provider_org.type',
       codeNames: orgTypeNames,
     },
     {
+      colHeading: 'Receiving organisation',
       key: 'receiver_org.narrative',
     },
     {
+      colHeading: 'Receiving organisation reference',
       key: 'receiver_org.ref',
     },
     {
+      colHeading: 'Receiving organisation type',
       key: 'receiver_org.type',
       codeNames: orgTypeNames,
     },
@@ -238,20 +257,25 @@ export const disbursFields = (orgTypeNames, budgTypeNames) => {
 export const budgetFields = (budgTypeNames, budgStatusNames) => {
   return [
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: budgTypeNames,
     },
     {
+      colHeading: 'Status',
       key: 'status',
       codeNames: budgStatusNames,
     },
     {
+      colHeading: 'Start date',
       key: 'period_start',
     },
     {
+      colHeading: 'End date',
       key: 'period_end',
     },
     {
+      colHeading: 'Value',
       key: 'value',
       value: true,
     },
@@ -261,9 +285,11 @@ export const budgetFields = (budgTypeNames, budgStatusNames) => {
 export const defAidTypeFields = defAidTypeVocNames => {
   return [
     {
+      colHeading: 'Code',
       key: 'code',
     },
     {
+      colHeading: 'Vocabulary',
       key: 'vocabulary',
       codeNames: defAidTypeVocNames,
     },
@@ -277,21 +303,26 @@ export const polMarkerFields = (
 ) => {
   return [
     {
+      colHeading: 'Title',
       key: 'narrative',
     },
     {
+      colHeading: 'Code',
       key: 'code',
       codeNames: polMarkCodeNames,
     },
     {
+      colHeading: 'Significance',
       key: 'significance',
       codeNames: policMSignificanceName,
     },
     {
+      colHeading: 'Vocabulary URI',
       key: 'vocabulary_uri',
       extLink: 'vocabulary_uri',
     },
     {
+      colHeading: 'Vocabulary',
       key: 'vocabulary',
       codeNames: polMarkerVocabNames,
     },
@@ -301,20 +332,25 @@ export const polMarkerFields = (
 export const humScopeFields = (humScopTypeNames, humVocNames) => {
   return [
     {
+      colHeading: 'Title',
       key: 'narrative',
     },
     {
+      colHeading: 'Code',
       key: 'code',
     },
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: humScopTypeNames,
     },
     {
+      colHeading: 'Vocabulary URI',
       key: 'vocabulary_uri',
       extLink: 'vocabulary_uri',
     },
     {
+      colHeading: 'Vocabulary',
       key: 'vocabulary',
       codeNames: humVocNames,
     },
@@ -323,13 +359,16 @@ export const humScopeFields = (humScopTypeNames, humVocNames) => {
 
 export const countBufgItFields = [
   {
+    colHeading: 'Description',
     key: 'description',
     narrative: true,
   },
   {
+    colHeading: 'Code',
     key: 'code',
   },
   {
+    colHeading: 'Percentage',
     key: 'percentage',
     suffix: '%',
   },
@@ -338,16 +377,20 @@ export const countBufgItFields = [
 export const tagFields = tagVocNames => {
   return [
     {
+      colHeading: 'Description',
       key: 'narrative',
     },
     {
+      colHeading: 'Code',
       key: 'code',
     },
     {
+      colHeading: 'Vocabulary',
       key: 'vocabulary',
       codeNames: tagVocNames,
     },
     {
+      colHeading: 'Vocabulary URI',
       key: 'vocabulary_uri',
       extLink: 'vocabulary_uri',
     },
@@ -356,12 +399,15 @@ export const tagFields = tagVocNames => {
 
 export const sectorFields = [
   {
+    colHeading: 'Code',
     key: 'code',
   },
   {
+    colHeading: 'Description',
     key: 'narrative',
   },
   {
+    colHeading: 'Percentage',
     key: 'percentage',
     suffix: '%',
   },
@@ -370,20 +416,25 @@ export const sectorFields = [
 export const recRegFields = regVocNames => {
   return [
     {
+      colHeading: 'Description',
       key: 'narrative',
     },
     {
+      colHeading: 'Code',
       key: 'code',
     },
     {
+      colHeading: 'Percentage',
       key: 'percentage',
       suffix: '%',
     },
     {
+      colHeading: 'Vocabulary',
       key: 'vocabulary',
       codeNames: regVocNames,
     },
     {
+      colHeading: 'Vocabulary URI',
       key: 'vocabulary_uri',
       extLink: 'vocabulary_uri',
     },
@@ -392,12 +443,15 @@ export const recRegFields = regVocNames => {
 
 export const recCountFields = [
   {
+    colHeading: 'Description',
     key: 'narrative',
   },
   {
+    colHeading: 'Code',
     key: 'code',
   },
   {
+    colHeading: 'Percentage',
     key: 'percentage',
     suffix: '%',
   },
@@ -406,32 +460,41 @@ export const recCountFields = [
 export const contInfoFields = contactTypeNames => {
   return [
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: contactTypeNames,
     },
     {
+      colHeading: 'Telephone',
       key: 'telephone',
     },
     {
+      colHeading: 'Email',
       key: 'email',
     },
     {
+      colHeading: 'Website',
       key: 'website',
       extLink: 'website',
     },
     {
+      colHeading: 'Organisation name',
       key: 'organisation_narrative',
     },
     {
+      colHeading: 'Department name',
       key: 'department_narrative',
     },
     {
+      colHeading: 'Contact Person',
       key: 'person_name_narrative',
     },
     {
+      colHeading: 'Contact Person Position',
       key: 'job_title_narrative',
     },
     {
+      colHeading: 'Mailing address',
       key: 'mailing_address_narrative',
     },
   ];
@@ -440,16 +503,20 @@ export const contInfoFields = contactTypeNames => {
 export const othIdFields = othIDTypeNames => {
   return [
     {
+      colHeading: 'Reference',
       key: 'ref',
     },
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: othIDTypeNames,
     },
     {
+      colHeading: 'Owner organisation',
       key: 'owner_org_narrative',
     },
     {
+      colHeading: 'Owner organisation reference',
       key: 'owner_org_ref',
     },
   ];
@@ -458,16 +525,20 @@ export const othIdFields = othIDTypeNames => {
 export const partOrgFields = (orgTypeNames, orgRoleNames) => {
   return [
     {
+      colHeading: 'Name',
       key: 'narrative',
     },
     {
+      colHeading: 'Reference',
       key: 'ref',
     },
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: orgTypeNames,
     },
     {
+      colHeading: 'Role',
       key: 'role',
       codeNames: orgRoleNames,
     },
@@ -561,37 +632,47 @@ export const locationFields = (
 ) => {
   return [
     {
+      colHeading: 'Name',
       key: 'name_narrative',
     },
     {
+      colHeading: 'Reference',
       key: 'ref',
     },
     {
+      colHeading: 'Reach',
       key: 'location_reach_code',
       codeNames: locReachNames,
     },
     {
+      colHeading: 'Vocabulary',
       key: 'location_id_vocabulary',
       codeNames: locVocNames,
     },
     {
+      colHeading: 'Description',
       key: 'description_narrative',
     },
     {
+      colHeading: 'Activity at location',
       key: 'activity_description_narrative',
     },
     {
+      colHeading: 'Coordinates',
       key: 'point_pos',
     },
     {
+      colHeading: 'Exactness',
       key: 'exactness_code',
       codeNames: locExNames,
     },
     {
+      colHeading: 'Class',
       key: 'location_class_code',
       codeNames: locClassNames,
     },
     {
+      colHeading: 'Designation',
       key: 'feature_designation_code',
     },
   ];
@@ -600,11 +681,13 @@ export const locationFields = (
 export const relActFields = relActTypes => {
   return [
     {
+      colHeading: 'Reference',
       key: 'ref',
       intLink: 'ref',
       intLinkForm: '/activity-detail/{id}',
     },
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: relActTypes,
     },
@@ -613,12 +696,15 @@ export const relActFields = relActTypes => {
 
 export const legDataFields = [
   {
+    colHeading: 'Name',
     key: 'name',
   },
   {
+    colHeading: 'Value',
     key: 'value',
   },
   {
+    colHeading: 'Equivalent',
     key: 'iati_equivalent',
   },
 ];
@@ -626,10 +712,12 @@ export const legDataFields = [
 export const conditionsFields = condCodeNames => {
   return [
     {
+      colHeading: 'Type',
       key: 'type',
       codeNames: condCodeNames,
     },
     {
+      colHeading: 'Title',
       key: 'narrative',
     },
   ];

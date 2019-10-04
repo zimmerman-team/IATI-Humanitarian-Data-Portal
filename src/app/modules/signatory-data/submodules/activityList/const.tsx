@@ -51,6 +51,7 @@ export const activityBaseTable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Status: ${value}`,
       },
     },
     {

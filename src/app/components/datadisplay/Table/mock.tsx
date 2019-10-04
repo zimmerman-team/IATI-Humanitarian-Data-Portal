@@ -110,6 +110,7 @@ export const mockDataVar2: TableModuleModel = {
     {
       name: 'Publishing organisation',
       options: {
+        sortDirection: 'asc',
         filter: true,
         filterType: 'dropdown',
         customBodyRender: (value, tableMeta, updateValue) => {
@@ -120,6 +121,7 @@ export const mockDataVar2: TableModuleModel = {
             />
           );
         },
+        customFilterListRender: value => `Publishing organisation: ${value}`,
       },
     },
     {
@@ -127,6 +129,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'dropdown',
+        customFilterListRender: value => `GB signatory: ${value}`,
       },
     },
     {
@@ -134,6 +137,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'dropdown',
+        customFilterListRender: value => `Organisation type: ${value}`,
       },
     },
     {
@@ -141,6 +145,7 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Latest IATI version: ${value}`,
       },
     },
     {
@@ -148,10 +153,11 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['true', 'false', 'na'] },
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value => `Publishing hum.data?: ${value}`,
       },
     },
     {
@@ -159,10 +165,12 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['true', 'false', 'na'] },
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value =>
+          `Publishing v2.02 hum. data?: ${value}`,
       },
     },
     {
@@ -170,10 +178,12 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['true', 'false', 'na'] },
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value =>
+          `Publishing v2.03 hum. data?: ${value}`,
       },
     },
     {
@@ -181,10 +191,11 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['true', 'false', 'na'] },
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value => `Incoming TS traceability: ${value}`,
       },
     },
   ],
@@ -199,6 +210,7 @@ export const mockDataVar2: TableModuleModel = {
     responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
+    sortFilterList: false,
     onDownload: (
       buildHead: (whatever) => string,
       buildBody: (nodata) => string,
