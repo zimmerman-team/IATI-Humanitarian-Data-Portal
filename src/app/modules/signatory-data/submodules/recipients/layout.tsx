@@ -1,10 +1,9 @@
 import React from 'react';
 import { Grid, Hidden } from '@material-ui/core';
-import { RecipientsModel } from './model';
+import { RecipientsModel } from 'app/modules/signatory-data/submodules/recipients/model';
 import TableModule from 'app/components/datadisplay/Table/index';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import Box from '@material-ui/core/Box';
-import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import { DecoSigRecTopLeft } from 'app/modules/signatory-data/submodules/recipients/common/decoration/DecoSigRecTopLeft';
 import { DecoSigRecBottomRight } from 'app/modules/signatory-data/submodules/recipients/common/decoration/DecoSigRecBottomRight';
 
@@ -38,7 +37,7 @@ export const RecipientsLayout = (props: RecipientsModel) => {
         {/* ---------------------------------------- */}
         {/* Recipients */}
         <TableModule
-          title={props.tableData.title}
+          title="Funding recipients"
           columnsCell={props.tableData.columnsCell}
           columns={props.tableData.columns}
           data={props.tableData.data}

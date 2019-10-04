@@ -61,7 +61,7 @@ function RecipientsF(props) {
     get(state.recipients.data, 'data', null),
     get(orgTypeNames, 'data', null),
     sigAllReceivers,
-    'Humanitarian recipient types',
+    'Funding recipient types',
     `facet_counts.facet_pivot.${pivotKey}`
   );
 
@@ -76,4 +76,5 @@ function RecipientsF(props) {
   );
 }
 
+//cc:look into issue TS2451
 export const Recipients = withRouter(RecipientsF);

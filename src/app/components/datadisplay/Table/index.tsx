@@ -11,6 +11,8 @@ import {
 
 const TableModule = (props: TableModuleModel) => {
   const [totalData, setTotalData] = React.useState({});
+
+  console.log('totalCell', props.totalCell);
   React.useEffect(() => {
     if (props.totalCell) {
       setTotalData(
