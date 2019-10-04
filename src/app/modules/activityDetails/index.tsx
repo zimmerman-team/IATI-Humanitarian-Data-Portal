@@ -26,8 +26,11 @@ import { useStoreState } from 'easy-peasy';
 function ActivityDetail(props) {
   /* --------- INITIAL STORE VALUES ----------------- */
   const [state, actions] = actDetailStore();
+  const [redirect, setRedirect] = React.useState(false);
 
   const codeLists = useStoreState(reduxstate => reduxstate.codelists);
+
+  const actMetadata = state.actMetadata.data;
 
   /* ----------------------------------------------- */
 
@@ -46,28 +49,36 @@ function ActivityDetail(props) {
     )}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
+    setRedirect(true);
   }, [props.match.params.code]);
 
   // calling incoming transactions
   useEffect(() => {
-    inTransactionsQuery.q = inTransactionsQuery.q.replace(
-      '{identifier_value}',
-      decodeURIComponent(props.match.params.code)
-    );
-    actions.incTransactions.fetch({ values: inTransactionsQuery });
+    actions.incTransactions.fetch({
+      values: inTransactionsQuery(decodeURIComponent(props.match.params.code)),
+    });
   }, [props.match.params.code]);
 
   // calling outgoing transactions
   useEffect(() => {
-    outTransactionsQuery.q = outTransactionsQuery.q.replace(
-      '{identifier_value}',
-      decodeURIComponent(props.match.params.code)
-    );
-    actions.outTransactions.fetch({ values: outTransactionsQuery });
+    actions.outTransactions.fetch({
+      values: outTransactionsQuery(decodeURIComponent(props.match.params.code)),
+    });
   }, [props.match.params.code]);
+
+  // here we'll check if the requested activity exists
+  // and if it doesn't we'll reroute the user to a 404 page
+  useEffect(() => {
+    if (
+      !get(actMetadata, 'data.response.docs[0].iati_identifier', null) &&
+      redirect
+    ) {
+      props.history.replace('/notFound');
+    }
+  }, [actMetadata]);
   /* ----------------------------------------------- */
   /* --------- INITIALIZING STATES ----------------- */
-  const actDetail = get(state.actMetadata, 'data.data.response.docs[0]', null);
+  const actDetail = get(actMetadata, 'data.response.docs[0]', null);
   const incTranData = get(
     state.incTransactions,
     'data.data.response.docs',

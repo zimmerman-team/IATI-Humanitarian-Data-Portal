@@ -74,7 +74,7 @@ export function Routes() {
           render={() => <ResultDetail />}
         />
 
-        <Route component={NoMatchPage} />
+        <Route exact path="/notFound" component={NoMatchPage} />
         {/* Signatory Data Container*/}
         {/* <SubmoduleContainer /> */}
       </Switch>
