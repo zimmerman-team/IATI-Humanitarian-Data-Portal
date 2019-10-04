@@ -24,17 +24,17 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: sigMetadata ? sigMetadata.reportsToFTS : 'No Data',
+            ptc: sigMetadata ? sigMetadata.reportsToFTS : 'no data',
           },
         ],
       },
       {
-        label: 'Reports to UN OCHA For FTS via IATI',
-        tooltip: 'Reports to UN OCHA For FTS via IATI',
+        label: 'Reports to UN OCHA for FTS via IATI',
+        tooltip: 'Reports to UN OCHA for FTS via IATI',
         values: [
           {
             qtc: '',
-            ptc: sigMetadata ? sigMetadata.reportsToFTSViaIATI : 'No Data',
+            ptc: sigMetadata ? sigMetadata.reportsToFTSViaIATI : 'no data',
           },
         ],
       },
@@ -44,7 +44,7 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         values: [
           {
             qtc: '',
-            ptc: sigMetadata ? sigMetadata.reportsToEU : 'No Data',
+            ptc: sigMetadata ? sigMetadata.reportsToEU : 'no data',
           },
         ],
       },

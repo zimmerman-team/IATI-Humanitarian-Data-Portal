@@ -63,7 +63,7 @@ export function formatCovData(
       if (covKey !== 'count') {
         const covValue = covItem[1];
         let opFunds: [number, string] | null = null;
-        let rating = 'No Data';
+        let rating = 'no data';
         let startDate = '';
         let endDate = '';
 

@@ -121,8 +121,8 @@ export const statusList1MockData: ListItemModel[] = [
     values: [{ version: '2.02' }],
   },
   {
-    label: 'Activities with data errors',
-    tooltip: 'Activities with data errors',
+    label: 'Data errors',
+    tooltip: 'Data errors',
     values: [{ version: '2 ~10%' }],
   },
 ];

@@ -28,7 +28,7 @@ export function formatSections(
 
     engDesc = engDesc || actDetail.description[0];
     engDesc = JSON.parse(engDesc);
-    engDesc = engDesc.narrative ? engDesc.narrative[0].narrative : 'No Data';
+    engDesc = engDesc.narrative ? engDesc.narrative[0].narrative : 'no data';
 
     sections[0] = {
       title: 'Description',

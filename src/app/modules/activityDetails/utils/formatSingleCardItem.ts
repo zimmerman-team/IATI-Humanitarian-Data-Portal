@@ -32,7 +32,7 @@ export function formatSingleCardItem(
   fieldData.forEach(element => {
     let value = get(actDetail, field.concat(element.key));
     if (!value) {
-      value = 'No Data';
+      value = 'no data';
     } else if (element.arrayKey) {
       value = value
         .map(arrVal => element.arrayKey && arrVal[element.arrayKey])
@@ -42,14 +42,14 @@ export function formatSingleCardItem(
       if (foundItem) {
         value = foundItem[element.foundKey];
       } else {
-        value = 'No Data';
+        value = 'no data';
       }
     } else if (element.codeNames) {
       value = find(element.codeNames, ['code', value]);
-      value = value ? value.name : 'No Data';
+      value = value ? value.name : 'no data';
     }
 
-    if (value !== 'No Data' && element.suffix) {
+    if (value !== 'no data' && element.suffix) {
       value += element.suffix;
     }
 

@@ -55,7 +55,7 @@ export const TableCard = (props: TableCardModel) => {
             </TableBody>
           ) : (
             <EmptyLabel>
-              <Typography variant="subtitle1">No Data</Typography>
+              <Typography variant="subtitle1">no data</Typography>
             </EmptyLabel>
           )}
         </Table>

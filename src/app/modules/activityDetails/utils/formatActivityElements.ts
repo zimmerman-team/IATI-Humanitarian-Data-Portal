@@ -64,31 +64,7 @@ export function formatActivityElements(
       ),
     });
 
-    // pushing rep org
-    elementLists.push({
-      title: 'Reporting organisation',
-      type: 'Card',
-      elName: 'repOrg',
-      items:
-        actDetail.reporting_org &&
-        formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
-    });
-
-    // pushing participating organisations
-    elementLists.push({
-      title: 'Participating organisations',
-      type: 'ExpTableCard',
-      elName: 'partOrg',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'participating_org',
-        partOrgFields(
-          get(codeLists, 'orgTypeNames.data.data', []),
-          get(codeLists, 'orgRoleNames.data.data', [])
-        )
-      ),
-    });
-
+    // 1
     // pushing other identifiers
     elementLists.push({
       title: 'Other identifiers',
@@ -101,84 +77,7 @@ export function formatActivityElements(
       ),
     });
 
-    // pushing contact info
-    elementLists.push({
-      title: 'Contact information',
-      type: 'ExpTableCard',
-      elName: 'contInfo',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'contact_info',
-        contInfoFields(get(codeLists, 'contactTypeNames.data.data', []))
-      ),
-    });
-
-    // pushing recipient countries
-    elementLists.push({
-      title: 'Recipient Countries',
-      type: 'ExpTableCard',
-      elName: 'recCount',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'recipient_country',
-        recCountFields
-      ),
-    });
-
-    // pushing recipient regions
-    elementLists.push({
-      title: 'Recipient Regions',
-      type: 'ExpTableCard',
-      elName: 'recReg',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'recipient_region',
-        recRegFields(get(codeLists, 'regVocNames.data.data', []))
-      ),
-    });
-
-    // pushing sectors
-    elementLists.push({
-      title: 'Sectors',
-      type: 'ExpTableCard',
-      elName: 'sectors',
-      tableCItems: formatTableCardItems(actDetail, 'sector', sectorFields),
-    });
-
-    // pushing tags
-    elementLists.push({
-      title: 'Tags',
-      type: 'ExpTableCard',
-      elName: 'tags',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'tag',
-        tagFields(get(codeLists, 'tagVocNames.data.data', []))
-      ),
-    });
-
-    const budgItVCode = get(
-      actDetail,
-      'country_budget_items.vocabulary',
-      'none'
-    );
-    const budgItCodeList = get(codeLists, 'budgItemVocNames.data.data', []);
-    const budgVocName = find(budgItCodeList, ['code', budgItVCode]);
-
-    // pushing country budget items
-    elementLists.push({
-      title: `Country Budget Items - ${
-        budgVocName ? budgVocName.name : 'No Data'
-      }`,
-      type: 'ExpTableCard',
-      elName: 'countBudgIt',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'country_budget_items.budget_item',
-        countBufgItFields
-      ),
-    });
-
+    // 2
     // pushing humanitarian scopes
     elementLists.push({
       title: 'Humanitarian scope',
@@ -194,94 +93,23 @@ export function formatActivityElements(
       ),
     });
 
-    // pushing policy marker
+    // 3
+    // pushing participating organisations
     elementLists.push({
-      title: 'Policy Marker',
+      title: 'Participating organisations',
       type: 'ExpTableCard',
-      elName: 'polMark',
+      elName: 'partOrg',
       tableCItems: formatTableCardItems(
         actDetail,
-        'policy_marker',
-        polMarkerFields(
-          get(codeLists, 'polMarkCodeNames.data.data', []),
-          get(codeLists, 'policMSignificanceName.data.data', []),
-          get(codeLists, 'polMarkerVocabNames.data.data', [])
-        )
-      ),
-    });
-
-    // pushing default aid type
-    elementLists.push({
-      title: 'Default Aid Type',
-      type: 'ExpTableCard',
-      elName: 'defAidTyp',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'default_aid_type',
-        defAidTypeFields(get(codeLists, 'defAidTypeVocNames.data.data', []))
-      ),
-    });
-
-    // pushing budget
-    elementLists.push({
-      title: 'Budget',
-      type: 'ExpTableCard',
-      elName: 'budget',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'budget',
-        budgetFields(
-          get(codeLists, 'budgTypeNames.data.data', []),
-          get(codeLists, 'budgStatusNames.data.data', [])
-        )
-      ),
-    });
-
-    // pushing planned disbursements
-    elementLists.push({
-      title: 'Planned Disbursements',
-      type: 'ExpTableCard',
-      elName: 'plannedDis',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'planned_disbursement',
-        disbursFields(
+        'participating_org',
+        partOrgFields(
           get(codeLists, 'orgTypeNames.data.data', []),
-          get(codeLists, 'budgTypeNames.data.data', [])
+          get(codeLists, 'orgRoleNames.data.data', [])
         )
       ),
     });
 
-    // pushing document links
-    elementLists.push({
-      title: 'Document Links',
-      type: 'ExpTableCard',
-      elName: 'docLinks',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'document_link',
-        docLinkFields
-      ),
-    });
-
-    // pushing crs_add
-    elementLists.push({
-      title: 'CRS Add',
-      type: 'Card',
-      elName: 'crsAdd',
-      items:
-        actDetail.crs_add &&
-        formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
-    });
-
-    // Pushing FSS
-    elementLists.push({
-      title: `FSS - ${get(actDetail, 'fss.extraction_date', 'No Data')}`,
-      type: 'ExpTableCard',
-      elName: 'fssEl',
-      tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
-    });
-
+    // 4
     // pushing locations
     elementLists.push({
       title: 'Locations',
@@ -298,6 +126,190 @@ export function formatActivityElements(
         )
       ),
     });
+
+    // 5
+    // pushing budget
+    elementLists.push({
+      title: 'Budget',
+      type: 'ExpTableCard',
+      elName: 'budget',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'budget',
+        budgetFields(
+          get(codeLists, 'budgTypeNames.data.data', []),
+          get(codeLists, 'budgStatusNames.data.data', [])
+        )
+      ),
+    });
+
+    // 6
+    // pushing sectors
+    elementLists.push({
+      title: 'Sectors',
+      type: 'ExpTableCard',
+      elName: 'sectors',
+      tableCItems: formatTableCardItems(actDetail, 'sector', sectorFields),
+    });
+
+    // 7
+    // pushing policy marker
+    elementLists.push({
+      title: 'Policy marker',
+      type: 'ExpTableCard',
+      elName: 'polMark',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'policy_marker',
+        polMarkerFields(
+          get(codeLists, 'polMarkCodeNames.data.data', []),
+          get(codeLists, 'policMSignificanceName.data.data', []),
+          get(codeLists, 'polMarkerVocabNames.data.data', [])
+        )
+      ),
+    });
+
+    // 8
+    // pushing tags
+    elementLists.push({
+      title: 'Tags',
+      type: 'ExpTableCard',
+      elName: 'tags',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'tag',
+        tagFields(get(codeLists, 'tagVocNames.data.data', []))
+      ),
+    });
+
+    // 9
+    const budgItVCode = get(
+      actDetail,
+      'country_budget_items.vocabulary',
+      'none'
+    );
+    const budgItCodeList = get(codeLists, 'budgItemVocNames.data.data', []);
+    const budgVocName = find(budgItCodeList, ['code', budgItVCode]);
+
+    // pushing country budget items
+    elementLists.push({
+      title: `Country budget items - ${
+        budgVocName ? budgVocName.name : 'no data'
+      }`,
+      type: 'ExpTableCard',
+      elName: 'countBudgIt',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'country_budget_items.budget_item',
+        countBufgItFields
+      ),
+    });
+
+    // 10
+    // pushing contact info
+    elementLists.push({
+      title: 'Contact information',
+      type: 'ExpTableCard',
+      elName: 'contInfo',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'contact_info',
+        contInfoFields(get(codeLists, 'contactTypeNames.data.data', []))
+      ),
+    });
+
+    // pushing rep org
+    elementLists.push({
+      title: 'Reporting organisation',
+      type: 'Card',
+      elName: 'repOrg',
+      items:
+        actDetail.reporting_org &&
+        formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
+    });
+
+    // pushing recipient countries
+    elementLists.push({
+      title: 'Recipient countries',
+      type: 'ExpTableCard',
+      elName: 'recCount',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'recipient_country',
+        recCountFields
+      ),
+    });
+
+    // pushing recipient regions
+    elementLists.push({
+      title: 'Recipient regions',
+      type: 'ExpTableCard',
+      elName: 'recReg',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'recipient_region',
+        recRegFields(get(codeLists, 'regVocNames.data.data', []))
+      ),
+    });
+
+    // pushing default aid type
+    elementLists.push({
+      title: 'Default aid type',
+      type: 'ExpTableCard',
+      elName: 'defAidTyp',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'default_aid_type',
+        defAidTypeFields(get(codeLists, 'defAidTypeVocNames.data.data', []))
+      ),
+    });
+
+    // pushing planned disbursements
+    elementLists.push({
+      title: 'Planned disbursements',
+      type: 'ExpTableCard',
+      elName: 'plannedDis',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'planned_disbursement',
+        disbursFields(
+          get(codeLists, 'orgTypeNames.data.data', []),
+          get(codeLists, 'budgTypeNames.data.data', [])
+        )
+      ),
+    });
+
+    // pushing document links
+    elementLists.push({
+      title: 'Document links',
+      type: 'ExpTableCard',
+      elName: 'docLinks',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'document_link',
+        docLinkFields
+      ),
+    });
+
+    /* temporarily disabled */
+    // pushing crs_add
+    /*elementLists.push({
+      title: 'CRS add',
+      type: 'Card',
+      elName: 'crsAdd',
+      items:
+        actDetail.crs_add &&
+        formatSingleCardItem(actDetail, 'crs_add.', crsAddFields),
+    });
+
+    /* temporarily disabled */
+    // Pushing FSS
+    /*elementLists.push({
+      title: `FSS - ${get(actDetail, 'fss.extraction_date', 'no data')}`,
+      type: 'ExpTableCard',
+      elName: 'fssEl',
+      tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
+    });*/
 
     // pushing related activities
     elementLists.push({
@@ -325,7 +337,7 @@ export function formatActivityElements(
 
     if (actDetail.conditions) {
       const condAttached =
-        actDetail.conditions.attached === '1' ? 'Attached' : 'Not attached';
+        actDetail.conditions.attached === '1' ? 'attached' : 'not attached';
       // pushing conditions
       elementLists.push({
         title: `Conditions - ${condAttached}`,
@@ -339,6 +351,5 @@ export function formatActivityElements(
       });
     }
   }
-
-  return sortBy(elementLists, 'title');
+  return elementLists;
 }

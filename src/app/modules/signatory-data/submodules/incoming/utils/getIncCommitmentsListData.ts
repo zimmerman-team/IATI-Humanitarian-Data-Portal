@@ -12,8 +12,8 @@ export const getIncCommitmentsListData = (rawData): ListModel => {
     elName: 'incComms',
     items: [
       {
-        label: 'Total no. of activities with Incoming Commitments',
-        tooltip: 'Total no. of activities with Incoming Commitments',
+        label: 'Total no. of activities',
+        tooltip: 'Total no. of activities',
         values: [
           {
             ptc: percentage(incCommitmentValue1, allHumActCount),
@@ -22,8 +22,8 @@ export const getIncCommitmentsListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With funding provider details specified',
-        tooltip: 'With funding provider details specified',
+        label: 'Funding provider details',
+        tooltip: 'Funding provider details',
         values: [
           {
             ptc: percentage(incCommitmentValue2, allHumActCount),
@@ -32,8 +32,8 @@ export const getIncCommitmentsListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'With funding organisation type provided',
-        tooltip: 'With funding organisation type provided',
+        label: 'Organisation type provided',
+        tooltip: 'Organisation type provided',
         values: [
           {
             ptc: percentage(incCommitmentValue3, allHumActCount),

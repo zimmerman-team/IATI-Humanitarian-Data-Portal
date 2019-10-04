@@ -77,7 +77,7 @@ export function formatTableCardItems(
         keyVal = get(fItem, `[0]${fkey.key}`, null);
       }
 
-      let value = keyVal || 'No Data';
+      let value = keyVal || 'no data';
 
       if (keyVal) {
         if (fkey.key.indexOf('narrative') !== -1 || fkey.narrative) {
@@ -91,7 +91,7 @@ export function formatTableCardItems(
 
         if (fkey.codeNames) {
           value = find(fkey.codeNames, ['code', value]);
-          value = value ? value.name : 'No Data';
+          value = value ? value.name : 'no data';
         }
 
         if (fkey.suffix) {
@@ -108,7 +108,7 @@ export function formatTableCardItems(
         }
       }
 
-      if (fkey.emptyValString && value === 'No Data') {
+      if (fkey.emptyValString && value === 'no data') {
         value = fkey.emptyValString;
       }
 

@@ -88,19 +88,19 @@ export function getNarrativeText(narArray, doubleArray?: boolean) {
   }
 
   if (engNarr) {
-    return engNarr.narrative || engNarr.text || 'No Data';
+    return engNarr.narrative || engNarr.text || 'no data';
   } else if (doubleArray) {
     // ye so because the response structure is bad
     // it uses double arrays for no reason
     // we need to use the first arrays items key
     return (
-      get(narArray, '[0][0].narrative', 'No Data') ||
-      get(narArray, '[0][0].text', 'No Data')
+      get(narArray, '[0][0].narrative', 'no data') ||
+      get(narArray, '[0][0].text', 'no data')
     );
   }
 
   return (
-    get(narArray, '[0].narrative', 'No Data') ||
-    get(narArray, '[0].text', 'No Data')
+    get(narArray, '[0].narrative', 'no data') ||
+    get(narArray, '[0].text', 'no data')
   );
 }
