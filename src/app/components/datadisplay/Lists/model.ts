@@ -14,6 +14,7 @@ export type ListItemModel = {
   label: string;
   values: ListItemValueModel[];
   tooltip?: string;
+  highlight?: boolean;
 };
 
 export type ListItemValueModel = {

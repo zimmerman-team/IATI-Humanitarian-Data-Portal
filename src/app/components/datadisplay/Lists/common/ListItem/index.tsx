@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TableCell from '@material-ui/core/TableCell';
+import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { TooltipButton as Tooltip } from 'app/components/datadisplay/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -19,16 +19,23 @@ const Typo = styled(props => <Typography {...props} />)`
 export const RowHeader = styled(props => <TableCell {...props} />)`
   && {
     padding-left: 0;
+    background-color: ${props => (props.highlight ? 'yellow' : '')};
   }
+`;
+
+export const TableCell = styled(props => <MuiTableCell {...props} />)`
+  background-color: ${props =>
+    props.highlight ? 'yellow' : '#fff'} !important;
 `;
 
 const ListItem = (props: ListItemModel) => {
   const cellValues = props.values.map(value =>
     Object.values(value).map(cell => (
-      <TableCell align="right">{cell}</TableCell>
+      <TableCell key={cell} align="right" highlight={props.highlight}>
+        {cell}
+      </TableCell>
     ))
   );
-
   return (
     <TableRow>
       <RowHeader component="th" scope="row">
