@@ -415,21 +415,29 @@ export const tagFields = tagVocNames => {
   ];
 };
 
-export const sectorFields = [
-  {
-    colHeading: 'Code',
-    key: 'code',
-  },
-  {
-    colHeading: 'Description',
-    key: 'narrative',
-  },
-  {
-    colHeading: 'Percentage',
-    key: 'percentage',
-    suffix: '%',
-  },
-];
+export const sectorFields = sectorVocabs => {
+  return [
+    {
+      colHeading: 'Code',
+      key: 'code',
+    },
+    {
+      colHeading: 'Description',
+      key: 'narrative',
+    },
+    {
+      colHeading: 'Percentage',
+      key: 'percentage',
+      suffix: '%',
+    },
+    {
+      colHeading: 'Vocabulary',
+      key: 'vocabulary',
+      codeNames: sectorVocabs,
+      extLink: 'vocabulary_uri',
+    },
+  ];
+};
 
 export const recRegFields = regVocNames => {
   return [

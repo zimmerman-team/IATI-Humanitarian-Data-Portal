@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { DecoNotMatchTopLeft } from 'app/modules/common/NoMatchPage/common/decoration/DecoNotMatchTopLeft';
+import { DecoNoMatchMidRight } from 'app/modules/common/NoMatchPage/common/decoration/DecoNoMatchMidRight';
+
+//cc:refactor this component, inline css need to be moved to proper styled components
 export const NoMatchPage = () => {
   return (
     <div
       css={`
+        position: relative;
         width: 100%;
         height: 100%;
         padding: 50px;
@@ -13,6 +18,25 @@ export const NoMatchPage = () => {
         flex-direction: column;
       `}
     >
+      <div
+        css={`
+          position: absolute;
+          top: -50px;
+          left: 0;
+        `}
+      >
+        <DecoNotMatchTopLeft />
+      </div>
+
+      <div
+        css={`
+          position: absolute;
+          top: 200px;
+          right: 0;
+        `}
+      >
+        <DecoNoMatchMidRight />
+      </div>
       <div
         css={`
           font-family: Inter;
