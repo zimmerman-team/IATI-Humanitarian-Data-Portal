@@ -1,10 +1,13 @@
 /* models/interfaces */
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { ResultItem } from '../store/interface';
-import { ListCellModel } from '../../../components/datadisplay/Lists/common/SimpleListItem/model';
+import { ListCellModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* utils */
-import { formatTableCardItems } from '../../activityDetails/utils/formatTableCardItems';
+import {
+  formatTableCardItems,
+  KeyItemModel,
+} from 'app/modules/activityDetails/utils/formatTableCardItems';
 import { getNarrativeText } from 'app/utils/generic';
 import get from 'lodash/get';
 
@@ -18,6 +21,31 @@ import {
   resRefFields,
   targActFields,
 } from '../const';
+
+function correctFields(perIndex: number): KeyItemModel[] {
+  let correctedFields: KeyItemModel[] = targActFields;
+  // so here we need to remove the heading from all
+  // underlying things
+  if (perIndex !== 0) {
+    correctedFields = targActFields.map(field => {
+      const fieldItem: KeyItemModel = {
+        key: field.key,
+      };
+
+      if (field.emptyValString) {
+        fieldItem.emptyValString = field.emptyValString;
+      }
+
+      if (field.arrayKey) {
+        fieldItem.arrayKey = field.arrayKey;
+      }
+
+      return fieldItem;
+    });
+  }
+
+  return correctedFields;
+}
 
 export function formatResultElements(
   resDetail: ResultItem | null,
@@ -170,13 +198,16 @@ export function formatResultElements(
           indicator[0].period.forEach((period, perIndex) => {
             // and here we loop through the periods and concat their target
             // data together
+
             targetItems = targetItems.concat(
               formatTableCardItems(
                 period,
                 'target',
-                targActFields,
+                correctFields(perIndex),
                 false,
-                `${period.period_start.iso_date} to ${period.period_end.iso_date}`
+                `${period.period_start.iso_date} to ${period.period_end.iso_date}`,
+                'Period',
+                perIndex
               )
             );
 
@@ -242,9 +273,11 @@ export function formatResultElements(
               formatTableCardItems(
                 period,
                 'actual',
-                targActFields,
+                correctFields(perIndex),
                 false,
-                `${period.period_start.iso_date} to ${period.period_end.iso_date}`
+                `${period.period_start.iso_date} to ${period.period_end.iso_date}`,
+                'Period',
+                perIndex
               )
             );
 
