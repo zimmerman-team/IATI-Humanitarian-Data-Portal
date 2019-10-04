@@ -36,4 +36,5 @@ export interface CodeListInterface {
   locClassNames: ApiModel<any, CodeItemInterface[]>;
   relActTypes: ApiModel<any, CodeItemInterface[]>;
   condCodeNames: ApiModel<any, CodeItemInterface[]>;
+  sectorVocabs: ApiModel<any, CodeItemInterface[]>;
 }

@@ -152,4 +152,9 @@ export const codelists: CodeListInterface = {
       `${process.env.REACT_APP_DS_API}/api/codelists/ConditionType/?format=json`
     ),
   },
+  sectorVocabs: {
+    ...apiModel(
+      `${process.env.REACT_APP_DS_API}/api/codelists/SectorVocabulary/?format=json`
+    ),
+  },
 };
