@@ -3,7 +3,6 @@ import React from 'react';
 import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { SignatoryDataModel } from './model';
 import TableModule from 'app/components/datadisplay/Table';
-import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { DecoSigDataTopLeft } from 'app/modules/signatory-data/common/decoration/DecoSigDataTopLeft';
 
@@ -29,7 +28,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       <Box height="50px" />
       <Grid container>
         <Grid item xs={12}>
-          <TableModule {...mockDataVar2} data={props.signatories} />
+          <TableModule {...props.sigTable} />
         </Grid>
       </Grid>
       <Box height="20px" />

@@ -21,6 +21,8 @@ import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivi
 import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
 import { CodeListInterface } from '../api/interfaces/codeListsInterface';
 import { codelists } from '../api/actionsReducers/codeLists';
+import { DataTableOptions } from 'app/state/general/interfaces';
+import { dataTableOpts } from 'app/state/general/actionsReducers';
 
 const persistSessionConfig = {
   key: 'session',
@@ -41,9 +43,11 @@ export interface ApplicationStoreModel {
   sigdataincomingfundtrace: ActivityResponceInterface;
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
   codelists: CodeListInterface;
+  sigDataOpts: DataTableOptions;
 }
 
 const applicationStore: ApplicationStoreModel = {
+  sigDataOpts: dataTableOpts,
   codelists,
   activities,
   humanitarian,
