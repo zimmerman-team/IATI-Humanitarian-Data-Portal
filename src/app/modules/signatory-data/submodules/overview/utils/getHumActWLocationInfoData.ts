@@ -9,6 +9,7 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
     get(rawData, 'facets.humActWLocationInfoData_2.count', 0),
     get(rawData, 'facets.humActWLocationInfoData_3.count', 0),
     get(rawData, 'facets.humActWLocationInfoData_4.count', 0),
+    get(rawData, 'facets.humActWLocationInfoData_region.count', 0),
   ];
   return {
     title: 'Hum. activites with location information',
@@ -21,6 +22,16 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
           {
             ptc: percentage(itemCounts[0], allActCount),
             qtc: itemCounts[0],
+          },
+        ],
+      },
+      {
+        label: 'Recipient regions',
+        tooltip: 'Recipient regions',
+        values: [
+          {
+            ptc: percentage(itemCounts[4], allActCount),
+            qtc: itemCounts[4],
           },
         ],
       },
