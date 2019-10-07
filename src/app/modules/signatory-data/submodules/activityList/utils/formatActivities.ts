@@ -26,8 +26,6 @@ export function formatActivities(
         activity.activity_status_code,
       ]);
 
-      console.log('countryCodeList', countryCodeList);
-
       const countryNames =
         activity.recipient_country_code &&
         activity.recipient_country_code.map(countryCode => {
