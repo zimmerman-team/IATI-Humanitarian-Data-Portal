@@ -193,6 +193,12 @@ export function InitialDataLoad() {
   const getSectorVocabs = useStoreActions(
     actions => actions.codelists.sectorVocabs.fetch
   );
+  const countNames = useStoreState(
+    reduxstate => reduxstate.codelists.countNames
+  );
+  const getCountNames = useStoreActions(
+    actions => actions.codelists.countNames.fetch
+  );
 
   React.useEffect(() => {
     if (!gbsignatoriesData.data) {
@@ -290,6 +296,15 @@ export function InitialDataLoad() {
     }
     if (!sectorVocabs.data) {
       getSectorVocabs({});
+    }
+    if (!countNames.data) {
+      getCountNames({
+        values: {
+          q: '*:*',
+          fl: 'code,name',
+          rows: 1000,
+        },
+      });
     }
   }, []);
 }

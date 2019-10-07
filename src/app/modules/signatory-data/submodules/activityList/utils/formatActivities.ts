@@ -7,6 +7,7 @@ import find from 'lodash/find';
 
 export function formatActivities(
   actStatusCodeList,
+  countryCodeList,
   activities?: SingleDefActivity[]
 ): Array<Array<string | Array<string>>> {
   const tableData: Array<Array<string | Array<string>>> = [];
@@ -24,12 +25,25 @@ export function formatActivities(
         'code',
         activity.activity_status_code,
       ]);
+
+      console.log('countryCodeList', countryCodeList);
+
+      const countryNames =
+        activity.recipient_country_code &&
+        activity.recipient_country_code.map(countryCode => {
+          const countName = find(countryCodeList, ['code', countryCode]);
+          if (countName) {
+            return countName.name;
+          }
+          return '';
+        });
+
       tableData.push([
         formatDate(activity.activity_date_start_actual),
         formatDate(activity.activity_date_end_actual),
         statusName ? statusName.name : 'no data',
         [activity.iati_identifier, engTitle],
-        activity.recipient_country_name || [],
+        countryNames || [],
         resultCount,
       ]);
     });
