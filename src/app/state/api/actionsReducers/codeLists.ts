@@ -158,10 +158,9 @@ export const codelists: CodeListInterface = {
       `${process.env.REACT_APP_DS_API}/api/codelists/SectorVocabulary/?format=json`
     ),
   },
-  // TODO last item edited was this
   countNames: {
     ...apiModel(
-      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/`
+      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/select/`
     ),
   },
 };
