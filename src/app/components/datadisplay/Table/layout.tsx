@@ -15,6 +15,16 @@ const TableLayout = (props: TableLayoutModel) => {
       title={props.title}
       options={props.options}
       columns={props.columns}
+      /* todo: figure out a cleaner way to do this*/
+      css={`
+        .TotalCell {
+          &:first-child {
+            &::before {
+              content: '** %s and totals relate to publishing organisations';
+            }
+          }
+        }
+      `}
     />
   );
 };
