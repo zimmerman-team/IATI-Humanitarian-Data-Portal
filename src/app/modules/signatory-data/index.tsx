@@ -11,16 +11,20 @@ import map from 'lodash/map';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 /* mock */
-import { signatoryDataMock, iatigbsignatoriesCallValues, helloTesting } from './mock';
+import { signatoryDataMock, iatigbsignatoriesCallValues, OrgNarrative } from './mock';
 import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 
 export function SignatoryData() {
   useTitle(`MLT - ${signatoryDataMock.title}`);
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
+  const organisationNarrativeData = useStoreState(state => state.organisationnarrative);
   const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
   /* create the API call instances */
   const iatigbsignatoriesCall = useStoreActions(
     actions => actions.iatigbsignatories.fetch
+  );
+  const organisationNarrativeCall = useStoreActions(
+    actions => actions.organisationnarrative.fetch
   );
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
@@ -42,16 +46,17 @@ export function SignatoryData() {
     ).join(' ');
     const callValues = {
       values: {
-        ...helloTesting.values,
+        ...OrgNarrative.values,
         q: `reporting_org_ref:(${publishers})`,
       },
     };
-    iatigbsignatoriesCall(callValues);
-  }, )
+    organisationNarrativeCall(callValues);
+  }, [gbsignatoriesData]);
 
   const signatories = formatTableSignatories(
     get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []),
-    get(gbsignatoriesData, 'data', [])
+    get(gbsignatoriesData, 'data', []),
+    get(organisationNarrativeData, 'data.data.grouped.reporting_org_ref.groups',[])
   );
   return (
     <SignatoryDataLayout
