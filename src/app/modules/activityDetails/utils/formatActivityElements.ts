@@ -148,7 +148,11 @@ export function formatActivityElements(
       title: 'Sectors',
       type: 'ExpTableCard',
       elName: 'sectors',
-      tableCItems: formatTableCardItems(actDetail, 'sector', sectorFields),
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'sector',
+        sectorFields(get(codeLists, 'sectorVocabs.data.data', []))
+      ),
     });
 
     // 7

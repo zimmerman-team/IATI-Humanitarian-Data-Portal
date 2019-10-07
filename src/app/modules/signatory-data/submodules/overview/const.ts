@@ -57,6 +57,10 @@ export const humCallValues = {
     type: 'query',
     q: '(participating_org_type:24 AND participating_org_role:4)',
   },
+  humActwGBClassificationsData_4: {
+    type: 'query',
+    q: '(default_aid_type_vocabulary:4 AND default_aid_type_code:*)',
+  },
   humOtherClassOfInterestData_1: {
     type: 'query',
     q: '(sector_code:* AND -(-sector_vocabulary:1 OR sector_vocabulary:*))',
@@ -77,6 +81,10 @@ export const humCallValues = {
   humActWLocationInfoData_1: {
     type: 'query',
     q: 'recipient_country_code:*',
+  },
+  humActWLocationInfoData_region: {
+    type: 'query',
+    q: 'recipient_region_code:*',
   },
   humActWLocationInfoData_2: {
     type: 'query',
@@ -125,7 +133,7 @@ export const humCallValues = {
 
 export const activityStatusValues = {
   latest_update: 'max(last_updated_datetime)',
-  data_first_published: 'min(last_updated_datetime)',
+  data_first_published: 'min(dataset_date_created)',
   latest_iati_version: 'max(dataset_iati_version)',
   currentHumValuesData: {
     type: 'query',

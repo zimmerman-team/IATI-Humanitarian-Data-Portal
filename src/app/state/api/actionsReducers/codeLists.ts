@@ -1,5 +1,6 @@
 import { apiModel } from './index';
 import { CodeListInterface } from '../interfaces/codeListsInterface';
+import { endpoints } from 'app/__consts__/endpoints';
 
 export const codelists: CodeListInterface = {
   actStatus: {
@@ -150,6 +151,16 @@ export const codelists: CodeListInterface = {
   condCodeNames: {
     ...apiModel(
       `${process.env.REACT_APP_DS_API}/api/codelists/ConditionType/?format=json`
+    ),
+  },
+  sectorVocabs: {
+    ...apiModel(
+      `${process.env.REACT_APP_DS_API}/api/codelists/SectorVocabulary/?format=json`
+    ),
+  },
+  countNames: {
+    ...apiModel(
+      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/select/`
     ),
   },
 };

@@ -49,6 +49,13 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         label: 'Cash transfer (not yet available in IATI standard)',
         tooltip: 'Cash transfer (not yet available in IATI standard)',
         values: [{ ptc: 'TBD', qtc: 'TBD' }],
+        // values: [
+        //   {
+        //     ptc: percentage(itemCounts[3], allActCount),
+        //     qtc: itemCounts[3],
+        //   },
+        // ],
+        highlight: true,
       },
     ],
   };

@@ -62,12 +62,14 @@ export interface RecipientsRespModel<QueryModel, DocModel>
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RecipientsInterface
   extends ApiModel<
     RecipientsQueryModel,
     RecipientsRespModel<RecipientsQueryModel, any>
   > {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface RecTypesInterface
   extends ApiModel<
     RecTypesQueryModel,

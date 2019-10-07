@@ -1,9 +1,12 @@
+import React from 'react';
+
 /* models/ interfaces */
 import { ActDetailQuery } from 'app/modules/activityDetails/store/interface';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 
 /* helpers */
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
+import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 
 export const actMetadataQuery: ActDetailQuery = {
   q: '*:*',
@@ -34,20 +37,24 @@ export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {
   };
 };
 
-export const inTransactionsQuery: ActDetailQuery = {
-  q:
-    'iati_identifier:{identifier_value} AND (transaction_type:1 OR transaction_type:11 OR transaction_type:13)',
-  fl:
-    'transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id',
-  rows: 1000,
+export const inTransactionsQuery = (iatiIdentifier: string): ActDetailQuery => {
+  return {
+    q: `iati_identifier:${iatiIdentifier} AND (transaction_type:1 OR transaction_type:11 OR transaction_type:13)`,
+    fl:
+      'transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id',
+    rows: 1000,
+  };
 };
 
-export const outTransactionsQuery: ActDetailQuery = {
-  q:
-    'iati_identifier:{identifier_value} AND (transaction_type:2 OR transaction_type:3 OR transaction_type:4 OR transaction_type:12)',
-  fl:
-    'transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id',
-  rows: 1000,
+export const outTransactionsQuery = (
+  iatiIdentifier: string
+): ActDetailQuery => {
+  return {
+    q: `iati_identifier:${iatiIdentifier} AND (transaction_type:2 OR transaction_type:3 OR transaction_type:4 OR transaction_type:12)`,
+    fl:
+      'transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id',
+    rows: 1000,
+  };
 };
 
 export const baseTranstable: TableModuleModel = {
@@ -65,6 +72,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `From: ${value}`,
       },
     },
     {
@@ -72,6 +80,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `To: ${value}`,
       },
     },
     {
@@ -79,6 +88,7 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Transaction Type: ${value}`,
       },
     },
     {
@@ -98,6 +108,18 @@ export const baseTranstable: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
+        customFilterListRender: value => `Trace ID.: ${value}`,
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value.toLowerCase() !== 'no data') {
+            return (
+              <LinkCellModule
+                link={`/activity-detail/${value}`}
+                value={value}
+              />
+            );
+          }
+          return 'No data';
+        },
       },
     },
   ],
@@ -393,21 +415,29 @@ export const tagFields = tagVocNames => {
   ];
 };
 
-export const sectorFields = [
-  {
-    colHeading: 'Code',
-    key: 'code',
-  },
-  {
-    colHeading: 'Description',
-    key: 'narrative',
-  },
-  {
-    colHeading: 'Percentage',
-    key: 'percentage',
-    suffix: '%',
-  },
-];
+export const sectorFields = sectorVocabs => {
+  return [
+    {
+      colHeading: 'Code',
+      key: 'code',
+    },
+    {
+      colHeading: 'Description',
+      key: 'narrative',
+    },
+    {
+      colHeading: 'Percentage',
+      key: 'percentage',
+      suffix: '%',
+    },
+    {
+      colHeading: 'Vocabulary',
+      key: 'vocabulary',
+      codeNames: sectorVocabs,
+      extLink: 'vocabulary_uri',
+    },
+  ];
+};
 
 export const recRegFields = regVocNames => {
   return [

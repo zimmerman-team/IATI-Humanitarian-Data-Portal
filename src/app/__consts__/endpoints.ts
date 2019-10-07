@@ -3,6 +3,8 @@ const devEndpoints = {
   transaction: 'transaction-mlt',
   organisation: 'organisation-mlt',
   result: 'result-mlt',
+  datasetnote: 'datasetnote',
+  codelists: 'codelists',
 };
 
 const prodEndpoints = {
@@ -10,6 +12,8 @@ const prodEndpoints = {
   transaction: 'transaction',
   organisation: 'organisation',
   result: 'result',
+  datasetnote: 'datasetnote',
+  codelists: 'codelists',
 };
 
 export const endpoints =

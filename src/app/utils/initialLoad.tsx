@@ -187,6 +187,18 @@ export function InitialDataLoad() {
   const getCondCodes = useStoreActions(
     actions => actions.codelists.condCodeNames.fetch
   );
+  const sectorVocabs = useStoreState(
+    reduxstate => reduxstate.codelists.sectorVocabs
+  );
+  const getSectorVocabs = useStoreActions(
+    actions => actions.codelists.sectorVocabs.fetch
+  );
+  const countNames = useStoreState(
+    reduxstate => reduxstate.codelists.countNames
+  );
+  const getCountNames = useStoreActions(
+    actions => actions.codelists.countNames.fetch
+  );
 
   React.useEffect(() => {
     if (!gbsignatoriesData.data) {
@@ -281,6 +293,18 @@ export function InitialDataLoad() {
     }
     if (!condCodeNames.data) {
       getCondCodes({});
+    }
+    if (!sectorVocabs.data) {
+      getSectorVocabs({});
+    }
+    if (!countNames.data) {
+      getCountNames({
+        values: {
+          q: '*:*',
+          fl: 'code,name',
+          rows: 1000,
+        },
+      });
     }
   }, []);
 }

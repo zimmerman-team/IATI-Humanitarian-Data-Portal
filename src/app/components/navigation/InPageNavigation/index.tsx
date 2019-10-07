@@ -117,6 +117,9 @@ export function InPageNavigation(props: InPageNavModel) {
         css={`
           display: flex;
           flex-direction: column;
+          height: 70vh;
+          overflow: hidden;
+          overflow-y: scroll;
         `}
       >
         {props.lists.map((list, index) => {
