@@ -12,10 +12,12 @@ import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
 import get from 'lodash/get';
 import map from 'lodash/map';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import { formatTableSignatories } from 'app/modules/signatory-data/utils';
+//import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 
 /* mock */
-import { signatoryDataMock, iatigbsignatoriesCallValues } from './mock';
+import { signatoryDataMock, iatigbsignatoriesCallValues, OrgNarrative } from './mock';
+import { formatTableSignatories } from 'app/modules/signatory-data/utils';
+//import { signatoryDataMock, iatigbsignatoriesCallValues } from './mock';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryData = React.memo(
@@ -30,12 +32,16 @@ export const SignatoryData = React.memo(
     const optionActions = useStoreActions(action => action.sigDataOpts);
 
     const gbsignatoriesData = useStoreState(state => state.gbsignatories);
+    const organisationNarrativeData = useStoreState(state => state.organisationnarrative);
     const iatigbsignatoriesData = useStoreState(
       state => state.iatigbsignatories
     );
     /* create the API call instances */
     const iatigbsignatoriesCall = useStoreActions(
       actions => actions.iatigbsignatories.fetch
+    );
+    const organisationNarrativeCall = useStoreActions(
+      actions => actions.organisationnarrative.fetch
     );
 
     // so when the component mounts we want to set the
@@ -76,27 +82,39 @@ export const SignatoryData = React.memo(
     }, []);
 
     /* use useEffect as componentDidMount and commit the API calls */
+
     React.useEffect(() => {
       const publishers = map(get(gbsignatoriesData, 'data', []), sig =>
         get(sig, 'IATIOrgRef', '')
       ).join(' ');
-      const callValues = {
+      const callValuesNarrative = {
+        values: {
+          ...OrgNarrative.values,
+          q: `reporting_org_ref:(${publishers})`,
+        },
+      };
+      const callValuesIatiSig = {
         values: {
           ...iatigbsignatoriesCallValues.values,
           q: `reporting_org_ref:(${publishers})`,
         },
+
       };
-      iatigbsignatoriesCall(callValues);
+      organisationNarrativeCall(callValuesNarrative);
+      iatigbsignatoriesCall(callValuesIatiSig);
     }, [gbsignatoriesData]);
+
+
 
     React.useEffect(() => {
       setSignatories(
         formatTableSignatories(
           get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []),
-          get(gbsignatoriesData, 'data', [])
+          get(gbsignatoriesData, 'data', []),
+          get(organisationNarrativeData, 'data.data.grouped.reporting_org_ref.groups', []),
         )
       );
-    }, [iatigbsignatoriesData]);
+    }, [iatigbsignatoriesData && organisationNarrativeData]);
 
     // filterLists
     const sigTable = mockDataVar2;
@@ -119,7 +137,7 @@ export const SignatoryData = React.memo(
         sigTable={sigTable}
         title={signatoryDataMock.title}
         description={signatoryDataMock.description}
-        loading={gbsignatoriesData.loading || iatigbsignatoriesData.loading}
+        loading={organisationNarrativeData.loading || gbsignatoriesData.loading || iatigbsignatoriesData.loading }
       />
     );
     //  we set this to false, because we don't want this

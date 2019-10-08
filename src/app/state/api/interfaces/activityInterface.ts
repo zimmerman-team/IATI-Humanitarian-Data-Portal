@@ -139,3 +139,6 @@ export interface ActivityResponceStringQueryInterface
 
 export interface ActivityResponceStringArrayQueryInterface
   extends ApiModel<string[], ActivityResponse> {}
+
+export interface OrganisationNarrativeInterface
+  extends ApiModel<ActivityQuery, ActivityResponse> {}
