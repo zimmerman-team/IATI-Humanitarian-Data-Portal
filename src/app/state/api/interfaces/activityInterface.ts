@@ -24,7 +24,9 @@ export interface SingleDefActivity {
   };
   crs_add: any;
   activity_date_start_actual?: string;
+  activity_date_start_planned?: string;
   activity_date_end_actual?: string;
+  activity_date_end_planned?: string;
   activity_status_code: string;
   collaboration_type_code: string;
   capital_spend_percentage: number;
