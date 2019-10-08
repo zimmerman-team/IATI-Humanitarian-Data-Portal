@@ -1,6 +1,7 @@
 import { PublisherInterface } from './interface';
-import { apiModel } from 'app/state/api/actionsReducers';
+import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import { endpoints } from 'app/__consts__/endpoints';
+import { apiModel, spaceCloudAPIModel } from 'app/state/api/actionsReducers';
 
 export const humPublishers: PublisherInterface = {
   ...apiModel(
@@ -24,4 +25,8 @@ export const publishersTrac: PublisherInterface = {
   ...apiModel(
     `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
   ),
+};
+
+export const cctriCMS: GBSignatoryResponseInterface = {
+  ...spaceCloudAPIModel('cctri'),
 };
