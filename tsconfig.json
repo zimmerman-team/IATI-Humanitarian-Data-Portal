@@ -24,10 +24,7 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "types": [
-      "cypress-commands",
-      "cypress",
-      "@types/testing-library__cypress",
-      "cypress-plugin-snapshots"
+      "cypress"
     ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
