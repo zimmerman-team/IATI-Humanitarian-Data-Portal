@@ -9,7 +9,6 @@ import { appStore, persistor } from './state/store';
 import '../index.css';
 import { Client } from './state/api/Client';
 import { ClientContextProvider } from 'react-fetching-library';
-import JssProvider from 'react-jss/lib/JssProvider';
 import { createGenerateClassName } from '@material-ui/styles';
 
 interface ProviderProps {
@@ -23,7 +22,7 @@ const generateClassName = createGenerateClassName({
 
 function Providers(props: ProviderProps) {
   return (
-    <JssProvider generateClassName={generateClassName}>
+
       <ThemeProvider theme={theme}>
         {/* redux store provider*/}
         <StoreProvider store={appStore}>
@@ -35,7 +34,7 @@ function Providers(props: ProviderProps) {
           </PersistGate>
         </StoreProvider>
       </ThemeProvider>
-    </JssProvider>
+
   );
 }
 
