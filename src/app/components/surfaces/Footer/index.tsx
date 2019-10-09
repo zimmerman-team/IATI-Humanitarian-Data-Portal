@@ -34,16 +34,23 @@ const Link = styled(props => <MuiLink {...props} />)`
 
 export const Footer = () => {
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Link>
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      data-testid="Footer"
+    >
+      <Link data-testid="DI link">
         <DILogo />
       </Link>
 
-      <Link>
+      <Link data-testid="GOV link">
         <MONLogo />
       </Link>
 
-      <Link>Grand Bargains Data Privacy and Cookie Policy</Link>
+      <Link data-testid="GB link">
+        Grand Bargains Data Privacy and Cookie Policy
+      </Link>
     </Box>
   );
 };

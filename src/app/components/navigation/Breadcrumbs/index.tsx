@@ -26,7 +26,7 @@ const CurrentLink = styled(props => <Typography {...props} />)`
 //TODO: no routing logic in this component yet.
 export function BreadCrumbs(props: BreadcrumbModel) {
   return (
-    <Breadcrumbs aria-label="breadcrumb">
+    <Breadcrumbs aria-label="breadcrumb" data-testid="BreadCrumbs">
       {props.previousLocations.map(previousLocation => (
         <PreviousLink variant="subtitle2" strict to={previousLocation.url}>
           {previousLocation.label}

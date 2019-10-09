@@ -62,7 +62,7 @@ export const LandingLayout = (props: LandingModel) => {
         </Grid>
         <Hidden smDown>
           <Box position="absolute" zIndex="-1" right="-332px" top="0px">
-            <DecorationLanding />
+            <DecorationLanding data-testid="landing-decoration" />
           </Box>
         </Hidden>
       </LandingPaper>
@@ -73,6 +73,7 @@ export const LandingLayout = (props: LandingModel) => {
       </Box>
 
       <CookieDialog
+        data-testid="cookie-dialog"
         message="The website uses cookies for tracking statistics. Read Grand Bargains data privacy for more details."
         open
       />

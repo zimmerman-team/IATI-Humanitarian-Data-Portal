@@ -36,7 +36,9 @@ const CustomLink = styled(props => <NavLink {...props} />)`
 const AppBarButton = (props: Props) => {
   return (
     <BaseComponent size={props.size} color="inherit" {...props}>
-      <CustomLink to={props.url ? props.url : '/'}>{props.label}</CustomLink>
+      <CustomLink data-testid={props.label} to={props.url ? props.url : '/'}>
+        {props.label}
+      </CustomLink>
     </BaseComponent>
   );
 };

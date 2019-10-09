@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 /* state & utils */
 import { useStoreActions } from 'app/state/store/hooks';
 import { useStoreState } from 'easy-peasy';
+import { Box } from '@material-ui/core';
 
 const LinkMod = styled(Link)`
   text-decoration: none;
@@ -39,27 +40,20 @@ const AppBar = (props: AppBarProps) => {
       location={state.pathname}
       {...props}
     >
-      <Toolbar>
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid>
-            <AppBarButton label="Home" url="/" data-cy="appbar-button1" />
-            <AppBarButton label="About" url="/about" data-cy="appbar-button2" />
-            <AppBarButton
-              label="Signatory Progress"
-              url="/signatory-progress"
-              data-cy="appbar-button3"
-            />
-            <AppBarButton
-              label="Signatory Data"
-              url="/signatory-data"
-              data-cy="appbar-button4"
-            />
-            <AppBarButton label="FAQ's" url="/faq" data-cy="appbar-button5" />
-
-            {/*<AppBarButton label="API documentation" link="" data-cy="appbar-button3"/>*/}
-            {/*<AppBarButton label="Github" data-cy="appbar-button4"/>*/}
-          </Grid>
-        </Grid>
+      <Toolbar
+        css={`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+        `}
+        data-testid="main-nav-button-container"
+      >
+        <AppBarButton label="Home" url="/" />
+        <AppBarButton label="About" url="/about" />
+        <AppBarButton label="Signatory Progress" url="/signatory-progress" />
+        <AppBarButton label="Signatory Data" url="/signatory-data" />
+        <AppBarButton label="FAQ's" url="/faq" />
       </Toolbar>
     </BaseComponent>
   );

@@ -36,7 +36,9 @@ export const AboutLayout = (props: AboutPageModel) => {
       {/*SECTION*/}
       <Grid container spacing={2}>
         <Grid item lg={8} md={10}>
-          <Typography variant="h6">{props.sections[0].title}</Typography>
+          <Typography variant="h6" data-testid={'title'}>
+            {props.sections[0].title}
+          </Typography>
         </Grid>
         <Box height="16px" width="100%" />
         {/*TODO: this is just for api call example purposes, remove this once actual
@@ -48,18 +50,18 @@ export const AboutLayout = (props: AboutPageModel) => {
           </Typography>
         </Grid>
         <Box position="absolute" top="10px" left="10px" zIndex="10000">
-          <DecoAboutTopLeft />
+          <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
         </Box>
 
         <Hidden mdDown>
           <Box position="absolute" top="360px" right="100px">
-            <DecoAboutRight />
+            <DecoAboutRight data-testid="DecoAboutRight" />
           </Box>
         </Hidden>
 
         <Hidden mdDown>
           <Box position="absolute" top="1050px" right="100px">
-            <DecoAboutMidRight />
+            <DecoAboutMidRight data-testid="DecoAboutMidRight" />
           </Box>
         </Hidden>
       </Grid>
@@ -72,14 +74,14 @@ export const AboutLayout = (props: AboutPageModel) => {
         </Grid>
         <Box height="16px" width="100%" />
         <Grid item lg={8} md={10}>
-          <Typography variant="body1">
+          <Typography variant="body1" data-testid={'paragraph'}>
             {parse(props.sections[1].content[0])}
           </Typography>
         </Grid>
         <Grid item lg={8} md={10}>
           <ul style={{ listStyle: 'none' }}>
             <li>
-              <Typography variant="body1">
+              <Typography variant="body1" data-testid={'paragraph'}>
                 {parse(props.sections[1].content[1])}
               </Typography>
             </li>
@@ -89,34 +91,34 @@ export const AboutLayout = (props: AboutPageModel) => {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1">
+              <Typography variant="body1" data-testid={'paragraph'}>
                 {parse(props.sections[1].content[3])}
               </Typography>
               <ul style={{ listStyle: 'none' }}>
                 <li>
-                  <Typography variant="body1">
+                  <Typography variant="body1" data-testid={'paragraph'}>
                     {parse(props.sections[1].content[4])}
                   </Typography>
                 </li>
                 <li>
-                  <Typography variant="body1">
+                  <Typography variant="body1" data-testid={'paragraph'}>
                     {parse(props.sections[1].content[5])}
                   </Typography>
                 </li>
                 <li>
-                  <Typography variant="body1">
+                  <Typography variant="body1" data-testid={'paragraph'}>
                     {parse(props.sections[1].content[6])}
                   </Typography>
                 </li>
                 <li>
-                  <Typography variant="body1">
+                  <Typography variant="body1" data-testid={'paragraph'}>
                     {parse(props.sections[1].content[7])}
                   </Typography>
                 </li>
               </ul>
             </li>
             <li>
-              <Typography variant="body1">
+              <Typography variant="body1" data-testid={'paragraph'}>
                 {parse(props.sections[1].content[8])}
               </Typography>
             </li>
@@ -124,7 +126,9 @@ export const AboutLayout = (props: AboutPageModel) => {
         </Grid>
         <Box height="20px" width="100%" />
         <Grid item lg={8} md={10}>
-          <Typography>{parse(props.sections[1].content[9])}</Typography>
+          <Typography data-testid={'paragraph'}>
+            {parse(props.sections[1].content[9])}
+          </Typography>
         </Grid>
         <Box height="50px" width="100%" />
         <Grid item lg={8} md={10}>
@@ -134,11 +138,13 @@ export const AboutLayout = (props: AboutPageModel) => {
         {/*SECTION*/}
         <Box height="50px" width="100%" />
         <Grid item lg={8} md={10}>
-          <Typography variant="h6">{props.sections[2].title}</Typography>
+          <Typography variant="h6" data-testid={'paragraph'}>
+            {props.sections[2].title}
+          </Typography>
         </Grid>
         <Box height="16px" width="100%" />
         <Grid item lg={8} md={10}>
-          <Typography variant="body1">
+          <Typography variant="body1" data-testid={'paragraph'}>
             {parse(props.sections[2].content[0])}
           </Typography>
         </Grid>
@@ -147,13 +153,13 @@ export const AboutLayout = (props: AboutPageModel) => {
 
       <Hidden smDown>
         <Box position="absolute" top="258px" left="0">
-          <DecoAboutMidLeft />
+          <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
         </Box>
       </Hidden>
 
       <Hidden smDown>
         <Box position="absolute" bottom="-270px" right="0">
-          <DecoAboutBottomRight />
+          <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
         </Box>
       </Hidden>
 

@@ -11,11 +11,11 @@ export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
       <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoFaqTopLeft />
+        <DecoFaqTopLeft data-testid="DecoFaqTopLeft" />
       </Box>
 
       <Box position="absolute" top="145px" right="0" zIndex="-1">
-        <DecoFaqTopRight />
+        <DecoFaqTopRight data-testid="DecoFaqTopRight" />
       </Box>
       <Page title={props.title} footer>
         <Grid container>

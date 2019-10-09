@@ -17,7 +17,7 @@ export const IncomingLayout = (props: IncomingModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigIncomingTopLeft />
+        <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
       </Box>
       {/* ---------- */}
 

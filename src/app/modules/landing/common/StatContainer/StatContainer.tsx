@@ -5,7 +5,7 @@ import { StateContainerModel } from 'app/modules/landing/common/StatContainer/mo
 
 export const StatContainer = (props: StateContainerModel) => {
   return (
-    <Grid container direction="row" spacing={2}>
+    <Grid container direction="row" spacing={2} data-testid="stat-container">
       {props.items.map(item => (
         <Grid item md={3}>
           <Stat

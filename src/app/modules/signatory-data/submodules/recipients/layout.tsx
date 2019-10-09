@@ -16,7 +16,7 @@ export const RecipientsLayout = (props: RecipientsModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigRecTopLeft />
+        <DecoSigRecTopLeft data-testid="DecoSigRecTopLeft" />
       </Box>
       {/* ---------- */}
 
@@ -48,7 +48,7 @@ export const RecipientsLayout = (props: RecipientsModel) => {
         {/* ---------------------------------------- */}
         {/* decoration: bottom right */}
         <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
-          <DecoSigRecBottomRight />
+          <DecoSigRecBottomRight data-testid="DecoSigRecBottomRight" />
         </Box>
         {/* ---------- */}
       </Grid>

@@ -16,7 +16,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigProviderTopLeft />
+        <DecoSigProviderTopLeft data-testid="DecoSigProviderTopLeft" />
       </Box>
       {/* ---------- */}
       <Grid item lg={12} style={{ position: 'relative' }}>
@@ -41,7 +41,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
         {/* ---------------------------------------- */}
         {/* decoration: bottom rightt */}
         <Box position="absolute" bottom="-400px" right="-100px" zIndex="-1">
-          <DecoSignIncomingBottomRight />
+          <DecoSignIncomingBottomRight data-testid="DecoSignIncomingBottomRight" />
         </Box>
         {/* ---------- */}
       </Grid>

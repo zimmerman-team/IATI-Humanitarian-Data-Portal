@@ -22,7 +22,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="100px" left="0">
-        <DecoSigTimelineTopLeft />
+        <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
       </Box>
       {/* ---------- */}
       <Grid container spacing={4} direction="column">

@@ -20,7 +20,7 @@ function App(props: AppProps) {
           <DrawerMenu links={drawerMockData.links} />
         </Hidden>
         <Hidden mdDown>
-          <AppBar data-cy="appbar" />
+          <AppBar data-testid="main-navigation" />
         </Hidden>
         <Routes />
         <SnackBar open={props.openSnackbar} />
