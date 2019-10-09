@@ -9,25 +9,33 @@ import { appStore, persistor } from './state/store';
 import '../index.css';
 import { Client } from './state/api/Client';
 import { ClientContextProvider } from 'react-fetching-library';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { createGenerateClassName } from '@material-ui/styles';
 
 interface ProviderProps {
   children?: ReactNode;
 }
 
+const generateClassName = createGenerateClassName({
+  disableGlobal: false,
+  productionPrefix: 'production',
+});
+
 function Providers(props: ProviderProps) {
   return (
-    /* material ui theme proovider*/
-    <ThemeProvider theme={theme}>
-      {/* redux store provider*/}
-      <StoreProvider store={appStore}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ClientContextProvider client={Client}>
-            {/* react router */}
-            <Router>{props.children}</Router>
-          </ClientContextProvider>
-        </PersistGate>
-      </StoreProvider>
-    </ThemeProvider>
+    <JssProvider generateClassName={generateClassName}>
+      <ThemeProvider theme={theme}>
+        {/* redux store provider*/}
+        <StoreProvider store={appStore}>
+          <PersistGate loading={null} persistor={persistor}>
+            <ClientContextProvider client={Client}>
+              {/* react router */}
+              <Router>{props.children}</Router>
+            </ClientContextProvider>
+          </PersistGate>
+        </StoreProvider>
+      </ThemeProvider>
+    </JssProvider>
   );
 }
 
