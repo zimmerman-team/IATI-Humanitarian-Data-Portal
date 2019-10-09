@@ -19,9 +19,10 @@ import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivity
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
-import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInterface';
+import { ActivityResponceInterface, OrganisationNarrativeInterface } from 'app/state/api/interfaces/activityInterface';
 import { CodeListInterface } from '../api/interfaces/codeListsInterface';
 import { codelists } from '../api/actionsReducers/codeLists';
+import organisationnarrative from 'app/state/api/actionsReducers/organisationNarrative';
 import { DataTableOptions } from 'app/state/general/interfaces';
 import { dataTableOpts } from 'app/state/general/actionsReducers';
 
@@ -45,6 +46,8 @@ export interface ApplicationStoreModel {
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
   sigdataoverviewdataerrors: ActivityResponceInterface;
   codelists: CodeListInterface;
+  organisationnarrative: OrganisationNarrativeInterface;
+
   sigDataOpts: DataTableOptions;
 }
 
@@ -63,6 +66,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdataactivitiesbyyear,
   sigdataincomingfundtrace,
   sigdataoutgoingdisbtrace,
+  organisationnarrative,
   sigdataoverviewdataerrors,
 };
 

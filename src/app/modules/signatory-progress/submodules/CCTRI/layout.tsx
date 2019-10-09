@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CCTRIPageModel } from './model';
-import { Box, Grid, Typography, Container, Hidden } from '@material-ui/core';
+import { Box, Grid, Typography, Container } from '@material-ui/core';
 import parse from 'html-react-parser';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { DrawerMenu } from 'app/components/navigation/Drawer';
@@ -22,51 +22,30 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
-    <>
-      <Container>
-        <Grid container>
-          <Box position="absolute" top="0" left="0">
+    <Container>
+    <Box position="absolute" top="0" left="0">
             <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
           </Box>
-          <Grid item lg={8} md={12}>
-            {/* TITLE + INTRODUCTION */}
-            <Box height="20px" width="100%" />
-            <BreadCrumbs
-              currentLocation="CCTRIs Target"
-              previousLocations={[
-                { url: '/signatory-progress', label: 'Signatory Progress' },
-              ]}
-            />
-            <Box height="32px" width="100%" />
-            <Typography variant="h3">{parse(props.title)}</Typography>
-            <Box height="28px" width="100%" />
-            <Typography variant="h5">
-              {parse(props.sections[0].content[0])}
-            </Typography>
-            <Box height="44px" width="100%" />
+      <Grid container>
+        <Grid item lg={8} md={12}>
+          {/* TITLE + INTRODUCTION */}
+          <Box height="20px" width="100%" />
+          <BreadCrumbs
+            currentLocation="CCTRIs Target"
+            previousLocations={[
+              { url: '/signatory-progress', label: 'Signatory Progress' },
+            ]}
+          />
+          <Box height="32px" width="100%" />
+          <Typography variant="h3">{parse(props.title)}</Typography>
+          <Box height="28px" width="100%" />
+          <Typography variant="h5">
+            {parse(props.sections[0].content)}
+          </Typography>
+          <Box height="44px" width="100%" />
 
-            <Box position="absolute" top="400px" right="0">
-              <DecoTargetMidRight data-testid="DecoTargetMidRight" />
-            </Box>
-
-            {/* CONTENT */}
-            <BodyText>
-              {parse(props.sections[1].content[0])}
-              {parse(props.sections[1].content[1])}
-              {parse(props.sections[1].content[2])}
-              {parse(props.sections[1].content[3])}
-              {parse(props.sections[1].content[4])}
-              {parse(props.sections[1].content[5])}
-              {parse(props.sections[1].content[6])}
-              {parse(props.sections[1].content[7])}
-              {parse(props.sections[1].content[8])}
-              {parse(props.sections[1].content[9])}
-              {parse(props.sections[1].content[10])}
-              {parse(props.sections[1].content[11])}
-              {parse(props.sections[1].content[12])}
-              {parse(props.sections[1].content[13])}
-            </BodyText>
-          </Grid>
+          {/* CONTENT */}
+          <BodyText>{parse(props.sections[1].content)}</BodyText>
         </Grid>
       </Container>
       <Box position="absolute" bottom="0" right="0">

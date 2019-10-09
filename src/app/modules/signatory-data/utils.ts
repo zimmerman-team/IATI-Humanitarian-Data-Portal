@@ -19,14 +19,15 @@ const returnFlagValue = value => {
   }
 };
 
-export const formatTableSignatories = (signatories, gbsignatoriesFromCMS) => {
+export const formatTableSignatories = (signatories, gbsignatoriesFromCMS, organisationNarrative) => {
   const formatSigs: any = [];
-
   signatories.forEach((sig: any) => {
+    const narrative = find(organisationNarrative,['groupValue', sig.val]);
     const fSig = find(gbsignatoriesFromCMS, ['IATIOrgRef', sig.val]);
     const orgType = get(fSig, 'orgType', '');
     formatSigs.push([
-      { name: get(fSig, 'pubName', ''), code: encodeURIComponent(sig.val) },
+      //{name: get(fSig,'pubName',''), code: encodeURIComponent(sig.val)},
+      { name: get(narrative, 'doclist.docs[0].reporting_org_narrative[0]', ''), code: encodeURIComponent(sig.val) },
       get(fSig, 'name', ''),
       orgType,
       sig.latest_iati_version,
