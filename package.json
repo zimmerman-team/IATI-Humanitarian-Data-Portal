@@ -33,8 +33,7 @@
     "react-use": "^12.2.0",
     "redux-persist": "^5.10.0",
     "space-api": "^0.12.0",
-    "styled-components": "^4.3.2",
-    "use-debounce": "^3.0.1"
+    "styled-components": "^4.3.2"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -43,7 +42,6 @@
     ]
   },
   "devDependencies": {
-    "@auto-it/conventional-commits": "^7.4.5",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-decorators": "^7.6.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
@@ -59,12 +57,6 @@
     "@cypress/webpack-preprocessor": "^4.1.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/release-notes-generator": "^7.3.0",
-    "@storybook/addon-actions": "^5.1.1",
-    "@storybook/addon-console": "^1.1.0",
-    "@storybook/addon-graphql": "^5.1.1",
-    "@storybook/addon-info": "5.1.1",
-    "@storybook/addon-notes": "^5.1.1",
-    "@storybook/addon-options": "^5.1.1",
     "@storybook/addons": "^5.1.1",
     "@storybook/preset-typescript": "^1.1.0",
     "@storybook/react": "^5.1.11",
@@ -76,7 +68,6 @@
     "@types/classnames": "^2.2.9",
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.15",
-    "@types/jss": "^9.5.8",
     "@types/material-ui": "^0.21.7",
     "@types/mui-datatables": "2.1.7",
     "@types/node": "^12.6.8",
@@ -97,7 +88,6 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "2.0.0",
     "@typescript-eslint/typescript-estree": "^2.0.0",
-    "auto": "^7.2.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
@@ -105,7 +95,6 @@
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-preset-react-app": "^9.0.0",
-    "beachball": "^1.10.1",
     "brotli-gzip-webpack-plugin": "^0.5.0",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
@@ -188,13 +177,7 @@
     "terser-webpack-plugin": "^2.0.1",
     "ts-loader": "^6.1.0",
     "ts-node": "^8.3.0",
-    "ts-node-dev": "^1.0.0-pre.41",
     "ts-pnp": "^1.1.4",
-    "tslint": "^5.20.0",
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.0.0",
     "typescript": "^3.6.3",
     "typescript-plugin-styled-components": "^1.4.3",
     "typescript-tslint-plugin": "^0.5.4",
@@ -221,13 +204,6 @@
     "analyse": "madge src/index.tsx",
     "depcheck": "depcheck",
     "why": "whybundled build/stats.json --duplicatesOnly ",
-    "version": "npm version `auto version` -m 'Bump version to: %s [skip ci]'",
-    "release": "auto changelog && npm run version && npm run publish && auto release",
-    "change": "beachball change",
-    "check": "beachball check",
-    "beachball:publish": "beachball publish",
-    "dev": "ts-node-dev --respawn --transpileOnly src/index.tsx",
-    "dev:debug": "ts-node-dev --inspect=4321 --respawn --transpileOnly src/index.tsx",
     "mon": "nodemon"
   },
   "eslintConfig": {
