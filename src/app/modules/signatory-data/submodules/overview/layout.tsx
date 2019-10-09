@@ -17,7 +17,6 @@ import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fra
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
 import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
-import { Element } from 'react-scroll/modules';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (

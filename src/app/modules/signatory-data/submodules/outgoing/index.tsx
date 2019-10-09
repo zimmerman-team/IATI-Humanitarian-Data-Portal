@@ -2,19 +2,24 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 /* components */
-import { OutgoingLayout } from './layout';
+import { OutgoingLayout } from 'app/modules/signatory-data/submodules/outgoing/layout';
 /* state & utils */
 import get from 'lodash/get';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import {
   outgoingCallFacetValues,
   outgoingCallFacetValuesTrace,
-} from './consts';
+} from 'app/modules/signatory-data/submodules/outgoing/consts';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/outgoing/utils/getBarChartData';
 import { getOutPledgesListData } from 'app/modules/signatory-data/submodules/outgoing/utils/getOutPledgesListData';
 import { getOutCommitmentsListData } from 'app/modules/signatory-data/submodules/outgoing/utils/getOutCommitmentsListData';
 import { getOutDisbursementsListData } from 'app/modules/signatory-data/submodules/outgoing/utils/getOutDisbursementsListData';
 import { getExpenditureListData } from 'app/modules/signatory-data/submodules/outgoing/utils/getExpenditureListData';
+import {
+  RouteComponentProps,
+  WithRouterProps,
+  WithRouterStatics,
+} from 'react-router';
 
 export function SignatoryOutgoingPage(props) {
   /* redux store variables */
@@ -72,4 +77,8 @@ export function SignatoryOutgoingPage(props) {
     />
   );
 }
-export const SignatoryOutgoing = withRouter(SignatoryOutgoingPage);
+export const SignatoryOutgoing: React.ComponentClass<
+  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
+    WithRouterProps<(props) => any>
+> &
+  WithRouterStatics<(props) => any> = withRouter(SignatoryOutgoingPage);

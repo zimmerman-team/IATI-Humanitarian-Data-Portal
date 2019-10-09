@@ -1,4 +1,4 @@
-import { DrawerMenuModel } from './model';
+import { DrawerMenuModel } from 'app/components/navigation/Drawer/model';
 
 export const mockData: DrawerMenuModel = {
   links: [

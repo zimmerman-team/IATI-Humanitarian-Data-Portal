@@ -1,5 +1,5 @@
 /* interfaces/models */
-import { TimelagItemModel } from '../store/interfaces';
+import { TimelagItemModel } from 'app/modules/signatory-data/submodules/timelines/store/interfaces';
 
 export function formatTimeTable(
   timelags: TimelagItemModel[] | null

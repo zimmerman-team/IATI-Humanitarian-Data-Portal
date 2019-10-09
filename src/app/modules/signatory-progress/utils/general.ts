@@ -4,7 +4,6 @@ import { OrgRefItem } from '../store/interface';
 
 /* utils */
 import find from 'lodash/find';
-import { dateRanges } from '../const';
 
 // util function to check if data exists
 // and can be processed/formatted

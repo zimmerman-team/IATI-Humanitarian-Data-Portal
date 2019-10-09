@@ -1,13 +1,13 @@
 /* models/interfaces */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
-import { CovOrgItemModel } from './store/interfaces';
+import { CovOrgItemModel } from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
 
 /* utils */
 import {
   formatMoney,
   getInfoTHead,
 } from 'app/components/datadisplay/Table/helpers';
-import { formatTransFacets } from './utils/formatTransFacets';
+import { formatTransFacets } from 'app/modules/signatory-data/submodules/coveragePage/utils/formatTransFacets';
 
 export const covQuery = (
   repOrgRef: string,

@@ -2,19 +2,24 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 /* components */
-import { IncomingLayout } from './layout';
+import { IncomingLayout } from 'app/modules/signatory-data/submodules/incoming/layout';
 /* state & utils */
 import get from 'lodash/get';
 import {
   incomingCallFacetValues,
   incomingCallFacetValuesTrace,
   inPageNavigationItems,
-} from './consts';
+} from 'app/modules/signatory-data/submodules/incoming/consts';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import { getIncFundsListData } from 'app/modules/signatory-data/submodules/incoming/utils/getIncFundsListData';
 import { getIncCommitmentsListData } from 'app/modules/signatory-data/submodules/incoming/utils/getIncCommitmentsListData';
 import { getIncPledgesListData } from 'app/modules/signatory-data/submodules/incoming/utils/getIncPledgesListData';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/incoming/utils/getBarChartData';
+import {
+  RouteComponentProps,
+  WithRouterProps,
+  WithRouterStatics,
+} from 'react-router';
 
 function SignatoryIncomingPage(props) {
   /* redux store variables */
@@ -74,4 +79,8 @@ function SignatoryIncomingPage(props) {
   );
 }
 
-export const SignatoryIncoming = withRouter(SignatoryIncomingPage);
+export const SignatoryIncoming: React.ComponentClass<
+  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
+    WithRouterProps<(props) => any>
+> &
+  WithRouterStatics<(props) => any> = withRouter(SignatoryIncomingPage);

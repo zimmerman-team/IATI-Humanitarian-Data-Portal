@@ -8,7 +8,7 @@ import MuiListItemText from '@material-ui/core/ListItemText';
 import Colors from 'app/theme/color';
 import Box from '@material-ui/core/Box';
 import styled from 'styled-components';
-import { DrawerMenuModel } from './model';
+import { DrawerMenuModel } from 'app/components/navigation/Drawer/model';
 
 //TODO: code splitting
 

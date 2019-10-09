@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
 import { locations } from 'app/components/navigation/SignatoryNavigation/mock';

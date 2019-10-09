@@ -1,5 +1,5 @@
 /* models/interfaces */
-import { RecipientsQueryModel } from './store/interfaces';
+import { RecipientsQueryModel } from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
 
 export const recipientsQuery = (repOrgRef: string): RecipientsQueryModel => {
   return {

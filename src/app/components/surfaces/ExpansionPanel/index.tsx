@@ -5,7 +5,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
-import { ExpansionPanelModel } from './model';
+import { ExpansionPanelModel } from 'app/components/surfaces/ExpansionPanel/model';
 import Box from '@material-ui/core/Box';
 
 const BaseExpansionPanel = styled(props => <MuiExpansionPanel {...props} />)`

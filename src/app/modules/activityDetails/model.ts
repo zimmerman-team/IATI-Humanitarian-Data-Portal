@@ -1,7 +1,7 @@
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
-import { TableCardModel } from '../../components/datadisplay/Lists/variants/TableCard/model';
+import { TableCardModel } from 'app/components/datadisplay/Lists/variants/TableCard/model';
 
 export type ActivityDetailModel = {
   header: ActivityDetailsHeaderCardModel;

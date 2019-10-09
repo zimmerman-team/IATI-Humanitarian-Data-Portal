@@ -5,10 +5,10 @@ import { TableRow } from '@material-ui/core';
 import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 
 /* models */
-import { SimpleListItemModel } from './model';
+import { SimpleListItemModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* styles */
-import { HeadingCell, SimpleListCell } from './styles';
+import { HeadingCell, SimpleListCell } from 'app/components/datadisplay/Lists/common/SimpleListItem/styles';
 
 // TODO: aqdjust this guy to look properly
 

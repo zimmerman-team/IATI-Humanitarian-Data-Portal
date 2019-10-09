@@ -1,4 +1,4 @@
-import { HorizontalBarChartCardModel } from './model';
+import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
 
 export const mockData: HorizontalBarChartCardModel = {
   title: 'Signatories meeting data publication CCTRIs',

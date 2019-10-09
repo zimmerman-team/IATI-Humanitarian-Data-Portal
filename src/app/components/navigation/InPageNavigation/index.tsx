@@ -3,7 +3,7 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import styled from 'styled-components';
 import Colors from 'app/theme/color';
-import { InPageNavModel } from './model';
+import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 import ButtonDown from '@material-ui/icons/ArrowDownward';
 import ButtonUp from '@material-ui/icons/ArrowUpward';
 import { scroller } from 'react-scroll';

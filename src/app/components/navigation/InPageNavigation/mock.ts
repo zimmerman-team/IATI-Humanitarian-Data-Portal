@@ -1,4 +1,4 @@
-import { InPageNavModel } from './model';
+import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
 export const mockData: InPageNavModel = {
   lists: [

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
-import { ActivityListLayout } from './layout';
+import { ActivityListLayout } from 'app/modules/signatory-data/submodules/activityList/layout';
 import { useDebouncedCallback } from 'use-debounce';
 
 /* store */
@@ -13,16 +13,17 @@ import {
   activitiesQuery,
   activityBaseTable,
   colSortNames,
-} from './const';
+} from 'app/modules/signatory-data/submodules/activityList/const';
 
 /* utils */
-import { formatActivities } from './utils/formatActivities';
+import { formatActivities } from 'app/modules/signatory-data/submodules/activityList/utils/formatActivities';
 import findIndex from 'lodash/findIndex';
 import find from 'lodash/find';
 import get from 'lodash/get';
 import fileDownload from 'js-file-download';
 
 function ActivityListz(props) {
+  // todo: look into Error:(26, 10) TS2589: Type instantiation is excessively deep and possibly infinite.
   const [locState, locAction] = countFilterz();
   const countryFilters = get(
     locState.countFilters,

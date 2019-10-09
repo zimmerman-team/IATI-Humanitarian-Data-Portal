@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { SignatoryDataModel } from './model';
+import { SignatoryDataModel } from 'app/modules/signatory-data/model';
 import TableModule from 'app/components/datadisplay/Table';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { DecoSigDataTopLeft } from 'app/modules/signatory-data/common/decoration/DecoSigDataTopLeft';
-import ReactDOM from 'react-dom';
-import { useMount } from 'react-use';
+
 const Element = (
   <div>
     <h1>Hello, world!</h1>
@@ -51,7 +50,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* decoration: top left */}
       <Hidden mdDown>
         <Box position="absolute" top="0" left="0" zIndex="10000">
-          <DecoSigDataTopLeft />
+          <DecoSigDataTopLeft data-testid="DecoSigDataTopLeft" />
         </Box>
       </Hidden>
       {/* ------------------------------------------------------------------ */}

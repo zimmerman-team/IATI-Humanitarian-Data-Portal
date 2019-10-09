@@ -1,6 +1,6 @@
 import { createComponentStore } from 'easy-peasy';
-import { TimelagInterface } from './interfaces';
-import { timeLag } from './actionsReducers';
+import { TimelagInterface } from 'app/modules/signatory-data/submodules/timelines/store/interfaces';
+import { timeLag } from 'app/modules/signatory-data/submodules/timelines/store/actionsReducers';
 
 export interface TimelinessStoreModel {
   timeLag: TimelagInterface;

@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import { ListItemModel } from 'app/components/datadisplay/Lists/model';
-import { dateFormat } from './dateFormat';
+import { dateFormat } from 'app/modules/signatory-data/submodules/overview/utils/dateFormat';
 import { percentage } from 'app/utils/percentage';
 
 export const getStatusData = (

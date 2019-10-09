@@ -1,6 +1,6 @@
 import { apiModel } from 'app/state/api/actionsReducers';
 import { endpoints } from 'app/__consts__/endpoints';
-import { ResultsInterface } from './interface';
+import { ResultsInterface } from 'app/modules/ResultDetails/store/interface';
 
 export const results: ResultsInterface = {
   ...apiModel(

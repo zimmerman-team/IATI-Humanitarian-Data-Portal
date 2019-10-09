@@ -1,5 +1,5 @@
 /* models/interfaces */
-import { ActResultsModel } from '../store/interface';
+import { ActResultsModel } from 'app/modules/activityDetails/store/interface';
 import { ListCellModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* utils */

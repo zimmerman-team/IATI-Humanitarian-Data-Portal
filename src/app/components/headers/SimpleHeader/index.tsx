@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 
 /* models */
-import { SimpleHeaderModel } from './model';
+import { SimpleHeaderModel } from 'app/components/headers/SimpleHeader/model';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`
   column-count: 2;

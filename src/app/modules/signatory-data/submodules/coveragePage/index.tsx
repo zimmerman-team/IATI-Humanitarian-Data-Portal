@@ -4,10 +4,10 @@ import { withRouter } from 'react-router';
 import { CoverageLayout } from './layout';
 
 /* store */
-import { covStore } from './store';
+import { covStore } from 'app/modules/signatory-data/submodules/coveragePage/store';
 
 /* consts */
-import { baseCovTable, covOrgQuery, covQuery, transDateQuery } from './const';
+import { baseCovTable, covOrgQuery, covQuery, transDateQuery } from 'app/modules/signatory-data/submodules/coveragePage/const';
 
 /* utils */
 import get from 'lodash/get';
@@ -31,6 +31,7 @@ export function CoverageF(props) {
   // and once the covOrg data updates we get the date range period
   // and make a request to them transactions
   useEffect(() => {
+    // todo: look into Error:(17, 10) TS2589: Type instantiation is excessively deep and possibly infinite.
     const orgData = get(state.covOrg, 'data.data.response.docs', null);
     if (orgData) {
       actions.coverage.fetch({

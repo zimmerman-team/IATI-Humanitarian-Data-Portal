@@ -9,7 +9,6 @@ import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { StatContainer } from 'app/modules/landing/common/StatContainer/StatContainer';
 import { LandingModel } from 'app/modules/landing/model';
 import { DecorationLanding } from 'app/modules/common/ModuleBackground/assets/DecorationLanding';
-import { DebugBox } from 'app/utils/layout';
 import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 
 const LandingPaper = styled.div`
@@ -62,7 +61,7 @@ export const LandingLayout = (props: LandingModel) => {
         </Grid>
         <Hidden smDown>
           <Box position="absolute" zIndex="-1" right="-332px" top="0px">
-            <DecorationLanding />
+            <DecorationLanding data-testid="landing-decoration" />
           </Box>
         </Hidden>
       </LandingPaper>
@@ -73,6 +72,7 @@ export const LandingLayout = (props: LandingModel) => {
       </Box>
 
       <CookieDialog
+        data-testid="cookie-dialog"
         message="The website uses cookies for tracking statistics. Read Grand Bargains data privacy for more details."
         open
       />

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Colors from 'app/theme/color';
-import { SignatoryNavigationModel } from './model';
+import { SignatoryNavigationModel } from 'app/components/navigation/SignatoryNavigation/model';
 import { Grid } from '@material-ui/core';
 import useLocation from 'react-use/lib/useLocation';
 import get from 'lodash/get';

@@ -2,7 +2,7 @@ import {
   ActMetadataInterface,
   ActResultsInterface,
   ActTransactionsInterface,
-} from './interface';
+} from 'app/modules/activityDetails/store/interface';
 import { apiModel } from 'app/state/api/actionsReducers';
 import { endpoints } from 'app/__consts__/endpoints';
 

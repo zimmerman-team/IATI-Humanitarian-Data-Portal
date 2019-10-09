@@ -1,3 +1,40 @@
 {
-  "projectId": "ainfym"
+  "baseUrl": "http://localhost:5000",
+  "projectId": "ainfym",
+  "chromeWebSecurity": false,
+  "viewportWidth": 1440,
+  "viewportHeight": 900,
+  "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
+  "env": {
+    "cypress-plugin-snapshots": {
+      "autoCleanUp": false,
+      "autopassNewSnapshots": true,
+      "diffLines": 3,
+      "excludeFields": ["svg"],
+      "ignoreExtraArrayItems": false,
+      "ignoreExtraFields": false,
+      "normalizeJson": true,
+      "prettier": true,
+      "imageConfig": {
+        "createDiffImage": true,
+        "resizeDevicePixelRatio": true,
+        "threshold": 0.01,
+        "thresholdType": "percent"
+      },
+      "screenshotConfig": {
+        "blackout": [],
+        "capture": "viewport",
+        "clip": [],
+        "disableTimersAndAnimations": true,
+        "log": false,
+        "scale": false,
+        "timeout": 30000
+      },
+      "serverEnabled": true,
+      "serverHost": "localhost",
+      "serverPort": 2121,
+      "updateSnapshots": false,
+      "backgroundBlend": "difference"
+    }
+  }
 }

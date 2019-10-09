@@ -40,13 +40,17 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
       {/** Header */}
       <Grid container>
         <Grid item md={12}>
-          <Typography variant="overline" color="textPrimary">
+          <Typography
+            variant="overline"
+            color="textPrimary"
+            data-testid="organisation"
+          >
             {props.organisation.name} {props.organisation.code}
           </Typography>
           <Box height="24px" width="100%" />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant="h3" color="textPrimary">
+          <Typography variant="h3" color="textPrimary" data-testid="title">
             {props.activity.title}
           </Typography>
           <Box height="24px" width="100%" />
@@ -66,7 +70,11 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
                 align-items: center;
               `}
             >
-              <Typography variant="overline" color="textPrimary">
+              <Typography
+                variant="overline"
+                color="textPrimary"
+                data-testid="activity-code"
+              >
                 {props.activity.code}
               </Typography>
             </div>
@@ -96,6 +104,7 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
                 variant="overline"
                 color="textPrimary"
                 style={{ textTransform: 'capitalize' }}
+                data-testid="dates"
               >
                 {props.activity.startDate} to {props.activity.endDate}
               </Typography>

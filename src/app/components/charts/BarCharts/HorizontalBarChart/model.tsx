@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorSchemeType } from '../common/colorUtil';
+import { ColorSchemeType } from 'app/components/charts/BarCharts/common/colorUtil';
 import colors from 'app/theme/color';
 
 export type HorizontalBarChartValueModel = {

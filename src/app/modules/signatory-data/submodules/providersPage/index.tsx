@@ -14,6 +14,12 @@ import {
 import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 import { useStoreState } from 'easy-peasy';
+import {
+  RouteComponentProps,
+  WithRouterProps,
+  WithRouterStatics,
+} from 'react-router';
+import { Responsive } from 'mui-datatables';
 
 export function ProvidersPageFunc(props) {
   /* component store */
@@ -62,10 +68,14 @@ export function ProvidersPageFunc(props) {
       )}
       tableData={{
         ...baseProviderConfig(props.history),
-        data: tableData,
+        data: tableData
       }}
     />
   );
 }
 
-export const ProvidersPage = withRouter(ProvidersPageFunc);
+export const ProvidersPage: React.ComponentClass<
+  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
+    WithRouterProps<(props) => any>
+> &
+  WithRouterStatics<(props) => any> = withRouter(ProvidersPageFunc);

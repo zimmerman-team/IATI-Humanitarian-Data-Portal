@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { TimelinesLayout } from './layout';
+import { TimelinesLayout } from 'app/modules/signatory-data/submodules/timelines/layout';
 
 /* store */
-import { timeStore } from './store';
+import { timeStore } from 'app/modules/signatory-data/submodules/timelines/store';
 
 /* consts */
-import { timlagQuery } from './const';
+import { timlagQuery } from 'app/modules/signatory-data/submodules/timelines/const';
 
 /* utils */
 import get from 'lodash/get';
-import { formatTimeTable } from './utils/formatTimeTable';
+import { formatTimeTable } from 'app/modules/signatory-data/submodules/timelines/utils/formatTimeTable';
 
 function TimelinesF(props) {
   const [state, actions] = timeStore();

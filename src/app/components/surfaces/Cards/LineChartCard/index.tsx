@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import { LineChart } from 'app/components/charts/LineChart';
-import { LineChartCardModel } from './model';
+import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
 
 const Card = styled(props => <MuiCard {...props} />)`
   && {

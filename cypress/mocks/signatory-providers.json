@@ -1,0 +1,2374 @@
+{
+  "should load the page": [
+    {
+      "url": "https://api.exchangeratesapi.io/latest",
+      "method": "GET",
+      "status": 200,
+      "headers": {},
+      "body": null,
+      "response": {
+        "rates": {
+          "CAD": 1.4623,
+          "HKD": 8.6178,
+          "ISK": 136.5,
+          "PHP": 56.955,
+          "DKK": 7.4689,
+          "HUF": 334.57,
+          "CZK": 25.805,
+          "AUD": 1.6286,
+          "RON": 4.7486,
+          "SEK": 10.8703,
+          "IDR": 15550.68,
+          "INR": 78.144,
+          "BRL": 4.5073,
+          "RUB": 71.6225,
+          "HRK": 7.4243,
+          "JPY": 117.43,
+          "THB": 33.403,
+          "CHF": 1.0898,
+          "SGD": 1.5168,
+          "PLN": 4.3326,
+          "BGN": 1.9558,
+          "TRY": 6.412,
+          "CNY": 7.8474,
+          "NOK": 10.045,
+          "NZD": 1.7373,
+          "ZAR": 16.7732,
+          "USD": 1.0986,
+          "MXN": 21.5316,
+          "ILS": 3.8566,
+          "GBP": 0.89795,
+          "KRW": 1316.41,
+          "MYR": 4.607
+        },
+        "base": "EUR",
+        "date": "2019-10-08"
+      }
+    },
+    {
+      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
+      "method": "GET",
+      "status": 200,
+      "headers": {},
+      "body": null,
+      "response": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 4,
+          "params": {
+            "q": "reporting_org_ref:GB-CHC-274467",
+            "facet.pivot": "activity_date_iso_date,humanitarian",
+            "fl": "facet_counts",
+            "facet": "on"
+          }
+        },
+        "response": {
+          "numFound": 13,
+          "start": 0,
+          "docs": [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "facet_counts": {
+          "facet_queries": {},
+          "facet_fields": {},
+          "facet_ranges": {},
+          "facet_intervals": {},
+          "facet_heatmaps": {},
+          "facet_pivot": {
+            "activity_date_iso_date,humanitarian": [
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-09-30T00:00:00Z",
+                "count": 2,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2020-09-30T00:00:00Z",
+                "count": 2,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2016-01-01T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2017-03-15T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2017-04-01T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2017-04-04T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2018-09-28T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2018-09-30T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2018-10-15T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-02-07T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-03-15T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-03-24T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-04-01T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-05-31T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-06-08T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-07-15T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-07-23T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-08-07T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-08-18T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-09-21T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2019-10-02T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "1",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2020-12-31T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2021-03-31T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "field": "activity_date_iso_date",
+                "value": "2021-10-14T00:00:00Z",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "humanitarian",
+                    "value": "0",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://test-datastore.iatistandard.org/search/transaction-mlt/select/",
+      "method": "POST",
+      "status": 200,
+      "headers": {},
+      "body": {},
+      "response": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 36,
+          "params": {
+            "q": "reporting_org_ref:GB-CHC-274467 AND transaction_type:(13 11 1) AND (humanitarian:1 OR transaction_humanitarian:1 \n        OR sector_vocabulary:1 OR (-sector_vocabulary:* \n        AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) \n        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* \n        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))",
+            "facet.limit": "-1",
+            "stats": "true",
+            "facet.pivot": "{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency",
+            "facet.missing": "true",
+            "rows": "0",
+            "facet": "on",
+            "stats.field": "{!tag=piv1 sum=true}transaction_value"
+          }
+        },
+        "response": {
+          "numFound": 64,
+          "start": 0,
+          "docs": []
+        },
+        "facet_counts": {
+          "facet_queries": {},
+          "facet_fields": {},
+          "facet_ranges": {},
+          "facet_intervals": {},
+          "facet_heatmaps": {},
+          "facet_pivot": {
+            "transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency": [
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Sierra Leone",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100314",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 55265
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 55265
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 55265
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 55265
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 55265
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 55265
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "DEC",
+                "count": 34,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-1062638",
+                    "count": 34,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 3,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100514",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 164627
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 164627
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 164627
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100588",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 190308
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 190308
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 190308
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-XDE0D17005",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 20612
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 20612
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 20612
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 375547
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 31,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100514",
+                            "count": 5,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 3,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 3,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 249928.9
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 249928.9
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 2,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 2,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 919161
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 919161
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 1169089.9
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100588",
+                            "count": 9,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 6,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 6,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 701404.6600000001
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 701404.6600000001
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 3,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 3,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 996450
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 996450
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 1697854.6600000001
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100738",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 481048
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 481048
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 1257870
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 1257870
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 1738918
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-XDE0D17005",
+                            "count": 15,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 12,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 12,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 1661368.81
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 1661368.81
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 3,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 3,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 2209132
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 2209132
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 3870500.81
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 8476363.370000001
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 8851910.370000001
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 8851910.370000001
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "DFID",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-GOV-1",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 1,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-205210-225",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 1143295
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 1143295
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 1143295
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 1143295
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 1143295
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 1143295
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Grand Challenges Canada",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "60",
+                        "count": 1,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100866",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "CAD",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 249994
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 249994
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 249994
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 249994
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 249994
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 249994
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "MannionDaniels",
+                "count": 2,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-04105827",
+                    "count": 2,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "70",
+                        "count": 2,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-205210-225",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 2,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 2,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 96965.85
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 96965.85
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 96965.85
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 96965.85
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 96965.85
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 96965.85
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Netherlands - Ministry of Foreign Affairs",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "XM-DAC-7",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 1,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-GB-XUKDU15001",
+                            "count": 1,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "EUR",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 2946303.5
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 2946303.5
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 2946303.5
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 2946303.5
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 2946303.5
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 2946303.5
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Netherlands Ministry of Foreign Affairs",
+                "count": 4,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "XM-DAC-7",
+                    "count": 4,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 4,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-GB-XUKDU15001",
+                            "count": 4,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 3,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "EUR",
+                                    "count": 3,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 8502396.3
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 8502396.3
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "EUR",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 14808003.51
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 14808003.51
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 23310399.810000002
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 23310399.810000002
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 23310399.810000002
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 23310399.810000002
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Plan International UK",
+                "count": 10,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-1364201",
+                    "count": 10,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 10,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100314",
+                            "count": 10,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 9,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 9,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 1033030.8200000001
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 1033030.8200000001
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 2538488
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 2538488
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 3571518.82
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 3571518.82
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 3571518.82
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 3571518.82
+                    }
+                  }
+                }
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Save the Children UK (Start Fund)",
+                "count": 10,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-213890",
+                    "count": 10,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 10,
+                        "pivot": [
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100556",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 108130
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 108130
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 108130
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 108130
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 216260
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100847",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 298650
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 298650
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 298650
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 298650
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 597300
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100865",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 100000
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 100000
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 100000
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 100000
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 200000
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-100966",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 82913.76
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 82913.76
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 82913.76
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 82913.76
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 165827.52
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "field": "iati_identifier",
+                            "value": "GB-CHC-274467-102013",
+                            "count": 2,
+                            "pivot": [
+                              {
+                                "field": "transaction_type",
+                                "value": "1",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 102080
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 102080
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "field": "transaction_type",
+                                "value": "11",
+                                "count": 1,
+                                "pivot": [
+                                  {
+                                    "field": "transaction_value_currency",
+                                    "value": "GBP",
+                                    "count": 1,
+                                    "stats": {
+                                      "stats_fields": {
+                                        "transaction_value": {
+                                          "sum": 102080
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "stats": {
+                                  "stats_fields": {
+                                    "transaction_value": {
+                                      "sum": 102080
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "stats": {
+                              "stats_fields": {
+                                "transaction_value": {
+                                  "sum": 204160
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "stats": {
+                          "stats_fields": {
+                            "transaction_value": {
+                              "sum": 1383547.52
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "stats": {
+                      "stats_fields": {
+                        "transaction_value": {
+                          "sum": 1383547.52
+                        }
+                      }
+                    }
+                  }
+                ],
+                "stats": {
+                  "stats_fields": {
+                    "transaction_value": {
+                      "sum": 1383547.52
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "stats": {
+          "stats_fields": {
+            "transaction_value": {
+              "sum": 41609199.86999999
+            }
+          }
+        }
+      }
+    },
+    {
+      "url": "https://test-datastore.iatistandard.org/search/transaction-mlt/select/",
+      "method": "POST",
+      "status": 200,
+      "headers": {},
+      "body": {},
+      "response": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 6,
+          "params": {
+            "q": "reporting_org_ref:GB-CHC-274467",
+            "facet.limit": "-1",
+            "facet.pivot": "transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type",
+            "facet.missing": "true",
+            "rows": "0",
+            "facet": "on"
+          }
+        },
+        "response": {
+          "numFound": 275,
+          "start": 0,
+          "docs": []
+        },
+        "facet_counts": {
+          "facet_queries": {},
+          "facet_fields": {},
+          "facet_ranges": {},
+          "facet_intervals": {},
+          "facet_heatmaps": {},
+          "facet_pivot": {
+            "transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type": [
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "AAB",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "AAG",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "AAI",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "NL-KVK-27264198",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "AAR",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "RW-RGB-61-RGB-NGO-2017",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "AAUK",
+                "count": 85,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-1062638",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 1
+                      }
+                    ]
+                  },
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-274467",
+                    "count": 84,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 82
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": null,
+                        "count": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Bangladesh",
+                "count": 12,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 12,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 10
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": null,
+                        "count": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Ghana",
+                "count": 12,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 12,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 11
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": null,
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid International",
+                "count": 13,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "NL-KVK-27264198",
+                    "count": 10,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 10
+                      }
+                    ]
+                  },
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 3,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 2
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Pakistan",
+                "count": 12,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 12,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 10
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": null,
+                        "count": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Rwanda",
+                "count": 13,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "RW-RGB-61-RGB-NGO-2017",
+                    "count": 12,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 12
+                      }
+                    ]
+                  },
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid Sierra Leone",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "ActionAid UK",
+                "count": 59,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-274467",
+                    "count": 59,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 58
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "DEC",
+                "count": 34,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-1062638",
+                    "count": 34,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 3
+                      },
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "22",
+                        "count": 31
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "DFID",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-GOV-1",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Grand Challenges Canada",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": null,
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "60",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "MannionDaniels",
+                "count": 2,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-04105827",
+                    "count": 2,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "70",
+                        "count": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Netherlands - Ministry of Foreign Affairs",
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "XM-DAC-7",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Netherlands Ministry of Foreign Affairs",
+                "count": 4,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "XM-DAC-7",
+                    "count": 4,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "10",
+                        "count": 4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Plan International UK",
+                "count": 10,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-1364201",
+                    "count": 10,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 10
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": "Save the Children UK (Start Fund)",
+                "count": 10,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-COH-213890",
+                    "count": 10,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": "21",
+                        "count": 10
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "field": "transaction_provider_org_narrative",
+                "value": null,
+                "count": 1,
+                "pivot": [
+                  {
+                    "field": "transaction_provider_org_ref",
+                    "value": "GB-CHC-274467",
+                    "count": 1,
+                    "pivot": [
+                      {
+                        "field": "transaction_provider_org_type",
+                        "value": null,
+                        "count": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

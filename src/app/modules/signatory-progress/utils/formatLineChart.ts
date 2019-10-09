@@ -4,7 +4,6 @@ import { dateRanges } from 'app/modules/signatory-progress/const';
 import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
 import { DataPoint, SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
-import { OrgRefItem } from '../store/interface';
 
 /* utils */
 import find from 'lodash/find';

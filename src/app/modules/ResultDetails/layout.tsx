@@ -6,7 +6,7 @@ import { Box, Container } from '@material-ui/core';
 import { TableCardContainer } from 'app/components/datadisplay/NavLists';
 
 /* models */
-import { ResultDetailModel } from './model';
+import { ResultDetailModel } from 'app/modules/ResultDetails/model';
 
 export const ResultDetailLayout = (props: ResultDetailModel) => (
   <Container maxWidth="lg">

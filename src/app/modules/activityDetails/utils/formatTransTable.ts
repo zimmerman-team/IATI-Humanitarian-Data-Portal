@@ -2,7 +2,7 @@
 import { shortMonthNames } from 'app/__consts__/dates';
 
 /* models/interfaces */
-import { ActTransactionModel } from '../store/interface';
+import { ActTransactionModel } from 'app/modules/activityDetails/store/interface';
 import { TableInfoItemModel } from 'app/components/datadisplay/TableWTotal/common/TableInfo/model';
 
 /* utils */

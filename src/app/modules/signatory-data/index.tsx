@@ -1,27 +1,18 @@
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
+import get from 'lodash/get';
+import map from 'lodash/map';
 
 /* models/interfaces */
 import { SignatoryDataModule } from 'app/modules/signatory-data/model';
-
 /* components */
 import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
-
 /* state & utils */
-import get from 'lodash/get';
-import map from 'lodash/map';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-//import { formatTableSignatories } from 'app/modules/signatory-data/utils';
-
 /* mock */
-import {
-  signatoryDataMock,
-  iatigbsignatoriesCallValues,
-  OrgNarrative,
-} from './mock';
+import { signatoryDataMock, iatigbsignatoriesCallValues, OrgNarrative } from 'app/modules/signatory-data/mock';
 import { formatTableSignatories } from 'app/modules/signatory-data/utils';
-//import { signatoryDataMock, iatigbsignatoriesCallValues } from './mock';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryData = React.memo(
