@@ -1,38 +1,43 @@
-import { RefObject, useCallback, useEffect, useState } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react';
 
-export default (ref: RefObject<HTMLElement>, hasMore: boolean, fetchMoreItems: () => Promise<void>): boolean => {
-  const [isFetching, setIsFetching] = useState(false)
+export default (
+  ref: RefObject<HTMLElement>,
+  hasMore: boolean,
+  fetchMoreItems: () => Promise<void>
+): boolean => {
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    if (!isFetching) return
-    fetchMoreItems().finally(() => setIsFetching(false))
-  }, [isFetching])
+    if (!isFetching) return;
+    fetchMoreItems().finally(() => setIsFetching(false));
+  }, [isFetching]);
 
   const handleScroll = useCallback(() => {
     if (isFetching || !ref.current || !ref.current.parentElement) {
-      return
+      return;
     }
-    const $container = ref.current.parentElement
-    const delta = $container.scrollHeight - $container.scrollTop - $container.offsetHeight
+    const $container = ref.current.parentElement;
+    const delta =
+      $container.scrollHeight - $container.scrollTop - $container.offsetHeight;
     if (delta < 42) {
-      setIsFetching(true)
+      setIsFetching(true);
     }
-  }, [isFetching, ref])
+  }, [isFetching, ref]);
 
   useEffect(() => {
     if (!ref.current || !hasMore) {
-      return
+      return;
     }
-    const $container = ref.current.parentElement
+    const $container = ref.current.parentElement;
     if ($container) {
-      $container.addEventListener('scroll', handleScroll)
-      $container.addEventListener('resize', handleScroll)
+      $container.addEventListener('scroll', handleScroll);
+      $container.addEventListener('resize', handleScroll);
       return () => {
-        $container.removeEventListener('scroll', handleScroll)
-        $container.removeEventListener('resize', handleScroll)
-      }
+        $container.removeEventListener('scroll', handleScroll);
+        $container.removeEventListener('resize', handleScroll);
+      };
     }
-  }, [ref, hasMore])
+  }, [ref, hasMore]);
 
-  return isFetching
-}
+  return isFetching;
+};

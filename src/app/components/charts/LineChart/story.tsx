@@ -6,7 +6,7 @@ import { mockData, nivoMock } from './mock';
 
 storiesOf('Charts|Line Chart', module).add('Line Chart', () => (
   <Providers>
-      <LineChart values={mockData.values} />
-      <LineChart values={mockData.values} colors="single" />
+    <LineChart values={mockData.values} />
+    <LineChart values={mockData.values} colors="single" />
   </Providers>
 ));

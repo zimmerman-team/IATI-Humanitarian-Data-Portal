@@ -17,9 +17,18 @@ export function SubmoduleContainer(props) {
   const sigdataactivityyearsData = useStoreState(
     state => state.sigdataactivityyears.data
   );
-  const organisationNarrativeData = useStoreState(state => state.organisationnarrative);
-  const orgNarrativeDetails = get(organisationNarrativeData, 'data.data.grouped.reporting_org_ref.groups',[]);
-  const singleOrgNarrativeData =  find(orgNarrativeDetails,['groupValue', decodeURIComponent(props.match.params.code)]);
+  const organisationNarrativeData = useStoreState(
+    state => state.organisationnarrative
+  );
+  const orgNarrativeDetails = get(
+    organisationNarrativeData,
+    'data.data.grouped.reporting_org_ref.groups',
+    []
+  );
+  const singleOrgNarrativeData = find(orgNarrativeDetails, [
+    'groupValue',
+    decodeURIComponent(props.match.params.code),
+  ]);
   const orgDetails = find(gbsignatoriesData.data as any, {
     IATIOrgRef: decodeURIComponent(props.match.params.code),
   });
@@ -56,7 +65,11 @@ export function SubmoduleContainer(props) {
         linkText={linkText}
         suppLink={suppLink}
         code={props.match.params.code}
-        organisationName={get(singleOrgNarrativeData, 'doclist.docs[0].reporting_org_narrative[0]', 'Not Found')}
+        organisationName={get(
+          singleOrgNarrativeData,
+          'doclist.docs[0].reporting_org_narrative[0]',
+          'Not Found'
+        )}
         yearRange={getYearRange(
           get(
             sigdataactivityyearsData,

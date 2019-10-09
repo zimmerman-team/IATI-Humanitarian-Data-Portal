@@ -35,11 +35,13 @@ export function formatActivities(
           }
           return '';
         });
-      const startDate =
-        activity.activity_date_start_actual ? activity.activity_date_start_actual : activity.activity_date_start_planned;
+      const startDate = activity.activity_date_start_actual
+        ? activity.activity_date_start_actual
+        : activity.activity_date_start_planned;
 
-      const endDate =
-        activity.activity_date_end_actual ? activity.activity_date_end_actual : activity.activity_date_end_planned;
+      const endDate = activity.activity_date_end_actual
+        ? activity.activity_date_end_actual
+        : activity.activity_date_end_planned;
 
       tableData.push([
         formatDate(startDate),

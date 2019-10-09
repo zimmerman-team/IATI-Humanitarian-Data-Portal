@@ -19,7 +19,10 @@ import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivity
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
-import { ActivityResponceInterface, OrganisationNarrativeInterface } from 'app/state/api/interfaces/activityInterface';
+import {
+  ActivityResponceInterface,
+  OrganisationNarrativeInterface,
+} from 'app/state/api/interfaces/activityInterface';
 import { CodeListInterface } from '../api/interfaces/codeListsInterface';
 import { codelists } from '../api/actionsReducers/codeLists';
 import organisationnarrative from 'app/state/api/actionsReducers/organisationNarrative';

@@ -59,8 +59,7 @@ export const OrgNarrative = {
     q: '*:*',
     rows: 500000,
     group: 'on',
-    'group.field':'reporting_org_ref',
-    fl:'reporting_org_narrative',
-
+    'group.field': 'reporting_org_ref',
+    fl: 'reporting_org_narrative',
   },
 };

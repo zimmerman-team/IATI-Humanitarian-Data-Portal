@@ -60,7 +60,7 @@ export function getActualDates(
   const actualStartIndex = dateTypes.indexOf('2');
   const actualEndIndex = dateTypes.indexOf('4');
   const plannedStartIndex = dateTypes.indexOf('1');
-  const plannedEndIndex = dateTypes.indexOf('3')
+  const plannedEndIndex = dateTypes.indexOf('3');
   if (actualStartIndex !== -1) {
     // and here we format the date
     Start = formatDate(dates[actualStartIndex]);
