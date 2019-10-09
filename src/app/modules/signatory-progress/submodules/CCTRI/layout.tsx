@@ -47,10 +47,11 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
           {/* CONTENT */}
           <BodyText>{parse(props.sections[1].content)}</BodyText>
         </Grid>
-      </Container>
+        </Grid>
+     
       <Box position="absolute" bottom="0" right="0">
         {/*<DecoTargetBottomRight data-testid="DecoTargetBottomRight" />*/}
       </Box>
-    </>
+     </Container>
   );
 };
