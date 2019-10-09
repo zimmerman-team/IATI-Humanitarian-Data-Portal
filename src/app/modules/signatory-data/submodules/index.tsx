@@ -13,6 +13,7 @@ import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 import { getYearRange } from 'app/modules/signatory-data/submodules/utils';
 
 export function SubmoduleContainer(props) {
+  // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
   const sigdataactivityyearsData = useStoreState(
     state => state.sigdataactivityyears.data

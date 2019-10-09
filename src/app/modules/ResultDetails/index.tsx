@@ -1,21 +1,20 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { ResultDetailLayout } from './layout';
+import { ResultDetailLayout } from 'app/modules/ResultDetails/layout';
 
 /* mock */
-import { mockData } from '../activityDetails/mock';
 
 /* store */
-import { resStore } from './store';
+import { resStore } from 'app/modules/ResultDetails/store';
 import { useStoreState } from 'easy-peasy';
 
 /* consts */
-import { ResultQuery } from './const';
+import { ResultQuery } from 'app/modules/ResultDetails/const';
 
 /* utils */
 import get from 'lodash/get';
 import { getNarrativeText } from 'app/utils/generic';
-import { formatResultElements } from './utils/formatResultElements';
+import { formatResultElements } from 'app/modules/ResultDetails/utils/formatResultElements';
 
 function ResultDetailF(props) {
   const [state, action] = resStore();

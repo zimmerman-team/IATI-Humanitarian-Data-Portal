@@ -4,7 +4,7 @@ import { Grid, Typography, Box } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 import styled from 'styled-components';
-import { TimeLinessModel } from './model';
+import { TimeLinessModel } from 'app/modules/signatory-data/submodules/timelines/model';
 import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
 const ContentTypographyLG = styled(props => <Typography {...props} />)`

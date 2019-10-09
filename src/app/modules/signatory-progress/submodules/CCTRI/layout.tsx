@@ -4,11 +4,7 @@ import { CCTRIPageModel } from './model';
 import { Box, Grid, Typography, Container } from '@material-ui/core';
 import parse from 'html-react-parser';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import { DrawerMenu } from 'app/components/navigation/Drawer';
-import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
 import { DecoTargetTopLeft } from 'app/modules/signatory-progress/submodules/CCTRI/common/decoration/DecoTargetTopLeft';
-import { DecoTargetMidRight } from 'app/modules/signatory-progress/submodules/CCTRI/common/decoration/DecoTargetMidRight';
-import { DecoTargetBottomRight } from 'app/modules/signatory-progress/submodules/CCTRI/common/decoration/DecoTargetBottomRight';
 
 //TODO: Implement background with artworks
 
@@ -48,7 +44,7 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
           <BodyText>{parse(props.sections[1].content)}</BodyText>
         </Grid>
         </Grid>
-     
+
       <Box position="absolute" bottom="0" right="0">
         {/*<DecoTargetBottomRight data-testid="DecoTargetBottomRight" />*/}
       </Box>

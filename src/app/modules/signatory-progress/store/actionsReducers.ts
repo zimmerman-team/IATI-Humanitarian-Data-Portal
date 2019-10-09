@@ -1,4 +1,4 @@
-import { PublisherInterface } from './interface';
+import { PublisherInterface } from 'app/modules/signatory-progress/store/interface';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import { endpoints } from 'app/__consts__/endpoints';
 import { apiModel, spaceCloudAPIModel } from 'app/state/api/actionsReducers';

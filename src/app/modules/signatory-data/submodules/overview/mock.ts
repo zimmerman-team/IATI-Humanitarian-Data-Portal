@@ -1,4 +1,3 @@
-import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
 /*export const listMockData1: ListModel = {

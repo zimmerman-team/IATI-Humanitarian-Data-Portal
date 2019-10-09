@@ -1,13 +1,13 @@
 import { createComponentStore } from 'easy-peasy';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
-import { PublisherInterface } from './interface';
+import { PublisherInterface } from 'app/modules/signatory-progress/store/interface';
 import {
   humPublishers,
   publishers202,
   publishersTrac,
   publishers203,
   cctriCMS,
-} from './actionsReducers';
+} from 'app/modules/signatory-progress/store/actionsReducers';
 
 export interface ApplicationStoreModel {
   humPublishers: PublisherInterface;

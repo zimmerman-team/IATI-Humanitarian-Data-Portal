@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Container, Grid, Typography, Box } from '@material-ui/core';
-import { SignatoryProgressModel } from './model';
+import { SignatoryProgressModel } from 'app/modules/signatory-progress/model';
 import { LineChartCard } from 'app/components/surfaces/Cards/LineChartCard';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import TableModule from 'app/components/datadisplay/Table';

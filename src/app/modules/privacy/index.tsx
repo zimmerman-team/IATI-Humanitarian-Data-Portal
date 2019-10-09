@@ -1,6 +1,6 @@
 import React from 'react';
-import { PrivacyModuleLayout } from './layout';
-import { mockData } from './mock';
+import { PrivacyModuleLayout } from 'app/modules/privacy/layout';
+import { mockData } from 'app/modules/privacy/mock';
 
 export function PrivacyModule() {
   return (

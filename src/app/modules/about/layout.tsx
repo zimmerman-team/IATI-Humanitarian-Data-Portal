@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { Page } from 'app/modules/common/Page';
-import { AboutPageModel } from './model';
+import { AboutPageModel } from 'app/modules/about/model';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';

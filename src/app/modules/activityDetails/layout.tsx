@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Model
-import { ActivityDetailModel } from './model';
+import { ActivityDetailModel } from 'app/modules/activityDetails/model';
 
 // Components
 import { Grid, Typography, Box, Container } from '@material-ui/core';

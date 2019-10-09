@@ -1,12 +1,9 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
-import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { OutgoingModel } from './model';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
-import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
 import { OutgoingPledgesFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingPledgesFragment';
 import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/IncomingCommitmentsFragment';
 import { OutgoingDisbursements } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingDisbursements';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CoverageModel } from './model';
+import { CoverageModel } from 'app/modules/signatory-data/submodules/coveragePage/model';
 import TableModule from 'app/components/datadisplay/Table';
 import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import Box from '@material-ui/core/Box';

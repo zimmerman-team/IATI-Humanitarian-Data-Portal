@@ -24,7 +24,12 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "baseUrl": "src",
-    "types": ["cypress"],
+    "types": [
+      "cypress-commands",
+      "cypress",
+      "@types/testing-library__cypress",
+      "cypress-plugin-snapshots"
+    ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": false
@@ -38,6 +43,9 @@
     "node_modules",
     "**/story.tsx",
     "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/spec.tsx",
+    "**/comp.spec.tsx",
     "@nivo/bar",
     ".vscode",
     "cypress",

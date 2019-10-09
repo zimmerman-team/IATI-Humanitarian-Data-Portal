@@ -1,4 +1,4 @@
-import { StateContainerModel } from './models';
+import { StateContainerModel } from 'app/modules/landing/common/StatContainer/models';
 export const mockData: StateContainerModel = {
   items: [
     {

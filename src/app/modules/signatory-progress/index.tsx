@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { SignatoryProgressMock } from './mock';
+import { SignatoryProgressMock } from 'app/modules/signatory-progress/mock';
 import { SignatoryProgressLayout } from 'app/modules/signatory-progress/layout';
 import useTitle from 'react-use/lib/useTitle';
 
 /* store */
-import { signProgStore } from './store';
+import { signProgStore } from 'app/modules/signatory-progress/store';
 import { useStoreState } from 'app/state/store/hooks';
 
 /* consts */
@@ -19,9 +19,9 @@ import {
 /* utils */
 import map from 'lodash/map';
 import get from 'lodash/get';
-import { formatLineChart } from './utils/formatLineChart';
-import { formatBarData } from './utils/formatBarData';
-import { formatTableData } from './utils/formatTableData';
+import { formatLineChart } from 'app/modules/signatory-progress/utils/formatLineChart';
+import { formatBarData } from 'app/modules/signatory-progress/utils/formatBarData';
+import { formatTableData } from 'app/modules/signatory-progress/utils/formatTableData';
 
 export function SignatoryProgress() {
   useTitle(`MLT - ${SignatoryProgressMock.title}`);

@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* core */
-import React, { useRef } from 'react';
+import React from 'react';
 
 /* components */
-import { OverviewLayout } from './layout';
+import { OverviewLayout } from 'app/modules/signatory-data/submodules/overview/layout';
 
 /* state & utils */
 import get from 'lodash/get';
@@ -28,6 +28,11 @@ import { getHumActWLocationInfoData } from 'app/modules/signatory-data/submodule
 import { getHumActWMultiYearFundingData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWMultiYearFundingData';
 import { getFinancialReportingData } from 'app/modules/signatory-data/submodules/overview/utils/getFinancialReportingData';
 import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
+import {
+  RouteComponentProps,
+  WithRouterProps,
+  WithRouterStatics,
+} from 'react-router';
 
 export function OverviewPage(props) {
   /* local state */
@@ -179,4 +184,8 @@ export function OverviewPage(props) {
   );
 }
 
-export const Overview = withRouter(OverviewPage);
+export const Overview: React.ComponentClass<
+  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
+    WithRouterProps<(props) => any>
+> &
+  WithRouterStatics<(props) => any> = withRouter(OverviewPage);

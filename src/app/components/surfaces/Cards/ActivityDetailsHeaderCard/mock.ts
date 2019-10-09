@@ -1,4 +1,4 @@
-import { ActivityDetailsHeaderCardModel } from './model';
+import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 
 export const mockData: ActivityDetailsHeaderCardModel = {
   organisation: {

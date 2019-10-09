@@ -3,7 +3,7 @@ import {
   ActMetadataInterface,
   ActResultsInterface,
   ActTransactionsInterface,
-} from './interface';
+} from 'app/modules/activityDetails/store/interface';
 
 import {
   actMetadata,

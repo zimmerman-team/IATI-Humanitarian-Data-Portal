@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { FaqsLayout } from './layout';
+import { FaqsLayout } from 'app/modules/faqs/layout';
 // import { mockData } from './mock';
-import { faqStore } from './store';
+import { faqStore } from 'app/modules/faqs/store';
 
 //TODO: replace with real data
 export function Faqs() {

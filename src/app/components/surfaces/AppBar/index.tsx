@@ -1,17 +1,10 @@
 import React from 'react';
 import BaseAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
-import theme from 'app/theme';
 import AppBarButton from 'app/components/inputs/buttons/AppBarButton';
-import Grid from '@material-ui/core/Grid';
 import useLocation from 'react-use/lib/useLocation';
 import { Link } from 'react-router-dom';
-/* state & utils */
-import { useStoreActions } from 'app/state/store/hooks';
-import { useStoreState } from 'easy-peasy';
-import { Box } from '@material-ui/core';
 
 const LinkMod = styled(Link)`
   text-decoration: none;

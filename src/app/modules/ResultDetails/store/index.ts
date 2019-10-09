@@ -1,6 +1,6 @@
 import { createComponentStore } from 'easy-peasy';
-import { ResultsInterface } from './interface';
-import { results } from './actionsReducers';
+import { ResultsInterface } from 'app/modules/ResultDetails/store/interface';
+import { results } from 'app/modules/ResultDetails/store/actionsReducers';
 
 export interface ComponentStoreModel {
   results: ResultsInterface;

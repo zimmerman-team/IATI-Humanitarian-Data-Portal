@@ -1,5 +1,5 @@
 import { apiModel } from 'app/state/api/actionsReducers';
-import { TimelagInterface } from './interfaces';
+import { TimelagInterface } from 'app/modules/signatory-data/submodules/timelines/store/interfaces';
 import { endpoints } from 'app/__consts__/endpoints';
 
 export const timeLag: TimelagInterface = {

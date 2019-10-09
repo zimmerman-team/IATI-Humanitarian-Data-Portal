@@ -12,8 +12,7 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
-import { activitiesQuery } from '../../../modules/signatory-data/submodules/activityList/const';
-import fileDownload from 'js-file-download';
+
 
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated signatory data publication indicator values',

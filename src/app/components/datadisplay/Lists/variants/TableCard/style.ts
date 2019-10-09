@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Base, TableTitle } from '../../index';
+import { Base} from '../../index';
 import { TableHeadProps } from '@material-ui/core/TableHead';
 import ArrowDown from '@material-ui/icons/ArrowDropDown';
 import ArrowUp from '@material-ui/icons/ArrowDropUp';

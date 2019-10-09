@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard} from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
-import { VerticalBarChart } from 'app/components/charts/BarCharts/VerticalBarChart/index';
+import { VerticalBarChart } from 'app/components/charts/BarCharts/VerticalBarChart';
 
 const Card = styled(props => <MuiCard {...props} />)`&&{
   box-shadow:  0 0 2px 1px rgba(130, 136, 148, 0.08);

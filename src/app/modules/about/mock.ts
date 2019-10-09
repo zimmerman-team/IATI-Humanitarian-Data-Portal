@@ -1,4 +1,4 @@
-import { AboutPageModel } from './model';
+import { AboutPageModel } from 'app/modules/about/model';
 
 export const mockData: AboutPageModel = {
   title: 'The Grand Bargain transparency commitment',

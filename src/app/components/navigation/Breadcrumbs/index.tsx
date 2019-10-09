@@ -4,7 +4,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 import styled from 'styled-components';
 import Colors from 'app/theme/color';
-import { BreadcrumbModel } from './model';
+import { BreadcrumbModel } from 'app/components/navigation/Breadcrumbs/model';
 import { NavLink } from 'react-router-dom';
 
 const PreviousLink = styled(props => <NavLink {...props} />)`

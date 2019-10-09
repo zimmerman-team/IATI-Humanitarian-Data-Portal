@@ -9,7 +9,6 @@ import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { StatContainer } from 'app/modules/landing/common/StatContainer/StatContainer';
 import { LandingModel } from 'app/modules/landing/model';
 import { DecorationLanding } from 'app/modules/common/ModuleBackground/assets/DecorationLanding';
-import { DebugBox } from 'app/utils/layout';
 import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 
 const LandingPaper = styled.div`

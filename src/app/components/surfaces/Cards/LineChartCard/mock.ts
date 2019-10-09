@@ -1,4 +1,4 @@
-import { LineChartCardModel } from './model';
+import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
 
 //TODO: refactor to not use values.values
 export const mockData: LineChartCardModel = {

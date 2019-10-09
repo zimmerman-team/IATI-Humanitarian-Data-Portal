@@ -1,4 +1,4 @@
-import { subscribePush } from './notification'
+import { subscribePush } from 'notification'
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||

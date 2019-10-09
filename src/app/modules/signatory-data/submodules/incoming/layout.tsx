@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
-import { IncomingModel } from './model';
+import { IncomingModel } from 'app/modules/signatory-data/submodules/incoming/model';
 import { DecoSigIncomingTopLeft } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSigIncomingTopLeft';
 import { IncomingPledgesFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingPledgesFragment';
 import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingCommitmentsFragment';

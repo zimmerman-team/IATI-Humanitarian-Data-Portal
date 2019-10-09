@@ -21,7 +21,7 @@ const CustomTypo = styled(Typography)`
       default:
         return 'red';
     }
-  }}!important;
+  }};
 `;
 
 export const Stat = (props: StatModel) => {

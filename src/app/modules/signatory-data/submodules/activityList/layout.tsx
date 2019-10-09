@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core';
 import Table from 'app/components/datadisplay/Table/index';
-import { ActivityListLayoutModel } from './model';
+import { ActivityListLayoutModel } from 'app/modules/signatory-data/submodules/activityList/model';
 import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import { DecoSigActiveBottomRight } from 'app/modules/signatory-data/submodules/activityList/common/decoration/DecoSigActiveBottomRight';
 import { PageLoader } from 'app/modules/common/PageLoader';

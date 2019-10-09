@@ -1,5 +1,3 @@
-import { CCTRIPageModel } from './model';
-
 export const mockData: any = {
   title: 'CCTRI; Core commitment target results and indicators',
   sections: [

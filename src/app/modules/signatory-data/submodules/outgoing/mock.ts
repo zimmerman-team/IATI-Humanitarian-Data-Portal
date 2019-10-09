@@ -1,6 +1,6 @@
 import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { mockData as horizontalBarChartCardMockData } from 'app/components/surfaces/Cards/HorizontalBarChartCard/mock';
-import { OutgoingModel } from './model';
+import { OutgoingModel } from 'app/modules/signatory-data/submodules/outgoing/model';
 
 export const mockData: OutgoingModel = {
   horizontalBarChartCardData: horizontalBarChartCardMockData,

@@ -2,7 +2,6 @@
 import React, { ReactNode } from 'react';
 import { Grid, Container, Box, Typography } from '@material-ui/core';
 import useTitle from 'react-use/lib/useTitle';
-import { ThemeProvider } from 'styled-components';
 
 export type PageProps = {
   title?: string;

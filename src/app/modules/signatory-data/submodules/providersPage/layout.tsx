@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Hidden } from '@material-ui/core';
-import { ProvidersPageModel } from './model';
+import { ProvidersPageModel } from 'app/modules/signatory-data/submodules/providersPage/model';
 import TableModule from 'app/components/datadisplay/Table/index';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
 import Box from '@material-ui/core/Box';

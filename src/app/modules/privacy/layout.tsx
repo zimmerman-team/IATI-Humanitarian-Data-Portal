@@ -2,14 +2,13 @@
 import React from 'react';
 
 import { Page } from 'app/modules/common/Page';
-import { PrivacyModel } from './model';
+import { PrivacyModel } from 'app/modules/privacy/model';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import { DecoAboutTopLeft } from 'app/modules/about/common/decorations/DecoAboutTopLeft';
 import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAboutMidLeft';
 import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
 import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
-import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
 
 export const PrivacyModuleLayout = (props: PrivacyModel) => {
   return (

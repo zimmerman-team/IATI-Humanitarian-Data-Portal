@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
-import { ActivityDetailsLayout } from './layout';
+import { ActivityDetailsLayout } from 'app/modules/activityDetails/layout';
 
 /* utils */
 import get from 'lodash/get';

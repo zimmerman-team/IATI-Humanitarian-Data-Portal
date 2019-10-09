@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
-import { HorizontalBarChart } from 'app/components/charts/BarCharts/HorizontalBarChart/index';
-import { HorizontalBarChartCardModel } from './model';
+import { HorizontalBarChart } from 'app/components/charts/BarCharts/HorizontalBarChart';
+import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
 
 const Card = styled(props => <MuiCard {...props} />)`
   && {

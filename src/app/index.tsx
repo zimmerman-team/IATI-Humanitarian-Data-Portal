@@ -4,7 +4,7 @@ import Providers from 'app/Providers';
 import { Routes } from 'app/Routes';
 import AppBar from 'app/components/surfaces/AppBar';
 import SnackBar from 'app/components/feedback/SnackBar';
-import { Box, Container, Hidden } from '@material-ui/core';
+import { Hidden } from '@material-ui/core';
 import { DrawerMenu } from './components/navigation/Drawer';
 import { mockData as drawerMockData } from './components/navigation/Drawer/mock';
 

@@ -1,4 +1,4 @@
-import { PrivacyModel } from './model';
+import { PrivacyModel } from 'app/modules/privacy/model';
 
 export const mockData: PrivacyModel = {
   title: 'Privacy Policy',

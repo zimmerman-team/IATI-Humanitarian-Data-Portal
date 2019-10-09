@@ -1,6 +1,6 @@
 /* models/interfaces */
 import { ListModel } from 'app/components/datadisplay/Lists/model';
-import { ResultItem } from '../store/interface';
+import { ResultItem } from 'app/modules/ResultDetails/store/interface';
 import { ListCellModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* utils */

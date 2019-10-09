@@ -2,13 +2,13 @@ import React, { Suspense } from 'react';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { Route, Switch } from 'react-router';
 import { Overview } from 'app/modules/signatory-data/submodules/overview';
-import { ActivityList } from './activityList';
-import { SignatoryIncoming } from './incoming';
-import { ProvidersPage } from './providersPage';
-import { SignatoryOutgoing } from './outgoing';
-import { Recipients } from './recipients';
-import { Timelines } from './timelines';
-import { Coverage } from './coveragePage';
+import { ActivityList } from 'app/modules/signatory-data/submodules/activityList';
+import { SignatoryIncoming } from 'app/modules/signatory-data/submodules/incoming';
+import { ProvidersPage } from 'app/modules/signatory-data/submodules/providersPage';
+import { SignatoryOutgoing } from 'app/modules/signatory-data/submodules/outgoing';
+import { Recipients } from 'app/modules/signatory-data/submodules/recipients';
+import { Timelines } from 'app/modules/signatory-data/submodules/timelines';
+import { Coverage } from 'app/modules/signatory-data/submodules/coveragePage';
 
 export function SignatoryDataRoutes() {
   return (

@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import CardContent from '@material-ui/core/CardContent';
-import { ActivityDetailsHeaderCardModel } from './model';
+import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 
 const Card = styled(props => <MuiCard {...props} />)`
   && {

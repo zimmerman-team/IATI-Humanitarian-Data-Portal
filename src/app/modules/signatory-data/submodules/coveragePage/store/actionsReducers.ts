@@ -2,7 +2,7 @@ import {
   CoverageInterface,
   CovOrgInterface,
   TransDateInterface,
-} from './interfaces';
+} from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
 import { apiModel, apiPOSTModel } from 'app/state/api/actionsReducers';
 import { endpoints } from 'app/__consts__/endpoints';
 

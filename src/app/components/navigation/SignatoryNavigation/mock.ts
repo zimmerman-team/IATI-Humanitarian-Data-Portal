@@ -1,4 +1,4 @@
-import { SignatoryNavigationModel } from './model';
+import { SignatoryNavigationModel } from 'app/components/navigation/SignatoryNavigation/model';
 
 export const locations: SignatoryNavigationModel = {
   locations: [
