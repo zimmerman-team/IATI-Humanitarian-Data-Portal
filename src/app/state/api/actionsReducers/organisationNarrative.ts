@@ -1,4 +1,4 @@
-import { OrganisationNarrativeInterface} from 'app/state/api/interfaces/activityInterface';
+import { OrganisationNarrativeInterface } from 'app/state/api/interfaces/activityInterface';
 import { apiModel } from './index';
 import { endpoints } from 'app/__consts__/endpoints';
 

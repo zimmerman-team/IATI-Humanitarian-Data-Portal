@@ -31,8 +31,10 @@ export function formatHeader(
       get(actDetail, 'activity_date_iso_date', []),
       get(actDetail, 'activity_date_type', [])
     );
-    header.activity.startDate = dates.actualStart;
-    header.activity.endDate = dates.actualEnd;
+    header.activity.startDate = dates.Start
+      ? dates.Start
+      : 'No start date provided';
+    header.activity.endDate = dates.End ? dates.End : 'No end date provided';
   }
 
   return header;
