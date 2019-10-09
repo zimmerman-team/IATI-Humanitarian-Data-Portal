@@ -33,7 +33,7 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
   };
 };
 
-export const baseProviderConfig = (history): { data: any[]; columns: ({ name: string; options: { filter: boolean } } | { name: string; options: { filter: boolean } } | { name: string; options: { filter: boolean } } | { name: string; options: { filter: boolean } } | { name: string; options: { filter: boolean; customBodyRender: (value, tableMeta, updateValue) => (string | string) } })[]; options: { filter: boolean; viewColumns: boolean; selectableRows: string; print: boolean; search: boolean; download: boolean; pagination: boolean; rowHover: boolean; responsive: string; customSort: (data: any[], colIndex: number, order: string) => (any); onRowClick: () => void; customRowRender: (data, dataIndex) => any }; totalCell: boolean; title: string; columnsCell: string[] } => {
+export const baseProviderConfig = (history): TableModuleModel => {
   return {
     title: 'Funding organisations',
     data: [],
