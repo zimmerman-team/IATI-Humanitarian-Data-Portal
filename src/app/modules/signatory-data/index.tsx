@@ -11,7 +11,11 @@ import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
 /* state & utils */
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 /* mock */
-import { signatoryDataMock, iatigbsignatoriesCallValues, OrgNarrative } from 'app/modules/signatory-data/mock';
+import {
+  signatoryDataMock,
+  iatigbsignatoriesCallValues,
+  OrgNarrative,
+} from 'app/modules/signatory-data/mock';
 import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
@@ -27,7 +31,9 @@ export const SignatoryData = React.memo(
     const optionActions = useStoreActions(action => action.sigDataOpts);
 
     const gbsignatoriesData = useStoreState(state => state.gbsignatories);
-    const organisationNarrativeData = useStoreState(state => state.organisationnarrative);
+    const organisationNarrativeData = useStoreState(
+      state => state.organisationnarrative
+    );
     const iatigbsignatoriesData = useStoreState(
       state => state.iatigbsignatories
     );
@@ -93,20 +99,21 @@ export const SignatoryData = React.memo(
           ...iatigbsignatoriesCallValues.values,
           q: `reporting_org_ref:(${publishers})`,
         },
-
       };
       organisationNarrativeCall(callValuesNarrative);
       iatigbsignatoriesCall(callValuesIatiSig);
     }, [gbsignatoriesData]);
-
-
 
     React.useEffect(() => {
       setSignatories(
         formatTableSignatories(
           get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []),
           get(gbsignatoriesData, 'data', []),
-          get(organisationNarrativeData, 'data.data.grouped.reporting_org_ref.groups', []),
+          get(
+            organisationNarrativeData,
+            'data.data.grouped.reporting_org_ref.groups',
+            []
+          )
         )
       );
     }, [iatigbsignatoriesData && organisationNarrativeData]);
@@ -132,7 +139,11 @@ export const SignatoryData = React.memo(
         sigTable={sigTable}
         title={signatoryDataMock.title}
         description={signatoryDataMock.description}
-        loading={organisationNarrativeData.loading || gbsignatoriesData.loading || iatigbsignatoriesData.loading }
+        loading={
+          organisationNarrativeData.loading ||
+          gbsignatoriesData.loading ||
+          iatigbsignatoriesData.loading
+        }
       />
     );
     //  we set this to false, because we don't want this

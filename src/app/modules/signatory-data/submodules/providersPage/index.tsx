@@ -68,7 +68,7 @@ export function ProvidersPageFunc(props) {
       )}
       tableData={{
         ...baseProviderConfig(props.history),
-        data: tableData
+        data: tableData,
       }}
     />
   );
