@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "outDir": "./dist/out-tsc",
     "allowUnreachableCode": true,
     "module": "esnext",
     "noEmit": true,

@@ -19,6 +19,7 @@ import {
   WithRouterProps,
   WithRouterStatics,
 } from 'react-router';
+import { Responsive } from 'mui-datatables';
 
 export function ProvidersPageFunc(props) {
   /* component store */
@@ -67,7 +68,7 @@ export function ProvidersPageFunc(props) {
       )}
       tableData={{
         ...baseProviderConfig(props.history),
-        data: tableData,
+        data: tableData
       }}
     />
   );
