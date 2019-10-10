@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container} from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 import { DebugBox } from 'app/utils/layout';
 import 'assets/decoration_landing.svg';
 import { DecorationLanding } from 'app/modules/common/ModuleBackground/assets/DecorationLanding';

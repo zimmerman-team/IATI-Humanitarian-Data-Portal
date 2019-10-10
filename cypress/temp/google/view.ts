@@ -3,8 +3,8 @@
 import { Generic } from '../generic/visit';
 
 describe('Flight Test Suite', () => {
-  beforeEach( () => {
-    cy.viewport( 1600, 800 );
+  beforeEach(() => {
+    cy.viewport(1600, 800);
   });
 
   it('Buttons Panel', () => {
@@ -36,10 +36,8 @@ describe('Flight Test Suite', () => {
 
   it('Page Layout', () => {
     // Google Logo
-    cy.get('#hplogo')
-      .should('be.visible')
+    cy.get('#hplogo').should('be.visible');
     // .should('have.css', 'font-family')
     // .and('match', /serif/)
   });
 });
-

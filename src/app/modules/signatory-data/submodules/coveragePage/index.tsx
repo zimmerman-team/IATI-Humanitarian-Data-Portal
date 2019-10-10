@@ -7,7 +7,12 @@ import { CoverageLayout } from './layout';
 import { covStore } from 'app/modules/signatory-data/submodules/coveragePage/store';
 
 /* consts */
-import { baseCovTable, covOrgQuery, covQuery, transDateQuery } from 'app/modules/signatory-data/submodules/coveragePage/const';
+import {
+  baseCovTable,
+  covOrgQuery,
+  covQuery,
+  transDateQuery,
+} from 'app/modules/signatory-data/submodules/coveragePage/const';
 
 /* utils */
 import get from 'lodash/get';

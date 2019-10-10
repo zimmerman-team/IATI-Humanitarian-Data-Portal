@@ -19,9 +19,9 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
-    <Box position="absolute" top="0" left="0">
-            <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
-          </Box>
+      <Box position="absolute" top="0" left="0">
+        <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
+      </Box>
       <Grid container>
         <Grid item lg={8} md={12}>
           {/* TITLE + INTRODUCTION */}
@@ -43,11 +43,11 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
           {/* CONTENT */}
           <BodyText>{parse(props.sections[1].content)}</BodyText>
         </Grid>
-        </Grid>
+      </Grid>
 
       <Box position="absolute" bottom="0" right="0">
         {/*<DecoTargetBottomRight data-testid="DecoTargetBottomRight" />*/}
       </Box>
-     </Container>
+    </Container>
   );
 };
