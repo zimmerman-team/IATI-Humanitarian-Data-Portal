@@ -3,7 +3,7 @@
 import autoRecord from 'cypress-autorecord';
 
 const signatoryIncomingTexts = [
-  'Humanitarian transaction type breakdown',
+  'Incoming',
   'Incoming pledges',
   'Incoming commitments',
   'Incoming funds',
