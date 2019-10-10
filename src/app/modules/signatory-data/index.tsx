@@ -21,7 +21,7 @@ import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryData = React.memo(
   (props: SignatoryDataModule) => {
-    useTitle(`MLT - ${signatoryDataMock.title}`);
+    useTitle(`IATI Humanitarian Data Portal - ${signatoryDataMock.title}`);
 
     const [columns, setColumns] = React.useState(mockDataVar2.columns);
     // const [options, setOptions] = React.useState(mockDataVar2.options);

@@ -24,7 +24,7 @@ import { formatBarData } from 'app/modules/signatory-progress/utils/formatBarDat
 import { formatTableData } from 'app/modules/signatory-progress/utils/formatTableData';
 
 export function SignatoryProgress() {
-  useTitle(`MLT - ${SignatoryProgressMock.title}`);
+  useTitle(`IATI Humanitarian Data Portal - ${SignatoryProgressMock.title}`);
   const [state, actions] = signProgStore();
 
   const iatigbsignatoriesData: any = useStoreState(
