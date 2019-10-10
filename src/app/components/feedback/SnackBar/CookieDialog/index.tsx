@@ -4,8 +4,8 @@ import SnackbarContent from '@material-ui/core/SnackbarContent';
 import styled from 'styled-components';
 import ContainedButton from 'app/components/inputs/buttons/ContainedButton';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import useCookie from '@devhammed/use-cookie';
+import { Link } from 'react-router-dom';
 
 type SnackBarProps = {
   message?: string;
@@ -80,7 +80,7 @@ export const CookieDialog = (props: SnackBarProps) => {
             <span id="client-snackbar">
               <Typo variant="body1">
                 The website uses cookies for tracking statistics. Read{' '}
-                <Link>Grand Bargains data privacy</Link> for more details.
+                <Link to="/privacy">Grand Bargains data privacy</Link> for more details.
               </Typo>
             </span>
           }
