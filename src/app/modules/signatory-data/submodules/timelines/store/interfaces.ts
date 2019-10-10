@@ -22,6 +22,29 @@ export interface TimelagResponseModel
   };
 }
 
+export interface FrequencyQuery {
+  tableName: string;
+  qField: string;
+  qOperator: string;
+  qValue: string;
+  sort: string;
+}
+
+export interface FrequencyItem {
+  _id: string;
+  sig_id: string;
+  sig_ref: string;
+  sig_short_name: string;
+  sig_long_name: string;
+  last_trans_date: string;
+  actual_date: string;
+  month_date: string;
+  updates_for_month: number;
+}
+
+export interface FrequencyInterface
+  extends ApiModel<FrequencyQuery, FrequencyItem[]> {}
+
 // interface to get humanitarian activities
 // associated with the signatory
 export interface TimelagInterface
