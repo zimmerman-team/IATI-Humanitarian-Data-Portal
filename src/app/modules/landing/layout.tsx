@@ -15,8 +15,6 @@ const LandingPaper = styled.div`
   background-color: white;
   max-width: 839px;
   padding: 40px;
-  //padding-top: 80px;
-  //padding-bottom: 50px;
   position: relative;
 `;
 
