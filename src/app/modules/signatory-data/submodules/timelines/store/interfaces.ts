@@ -1,5 +1,7 @@
 import { ApiModel } from 'app/state/api/interfaces';
 import { BaseRespModel } from 'app/interfaces/response';
+import { BaseQuery } from 'app/interfaces/queries';
+import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 
 export interface TimelagQueryModel {
   q: string;
@@ -41,6 +43,9 @@ export interface FrequencyItem {
   month_date: string;
   updates_for_month: number;
 }
+
+export interface FirstPublishInterface
+  extends ApiModel<BaseQuery, BaseRespModel<BaseQuery, SingleDefActivity>> {}
 
 export interface FrequencyInterface
   extends ApiModel<FrequencyQuery, FrequencyItem[]> {}

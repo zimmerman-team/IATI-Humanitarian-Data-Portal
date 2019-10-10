@@ -1,5 +1,6 @@
 import { apiModel, db } from 'app/state/api/actionsReducers';
 import {
+  FirstPublishInterface,
   FrequencyInterface,
   FrequencyQuery,
   TimelagInterface,
@@ -41,4 +42,10 @@ export const frequency: FrequencyInterface = {
       });
     }
   }),
+};
+
+export const firstPubDate: FirstPublishInterface = {
+  ...apiModel(
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
+  ),
 };

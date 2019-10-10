@@ -19,3 +19,12 @@ export const orgFreqQuery = (repOrgRef: string) => {
     sort: 'month_date',
   };
 };
+
+export const firstPubQuery = (repOrgRef: string) => {
+  return {
+    q: `reporting_org_ref:${repOrgRef}`,
+    fl: 'dataset_date_created',
+    sort: 'dataset_date_created asc',
+    rows: 1,
+  };
+};

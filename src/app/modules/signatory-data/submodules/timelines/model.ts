@@ -1,6 +1,8 @@
 import { moneyType } from 'app/components/datadisplay/Table/model';
 
 export interface TimeLinessModel {
+  freqRating: string;
+  timeLagName: string;
   timelagData: (
     | number
     | string
