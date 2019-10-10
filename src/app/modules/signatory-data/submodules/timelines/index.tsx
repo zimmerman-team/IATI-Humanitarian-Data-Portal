@@ -6,11 +6,15 @@ import { TimelinesLayout } from 'app/modules/signatory-data/submodules/timelines
 import { timeStore } from 'app/modules/signatory-data/submodules/timelines/store';
 
 /* consts */
-import { timlagQuery } from 'app/modules/signatory-data/submodules/timelines/const';
+import {
+  orgFreqQuery,
+  timlagQuery,
+} from 'app/modules/signatory-data/submodules/timelines/const';
 
 /* utils */
 import get from 'lodash/get';
 import { formatTimeTable } from 'app/modules/signatory-data/submodules/timelines/utils/formatTimeTable';
+import { formatFrequency } from 'app/modules/signatory-data/submodules/timelines/utils/formatFrequencyTable';
 
 function TimelinesF(props) {
   const [state, actions] = timeStore();
@@ -18,6 +22,9 @@ function TimelinesF(props) {
   useEffect(() => {
     actions.timeLag.fetch({
       values: timlagQuery(decodeURIComponent(props.match.params.code)),
+    });
+    actions.frequency.fetch({
+      values: orgFreqQuery(decodeURIComponent(props.match.params.code)),
     });
   }, []);
 
@@ -27,7 +34,14 @@ function TimelinesF(props) {
     null
   );
 
-  return <TimelinesLayout timelagData={formatTimeTable(timelagData)} />;
+  const orgFrequency = get(state.frequency, 'data.data', null);
+
+  return (
+    <TimelinesLayout
+      timelagData={formatTimeTable(timelagData)}
+      freqData={formatFrequency(orgFrequency)}
+    />
+  );
 }
 
 export const Timelines = withRouter(TimelinesF);

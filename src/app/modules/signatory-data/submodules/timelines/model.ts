@@ -8,4 +8,11 @@ export interface TimeLinessModel {
     | null
     | (string | number | null)[]
     | moneyType)[][];
+  freqData: (
+    | number
+    | string
+    | undefined
+    | null
+    | (string | number | null)[]
+    | moneyType)[][];
 }
