@@ -35,10 +35,17 @@ export function formatActivities(
           }
           return '';
         });
+      const startDate = activity.activity_date_start_actual
+        ? activity.activity_date_start_actual
+        : activity.activity_date_start_planned;
+
+      const endDate = activity.activity_date_end_actual
+        ? activity.activity_date_end_actual
+        : activity.activity_date_end_planned;
 
       tableData.push([
-        formatDate(activity.activity_date_start_actual),
-        formatDate(activity.activity_date_end_actual),
+        formatDate(startDate),
+        formatDate(endDate),
         statusName ? statusName.name : 'no data',
         [activity.iati_identifier, engTitle],
         countryNames || [],

@@ -24,9 +24,9 @@ export function getEngText(jsonStrTitle: string) {
   return 'Not Found';
 }
 
-interface ActualDateInterface {
-  actualStart: string;
-  actualEnd: string;
+interface DateInterface {
+  Start: string;
+  End: string;
 }
 
 // accepts string data of various formats
@@ -48,28 +48,35 @@ export function formatDate(strDate: string | null | undefined) {
 // where the indexes correspond to each other.
 // The actual start date is of type code 2
 // and the actual end is of type code 4
+// if there is no actual start/end dates, take planned start/end date
 // ALSO this formats the dates
 export function getActualDates(
   dates: string[],
   dateTypes: string[]
-): ActualDateInterface {
-  let actualStart = '';
-  let actualEnd = '';
+): DateInterface {
+  let Start = '';
+  let End = '';
 
   const actualStartIndex = dateTypes.indexOf('2');
   const actualEndIndex = dateTypes.indexOf('4');
+  const plannedStartIndex = dateTypes.indexOf('1');
+  const plannedEndIndex = dateTypes.indexOf('3');
   if (actualStartIndex !== -1) {
     // and here we format the date
-    actualStart = formatDate(dates[actualStartIndex]);
+    Start = formatDate(dates[actualStartIndex]);
+  } else {
+    Start = formatDate(dates[plannedStartIndex]);
   }
   if (actualEndIndex !== -1) {
     // and here we format the date
-    actualEnd = formatDate(dates[actualEndIndex]);
+    End = formatDate(dates[actualEndIndex]);
+  } else {
+    End = formatDate(dates[plannedEndIndex]);
   }
 
   return {
-    actualStart,
-    actualEnd,
+    Start,
+    End,
   };
 }
 

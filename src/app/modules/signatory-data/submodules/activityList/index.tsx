@@ -13,10 +13,10 @@ import {
   activitiesQuery,
   activityBaseTable,
   colSortNames,
-} from './const';
+} from 'app/modules/signatory-data/submodules/activityList/const';
 
 /* utils */
-import { formatActivities } from './utils/formatActivities';
+import { formatActivities } from 'app/modules/signatory-data/submodules/activityList/utils/formatActivities';
 import findIndex from 'lodash/findIndex';
 import find from 'lodash/find';
 import get from 'lodash/get';
