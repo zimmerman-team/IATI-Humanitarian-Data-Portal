@@ -28,16 +28,16 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       <Grid container spacing={4} direction="column">
         <Grid item md={6}>
           <Typography variant="h4">
-            <HighlightedTypography>Publishing frequency</HighlightedTypography>
+            <span>Publishing frequency</span>
           </Typography>
         </Grid>
         <Grid item md={6}>
           <Typography variant="body1">
-            <HighlightedTypography>
+            <span>
               The table records the number of days in each of the last twelve
               months on which the most recently recorded transaction date was
               observed by the Dashboard to have changed.
-            </HighlightedTypography>
+            </span>
           </Typography>
         </Grid>
         <Grid item md={12}>
@@ -50,7 +50,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
 
           <TableModule
             title={mockDataVar7.title}
-            data={mockDataVar7.data}
+            data={props.freqData}
             columns={mockDataVar7.columns}
             options={mockDataVar7.options}
             columnsCell={mockDataVar7.columnsCell}

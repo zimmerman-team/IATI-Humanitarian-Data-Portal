@@ -4,7 +4,11 @@ import {
   CovOrgInterface,
   TransDateInterface,
 } from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
-import { coverage, covOrg, transDate } from 'app/modules/signatory-data/submodules/coveragePage/store/actionsReducers';
+import {
+  coverage,
+  covOrg,
+  transDate,
+} from 'app/modules/signatory-data/submodules/coveragePage/store/actionsReducers';
 
 export interface CoverageStoreModel {
   coverage: CoverageInterface;

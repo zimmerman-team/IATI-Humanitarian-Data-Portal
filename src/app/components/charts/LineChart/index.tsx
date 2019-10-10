@@ -1,8 +1,11 @@
 import React from 'react';
-import { ResponsiveLine} from '@nivo/line';
+import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
 import { Tooltip } from 'app/components/charts/LineChart/common/Tooltip';
-import { LineChartModel, lineModel } from 'app/components/charts/LineChart/model';
+import {
+  LineChartModel,
+  lineModel,
+} from 'app/components/charts/LineChart/model';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';
 // import { CustomSymbolShape } from '../common/CustomSymbolShape';
 

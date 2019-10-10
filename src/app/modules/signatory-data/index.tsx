@@ -11,7 +11,11 @@ import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
 /* state & utils */
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 /* mock */
-import { signatoryDataMock, iatigbsignatoriesCallValues, OrgNarrative } from 'app/modules/signatory-data/mock';
+import {
+  signatoryDataMock,
+  iatigbsignatoriesCallValues,
+  OrgNarrative,
+} from 'app/modules/signatory-data/mock';
 import { formatTableSignatories } from 'app/modules/signatory-data/utils';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 

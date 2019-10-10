@@ -9,3 +9,13 @@ export const timlagQuery = (repOrgRef: string) => {
     rows: 0,
   };
 };
+
+export const orgFreqQuery = (repOrgRef: string) => {
+  return {
+    tableName: 'frequency',
+    qField: 'sig_ref',
+    qOperator: '==',
+    qValue: repOrgRef,
+    sort: 'month_date',
+  };
+};

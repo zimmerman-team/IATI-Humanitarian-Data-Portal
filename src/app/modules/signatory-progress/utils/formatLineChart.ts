@@ -71,7 +71,7 @@ function formatFirstLine(
 }
 
 export function formatLineChart(
-  gbsignatories: SingleDefGBSignatory[],
+  gbsignatories: SingleDefGBSignatory[] | null,
   specPubsData: Array<SpecPubsItemModel>
 ): LineChartCardModel {
   const lineData: LineChartCardModel = {
@@ -79,65 +79,67 @@ export function formatLineChart(
     values: { values: [] },
   };
 
-  // first here we form Signatories publishing
-  // to IATI line by comparing
-  const firstDataItem = formatFirstLine(gbsignatories);
-  lineData.values.values.push({
-    data: firstDataItem.data,
-    id: 'Signatories publish to IATI',
-  });
+  if (gbsignatories) {
+    // first here we form Signatories publishing
+    // to IATI line by comparing
+    const firstDataItem = formatFirstLine(gbsignatories);
+    lineData.values.values.push({
+      data: firstDataItem.data,
+      id: 'Signatories publish to IATI',
+    });
 
-  const allSigCount = firstDataItem.totalSigCount;
+    const allSigCount = firstDataItem.totalSigCount;
 
-  specPubsData.forEach(item => {
-    const data: DataPoint[] = [];
+    specPubsData.forEach(item => {
+      const data: DataPoint[] = [];
 
-    dateRanges.forEach((range, index) => {
-      const fixedData = getSpecFixedValues(range, item.key);
+      dateRanges.forEach((range, index) => {
+        const fixedData = getSpecFixedValues(range, item.key);
 
-      let percentage: null | number = null;
+        let percentage: null | number = null;
 
-      if (fixedData.percentage === 0) {
-        percentage = 0;
-      }
+        if (fixedData.percentage === 0) {
+          percentage = 0;
+        }
 
-      // so now here we need to calculate the overall percentage change
-      // for all remaining lines, and because we only get percentages
-      // which are 'of these' refering to the signatories publishing
-      // data to iati, we will need to get the signatory count for the specified
-      // date AND then make a percentage against the fixed value count
-      // and the signatory count for the specified date
-      const dateAllSigCount = find(firstDataItem.sigDateCounts, [
-        'key',
-        range.value,
-      ]);
-      if (
-        dateAllSigCount !== undefined &&
-        fixedData.count !== null &&
-        fixedData.percentage !== null &&
-        percentage !== 0
-      ) {
-        percentage = Math.round(
-          (fixedData.count * 100) / dateAllSigCount.value
-        );
-      }
+        // so now here we need to calculate the overall percentage change
+        // for all remaining lines, and because we only get percentages
+        // which are 'of these' refering to the signatories publishing
+        // data to iati, we will need to get the signatory count for the specified
+        // date AND then make a percentage against the fixed value count
+        // and the signatory count for the specified date
+        const dateAllSigCount = find(firstDataItem.sigDateCounts, [
+          'key',
+          range.value,
+        ]);
+        if (
+          dateAllSigCount !== undefined &&
+          fixedData.count !== null &&
+          fixedData.percentage !== null &&
+          percentage !== 0
+        ) {
+          percentage = Math.round(
+            (fixedData.count * 100) / dateAllSigCount.value
+          );
+        }
 
-      if (index === dateRanges.length - 1 && item.specPub) {
-        const specSigCount = getRealSigCount(gbsignatories, item.specPub);
-        percentage = Math.round((specSigCount * 100) / allSigCount);
-      }
+        if (index === dateRanges.length - 1 && item.specPub) {
+          const specSigCount = getRealSigCount(gbsignatories, item.specPub);
+          percentage = Math.round((specSigCount * 100) / allSigCount);
+        }
 
-      data.push({
-        x: range.label,
-        y: percentage,
+        data.push({
+          x: range.label,
+          y: percentage,
+        });
+      });
+
+      lineData.values.values.push({
+        data,
+        id: item.name,
       });
     });
-
-    lineData.values.values.push({
-      data,
-      id: item.name,
-    });
-  });
+  }
 
   return lineData;
 }
