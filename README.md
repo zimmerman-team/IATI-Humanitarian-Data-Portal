@@ -31,3 +31,5 @@ Please see our Contributing Guideline which explains repo organization, linting,
 ## License
 
 This project is licensed under the terms of the [LICENSE TYPE]
+
+## Supporters
