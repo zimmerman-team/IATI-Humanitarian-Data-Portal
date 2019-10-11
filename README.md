@@ -13,7 +13,7 @@
 <b>2.</b> Checkout repo to local folder<br/>
 <b>3.</b> Make sure you've installed node.js 10.16.3 or higher<br/>
 <b>4.</b> Run yarn install <br/>
-<b>5.</b> Create an .env file and specify the follow variables:
+<b>5.</b> Create an .env file and specify the following variables:
 - NODE_PATH=src/
 - REACT_APP_CLIENT_NAME=CLIENT_NAME
 - REACT_APP_CMS_PROJECT_ID=CMS_NAME
