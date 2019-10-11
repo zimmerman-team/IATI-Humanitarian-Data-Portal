@@ -9,6 +9,21 @@
 
 ## Installing
 
+<b>1.</b> Set up the MLT-CMS first
+<b>2.</b> Checkout repo to local folder
+<b>3.</b> Make sure you've installed node.js 10.16.3 or higher
+<b>4.</b> Run yarn install 
+<b>5.</b> Create an .env file and specify the follow variables:
+- NODE_PATH=src/
+- REACT_APP_CLIENT_NAME=CLIENT_NAME
+- REACT_APP_CMS_PROJECT_ID=CMS_NAME
+- REACT_APP_CMS_API=URL_OF_CMS_API
+- REACT_APP_DS_API_DEV=https://test-datastore.iatistandard.org/dev
+- REACT_APP_DS_API=https://test-datastore.iatistandard.org
+- REACT_APP_SPACE_CLOUD_URL=URL_OF_SPACE_CLOUD_INSTANCE
+
+<b>6.</b> Run yarn start 
+
 ## Contributing
 
 ## License
