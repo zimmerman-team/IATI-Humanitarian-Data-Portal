@@ -1,8 +1,12 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumOtherClassOfInterestData = (rawData): ListModel => {
+export const getHumOtherClassOfInterestData = (
+  rawData,
+  tooltipsData
+): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humOtherClassOfInterestData_1.count', 0),
@@ -16,7 +20,11 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
     items: [
       {
         label: 'OECD DAC sector codes',
-        tooltip: 'OECD DAC sector codes',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'OECD DAC sector codes'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -26,7 +34,11 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
       },
       {
         label: 'OECD DAC aid types',
-        tooltip: 'OECD DAC aid types',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'OECD DAC aid types'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -36,7 +48,11 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
       },
       {
         label: 'OECD DAC gender marker',
-        tooltip: 'OECD DAC gender marker',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'OECD DAC gender marker'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
@@ -46,7 +62,11 @@ export const getHumOtherClassOfInterestData = (rawData): ListModel => {
       },
       {
         label: 'Sustainable Development Goals (SDGs)',
-        tooltip: 'Sustainable Development Goals (SDGs)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Sustainable Development Goals (SDGs)'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),

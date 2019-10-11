@@ -4,11 +4,12 @@ import { withRouter } from 'react-router';
 import { CoverageLayout } from './layout';
 
 /* store */
+import { useStoreState } from 'app/state/store/hooks';
 import { covStore } from 'app/modules/signatory-data/submodules/coveragePage/store';
 
 /* consts */
 import {
-  baseCovTable,
+  getBaseTable,
   covOrgQuery,
   covQuery,
   transDateQuery,
@@ -66,7 +67,9 @@ export function CoverageF(props) {
     'data.data.response.docs[0].organisation_default_currency_code',
     null
   );
+  const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
 
+  const baseCovTable = getBaseTable(tooltipsData);
   baseCovTable.data = formatCovData(covData, covOrgData, covOrgDefCurr);
 
   return <CoverageLayout tableData={baseCovTable} />;

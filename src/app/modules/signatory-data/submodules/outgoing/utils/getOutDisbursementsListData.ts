@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
+export const getOutDisbursementsListData = (rawData1, rawData2, tooltipsData): ListModel => {
   const allHumActCount = get(rawData1, 'count', 0);
   const outDisbursement1 = get(rawData1, 'outDisbursementBar.count', 0);
   const outDisbursement2 = get(rawData1, 'outDisbursement_2.count', 0);
@@ -13,8 +14,12 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
     elName: 'outDisbs',
     items: [
       {
-        label: 'For humanitarian activities',
-        tooltip: 'For humanitarian activities',
+        label: 'Total no. of Activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Disbursements',
+          'Total no. of Activities'
+        ),
         values: [
           {
             ptc: percentage(outDisbursement1, allHumActCount),
@@ -23,8 +28,12 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
         ],
       },
       {
-        label: 'Funding recipient details',
-        tooltip: 'Funding recipient details',
+        label: 'Funding Recipient details',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Disbursements',
+          'Funding Recipient details'
+        ),
         values: [
           {
             ptc: percentage(outDisbursement2, allHumActCount),
@@ -34,7 +43,11 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
       },
       {
         label: 'Organisation type provided',
-        tooltip: 'Organisation type provided',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Disbursements',
+          'Organisation type provided'
+        ),
         values: [
           {
             ptc: percentage(outDisbursement3, allHumActCount),
@@ -45,7 +58,11 @@ export const getOutDisbursementsListData = (rawData1, rawData2): ListModel => {
 
       {
         label: 'Source traceability information',
-        tooltip: 'Source traceability information',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Disbursements',
+          'Source traceability information'
+        ),
         values: [
           {
             ptc: percentage(outDisbursement4, allHumActCount),

@@ -199,6 +199,8 @@ export function InitialDataLoad() {
   const getCountNames = useStoreActions(
     actions => actions.codelists.countNames.fetch
   );
+  // const tooltipsData = useStoreState(reduxstate => reduxstate.tooltips);
+  const getTooltips = useStoreActions(actions => actions.tooltips.fetch);
 
   React.useEffect(() => {
     if (!gbsignatoriesData.data) {
@@ -306,5 +308,6 @@ export function InitialDataLoad() {
         },
       });
     }
+    getTooltips({});
   }, []);
 }

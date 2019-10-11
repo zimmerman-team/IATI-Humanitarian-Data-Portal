@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActFTSData = (rawData): ListModel => {
+export const getHumActFTSData = (rawData, tooltipsData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActFTSData_1.count', 0),
@@ -15,11 +16,14 @@ export const getHumActFTSData = (rawData): ListModel => {
   return {
     title: 'Hum. activities with FTS Import related',
     elName: 'incComms',
-    // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {
         label: 'Humanitarian OECD DAC sector code 700 or 70000 range',
-        tooltip: 'Humanitarian OECD DAC sector code 700 or 70000 range',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Humanitarian OECD DAC sector code 700 or 70000 range'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -29,7 +33,11 @@ export const getHumActFTSData = (rawData): ListModel => {
       },
       {
         label: 'Humanitarian indicator',
-        tooltip: 'Humanitarian indicator',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Humanitarian indicator'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -39,7 +47,11 @@ export const getHumActFTSData = (rawData): ListModel => {
       },
       {
         label: 'UN humanitarian response plan(s)',
-        tooltip: 'UN humanitarian response plan(s)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'UN humanitarian response plan(s)'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -49,7 +61,11 @@ export const getHumActFTSData = (rawData): ListModel => {
       },
       {
         label: 'GLIDE code(s)',
-        tooltip: 'GLIDE code(s)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'GLIDE code(s)'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
@@ -59,8 +75,11 @@ export const getHumActFTSData = (rawData): ListModel => {
       },
       {
         label: "Organisation's own internal crisis codes(ie using vocab '99')",
-        tooltip:
-          "Organisation's own internal crisis codes(ie using vocab '99')",
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          "Organisation's own internal crisis codes(ie using vocab '99')"
+        ),
         values: [
           {
             ptc: percentage(itemCounts[4], allActCount),
@@ -70,7 +89,11 @@ export const getHumActFTSData = (rawData): ListModel => {
       },
       {
         label: 'Clusters',
-        tooltip: 'Clusters',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Clusters'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[5], allActCount),

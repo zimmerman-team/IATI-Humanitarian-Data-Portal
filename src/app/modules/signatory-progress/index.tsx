@@ -13,7 +13,7 @@ import {
   pub202Query,
   pubTracQuery,
   pub203Query,
-  baseTable,
+  getBaseTable,
 } from './const';
 
 /* utils */
@@ -29,6 +29,9 @@ export function SignatoryProgress() {
 
   const iatigbsignatoriesData: any = useStoreState(
     globalState => globalState.gbsignatories
+  );
+  const tooltipsData: any = useStoreState(
+    globalState => globalState.tooltips.data
   );
 
   const gbOrgData = get(iatigbsignatoriesData, 'data', null);
@@ -105,7 +108,8 @@ export function SignatoryProgress() {
 
   const lineData = formatLineChart(gbOrgData, specPublishers);
   const barData = formatBarData(gbOrgData, specPublishers);
-  baseTable.data = formatTableData(gbOrgData, specPublishers);
+  const baseTable = getBaseTable(tooltipsData);
+  baseTable.data = formatTableData(gbOrgData, specPublishers) as never;
 
   return (
     <SignatoryProgressLayout

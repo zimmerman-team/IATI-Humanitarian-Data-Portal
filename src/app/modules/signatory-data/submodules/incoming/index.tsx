@@ -29,6 +29,7 @@ function SignatoryIncomingPage(props) {
   const sigdataincomingtraceData = useStoreState(
     state => state.sigdataincomingfundtrace.data
   );
+  const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
   /* create the API call instances */
   const sigdataincomingCall = useStoreActions(
     state => state.sigdataincoming.fetch
@@ -64,11 +65,18 @@ function SignatoryIncomingPage(props) {
   return (
     <IncomingLayout
       lists={[
-        getIncPledgesListData(get(sigdataincomingData, 'data.facets', {})),
-        getIncCommitmentsListData(get(sigdataincomingData, 'data.facets', {})),
+        getIncPledgesListData(
+          get(sigdataincomingData, 'data.facets', {}),
+          tooltipsData
+        ),
+        getIncCommitmentsListData(
+          get(sigdataincomingData, 'data.facets', {}),
+          tooltipsData
+        ),
         getIncFundsListData(
           get(sigdataincomingData, 'data.facets', {}),
-          get(sigdataincomingtraceData, 'data.facets', {})
+          get(sigdataincomingtraceData, 'data.facets', {}),
+          tooltipsData
         ),
       ]}
       inPageNavigation={inPageNavigationItems}

@@ -1,5 +1,8 @@
 import React from 'react';
 
+/* utils */
+import { getTooltipContent } from 'app/utils/generic';
+
 /* interfaces/models */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
@@ -173,59 +176,60 @@ export const pub203Query = {
   'json.facet': jsonFacet,
 };
 
-// so here we push in all the labels from the date ranges
-const columns: MUIDataTableColumnDef[] = dateRanges.map(range => {
-  return {
-    name: range.colLabel,
+export const getBaseTable = (tooltipsData): TableModuleModel => {
+  // console.log(tooltipsData);
+  // so here we push in all the labels from the date ranges
+  const columns: MUIDataTableColumnDef[] = dateRanges.map(range => {
+    return {
+      name: range.colLabel,
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    };
+  });
+
+  // then we push in the status column as the first column
+  columns.unshift({
+    name: 'Status',
+    options: {
+      filter: true,
+      filterType: 'checkbox',
+      customBodyRender: (value, tableMeta, updateValue) => {
+        let info = '';
+        if (value.toLowerCase() !== 'of these') {
+          info = getTooltipContent(tooltipsData, 'Signatory Progress', value);
+        }
+        return <InfoCellModule value={value} info={info} />;
+      },
+    },
+  });
+
+  // and we push in changes made as the last column
+  columns.push({
+    name: 'Changes [31. May] to today',
     options: {
       filter: true,
       filterType: 'checkbox',
     },
-  };
-});
+  });
 
-// then we push in the status column as the first column
-columns.unshift({
-  name: 'Status',
-  options: {
-    filter: true,
-    filterType: 'checkbox',
-    customBodyRender: (value, tableMeta, updateValue) => {
-      let info = null;
-
-      if (value.toLowerCase() !== 'of these') {
-        info = value;
-      }
-
-      return <InfoCellModule value={value} info={info} />;
+  return {
+    columns,
+    title: 'Aggregated signatory data publication indicator values',
+    data: [],
+    options: {
+      print: true,
+      search: false,
+      filter: false,
+      download: true,
+      rowHover: false,
+      pagination: false,
+      viewColumns: false,
+      responsive: 'scroll',
+      filterType: 'checkbox',
+      selectableRows: 'none',
     },
-  },
-});
-
-// and we push in changes made as the last column
-columns.push({
-  name: 'Changes [31. May] to today',
-  options: {
-    filter: true,
-    filterType: 'checkbox',
-  },
-});
-
-export const baseTable: TableModuleModel = {
-  columns,
-  title: 'Aggregated signatory data publication indicator values',
-  data: [],
-  options: {
-    print: true,
-    search: false,
-    filter: false,
-    download: true,
-    rowHover: false,
-    pagination: false,
-    viewColumns: false,
-    responsive: 'scroll',
-    filterType: 'checkbox',
-    selectableRows: 'none',
-  },
-  columnsCell: ['InfoCellModule'],
+    columnsCell: ['InfoCellModule'],
+  };
 };

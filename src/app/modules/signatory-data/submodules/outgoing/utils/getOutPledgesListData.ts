@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getOutPledgesListData = (rawData): ListModel => {
+export const getOutPledgesListData = (rawData, tooltipsData): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const outPledgeValue1 = get(rawData, 'outPledgeBar.count', 0);
   const outPledgeValue2 = get(rawData, 'outPledge_2.count', 0);
@@ -12,8 +13,12 @@ export const getOutPledgesListData = (rawData): ListModel => {
     elName: 'outPledges',
     items: [
       {
-        label: 'For humanitarian activities',
-        tooltip: 'For humanitarian activities',
+        label: 'Total no. of activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Pledges',
+          'Total no. of activities'
+        ),
         values: [
           {
             ptc: percentage(outPledgeValue1, allHumActCount),
@@ -22,8 +27,12 @@ export const getOutPledgesListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Funding recipient details',
-        tooltip: 'Funding recipient details',
+        label: 'Funding Recipient details',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Pledges',
+          'Funding Recipient details'
+        ),
         values: [
           {
             ptc: percentage(outPledgeValue2, allHumActCount),
@@ -33,7 +42,11 @@ export const getOutPledgesListData = (rawData): ListModel => {
       },
       {
         label: 'Organisation type provided',
-        tooltip: 'Organisation type provided',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Pledges',
+          'Organisation type provided'
+        ),
         values: [
           {
             ptc: percentage(outPledgeValue3, allHumActCount),
