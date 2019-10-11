@@ -26,4 +26,6 @@
 
 ## Contributing
 
+Please see our Contributing Guideline which explains repo organization, linting, testing, and other steps.
+
 ## License
