@@ -9,7 +9,7 @@
 
 ## Installing
 
-<b>1.</b> Set up the MLT-CMS first<br/>
+<b>1.</b> Set up the <a href="https://github.com/zimmerman-zimmerman/mlt-cms" target="_blank">mlt-cms</a> first<br/>
 <b>2.</b> Checkout repo to local folder<br/>
 <b>3.</b> Make sure you've installed node.js 10.16.3 or higher<br/>
 <b>4.</b> Run yarn install <br/>
