@@ -29,6 +29,7 @@ export function SignatoryOutgoingPage(props) {
   const sigdataoutgoingtraceData = useStoreState(
     state => state.sigdataoutgoingdisbtrace.data
   );
+  const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
   /* create the API call instances */
   const sigdataoutgoingCall = useStoreActions(
     action => action.sigdataoutgoing.fetch
@@ -63,13 +64,23 @@ export function SignatoryOutgoingPage(props) {
   return (
     <OutgoingLayout
       lists={[
-        getOutPledgesListData(get(sigdataoutgoingData, 'data.facets', {})),
-        getOutCommitmentsListData(get(sigdataoutgoingData, 'data.facets', {})),
+        getOutPledgesListData(
+          get(sigdataoutgoingData, 'data.facets', {}),
+          tooltipsData
+        ),
+        getOutCommitmentsListData(
+          get(sigdataoutgoingData, 'data.facets', {}),
+          tooltipsData
+        ),
         getOutDisbursementsListData(
           get(sigdataoutgoingData, 'data.facets', {}),
-          get(sigdataoutgoingtraceData, 'data.facets', {})
+          get(sigdataoutgoingtraceData, 'data.facets', {}),
+          tooltipsData
         ),
-        getExpenditureListData(get(sigdataoutgoingData, 'data.facets', {})),
+        getExpenditureListData(
+          get(sigdataoutgoingData, 'data.facets', {}),
+          tooltipsData
+        ),
       ]}
       horizontalBarChartCardData={getBarChartData(
         get(sigdataoutgoingData, 'data.facets', {})

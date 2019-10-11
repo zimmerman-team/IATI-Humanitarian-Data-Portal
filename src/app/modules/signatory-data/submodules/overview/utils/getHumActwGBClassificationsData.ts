@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActwGBClassificationsData = (rawData): ListModel => {
+export const getHumActwGBClassificationsData = (rawData, tooltipsData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActwGBClassificationsData_1.count', 0),
@@ -16,8 +17,12 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
       {
-        label: 'Earmarked for Grand Bargain (categories)',
-        tooltip: 'Earmarked for Grand Bargain (categories)',
+        label: 'Earmarking (categories)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Earmarking (categories)'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -26,8 +31,12 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Earmarked for Grand Bargain (modalities)',
-        tooltip: 'Earmarked for Grand Bargain (modalities)',
+        label: 'Earmarking (modalities)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Earmarking (modalities)'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -37,7 +46,11 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
       },
       {
         label: 'Partner country based (I)NGO organisation type used',
-        tooltip: 'Partner country based (I)NGO organisation type used',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Partner country based (I)NGO organisation type used'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -47,7 +60,11 @@ export const getHumActwGBClassificationsData = (rawData): ListModel => {
       },
       {
         label: 'Cash transfer (not yet available in IATI standard)',
-        tooltip: 'Cash transfer (not yet available in IATI standard)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Cash transfer '
+        ),
         values: [{ ptc: 'TBD', qtc: 'TBD' }],
         // values: [
         //   {

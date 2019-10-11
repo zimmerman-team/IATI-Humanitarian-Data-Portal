@@ -1,7 +1,12 @@
 import get from 'lodash/get';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
+export const getFinancialReportingData = (
+  rawData,
+  sigMetadata,
+  tooltipsData
+): ListModel => {
   // const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [get(rawData, 'facets.currency.buckets[0].val', '')];
   return {
@@ -10,7 +15,11 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
     items: [
       {
         label: 'Default currency',
-        tooltip: 'Default currency',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Default currency'
+        ),
         values: [
           {
             qtc: '',
@@ -20,7 +29,11 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
       },
       {
         label: 'Reports to UN OCHA Financial Tracking Service (FTS)',
-        tooltip: 'Reports to UN OCHA Financial Tracking Service (FTS)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Reports to UN OCHA Financial Tracking Service (FTS)'
+        ),
         values: [
           {
             qtc: '',
@@ -29,8 +42,12 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
         ],
       },
       {
-        label: 'Reports to UN OCHA for FTS via IATI',
-        tooltip: 'Reports to UN OCHA for FTS via IATI',
+        label: 'Reports to UN OCHA Financial Tracking Service (FTS) via IATI',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Reports to UN OCHA Financial Tracking Service (FTS) via IATI'
+        ),
         values: [
           {
             qtc: '',
@@ -40,7 +57,11 @@ export const getFinancialReportingData = (rawData, sigMetadata): ListModel => {
       },
       {
         label: 'Reports to European Union (EDRIS)',
-        tooltip: 'Reports to European Union (EDRIS)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Reports to European Union (EDRIS)'
+        ),
         values: [
           {
             qtc: '',

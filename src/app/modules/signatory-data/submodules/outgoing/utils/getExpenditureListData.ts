@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getExpenditureListData = (rawData): ListModel => {
+export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const outExpenditure1 = get(rawData, 'outExpenditureBar.count', 0);
   const outExpenditure3 = get(rawData, 'expenditure_3.count', 0);
@@ -12,8 +13,12 @@ export const getExpenditureListData = (rawData): ListModel => {
     elName: 'exp',
     items: [
       {
-        label: 'Total',
-        tooltip: 'Total',
+        label: 'Total no. of Activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Expenditure',
+          'Total no. of Activities'
+        ),
         values: [
           {
             ptc: percentage(outExpenditure1, allHumActCount),
@@ -22,8 +27,12 @@ export const getExpenditureListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'For humanitarian activities',
-        tooltip: 'For humanitarian activities',
+        label: 'Total no. of expenditure transactions (!)',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Expenditure',
+          'Total no. of expenditure transactions'
+        ),
         values: [
           {
             ptc: percentage(outExpenditure1, allHumActCount),
@@ -32,8 +41,12 @@ export const getExpenditureListData = (rawData): ListModel => {
         ],
       },
       {
-        label: 'Funding recipient details',
-        tooltip: 'Funding recipient details',
+        label: 'Funding Recipient details',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Expenditure',
+          'Funding Recipient details'
+        ),
         values: [
           {
             ptc: percentage(outExpenditure3, allHumActCount),
@@ -43,7 +56,11 @@ export const getExpenditureListData = (rawData): ListModel => {
       },
       {
         label: 'Organisation type provided',
-        tooltip: 'Organisation type provided',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Expenditure',
+          'Organisation type provided'
+        ),
         values: [
           {
             ptc: percentage(outExpenditure4, allHumActCount),

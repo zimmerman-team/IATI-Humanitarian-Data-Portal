@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActWLocationInfoData = (rawData): ListModel => {
+export const getHumActWLocationInfoData = (rawData, tooltipsData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActWLocationInfoData_1.count', 0),
@@ -17,7 +18,11 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
     items: [
       {
         label: 'Recipient countries',
-        tooltip: 'Recipient countries',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Recipient countries'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -27,7 +32,11 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
       },
       {
         label: 'Recipient regions',
-        tooltip: 'Recipient regions',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Recipient regions'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[4], allActCount),
@@ -37,7 +46,11 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
       },
       {
         label: 'Latitude / longitude coordinates',
-        tooltip: 'Latitude / longitude coordinates',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Latitude / longitude coordinates'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -48,8 +61,11 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
       {
         label:
           'Describing location according to a recognised geo-location gazetteer',
-        tooltip:
-          'Describing location according to a recognised geo-location gazetteer',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Describing location according to a recognised geo-location gazetteer'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -59,7 +75,11 @@ export const getHumActWLocationInfoData = (rawData): ListModel => {
       },
       {
         label: 'Using any other type of sub-national location data',
-        tooltip: 'Using any other type of sub-national location data',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Using any other type of sub-national location data'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),

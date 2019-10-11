@@ -3,6 +3,7 @@ import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { CovOrgItemModel } from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
 
 /* utils */
+import { getTooltipContent } from 'app/utils/generic';
 import {
   formatMoney,
   getInfoTHead,
@@ -52,84 +53,101 @@ export const covOrgQuery = (repOrgRef: string) => {
   };
 };
 
-export const baseCovTable: TableModuleModel = {
-  title: 'Coverage data',
-  data: [],
-  columns: [
-    {
-      name: 'Period started',
-      options: {
-        filter: false,
-      },
-    },
-    {
-      name: 'Period end',
-      options: {
-        filter: false,
-      },
-    },
-    {
-      name: 'Operational funds available',
-      options: {
-        filter: false,
-        customHeadRender: (columnMeta, updateDirection) =>
-          getInfoTHead(
-            'Operational funds available',
-            'Operational funds available'
-          ),
-        customBodyRender: (value, tableMeta, updateValue) => {
-          if (value && value.length > 0) {
-            return formatMoney(value[0], value[1]);
-          }
-          return 'No data';
+export const getBaseTable = (tooltipsData): TableModuleModel => {
+  return {
+    title: 'Coverage data',
+    data: [],
+    columns: [
+      {
+        name: 'Period started',
+        options: {
+          filter: false,
         },
       },
-    },
-    {
-      name: 'Disbursements & expenditure',
-      options: {
-        filter: false,
-        customHeadRender: (columnMeta, updateDirection) =>
-          getInfoTHead(
-            'Disbursements & expenditure',
-            'Disbursements & expenditure'
-          ),
-        customBodyRender: (value, tableMeta, updateValue) => {
-          if (value && value.length > 0) {
-            return formatMoney(value[0], value[1]);
-          }
-          return 'No data';
+      {
+        name: 'Period end',
+        options: {
+          filter: false,
         },
       },
-    },
-    {
-      name: 'Rating',
-      options: {
-        filter: false,
-        customHeadRender: (columnMeta, updateDirection) =>
-          getInfoTHead('Rating', 'Rating'),
+      {
+        name: 'Operational funds available',
+        options: {
+          filter: false,
+          customHeadRender: (columnMeta, updateDirection) =>
+            getInfoTHead(
+              'Operational funds available',
+              getTooltipContent(
+                tooltipsData,
+                'Signatory Data - Coverage',
+                'Operational funds available'
+              )
+            ),
+          customBodyRender: (value, tableMeta, updateValue) => {
+            if (value && value.length > 0) {
+              return formatMoney(value[0], value[1]);
+            }
+            return 'No data';
+          },
+        },
       },
+      {
+        name: 'Disbursements & expenditure',
+        options: {
+          filter: false,
+          customHeadRender: (columnMeta, updateDirection) =>
+            getInfoTHead(
+              'Disbursements & expenditure',
+              getTooltipContent(
+                tooltipsData,
+                'Signatory Data - Coverage',
+                'Disbursements & expenditure'
+              )
+            ),
+          customBodyRender: (value, tableMeta, updateValue) => {
+            if (value && value.length > 0) {
+              return formatMoney(value[0], value[1]);
+            }
+            return 'No data';
+          },
+        },
+      },
+      {
+        name: 'Rating',
+        options: {
+          filter: false,
+          customHeadRender: (columnMeta, updateDirection) =>
+            getInfoTHead(
+              'Rating',
+              getTooltipContent(
+                tooltipsData,
+                'Signatory Data - Coverage',
+                'Rating'
+              )
+            ),
+        },
+      },
+    ],
+    options: {
+      print: true,
+      search: false,
+      filter: false,
+      download: true,
+      rowHover: false,
+      pagination: false,
+      viewColumns: true,
+      responsive: 'scroll',
+      filterType: 'checkbox',
+      selectableRows: 'none',
     },
-  ],
-  options: {
-    print: true,
-    search: false,
-    filter: false,
-    download: true,
-    rowHover: false,
-    pagination: false,
-    viewColumns: true,
-    responsive: 'scroll',
-    filterType: 'checkbox',
-    selectableRows: 'none',
-  },
-  columnsCell: ['', '', '', '', ''],
-  totalCell: true,
-  totalRowColsDef: [
-    { dataType: 'none' },
-    { dataType: 'none' },
-    { dataType: 'money' },
-    { dataType: 'money' },
-    { dataType: 'none' },
-  ],
+    columnsCell: ['', '', '', '', ''],
+    totalCell: true,
+    totalRowColsDef: [
+      { dataType: 'none' },
+      { dataType: 'none' },
+      { dataType: 'money' },
+      { dataType: 'money' },
+      { dataType: 'none' },
+    ],
+  };
 };

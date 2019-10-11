@@ -1,8 +1,9 @@
 import get from 'lodash/get';
-import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
+import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumResultsData = (rawData): ListModel => {
+export const getHumResultsData = (rawData, tooltipsData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.HRActivitiesRes.count', 0),
@@ -17,7 +18,11 @@ export const getHumResultsData = (rawData): ListModel => {
     items: [
       {
         label: 'Results',
-        tooltip: 'Results',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Results'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -27,7 +32,11 @@ export const getHumResultsData = (rawData): ListModel => {
       },
       {
         label: 'Results documents links',
-        tooltip: 'Results documents links',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Results documents links'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -37,7 +46,11 @@ export const getHumResultsData = (rawData): ListModel => {
       },
       {
         label: 'Result indicators with baseline and target values',
-        tooltip: 'Result indicators with baseline and target values',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Result indicators with baseline and target values'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -47,7 +60,11 @@ export const getHumResultsData = (rawData): ListModel => {
       },
       {
         label: 'Result indicator documents links',
-        tooltip: 'Result indicator documents links',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Result indicator documents links'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),

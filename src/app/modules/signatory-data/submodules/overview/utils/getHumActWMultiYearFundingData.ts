@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActWMultiYearFundingData = (rawData): ListModel => {
+export const getHumActWMultiYearFundingData = (rawData, tooltipsData): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActWMultiYearFundData_1.count', 0),
@@ -15,7 +16,11 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
     items: [
       {
         label: 'Duration > 24 months',
-        tooltip: 'Duration > 24 months',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Duration > 24 months'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[0], allActCount),
@@ -25,7 +30,11 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
       },
       {
         label: 'Current hum. activities > 24 months budget exempt',
-        tooltip: 'Current hum. activities > 24 months budget exempt',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Current hum. activities > 24 months budget exempt'
+        ),
         values: [
           {
             ptc: percentage(itemCounts[1], allActCount),
@@ -36,8 +45,11 @@ export const getHumActWMultiYearFundingData = (rawData): ListModel => {
       {
         label:
           "Current hum. activities > 24 months & budgets for > 'next' 12 months",
-        tooltip:
-          "Current hum. activities > 24 months & budgets for > 'next' 12 months",
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          "Current hum. activities > 24 months & budgets for > 'next' 12 months"
+        ),
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),

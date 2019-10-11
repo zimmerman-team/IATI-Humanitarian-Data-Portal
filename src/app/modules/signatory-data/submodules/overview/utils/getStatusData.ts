@@ -1,29 +1,43 @@
 import get from 'lodash/get';
+import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 import { dateFormat } from 'app/modules/signatory-data/submodules/overview/utils/dateFormat';
-import { percentage } from 'app/utils/percentage';
 
 export const getStatusData = (
   rawData,
   dataErrors,
-  allActCount
+  allActCount,
+  tooltipsData
 ): ListItemModel[] => {
   return [
     {
       label: 'Latest version of the IATI standard used',
-      tooltip: 'Latest version of the IATI standard used',
+      tooltip: getTooltipContent(
+        tooltipsData,
+        'Signatory Data - Overview',
+        'Latest version of the IATI standard used'
+      ),
       values: [{ version: get(rawData, 'facets.latest_iati_version', '') }],
     },
     {
       label: 'Data errors',
-      tooltip: 'Data errors',
+      tooltip: getTooltipContent(
+        tooltipsData,
+        'Signatory Data - Overview',
+        'Data errors'
+      ),
       values: [
         { version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
       ],
     },
     {
       label: 'Latest update',
-      tooltip: 'Latest update',
+      tooltip: getTooltipContent(
+        tooltipsData,
+        'Signatory Data - Overview',
+        'Latest update'
+      ),
       values: [
         {
           date: dateFormat(
@@ -34,7 +48,11 @@ export const getStatusData = (
     },
     {
       label: 'Data first published',
-      tooltip: 'Data first published',
+      tooltip: getTooltipContent(
+        tooltipsData,
+        'Signatory Data - Overview',
+        'Data first published'
+      ),
       values: [
         {
           date: dateFormat(
