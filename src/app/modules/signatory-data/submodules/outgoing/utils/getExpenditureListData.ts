@@ -3,11 +3,13 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
+export const getExpenditureListData = (rawData, additionalData, tooltipsData): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
+  const allHumTransactCount = get(additionalData, 'count', 0);
   const outExpenditure1 = get(rawData, 'outExpenditureBar.count', 0);
-  const outExpenditure3 = get(rawData, 'expenditure_3.count', 0);
-  const outExpenditure4 = get(rawData, 'expenditure_4.count', 0);
+  const outExpenditure5 = get(additionalData, 'expTransactions.count', 0);
+  const outExpenditure3 = get(additionalData, 'expenditure_3.count', 0);
+  const outExpenditure4 = get(additionalData, 'expenditure_4.count', 0);
   return {
     title: 'Expenditure',
     elName: 'exp',
@@ -27,7 +29,7 @@ export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
         ],
       },
       {
-        label: 'Total no. of expenditure transactions (!)',
+        label: 'Total no. of expenditure transactions',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Expenditure',
@@ -35,8 +37,8 @@ export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
         ),
         values: [
           {
-            ptc: percentage(outExpenditure1, allHumActCount),
-            qtc: outExpenditure1,
+            ptc: percentage(outExpenditure5, allHumTransactCount),
+            qtc: outExpenditure5,
           },
         ],
       },
@@ -49,7 +51,7 @@ export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
         ),
         values: [
           {
-            ptc: percentage(outExpenditure3, allHumActCount),
+            ptc: percentage(outExpenditure3, allHumTransactCount),
             qtc: outExpenditure3,
           },
         ],
@@ -63,7 +65,7 @@ export const getExpenditureListData = (rawData, tooltipsData): ListModel => {
         ),
         values: [
           {
-            ptc: percentage(outExpenditure4, allHumActCount),
+            ptc: percentage(outExpenditure4, allHumTransactCount),
             qtc: outExpenditure4,
           },
         ],

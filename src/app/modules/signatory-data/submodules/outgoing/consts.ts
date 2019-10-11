@@ -4,13 +4,20 @@ export const outgoingCallFacetValues = {
   outCommitmentBar: { type: 'query', q: 'transaction_type:2' },
   outDisbursementBar: { type: 'query', q: 'transaction_type:3' },
   outExpenditureBar: { type: 'query', q: 'transaction_type:4' },
+};
+
+export const outgoingTransactionsValues = {
+  outPledgeTransactions: { type: 'query', q: 'transaction_type:12' },
+  outCommitmentTransactions: { type: 'query', q: 'transaction_type:2' },
+  disbTransactions: { type: 'query', q: 'transaction_type:3' },
+  expTransactions: { type: 'query', q: 'transaction_type:4' },
   outPledge_2: {
     type: 'query',
     q: '(transaction_type:12 AND transaction_receiver_org_narrative:*)',
   },
   outPledge_3: {
     type: 'query',
-    q: '(transaction_type:12 AND transaction_receiver_org_type_code:*)',
+    q: '(transaction_type:12 AND transaction_receiver_org_type:*)',
   },
   outCommitment_2: {
     type: 'query',
@@ -18,7 +25,7 @@ export const outgoingCallFacetValues = {
   },
   outCommitment_3: {
     type: 'query',
-    q: '(transaction_type:2 AND transaction_receiver_org_type_code:*)',
+    q: '(transaction_type:2 AND transaction_receiver_org_type:*)',
   },
   outDisbursement_2: {
     type: 'query',
@@ -26,7 +33,7 @@ export const outgoingCallFacetValues = {
   },
   outDisbursement_3: {
     type: 'query',
-    q: '(transaction_type:3 AND transaction_receiver_org_type_code:*)',
+    q: '(transaction_type:3 AND transaction_receiver_org_type:*)',
   },
   expenditure_3: {
     type: 'query',
@@ -35,14 +42,7 @@ export const outgoingCallFacetValues = {
   },
   expenditure_4: {
     type: 'query',
-    q: '(transaction_type:4 AND transaction_receiver_org_type_code:*)',
-  },
-};
-
-export const outgoingCallFacetValuesTrace = {
-  outDisbursement_4: {
-    type: 'query',
-    q: 'transaction_type:3',
+    q: '(transaction_type:4 AND transaction_receiver_org_type:*)',
   },
 };
 

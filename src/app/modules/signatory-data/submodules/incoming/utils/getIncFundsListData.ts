@@ -6,13 +6,16 @@ import { ListModel } from 'app/components/datadisplay/Lists/model';
 export const getIncFundsListData = (
   rawData1,
   rawData2,
+  additionalData,
   tooltipsData
 ): ListModel => {
   const allHumActCount = get(rawData1, 'count', 0);
+  const allHumTransactCount = get(additionalData, 'count', 0);
   const incFundsValue1 = get(rawData1, 'incFundsBar.count', 0);
-  const incFundsValue2 = get(rawData1, 'incFunds_2.count', 0);
-  const incFundsValue3 = get(rawData1, 'incFunds_3.count', 0);
-  const incFundsValue4 = get(rawData2, 'incFunds_4.count', 0);
+  const incFundsValue5 = get(additionalData, 'incFundTransactions.count', 0);
+  const incFundsValue2 = get(additionalData, 'incFunds_2.count', 0);
+  const incFundsValue3 = get(additionalData, 'incFunds_3.count', 0);
+  const incFundsValue4 = get(additionalData, 'incFunds_4.count', 0);
   return {
     title: 'Incoming funds',
     elName: 'incFunds',
@@ -32,6 +35,20 @@ export const getIncFundsListData = (
         ],
       },
       {
+        label: 'Total no. of incoming fund transactions',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Incoming - Funds',
+          'Total no. of incoming fund transactions'
+        ),
+        values: [
+          {
+            ptc: percentage(incFundsValue5, allHumTransactCount),
+            qtc: incFundsValue5,
+          },
+        ],
+      },
+      {
         label: 'Funding provider details',
         tooltip: getTooltipContent(
           tooltipsData,
@@ -40,7 +57,7 @@ export const getIncFundsListData = (
         ),
         values: [
           {
-            ptc: percentage(incFundsValue2, allHumActCount),
+            ptc: percentage(incFundsValue2, allHumTransactCount),
             qtc: incFundsValue2,
           },
         ],
@@ -54,7 +71,7 @@ export const getIncFundsListData = (
         ),
         values: [
           {
-            ptc: percentage(incFundsValue3, allHumActCount),
+            ptc: percentage(incFundsValue3, allHumTransactCount),
             qtc: incFundsValue3,
           },
         ],
@@ -68,7 +85,7 @@ export const getIncFundsListData = (
         ),
         values: [
           {
-            ptc: percentage(incFundsValue4, allHumActCount),
+            ptc: percentage(incFundsValue4, allHumTransactCount),
             qtc: incFundsValue4,
           },
         ],

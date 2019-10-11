@@ -8,10 +8,12 @@ import tooltips from 'app/state/api/actionsReducers/tooltips';
 import {
   sigdataincoming,
   sigdataincomingfundtrace,
+  sigdataincomingtransactions,
 } from 'app/state/api/actionsReducers/sigdataincoming';
 import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
+  sigdataoutgoingtransactions
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
@@ -48,8 +50,10 @@ export interface ApplicationStoreModel {
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
   sigdataincomingfundtrace: ActivityResponceInterface;
+  sigdataincomingtransactions: ActivityResponceInterface;
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
   sigdataoverviewdataerrors: ActivityResponceInterface;
+  sigdataoutgoingtransactions: ActivityResponceInterface;
   codelists: CodeListInterface;
   organisationnarrative: OrganisationNarrativeInterface;
 
@@ -73,7 +77,9 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoutgoingdisbtrace,
   organisationnarrative,
   sigdataoverviewdataerrors,
-  tooltips
+  tooltips,
+  sigdataoutgoingtransactions,
+  sigdataincomingtransactions
 };
 
 export const appStore = createStore(applicationStore, {

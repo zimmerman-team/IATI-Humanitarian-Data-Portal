@@ -13,3 +13,9 @@ export const sigdataincomingfundtrace: ActivityResponceInterface = {
     `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
   ),
 };
+
+export const sigdataincomingtransactions: ActivityResponceInterface = {
+  ...apiModel(
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+  ),
+};
