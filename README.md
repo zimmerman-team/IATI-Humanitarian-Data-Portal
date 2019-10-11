@@ -9,10 +9,10 @@
 
 ## Installing
 
-<b>1.</b> Set up the MLT-CMS first
-<b>2.</b> Checkout repo to local folder
-<b>3.</b> Make sure you've installed node.js 10.16.3 or higher
-<b>4.</b> Run yarn install 
+<b>1.</b> Set up the MLT-CMS first<br/>
+<b>2.</b> Checkout repo to local folder<br/>
+<b>3.</b> Make sure you've installed node.js 10.16.3 or higher<br/>
+<b>4.</b> Run yarn install <br/>
 <b>5.</b> Create an .env file and specify the follow variables:
 - NODE_PATH=src/
 - REACT_APP_CLIENT_NAME=CLIENT_NAME
