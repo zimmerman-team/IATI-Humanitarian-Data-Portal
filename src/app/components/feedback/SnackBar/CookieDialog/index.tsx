@@ -80,7 +80,8 @@ export const CookieDialog = (props: SnackBarProps) => {
             <span id="client-snackbar">
               <Typo variant="body1">
                 The website uses cookies for tracking statistics. Read{' '}
-                <Link to="/privacy">Grand Bargains data privacy</Link> for more details.
+                <Link to="/privacy">Grand Bargains data privacy</Link> for more
+                details.
               </Typo>
             </span>
           }
