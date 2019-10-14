@@ -3,11 +3,19 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getIncCommitmentsListData = (rawData, additionalData, tooltipsData): ListModel => {
+export const getIncCommitmentsListData = (
+  rawData,
+  additionalData,
+  tooltipsData
+): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const allHumTransactCount = get(additionalData, 'count', 0);
   const incCommitmentValue1 = get(rawData, 'incCommitmentBar.count', 0);
-  const incCommitmentValue4 = get(additionalData, 'incCommitmentTransactions.count', 0);
+  const incCommitmentValue4 = get(
+    additionalData,
+    'incCommitmentTransactions.count',
+    0
+  );
   const incCommitmentValue2 = get(additionalData, 'incCommitment_2.count', 0);
   const incCommitmentValue3 = get(additionalData, 'incCommitment_3.count', 0);
   return {

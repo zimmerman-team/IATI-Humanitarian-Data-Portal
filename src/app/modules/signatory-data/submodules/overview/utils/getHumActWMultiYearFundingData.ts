@@ -3,7 +3,10 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActWMultiYearFundingData = (rawData, tooltipsData): ListModel => {
+export const getHumActWMultiYearFundingData = (
+  rawData,
+  tooltipsData
+): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActWMultiYearFundData_1.count', 0),

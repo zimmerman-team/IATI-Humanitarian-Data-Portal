@@ -3,7 +3,10 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActwGBClassificationsData = (rawData, tooltipsData): ListModel => {
+export const getHumActwGBClassificationsData = (
+  rawData,
+  tooltipsData
+): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActwGBClassificationsData_1.count', 0),
