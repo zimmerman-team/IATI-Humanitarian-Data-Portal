@@ -3,12 +3,13 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getOutDisbursementsListData = (rawData1, rawData2, tooltipsData): ListModel => {
+export const getOutDisbursementsListData = (rawData1, additionalData, tooltipsData): ListModel => {
   const allHumActCount = get(rawData1, 'count', 0);
+  const allHumTransactCount = get(additionalData, 'count', 0);
   const outDisbursement1 = get(rawData1, 'outDisbursementBar.count', 0);
-  const outDisbursement2 = get(rawData1, 'outDisbursement_2.count', 0);
-  const outDisbursement3 = get(rawData1, 'outDisbursement_3.count', 0);
-  const outDisbursement4 = get(rawData2, 'outDisbursement_4.count', 0);
+  const outDisbursement5 = get(additionalData, 'disbTransactions.count', 0);
+  const outDisbursement2 = get(additionalData, 'outDisbursement_2.count', 0);
+  const outDisbursement3 = get(additionalData, 'outDisbursement_3.count', 0);
   return {
     title: 'Disbursements',
     elName: 'outDisbs',
@@ -28,6 +29,20 @@ export const getOutDisbursementsListData = (rawData1, rawData2, tooltipsData): L
         ],
       },
       {
+        label: 'Total no. of disbursement transactions',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Outgoing - Disbursements',
+          'Total no. of disbursement transactions'
+        ),
+        values: [
+          {
+            ptc: percentage(outDisbursement5, allHumTransactCount),
+            qtc: outDisbursement5,
+          },
+        ],
+      },
+      {
         label: 'Funding Recipient details',
         tooltip: getTooltipContent(
           tooltipsData,
@@ -36,7 +51,7 @@ export const getOutDisbursementsListData = (rawData1, rawData2, tooltipsData): L
         ),
         values: [
           {
-            ptc: percentage(outDisbursement2, allHumActCount),
+            ptc: percentage(outDisbursement2, allHumTransactCount),
             qtc: outDisbursement2,
           },
         ],
@@ -50,23 +65,8 @@ export const getOutDisbursementsListData = (rawData1, rawData2, tooltipsData): L
         ),
         values: [
           {
-            ptc: percentage(outDisbursement3, allHumActCount),
+            ptc: percentage(outDisbursement3, allHumTransactCount),
             qtc: outDisbursement3,
-          },
-        ],
-      },
-
-      {
-        label: 'Source traceability information',
-        tooltip: getTooltipContent(
-          tooltipsData,
-          'Signatory Data - Outgoing - Disbursements',
-          'Source traceability information'
-        ),
-        values: [
-          {
-            ptc: percentage(outDisbursement4, allHumActCount),
-            qtc: outDisbursement4,
           },
         ],
       },
