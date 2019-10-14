@@ -219,13 +219,20 @@ export function addConfig(
 
 export function changeTableRowColor(index) {
   const tbody = document.getElementsByClassName('MuiTableBody-root');
-  const tds = tbody[0]
-    .getElementsByTagName('tr')
-    [index].getElementsByTagName('td');
-  tbody[0].getElementsByTagName('tr')[index].className += ' TransparentCell';
-  for (let i = 0; i < tds.length; i++) {
-    tbody[0].getElementsByTagName('tr')[index].getElementsByTagName('td')[
-      i
-    ].className += ' TransparentCell';
+  if (
+    tbody &&
+    tbody[0] &&
+    tbody[0].getElementsByTagName('tr') &&
+    tbody[0].getElementsByTagName('tr')[index]
+  ) {
+    const tds = tbody[0]
+      .getElementsByTagName('tr')
+      [index].getElementsByTagName('td');
+    tbody[0].getElementsByTagName('tr')[index].className += ' TransparentCell';
+    for (let i = 0; i < tds.length; i++) {
+      tbody[0].getElementsByTagName('tr')[index].getElementsByTagName('td')[
+        i
+      ].className += ' TransparentCell';
+    }
   }
 }

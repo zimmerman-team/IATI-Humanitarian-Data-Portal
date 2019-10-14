@@ -11,7 +11,7 @@ export type PageProps = {
 
 //TODO: refactor to not use styled-flexboxgrid
 export const Page = (props: PageProps) => {
-  useTitle(`MLT - ${props.title}`);
+  useTitle(`IATI Humanitarian Data Portal - ${props.title}`);
 
   return (
     <Container

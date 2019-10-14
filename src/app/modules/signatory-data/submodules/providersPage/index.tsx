@@ -63,7 +63,7 @@ export function ProvidersPageFunc(props) {
         get(state.sigdataproviders.data, 'data', null),
         get(orgTypeNames.data, 'data', null),
         sigAllProviders,
-        'Funding organisation types',
+        'Providers',
         `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
       )}
       tableData={{

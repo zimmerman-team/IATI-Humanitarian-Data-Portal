@@ -229,6 +229,11 @@ export default createMuiTheme({
         maxHeight: '700px',
       },
     },
+    MuiTooltip: {
+      tooltip: {
+        whiteSpace: 'pre-wrap'
+      }
+    },
     MUIDataTableToolbar: {
       root: {
         backgroundColor: color.whiteOrFontlightbase,

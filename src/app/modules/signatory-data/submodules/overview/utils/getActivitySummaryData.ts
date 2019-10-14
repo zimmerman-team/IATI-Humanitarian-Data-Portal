@@ -1,8 +1,9 @@
 import get from 'lodash/get';
 import { percentage } from 'app/utils/percentage';
+import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getActivitySummaryData = (rawData): ListModel => {
+export const getActivitySummaryData = (rawData, tooltipsData): ListModel => {
   const allActivitiesCount = get(rawData.yearsData, 'count', 0);
   return {
     title: 'Activity summary',
@@ -11,7 +12,11 @@ export const getActivitySummaryData = (rawData): ListModel => {
     items: [
       {
         label: 'All activities',
-        tooltip: 'All activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'All activities'
+        ),
         values: [
           {
             ptc: undefined,

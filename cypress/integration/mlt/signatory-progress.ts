@@ -9,6 +9,7 @@ describe('Signatory progress', function() {
 
   it('should load the page', function() {
     cy.visit('/signatory-progress');
+    cy.wait(5000);
   });
 
   it('check texts', function() {

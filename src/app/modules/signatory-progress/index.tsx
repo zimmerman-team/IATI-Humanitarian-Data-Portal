@@ -13,7 +13,7 @@ import {
   pub202Query,
   pubTracQuery,
   pub203Query,
-  baseTable,
+  getBaseTable,
 } from './const';
 
 /* utils */
@@ -24,40 +24,46 @@ import { formatBarData } from 'app/modules/signatory-progress/utils/formatBarDat
 import { formatTableData } from 'app/modules/signatory-progress/utils/formatTableData';
 
 export function SignatoryProgress() {
-  useTitle(`MLT - ${SignatoryProgressMock.title}`);
+  useTitle(`IATI Humanitarian Data Portal - ${SignatoryProgressMock.title}`);
   const [state, actions] = signProgStore();
 
   const iatigbsignatoriesData: any = useStoreState(
     globalState => globalState.gbsignatories
   );
+  const tooltipsData: any = useStoreState(
+    globalState => globalState.tooltips.data
+  );
 
-  const gbOrgData = get(iatigbsignatoriesData, 'data', []);
+  const gbOrgData = get(iatigbsignatoriesData, 'data', null);
 
-  const gbOrgRefs = map(gbOrgData, item => item.IATIOrgRef).join(' ');
+  const gbOrgRefs =
+    gbOrgData && map(gbOrgData, item => item.IATIOrgRef).join(' ');
 
   useEffect(() => {
-    const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
-    humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
+    if (gbOrgRefs) {
+      const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
+      humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
 
-    pub202Query.q = `${repOrgQuery} AND `.concat(pub202Query.q);
-    pub203Query.q = `${repOrgQuery} AND `.concat(pub203Query.q);
-    pubTracQuery.q = `${repOrgQuery} AND `.concat(pubTracQuery.q);
+      pub202Query.q = `${repOrgQuery} AND `.concat(pub202Query.q);
+      pub203Query.q = `${repOrgQuery} AND `.concat(pub203Query.q);
+      pubTracQuery.q = `${repOrgQuery} AND `.concat(pubTracQuery.q);
 
-    // here we call the data for humanitarian publishers
-    actions.humPublishers.fetch({ values: humPubQuery });
+      // here we call the data for humanitarian publishers
+      actions.humPublishers.fetch({ values: humPubQuery });
 
-    // and here we call the data for publishers publishing
-    // v2.02 data
-    actions.publishers202.fetch({ values: pub202Query });
+      // and here we call the data for publishers publishing
+      // v2.02 data
+      actions.publishers202.fetch({ values: pub202Query });
 
-    // and here we call the data for publishers publishing
-    // v2.03 data
-    actions.publishers203.fetch({ values: pub203Query });
+      // and here we call the data for publishers publishing
+      // v2.03 data
+      actions.publishers203.fetch({ values: pub203Query });
 
-    // and here we call the data for publishers publishing
-    // traceability data
-    actions.publishersTrac.fetch({ values: pubTracQuery });
-  }, []);
+      // and here we call the data for publishers publishing
+      // traceability data
+      actions.publishersTrac.fetch({ values: pubTracQuery });
+    }
+  }, [gbOrgData]);
 
   // array for specific publisher data, be it publishers publishing humanitarian,
   // v2.02 data and etc.
@@ -102,7 +108,8 @@ export function SignatoryProgress() {
 
   const lineData = formatLineChart(gbOrgData, specPublishers);
   const barData = formatBarData(gbOrgData, specPublishers);
-  baseTable.data = formatTableData(gbOrgData, specPublishers);
+  const baseTable = getBaseTable(tooltipsData);
+  baseTable.data = formatTableData(gbOrgData, specPublishers) as never;
 
   return (
     <SignatoryProgressLayout

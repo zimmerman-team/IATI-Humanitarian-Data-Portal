@@ -25,26 +25,43 @@ export const formatTableSignatories = (
   organisationNarrative
 ) => {
   const formatSigs: any = [];
-  signatories.forEach((sig: any) => {
-    const narrative = find(organisationNarrative, ['groupValue', sig.val]);
-    const fSig = find(gbsignatoriesFromCMS, ['IATIOrgRef', sig.val]);
-    const orgType = get(fSig, 'orgType', '');
-    formatSigs.push([
-      //{name: get(fSig,'pubName',''), code: encodeURIComponent(sig.val)},
-      {
-        name: get(narrative, 'doclist.docs[0].reporting_org_narrative[0]', ''),
-        code: encodeURIComponent(sig.val),
-      },
-      get(fSig, 'name', ''),
-      orgType,
-      sig.latest_iati_version,
-      returnFlagValue(sig.pubHumData.count > 0),
-      returnFlagValue(sig.pubHumData.v202 && sig.pubHumData.v202.count > 0),
-      returnFlagValue(sig.pubHumData.v203 && sig.pubHumData.v203.count > 0),
-      orgType === 'Government'
-        ? returnFlagValue(sig.traec.count > 0 ? true : null)
-        : returnFlagValue(sig.traec.count > 0),
-    ]);
-  });
+  if (gbsignatoriesFromCMS && gbsignatoriesFromCMS.length > 0) {
+    gbsignatoriesFromCMS.forEach((cmsSig: any) => {
+      const narrative = find(organisationNarrative, [
+        'groupValue',
+        cmsSig.IATIOrgRef,
+      ]);
+      const fSig = find(signatories, ['val', cmsSig.IATIOrgRef]);
+      const orgType = get(cmsSig, 'orgType', '');
+      let sigOrgName = get(
+        narrative,
+        'doclist.docs[0].reporting_org_narrative[0]',
+        ''
+      );
+
+      sigOrgName = sigOrgName || cmsSig.pubName;
+
+      formatSigs.push([
+        //{name: get(fSig,'pubName',''), code: encodeURIComponent(sig.val)},
+        {
+          name: sigOrgName,
+          code: encodeURIComponent(cmsSig.IATIOrgRef),
+        },
+        get(cmsSig, 'name', ''),
+        orgType,
+        fSig && fSig.latest_iati_version,
+        returnFlagValue(fSig ? fSig.pubHumData.count > 0 : '0'),
+        returnFlagValue(
+          fSig ? fSig.pubHumData.v202 && fSig.pubHumData.v202.count > 0 : '0'
+        ),
+        returnFlagValue(
+          fSig ? fSig.pubHumData.v203 && fSig.pubHumData.v203.count > 0 : '0'
+        ),
+        orgType === 'Government'
+          ? returnFlagValue(fSig ? (fSig.traec.count > 0 ? true : null) : '0')
+          : returnFlagValue(fSig ? fSig.traec.count > 0 : '0'),
+      ]);
+    });
+  }
   return formatSigs;
 };

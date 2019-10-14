@@ -13,7 +13,7 @@ import { getStatsFromApiResponses } from 'app/modules/landing/utils';
 import { humanitarianCallValues } from 'app/modules/landing/mock';
 
 export function Landing() {
-  useTitle(`MLT - Home`);
+  useTitle(`IATI Humanitarian Data Portal - Home`);
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
   /* create the API call instances */
   const humanitarianCall = useStoreActions(

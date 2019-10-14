@@ -7,7 +7,7 @@ import { IncomingLayout } from 'app/modules/signatory-data/submodules/incoming/l
 import get from 'lodash/get';
 import {
   incomingCallFacetValues,
-  incomingCallFacetValuesTrace,
+  incomingTransactionsValues,
   inPageNavigationItems,
 } from 'app/modules/signatory-data/submodules/incoming/consts';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
@@ -29,12 +29,16 @@ function SignatoryIncomingPage(props) {
   const sigdataincomingtraceData = useStoreState(
     state => state.sigdataincomingfundtrace.data
   );
+  const sigdataincomingtransactionsData = useStoreState(
+    state => state.sigdataincomingtransactions.data
+  );
+  const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
   /* create the API call instances */
   const sigdataincomingCall = useStoreActions(
     state => state.sigdataincoming.fetch
   );
-  const sigdataincomingtraceCall = useStoreActions(
-    state => state.sigdataincomingfundtrace.fetch
+  const sigdataincomingtransactionsCall = useStoreActions(
+    state => state.sigdataincomingtransactions.fetch
   );
   /* componentDidMount call */
   React.useEffect(() => {
@@ -48,27 +52,36 @@ function SignatoryIncomingPage(props) {
       },
     };
     sigdataincomingCall(sigdataincomingcallValues);
-    const sigdataincomingtracecallValues = {
+    const sigdataincomingtransactionscallValues = {
       values: {
-        q: 'transaction_provider_org_provider_activity_id:*',
-        fq: `reporting_org_ref:${decodeURIComponent(
+        q: `reporting_org_ref:${decodeURIComponent(
           props.match.params.code
         )} AND (humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
-        'json.facet': JSON.stringify(incomingCallFacetValuesTrace),
+        'json.facet': JSON.stringify(incomingTransactionsValues),
         rows: 0,
       },
     };
-    sigdataincomingtraceCall(sigdataincomingtracecallValues);
+    sigdataincomingtransactionsCall(sigdataincomingtransactionscallValues);
   }, []);
 
   return (
     <IncomingLayout
       lists={[
-        getIncPledgesListData(get(sigdataincomingData, 'data.facets', {})),
-        getIncCommitmentsListData(get(sigdataincomingData, 'data.facets', {})),
+        getIncPledgesListData(
+          get(sigdataincomingData, 'data.facets', {}),
+          get(sigdataincomingtransactionsData, 'data.facets', {}),
+          tooltipsData
+        ),
+        getIncCommitmentsListData(
+          get(sigdataincomingData, 'data.facets', {}),
+          get(sigdataincomingtransactionsData, 'data.facets', {}),
+          tooltipsData
+        ),
         getIncFundsListData(
           get(sigdataincomingData, 'data.facets', {}),
-          get(sigdataincomingtraceData, 'data.facets', {})
+          get(sigdataincomingtraceData, 'data.facets', {}),
+          get(sigdataincomingtransactionsData, 'data.facets', {}),
+          tooltipsData
         ),
       ]}
       inPageNavigation={inPageNavigationItems}

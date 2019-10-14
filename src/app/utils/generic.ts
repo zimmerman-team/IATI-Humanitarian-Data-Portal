@@ -96,7 +96,8 @@ export function getNarrativeText(narArray, doubleArray?: boolean) {
 
   if (engNarr) {
     return engNarr.narrative || engNarr.text || 'no data';
-  } else if (doubleArray) {
+  }
+  if (doubleArray) {
     // ye so because the response structure is bad
     // it uses double arrays for no reason
     // we need to use the first arrays items key
@@ -110,4 +111,37 @@ export function getNarrativeText(narArray, doubleArray?: boolean) {
     get(narArray, '[0].narrative', 'no data') ||
     get(narArray, '[0].text', 'no data')
   );
+}
+
+export function getTooltipContent(tooltipsData, page, title) {
+  const tooltip = find(tooltipsData, {
+    page: page,
+    title: title,
+  });
+  let info = '';
+  if (!tooltip) {
+    return info;
+  }
+  if (tooltip.purpose) {
+    info += 'Purpose:';
+    info += '\n\n';
+    info += tooltip.purpose;
+  }
+  if (tooltip.whyGB) {
+    if (info !== '') {
+      info += '\n\n\n';
+    }
+    info += 'Why is this information for the Grand Bargain:';
+    info += '\n\n';
+    info += tooltip.whyGB;
+  }
+  if (tooltip.calculation) {
+    if (info !== '') {
+      info += '\n\n\n';
+    }
+    info += 'How is this value calculated:';
+    info += '\n\n';
+    info += tooltip.calculation;
+  }
+  return info;
 }

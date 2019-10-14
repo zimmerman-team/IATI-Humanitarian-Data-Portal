@@ -4,13 +4,16 @@ import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
+import tooltips from 'app/state/api/actionsReducers/tooltips';
 import {
   sigdataincoming,
   sigdataincomingfundtrace,
+  sigdataincomingtransactions,
 } from 'app/state/api/actionsReducers/sigdataincoming';
 import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
+  sigdataoutgoingtransactions
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
@@ -40,14 +43,17 @@ export interface ApplicationStoreModel {
   sigdataincoming: ActivityResponceInterface;
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
+  tooltips: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
   sigdataincomingfundtrace: ActivityResponceInterface;
+  sigdataincomingtransactions: ActivityResponceInterface;
   sigdataoutgoingdisbtrace: ActivityResponceInterface;
   sigdataoverviewdataerrors: ActivityResponceInterface;
+  sigdataoutgoingtransactions: ActivityResponceInterface;
   codelists: CodeListInterface;
   organisationnarrative: OrganisationNarrativeInterface;
 
@@ -71,6 +77,9 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoutgoingdisbtrace,
   organisationnarrative,
   sigdataoverviewdataerrors,
+  tooltips,
+  sigdataoutgoingtransactions,
+  sigdataincomingtransactions
 };
 
 export const appStore = createStore(applicationStore, {

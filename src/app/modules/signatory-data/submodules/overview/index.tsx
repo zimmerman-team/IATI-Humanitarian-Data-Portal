@@ -57,6 +57,7 @@ export function OverviewPage(props) {
   const sigdataoverviewdataerrorsData = useStoreState(
     state => state.sigdataoverviewdataerrors.data
   );
+  const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
   /* create the API call instances */
   const sigdataactivitiesbyyearCall = useStoreActions(
     actions => actions.sigdataactivitiesbyyear.fetch
@@ -136,35 +137,46 @@ export function OverviewPage(props) {
   const statusData = getStatusData(
     get(sigdataactivitystatusData, 'data', []),
     get(sigdataoverviewdataerrorsData, 'data', []),
-    get(yearsData, 'count', 0)
+    get(yearsData, 'count', 0),
+    tooltipsData
   );
-  const activitySummaryData = getActivitySummaryData({
-    yearsData,
-    humData: get(sigdataoverviewhumData, 'data', []),
-  });
+  const activitySummaryData = getActivitySummaryData(
+    {
+      yearsData,
+      humData: get(sigdataoverviewhumData, 'data', []),
+    },
+    tooltipsData
+  );
 
   const humActFTSData = getHumActFTSData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   const humActwGBClassificationsData = getHumActwGBClassificationsData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   const humOtherClassOfInterestData = getHumOtherClassOfInterestData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   const humResultsData = getHumResultsData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   const humActWLocationInfoData = getHumActWLocationInfoData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   const humActWMultiYearFundData = getHumActWMultiYearFundingData(
-    get(sigdataoverviewhumData, 'data', {})
+    get(sigdataoverviewhumData, 'data', {}),
+    tooltipsData
   );
   /* todo: implement this when available in OIPA solr */
   const financialReportingData = getFinancialReportingData(
     get(sigdataactivitystatusData, 'data', {}),
-    signatory
+    signatory,
+    tooltipsData
   );
 
   return (

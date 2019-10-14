@@ -7,7 +7,7 @@ import { CCTRILayout } from 'app/modules/signatory-progress/submodules/CCTRI/lay
 import { signProgStore } from 'app/modules/signatory-progress/store';
 
 export function CCTRI() {
-  useTitle('MLT - CCTRIs Target');
+  useTitle('IATI Humanitarian Data Portal - CCTRIs Target');
   // todo: look into Error:(11, 10) TS2589: Type instantiation is excessively deep and possibly infinite.
   const [state, actions] = signProgStore();
   React.useEffect(() => {
