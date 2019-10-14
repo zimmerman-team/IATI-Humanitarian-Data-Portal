@@ -4,5 +4,4 @@ import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/Horiz
 export type ProvidersPageModel = {
   barChartData: HorizontalBarChartCardModel;
   tableData: TableModuleModel;
-
 };

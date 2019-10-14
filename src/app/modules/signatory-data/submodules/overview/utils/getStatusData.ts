@@ -18,7 +18,8 @@ export const getStatusData = (
       label: 'Data errors',
       tooltip: 'Data errors',
       values: [
-        { version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
+        { version: get(dataErrors, 'facets.x', 0) }, //currently change it to number but this number is inconsistent with actual data.
+        //{ version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
       ],
     },
     {

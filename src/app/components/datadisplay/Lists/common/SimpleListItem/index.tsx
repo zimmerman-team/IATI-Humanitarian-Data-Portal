@@ -8,7 +8,10 @@ import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
 import { SimpleListItemModel } from 'app/components/datadisplay/Lists/common/SimpleListItem/model';
 
 /* styles */
-import { HeadingCell, SimpleListCell } from 'app/components/datadisplay/Lists/common/SimpleListItem/styles';
+import {
+  HeadingCell,
+  SimpleListCell,
+} from 'app/components/datadisplay/Lists/common/SimpleListItem/styles';
 
 // TODO: aqdjust this guy to look properly
 

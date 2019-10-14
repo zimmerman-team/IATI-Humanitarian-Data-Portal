@@ -13,7 +13,6 @@ import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
 import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
-
 export const mockDataVar1: TableModuleModel = {
   title: 'Aggregated signatory data publication indicator values',
   data: [
