@@ -100,7 +100,7 @@ export const linesOrder = [
   { n: 1, line: 'Providing granular v2.03 data' },
   { n: 2, line: 'Providing granular v2.02 data' },
   { n: 3, line: 'Publishing hum. activity data' },
-  { n: 4, line: 'Signatories publish to IATI' },
+  { n: 4, line: 'Signatories publishing to IATI' },
 ];
 
 // so this is mainly the result forming query that we need for the data

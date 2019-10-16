@@ -85,7 +85,7 @@ export function formatLineChart(
     const firstDataItem = formatFirstLine(gbsignatories);
     lineData.values.values.push({
       data: firstDataItem.data,
-      id: 'Signatories publish to IATI',
+      id: 'Signatories publishing to IATI',
     });
 
     const allSigCount = firstDataItem.totalSigCount;
