@@ -1,10 +1,13 @@
 /* consts */
+import { linesOrder } from 'app/modules/signatory-progress/const';
 /* models/interfaces */
-import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
 import { SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
+import { HorizontalBarChartValueModel } from 'app/components/charts/BarCharts/HorizontalBarChart/model';
+import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
 
 /* utils */
+import find from 'lodash/find';
 import { getAllSigCount, getIatiSigCount, getRealSigCount } from './general';
 
 export function formatBarData(
@@ -53,5 +56,19 @@ export function formatBarData(
     });
   }
 
-  return barData;
+  const orderedBarData: HorizontalBarChartValueModel[] = [
+    { name: '', value: 0, percentage: 0 },
+    { name: '', value: 0, percentage: 0 },
+    { name: '', value: 0, percentage: 0 },
+    { name: '', value: 0, percentage: 0 },
+    { name: '', value: 0, percentage: 0 },
+  ];
+  barData.data.values.forEach(item => {
+    const orderObj = find(linesOrder, { line: item.name });
+    if (orderObj) {
+      orderedBarData[orderObj.n] = item;
+    }
+  });
+
+  return { ...barData, data: { values: orderedBarData } };
 }
