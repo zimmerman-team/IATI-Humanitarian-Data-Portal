@@ -78,7 +78,7 @@ export function SignatoryProgress() {
       ),
     },
     {
-      name: 'Provides granular v2.02 data',
+      name: 'Providing granular v2.02 data',
       key: '202',
       specPub: get(
         state.publishers202,
@@ -87,7 +87,7 @@ export function SignatoryProgress() {
       ),
     },
     {
-      name: 'Publishing IATI tracability info',
+      name: 'Publishing IATI traceability info',
       key: 'trac',
       specPub: get(
         state.publishersTrac,
