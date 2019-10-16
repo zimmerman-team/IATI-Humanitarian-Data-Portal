@@ -1,5 +1,5 @@
 /* consts */
-import { dateRanges } from 'app/modules/signatory-progress/const';
+import { dateRanges, linesOrder } from 'app/modules/signatory-progress/const';
 /* models/interfaces */
 import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
 import { DataPoint, SpecPubsItemModel } from './intefaces';
@@ -141,5 +141,19 @@ export function formatLineChart(
     });
   }
 
-  return lineData;
+  const orderedLineData = [
+    { id: '0', data: [{x: 0, y: 0}] },
+    { id: '0', data: [{x: 0, y: 0}] },
+    { id: '0', data: [{x: 0, y: 0}] },
+    { id: '0', data: [{x: 0, y: 0}] },
+    { id: '0', data: [{x: 0, y: 0}] },
+  ];
+  lineData.values.values.forEach(item => {
+    const orderObj = find(linesOrder, { line: item.id });
+    if (orderObj) {
+      orderedLineData[orderObj.n] = item;
+    }
+  });
+
+  return { ...lineData, values: { values: orderedLineData } };
 }
