@@ -59,20 +59,18 @@ export const getHumActwGBClassificationsData = (rawData, tooltipsData): ListMode
         ],
       },
       {
-        label: 'Cash transfer (not yet available in IATI standard)',
+        label: 'Cash Transfer or Vouchers',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Overview',
-          'Cash transfer '
+          'Cash transfer'
         ),
-        values: [{ ptc: 'TBD', qtc: 'TBD' }],
-        // values: [
-        //   {
-        //     ptc: percentage(itemCounts[3], allActCount),
-        //     qtc: itemCounts[3],
-        //   },
-        // ],
-        highlight: true,
+        values: [
+          {
+            ptc: percentage(itemCounts[3], allActCount),
+            qtc: itemCounts[3],
+          },
+        ],
       },
     ],
   };
