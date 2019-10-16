@@ -37,7 +37,7 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
               style={{ textTransform: 'none' }}
               color="textPrimary"
             >
-              *earliest and latest activity start dates
+              earliest and latest activity start dates
             </Typography>
 
             <Box height="14px" width="100%" />
