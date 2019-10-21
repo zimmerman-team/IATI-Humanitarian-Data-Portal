@@ -5,6 +5,7 @@ import { SignatoryDataModel } from 'app/modules/signatory-data/model';
 import TableModule from 'app/components/datadisplay/Table';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { DecoSigDataTopLeft } from 'app/modules/signatory-data/common/decoration/DecoSigDataTopLeft';
+import parse from 'html-react-parser';
 
 const Element = (
   <div>
@@ -56,10 +57,10 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* ------------------------------------------------------------------ */}
       {props.loading && <PageLoader />}
       <Grid container direction="column">
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Typography variant="h3">{props.title}</Typography>
           <Box height="50px" />
-          <Typography variant="body2">{props.description}</Typography>
+          <Typography variant="body2">{parse(props.description)}</Typography>
         </Grid>
       </Grid>
       <Box height="50px" />
