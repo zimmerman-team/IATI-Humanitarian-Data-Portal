@@ -63,11 +63,11 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       elName: 'fts',
     },
     {
-      title: 'Hum. activity with Grand Bargain classifications',
+      title: 'Hum. activities with Grand Bargain classifications',
       elName: 'GBClass',
     },
     {
-      title: 'Hum. other classifications of intererest',
+      title: 'Hum. activities with other classifications of intererest',
       elName: 'otherClass',
     },
     {
@@ -78,10 +78,10 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       title: 'Hum. activites with location information',
       elName: 'location',
     },
-    {
-      title: 'Hum. activites with multi-year funding',
-      elName: 'multiyear',
-    },
+    // {
+    //   title: 'Hum. activites with multi-year funding',
+    //   elName: 'multiyear',
+    // },
     {
       title: 'Financial reporting',
       elName: 'reporting',

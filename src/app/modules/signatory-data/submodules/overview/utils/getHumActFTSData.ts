@@ -18,11 +18,11 @@ export const getHumActFTSData = (rawData, tooltipsData): ListModel => {
     elName: 'incComms',
     items: [
       {
-        label: 'Humanitarian OECD DAC sector code 700 or 70000 range',
+        label: 'Humanitarian OECD DAC sector codes',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Overview',
-          'Humanitarian OECD DAC sector code 700 or 70000 range'
+          'Humanitarian OECD DAC sector codes'
         ),
         values: [
           {
