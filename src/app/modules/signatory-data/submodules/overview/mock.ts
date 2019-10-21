@@ -71,7 +71,7 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       elName: 'otherClass',
     },
     {
-      title: 'Hum. activities',
+      title: 'Hum. activities with results',
       elName: 'humanitarian',
     },
     {
