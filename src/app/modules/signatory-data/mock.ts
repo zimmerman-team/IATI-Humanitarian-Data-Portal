@@ -3,9 +3,9 @@ import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const signatoryDataMock: SignatoryDataModel = {
   loading: false,
-  title: 'Grand Bargain signatories',
+  title: 'Signatory IATI data',
   description:
-    'An overview of the IATI ("open") data currently published by individual Grand Bargain signatorys or their affiliated organisations. Its primary purpose is to enable Signatories to monitor their own progress in relation to meeting the data publication commitment of the Grand Bargain. Each column in the table relates to a specific IATI publishing indicator as defined within the workstream Core Commitment Target Results & Indicators (CCTRIs).',
+    "<p>This page provides an overview of the IATI ('open') data currently published by individual Grand Bargain signatories and/or their affiliated organisations. Its primary purpose is to enable signatories to monitor their own progress in relation to meeting the data publication commitment of the Grand Bargain.</p><p>Each column in the table relates to a specific IATI publishing indicator as defined within the workstream <a href='http://gbtransparency.org/dashboard/datapubindicators.html' target='_blank'>core commitment target results and indicators (CCTRIs)</a>. However, it is important to assess the indicators values in the context of how each organisation operates e.g. not all affiliate or other  organisations undertake humanitarian work so may not as yet be publishing any humanitarian information.</p><p>For the aggregated view, showing the progress of ALL signatories against the publishing commitment since 1 June 2017, is available <a href='http://gbtransparency.org/dashboard/sumdashboard.php' target='_blank'>here</a></p>",
   sigTable: mockDataVar2,
 };
 
