@@ -13,7 +13,7 @@ import {
 import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
-  sigdataoutgoingtransactions
+  sigdataoutgoingtransactions,
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
@@ -79,7 +79,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoverviewdataerrors,
   tooltips,
   sigdataoutgoingtransactions,
-  sigdataincomingtransactions
+  sigdataincomingtransactions,
 };
 
 export const appStore = createStore(applicationStore, {

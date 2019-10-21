@@ -142,11 +142,11 @@ export function formatLineChart(
   }
 
   const orderedLineData = [
-    { id: '0', data: [{x: 0, y: 0}] },
-    { id: '0', data: [{x: 0, y: 0}] },
-    { id: '0', data: [{x: 0, y: 0}] },
-    { id: '0', data: [{x: 0, y: 0}] },
-    { id: '0', data: [{x: 0, y: 0}] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
   ];
   lineData.values.values.forEach(item => {
     const orderObj = find(linesOrder, { line: item.id });
