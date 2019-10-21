@@ -2,6 +2,7 @@
 // core
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Highlighter from 'react-highlight-words';
 // utils
 import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
@@ -43,7 +44,7 @@ export const LandingLayout = (props: LandingModel) => {
                   highlightClassName="YourHighlightClass"
                   searchWords={['Humanitarian']}
                   autoEscape
-                  textToHighlight="A Spotlight on International Humanitarian Assistance Information"
+                  textToHighlight="A Spotlight on International Humanitarian Assistance IATI Data"
                 />
               </LandingIntrotext>
             </Box>
@@ -51,7 +52,7 @@ export const LandingLayout = (props: LandingModel) => {
           <Box height="40px" />
           <Grid item md={7}>
             <Typography variant="h5">
-              Why the Grand Bargain Transparency Commitment is aiming to improve
+              Why the <Link to="/about">Grand Bargain Transparency Commitment</Link> is aiming to improve
               the availability of timely, high quality, harmonised and
               transparent open data on global humanitarian action.
             </Typography>
