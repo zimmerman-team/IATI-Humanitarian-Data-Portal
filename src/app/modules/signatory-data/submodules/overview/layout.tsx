@@ -137,9 +137,9 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
             {/** 7 */}
             {/** Hum. acitivites with multi-year funding */}
-            <MultiyearFunding
+            {/* <MultiyearFunding
               humActWMultiYearFundData={props.humActWMultiYearFundData}
-            />
+            /> */}
 
             {/** 8 */}
             {/** Financial reporting */}
