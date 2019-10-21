@@ -8,7 +8,7 @@ const signatoryDataTexts = [
   // todo: need to find a way to check text with links
   // 'Each column in the table relates to a specific IATI publishing indicator as defined within the workstream core commitment target results and indicators (CCTRIs). However, it is important to assess the indicators values in the context of how each organisation operates e.g. not all affiliate or other  organisations undertake humanitarian work so may not as yet be publishing any humanitarian information.',
   // 'For the aggregated view, showing the progress of ALL signatories against the publishing commitment since 1 June 2017, is available here',
-  '* NA stands for Not Applicable',
+  '* NA stands for Not Applicable because Government donors are generally at the start of the funding chain',
 ];
 
 describe('Signatory data', function() {
