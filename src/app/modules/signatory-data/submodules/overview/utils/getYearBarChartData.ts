@@ -11,10 +11,10 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
         yearValues.push({
           year: y,
           activitiesAct: rawData[y].count,
-          activities: rawData[y].count - get(rawData[y], 'hum_count.count', 0),
-          activitiesColor: '#d7d8d9',
-          humanitarianActivities: get(rawData[y], 'hum_count.count', 0),
-          humanitarianActivitiesColor: '#5accbf',
+          Activities: rawData[y].count - get(rawData[y], 'hum_count.count', 0),
+          ActivitiesColor: '#d7d8d9',
+          'Humanitarian Activities': get(rawData[y], 'hum_count.count', 0),
+          'Humanitarian ActivitiesColor': '#5accbf',
         });
       }
     });

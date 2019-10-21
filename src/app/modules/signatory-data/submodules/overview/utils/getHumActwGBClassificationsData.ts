@@ -12,7 +12,7 @@ export const getHumActwGBClassificationsData = (rawData, tooltipsData): ListMode
     get(rawData, 'facets.humActwGBClassificationsData_4.count', 0),
   ];
   return {
-    title: 'Hum. activity with Grand Bargain classifications',
+    title: 'Hum. activities with Grand Bargain classifications',
     elName: 'incComms',
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [

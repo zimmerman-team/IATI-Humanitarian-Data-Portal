@@ -46,6 +46,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
           <Typography color="textPrimary" variant="h4">
             Humanitarian elements
           </Typography>
+          <Box height="10px" />
+          <Typography color="textPrimary" variant="body1">
+            Please note that publishing organisations are not generally expected
+            to reach a value of 100% for those elements marked with an *
+          </Typography>
         </Grid>
         {props.humanitarianElementsData.map(humEl => (
           <Grid item xs={12} md={6} key={humEl.activity}>
@@ -137,9 +142,9 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
             {/** 7 */}
             {/** Hum. acitivites with multi-year funding */}
-            <MultiyearFunding
+            {/* <MultiyearFunding
               humActWMultiYearFundData={props.humActWMultiYearFundData}
-            />
+            /> */}
 
             {/** 8 */}
             {/** Financial reporting */}
