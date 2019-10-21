@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* core */
 import React from 'react';
 import LinkCellModule from 'app/components/datadisplay/Table/common/LinkCell';
@@ -62,10 +63,18 @@ export const formatTableSignatories = (
         fSig && fSig.latest_iati_version,
         returnFlagValue(fSig ? fSig.pubHumData.count > 0 : '0'),
         returnFlagValue(
-          fSig ? fSig.pubHumData.v202 && fSig.pubHumData.v202.count > 0 : '0'
+          fSig
+            ? fSig.pubHumData.v202
+              ? fSig.pubHumData.v202.count > 0
+              : '0'
+            : '0'
         ),
         returnFlagValue(
-          fSig ? fSig.pubHumData.v203 && fSig.pubHumData.v203.count > 0 : '0'
+          fSig
+            ? fSig.pubHumData.v203
+              ? fSig.pubHumData.v203.count > 0
+              : '0'
+            : '0'
         ),
         orgType === 'Government'
           ? returnFlagValue(fSig ? (fSig.traec.count > 0 ? true : null) : '0')
@@ -159,7 +168,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['True', 'False', 'NA'] },
+        filterOptions: { names: ['True', 'False'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -180,7 +189,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['True', 'False', 'NA'] },
+        filterOptions: { names: ['True', 'False'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
@@ -202,7 +211,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: { names: ['True', 'False', 'NA'] },
+        filterOptions: { names: ['True', 'False'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
