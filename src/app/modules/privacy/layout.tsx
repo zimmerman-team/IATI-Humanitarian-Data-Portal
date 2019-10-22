@@ -251,12 +251,8 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
           <DecoAboutMidLeft />
         </Box>
       </Hidden>
-      {/*<Hidden smDown>
-        <Box position="absolute" bottom="-270px" right="0">
-          <DecoAboutBottomRight />
-        </Box>
-      </Hidden*/}
-      >{/* ---------- */}
+
+      {/* ---------- */}
     </Page>
   );
 };

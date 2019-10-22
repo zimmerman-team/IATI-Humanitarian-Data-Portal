@@ -55,7 +55,7 @@ export const LandingLayout = (props: LandingModel) => {
                   highlightClassName="YourHighlightClass"
                   searchWords={['Humanitarian']}
                   autoEscape
-                  textToHighlight="A Spotlight on International Humanitarian Assistance IATI Data"
+                  textToHighlight="A Spotlight on International Humanitarian Assistance Information"
                 />
               </LandingIntrotext>
             </Box>
@@ -64,7 +64,7 @@ export const LandingLayout = (props: LandingModel) => {
           <Grid item md={7}>
             <Typography variant="h5">
               Why the{' '}
-              <Link to="/about">Grand Bargain Transparency Commitment</Link> is
+              <Link to="/about">Grand Bargain Transparency Commitment</Link>is
               aiming to improve the availability of timely, high quality,
               harmonised and transparent open data on global humanitarian
               action.
