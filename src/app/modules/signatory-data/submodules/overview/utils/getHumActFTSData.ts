@@ -76,7 +76,13 @@ export const getHumActFTSData = (
           tooltipsData,
           'Signatory Data - Overview',
           'GLIDE code(s)'
-        ),
+        ), onClick: () => {
+          onItemClick({
+            label: 'GLIDE code(s)',
+            value:
+              '(humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*)',
+          });
+        },
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),
@@ -104,7 +110,12 @@ export const getHumActFTSData = (
           tooltipsData,
           'Signatory Data - Overview',
           'Clusters'
-        ),
+        ), onClick: () => {
+          onItemClick({
+            label: 'Clusters',
+            value: '(sector_code:* AND sector_vocabulary:10)'
+          });
+        },
         values: [
           {
             ptc: percentage(itemCounts[5], allActCount),
