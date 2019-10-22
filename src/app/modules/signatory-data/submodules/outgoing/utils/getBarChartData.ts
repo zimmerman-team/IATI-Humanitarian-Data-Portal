@@ -8,7 +8,7 @@ export const getBarChartData = (rawData): HorizontalBarChartCardModel => {
   const disbursementsValue = get(rawData, 'outDisbursementBar.count', 0);
   const expenditureValue = get(rawData, 'outExpenditureBar.count', 0);
   return {
-    title: 'Humanitarian pledges transaction types',
+    title: 'Outgoing',
     data: {
       values: [
         {

@@ -51,11 +51,11 @@ export const getOutCommitmentsListData = (
         ],
       },
       {
-        label: 'Funding Recipient details',
+        label: 'Funding recipient details',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Commitments',
-          'Funding Recipient details'
+          'Funding recipient details'
         ),
         values: [
           {
