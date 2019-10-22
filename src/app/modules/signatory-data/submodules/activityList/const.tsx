@@ -12,11 +12,14 @@ export const activitiesQuery = (
   repOrgRef,
   searchTerm,
   actStatusFilters,
-  selCountries
+  selCountries,
+  extraFilter?
 ) => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND title_narrative:${searchTerm} AND 
-      (${actStatusFilters}) AND ${selCountries}
+      (${actStatusFilters}) AND ${selCountries}${
+      extraFilter ? ` ${extraFilter} AND ` : ''
+    }
       (humanitarian:1 OR transaction_humanitarian:1 
         OR sector_vocabulary:1 OR (-sector_vocabulary:* 
         AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
