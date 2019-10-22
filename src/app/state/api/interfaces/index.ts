@@ -32,3 +32,12 @@ export interface ApiModel<QueryModel, ResponseModel> {
     RequestValues<QueryModel>
   >;
 }
+
+type activityFilterType = {
+  label: string;
+  value: string;
+}
+export interface SigDataActivityListFilterModel {
+  activityListFilter: activityFilterType;
+  setActivityListFilter: Action<any, activityFilterType>;
+}
