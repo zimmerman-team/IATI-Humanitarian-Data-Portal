@@ -71,6 +71,9 @@ export function OverviewPage(props) {
   const sigdataoverviewdataerrorsCall = useStoreActions(
     actions => actions.sigdataoverviewdataerrors.fetch
   );
+  const sigDataActivityListFilterAction = useStoreActions(
+    actions => actions.sigDataActivityListFilter.setActivityListFilter
+  );
   const years = getAllYears(
     get(
       sigdataactivityyearsData,
@@ -78,6 +81,11 @@ export function OverviewPage(props) {
       []
     )
   );
+
+  const onItemClick = value => {
+    sigDataActivityListFilterAction(value);
+    props.history.push('activity-list');
+  };
 
   /* componentDidMount call */
   React.useEffect(() => {
@@ -150,7 +158,8 @@ export function OverviewPage(props) {
 
   const humActFTSData = getHumActFTSData(
     get(sigdataoverviewhumData, 'data', {}),
-    tooltipsData
+    tooltipsData,
+    onItemClick
   );
   const humActwGBClassificationsData = getHumActwGBClassificationsData(
     get(sigdataoverviewhumData, 'data', {}),

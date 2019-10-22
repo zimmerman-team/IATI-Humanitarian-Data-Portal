@@ -3,7 +3,11 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getHumActFTSData = (rawData, tooltipsData): ListModel => {
+export const getHumActFTSData = (
+  rawData,
+  tooltipsData,
+  onItemClick
+): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
     get(rawData, 'facets.humActFTSData_1.count', 0),
@@ -52,6 +56,13 @@ export const getHumActFTSData = (rawData, tooltipsData): ListModel => {
           'Signatory Data - Overview',
           'UN humanitarian response plan(s)'
         ),
+        onClick: () => {
+          onItemClick({
+            label: 'UN humanitarian response plan(s)',
+            value:
+              '(humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*)',
+          });
+        },
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
