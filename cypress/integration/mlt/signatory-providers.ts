@@ -3,7 +3,7 @@
 import autoRecord from 'cypress-autorecord';
 
 const signatoryProviderTexts = [
-  'Providers',
+  'Funders',
   'Funding organisations',
   'Organisation',
   'IATI reference',
@@ -12,11 +12,11 @@ const signatoryProviderTexts = [
   'Total amount',
 ];
 
-describe('Signatory data - providers', function() {
+describe('Signatory data - funders', () => function() {
   // autoRecord();
 
   it('should load the page', function() {
-    cy.visit('/signatory-data/GB-CHC-274467/providers');
+    cy.visit('/signatory-data/GB-CHC-274467/funders');
   });
 
   it('check texts', function() {

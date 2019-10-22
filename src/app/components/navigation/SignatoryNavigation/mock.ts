@@ -30,8 +30,8 @@ export const locations: SignatoryNavigationModel = {
           url: 'incoming',
         },
         {
-          label: 'Providers',
-          url: 'providers',
+          label: 'Funders',
+          url: 'funders',
         },
         {
           label: 'Outgoing',
