@@ -59,23 +59,23 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       elName: 'summary',
     },
     {
-      title: 'Hum. activities with FTS Import related',
+      title: 'FTS Import related',
       elName: 'fts',
     },
     {
-      title: 'Hum. activities with Grand Bargain classifications',
+      title: 'Grand Bargain classifications',
       elName: 'GBClass',
     },
     {
-      title: 'Hum. activities with other classifications of intererest',
+      title: 'Other classifications of intererest',
       elName: 'otherClass',
     },
     {
-      title: 'Hum. activities with results',
+      title: 'Results',
       elName: 'humanitarian',
     },
     {
-      title: 'Hum. activites with location information',
+      title: 'Location information',
       elName: 'location',
     },
     // {
