@@ -74,7 +74,7 @@ export function OverviewPage(props) {
   const years = getAllYears(
     get(
       sigdataactivityyearsData,
-      "data.facet_counts.facet_pivot['activity_date_iso_date,humanitarian']",
+      "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
       []
     )
   );

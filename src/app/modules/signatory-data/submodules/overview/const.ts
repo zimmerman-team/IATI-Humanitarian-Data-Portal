@@ -153,7 +153,7 @@ export const barJsonFacet = years => {
   years.forEach(year => {
     result[year] = {
       type: 'query',
-      q: `activity_date_iso_date:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
+      q: `activity_date_start_actual:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
       facet: {
         hum_count: {
           type: 'query',
