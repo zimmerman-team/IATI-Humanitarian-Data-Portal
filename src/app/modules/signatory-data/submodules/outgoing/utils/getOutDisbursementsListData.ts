@@ -15,11 +15,11 @@ export const getOutDisbursementsListData = (rawData1, additionalData, tooltipsDa
     elName: 'outDisbs',
     items: [
       {
-        label: 'Total no. of Activities',
+        label: 'Total no. of activities',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Disbursements',
-          'Total no. of Activities'
+          'Total no. of activities'
         ),
         values: [
           {
@@ -43,11 +43,11 @@ export const getOutDisbursementsListData = (rawData1, additionalData, tooltipsDa
         ],
       },
       {
-        label: 'Funding Recipient details',
+        label: 'Funding recipient details',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Disbursements',
-          'Funding Recipient details'
+          'Funding recipient details'
         ),
         values: [
           {

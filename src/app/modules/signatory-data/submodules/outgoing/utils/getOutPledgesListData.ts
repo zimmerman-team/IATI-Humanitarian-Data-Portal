@@ -43,11 +43,11 @@ export const getOutPledgesListData = (rawData, additionalData, tooltipsData): Li
         ],
       },
       {
-        label: 'Funding Recipient details',
+        label: 'Funding recipient details',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Pledges',
-          'Funding Recipient details'
+          'Funding recipient details'
         ),
         values: [
           {
