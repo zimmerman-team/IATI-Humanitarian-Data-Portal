@@ -31,6 +31,17 @@ const LandingIntrotext = styled(Typography)`
   }
 `;
 
+const VersionBox = styled(Box)`
+  && {
+    bottom: 10px;
+    position: fixed;
+
+    span {
+      color: #5accbf;
+    }
+  }
+`;
+
 export const LandingLayout = (props: LandingModel) => {
   return (
     <Container>
@@ -52,9 +63,11 @@ export const LandingLayout = (props: LandingModel) => {
           <Box height="40px" />
           <Grid item md={7}>
             <Typography variant="h5">
-              Why the <Link to="/about">Grand Bargain Transparency Commitment</Link> is aiming to improve
-              the availability of timely, high quality, harmonised and
-              transparent open data on global humanitarian action.
+              Why the{' '}
+              <Link to="/about">Grand Bargain Transparency Commitment</Link> is
+              aiming to improve the availability of timely, high quality,
+              harmonised and transparent open data on global humanitarian
+              action.
             </Typography>
           </Grid>
         </Grid>
@@ -69,6 +82,12 @@ export const LandingLayout = (props: LandingModel) => {
       <Box paddingLeft="40px">
         <StatContainer items={props.stats} />
       </Box>
+
+      <VersionBox paddingLeft="40px">
+        <Typography variant="body2">
+          The Initial Release: <span>Alpha Release</span>
+        </Typography>
+      </VersionBox>
 
       <CookieDialog
         data-testid="cookie-dialog"
