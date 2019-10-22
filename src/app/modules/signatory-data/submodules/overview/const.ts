@@ -67,16 +67,20 @@ export const humCallValues = {
   },
   humOtherClassOfInterestData_2: {
     type: 'query',
-    q: '(default_aid_type_vocabulary=1 AND default_aid_type_code:*)',
+    q: '(default_aid_type_vocabulary:1 AND default_aid_type_code:*)',
   },
   humOtherClassOfInterestData_3: {
     type: 'query',
-    q: '(sector_code=* AND sector_vocabulary:[7 TO 9])',
+    q:
+      '(policy_marker_code:1 AND -(-sector_vocabulary:1 OR sector_vocabulary:*))',
   },
   humOtherClassOfInterestData_4: {
     type: 'query',
-    q:
-      '(policy_marker_code:1 AND -(-sector_vocabulary:1 OR sector_vocabulary:*))',
+    q: '(tag_vocabulary:2)',
+  },
+  humOtherClassOfInterestData_5: {
+    type: 'query',
+    q: '(tag_vocabulary:3)',
   },
   humActWLocationInfoData_1: {
     type: 'query',
