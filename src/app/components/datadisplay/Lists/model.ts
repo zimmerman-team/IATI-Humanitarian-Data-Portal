@@ -15,6 +15,7 @@ export type ListItemModel = {
   values: ListItemValueModel[];
   tooltip?: string;
   highlight?: boolean;
+  onClick?: Function | undefined;
 };
 
 export type ListItemValueModel = {
