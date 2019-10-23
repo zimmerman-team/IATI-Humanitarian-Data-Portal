@@ -1,8 +1,18 @@
 import React from 'react';
 import orderBy from 'lodash/orderBy';
+import styled from 'styled-components';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { ExpandedRow as CustomRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
+
+const NumberLink = styled.a`
+  color: #000;
+  text-decoration: underline;
+
+  &:hover {
+    color: #5accbf;
+  }
+`
 
 export const providersTableCallValues = pubRef => {
   return {
@@ -33,7 +43,10 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
   };
 };
 
-export const baseProviderConfig = (history): TableModuleModel => {
+export const baseProviderConfig = (
+  history,
+  activityListFilterAction?
+): TableModuleModel => {
   return {
     title: 'Funding organisations',
     data: [],
@@ -52,7 +65,36 @@ export const baseProviderConfig = (history): TableModuleModel => {
       },
       {
         name: 'Activites',
-        options: { filter: false },
+        options: {
+          filter: false,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            const filter = {
+              label: `Funder: ${tableMeta.rowData[0]}`,
+              value: `(${
+                tableMeta.rowData[1] !== 'Not Provided'
+                  ? 'transaction_provider_org_ref'
+                  : 'transaction_provider_org_narrative'
+              }:${
+                tableMeta.rowData[1] !== 'Not Provided'
+                  ? tableMeta.rowData[1]
+                  : tableMeta.rowData[0]
+              })`,
+            };
+            return activityListFilterAction &&
+              tableMeta.rowData[1] !== 'Not Provided' ? (
+              <NumberLink
+                onClick={e => {
+                  e.stopPropagation();
+                  activityListFilterAction(filter);
+                }}
+              >
+                {value}
+              </NumberLink>
+            ) : (
+              value
+            );
+          },
+        },
       },
       {
         name: 'Total amount',
