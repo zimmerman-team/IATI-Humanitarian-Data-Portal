@@ -35,9 +35,10 @@ export const AboutLayout = (props: AboutPageModel) => {
             {block.moreLink && (
               <>
                 <Box height="50px" width="100%" />
-                <Grid item lg={8} md={10}>
+                {/* disable for now */}
+                {/*<Grid item lg={8} md={10}>
                   <ContainedButton text="More info" />
-                </Grid>
+                </Grid>*/}
               </>
             )}
           </Grid>

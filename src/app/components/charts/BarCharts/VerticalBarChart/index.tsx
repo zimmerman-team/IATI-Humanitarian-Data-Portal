@@ -8,7 +8,7 @@ import { ChartTooltip } from 'app/components/charts/BarCharts/common/ChartToolti
 //  - Find a better solution to handle colours
 const barModel: BarSvgProps = {
   data: [],
-  keys: ['humanitarianActivities', 'activities'],
+  keys: ['Humanitarian Activities', 'Activities'],
   indexBy: 'year',
   margin: { top: 15, right: 0, bottom: 50, left: 60 },
   padding: 0.5,
@@ -58,14 +58,14 @@ const barModel: BarSvgProps = {
       {
         label: 'All activities', //Object.keys(data)[0]
         value: data.activitiesAct ? data.activitiesAct : 'No data',
-        color: data.activitiesColor,
+        color: data.ActivitiesColor,
       },
       {
         label: 'Humanitarian', //Object.keys(data)[3]
-        value: data.humanitarianActivities
-          ? data.humanitarianActivities
+        value: data['Humanitarian Activities']
+          ? data['Humanitarian Activities']
           : 'No data',
-        color: data.humanitarianActivitiesColor,
+        color: data['Humanitarian ActivitiesColor'],
       },
     ];
 

@@ -268,10 +268,10 @@ export const mockDataVar2: TableModuleModel = {
     { dataType: 'none' },
     { dataType: 'count' },
     { dataType: 'percentage', percValue: '2.03' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
   ],
 };
 

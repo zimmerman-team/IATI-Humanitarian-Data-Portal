@@ -1,4 +1,4 @@
-import { createStore } from 'easy-peasy';
+import { createStore, action } from 'easy-peasy';
 import { persistStore, persistReducer } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
@@ -13,7 +13,7 @@ import {
 import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
-  sigdataoutgoingtransactions,
+  sigdataoutgoingtransactions
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
@@ -29,6 +29,7 @@ import {
 import { CodeListInterface } from '../api/interfaces/codeListsInterface';
 import { codelists } from '../api/actionsReducers/codeLists';
 import organisationnarrative from 'app/state/api/actionsReducers/organisationNarrative';
+import { SigDataActivityListFilterModel } from '../api/interfaces';
 import { DataTableOptions } from 'app/state/general/interfaces';
 import { dataTableOpts } from 'app/state/general/actionsReducers';
 
@@ -58,6 +59,7 @@ export interface ApplicationStoreModel {
   organisationnarrative: OrganisationNarrativeInterface;
 
   sigDataOpts: DataTableOptions;
+  sigDataActivityListFilter: SigDataActivityListFilterModel;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -80,6 +82,12 @@ const applicationStore: ApplicationStoreModel = {
   tooltips,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
+  sigDataActivityListFilter: {
+    activityListFilter: {label: '', value: ''},
+    setActivityListFilter: action((state, payload) => {
+      state.activityListFilter = payload;
+    }),
+  }
 };
 
 export const appStore = createStore(applicationStore, {

@@ -31,7 +31,7 @@ export function SignatoryDataRoutes() {
         />
         <Route
           exact
-          path="/signatory-data/:code/providers"
+          path="/signatory-data/:code/funders"
           render={() => <ProvidersPage />}
         />
         <Route

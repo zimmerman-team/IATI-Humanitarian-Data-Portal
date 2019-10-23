@@ -48,6 +48,7 @@ export const List = (props: ListModel) => {
       key={item.label}
       label={item.label}
       values={item.values}
+      onClick={item.onClick}
       tooltip={item.tooltip}
       highlight={item.highlight}
     />

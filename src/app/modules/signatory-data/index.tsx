@@ -1,22 +1,28 @@
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
-import get from 'lodash/get';
-import map from 'lodash/map';
 
 /* models/interfaces */
 import { SignatoryDataModule } from 'app/modules/signatory-data/model';
+
 /* components */
 import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
+
 /* state & utils */
+import get from 'lodash/get';
+import map from 'lodash/map';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
+
 /* mock */
 import {
   signatoryDataMock,
   iatigbsignatoriesCallValues,
   OrgNarrative,
 } from 'app/modules/signatory-data/mock';
-import { formatTableSignatories } from 'app/modules/signatory-data/utils';
+import {
+  getBaseTable,
+  formatTableSignatories,
+} from 'app/modules/signatory-data/utils';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryData = React.memo(
@@ -25,6 +31,10 @@ export const SignatoryData = React.memo(
 
     const [columns, setColumns] = React.useState(mockDataVar2.columns);
     // const [options, setOptions] = React.useState(mockDataVar2.options);
+
+    const tooltipsData: any = useStoreState(
+      globalState => globalState.tooltips.data
+    );
 
     const [signatories, setSignatories] = React.useState([]);
 
@@ -119,8 +129,8 @@ export const SignatoryData = React.memo(
     }, [iatigbsignatoriesData && organisationNarrativeData]);
 
     // filterLists
-    const sigTable = mockDataVar2;
-    mockDataVar2.columns = columns;
+    const sigTable = getBaseTable(tooltipsData);
+    // mockDataVar2.columns = columns;
     // mockDataVar2.options = options;
     sigTable.data = signatories;
     sigTable.options.onFilterChange = (changedColumn, filterList) => {

@@ -5,7 +5,8 @@ import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getHumActwGBClassificationsData = (
   rawData,
-  tooltipsData
+  tooltipsData,
+  onItemClick
 ): ListModel => {
   const allActCount = get(rawData, 'facets.count', 0) || 1;
   const itemCounts = [
@@ -15,7 +16,7 @@ export const getHumActwGBClassificationsData = (
     get(rawData, 'facets.humActwGBClassificationsData_4.count', 0),
   ];
   return {
-    title: 'Hum. activity with Grand Bargain classifications',
+    title: 'Hum. activities with Grand Bargain classifications',
     elName: 'incComms',
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
@@ -54,6 +55,13 @@ export const getHumActwGBClassificationsData = (
           'Signatory Data - Overview',
           'Partner country based (I)NGO organisation type used'
         ),
+        onClick: () => {
+          onItemClick({
+            label: 'Partner country based (I)NGO organisation type used',
+            value:
+              '(participating_org_type:24 AND participating_org_role:4)',
+          });
+        },
         values: [
           {
             ptc: percentage(itemCounts[2], allActCount),
@@ -68,6 +76,13 @@ export const getHumActwGBClassificationsData = (
           'Signatory Data - Overview',
           'Cash transfer'
         ),
+        onClick: () => {
+          onItemClick({
+            label: 'Cash Transfer or Vouchers',
+            value:
+              '(default_aid_type_vocabulary:4 AND default_aid_type_code:*)',
+          });
+        },
         values: [
           {
             ptc: percentage(itemCounts[3], allActCount),

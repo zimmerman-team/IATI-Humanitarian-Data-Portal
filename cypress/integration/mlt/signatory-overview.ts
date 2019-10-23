@@ -7,11 +7,11 @@ const signatoryOverviewTexts = [
   'Humanitarian elements',
   'Status',
   'Hum. activities with FTS Import related',
-  'Hum. activity with Grand Bargain classifications',
-  'Hum. other classifications of intererest',
-  'Hum. activities',
+  'Hum. activities with Grand Bargain classifications',
+  'Hum. activities with other classifications of intererest',
+  'Hum. activities with results',
   'Hum. activites with location information',
-  'Hum. activites with multi-year funding',
+  // 'Hum. activites with multi-year funding',
   'Financial reporting',
 ];
 

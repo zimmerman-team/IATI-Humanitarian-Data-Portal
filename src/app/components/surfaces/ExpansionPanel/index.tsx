@@ -5,6 +5,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
+import parse from 'html-react-parser';
 import { ExpansionPanelModel } from 'app/components/surfaces/ExpansionPanel/model';
 import Box from '@material-ui/core/Box';
 
@@ -56,7 +57,7 @@ const ExpansionPanel = (props: ExpansionPanelModel) => {
             <Typography variant="subtitle1">{question.title}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography variant="body1">{question.expl}</Typography>
+            <Typography variant="body1">{parse(question.expl)}</Typography>
           </ExpansionPanelDetails>
         </BaseExpansionPanel>
       ))}

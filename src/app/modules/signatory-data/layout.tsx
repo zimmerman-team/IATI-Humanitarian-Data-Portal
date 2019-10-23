@@ -70,7 +70,10 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
         </Grid>
       </Grid>
       <Box height="20px" />
-      <Typography variant="caption">* NA stands for Not Applicable</Typography>
+      <Typography variant="caption">
+        * NA stands for Not Applicable because Government donors are generally
+        at the start of the funding chain
+      </Typography>
 
       <Box height="50px" />
     </Container>
