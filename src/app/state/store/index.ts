@@ -13,7 +13,7 @@ import {
 import {
   sigdataoutgoing,
   sigdataoutgoingdisbtrace,
-  sigdataoutgoingtransactions
+  sigdataoutgoingtransactions,
 } from 'app/state/api/actionsReducers/sigdataoutgoing';
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
@@ -83,11 +83,11 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
   sigDataActivityListFilter: {
-    activityListFilter: {label: '', value: ''},
+    activityListFilter: { label: '', value: '' },
     setActivityListFilter: action((state, payload) => {
       state.activityListFilter = payload;
     }),
-  }
+  },
 };
 
 export const appStore = createStore(applicationStore, {

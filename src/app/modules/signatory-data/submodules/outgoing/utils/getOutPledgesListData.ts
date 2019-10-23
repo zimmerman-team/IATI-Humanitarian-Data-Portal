@@ -3,7 +3,11 @@ import { percentage } from 'app/utils/percentage';
 import { getTooltipContent } from 'app/utils/generic';
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 
-export const getOutPledgesListData = (rawData, additionalData, tooltipsData): ListModel => {
+export const getOutPledgesListData = (
+  rawData,
+  additionalData,
+  tooltipsData
+): ListModel => {
   const allHumActCount = get(rawData, 'count', 0);
   const allHumTransactCount = get(additionalData, 'count', 0);
   const outPledgeValue1 = get(rawData, 'outPledgeBar.count', 0);

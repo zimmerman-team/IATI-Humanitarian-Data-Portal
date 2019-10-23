@@ -9,7 +9,7 @@ export function About() {
   useEffect(() => {
     actions.getAllItems();
   }, [actions]);
-  
+
   return (
     <AboutLayout
       title={mockData.title}

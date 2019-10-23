@@ -6,8 +6,8 @@ export const incomingCallFacetValues = {
 };
 
 export const incomingTransactionsValues = {
-  incPledgeTransactions: { type: 'query', q: 'transaction_type:13'},
-  incCommitmentTransactions: { type: 'query', q: 'transaction_type:11'},
+  incPledgeTransactions: { type: 'query', q: 'transaction_type:13' },
+  incCommitmentTransactions: { type: 'query', q: 'transaction_type:11' },
   incFundTransactions: { type: 'query', q: 'transaction_type:1' },
   incPledge_2: {
     type: 'query',
@@ -36,8 +36,8 @@ export const incomingTransactionsValues = {
   incFunds_4: {
     type: 'query',
     q: 'transaction_type:1 AND transaction_provider_org_provider_activity_id:*',
-  }
-}
+  },
+};
 
 export const inPageNavigationItems = {
   lists: [

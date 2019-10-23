@@ -76,7 +76,8 @@ export const getHumActFTSData = (
           tooltipsData,
           'Signatory Data - Overview',
           'GLIDE code(s)'
-        ), onClick: () => {
+        ),
+        onClick: () => {
           onItemClick({
             label: 'GLIDE code(s)',
             value:
@@ -110,10 +111,11 @@ export const getHumActFTSData = (
           tooltipsData,
           'Signatory Data - Overview',
           'Clusters'
-        ), onClick: () => {
+        ),
+        onClick: () => {
           onItemClick({
             label: 'Clusters',
-            value: '(sector_code:* AND sector_vocabulary:10)'
+            value: '(sector_code:* AND sector_vocabulary:10)',
           });
         },
         values: [
