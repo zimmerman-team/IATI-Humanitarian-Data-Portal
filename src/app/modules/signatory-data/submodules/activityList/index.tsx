@@ -31,7 +31,12 @@ function ActivityListz(props) {
     null
   );
   const [countries, setCountries] = useState<string[]>([]);
-
+  const sigDataActivityListFilter = useStoreState(
+    state => state.sigDataActivityListFilter.activityListFilter
+  );
+  const sigDataActivityListFilterAction = useStoreActions(
+    actions => actions.sigDataActivityListFilter.setActivityListFilter
+  );
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
   const [sortBy, setSortBy] = useState('activity_date_start_actual desc');
@@ -88,15 +93,23 @@ function ActivityListz(props) {
           decodeURIComponent(props.match.params.code),
           searchTerm,
           status,
-          selCountry
+          selCountry,
+          sigDataActivityListFilter.value !== ''
+            ? sigDataActivityListFilter.value
+            : null
         ),
         rows,
         start: page * rows,
         sort: sortBy,
       },
     });
+    return () => sigDataActivityListFilterAction({ label: '', value: '' });
   }, [page, rows, sortBy, searchTerm, status, selCountry]);
 
+  activityBaseTable.title =
+    sigDataActivityListFilter.label !== ''
+      ? `Humanitarian activities with ${sigDataActivityListFilter.label}`
+      : 'Humanitarian activities';
   activityBaseTable.data = formatActivities(
     actStatusCodeList,
     countryCodeList,
