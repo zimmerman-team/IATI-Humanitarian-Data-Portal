@@ -58,8 +58,7 @@ export const getHumActwGBClassificationsData = (
         onClick: () => {
           onItemClick({
             label: 'Partner country based (I)NGO organisation type used',
-            value:
-              '(participating_org_type:24 AND participating_org_role:4)',
+            value: '(participating_org_type:24 AND participating_org_role:4)',
           });
         },
         values: [

@@ -25,7 +25,7 @@ const MultiValuesCell = (props: MultiValuesCellModuleModel) => {
         onMouseLeave={() => setShowMore(false)}
       >
         {props.value[0]}
-        {`${hasMore ? `, +${props.value.length - 1} more` : ''}`}
+        {`${hasMore ? ` +${props.value.length - 1} more` : ''}`}
         {showMore && hasMore && (
           <MoreTooltip>
             <List>
