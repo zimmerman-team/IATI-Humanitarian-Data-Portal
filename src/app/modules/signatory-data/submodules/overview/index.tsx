@@ -163,7 +163,8 @@ export function OverviewPage(props) {
   );
   const humActwGBClassificationsData = getHumActwGBClassificationsData(
     get(sigdataoverviewhumData, 'data', {}),
-    tooltipsData
+    tooltipsData,
+    onItemClick
   );
   const humOtherClassOfInterestData = getHumOtherClassOfInterestData(
     get(sigdataoverviewhumData, 'data', {}),
@@ -181,7 +182,6 @@ export function OverviewPage(props) {
     get(sigdataoverviewhumData, 'data', {}),
     tooltipsData
   );
-  /* todo: implement this when available in OIPA solr */
   const financialReportingData = getFinancialReportingData(
     get(sigdataactivitystatusData, 'data', {}),
     signatory,
