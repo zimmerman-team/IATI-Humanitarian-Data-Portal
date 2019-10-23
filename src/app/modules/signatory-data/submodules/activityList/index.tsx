@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { ActivityListLayout } from 'app/modules/signatory-data/submodules/activityList/layout';
+import Highlighter from 'react-highlight-words';
 import { useDebouncedCallback } from 'use-debounce';
+import styled from 'styled-components';
+import { Typography } from '@material-ui/core';
 
 /* store */
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
@@ -21,6 +24,17 @@ import findIndex from 'lodash/findIndex';
 import find from 'lodash/find';
 import get from 'lodash/get';
 import fileDownload from 'js-file-download';
+
+const HighlighterCont = styled(Typography)`
+  &&& {
+    mark {
+      color: white;
+      background: #5accbf;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+`;
 
 function ActivityListz(props) {
   // todo: look into Error:(26, 10) TS2589: Type instantiation is excessively deep and possibly infinite.
@@ -66,6 +80,18 @@ function ActivityListz(props) {
   const activities =
     actState && actState.data ? actState.data.data.response : {};
 
+  useEffect(() => {
+    window.addEventListener('beforeunload', () =>
+      sigDataActivityListFilterAction({ label: '', value: '' })
+    );
+    return () => {
+      sigDataActivityListFilterAction({ label: '', value: '' });
+      window.removeEventListener('beforeunload', () =>
+        sigDataActivityListFilterAction({ label: '', value: '' })
+      );
+    };
+  }, []);
+
   // on component mount we load the country filters
   // for the reporting org
   useEffect(() => {
@@ -103,13 +129,21 @@ function ActivityListz(props) {
         sort: sortBy,
       },
     });
-    return () => sigDataActivityListFilterAction({ label: '', value: '' });
   }, [page, rows, sortBy, searchTerm, status, selCountry]);
 
-  activityBaseTable.title =
-    sigDataActivityListFilter.label !== ''
-      ? `Humanitarian activities with ${sigDataActivityListFilter.label}`
-      : 'Humanitarian activities';
+  activityBaseTable.title = (
+    <HighlighterCont variant="h6">
+      <Highlighter
+        autoEscape
+        searchWords={[sigDataActivityListFilter.label]}
+        textToHighlight={
+          sigDataActivityListFilter.label !== ''
+            ? `Humanitarian activities with ${sigDataActivityListFilter.label}`
+            : 'Humanitarian activities'
+        }
+      />
+    </HighlighterCont>
+  );
   activityBaseTable.data = formatActivities(
     actStatusCodeList,
     countryCodeList,
