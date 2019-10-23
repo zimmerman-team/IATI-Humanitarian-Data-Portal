@@ -75,7 +75,7 @@ export function ProvidersPageFunc(props) {
         `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
       )}
       tableData={{
-        ...baseProviderConfig(props.history, onItemClick),
+        ...baseProviderConfig(true, onItemClick),
         data: tableData,
       }}
     />

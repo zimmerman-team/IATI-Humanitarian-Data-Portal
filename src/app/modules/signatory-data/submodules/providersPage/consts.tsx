@@ -12,7 +12,7 @@ const NumberLink = styled.a`
   &:hover {
     color: #5accbf;
   }
-`
+`;
 
 export const providersTableCallValues = pubRef => {
   return {
@@ -44,7 +44,7 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
 };
 
 export const baseProviderConfig = (
-  history,
+  funder: boolean,
   activityListFilterAction?
 ): TableModuleModel => {
   return {
@@ -68,17 +68,17 @@ export const baseProviderConfig = (
         options: {
           filter: false,
           customBodyRender: (value, tableMeta, updateValue) => {
+            let label = 'Recipient';
+            let filterName = 'transaction_receiver_org_ref';
+
+            if (funder) {
+              label = 'Funder';
+              filterName = 'transaction_provider_org_ref';
+            }
+
             const filter = {
-              label: `Funder: ${tableMeta.rowData[0]}`,
-              value: `(${
-                tableMeta.rowData[1] !== 'Not Provided'
-                  ? 'transaction_provider_org_ref'
-                  : 'transaction_provider_org_narrative'
-              }:${
-                tableMeta.rowData[1] !== 'Not Provided'
-                  ? tableMeta.rowData[1]
-                  : tableMeta.rowData[0]
-              })`,
+              label: `${label}: ${tableMeta.rowData[0]}`,
+              value: `(${filterName}:${tableMeta.rowData[1]})`,
             };
             return activityListFilterAction &&
               tableMeta.rowData[1] !== 'Not Provided' ? (
@@ -122,25 +122,6 @@ export const baseProviderConfig = (
       viewColumns: true,
       responsive: 'scroll',
       selectableRows: 'none',
-      customRowRender: (data, dataIndex) => {
-        return (
-          <CustomRow
-            onClick={() => {
-              if (data[1] && data[1].length > 0) {
-                history.push(
-                  `/signatory-data/${encodeURIComponent(data[1])}/activity-list`
-                );
-              }
-            }}
-            hover={data[1] && data[1].length > 0}
-            rowIndex={dataIndex}
-            data={data.map(cell => {
-              return { value: cell, colSpan: 1 };
-            })}
-          />
-        );
-      },
-      onRowClick: () => {},
       customSort: (data: any[], colIndex: number, order: string) => {
         if (colIndex === 5) {
           return orderBy(
