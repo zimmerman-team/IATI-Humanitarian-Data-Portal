@@ -5,6 +5,8 @@ import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
 import tooltips from 'app/state/api/actionsReducers/tooltips';
+import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
+import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
 import {
   sigdataincoming,
   sigdataincomingfundtrace,
@@ -45,6 +47,7 @@ export interface ApplicationStoreModel {
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
   tooltips: GBSignatoryResponseInterface;
+  signatoryProgress: SignatoryPrgoressResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
@@ -80,6 +83,7 @@ const applicationStore: ApplicationStoreModel = {
   organisationnarrative,
   sigdataoverviewdataerrors,
   tooltips,
+  signatoryProgress,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
   sigDataActivityListFilter: {

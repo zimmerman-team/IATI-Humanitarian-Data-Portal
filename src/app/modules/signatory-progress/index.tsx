@@ -33,6 +33,9 @@ export function SignatoryProgress() {
   const tooltipsData: any = useStoreState(
     globalState => globalState.tooltips.data
   );
+  const signatoryProgressData: any = useStoreState(
+    globalState => globalState.signatoryProgress.data
+  );
 
   const gbOrgData = get(iatigbsignatoriesData, 'data', null);
 
@@ -109,7 +112,11 @@ export function SignatoryProgress() {
   const lineData = formatLineChart(gbOrgData, specPublishers);
   const barData = formatBarData(gbOrgData, specPublishers);
   const baseTable = getBaseTable(tooltipsData);
-  baseTable.data = formatTableData(gbOrgData, specPublishers) as never;
+  baseTable.data = formatTableData(
+    gbOrgData,
+    specPublishers,
+    signatoryProgressData
+  ) as never;
 
   return (
     <SignatoryProgressLayout

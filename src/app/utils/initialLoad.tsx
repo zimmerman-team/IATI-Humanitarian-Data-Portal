@@ -201,6 +201,9 @@ export function InitialDataLoad() {
   );
   // const tooltipsData = useStoreState(reduxstate => reduxstate.tooltips);
   const getTooltips = useStoreActions(actions => actions.tooltips.fetch);
+  const getSignatoryProgress = useStoreActions(
+    actions => actions.signatoryProgress.fetch
+  );
 
   React.useEffect(() => {
     if (!gbsignatoriesData.data) {
@@ -309,5 +312,6 @@ export function InitialDataLoad() {
       });
     }
     getTooltips({});
+    getSignatoryProgress({});
   }, []);
 }
