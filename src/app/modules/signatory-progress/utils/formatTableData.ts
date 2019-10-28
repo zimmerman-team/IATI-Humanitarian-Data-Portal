@@ -99,7 +99,8 @@ export function formatTableData(
       colLabel: 'May 2019',
       // value in the response and query
       value: '1900-01-01_TO_2019-05-31',
-      totalGBSig: signatoryProgressData[0].totalSigMay2019,
+      // eslint-disable-next-line radix
+      totalGBSig: parseInt(signatoryProgressData[0].totalSigMay2019),
       allCount: signatoryProgressData[0].publishingOpenDataIATIMay2019, //48,
       allPerc: calculatePercentage(
         signatoryProgressData[0].totalSigMay2019,
@@ -160,13 +161,17 @@ export function formatTableData(
       }
 
       if (index === dateRanges.length - 1) {
+        //for today date
         iatiCount = allIatiSigCount;
         iatiPerc = Math.round((iatiCount * 100) / allSigCount);
         lastCount = iatiCount;
+        totGBSigs.push(Math.round((iatiCount * 100) / iatiPerc));
       }
 
       tableData[0].push(`${iatiPerc}% (${iatiCount})`);
-      totGBSigs.push(range.totalGBSig);
+      if (range.label !== currDate) {
+        totGBSigs.push(range.totalGBSig);
+      }
 
       /*if (iatiCount && iatiPerc) {
         // and this is how we calculate the total no of GB
