@@ -31,7 +31,8 @@ export function formatTableData(
       // value in the response and query
       value: '1900-01-01_TO_2017-06-30',
       // and here we'll have the fixed values
-      totalGBSig: signatoryProgressData[0].totalSigJune2017,
+      // eslint-disable-next-line radix
+      totalGBSig: parseInt(signatoryProgressData[0].totalSigJune2017),
       allCount: signatoryProgressData[0].publishingOpenDataIATIJune2017, //37,
       allPerc: calculatePercentage(
         signatoryProgressData[0].totalSigJune2017,
@@ -100,7 +101,7 @@ export function formatTableData(
       // value in the response and query
       value: '1900-01-01_TO_2019-05-31',
       // eslint-disable-next-line radix
-      totalGBSig: parseInt(signatoryProgressData[0].totalSigMay2019),
+      totalGBSig: signatoryProgressData[0].totalSigMay2019,
       allCount: signatoryProgressData[0].publishingOpenDataIATIMay2019, //48,
       allPerc: calculatePercentage(
         signatoryProgressData[0].totalSigMay2019,
