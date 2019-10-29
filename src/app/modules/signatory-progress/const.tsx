@@ -215,7 +215,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
 
   // and we push in changes made as the last column
   columns.push({
-    name: 'Changes [31. May] to today',
+    name: 'Changes [June, 2017] to today',
     options: {
       filter: true,
       filterType: 'checkbox',

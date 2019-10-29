@@ -156,7 +156,7 @@ export function formatTableData(
       let iatiPerc = range.allPerc;
       let iatiCount = range.allCount;
 
-      if (index === dateRanges.length - 2) {
+      if (index === dateRanges.length - 4) {
         befLastCount = iatiCount;
       }
 
@@ -189,7 +189,7 @@ export function formatTableData(
 
     // and here we push the change for the total GB no
     const lastTotValue: number | string = totGBSigs[totGBSigs.length - 1];
-    const befLastTotValue: number | string = totGBSigs[totGBSigs.length - 2];
+    const befLastTotValue: number | string = totGBSigs[totGBSigs.length - 4];
     let totChange = 0;
     if (
       typeof lastTotValue === 'number' &&
@@ -222,7 +222,7 @@ export function formatTableData(
         let percentage = fixedData.percentage;
         let value = fixedData.count;
 
-        if (index === dateRanges.length - 2) {
+        if (index === dateRanges.length - 4) {
           beforeLastSigC = value;
         }
 
