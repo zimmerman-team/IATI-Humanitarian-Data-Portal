@@ -12,7 +12,7 @@ export const getHumResultsData = (rawData, tooltipsData): ListModel => {
     get(rawData, 'facets.HRIndDocLinks.count', 0),
   ];
   return {
-    title: 'Hum. activities',
+    title: 'Hum. activities with results',
     elName: 'incComms',
     // subtitle: 'Hum results',
     items: [

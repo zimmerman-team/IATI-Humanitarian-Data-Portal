@@ -95,6 +95,14 @@ export const dateRanges = [
   },
 ];
 
+export const linesOrder = [
+  { n: 0, line: 'Publishing IATI traceability info' },
+  { n: 1, line: 'Providing granular v2.03 data' },
+  { n: 2, line: 'Providing granular v2.02 data' },
+  { n: 3, line: 'Publishing hum. activity data' },
+  { n: 4, line: 'Signatories publishing to IATI' },
+];
+
 // so this is mainly the result forming query that we need for the data
 // formed in a solr way responses are also solr like
 const jsonFacet = `{
@@ -207,7 +215,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
 
   // and we push in changes made as the last column
   columns.push({
-    name: 'Changes [31. May] to today',
+    name: 'Changes [June, 2017] to today',
     options: {
       filter: true,
       filterType: 'checkbox',

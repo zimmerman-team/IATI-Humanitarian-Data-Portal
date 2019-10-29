@@ -14,6 +14,15 @@ const Typo = styled(props => <Typography {...props} />)`
   display: inline-block;
   float: left;
   margin-right: 14px !important;
+  text-decoration: ${props => (props.theme.link ? 'underline' : 'none')};
+  ${props =>
+    props.theme.link
+      ? `
+    &:hover {
+    color: #5accbf;
+    cursor: pointer;
+  }`
+      : ''}
 `;
 
 export const RowHeader = styled(props => <TableCell {...props} />)`
@@ -39,7 +48,13 @@ const ListItem = (props: ListItemModel) => {
   return (
     <TableRow>
       <RowHeader component="th" scope="row">
-        <Typo variant="body2">{props.label}</Typo>
+        <Typo
+          variant="body2"
+          theme={{ link: !!props.onClick }}
+          onClick={() => props.onClick && props.onClick()}
+        >
+          {props.label}
+        </Typo>
         {props.tooltip ? <ToolTip tip={props.tooltip} /> : null}
       </RowHeader>
       {cellValues}

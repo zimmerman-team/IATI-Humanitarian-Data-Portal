@@ -43,7 +43,7 @@ export function SubmoduleContainer(props) {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         facet: 'on',
-        'facet.pivot': 'activity_date_iso_date,humanitarian',
+        'facet.pivot': 'activity_date_start_actual,humanitarian',
         fl: 'facet_counts',
       },
     };
@@ -74,7 +74,7 @@ export function SubmoduleContainer(props) {
         yearRange={getYearRange(
           get(
             sigdataactivityyearsData,
-            "data.facet_counts.facet_pivot['activity_date_iso_date,humanitarian']",
+            "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
             []
           )
         )}

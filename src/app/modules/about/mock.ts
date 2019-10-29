@@ -35,4 +35,5 @@ export const mockData: AboutPageModel = {
       ],
     },
   ],
+  cmsTextBlocks: [],
 };

@@ -3,7 +3,7 @@
 import autoRecord from 'cypress-autorecord';
 
 const signatoryOutgoingTexts = [
-  'Humanitarian pledges transaction types',
+  'Outgoing',
   'Outgoing pledges',
   'Outgoing commitments',
   'Disbursements',

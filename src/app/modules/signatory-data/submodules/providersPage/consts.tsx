@@ -1,8 +1,18 @@
 import React from 'react';
 import orderBy from 'lodash/orderBy';
+import styled from 'styled-components';
 import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { ExpandedRow as CustomRow } from 'app/components/datadisplay/Table/common/ExpandedRow';
+
+const NumberLink = styled.a`
+  color: #000;
+  text-decoration: underline;
+
+  &:hover {
+    color: #5accbf;
+  }
+`;
 
 export const providersTableCallValues = pubRef => {
   return {
@@ -33,7 +43,10 @@ export const allProvidersQuery = (pubRef: string, field: string) => {
   };
 };
 
-export const baseProviderConfig = (history): TableModuleModel => {
+export const baseProviderConfig = (
+  funder: boolean,
+  activityListFilterAction?
+): TableModuleModel => {
   return {
     title: 'Funding organisations',
     data: [],
@@ -52,7 +65,36 @@ export const baseProviderConfig = (history): TableModuleModel => {
       },
       {
         name: 'Activites',
-        options: { filter: false },
+        options: {
+          filter: false,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            let label = 'Recipient';
+            let filterName = 'transaction_receiver_org_ref';
+
+            if (funder) {
+              label = 'Funder';
+              filterName = 'transaction_provider_org_ref';
+            }
+
+            const filter = {
+              label: `${label}: ${tableMeta.rowData[0]}`,
+              value: `(${filterName}:${tableMeta.rowData[1]})`,
+            };
+            return activityListFilterAction &&
+              tableMeta.rowData[1] !== 'Not Provided' ? (
+              <NumberLink
+                onClick={e => {
+                  e.stopPropagation();
+                  activityListFilterAction(filter);
+                }}
+              >
+                {value}
+              </NumberLink>
+            ) : (
+              value
+            );
+          },
+        },
       },
       {
         name: 'Total amount',
@@ -80,25 +122,6 @@ export const baseProviderConfig = (history): TableModuleModel => {
       viewColumns: true,
       responsive: 'scroll',
       selectableRows: 'none',
-      customRowRender: (data, dataIndex) => {
-        return (
-          <CustomRow
-            onClick={() => {
-              if (data[1] && data[1].length > 0) {
-                history.push(
-                  `/signatory-data/${encodeURIComponent(data[1])}/activity-list`
-                );
-              }
-            }}
-            hover={data[1] && data[1].length > 0}
-            rowIndex={dataIndex}
-            data={data.map(cell => {
-              return { value: cell, colSpan: 1 };
-            })}
-          />
-        );
-      },
-      onRowClick: () => {},
       customSort: (data: any[], colIndex: number, order: string) => {
         if (colIndex === 5) {
           return orderBy(

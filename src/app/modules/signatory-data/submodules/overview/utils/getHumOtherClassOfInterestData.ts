@@ -13,9 +13,10 @@ export const getHumOtherClassOfInterestData = (
     get(rawData, 'facets.humOtherClassOfInterestData_2.count', 0),
     get(rawData, 'facets.humOtherClassOfInterestData_3.count', 0),
     get(rawData, 'facets.humOtherClassOfInterestData_4.count', 0),
+    get(rawData, 'facets.humOtherClassOfInterestData_5.count', 0),
   ];
   return {
-    title: 'Hum. other classifications of intererest',
+    title: 'Hum. activities with other classifications of intererest',
     elName: 'incComms',
     items: [
       {
@@ -55,8 +56,8 @@ export const getHumOtherClassOfInterestData = (
         ),
         values: [
           {
-            ptc: percentage(itemCounts[3], allActCount),
-            qtc: itemCounts[3],
+            ptc: percentage(itemCounts[2], allActCount),
+            qtc: itemCounts[2],
           },
         ],
       },
@@ -69,8 +70,22 @@ export const getHumOtherClassOfInterestData = (
         ),
         values: [
           {
-            ptc: percentage(itemCounts[2], allActCount),
-            qtc: itemCounts[2],
+            ptc: percentage(itemCounts[3], allActCount),
+            qtc: itemCounts[3],
+          },
+        ],
+      },
+      {
+        label: 'Sustainable Development Goals (SDGs) Targets',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Sustainable Development Goals (SDGs) Targets'
+        ),
+        values: [
+          {
+            ptc: percentage(itemCounts[4], allActCount),
+            qtc: itemCounts[4],
           },
         ],
       },

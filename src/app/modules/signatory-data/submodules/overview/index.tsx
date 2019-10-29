@@ -71,13 +71,21 @@ export function OverviewPage(props) {
   const sigdataoverviewdataerrorsCall = useStoreActions(
     actions => actions.sigdataoverviewdataerrors.fetch
   );
+  const sigDataActivityListFilterAction = useStoreActions(
+    actions => actions.sigDataActivityListFilter.setActivityListFilter
+  );
   const years = getAllYears(
     get(
       sigdataactivityyearsData,
-      "data.facet_counts.facet_pivot['activity_date_iso_date,humanitarian']",
+      "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
       []
     )
   );
+
+  const onItemClick = value => {
+    sigDataActivityListFilterAction(value);
+    props.history.push('activity-list');
+  };
 
   /* componentDidMount call */
   React.useEffect(() => {
@@ -150,11 +158,13 @@ export function OverviewPage(props) {
 
   const humActFTSData = getHumActFTSData(
     get(sigdataoverviewhumData, 'data', {}),
-    tooltipsData
+    tooltipsData,
+    onItemClick
   );
   const humActwGBClassificationsData = getHumActwGBClassificationsData(
     get(sigdataoverviewhumData, 'data', {}),
-    tooltipsData
+    tooltipsData,
+    onItemClick
   );
   const humOtherClassOfInterestData = getHumOtherClassOfInterestData(
     get(sigdataoverviewhumData, 'data', {}),
@@ -172,7 +182,6 @@ export function OverviewPage(props) {
     get(sigdataoverviewhumData, 'data', {}),
     tooltipsData
   );
-  /* todo: implement this when available in OIPA solr */
   const financialReportingData = getFinancialReportingData(
     get(sigdataactivitystatusData, 'data', {}),
     signatory,

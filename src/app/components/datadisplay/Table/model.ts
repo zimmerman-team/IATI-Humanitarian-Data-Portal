@@ -12,7 +12,7 @@ export type moneyType = {
 };
 
 export interface TableModuleModel {
-  title: string;
+  title: string | React.ReactNode;
   data: (
     | number
     | string
@@ -31,7 +31,7 @@ export interface TableModuleModel {
 }
 
 export interface TableLayoutModel {
-  title: string;
+  title: string | React.ReactNode;
   data: any[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;

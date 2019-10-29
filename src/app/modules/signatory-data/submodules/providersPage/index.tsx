@@ -1,6 +1,7 @@
 /* core */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { useStoreActions } from 'app/state/store/hooks';
 /* components */
 import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/providersPage/layout';
 /* state & utils */
@@ -19,7 +20,6 @@ import {
   WithRouterProps,
   WithRouterStatics,
 } from 'react-router';
-import { Responsive } from 'mui-datatables';
 
 export function ProvidersPageFunc(props) {
   /* component store */
@@ -45,6 +45,14 @@ export function ProvidersPageFunc(props) {
     });
   }, [orgTypeNames.data]);
 
+  const sigDataActivityListFilterAction = useStoreActions(
+    actionsGen => actionsGen.sigDataActivityListFilter.setActivityListFilter
+  );
+  const onItemClick = value => {
+    sigDataActivityListFilterAction(value);
+    props.history.push('activity-list');
+  };
+
   const sigAllProviders = get(
     state.sigAllProviders,
     'data.data.facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type',
@@ -63,11 +71,11 @@ export function ProvidersPageFunc(props) {
         get(state.sigdataproviders.data, 'data', null),
         get(orgTypeNames.data, 'data', null),
         sigAllProviders,
-        'Providers',
+        'Funders',
         `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
       )}
       tableData={{
-        ...baseProviderConfig(props.history),
+        ...baseProviderConfig(true, onItemClick),
         data: tableData,
       }}
     />

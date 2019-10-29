@@ -20,35 +20,33 @@ import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoA
 //      -Implement footer component
 
 export const AboutLayout = (props: AboutPageModel) => {
-  // TODO: these are just for api call example purposes, remove this once actual
-  //  api calls are implemented
-  // const activities = useStoreState(state => state.activities);
-  // console.log('activities', activities);
-  //
-  // const callActivities = useStoreActions(actions => actions.activities.fetch);
-  //
-  // const onButtonClick = useCallback(() => {
-  //   callActivities({ values: { q: 'iati_identifier:GB-CHC-202918-ARMA66' } }); // 👈 dispatch our action with the text describing the todo
-  // }, [fetch, { values: { q: 'iati_identifier:GB-CHC-202918-ARMA66' } }]);
-
   return (
     <Page title={props.title} footer>
-      {/*SECTION*/}
+      {props.cmsTextBlocks.map(block => (
+        <>
+          <Grid container>
+            <Grid item lg={8} md={10}>
+              <Typography variant="h6" data-testid="title">
+                {block.title}
+              </Typography>
+            </Grid>
+            <Box height="16px" width="100%" />
+            {parse(block.body)}
+            {block.moreLink && (
+              <>
+                <Box height="50px" width="100%" />
+                {/* disable for now */}
+                {/*<Grid item lg={8} md={10}>
+                  <ContainedButton text="More info" />
+                </Grid>*/}
+              </>
+            )}
+          </Grid>
+          <Box height="50px" width="100%" />
+        </>
+      ))}
+
       <Grid container spacing={2}>
-        <Grid item lg={8} md={10}>
-          <Typography variant="h6" data-testid={'title'}>
-            {props.sections[0].title}
-          </Typography>
-        </Grid>
-        <Box height="16px" width="100%" />
-        {/*TODO: this is just for api call example purposes, remove this once actual
-            api calls are implemented*/}
-        {/*<div style={{ height: 100, width: 100 }} onClick={onButtonClick}> CLICK ME </div>*/}
-        <Grid item lg={8} md={10}>
-          <Typography variant="body1">
-            {parse(props.sections[0].content[0])}
-          </Typography>
-        </Grid>
         <Box position="absolute" top="10px" left="10px" zIndex="10000">
           <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
         </Box>
@@ -65,91 +63,6 @@ export const AboutLayout = (props: AboutPageModel) => {
           </Box>
         </Hidden>
       </Grid>
-
-      {/* SECTION*/}
-      <Box height="50px" width="100%" />
-      <Grid container>
-        <Grid item lg={8} md={10}>
-          <Typography variant="subtitle1">{props.sections[1].title}</Typography>
-        </Grid>
-        <Box height="16px" width="100%" />
-        <Grid item lg={8} md={10}>
-          <Typography variant="body1" data-testid={'paragraph'}>
-            {parse(props.sections[1].content[0])}
-          </Typography>
-        </Grid>
-        <Grid item lg={8} md={10}>
-          <ul style={{ listStyle: 'none' }}>
-            <li>
-              <Typography variant="body1" data-testid={'paragraph'}>
-                {parse(props.sections[1].content[1])}
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1">
-                {parse(props.sections[1].content[2])}
-              </Typography>
-            </li>
-            <li>
-              <Typography variant="body1" data-testid={'paragraph'}>
-                {parse(props.sections[1].content[3])}
-              </Typography>
-              <ul style={{ listStyle: 'none' }}>
-                <li>
-                  <Typography variant="body1" data-testid={'paragraph'}>
-                    {parse(props.sections[1].content[4])}
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body1" data-testid={'paragraph'}>
-                    {parse(props.sections[1].content[5])}
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body1" data-testid={'paragraph'}>
-                    {parse(props.sections[1].content[6])}
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body1" data-testid={'paragraph'}>
-                    {parse(props.sections[1].content[7])}
-                  </Typography>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Typography variant="body1" data-testid={'paragraph'}>
-                {parse(props.sections[1].content[8])}
-              </Typography>
-            </li>
-          </ul>
-        </Grid>
-        <Box height="20px" width="100%" />
-        <Grid item lg={8} md={10}>
-          <Typography data-testid={'paragraph'}>
-            {parse(props.sections[1].content[9])}
-          </Typography>
-        </Grid>
-        <Box height="50px" width="100%" />
-        <Grid item lg={8} md={10}>
-          <ContainedButton text="More info" />
-        </Grid>
-
-        {/*SECTION*/}
-        <Box height="50px" width="100%" />
-        <Grid item lg={8} md={10}>
-          <Typography variant="h6" data-testid={'paragraph'}>
-            {props.sections[2].title}
-          </Typography>
-        </Grid>
-        <Box height="16px" width="100%" />
-        <Grid item lg={8} md={10}>
-          <Typography variant="body1" data-testid={'paragraph'}>
-            {parse(props.sections[2].content[0])}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Box height="50px" width="100%" />
 
       <Hidden smDown>
         <Box position="absolute" top="258px" left="0">

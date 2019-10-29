@@ -5,11 +5,11 @@ import {
 
 export interface YearBarChartObjectModel {
   year: string;
-  activities: number;
+  Activities: number;
   activitiesAct: number;
-  activitiesColor: string;
-  humanitarianActivities: number;
-  humanitarianActivitiesColor: string;
+  ActivitiesColor: string;
+  'Humanitarian Activities': number;
+  'Humanitarian ActivitiesColor': string;
 }
 
 export interface HumanitarianDonutModel {

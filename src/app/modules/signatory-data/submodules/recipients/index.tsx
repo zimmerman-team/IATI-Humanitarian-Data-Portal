@@ -4,7 +4,7 @@ import { RecipientsLayout } from 'app/modules/signatory-data/submodules/recipien
 
 /* store */
 import { recStore } from 'app/modules/signatory-data/submodules/recipients/store';
-import { useStoreState } from 'app/state/store/hooks';
+import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 /* consts */
 import { recipientsQuery } from 'app/modules/signatory-data/submodules/recipients/const';
@@ -65,11 +65,20 @@ function RecipientsF(props) {
     `facet_counts.facet_pivot.${pivotKey}`
   );
 
+  const sigDataActivityListFilterAction = useStoreActions(
+    actionsGen => actionsGen.sigDataActivityListFilter.setActivityListFilter
+  );
+
+  const onItemClick = value => {
+    sigDataActivityListFilterAction(value);
+    props.history.push('activity-list');
+  };
+
   return (
     <RecipientsLayout
       barChartData={barChartData}
       tableData={{
-        ...baseProviderConfig(props.history),
+        ...baseProviderConfig(false, onItemClick),
         data: recTableData,
       }}
     />

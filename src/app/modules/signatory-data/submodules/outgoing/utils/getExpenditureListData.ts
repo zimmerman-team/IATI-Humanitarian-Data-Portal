@@ -19,11 +19,11 @@ export const getExpenditureListData = (
     elName: 'exp',
     items: [
       {
-        label: 'Total no. of Activities',
+        label: 'Total no. of activities',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Expenditure',
-          'Total no. of Activities'
+          'Total no. of activities'
         ),
         values: [
           {
@@ -47,11 +47,11 @@ export const getExpenditureListData = (
         ],
       },
       {
-        label: 'Funding Recipient details',
+        label: 'Funding recipient details',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Outgoing - Expenditure',
-          'Funding Recipient details'
+          'Funding recipient details'
         ),
         values: [
           {
