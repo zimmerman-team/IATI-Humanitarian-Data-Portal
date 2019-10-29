@@ -38,7 +38,9 @@ function ActivityDetail(props) {
   // calling activity results
   useEffect(() => {
     actions.actResults.fetch({
-      values: actResultsQuery(decodeURIComponent(props.match.params.code)),
+      values: actResultsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 
@@ -46,7 +48,7 @@ function ActivityDetail(props) {
   useEffect(() => {
     actMetadataQuery.q = `iati_identifier:${decodeURIComponent(
       props.match.params.code
-    )}`;
+    ).replace(/:/g, '\\:')}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
     setRedirect(true);
@@ -55,14 +57,18 @@ function ActivityDetail(props) {
   // calling incoming transactions
   useEffect(() => {
     actions.incTransactions.fetch({
-      values: inTransactionsQuery(decodeURIComponent(props.match.params.code)),
+      values: inTransactionsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 
   // calling outgoing transactions
   useEffect(() => {
     actions.outTransactions.fetch({
-      values: outTransactionsQuery(decodeURIComponent(props.match.params.code)),
+      values: outTransactionsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 

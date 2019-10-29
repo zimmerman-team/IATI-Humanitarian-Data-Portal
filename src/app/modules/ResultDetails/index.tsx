@@ -29,7 +29,9 @@ function ResultDetailF(props) {
 
   React.useEffect(() => {
     action.results.fetch({
-      values: ResultQuery(decodeURIComponent(props.match.params.code)),
+      values: ResultQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, []);
 
