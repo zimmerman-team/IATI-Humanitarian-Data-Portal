@@ -50,6 +50,10 @@ export const LandingLayout = (props: LandingModel) => {
         <Grid container direction="column">
           <Grid item md={12}>
             <Box width="97%">
+              <Typography variant="h5" color="primary">
+                <b>Welcome to the IATI Humanitarian Data Portal</b>
+              </Typography>
+              <Box height="10px" />
               <LandingIntrotext variant="h1">
                 <Highlighter
                   autoEscape
