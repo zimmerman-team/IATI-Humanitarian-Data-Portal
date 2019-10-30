@@ -220,14 +220,14 @@ export function formatActivityElements(
     });
 
     // pushing rep org
-    elementLists.push({
+    /*elementLists.push({
       title: 'Reporting organisation',
       type: 'Card',
       elName: 'repOrg',
       items:
         actDetail.reporting_org &&
         formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
-    });
+    });*/
 
     // pushing recipient countries
     elementLists.push({
