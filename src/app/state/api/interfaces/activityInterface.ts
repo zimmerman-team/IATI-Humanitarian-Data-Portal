@@ -47,6 +47,7 @@ export interface SingleDefActivity {
   participating_org_narrative: string[];
   activity_date_iso_date: string[];
   activity_date_type: string[];
+  contact_info: any[];
   contact_info_telephone: string[];
   contact_info_email: string[];
   contact_info_person_name_narrative: string[];
