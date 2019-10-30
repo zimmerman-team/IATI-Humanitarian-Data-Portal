@@ -487,41 +487,50 @@ export const contInfoFields = contactTypeNames => {
   return [
     {
       colHeading: 'Type',
+      label: 'Type',
       key: 'type',
       codeNames: contactTypeNames,
     },
     {
       colHeading: 'Telephone',
+      label: 'Telephone',
       key: 'telephone',
     },
     {
       colHeading: 'Email',
+      label: 'Email',
       key: 'email',
     },
     {
       colHeading: 'Website',
+      label: 'Website',
       key: 'website',
       extLink: 'website',
     },
     {
       colHeading: 'Organisation name',
-      key: 'organisation_narrative',
+      label: 'Organisation name',
+      key: 'organisation_narrative[0].narrative',
     },
     {
       colHeading: 'Department name',
-      key: 'department_narrative',
+      label: 'Department name',
+      key: 'department_narrative[0].narrative',
     },
     {
       colHeading: 'Contact Person',
-      key: 'person_name_narrative',
+      label: 'Contact Person',
+      key: 'person_name_narrative[0].narrative',
     },
     {
       colHeading: 'Contact Person Position',
-      key: 'job_title_narrative',
+      label: 'Contact Person Position',
+      key: 'job_title_narrative[0].narrative',
     },
     {
       colHeading: 'Mailing address',
-      key: 'mailing_address_narrative',
+      label: 'Mailing address',
+      key: 'mailing_address_narrative[0].narrative',
     },
   ];
 };
