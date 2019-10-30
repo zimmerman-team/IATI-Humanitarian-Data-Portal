@@ -4,6 +4,7 @@ import { ActivityDetailsLayout } from 'app/modules/activityDetails/layout';
 
 /* utils */
 import get from 'lodash/get';
+import { scroller } from 'react-scroll';
 import { formatHeader } from 'app/modules/activityDetails/utils/formatHeader';
 import { formatSections } from 'app/modules/activityDetails/utils/formatSections';
 import { formatTransTable } from 'app/modules/activityDetails/utils/formatTransTable';
@@ -82,6 +83,19 @@ function ActivityDetail(props) {
       props.history.replace('/notFound');
     }
   }, [actMetadata]);
+
+  useEffect(() => {
+    if (props.location.hash === '#results') {
+      setTimeout(() => {
+        scroller.scrollTo('results', {
+          duration: 1000,
+          delay: 100,
+          smooth: true,
+          offset: -50, // Scrolls to element + 50 pixels down the page
+        });
+      }, 500);
+    }
+  }, []);
   /* ----------------------------------------------- */
   /* --------- INITIALIZING STATES ----------------- */
   const actDetail = get(actMetadata, 'data.response.docs[0]', null);
