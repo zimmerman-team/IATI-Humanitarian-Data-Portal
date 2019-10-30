@@ -109,7 +109,11 @@ export function SignatoryProgress() {
     },
   ];
 
-  const lineData = formatLineChart(gbOrgData, specPublishers);
+  const lineData = formatLineChart(
+    gbOrgData,
+    specPublishers,
+    signatoryProgressData
+  );
   const barData = formatBarData(gbOrgData, specPublishers);
   const baseTable = getBaseTable(tooltipsData);
   baseTable.data = formatTableData(
