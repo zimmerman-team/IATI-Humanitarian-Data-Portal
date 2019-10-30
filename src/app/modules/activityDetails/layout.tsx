@@ -4,9 +4,10 @@ import React from 'react';
 import { ActivityDetailModel } from 'app/modules/activityDetails/model';
 
 // Components
+import { Element } from 'react-scroll/modules';
+import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 import { Grid, Typography, Box, Container } from '@material-ui/core';
 import { ActivityHeaderLayout } from 'app/modules/activityDetails/common/activityHeader';
-import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 
 // Mock Data
 import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
@@ -77,18 +78,20 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       {props.tableCard &&
         props.tableCard.items &&
         props.tableCard.items.length > 0 && (
-          <Grid container spacing={4} justify="flex-end">
-            <Grid xs={12} md={9} item>
-              <Typography variant="h4">{props.sections[1].title}</Typography>
-              <Box width="100%" height="25px" />
-              <TableCard
-                fullWidth
-                title={props.tableCard ? props.tableCard.title : ''}
-                items={props.tableCard ? props.tableCard.items : []}
-              />
-              <Box width="100%" height="32px" />
+          <div id="results">
+            <Grid container spacing={4} justify="flex-end">
+              <Grid xs={12} md={9} item>
+                <Typography variant="h4">{props.sections[1].title}</Typography>
+                <Box width="100%" height="25px" />
+                <TableCard
+                  fullWidth
+                  title={props.tableCard ? props.tableCard.title : ''}
+                  items={props.tableCard ? props.tableCard.items : []}
+                />
+                <Box width="100%" height="32px" />
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         )}
 
       <Box height="50px" />

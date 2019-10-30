@@ -49,7 +49,9 @@ export function formatActivities(
         statusName ? statusName.name : 'no data',
         [activity.iati_identifier, engTitle],
         countryNames || [],
-        resultCount,
+        resultCount > 0
+          ? { value: resultCount, activityId: activity.iati_identifier }
+          : resultCount,
       ]);
     });
   }

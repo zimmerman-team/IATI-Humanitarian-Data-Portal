@@ -206,17 +206,20 @@ export function formatActivityElements(
       ),
     });
 
-    // 10
     // pushing contact info
-    elementLists.push({
-      title: 'Contact information',
-      type: 'ExpTableCard',
-      elName: 'contInfo',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'contact_info',
-        contInfoFields(get(codeLists, 'contactTypeNames.data.data', []))
-      ),
+    actDetail.contact_info.forEach((info, index) => {
+      elementLists.push({
+        title: `Contact information ${
+          actDetail.contact_info.length > 1 ? index + 1 : ''
+        }`,
+        type: 'Card',
+        elName: `contInfo${index}`,
+        items: formatSingleCardItem(
+          info,
+          '',
+          contInfoFields(get(codeLists, 'contactTypeNames.data.data', []))
+        ),
+      });
     });
 
     // pushing rep org

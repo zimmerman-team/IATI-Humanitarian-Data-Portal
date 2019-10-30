@@ -105,6 +105,15 @@ export const activityBaseTable: TableModuleModel = {
         filter: false,
         sort: false,
         filterType: 'checkbox',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value === 0) {
+            return value;
+          }
+          const link = `/activity-detail/${encodeURIComponent(
+            value.activityId
+          )}/#results`;
+          return <LinkCellModule link={link} value={value.value} />;
+        },
       },
     },
   ],
