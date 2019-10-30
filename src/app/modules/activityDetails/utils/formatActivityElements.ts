@@ -43,6 +43,39 @@ export function formatActivityElements(
 ): ListModel[] {
   const elementLists: ListModel[] = [];
   if (actDetail) {
+    // 1
+    // pushing budget
+    elementLists.push({
+      title: 'Budget',
+      type: 'ExpTableCard',
+      elName: 'budget',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'budget',
+        budgetFields(
+          get(codeLists, 'budgTypeNames.data.data', []),
+          get(codeLists, 'budgStatusNames.data.data', [])
+        )
+      ),
+    });
+
+    // 2
+    // pushing participating organisations
+    elementLists.push({
+      title: 'Participating organisations',
+      type: 'ExpTableCard',
+      elName: 'partOrg',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'participating_org',
+        partOrgFields(
+          get(codeLists, 'orgTypeNames.data.data', []),
+          get(codeLists, 'orgRoleNames.data.data', [])
+        )
+      ),
+    });
+
+    //3
     // pushing activity summary
     elementLists.push({
       title: 'Activity summary',
@@ -61,52 +94,33 @@ export function formatActivityElements(
       ),
     });
 
-    // 1
-    // pushing other identifiers
+    //4
+    // pushing recipient countries
     elementLists.push({
-      title: 'Other identifiers',
+      title: 'Recipient countries',
       type: 'ExpTableCard',
-      elName: 'othIds',
+      elName: 'recCount',
       tableCItems: formatTableCardItems(
         actDetail,
-        'other_identifier',
-        othIdFields(get(codeLists, 'othIDTypeNames.data.data', []))
+        'recipient_country',
+        recCountFields
       ),
     });
 
-    // 2
-    // pushing humanitarian scopes
+    //5
+    // pushing recipient regions
     elementLists.push({
-      title: 'Humanitarian scope',
+      title: 'Recipient regions',
       type: 'ExpTableCard',
-      elName: 'humScope',
+      elName: 'recReg',
       tableCItems: formatTableCardItems(
         actDetail,
-        'humanitarian_scope',
-        humScopeFields(
-          get(codeLists, 'humScopTypeNames.data.data', []),
-          get(codeLists, 'humVocNames.data.data', [])
-        )
+        'recipient_region',
+        recRegFields(get(codeLists, 'regVocNames.data.data', []))
       ),
     });
 
-    // 3
-    // pushing participating organisations
-    elementLists.push({
-      title: 'Participating organisations',
-      type: 'ExpTableCard',
-      elName: 'partOrg',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'participating_org',
-        partOrgFields(
-          get(codeLists, 'orgTypeNames.data.data', []),
-          get(codeLists, 'orgRoleNames.data.data', [])
-        )
-      ),
-    });
-
-    // 4
+    // 6
     // pushing locations
     elementLists.push({
       title: 'Locations',
@@ -124,23 +138,23 @@ export function formatActivityElements(
       ),
     });
 
-    // 5
-    // pushing budget
+    // 7
+    // pushing humanitarian scopes
     elementLists.push({
-      title: 'Budget',
+      title: 'Humanitarian scope',
       type: 'ExpTableCard',
-      elName: 'budget',
+      elName: 'humScope',
       tableCItems: formatTableCardItems(
         actDetail,
-        'budget',
-        budgetFields(
-          get(codeLists, 'budgTypeNames.data.data', []),
-          get(codeLists, 'budgStatusNames.data.data', [])
+        'humanitarian_scope',
+        humScopeFields(
+          get(codeLists, 'humScopTypeNames.data.data', []),
+          get(codeLists, 'humVocNames.data.data', [])
         )
       ),
     });
 
-    // 6
+    // 8
     // pushing sectors
     elementLists.push({
       title: 'Sectors',
@@ -153,7 +167,20 @@ export function formatActivityElements(
       ),
     });
 
-    // 7
+    // 9
+    // pushing default aid type
+    elementLists.push({
+      title: 'Default aid type',
+      type: 'ExpTableCard',
+      elName: 'defAidTyp',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'default_aid_type',
+        defAidTypeFields(get(codeLists, 'defAidTypeVocNames.data.data', []))
+      ),
+    });
+
+    // 10
     // pushing policy marker
     elementLists.push({
       title: 'Policy marker',
@@ -170,7 +197,7 @@ export function formatActivityElements(
       ),
     });
 
-    // 8
+    // 11
     // pushing tags
     elementLists.push({
       title: 'Tags',
@@ -183,29 +210,7 @@ export function formatActivityElements(
       ),
     });
 
-    // 9
-    const budgItVCode = get(
-      actDetail,
-      'country_budget_items.vocabulary',
-      'none'
-    );
-    const budgItCodeList = get(codeLists, 'budgItemVocNames.data.data', []);
-    const budgVocName = find(budgItCodeList, ['code', budgItVCode]);
-
-    // pushing country budget items
-    elementLists.push({
-      title: `Country budget items - ${
-        budgVocName ? budgVocName.name : 'no data'
-      }`,
-      type: 'ExpTableCard',
-      elName: 'countBudgIt',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'country_budget_items.budget_item',
-        countBufgItFields
-      ),
-    });
-
+    //12
     // pushing contact info
     actDetail.contact_info.forEach((info, index) => {
       elementLists.push({
@@ -222,6 +227,44 @@ export function formatActivityElements(
       });
     });
 
+    // 13
+    // pushing other identifiers
+    elementLists.push({
+      title: 'Other identifiers',
+      type: 'ExpTableCard',
+      elName: 'othIds',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'other_identifier',
+        othIdFields(get(codeLists, 'othIDTypeNames.data.data', []))
+      ),
+    });
+
+    // 14
+    const budgItVCode = get(
+      actDetail,
+      'country_budget_items.vocabulary',
+      'none'
+    );
+    const budgItCodeList = get(codeLists, 'budgItemVocNames.data.data', []);
+    const budgVocName = find(budgItCodeList, ['code', budgItVCode]);
+
+    //15
+    // pushing country budget items
+    elementLists.push({
+      title: `Country budget items - ${
+        budgVocName ? budgVocName.name : 'no data'
+      }`,
+      type: 'ExpTableCard',
+      elName: 'countBudgIt',
+      tableCItems: formatTableCardItems(
+        actDetail,
+        'country_budget_items.budget_item',
+        countBufgItFields
+      ),
+    });
+
+    //16
     // pushing rep org
     elementLists.push({
       title: 'Reporting organisation',
@@ -232,42 +275,7 @@ export function formatActivityElements(
         formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
     });
 
-    // pushing recipient countries
-    elementLists.push({
-      title: 'Recipient countries',
-      type: 'ExpTableCard',
-      elName: 'recCount',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'recipient_country',
-        recCountFields
-      ),
-    });
-
-    // pushing recipient regions
-    elementLists.push({
-      title: 'Recipient regions',
-      type: 'ExpTableCard',
-      elName: 'recReg',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'recipient_region',
-        recRegFields(get(codeLists, 'regVocNames.data.data', []))
-      ),
-    });
-
-    // pushing default aid type
-    elementLists.push({
-      title: 'Default aid type',
-      type: 'ExpTableCard',
-      elName: 'defAidTyp',
-      tableCItems: formatTableCardItems(
-        actDetail,
-        'default_aid_type',
-        defAidTypeFields(get(codeLists, 'defAidTypeVocNames.data.data', []))
-      ),
-    });
-
+    //17
     // pushing planned disbursements
     elementLists.push({
       title: 'Planned disbursements',
@@ -283,6 +291,7 @@ export function formatActivityElements(
       ),
     });
 
+    //18
     // pushing document links
     elementLists.push({
       title: 'Document links',
@@ -315,6 +324,7 @@ export function formatActivityElements(
       tableCItems: formatTableCardItems(actDetail, 'fss.forecast', fssFields),
     });*/
 
+    //19
     // pushing related activities
     elementLists.push({
       title: 'Related activities',
@@ -327,6 +337,7 @@ export function formatActivityElements(
       ),
     });
 
+    //20
     // pushing legacy data
     elementLists.push({
       title: 'Legacy data',
