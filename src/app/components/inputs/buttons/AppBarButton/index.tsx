@@ -20,6 +20,10 @@ const BaseComponent = styled(props => <Button {...props} />)`
       text-transform: capitalize;
     }
 
+    & [class*='MuiButton-text'] {
+      padding: 20px 8px;
+    }
+
     &:hover {
       background-color: initial;
     }
