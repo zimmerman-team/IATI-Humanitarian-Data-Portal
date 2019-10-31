@@ -8,6 +8,7 @@ import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/
 
 const Card = styled(props => <MuiCard {...props} />)`
   && {
+    overflow: inherit !important;
     box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
   }
 `;
