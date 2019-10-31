@@ -8,7 +8,11 @@ import { dataMock } from 'app/components/charts/BarCharts/VerticalBarChart/mock'
 storiesOf('Surfaces|Cards/', module).add('Vertical Bar Chart card', () => (
   <Providers>
     <Grid container>
-      <VerticalBarChartCard data={dataMock.data} title="Activity Timeline" tooltip="Lorem ipsum dolor"/>
+      <VerticalBarChartCard
+        data={dataMock.data}
+        title="Activity Timeline"
+        tooltip="Lorem ipsum dolor"
+      />
     </Grid>
   </Providers>
 ));

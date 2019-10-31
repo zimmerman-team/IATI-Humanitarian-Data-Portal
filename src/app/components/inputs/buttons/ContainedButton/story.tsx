@@ -8,7 +8,7 @@ storiesOf('Input|Buttons/', module).add('Contained Buttons', () => (
   <Providers>
     <Grid container>
       <Grid item xs={6}>
-       <Component text="Primary" />
+        <Component text="Primary" />
       </Grid>
 
       <Grid item xs={6}>

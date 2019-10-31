@@ -13,7 +13,7 @@ const ContentContainer = styled.div`
 const Item = styled.div`
   display: flex;
   flex-direction: row;
-  &:first-child{
+  &:first-child {
     margin-bottom: 16px;
   }
 `;
@@ -25,36 +25,38 @@ const Symbol = styled(props => <div {...props} />)`
   margin-right: 12px;
 `;
 
-const Label = styled(props => <Typography {...props} />)`&&{
-margin-right: 28px;
-}`;
+const Label = styled(props => <Typography {...props} />)`
+  && {
+    margin-right: 28px;
+  }
+`;
 
-const Value = styled(props => <Typography {...props} />)`&&{
-margin-left: auto;
-}`;
-
+const Value = styled(props => <Typography {...props} />)`
+  && {
+    margin-left: auto;
+  }
+`;
 
 type ChartTooltipItemModel = {
-  label: string | ReactText,
-  value: number | string | ReactText,
-  color: string | ReactText,
-}
+  label: string | ReactText;
+  value: number | string | ReactText;
+  color: string | ReactText;
+};
 
-type ChartTooltipModel ={
+type ChartTooltipModel = {
   items: ChartTooltipItemModel[];
 };
 
 export const ChartTooltip = (props: ChartTooltipModel) => {
   return (
     <ContentContainer>
-      {props.items.map( item =>
+      {props.items.map(item => (
         <Item>
-          <Symbol color={item.color}/>
+          <Symbol color={item.color} />
           <Label variant="caption">{item.label}</Label>
           <Value variant="caption">{item.value}</Value>
         </Item>
-      )}
+      ))}
     </ContentContainer>
   );
 };
-
