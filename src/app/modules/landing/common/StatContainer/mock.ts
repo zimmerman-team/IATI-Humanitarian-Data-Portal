@@ -12,7 +12,7 @@ export const mockData: StateContainerModel = {
       signatorytype: 'iati',
     },
     {
-      description: 'Signatories & affiliates publishing humanitarian data ',
+      description: 'Signatories or their affiliates publishing humanitarian data ',
       value: 2,
       signatorytype: 'humanitarian',
     },
