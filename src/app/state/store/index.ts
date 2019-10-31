@@ -20,6 +20,7 @@ import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
+import sigdataoverviewhum4donut from 'app/state/api/actionsReducers/sigdataoverviewhum4donut';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
 import {
@@ -47,6 +48,7 @@ export interface ApplicationStoreModel {
   tooltips: GBSignatoryResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
+  sigdataoverviewhum4donut: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
@@ -72,6 +74,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoutgoing,
   iatigbsignatories,
   sigdataoverviewhum,
+  sigdataoverviewhum4donut,
   sigdataactivityyears,
   sigdataactivitystatus,
   sigdataactivitiesbyyear,

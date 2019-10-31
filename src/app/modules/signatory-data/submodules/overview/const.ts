@@ -12,10 +12,6 @@ export const humCallValues = {
     type: 'query',
     q: 'humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:[* TO *]',
   },
-  humElData_4: {
-    type: 'query',
-    q: 'humanitarian_scope_vocabulary:99 AND default_aid_type_vocabulary:3',
-  },
   currentHumValuesData: {
     type: 'query',
     q:
@@ -132,6 +128,14 @@ export const humCallValues = {
   HRIndDocLinks: {
     type: 'query',
     q: 'result_indicator_document_link_url:*',
+  },
+};
+
+export const hum4DonutValues = {
+  data: {
+    type: 'query',
+    q:
+      'humanitarian:1 AND ((sector_vocabulary:1 OR -sector_vocabulary:*) AND (sector_code:[69999 TO 80000] OR sector_code:[93010 TO 93018]))',
   },
 };
 
