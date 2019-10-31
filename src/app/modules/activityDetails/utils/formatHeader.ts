@@ -13,6 +13,7 @@ export function formatHeader(
     organisation: {
       name: '',
       code: '',
+      type: '',
     },
     activity: {
       title: '',
@@ -25,6 +26,7 @@ export function formatHeader(
   if (actDetail) {
     header.organisation.name = get(actDetail, 'reporting_org_narrative[0]', '');
     header.organisation.code = actDetail.reporting_org_ref;
+    header.organisation.type = actDetail.reporting_org.type.name;
     header.activity.code = actDetail.iati_identifier;
     header.activity.title = getEngText(get(actDetail, 'title[0]', '""'));
     const dates = getActualDates(

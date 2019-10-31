@@ -1,18 +1,24 @@
 /* consts */
-import { dateRanges, linesOrder } from 'app/modules/signatory-progress/const';
+import {
+  constructDateRanges,
+  linesOrder,
+} from 'app/modules/signatory-progress/const';
 /* models/interfaces */
 import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
 import { DataPoint, SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
+import { SignatoryProgress } from 'app/state/api/interfaces/signatoryProgressInterface';
 
 /* utils */
 import find from 'lodash/find';
 import {
+  calculatePercentage,
   getAllSigCount,
   getIatiSigCount,
   getRealSigCount,
   getSpecFixedValues,
 } from './general';
+import { shortMonthNames } from '../../../__consts__/dates';
 
 interface SigDateCountModel {
   key: string;
@@ -26,7 +32,8 @@ export interface FirstDataItemModel {
 }
 
 function formatFirstLine(
-  gbsignatories: SingleDefGBSignatory[]
+  gbsignatories: SingleDefGBSignatory[],
+  dateRanges: any
 ): FirstDataItemModel {
   // so first we get the actual amount of GB
   // signatories
@@ -72,17 +79,23 @@ function formatFirstLine(
 
 export function formatLineChart(
   gbsignatories: SingleDefGBSignatory[] | null,
-  specPubsData: Array<SpecPubsItemModel>
+  specPubsData: Array<SpecPubsItemModel>,
+  signatoryProgressData: SignatoryProgress
 ): LineChartCardModel {
   const lineData: LineChartCardModel = {
     title: 'Data publication aggregated signatory progress',
     values: { values: [] },
   };
+  let dateRanges: any[] = [];
+
+  if (signatoryProgressData !== null) {
+    dateRanges = constructDateRanges(signatoryProgressData);
+  }
 
   if (gbsignatories) {
     // first here we form Signatories publishing
     // to IATI line by comparing
-    const firstDataItem = formatFirstLine(gbsignatories);
+    const firstDataItem = formatFirstLine(gbsignatories, dateRanges);
     lineData.values.values.push({
       data: firstDataItem.data,
       id: 'Signatories publishing to IATI',

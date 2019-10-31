@@ -48,6 +48,7 @@ jobs:
               echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
               echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
               echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_CMS_PROJECT_ID="$REACT_APP_CMS_PROJECT_ID_PROD"' >> $BASH_ENV
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -128,6 +129,7 @@ jobs:
                echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
                echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
                echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_CMS_PROJECT_ID="$REACT_APP_CMS_PROJECT_ID_PROD"' >> $BASH_ENV
             else
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi

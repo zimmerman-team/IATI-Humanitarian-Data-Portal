@@ -69,6 +69,11 @@ interface SpecKeyModel {
   percentage: number | null;
 }
 
+export function calculatePercentage(denominator, nominator): number {
+  const result = Math.round((nominator * 100) / denominator);
+  return result;
+}
+
 // helper function to get the specific keys values from dateRanges
 // according to the passed in items key
 export function getSpecFixedValues(rangeItem, key: string): SpecKeyModel {
