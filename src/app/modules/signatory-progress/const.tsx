@@ -151,10 +151,12 @@ const jsonFacet = `{
 // so this is the full query to get humanitarian
 // publishers divided by fixed date ranges
 export const humPubQuery = {
-  q: `(humanitarian:1 OR transaction_humanitarian:1 OR sector_vocabulary:1 
-      OR (-sector_vocabulary:* AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
-      OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
-      AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
+  q: `(humanitarian:1 OR transaction_humanitarian:1 OR 
+      ((sector_vocabulary:1 OR -sector_vocabulary:*) AND 
+      (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
+      ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND 
+      (transaction_sector_code:[70000 TO 79999] OR
+       transaction_sector_code:[93010 TO 93018])))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
@@ -215,7 +217,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
 
   // and we push in changes made as the last column
   columns.push({
-    name: 'Changes [31. May] to today',
+    name: 'Changes [June, 2017] to today',
     options: {
       filter: true,
       filterType: 'checkbox',

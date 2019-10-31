@@ -16,7 +16,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
     <Container maxWidth="lg">
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="10px" left="10px" zIndex="10000">
+      <Box position="absolute" top="10px" left="10px" zIndex="10002">
         <DecoSigProgTopLeft />
       </Box>
       {/* -------------------------------------------------------------- */}
@@ -91,7 +91,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
 
           <Typography variant="caption">
             * An organisation is either the Signatory itself or at least one of
-            its agencie or its affiliatess that is currently publishing to IATI
+            its agencie or its affiliates that is currently publishing to IATI
           </Typography>
         </Grid>
         <Box width="100%" height="200px" />

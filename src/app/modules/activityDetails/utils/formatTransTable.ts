@@ -14,27 +14,27 @@ import { formatMoney } from 'app/components/datadisplay/Table/helpers';
 const totValKeyBinds = {
   inCom: {
     margin: 'auto 0 auto 136px',
-    label: 'Commitment:',
+    label: 'Incoming Commitment:',
     value: '€000,000,000.00',
   },
   outCom: {
     margin: 'auto 0 auto 136px',
-    label: 'Commitment:',
+    label: 'Outgoing Commitment:',
     value: '€000,000,000.00',
   },
   inPledg: {
     margin: 'auto 0 auto 24px',
-    label: 'Pledged:',
+    label: 'Incoming Pledged:',
     value: '€000,000,000.00',
   },
   outPledg: {
     margin: 'auto 0 auto 24px',
-    label: 'Pledged:',
+    label: 'Outgoing Pledged:',
     value: '€000,000,000.00',
   },
   funds: {
     margin: 'auto 0 auto 24px',
-    label: 'Funds:',
+    label: 'Incoming Funds:',
     value: '€000,000,000.00',
   },
   disb: {

@@ -4,6 +4,7 @@ import { ActivityDetailsLayout } from 'app/modules/activityDetails/layout';
 
 /* utils */
 import get from 'lodash/get';
+import { scroller } from 'react-scroll';
 import { formatHeader } from 'app/modules/activityDetails/utils/formatHeader';
 import { formatSections } from 'app/modules/activityDetails/utils/formatSections';
 import { formatTransTable } from 'app/modules/activityDetails/utils/formatTransTable';
@@ -38,7 +39,9 @@ function ActivityDetail(props) {
   // calling activity results
   useEffect(() => {
     actions.actResults.fetch({
-      values: actResultsQuery(decodeURIComponent(props.match.params.code)),
+      values: actResultsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 
@@ -46,7 +49,7 @@ function ActivityDetail(props) {
   useEffect(() => {
     actMetadataQuery.q = `iati_identifier:${decodeURIComponent(
       props.match.params.code
-    )}`;
+    ).replace(/:/g, '\\:')}`;
 
     actions.actMetadata.fetch({ values: actMetadataQuery });
     setRedirect(true);
@@ -55,14 +58,18 @@ function ActivityDetail(props) {
   // calling incoming transactions
   useEffect(() => {
     actions.incTransactions.fetch({
-      values: inTransactionsQuery(decodeURIComponent(props.match.params.code)),
+      values: inTransactionsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 
   // calling outgoing transactions
   useEffect(() => {
     actions.outTransactions.fetch({
-      values: outTransactionsQuery(decodeURIComponent(props.match.params.code)),
+      values: outTransactionsQuery(
+        decodeURIComponent(props.match.params.code).replace(/:/g, '\\:')
+      ),
     });
   }, [props.match.params.code]);
 
@@ -76,6 +83,19 @@ function ActivityDetail(props) {
       props.history.replace('/notFound');
     }
   }, [actMetadata]);
+
+  useEffect(() => {
+    if (props.location.hash === '#results') {
+      setTimeout(() => {
+        scroller.scrollTo('results', {
+          duration: 1000,
+          delay: 100,
+          smooth: true,
+          offset: -50, // Scrolls to element + 50 pixels down the page
+        });
+      }, 500);
+    }
+  }, []);
   /* ----------------------------------------------- */
   /* --------- INITIALIZING STATES ----------------- */
   const actDetail = get(actMetadata, 'data.response.docs[0]', null);

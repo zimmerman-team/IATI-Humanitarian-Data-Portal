@@ -20,11 +20,12 @@ export const activitiesQuery = (
       (${actStatusFilters}) AND ${selCountries}${
       extraFilter ? ` ${extraFilter} AND ` : ''
     }
-      (humanitarian:1 OR transaction_humanitarian:1 
-        OR sector_vocabulary:1 OR (-sector_vocabulary:* 
-        AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
-        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
-        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
+      (humanitarian:1 OR transaction_humanitarian:1 OR 
+      ((sector_vocabulary:1 OR -sector_vocabulary:*) AND 
+      (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
+      ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND 
+      (transaction_sector_code:[70000 TO 79999] OR
+       transaction_sector_code:[93010 TO 93018])))`,
     fl: `iati_identifier,activity_status_code,title,recipient_country_code,
         activity_date_start_actual,activity_date_end_actual,result_type,activity_date_start_planned,activity_date_end_planned`,
   };
@@ -33,11 +34,12 @@ export const activitiesQuery = (
 export const actCountriesQ = repOrgRef => {
   return {
     q: `reporting_org_ref:${repOrgRef} AND
-      (humanitarian:1 OR transaction_humanitarian:1 
-        OR sector_vocabulary:1 OR (-sector_vocabulary:* 
-        AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) 
-        OR transaction_sector_vocabulary:1 OR (-transaction_sector_vocabulary:* 
-        AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
+      (humanitarian:1 OR transaction_humanitarian:1 OR 
+      ((sector_vocabulary:1 OR -sector_vocabulary:*) AND 
+      (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
+      ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND 
+      (transaction_sector_code:[70000 TO 79999] OR
+       transaction_sector_code:[93010 TO 93018])))`,
     'facet.pivot': 'recipient_country_code',
     rows: 0,
     facet: 'on',
@@ -105,6 +107,15 @@ export const activityBaseTable: TableModuleModel = {
         filter: false,
         sort: false,
         filterType: 'checkbox',
+        customBodyRender: (value, tableMeta, updateValue) => {
+          if (value === 0) {
+            return value;
+          }
+          const link = `/activity-detail/${encodeURIComponent(
+            value.activityId
+          )}/#results`;
+          return <LinkCellModule link={link} value={value.value} />;
+        },
       },
     },
   ],

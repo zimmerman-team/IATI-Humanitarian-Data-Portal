@@ -23,7 +23,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
     <>
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
+      <Box position="absolute" top="0" left="0" zIndex="10002">
         <DecoSigOverviewTopLeft />
       </Box>
       {/* ---------- */}

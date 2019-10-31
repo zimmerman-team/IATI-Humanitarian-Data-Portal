@@ -12,7 +12,7 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
       {props.loading && <PageLoader />}
       {/* ---------------------------------------- */}
       {/* decoration: top left*/}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
+      <Box position="absolute" top="0" left="0" zIndex="10002">
         <DecoSigOverviewTopLeft />
       </Box>
       {/* ---------- */}
