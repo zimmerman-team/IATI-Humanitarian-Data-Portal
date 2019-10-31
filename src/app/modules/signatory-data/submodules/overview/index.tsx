@@ -126,13 +126,11 @@ export function OverviewPage(props) {
     };
     const sigdataoverviewhum4donutcallValues = {
       values: {
-        q: `reporting_org_ref:${decodeURIComponent(
-          props.match.params.code
-        )}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify(hum4DonutValues),
-        rows:0
-      }
-    }
+        rows: 0,
+      },
+    };
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
     sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);

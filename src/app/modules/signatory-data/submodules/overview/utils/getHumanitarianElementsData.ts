@@ -26,7 +26,7 @@ export const getHumanitarianElementsData = (
       } else {
         value =
           (get(donut4Data, 'facets.data.count', 0) * 100) /
-        get(donut4Data, 'facets.count', 0);
+          get(donut4Data, 'facets.count', 0);
       }
       donutValues[index].value = isNaN(value) ? 0 : Math.round(value);
     });
