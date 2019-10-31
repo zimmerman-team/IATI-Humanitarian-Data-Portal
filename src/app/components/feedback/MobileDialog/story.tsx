@@ -7,7 +7,7 @@ import { Grid } from '@material-ui/core';
 storiesOf('Feedback|Mobile Notice/', module).add('Mobile Notice', () => (
   <Providers>
     <Grid container>
-      <Component/>
+      <Component />
     </Grid>
   </Providers>
 ));
