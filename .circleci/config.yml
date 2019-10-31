@@ -35,14 +35,19 @@ jobs:
           at: ~/mlt-frontend
       - run: sudo apt-get install python-dev
       - run:
-          name: Set REACT_APP_PROJECT_URL env var
+          name: Set REACT_APP_PROJECT_URL env var and production envs
           command: |
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_STAGING"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_TEST"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV' >> $BASH_ENV
+              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
+              echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -64,7 +69,11 @@ jobs:
       - run:
           name: Add target host to known_hosts files
           command: |
-            ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                ssh-keyscan "$PROD_SSH_HOST" >> ~/.ssh/known_hosts
+            else
+                ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            fi
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
@@ -80,6 +89,8 @@ jobs:
               rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
               rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+              rsync -O -ave ssh ~/mlt-frontend/build/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/mlt-frontend/build
             else
               rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             fi
@@ -112,6 +123,11 @@ jobs:
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_TEST"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+               echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
+               echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
             else
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -155,6 +171,13 @@ jobs:
                       --output-path=/home/chrome/reports/anonymous-"$(echo -n $CIRCLE_SHELL_ENV | md5sum | awk '{print $1}')"-$(date +'%Y-%m-%d') \
                       --output=json \
                       --output=html
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                  lighthouse "$REACT_APP_PROJECT_URL_PROD" \
+                  --port=9222 \
+                      --chrome-flags=\"--headless\" \
+                      --output-path=/home/chrome/reports/anonymous-"$(echo -n $CIRCLE_SHELL_ENV | md5sum | awk '{print $1}')"-$(date +'%Y-%m-%d') \
+                      --output=json \
+                      --output=html
             else
                   lighthouse "$REACT_APP_PROJECT_URL_DEV" \
                    --port=9222 \
@@ -185,7 +208,11 @@ jobs:
       - run:
           name: Add target host to known_hosts files
           command: |
-            ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                ssh-keyscan "$PROD_SSH_HOST" >> ~/.ssh/known_hosts
+            else
+                ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            fi
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
@@ -201,6 +228,8 @@ jobs:
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                rsync -O -ave ssh ./reports/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/mlt-frontend/lighthouse-reports
             else
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             fi
