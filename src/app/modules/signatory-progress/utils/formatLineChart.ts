@@ -12,7 +12,6 @@ import { SignatoryProgress } from 'app/state/api/interfaces/signatoryProgressInt
 /* utils */
 import find from 'lodash/find';
 import {
-  calculatePercentage,
   getAllSigCount,
   getIatiSigCount,
   getRealSigCount,
