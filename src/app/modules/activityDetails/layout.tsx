@@ -4,7 +4,6 @@ import React from 'react';
 import { ActivityDetailModel } from 'app/modules/activityDetails/model';
 
 // Components
-import { Element } from 'react-scroll/modules';
 import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
 import { Grid, Typography, Box, Container } from '@material-ui/core';
 import { ActivityHeaderLayout } from 'app/modules/activityDetails/common/activityHeader';
@@ -72,7 +71,7 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
       {/** --------------------------------------------------------------------------- */}
       {/** List */}
 
-      <TableCardContainer dontShow lists={props.lists} />
+      <TableCardContainer dontShow={false} lists={props.lists} />
       {/** --------------------------------------------------------------------------- */}
       {/** Results */}
       {props.tableCard &&
