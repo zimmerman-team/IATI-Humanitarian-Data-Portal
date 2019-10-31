@@ -4,6 +4,7 @@ export const mockData: ActivityDetailsHeaderCardModel = {
   organisation: {
     name: 'ActionAid UK',
     code: 'GB-CHC-274467',
+    type: 'International NGO',
   },
   activity: {
     title: 'Promoting Opportunities for Women’s Empowerment and Rights',

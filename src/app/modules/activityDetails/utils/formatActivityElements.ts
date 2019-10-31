@@ -266,14 +266,14 @@ export function formatActivityElements(
 
     //16
     // pushing rep org
-    elementLists.push({
+    /*elementLists.push({
       title: 'Reporting organisation',
       type: 'Card',
       elName: 'repOrg',
       items:
         actDetail.reporting_org &&
         formatSingleCardItem(actDetail, 'reporting_org.', repOrgFields),
-    });
+    });*/
 
     //17
     // pushing planned disbursements
