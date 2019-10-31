@@ -5,14 +5,9 @@ import Container from '@material-ui/core/Container';
 import styled from 'styled-components';
 import AppBarButton from 'app/components/inputs/buttons/AppBarButton';
 import useLocation from 'react-use/lib/useLocation';
-import { Link } from 'react-router-dom';
 import logo from 'app/assets/images/logo.png';
 
-const LinkMod = styled(Link)`
-  text-decoration: none;
-  color: white;
-`;
-
+const scrollPoint = 25;
 type AppBarProps = {
   label?: string;
   size?: string;
@@ -28,8 +23,20 @@ const BaseComponent = styled(props => <BaseAppBar {...props} />)`
   }
 `;
 
-const AppBar = (props: AppBarProps) => {
+function AppBar(props: AppBarProps) {
   const state = useLocation();
+  const [scrollPos, setScrollPos] = React.useState(0);
+
+  function onScroll() {
+    setScrollPos(window.scrollY);
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   return (
     <BaseComponent
@@ -41,10 +48,14 @@ const AppBar = (props: AppBarProps) => {
       <Container maxWidth="lg">
         <img
           src={logo}
-          width={160}
-          height={70}
+          width={scrollPos > scrollPoint ? 160 : 250}
+          height={scrollPos > scrollPoint ? 70 : 110}
           alt="logo"
-          style={{ position: 'absolute', marginLeft: -32 }}
+          style={{
+            position: 'absolute',
+            marginLeft: scrollPos > scrollPoint ? -32 : -48,
+            top: scrollPos > scrollPoint ? -5 : -20,
+          }}
         />
         <Toolbar
           css={`
@@ -65,6 +76,6 @@ const AppBar = (props: AppBarProps) => {
       </Container>
     </BaseComponent>
   );
-};
+}
 
 export default AppBar;
