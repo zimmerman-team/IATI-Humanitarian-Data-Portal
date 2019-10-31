@@ -10,11 +10,11 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-
 import { getAllYears } from 'app/modules/signatory-data/submodules/utils';
 import {
   barJsonFacet,
   humCallValues,
+  hum4DonutValues,
   activityStatusValues,
 } from 'app/modules/signatory-data/submodules/overview/const';
 import { getYearBarChartData } from 'app/modules/signatory-data/submodules/overview/utils/getYearBarChartData';
@@ -54,6 +54,9 @@ export function OverviewPage(props) {
   const sigdataoverviewhumData = useStoreState(
     state => state.sigdataoverviewhum.data
   );
+  const sigdataoverviewhum4donutData = useStoreState(
+    state => state.sigdataoverviewhum4donut.data
+  );
   const sigdataoverviewdataerrorsData = useStoreState(
     state => state.sigdataoverviewdataerrors.data
   );
@@ -67,6 +70,9 @@ export function OverviewPage(props) {
   );
   const sigdataoverviewhumCall = useStoreActions(
     actions => actions.sigdataoverviewhum.fetch
+  );
+  const sigdataoverviewhum4donutCall = useStoreActions(
+    actions => actions.sigdataoverviewhum4donut.fetch
   );
   const sigdataoverviewdataerrorsCall = useStoreActions(
     actions => actions.sigdataoverviewdataerrors.fetch
@@ -118,8 +124,18 @@ export function OverviewPage(props) {
         rows: 0,
       },
     };
+    const sigdataoverviewhum4donutcallValues = {
+      values: {
+        q: `reporting_org_ref:${decodeURIComponent(
+          props.match.params.code
+        )}`,
+        'json.facet': JSON.stringify(hum4DonutValues),
+        rows:0
+      }
+    }
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
+    sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);
     sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
   }, []);
 
@@ -140,7 +156,8 @@ export function OverviewPage(props) {
   /* format data */
   const activityTimelineData = getYearBarChartData(yearsData);
   const humanitarianElementsData = getHumanitarianElementsData(
-    get(sigdataoverviewhumData, 'data', [])
+    get(sigdataoverviewhumData, 'data', []),
+    get(sigdataoverviewhum4donutData, 'data', [])
   );
   const statusData = getStatusData(
     get(sigdataactivitystatusData, 'data', []),
