@@ -50,7 +50,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* ------------------------------------------------------------------ */}
       {/* decoration: top left */}
       <Hidden mdDown>
-        <Box position="absolute" top="0" left="0" zIndex="10000">
+        <Box position="absolute" top="0" left="0" zIndex="10002">
           <DecoSigDataTopLeft data-testid="DecoSigDataTopLeft" />
         </Box>
       </Hidden>

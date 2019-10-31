@@ -19,7 +19,7 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
-      <Box position="absolute" top="0" left="0">
+      <Box position="absolute" top="0" left="0" zIndex="10002">
         <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
       </Box>
       <Grid container>
