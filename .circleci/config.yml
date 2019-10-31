@@ -35,16 +35,19 @@ jobs:
           at: ~/mlt-frontend
       - run: sudo apt-get install python-dev
       - run:
-          name: Set REACT_APP_PROJECT_URL env var
+          name: Set REACT_APP_PROJECT_URL env var and production envs
           command: |
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_STAGING"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_TEST"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV' >> $BASH_ENV
+              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_PROD' >> $BASH_ENV
+              echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
+              echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -66,7 +69,11 @@ jobs:
       - run:
           name: Add target host to known_hosts files
           command: |
-            ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                ssh-keyscan "$PROD_SSH_HOST" >> ~/.ssh/known_hosts
+            else
+                ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            fi
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
@@ -118,6 +125,9 @@ jobs:
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
+               echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
             else
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -198,7 +208,11 @@ jobs:
       - run:
           name: Add target host to known_hosts files
           command: |
-            ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                ssh-keyscan "$PROD_SSH_HOST" >> ~/.ssh/known_hosts
+            else
+                ssh-keyscan "$SSH_HOST" >> ~/.ssh/known_hosts
+            fi
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
