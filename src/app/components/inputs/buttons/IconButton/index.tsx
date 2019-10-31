@@ -14,22 +14,28 @@ type Props = {
 const BaseContainedButton = styled(props => <Button {...props} />)`
   padding: 12px 15px !important;
   box-shadow: none !important;
-  &:hover{
-  background-color: ${Palette.primary.light} !important;
+  &:hover {
+    background-color: ${Palette.primary.light} !important;
   }
-  
+
   & [class*='MuiButton-label'] {
     text-transform: none;
     min-width: 102px;
     justify-content: space-between;
-  }   
+  }
 `;
 
 const ContainedButton = (props: Props) => {
   const { text, disabled, ...other } = props;
 
   return (
-    <BaseContainedButton variant={"contained"} color="primary" disabled={disabled} disableRipple {...other}>
+    <BaseContainedButton
+      variant={'contained'}
+      color="primary"
+      disabled={disabled}
+      disableRipple
+      {...other}
+    >
       {text}
       <Icon fontSize="small">send</Icon>
     </BaseContainedButton>
