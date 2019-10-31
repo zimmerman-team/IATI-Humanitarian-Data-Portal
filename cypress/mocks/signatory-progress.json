@@ -1,0 +1,49 @@
+{
+  "should load the page": [
+    {
+      "url": "https://api.exchangeratesapi.io/latest",
+      "method": "GET",
+      "status": 200,
+      "headers": {},
+      "body": null,
+      "response": {
+        "rates": {
+          "CAD": 1.4623,
+          "HKD": 8.6178,
+          "ISK": 136.5,
+          "PHP": 56.955,
+          "DKK": 7.4689,
+          "HUF": 334.57,
+          "CZK": 25.805,
+          "AUD": 1.6286,
+          "RON": 4.7486,
+          "SEK": 10.8703,
+          "IDR": 15550.68,
+          "INR": 78.144,
+          "BRL": 4.5073,
+          "RUB": 71.6225,
+          "HRK": 7.4243,
+          "JPY": 117.43,
+          "THB": 33.403,
+          "CHF": 1.0898,
+          "SGD": 1.5168,
+          "PLN": 4.3326,
+          "BGN": 1.9558,
+          "TRY": 6.412,
+          "CNY": 7.8474,
+          "NOK": 10.045,
+          "NZD": 1.7373,
+          "ZAR": 16.7732,
+          "USD": 1.0986,
+          "MXN": 21.5316,
+          "ILS": 3.8566,
+          "GBP": 0.89795,
+          "KRW": 1316.41,
+          "MYR": 4.607
+        },
+        "base": "EUR",
+        "date": "2019-10-08"
+      }
+    }
+  ]
+}

@@ -25,8 +25,8 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
 const postcssNormalize = require('postcss-normalize');
+const BrotliGzipPlugin = require('brotli-gzip-webpack-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -247,6 +247,9 @@ module.exports = function(webpackEnv) {
         chunks: 'all',
         name: false,
       },
+      // removeAvailableModules: false,
+      // removeEmptyChunks: false,
+      // splitChunks: false,
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       runtimeChunk: true,
@@ -308,13 +311,14 @@ module.exports = function(webpackEnv) {
         //       options: {
         //         formatter: require.resolve('react-dev-utils/eslintFormatter'),
         //         eslintPath: require.resolve('eslint'),
-                
+
         //       },
         //       loader: require.resolve('eslint-loader'),
         //     },
         //   ],
         //   include: paths.appSrc,
         // },
+
         {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall
@@ -323,6 +327,14 @@ module.exports = function(webpackEnv) {
             // "url" loader works like "file" loader except that it embeds assets
             // smaller than specified limit in bytes as data URLs to avoid requests.
             // A missing `test` is equivalent to a match.
+            // {
+            //   test: [/\.ts?$/, /\.tsx?$/],
+            //   loader: 'ts-loader',
+            //   options: {
+            //     // disable type checker - we will use it in fork plugin
+            //     transpileOnly: true
+            //   }
+            // },
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
               loader: require.resolve('url-loader'),
@@ -335,13 +347,14 @@ module.exports = function(webpackEnv) {
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
+              // test: /\.(js|mjs|jsx)$/,
               include: paths.appSrc,
               loader: require.resolve('babel-loader'),
               options: {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
+
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
@@ -380,7 +393,7 @@ module.exports = function(webpackEnv) {
                 ],
                 cacheDirectory: true,
                 cacheCompression: isEnvProduction,
-                
+
                 // If an error happens in a package, it's possible to be
                 // because it was compiled. Thus, we don't want the browser
                 // debugger to show the original code. Instead, the code
@@ -488,7 +501,7 @@ module.exports = function(webpackEnv) {
                 minify: {
                   removeComments: true,
                   collapseWhitespace: true,
-                  removeRedundantAttributes: true,
+                  removeRedundantAttributes: false,
                   useShortDoctype: true,
                   removeEmptyAttributes: true,
                   removeStyleLinkTypeAttributes: true,
@@ -608,6 +621,15 @@ module.exports = function(webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
+      isEnvProduction &&
+      new BrotliGzipPlugin({
+        asset: '[path].br[query]',
+        algorithm: 'brotli',
+        test: /\.(js|json|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8,
+        quality: 11,
+      }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.

@@ -1,12 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { hydrate, render } from 'react-dom';
+import App from 'app';
+// import { setupNotification } from 'notification';
+// import * as serviceWorker from 'serviceWorker';
+import * as _ from 'styled-components/cssprop';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+if (rootElement !== null) {
+  if (rootElement.hasChildNodes()) {
+    hydrate(<App />, rootElement);
+  } else {
+    render(<App />, rootElement);
+  }
+}
+
+/*
+if (process.env.REACT_APP_NODE_ENV === 'development') {
+  serviceWorker.unregister();
+} else {
+  /!* for now just do not register the service worker*!/
+  serviceWorker.unregister();
+  // serviceWorker.register();
+}
+*/
+
+// setupNotification();
