@@ -315,7 +315,10 @@ export const getBaseTable = (
 ): TableModuleModel => {
   // console.log(tooltipsData);
   // so here we push in all the labels from the date ranges
-  const dateranges = constructDateRanges(signatoryProgressData);
+  let dateranges: any[] = [];
+  if (signatoryProgressData !== null) {
+    dateranges = constructDateRanges(signatoryProgressData);
+  }
   const columns: MUIDataTableColumnDef[] = dateranges.map(range => {
     return {
       name: range.colLabel.includes('Today')
@@ -347,9 +350,8 @@ export const getBaseTable = (
 
   // and we push in changes made as the last column
   columns.push({
-    name: `Changes [${date(
-      new Date(signatoryProgressData[0].firstDate)
-    )}] to today`,
+    name: `Changes [${signatoryProgressData !== null &&
+      date(new Date(signatoryProgressData[0].firstDate))}] to today`,
     options: {
       filter: true,
       filterType: 'checkbox',
