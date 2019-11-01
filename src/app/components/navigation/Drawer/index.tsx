@@ -21,7 +21,7 @@ const Drawer = styled(props => <MuiDrawer {...props} />)`
 const MenuButton = styled(props => <MenuIcon {...props} />)`
   && {
     font-size: 40px;
-    margin-right: 55px;
+    margin-right: 25px;
     //margin-bottom: 55px;
     :hover {
       cursor: pointer;

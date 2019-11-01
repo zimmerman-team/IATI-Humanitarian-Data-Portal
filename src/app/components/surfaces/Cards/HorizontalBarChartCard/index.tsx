@@ -18,6 +18,7 @@ const Content = styled(props => <CardContent {...props} />)`
   && {
     padding: 32px !important;
   }
+  
 `;
 
 const Typo = styled(props => <Typography {...props} />)`

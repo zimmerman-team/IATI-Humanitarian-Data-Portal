@@ -15,7 +15,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
       {/** content */}
 
       <Grid container spacing={4}>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <HorizontalBarChartCard
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
@@ -36,7 +36,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
 
         */}
         <Hidden smDown>
-          <Grid item xs={3}>
+          <Grid item xs={3} lg={3}>
             <div
               css={`
                 position: sticky;
@@ -45,7 +45,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
               `}
             >
               <Grid container spacing={4}>
-                <Grid item xs={12}>
+                <Grid item xs={12} lg={12}>
                   {/** todo: add side menu */}
                   <InPageNavigation lists={props.lists} />
                 </Grid>
@@ -54,7 +54,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
           </Grid>
         </Hidden>
 
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={9} lg={9}>
           <Grid container spacing={4}>
             {/* ---------------------------------------- */}
             {/** 1 */}
