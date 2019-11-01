@@ -14,9 +14,15 @@ import { calculatePercentage } from './utils/general';
 
 const today = new Date();
 
-const currDate = `${today.getDate()}.${
+export const currDate = `${today.getDate()}.${
   shortMonthNames[today.getMonth()]
 }.${today.getFullYear()}`;
+
+const date = (value: Date) => {
+  return `${value.getDate()}.${
+    shortMonthNames[value.getMonth()]
+  }.${value.getFullYear()}`;
+};
 
 // this variable basically stores the fixed date
 // ranges and will be used to extract the values
@@ -188,71 +194,13 @@ export const pub203Query = {
   'json.facet': jsonFacet,
 };
 
-export const getBaseTable = (tooltipsData): TableModuleModel => {
-  // console.log(tooltipsData);
-  // so here we push in all the labels from the date ranges
-  const columns: MUIDataTableColumnDef[] = dateRanges.map(range => {
-    return {
-      name: range.colLabel,
-      options: {
-        filter: true,
-        filterType: 'checkbox',
-      },
-    };
-  });
-
-  // then we push in the status column as the first column
-  columns.unshift({
-    name: 'Status',
-    options: {
-      filter: true,
-      filterType: 'checkbox',
-      customBodyRender: (value, tableMeta, updateValue) => {
-        let info = '';
-        if (value.toLowerCase() !== 'of these') {
-          info = getTooltipContent(tooltipsData, 'Signatory Progress', value);
-        }
-        return <InfoCellModule value={value} info={info} />;
-      },
-    },
-  });
-
-  // and we push in changes made as the last column
-  columns.push({
-    name: 'Changes [June, 2017] to today',
-    options: {
-      filter: true,
-      filterType: 'checkbox',
-    },
-  });
-
-  return {
-    columns,
-    title: 'Aggregated signatory data publication indicator values',
-    data: [],
-    options: {
-      print: true,
-      search: false,
-      filter: false,
-      download: true,
-      rowHover: false,
-      pagination: false,
-      viewColumns: false,
-      responsive: 'scroll',
-      filterType: 'checkbox',
-      selectableRows: 'none',
-    },
-    columnsCell: ['InfoCellModule'],
-  };
-};
-
 export function constructDateRanges(signatoryProgressData) {
   return [
     {
       // label used for the linechart
-      label: '30.Jun.2017',
+      label: `${signatoryProgressData[0].firstDate}`,
       // label for the column header in the table
-      colLabel: 'Baseline June 2017',
+      colLabel: `${signatoryProgressData[0].firstDate}`,
       // value in the response and query
       value: '1900-01-01_TO_2017-06-30',
       // and here we'll have the fixed values
@@ -290,9 +238,9 @@ export function constructDateRanges(signatoryProgressData) {
     // },
     {
       // label used for the linechart
-      label: '1.May.2018',
+      label: `${signatoryProgressData[0].secondDate}`,
       // label for the column header in the table
-      colLabel: 'May 2018',
+      colLabel: `${signatoryProgressData[0].secondDate}`,
       // value in the response and query
       value: '1900-01-01_TO_2018-05-01',
       totalGBSig: signatoryProgressData[0].totalSigMay2018,
@@ -320,9 +268,9 @@ export function constructDateRanges(signatoryProgressData) {
     },
     {
       // label used for the linechart
-      label: '31.May.2019',
+      label: `${signatoryProgressData[0].thirdDate}`,
       // label for the column header in the table
-      colLabel: 'May 2019',
+      colLabel: `${signatoryProgressData[0].thirdDate}`,
       // value in the response and query
       value: '1900-01-01_TO_2019-05-31',
       // eslint-disable-next-line radix
@@ -353,9 +301,77 @@ export function constructDateRanges(signatoryProgressData) {
       // label used for the linechart
       label: currDate,
       // label for the column header in the table
-      colLabel: `Today [${currDate}]`,
+
+      colLabel: `Today`,
       // value in the response and query
       value: '1900-01-01_TO_NOW',
     },
   ];
 }
+
+export const getBaseTable = (
+  tooltipsData,
+  signatoryProgressData
+): TableModuleModel => {
+  // console.log(tooltipsData);
+  // so here we push in all the labels from the date ranges
+  const dateranges = constructDateRanges(signatoryProgressData);
+  const columns: MUIDataTableColumnDef[] = dateranges.map(range => {
+    return {
+      name: range.colLabel.includes('Today')
+        ? `Today [${currDate}]`
+        : date(new Date(range.colLabel)),
+      //: new Date(range.colLabel).toString().slice(3, 16),
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    };
+  });
+
+  // then we push in the status column as the first column
+  columns.unshift({
+    name: 'Status',
+    options: {
+      filter: true,
+      filterType: 'checkbox',
+      customBodyRender: (value, tableMeta, updateValue) => {
+        let info = '';
+        if (value.toLowerCase() !== 'of these') {
+          info = getTooltipContent(tooltipsData, 'Signatory Progress', value);
+        }
+        return <InfoCellModule value={value} info={info} />;
+      },
+    },
+  });
+
+  // and we push in changes made as the last column
+  columns.push({
+    name: `Changes [${date(
+      new Date(signatoryProgressData[0].firstDate)
+    )}] to today`,
+    options: {
+      filter: true,
+      filterType: 'checkbox',
+    },
+  });
+
+  return {
+    columns,
+    title: 'Aggregated signatory data publication indicator values',
+    data: [],
+    options: {
+      print: true,
+      search: false,
+      filter: false,
+      download: true,
+      rowHover: false,
+      pagination: false,
+      viewColumns: false,
+      responsive: 'scroll',
+      filterType: 'checkbox',
+      selectableRows: 'none',
+    },
+    columnsCell: ['InfoCellModule'],
+  };
+};

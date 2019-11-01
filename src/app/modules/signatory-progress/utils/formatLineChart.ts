@@ -2,6 +2,7 @@
 import {
   constructDateRanges,
   linesOrder,
+  currDate,
 } from 'app/modules/signatory-progress/const';
 /* models/interfaces */
 import { LineChartCardModel } from 'app/components/surfaces/Cards/LineChartCard/model';
@@ -12,7 +13,6 @@ import { SignatoryProgress } from 'app/state/api/interfaces/signatoryProgressInt
 /* utils */
 import find from 'lodash/find';
 import {
-  calculatePercentage,
   getAllSigCount,
   getIatiSigCount,
   getRealSigCount,
@@ -30,6 +30,12 @@ export interface FirstDataItemModel {
   totalSigCount: number;
   sigDateCounts: SigDateCountModel[];
 }
+
+const date = (value: Date) => {
+  return `${value.getDate()}.${
+    shortMonthNames[value.getMonth()]
+  }.${value.getFullYear()}`;
+};
 
 function formatFirstLine(
   gbsignatories: SingleDefGBSignatory[],
@@ -65,7 +71,9 @@ function formatFirstLine(
     }
 
     firstData.push({
-      x: range.label,
+      x: range.colLabel.includes(currDate)
+        ? currDate
+        : date(new Date(range.label)),
       y: percentage,
     });
   });
@@ -142,7 +150,9 @@ export function formatLineChart(
         }
 
         data.push({
-          x: range.label,
+          x: range.colLabel.includes(currDate)
+            ? currDate
+            : date(new Date(range.label)),
           y: percentage,
         });
       });
