@@ -5,6 +5,8 @@ import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
 import tooltips from 'app/state/api/actionsReducers/tooltips';
+import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
+import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
 import {
   sigdataincoming,
   sigdataincomingfundtrace,
@@ -20,6 +22,7 @@ import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
+import sigdataoverviewhum4donut from 'app/state/api/actionsReducers/sigdataoverviewhum4donut';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
 import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
 import {
@@ -45,8 +48,10 @@ export interface ApplicationStoreModel {
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
   tooltips: GBSignatoryResponseInterface;
+  signatoryProgress: SignatoryPrgoressResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
+  sigdataoverviewhum4donut: ActivityResponceInterface;
   sigdataactivityyears: ActivityResponceInterface;
   sigdataactivitystatus: ActivityResponceInterface;
   sigdataactivitiesbyyear: ActivityResponceInterface;
@@ -72,6 +77,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoutgoing,
   iatigbsignatories,
   sigdataoverviewhum,
+  sigdataoverviewhum4donut,
   sigdataactivityyears,
   sigdataactivitystatus,
   sigdataactivitiesbyyear,
@@ -80,6 +86,7 @@ const applicationStore: ApplicationStoreModel = {
   organisationnarrative,
   sigdataoverviewdataerrors,
   tooltips,
+  signatoryProgress,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
   sigDataActivityListFilter: {
