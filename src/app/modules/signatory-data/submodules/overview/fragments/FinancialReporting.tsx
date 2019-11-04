@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'app/components/datadisplay/Lists';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Hidden } from '@material-ui/core';
 import { DecoSigOverviewBottomRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewBottomRight';
 
 export const FinancialReporting = ({ financialReportingData }) => (
@@ -20,9 +20,11 @@ export const FinancialReporting = ({ financialReportingData }) => (
 
     {/* ---------------------------------------- */}
     {/* decoration: bottom right */}
+    <Hidden mdDown>
     <Box position="absolute" bottom="-40px" right="-50px" zIndex="-1">
       <DecoSigOverviewBottomRight />
     </Box>
+    </Hidden>
     {/* ---------- */}
   </Grid>
 );

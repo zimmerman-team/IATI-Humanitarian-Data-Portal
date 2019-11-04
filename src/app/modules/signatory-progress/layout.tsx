@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { Container, Grid, Typography, Box } from '@material-ui/core';
+import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { SignatoryProgressModel } from 'app/modules/signatory-progress/model';
 import { LineChartCard } from 'app/components/surfaces/Cards/LineChartCard';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
@@ -41,9 +41,11 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
         <Grid item lg={8} md={12} style={{ position: 'relative' }}>
           {/* -------------------------------------------------------------- */}
           {/* decoration: top right */}
-          <Box position="absolute" top="125px" right="-405px">
-            <DecoSigProgTopRight />
-          </Box>
+          <Hidden smDown>
+            <Box position="absolute" top="125px" right="-405px">
+              <DecoSigProgTopRight />
+            </Box>
+          </Hidden>
           {/* -------------------------------------------------------------- */}
           <Typography variant="h3">{props.title}</Typography>
           <Box height="calc(64px - 16px)" width="100%" />

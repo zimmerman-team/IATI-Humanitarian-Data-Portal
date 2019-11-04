@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CCTRIPageModel } from './model';
-import { Box, Grid, Typography, Container } from '@material-ui/core';
+import { Box, Grid, Typography, Container, Hidden } from '@material-ui/core';
 import parse from 'html-react-parser';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { DecoTargetTopLeft } from 'app/modules/signatory-progress/submodules/CCTRI/common/decoration/DecoTargetTopLeft';
@@ -19,9 +19,11 @@ const BodyText = styled(props => <Typography variant="body1" {...props} />)`
 export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
+      <Hidden smDown>
       <Box position="absolute" top="0" left="0" zIndex="10002">
         <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
       </Box>
+      </Hidden>
       <Grid container>
         <Grid item lg={8} md={12}>
           {/* TITLE + INTRODUCTION */}
