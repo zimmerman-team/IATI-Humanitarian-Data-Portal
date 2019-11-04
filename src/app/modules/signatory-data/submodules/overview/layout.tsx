@@ -24,9 +24,9 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden smDown>
-      <Box position="absolute" top="0" left="0" zIndex="10002">
-        <DecoSigOverviewTopLeft />
-      </Box>
+        <Box position="absolute" top="0" left="0" zIndex="10002">
+          <DecoSigOverviewTopLeft />
+        </Box>
       </Hidden>
       {/* ---------- */}
 

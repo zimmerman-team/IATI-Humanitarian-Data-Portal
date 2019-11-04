@@ -21,9 +21,9 @@ export const FinancialReporting = ({ financialReportingData }) => (
     {/* ---------------------------------------- */}
     {/* decoration: bottom right */}
     <Hidden mdDown>
-    <Box position="absolute" bottom="-40px" right="-50px" zIndex="-1">
-      <DecoSigOverviewBottomRight />
-    </Box>
+      <Box position="absolute" bottom="-40px" right="-50px" zIndex="-1">
+        <DecoSigOverviewBottomRight />
+      </Box>
     </Hidden>
     {/* ---------- */}
   </Grid>
