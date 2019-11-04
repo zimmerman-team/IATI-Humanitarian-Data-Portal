@@ -205,23 +205,23 @@ export function constructDateRanges(signatoryProgressData) {
       value: '1900-01-01_TO_2017-06-30',
       // and here we'll have the fixed values
       // eslint-disable-next-line radix
-      totalGBSig: parseInt(signatoryProgressData[0].totalSigJune2017),
-      allCount: signatoryProgressData[0].publishingOpenDataIATIJune2017, //37,
+      totalGBSig: parseInt(signatoryProgressData[0].totalSigFirstDate),
+      allCount: signatoryProgressData[0].publishingOpenDataIATIFirstDate, //37,
       allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigJune2017,
-        signatoryProgressData[0].publishingOpenDataIATIJune2017
+        signatoryProgressData[0].totalSigFirstDate,
+        signatoryProgressData[0].publishingOpenDataIATIFirstDate
       ), //73,
       humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesJune2017,
+        signatoryProgressData[0].publishingHumanitarianActivitiesFirstDate,
       humPerc: calculatePercentage(
         //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATIJune2017,
-        signatoryProgressData[0].publishingHumanitarianActivitiesJune2017
+        signatoryProgressData[0].publishingOpenDataIATIFirstDate,
+        signatoryProgressData[0].publishingHumanitarianActivitiesFirstDate
       ),
-      count202: signatoryProgressData[0].providingGranular202DataJune2017,
+      count202: signatoryProgressData[0].providingGranular202DataFirstDate,
       perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATIJune2017,
-        signatoryProgressData[0].providingGranular202DataJune2017
+        signatoryProgressData[0].publishingOpenDataIATIFirstDate,
+        signatoryProgressData[0].providingGranular202DataFirstDate
       ),
       count203: null,
       perc203: null,
@@ -243,23 +243,23 @@ export function constructDateRanges(signatoryProgressData) {
       colLabel: `${signatoryProgressData[0].secondDate}`,
       // value in the response and query
       value: '1900-01-01_TO_2018-05-01',
-      totalGBSig: signatoryProgressData[0].totalSigMay2018,
-      allCount: signatoryProgressData[0].publishingOpenDataIATIMay2018, //44,
+      totalGBSig: signatoryProgressData[0].totalSigSecondDate,
+      allCount: signatoryProgressData[0].publishingOpenDataIATISecondDate, //44,
       allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigMay2018,
-        signatoryProgressData[0].publishingOpenDataIATIMay2018
+        signatoryProgressData[0].totalSigSecondDate,
+        signatoryProgressData[0].publishingOpenDataIATISecondDate
       ), //75,
       humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesMay2018, //36,
+        signatoryProgressData[0].publishingHumanitarianActivitiesSecondDate, //36,
       humPerc: calculatePercentage(
         //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATIMay2018,
-        signatoryProgressData[0].publishingHumanitarianActivitiesMay2018
+        signatoryProgressData[0].publishingOpenDataIATISecondDate,
+        signatoryProgressData[0].publishingHumanitarianActivitiesSecondDate
       ), //82,
-      count202: signatoryProgressData[0].providingGranular202DataMay2018, //8,
+      count202: signatoryProgressData[0].providingGranular202DataSecondDate, //8,
       perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATIMay2018,
-        signatoryProgressData[0].providingGranular202DataMay2018
+        signatoryProgressData[0].publishingOpenDataIATISecondDate,
+        signatoryProgressData[0].providingGranular202DataSecondDate
       ), //18,
       count203: null,
       perc203: null,
@@ -274,23 +274,23 @@ export function constructDateRanges(signatoryProgressData) {
       // value in the response and query
       value: '1900-01-01_TO_2019-05-31',
       // eslint-disable-next-line radix
-      totalGBSig: signatoryProgressData[0].totalSigMay2019,
-      allCount: signatoryProgressData[0].publishingOpenDataIATIMay2019, //48,
+      totalGBSig: signatoryProgressData[0].totalSigThirdDate,
+      allCount: signatoryProgressData[0].publishingOpenDataIATIThirdDate, //48,
       allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigMay2019,
-        signatoryProgressData[0].publishingOpenDataIATIMay2019
+        signatoryProgressData[0].totalSigThirdDate,
+        signatoryProgressData[0].publishingOpenDataIATIThirdDate
       ), //81,
       humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesMay2019, //43,
+        signatoryProgressData[0].publishingHumanitarianActivitiesThirdDate, //43,
       humPerc: calculatePercentage(
         //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATIMay2019,
-        signatoryProgressData[0].publishingHumanitarianActivitiesMay2019
+        signatoryProgressData[0].publishingOpenDataIATIThirdDate,
+        signatoryProgressData[0].publishingHumanitarianActivitiesThirdDate
       ), //90,
-      count202: signatoryProgressData[0].providingGranular202DataMay2019, //14,
+      count202: signatoryProgressData[0].providingGranular202DataThirdDate, //14,
       perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATIMay2019,
-        signatoryProgressData[0].providingGranular202DataMay2019
+        signatoryProgressData[0].publishingOpenDataIATIThirdDate,
+        signatoryProgressData[0].providingGranular202DataThirdDate
       ), //29,
       count203: null,
       perc203: null,
