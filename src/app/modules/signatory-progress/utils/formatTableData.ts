@@ -4,7 +4,6 @@ import {
   getIatiSigCount,
   getRealSigCount,
   getSpecFixedValues,
-  calculatePercentage,
 } from './general';
 import { SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';

@@ -115,7 +115,7 @@ export function SignatoryProgress() {
     signatoryProgressData
   );
   const barData = formatBarData(gbOrgData, specPublishers);
-  const baseTable = getBaseTable(tooltipsData);
+  const baseTable = getBaseTable(tooltipsData, signatoryProgressData);
   baseTable.data = formatTableData(
     gbOrgData,
     specPublishers,
