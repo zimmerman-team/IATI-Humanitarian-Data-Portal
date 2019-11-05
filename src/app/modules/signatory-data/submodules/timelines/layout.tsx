@@ -22,9 +22,9 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden mdDown>
-      <Box position="absolute" top="100px" left="0">
-        <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
-      </Box>
+        <Box position="absolute" top="100px" left="0">
+          <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
+        </Box>
       </Hidden>
       {/* ---------- */}
       <Grid container spacing={4} direction="column">
@@ -119,7 +119,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       </Grid>
       <Box width="100%" height="50px" />
       <Grid container>
-        <Grid item xs={12}  md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="body2">
             NB. Frequency and Timelag calculated only using hum. transactions ie
             that relate to a hum activity or have been specifically marked as
