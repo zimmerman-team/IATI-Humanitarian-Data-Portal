@@ -18,5 +18,6 @@ describe('CCTRI', function() {
 
   it('check texts', function() {
     signatoryCCTRITexts.map(text => cy.queryByText(text).should('exist'));
+    // a change
   });
 });
