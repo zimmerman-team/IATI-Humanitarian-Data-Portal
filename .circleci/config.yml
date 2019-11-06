@@ -16,13 +16,13 @@ jobs:
       - save_cache:
           key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ./.cache
+            - ~/.cache
             - node_modules
       - persist_to_workspace:
           root: .
           paths:
             - .
-            - ./.cache/Cypress
+            - ~/.cache/Cypress
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
