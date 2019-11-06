@@ -35,7 +35,7 @@ export const humCallValues = {
   },
   humActFTSData_5: {
     type: 'query',
-    q: '(humanitarian_scope_vocabulary:99 AND default_aid_type_vocabulary:3)',
+    q: '(humanitarian_scope_vocabulary:99 AND humanitarian_scope_code:*)',
   },
   humActFTSData_6: {
     type: 'query',
@@ -166,7 +166,7 @@ export const barJsonFacet = years => {
         hum_count: {
           type: 'query',
           q:
-            'humanitarian:1 OR transaction_humanitarian:1 OR ((sector_vocabulary:1 OR -sector_vocabulary:*) AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))',
+            'humanitarian:1 OR transaction_humanitarian:1 OR (-(-sector_vocabulary:1 OR sector_vocabulary:*) AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))',
         },
       },
     };

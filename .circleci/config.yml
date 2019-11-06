@@ -110,6 +110,7 @@ jobs:
     parallelism: 2
     working_directory: ~/mlt-frontend
     steps:
+      - checkout
       - attach_workspace:
           at: ~/mlt-frontend
       # setting this env var to only test on dev server when deployed.
