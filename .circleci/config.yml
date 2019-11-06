@@ -16,7 +16,7 @@ jobs:
       - save_cache:
           key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache
+            - ./.cache
             - node_modules
       - persist_to_workspace:
           root: .
@@ -109,6 +109,7 @@ jobs:
     parallelism: 2
     working_directory: ~/mlt-frontend
     steps:
+      - checkout
       - attach_workspace:
           at: ~/mlt-frontend
       # setting this env var to only test on dev server when deployed.
