@@ -42,7 +42,7 @@ export const getActivitySummaryData = (rawData, tooltipsData): ListModel => {
           {
             ptc: percentage(
               get(rawData.humData, 'facets.currentHumValuesData.count', 0),
-              allActivitiesCount
+              get(rawData.humData, 'facets.count', 0)
             ),
             qtc: get(rawData.humData, 'facets.currentHumValuesData.count', 0),
           },
