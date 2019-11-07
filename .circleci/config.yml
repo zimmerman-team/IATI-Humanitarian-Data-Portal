@@ -11,13 +11,12 @@ jobs:
           at: ~/mlt-frontend
       - restore_cache:
           keys:
-            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run: yarn install --fronzen-lockfile
+            - dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn install
       - save_cache:
-          key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
-            - node_modules
             - ./.cache/Cypress
       - persist_to_workspace:
           root: .
@@ -203,7 +202,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - dep-cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - attach_workspace:
           at: "."
       - store_artifacts:
