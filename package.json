@@ -95,7 +95,7 @@
     "codecrumbs": "^1.7.3",
     "commitlint-circle": "^1.0.0",
     "css-loader": "2.1.1",
-    "cypress": "^3.4.1",
+    "cypress": "^3.6.0",
     "cypress-autorecord": "^1.1.0",
     "cypress-commands": "^0.3.0",
     "cypress-cucumber-preprocessor": "^1.16.2",

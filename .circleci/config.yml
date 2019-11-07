@@ -116,6 +116,7 @@ jobs:
       - run:
           name: Install Cypress -> OPTIMISE, UNESCESSARY STEP!!!
           command: yarn add cypress --ignore-engines
+          command: cypress install
       - run:
           name: Set CYPRESS_BASEURL
           command: |
