@@ -2,6 +2,7 @@ import React from 'react';
 
 /* utils */
 import { getTooltipContent } from 'app/utils/generic';
+import moment from 'moment';
 
 /* interfaces/models */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
@@ -195,7 +196,39 @@ export const pub203Query = {
 };
 
 export function constructDateRanges(signatoryProgressData) {
-  return [
+  const ArrayToBeReturned: any = [];
+  const sortedArray = signatoryProgressData.sort(
+    (a, b) => +moment(a.Date) - +moment(b.Date)
+  );
+  sortedArray.forEach(signatoryProgress => {
+    ArrayToBeReturned.push({
+      label: `${signatoryProgress.Date}`,
+      colLabel: `${signatoryProgress.Date}`,
+      value: '1900-01-01_TO_2017-06-30',
+      totalGBSig: parseInt(signatoryProgress.totalSig, 10),
+      allCount: signatoryProgress.publishingOpenDataIATI, //37,
+      allPerc: calculatePercentage(
+        signatoryProgress.totalSig,
+        signatoryProgress.publishingOpenDataIATI
+      ), //73,
+      humCount: signatoryProgress.publishingHumanitarianActivities,
+      humPerc: calculatePercentage(
+        //calculate based on all signatories publishing data using IATI.
+        signatoryProgress.publishingOpenDataIATI,
+        signatoryProgress.publishingHumanitarianActivities
+      ),
+      count202: signatoryProgress.providingGranular202Data,
+      perc202: calculatePercentage(
+        signatoryProgress.publishingOpenDataIATI,
+        signatoryProgress.providingGranular202Data
+      ),
+      count203: null,
+      perc203: null,
+      tracCount: null,
+      tracPerc: null,
+    });
+  });
+  /*return [
     {
       // label used for the linechart
       label: `${signatoryProgressData[0].firstDate}`,
@@ -306,7 +339,13 @@ export function constructDateRanges(signatoryProgressData) {
       // value in the response and query
       value: '1900-01-01_TO_NOW',
     },
-  ];
+  ];*/
+  ArrayToBeReturned.push({
+    label: currDate,
+    colLabel: `Today`,
+    value: '1900-01-01_TO_NOW',
+  });
+  return ArrayToBeReturned;
 }
 
 export const getBaseTable = (
