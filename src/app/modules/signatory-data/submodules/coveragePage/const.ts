@@ -3,7 +3,7 @@ import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { CovOrgItemModel } from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
 
 /* utils */
-import { getTooltipContent } from 'app/utils/generic';
+import { getTooltipContent, formatDate } from 'app/utils/generic';
 import {
   formatMoney,
   getInfoTHead,
@@ -63,12 +63,19 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
         name: 'Period started',
         options: {
           filter: false,
+          sortDirection: 'desc',
+          customBodyRender: (value, tableMeta, updateValue) => {
+            return formatDate(value);
+          },
         },
       },
       {
         name: 'Period end',
         options: {
           filter: false,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            return formatDate(value);
+          },
         },
       },
       {
