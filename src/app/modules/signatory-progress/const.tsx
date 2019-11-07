@@ -197,10 +197,8 @@ export const pub203Query = {
 
 export function constructDateRanges(signatoryProgressData) {
   const ArrayToBeReturned: any = [];
-  const sortedArray = signatoryProgressData.sort(
-    (a, b) => +moment(a.Date) - +moment(b.Date)
-  );
-  sortedArray.forEach(signatoryProgress => {
+  signatoryProgressData.sort((a, b) => +moment(a.Date) - +moment(b.Date));
+  signatoryProgressData.forEach(signatoryProgress => {
     ArrayToBeReturned.push({
       label: `${signatoryProgress.Date}`,
       colLabel: `${signatoryProgress.Date}`,
@@ -390,7 +388,7 @@ export const getBaseTable = (
   // and we push in changes made as the last column
   columns.push({
     name: `Changes [${signatoryProgressData !== null &&
-      date(new Date(signatoryProgressData[0].firstDate))}] to today`,
+      date(new Date(signatoryProgressData[0].Date))}] to today`,
     options: {
       filter: true,
       filterType: 'checkbox',
