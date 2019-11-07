@@ -173,7 +173,7 @@ export const humPubQuery = {
 export const pub202Query = {
   q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
         (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
-        (sector:* AND sector_vocabulary:10))`,
+        (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
