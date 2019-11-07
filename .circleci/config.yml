@@ -18,7 +18,6 @@ jobs:
           paths:
             - ./.cache
             - node_modules
-            - ./.cache/Cypress
       - persist_to_workspace:
           root: .
           paths:
@@ -114,9 +113,9 @@ jobs:
       - attach_workspace:
           at: ~/mlt-frontend
       # setting this env var to only test on dev server when deployed.
-      - run:
-          name: Install Cypress -> OPTIMISE, UNESCESSARY STEP!!!
-          command: yarn add cypress --ignore-engines
+      # - run:
+      #     name: Install Cypress -> OPTIMISE, UNESCESSARY STEP!!!
+      #     command: yarn add cypress --ignore-engines
       - run:
           name: Set CYPRESS_BASEURL
           command: |
