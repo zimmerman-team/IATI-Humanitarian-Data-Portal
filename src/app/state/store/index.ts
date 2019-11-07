@@ -21,6 +21,7 @@ import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
+import sigdatadatesheader from 'app/state/api/actionsReducers/sigdatadatesheader';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataoverviewhum4donut from 'app/state/api/actionsReducers/sigdataoverviewhum4donut';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
@@ -65,6 +66,7 @@ export interface ApplicationStoreModel {
 
   sigDataOpts: DataTableOptions;
   sigDataActivityListFilter: SigDataActivityListFilterModel;
+  sigdatadatesheader: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -87,6 +89,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdataoverviewdataerrors,
   tooltips,
   signatoryProgress,
+  sigdatadatesheader,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
   sigDataActivityListFilter: {
