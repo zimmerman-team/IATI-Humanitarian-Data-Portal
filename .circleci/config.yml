@@ -202,7 +202,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - dep-cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - attach_workspace:
           at: "."
       - store_artifacts:
