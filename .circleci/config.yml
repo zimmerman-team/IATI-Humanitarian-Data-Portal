@@ -17,7 +17,6 @@ jobs:
           key: cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
-            - node_modules
       - persist_to_workspace:
           root: .
           paths:
