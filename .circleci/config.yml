@@ -11,10 +11,10 @@ jobs:
           at: ~/mlt-frontend
       - restore_cache:
           keys:
-            - cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run: yarn install --fronzen-lockfile
+            - cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn install
       - save_cache:
-          key: cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
       - persist_to_workspace:
