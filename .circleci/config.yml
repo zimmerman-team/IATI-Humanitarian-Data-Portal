@@ -17,6 +17,7 @@ jobs:
           key: cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
+            - ./.cache/Cypress
       - persist_to_workspace:
           root: .
           paths:
