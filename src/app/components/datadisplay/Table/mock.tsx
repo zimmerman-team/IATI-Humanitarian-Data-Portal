@@ -185,7 +185,7 @@ export const mockDataVar2: TableModuleModel = {
       },
     },
     {
-      name: 'Incoming TS traceability',
+      name: 'Incoming trans traceability',
       options: {
         filter: true,
         filterType: 'checkbox',

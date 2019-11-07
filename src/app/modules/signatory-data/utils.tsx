@@ -229,7 +229,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
       },
     },
     {
-      name: 'Incoming TS traceability',
+      name: 'Incoming trans traceability',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -239,14 +239,15 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
         },
         customHeadRender: (columnMeta, updateDirection) =>
           getInfoTHead(
-            'Incoming TS traceability',
+            'Incoming trans traceability',
             getTooltipContent(
               tooltipsData,
               'Signatory Data',
-              'Incoming TS traceability'
+              'Incoming trans traceability'
             )
           ),
-        customFilterListRender: value => `Incoming TS traceability: ${value}`,
+        customFilterListRender: value =>
+          `Incoming trans traceability: ${value}`,
       },
     },
   ];
