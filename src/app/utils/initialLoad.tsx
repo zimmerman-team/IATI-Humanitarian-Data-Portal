@@ -206,9 +206,9 @@ export function InitialDataLoad() {
   );
 
   React.useEffect(() => {
-    if (!gbsignatoriesData.data) {
-      getGBSignatories({});
-    }
+    // if (!gbsignatoriesData.data) {
+    getGBSignatories({});
+    // }
     if (!actStatus.data) {
       getActStatus({});
     }
