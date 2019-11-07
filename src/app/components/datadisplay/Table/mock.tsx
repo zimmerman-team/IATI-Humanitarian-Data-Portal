@@ -918,7 +918,7 @@ export const mockDataVar7: TableModuleModel = {
       },
     },
     {
-      name: 'March',
+      name: 'Mar',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -939,7 +939,7 @@ export const mockDataVar7: TableModuleModel = {
       },
     },
     {
-      name: 'Juni',
+      name: 'June',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -967,7 +967,7 @@ export const mockDataVar7: TableModuleModel = {
       },
     },
     {
-      name: 'Okt',
+      name: 'Oct',
       options: {
         filter: true,
         filterType: 'checkbox',
