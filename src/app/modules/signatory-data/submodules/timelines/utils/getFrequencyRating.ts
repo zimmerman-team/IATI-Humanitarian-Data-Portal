@@ -23,6 +23,8 @@ export function getFrequencyRating(
     let freqCount = 0;
     let l2Months = false;
     let l4Months = false;
+    let sixMonthly: number | boolean = 0;
+    let pub6Quarterly: number | boolean = 0;
 
     for (let index = 0; index < yearMonths.length; index += 1) {
       const yearMonth = yearMonths[index];
@@ -41,15 +43,34 @@ export function getFrequencyRating(
       // here we register if updates have been found
       // for the last two months it will be used in the lower
       // frequency rating calculations
-      if (index === 1 && freqCount === 2) {
+      if (index === 1 && freqCount > 0) {
         l2Months = true;
       }
 
       // here we register if updates have been found
       // for the last four months it will be used in the lower
       // frequency rating calculations
-      if (index === 3 && freqCount === 4) {
+      if (index === 3 && freqCount > 0) {
         l4Months = true;
+      }
+
+      // here we check the six-monthly value
+      // where updates had to be reported in two 6 month periods
+      if (index === 5 && freqCount > 0) {
+        sixMonthly = freqCount;
+      }
+      if (index > 5 && freqCount > sixMonthly) {
+        sixMonthly = true;
+      }
+
+      // here we check the quarterly value for the publisher of 6 months
+      // where updates had to be reported in two quarters
+      // so similar logic to above
+      if (index === 2 && freqCount > 0) {
+        pub6Quarterly = freqCount;
+      }
+      if (index > 2 && index < 6 && freqCount > pub6Quarterly) {
+        pub6Quarterly = true;
       }
 
       switch (true) {
@@ -59,7 +80,7 @@ export function getFrequencyRating(
         case pubPeriod >= 12 && freqCount >= 3 && index === 11 && l4Months:
           freqRating = 'Quarterly';
           break;
-        case pubPeriod >= 12 && freqCount >= 2 && index === 5:
+        case pubPeriod >= 12 && sixMonthly === true && index === 11:
           freqRating = 'Six-monthly';
           break;
         case (pubPeriod >= 12 || (pubPeriod >= 6 && pubPeriod < 12)) &&
@@ -73,7 +94,10 @@ export function getFrequencyRating(
         case pubPeriod >= 6 && pubPeriod < 12 && freqCount >= 4 && index === 5:
           freqRating = 'Monthly';
           break;
-        case pubPeriod >= 6 && pubPeriod < 12 && freqCount >= 2 && index === 5:
+        case pubPeriod >= 6 &&
+          pubPeriod < 12 &&
+          pub6Quarterly === true &&
+          index === 5:
           freqRating = 'Quarterly';
           break;
         case pubPeriod >= 3 && pubPeriod < 6 && freqCount === 3 && index === 2:
