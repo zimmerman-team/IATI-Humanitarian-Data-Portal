@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import get from 'lodash/get';
 import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { TooltipButton as Tooltip } from 'app/components/datadisplay/Tooltip';
@@ -50,8 +51,14 @@ const ListItem = (props: ListItemModel) => {
       <RowHeader component="th" scope="row">
         <Typo
           variant="body2"
-          theme={{ link: !!props.onClick }}
-          onClick={() => props.onClick && props.onClick()}
+          theme={{
+            link: !!props.onClick && get(props, 'values[0].qtc', 0) > 0,
+          }}
+          onClick={() =>
+            props.onClick &&
+            get(props, 'values[0].qtc', 0) > 0 &&
+            props.onClick()
+          }
         >
           {props.label}
         </Typo>
