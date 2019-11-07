@@ -6,7 +6,8 @@ export const humCallValues = {
   },
   humElData_2: {
     type: 'query',
-    q: 'sector_vocabulary:10 AND sector:[* TO *]',
+    q:
+      '(sector_vocabulary:10 AND sector:[* TO *]) OR (transaction_sector_vocabulary:10 AND transaction_sector_code:*)',
   },
   humElData_3: {
     type: 'query',
@@ -19,7 +20,8 @@ export const humCallValues = {
   },
   humActFTSData_1: {
     type: 'query',
-    q: '(sector_code:[70000 TO 79999] AND (sector_vocabulary:*))',
+    q:
+      '((sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018]) AND sector_vocabulary:*) OR ((transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]) AND transaction_sector_vocabulary:*)',
   },
   humActFTSData_2: {
     type: 'query',
@@ -39,7 +41,8 @@ export const humCallValues = {
   },
   humActFTSData_6: {
     type: 'query',
-    q: '(sector_code:* AND sector_vocabulary:10)',
+    q:
+      '(sector_code:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10)',
   },
   humActwGBClassificationsData_1: {
     type: 'query',
@@ -59,7 +62,8 @@ export const humCallValues = {
   },
   humOtherClassOfInterestData_1: {
     type: 'query',
-    q: '(sector_code:* AND -(-sector_vocabulary:1 OR sector_vocabulary:*))',
+    q:
+      '(sector_code:* AND -(-sector_vocabulary:1 OR sector_vocabulary:*)) OR (transaction_sector_code:* AND -(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*))',
   },
   humOtherClassOfInterestData_2: {
     type: 'query',
@@ -68,7 +72,7 @@ export const humCallValues = {
   humOtherClassOfInterestData_3: {
     type: 'query',
     q:
-      '(policy_marker_code:1 AND -(-sector_vocabulary:1 OR sector_vocabulary:*))',
+      '(policy_marker_code:1 AND (-(-sector_vocabulary:1 OR sector_vocabulary:*) OR -(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*)))',
   },
   humOtherClassOfInterestData_4: {
     type: 'query',
@@ -80,11 +84,11 @@ export const humCallValues = {
   },
   humActWLocationInfoData_1: {
     type: 'query',
-    q: 'recipient_country_code:*',
+    q: 'recipient_country_code:* OR transaction_recipient_country_code:*',
   },
   humActWLocationInfoData_region: {
     type: 'query',
-    q: 'recipient_region_code:*',
+    q: 'recipient_region_code:* OR transaction_recipient_region_code:*',
   },
   humActWLocationInfoData_2: {
     type: 'query',
@@ -135,7 +139,7 @@ export const hum4DonutValues = {
   data: {
     type: 'query',
     q:
-      'humanitarian:1 AND ((sector_vocabulary:1 OR -sector_vocabulary:*) AND (sector_code:[69999 TO 80000] OR sector_code:[93010 TO 93018]))',
+      'humanitarian:1 AND ((-(-sector_vocabulary:1 OR sector_vocabulary:*) AND (sector_code:[69999 TO 80000] OR sector_code:[93010 TO 93018])) OR (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND (transaction_sector_code:[69999 TO 80000] OR transaction_sector_code:[93010 TO 93018])))',
   },
 };
 
