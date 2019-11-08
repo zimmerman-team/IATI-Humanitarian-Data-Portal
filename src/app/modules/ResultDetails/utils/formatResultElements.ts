@@ -54,7 +54,6 @@ export function formatResultElements(
 ): ListModel[] {
   const elementLists: ListModel[] = [];
   if (resDetail) {
-    console.log(resDetail);
     // pushing document links
     elementLists.push({
       title: 'Document Links',
@@ -282,16 +281,16 @@ export function formatResultElements(
             );
 
             // and here we'll loop through period actuals
-            // and then push the period targets reocurring elements
+            // and then push the period actual reocurring elements
             // into the element list and we form that cards name
-            // out of the indicator title the period target years
-            // and period target value, if no value is provided we use qualitive
+            // out of the indicator title the period actual years
+            // and period actual value, if no value is provided we use qualitive
             if (period.actual) {
-              period.target.forEach((actual, actIndex) => {
+              period.actual.forEach((actual, actIndex) => {
                 const actVal =
                   actual.value !== null ? actual.value : 'Qualitive';
 
-                const actualTitle = `${indTitle} - Targets for ${period.period_start.iso_date} to ${period.period_end.iso_date} - ${actVal}`;
+                const actualTitle = `${indTitle} - Actuals for ${period.period_start.iso_date} to ${period.period_end.iso_date} - ${actVal}`;
                 // pushing dimensions for actual
                 elementLists.push({
                   title: `${actualTitle} - Dimensions`,
@@ -320,8 +319,8 @@ export function formatResultElements(
           });
 
           // and here after all of the loops are done
-          // we set the targets card items to the
-          // merged targetItems array
+          // we set the actuals card items to the
+          // merged actualItems array
           elementLists[actualIndex].tableCItems = actualItems;
         }
       });
