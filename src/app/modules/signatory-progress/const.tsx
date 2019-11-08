@@ -202,7 +202,7 @@ export function constructDateRanges(signatoryProgressData) {
     ArrayToBeReturned.push({
       label: `${signatoryProgress.Date}`,
       colLabel: `${signatoryProgress.Date}`,
-      value: '1900-01-01_TO_2017-06-30',
+      value: `1900-01-01_TO_${signatoryProgress.Date}`,
       totalGBSig: parseInt(signatoryProgress.totalSig, 10),
       allCount: signatoryProgress.publishingOpenDataIATI, //37,
       allPerc: calculatePercentage(
