@@ -93,7 +93,7 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
 
           <Typography variant="caption">
             * An organisation is either the Signatory itself or at least one of
-            its agencie or its affiliates that is currently publishing to IATI
+            its agencies or its affiliates that is currently publishing to IATI
           </Typography>
         </Grid>
         <Box width="100%" height="200px" />
