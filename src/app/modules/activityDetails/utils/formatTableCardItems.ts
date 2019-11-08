@@ -136,7 +136,7 @@ export function formatTableCardItems(
     tableRows.push(listRow);
   });
 
-  if (extraColHead && extraColInd === 0) {
+  if (extraColHead && extraColInd === 0 && tableRows[0]) {
     tableRows[0].unshift({ value: extraColHead, heading: true });
   }
 
