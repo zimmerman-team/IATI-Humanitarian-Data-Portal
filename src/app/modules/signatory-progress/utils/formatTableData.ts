@@ -143,10 +143,17 @@ export function formatTableData(
 
       // and here we'll push in the calculation for changes between
       // may and today, aka changes between the last two items
-      const changez = lastSigCount - beforeLastSigC;
+      let changez = 0;
+      if (
+        typeof lastSigCount === 'number' &&
+        typeof beforeLastSigC === 'number'
+      ) {
+        changez = lastSigCount - beforeLastSigC;
+      } else {
+        changez = 0;
+      }
       tableData[lastInd].push(`${changez}`);
     });
   }
-
   return tableData;
 }

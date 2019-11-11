@@ -208,22 +208,57 @@ export function constructDateRanges(signatoryProgressData) {
       allPerc: calculatePercentage(
         signatoryProgress.totalSig,
         signatoryProgress.publishingOpenDataIATI
-      ), //73,
-      humCount: signatoryProgress.publishingHumanitarianActivities,
-      humPerc: calculatePercentage(
-        //calculate based on all signatories publishing data using IATI.
-        signatoryProgress.publishingOpenDataIATI,
+      ),
+      //73,
+      humCount:
+        signatoryProgress.publishingHumanitarianActivities === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.publishingHumanitarianActivities,
+      humPerc:
+        signatoryProgress.publishingOpenDataIATI &&
         signatoryProgress.publishingHumanitarianActivities
-      ),
-      count202: signatoryProgress.providingGranular202Data,
-      perc202: calculatePercentage(
-        signatoryProgress.publishingOpenDataIATI,
+          ? calculatePercentage(
+              //calculate based on all signatories publishing data using IATI.
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.publishingHumanitarianActivities
+            )
+          : null,
+      count202:
+        signatoryProgress.providingGranular202Data === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.providingGranular202Data,
+      perc202:
+        signatoryProgress.publishingOpenDataIATI &&
         signatoryProgress.providingGranular202Data
-      ),
-      count203: null,
-      perc203: null,
-      tracCount: null,
-      tracPerc: null,
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.providingGranular202Data
+            )
+          : null,
+      count203:
+        signatoryProgress.providingGranular203Data === 'NOT MEASURED'
+          ? null
+          : signatoryProgressData.providingGranular203Data,
+      perc203:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.providingGranular203Data
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.providingGranular203Data
+            )
+          : null,
+      tracCount:
+        signatoryProgress.publishingTraceabilityInfo === 'NOT MEASURED'
+          ? null
+          : signatoryProgressData.publishingTraceabilityInfo,
+      tracPerc:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.publishingTraceabilityInfo
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.publishingTraceabilityInfo
+            )
+          : null,
     });
   });
   // for today column
