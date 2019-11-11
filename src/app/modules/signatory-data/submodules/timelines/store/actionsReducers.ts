@@ -12,7 +12,7 @@ import { cond } from 'space-api';
 
 export const timeLag: TimelagInterface = {
   ...apiModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };
 
@@ -45,7 +45,5 @@ export const frequency: FrequencyInterface = {
 };
 
 export const firstPubDate: FirstPublishInterface = {
-  ...apiModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
-  ),
+  ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
 };

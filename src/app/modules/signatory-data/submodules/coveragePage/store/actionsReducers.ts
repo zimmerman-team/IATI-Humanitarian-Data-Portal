@@ -8,18 +8,18 @@ import { endpoints } from 'app/__consts__/endpoints';
 
 export const coverage: CoverageInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };
 
 export const covOrg: CovOrgInterface = {
   ...apiModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.organisation}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.organisation}/`
   ),
 };
 
 export const transDate: TransDateInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };
