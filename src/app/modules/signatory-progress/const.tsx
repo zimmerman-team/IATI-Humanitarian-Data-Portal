@@ -238,7 +238,7 @@ export function constructDateRanges(signatoryProgressData) {
       count203:
         signatoryProgress.providingGranular203Data === 'NOT MEASURED'
           ? null
-          : signatoryProgressData.providingGranular203Data,
+          : signatoryProgress.providingGranular203Data,
       perc203:
         signatoryProgress.publishingOpenDataIATI &&
         signatoryProgress.providingGranular203Data
@@ -250,7 +250,7 @@ export function constructDateRanges(signatoryProgressData) {
       tracCount:
         signatoryProgress.publishingTraceabilityInfo === 'NOT MEASURED'
           ? null
-          : signatoryProgressData.publishingTraceabilityInfo,
+          : signatoryProgress.publishingTraceabilityInfo,
       tracPerc:
         signatoryProgress.publishingOpenDataIATI &&
         signatoryProgress.publishingTraceabilityInfo
