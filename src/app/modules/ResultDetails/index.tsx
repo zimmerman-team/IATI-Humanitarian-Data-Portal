@@ -13,7 +13,7 @@ import { ResultQuery } from 'app/modules/ResultDetails/const';
 
 /* utils */
 import get from 'lodash/get';
-import { getNarrativeText } from 'app/utils/generic';
+import { getEngText } from 'app/utils/generic';
 import { formatResultElements } from 'app/modules/ResultDetails/utils/formatResultElements';
 
 function ResultDetailF(props) {
@@ -38,10 +38,11 @@ function ResultDetailF(props) {
   const resDetail = get(state.results, 'data.data.response.docs[0]', null);
 
   const title =
-    resDetail && getNarrativeText(get(resDetail, 'result_title', []), true);
+    resDetail &&
+    getEngText({ narratives: get(resDetail, 'result_title', []) }, false);
   const description =
     resDetail &&
-    getNarrativeText(get(resDetail, 'result_description', []), true);
+    getEngText({ narratives: get(resDetail, 'result_title', []) }, false);
 
   return (
     <ResultDetailLayout
