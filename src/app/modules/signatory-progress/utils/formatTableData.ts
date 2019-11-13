@@ -51,7 +51,7 @@ export function formatTableData(
       let iatiPerc = range.allPerc;
       let iatiCount = range.allCount;
 
-      if (index === dateRanges.length - 4) {
+      if (index === 1) {
         befLastCount = iatiCount;
       }
 
@@ -84,7 +84,7 @@ export function formatTableData(
 
     // and here we push the change for the total GB no
     const lastTotValue: number | string = totGBSigs[totGBSigs.length - 1];
-    const befLastTotValue: number | string = totGBSigs[totGBSigs.length - 4];
+    const befLastTotValue: number | string = totGBSigs[1];
     let totChange = 0;
     if (
       typeof lastTotValue === 'number' &&
@@ -117,7 +117,7 @@ export function formatTableData(
         let percentage = fixedData.percentage;
         let value = fixedData.count;
 
-        if (index === dateRanges.length - 4) {
+        if (index === 0) {
           beforeLastSigC = value;
         }
 
@@ -143,10 +143,11 @@ export function formatTableData(
 
       // and here we'll push in the calculation for changes between
       // may and today, aka changes between the last two items
+
       const changez = lastSigCount - beforeLastSigC;
+
       tableData[lastInd].push(`${changez}`);
     });
   }
-
   return tableData;
 }

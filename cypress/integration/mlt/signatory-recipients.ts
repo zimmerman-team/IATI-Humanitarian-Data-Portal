@@ -3,7 +3,7 @@
 import autoRecord from 'cypress-autorecord';
 
 const signatoryRecipientsTexts = [
-  'Funding recipient types',
+  'Recipient OrganisationTypes',
   'Organisation',
   'IATI reference',
   'Organisation type',

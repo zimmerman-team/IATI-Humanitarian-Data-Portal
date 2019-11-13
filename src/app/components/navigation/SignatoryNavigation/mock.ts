@@ -1,7 +1,42 @@
-import { SignatoryNavigationModel } from 'app/components/navigation/SignatoryNavigation/model';
-
-export const locations: SignatoryNavigationModel = {
-  locations: [
+export const getLocations = orgType => {
+  if (orgType === 'Government') {
+    return [
+      {
+        items: [
+          {
+            label: 'Overview',
+            url: 'overview',
+          },
+          {
+            label: 'Activity List',
+            url: 'activity-list',
+          },
+          {
+            label: 'Timeliness',
+            url: 'timeliness',
+          },
+          {
+            label: 'Coverage',
+            url: 'coverage',
+          },
+        ],
+      },
+      {
+        fontSize: '13px',
+        items: [
+          {
+            label: 'Outgoing',
+            url: 'outgoing',
+          },
+          {
+            label: 'Recipients',
+            url: 'recipients',
+          },
+        ],
+      },
+    ];
+  }
+  return [
     {
       items: [
         {
@@ -43,6 +78,5 @@ export const locations: SignatoryNavigationModel = {
         },
       ],
     },
-  ],
-  activity: 'ActionAid UK',
+  ];
 };

@@ -34,7 +34,7 @@
     "react-scroll": "^1.7.14",
     "react-use": "^12.2.0",
     "redux-persist": "^5.10.0",
-    "space-api": "^0.12.0",
+    "space-api": "0.12.1",
     "styled-components": "^4.3.2",
     "use-debounce": "^3.1.0"
   },
@@ -195,6 +195,7 @@
   },
   "scripts": {
     "start": "REACT_APP_PROD=false node scripts/start.js",
+    "start:production": "REACT_APP_PROD=true node scripts/start.js",
     "build": "REACT_APP_PROD=false node scripts/build.js",
     "build:production": "REACT_APP_PROD=true node scripts/build.js",
     "test": "REACT_APP_PROD=false node scripts/test.js",

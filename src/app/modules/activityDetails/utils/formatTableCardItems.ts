@@ -77,16 +77,16 @@ export function formatTableCardItems(
         keyVal = get(fItem, `[0]${fkey.key}`, null);
       }
 
-      let value = keyVal || 'no data';
+      let value = keyVal !== null ? keyVal : 'no data';
 
-      if (keyVal) {
+      if (keyVal !== null) {
         if (fkey.key.indexOf('narrative') !== -1 || fkey.narrative) {
           // we get the english narrative
           value = getNarrativeText(keyVal);
         }
 
         if (fkey.value) {
-          value = formatMoney(value.value, value.currency);
+          value = formatMoney(value.value, value.currency.code);
         }
 
         if (fkey.codeNames) {
@@ -103,12 +103,13 @@ export function formatTableCardItems(
         // by the specified arrayKey item in the array
         if (fkey.arrayKey) {
           value = keyVal
-            .map(item => fkey.arrayKey && item[fkey.arrayKey])
+            .map(item => fkey.arrayKey && get(item, fkey.arrayKey))
             .join(', ');
         }
       }
 
       if (fkey.emptyValString && value === 'no data') {
+        console.log('actField', actField);
         value = fkey.emptyValString;
       }
 
@@ -136,7 +137,7 @@ export function formatTableCardItems(
     tableRows.push(listRow);
   });
 
-  if (extraColHead && extraColInd === 0) {
+  if (extraColHead && extraColInd === 0 && tableRows[0]) {
     tableRows[0].unshift({ value: extraColHead, heading: true });
   }
 

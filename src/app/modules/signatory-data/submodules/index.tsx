@@ -10,13 +10,13 @@ import { SignatoryDataRoutes } from 'app/modules/signatory-data/submodules/route
 import get from 'lodash/get';
 import find from 'lodash/find';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import { getYearRange } from 'app/modules/signatory-data/submodules/utils';
+import { getHeaderDateRange } from 'app/modules/signatory-data/submodules/utils';
 
 export function SubmoduleContainer(props) {
   // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
-  const sigdataactivityyearsData = useStoreState(
-    state => state.sigdataactivityyears.data
+  const sigdatadatesheaderData = useStoreState(
+    state => state.sigdatadatesheader.data
   );
   const organisationNarrativeData = useStoreState(
     state => state.organisationnarrative
@@ -37,6 +37,9 @@ export function SubmoduleContainer(props) {
   const sigdataactivityyearsCall = useStoreActions(
     actions => actions.sigdataactivityyears.fetch
   );
+  const sigdatadatesheaderCall = useStoreActions(
+    actions => actions.sigdatadatesheader.fetch
+  );
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
     const callValues = {
@@ -48,6 +51,16 @@ export function SubmoduleContainer(props) {
       },
     };
     sigdataactivityyearsCall(callValues);
+    sigdatadatesheaderCall({
+      values: {
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+        'json.facet': JSON.stringify({
+          date1: 'min(activity_date_start_actual)',
+          date2: 'max(activity_date_start_actual)',
+        }),
+        rows: 0,
+      },
+    });
   }, [gbsignatoriesData, props.match.params.code, sigdataactivityyearsCall]);
 
   let suppLink = get(orgDetails, 'suppInfoUrl', 'no url provided');
@@ -66,17 +79,14 @@ export function SubmoduleContainer(props) {
         linkText={linkText}
         suppLink={suppLink}
         code={props.match.params.code}
+        orgType={get(orgDetails, 'orgType', 'No Data')}
         organisationName={get(
           singleOrgNarrativeData,
           'doclist.docs[0].reporting_org_narrative[0]',
           'Not Found'
         )}
-        yearRange={getYearRange(
-          get(
-            sigdataactivityyearsData,
-            "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
-            []
-          )
+        yearRange={getHeaderDateRange(
+          get(sigdatadatesheaderData, 'data.facets', [])
         )}
       />
       {/** contains the routes of the submodules of the signatory data */}

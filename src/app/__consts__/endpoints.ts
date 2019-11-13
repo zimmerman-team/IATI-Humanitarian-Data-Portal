@@ -1,8 +1,8 @@
 const devEndpoints = {
-  activity: 'activity-mlt',
-  transaction: 'transaction-mlt',
-  organisation: 'organisation-mlt',
-  result: 'result-mlt',
+  activity: 'activity',
+  transaction: 'transaction',
+  organisation: 'organisation',
+  result: 'result',
   datasetnote: 'datasetnote',
   codelists: 'codelists',
 };

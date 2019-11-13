@@ -2,6 +2,7 @@ import React from 'react';
 
 /* utils */
 import { getTooltipContent } from 'app/utils/generic';
+import moment from 'moment';
 
 /* interfaces/models */
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
@@ -160,9 +161,9 @@ const jsonFacet = `{
 // publishers divided by fixed date ranges
 export const humPubQuery = {
   q: `(humanitarian:1 OR transaction_humanitarian:1 OR 
-      ((sector_vocabulary:1 OR -sector_vocabulary:*) AND 
+      (-(-sector_vocabulary:1 OR sector_vocabulary:*) AND 
       (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
-      ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND 
+      (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND 
       (transaction_sector_code:[70000 TO 79999] OR
        transaction_sector_code:[93010 TO 93018])))`,
   rows: 0,
@@ -173,7 +174,7 @@ export const humPubQuery = {
 export const pub202Query = {
   q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
         (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
-        (sector:* AND sector_vocabulary:10))`,
+        (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
@@ -195,118 +196,79 @@ export const pub203Query = {
 };
 
 export function constructDateRanges(signatoryProgressData) {
-  return [
-    {
-      // label used for the linechart
-      label: `${signatoryProgressData[0].firstDate}`,
-      // label for the column header in the table
-      colLabel: `${signatoryProgressData[0].firstDate}`,
-      // value in the response and query
-      value: '1900-01-01_TO_2017-06-30',
-      // and here we'll have the fixed values
-      // eslint-disable-next-line radix
-      totalGBSig: parseInt(signatoryProgressData[0].totalSigFirstDate),
-      allCount: signatoryProgressData[0].publishingOpenDataIATIFirstDate, //37,
+  const ArrayToBeReturned: any = [];
+  signatoryProgressData.sort((a, b) => +moment(a.Date) - +moment(b.Date));
+  signatoryProgressData.forEach(signatoryProgress => {
+    ArrayToBeReturned.push({
+      label: `${signatoryProgress.Date}`,
+      colLabel: `${signatoryProgress.Date}`,
+      value: `1900-01-01_TO_${signatoryProgress.Date}`,
+      totalGBSig: parseInt(signatoryProgress.totalSig, 10),
+      allCount: signatoryProgress.publishingOpenDataIATI, //37,
       allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigFirstDate,
-        signatoryProgressData[0].publishingOpenDataIATIFirstDate
-      ), //73,
-      humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesFirstDate,
-      humPerc: calculatePercentage(
-        //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATIFirstDate,
-        signatoryProgressData[0].publishingHumanitarianActivitiesFirstDate
+        signatoryProgress.totalSig,
+        signatoryProgress.publishingOpenDataIATI
       ),
-      count202: signatoryProgressData[0].providingGranular202DataFirstDate,
-      perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATIFirstDate,
-        signatoryProgressData[0].providingGranular202DataFirstDate
-      ),
-      count203: null,
-      perc203: null,
-      tracCount: null,
-      tracPerc: null,
-    },
-    // {
-    //   // label used for the linechart
-    //   label: '31.Dec.2018',
-    //   // label for the column header in the table
-    //   colLabel: 'Dec 2018',
-    //   // value in the response and query
-    //   value: '1900-01-01_TO_2018-12-31',
-    // },
-    {
-      // label used for the linechart
-      label: `${signatoryProgressData[0].secondDate}`,
-      // label for the column header in the table
-      colLabel: `${signatoryProgressData[0].secondDate}`,
-      // value in the response and query
-      value: '1900-01-01_TO_2018-05-01',
-      totalGBSig: signatoryProgressData[0].totalSigSecondDate,
-      allCount: signatoryProgressData[0].publishingOpenDataIATISecondDate, //44,
-      allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigSecondDate,
-        signatoryProgressData[0].publishingOpenDataIATISecondDate
-      ), //75,
+      //73,
       humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesSecondDate, //36,
-      humPerc: calculatePercentage(
-        //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATISecondDate,
-        signatoryProgressData[0].publishingHumanitarianActivitiesSecondDate
-      ), //82,
-      count202: signatoryProgressData[0].providingGranular202DataSecondDate, //8,
-      perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATISecondDate,
-        signatoryProgressData[0].providingGranular202DataSecondDate
-      ), //18,
-      count203: null,
-      perc203: null,
-      tracCount: null,
-      tracPerc: null,
-    },
-    {
-      // label used for the linechart
-      label: `${signatoryProgressData[0].thirdDate}`,
-      // label for the column header in the table
-      colLabel: `${signatoryProgressData[0].thirdDate}`,
-      // value in the response and query
-      value: '1900-01-01_TO_2019-05-31',
-      // eslint-disable-next-line radix
-      totalGBSig: signatoryProgressData[0].totalSigThirdDate,
-      allCount: signatoryProgressData[0].publishingOpenDataIATIThirdDate, //48,
-      allPerc: calculatePercentage(
-        signatoryProgressData[0].totalSigThirdDate,
-        signatoryProgressData[0].publishingOpenDataIATIThirdDate
-      ), //81,
-      humCount:
-        signatoryProgressData[0].publishingHumanitarianActivitiesThirdDate, //43,
-      humPerc: calculatePercentage(
-        //calculate based on all signatories publishing data using IATI.
-        signatoryProgressData[0].publishingOpenDataIATIThirdDate,
-        signatoryProgressData[0].publishingHumanitarianActivitiesThirdDate
-      ), //90,
-      count202: signatoryProgressData[0].providingGranular202DataThirdDate, //14,
-      perc202: calculatePercentage(
-        signatoryProgressData[0].publishingOpenDataIATIThirdDate,
-        signatoryProgressData[0].providingGranular202DataThirdDate
-      ), //29,
-      count203: null,
-      perc203: null,
-      tracCount: null,
-      tracPerc: null,
-    },
-    {
-      // label used for the linechart
-      label: currDate,
-      // label for the column header in the table
+        signatoryProgress.publishingHumanitarianActivities === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.publishingHumanitarianActivities,
+      humPerc:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.publishingHumanitarianActivities
+          ? calculatePercentage(
+              //calculate based on all signatories publishing data using IATI.
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.publishingHumanitarianActivities
+            )
+          : null,
+      count202:
+        signatoryProgress.providingGranular202Data === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.providingGranular202Data,
+      perc202:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.providingGranular202Data
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.providingGranular202Data
+            )
+          : null,
+      count203:
+        signatoryProgress.providingGranular203Data === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.providingGranular203Data,
+      perc203:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.providingGranular203Data
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.providingGranular203Data
+            )
+          : null,
+      tracCount:
+        signatoryProgress.publishingTraceabilityInfo === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.publishingTraceabilityInfo,
+      tracPerc:
+        signatoryProgress.publishingOpenDataIATI &&
+        signatoryProgress.publishingTraceabilityInfo
+          ? calculatePercentage(
+              signatoryProgress.publishingOpenDataIATI,
+              signatoryProgress.publishingTraceabilityInfo
+            )
+          : null,
+    });
+  });
+  // for today column
+  ArrayToBeReturned.push({
+    label: currDate,
+    colLabel: `Today`,
+    value: '1900-01-01_TO_NOW',
+  });
 
-      colLabel: `Today`,
-      // value in the response and query
-      value: '1900-01-01_TO_NOW',
-    },
-  ];
+  return ArrayToBeReturned;
 }
 
 export const getBaseTable = (
@@ -351,7 +313,7 @@ export const getBaseTable = (
   // and we push in changes made as the last column
   columns.push({
     name: `Changes [${signatoryProgressData !== null &&
-      date(new Date(signatoryProgressData[0].firstDate))}] to today`,
+      date(new Date(signatoryProgressData[0].Date))}] to today`,
     options: {
       filter: true,
       filterType: 'checkbox',
