@@ -78,7 +78,7 @@ jobs:
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
-            - "73:ea:58:32:06:5f:62:66:78:39:ed:11:0c:49:fe:22"
+            - $FINGERPRINT
       - run: eval ssh-agent -s
       - run: sudo apt install rsync
       - run:
@@ -219,7 +219,7 @@ jobs:
       - add_ssh_keys:
           name: Add SSH KEY
           fingerprints:
-            - "73:ea:58:32:06:5f:62:66:78:39:ed:11:0c:49:fe:22"
+            - $FINGERPRINT
       - run: eval ssh-agent -s
       - run: sudo apt install rsync
       - run:

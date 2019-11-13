@@ -40,10 +40,7 @@ export const Footer = () => {
       alignItems="center"
       data-testid="Footer"
     >
-      <Link
-        data-testid="DI link"
-        href="http://devinit.org/"
-      >
+      <Link data-testid="DI link" href="http://devinit.org/">
         <DILogo />
       </Link>
 
@@ -54,10 +51,7 @@ export const Footer = () => {
         <MONLogo />
       </Link>
 
-      <Link
-        data-testid="GB link"
-        href="/privacy"
-      >
+      <Link data-testid="GB link" href="/privacy">
         Grand Bargains Data Privacy and Cookie Policy
       </Link>
     </Box>
