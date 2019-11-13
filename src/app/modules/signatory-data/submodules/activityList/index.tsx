@@ -53,7 +53,9 @@ function ActivityListz(props) {
   );
   const [page, setPage] = useState(0);
   const [rows, setRows] = useState(10);
-  const [sortBy, setSortBy] = useState('activity_date_start_actual desc');
+  const [sortBy, setSortBy] = useState(
+    'activity_date_start_actual desc, activity_status_code asc'
+  );
   const [searchTerm, setSearchTerm] = useState('*');
   const [status, setStatus] = useState('activity_status_code:*');
   const [selCountry, setSelCountry] = useState('');

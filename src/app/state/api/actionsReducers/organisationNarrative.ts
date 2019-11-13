@@ -3,9 +3,7 @@ import { apiModel } from './index';
 import { endpoints } from 'app/__consts__/endpoints';
 
 const organisationnarrative: OrganisationNarrativeInterface = {
-  ...apiModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
-  ),
+  ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
 };
 
 export default organisationnarrative;

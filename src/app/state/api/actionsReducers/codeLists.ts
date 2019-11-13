@@ -160,7 +160,7 @@ export const codelists: CodeListInterface = {
   },
   countNames: {
     ...apiModel(
-      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/select/`
+      `${process.env.REACT_APP_DS_API}/search/${endpoints.codelists}/country/`
     ),
   },
 };
