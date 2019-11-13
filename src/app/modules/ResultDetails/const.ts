@@ -12,17 +12,17 @@ export const ResultQuery = (resId): BaseQuery => {
 export const resDocLinkFields = [
   {
     colHeading: 'Title',
-    key: 'title.narrative',
+    key: 'title.narratives',
     extLink: 'url',
   },
   {
     colHeading: 'Description',
-    key: 'description.narrative',
+    key: 'description.narratives',
   },
   {
     colHeading: 'Categories',
-    key: 'category',
-    arrayKey: 'code',
+    key: 'categories',
+    arrayKey: 'category.name',
   },
   {
     colHeading: 'Date',
@@ -50,7 +50,7 @@ export const indicatorRefFields = indVocCodeNames => {
     },
     {
       colHeading: 'Vocabulary',
-      key: 'vocabulary',
+      key: 'vocabulary.code',
       codeNames: indVocCodeNames,
     },
   ];
@@ -60,15 +60,15 @@ export const indicatorFields = measCodeName => {
   return [
     {
       colHeading: 'Title',
-      key: 'title.narrative',
+      key: 'title.narratives',
     },
     {
       colHeading: 'Description',
-      key: 'description.narrative',
+      key: 'description.narratives',
     },
     {
       colHeading: 'Measure',
-      key: 'measure',
+      key: 'measure.code',
       codeNames: measCodeName,
     },
     {
@@ -76,11 +76,11 @@ export const indicatorFields = measCodeName => {
       key: 'ascending',
       codeNames: [
         {
-          code: '0',
+          code: false,
           name: 'descending',
         },
         {
-          code: '1',
+          code: true,
           name: 'ascending',
         },
       ],
@@ -90,11 +90,11 @@ export const indicatorFields = measCodeName => {
       key: 'aggregation_status',
       codeNames: [
         {
-          code: '0',
+          code: false,
           name: 'Cannot be aggregated',
         },
         {
-          code: '1',
+          code: true,
           name: 'Can be aggregated',
         },
       ],
@@ -118,12 +118,12 @@ export const baselineFields = [
   },
   {
     colHeading: 'Locations',
-    key: 'location',
+    key: 'locations',
     arrKey: 'ref',
   },
   {
     colHeading: 'Comment',
-    key: 'comment.narrative',
+    key: 'comment.narratives',
   },
 ];
 
@@ -146,11 +146,11 @@ export const targActFields = [
   },
   {
     colHeading: 'Locations',
-    key: 'location',
+    key: 'locations',
     arrayKey: 'ref',
   },
   {
     colHeading: 'Comment',
-    key: 'comment.narrative',
+    key: 'comment.narratives',
   },
 ];

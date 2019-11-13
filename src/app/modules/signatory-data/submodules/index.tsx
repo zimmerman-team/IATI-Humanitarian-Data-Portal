@@ -79,7 +79,7 @@ export function SubmoduleContainer(props) {
         linkText={linkText}
         suppLink={suppLink}
         code={props.match.params.code}
-        orgType={orgDetails.orgType}
+        orgType={get(orgDetails, 'orgType', 'No Data')}
         organisationName={get(
           singleOrgNarrativeData,
           'doclist.docs[0].reporting_org_narrative[0]',

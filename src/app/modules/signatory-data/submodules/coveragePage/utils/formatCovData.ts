@@ -105,7 +105,11 @@ export function formatCovData(
           });
           opFunds =
             orgTotExp && defCurreny
-              ? convertHelper(orgTotExp.value, orgTotExp.currency, defCurreny)
+              ? convertHelper(
+                  orgTotExp.value.value,
+                  orgTotExp.value.currency.code,
+                  defCurreny
+                )
               : null;
         }
 
