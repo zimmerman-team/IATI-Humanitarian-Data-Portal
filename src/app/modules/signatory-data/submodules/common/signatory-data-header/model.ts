@@ -10,6 +10,15 @@ interface SubmoduleHeader {
   showPublisherLink: boolean;
 }
 
+export interface SubmoduleHeaderLayoutModel {
+  orgType: string;
+  organisationName: string;
+  yearRange: string;
+  code: string;
+  linkText: string;
+  suppLink?: string;
+}
+
 const submoduleHeaderConfig: SubmoduleHeader = {
   path: 'empty',
   organisationName: 'ActionAid UK',
@@ -40,8 +49,8 @@ const submoduleHeaderConfig: SubmoduleHeader = {
       path: 'recipients',
     },
     {
-      name: 'Timelines',
-      path: 'timelines',
+      name: 'Timeliness',
+      path: 'timeliness',
     },
     {
       name: 'Coverage',

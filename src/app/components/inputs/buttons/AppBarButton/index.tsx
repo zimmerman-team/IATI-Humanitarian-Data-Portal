@@ -1,4 +1,5 @@
 import React from 'react';
+import theme from 'app/theme';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -19,6 +20,10 @@ const BaseComponent = styled(props => <Button {...props} />)`
       text-transform: capitalize;
     }
 
+    & [class*='MuiButton-text'] {
+      padding: 20px 8px;
+    }
+
     &:hover {
       background-color: initial;
     }
@@ -36,7 +41,14 @@ const CustomLink = styled(props => <NavLink {...props} />)`
 const AppBarButton = (props: Props) => {
   return (
     <BaseComponent size={props.size} color="inherit" {...props}>
-      <CustomLink to={props.url ? props.url : '/'}>{props.label}</CustomLink>
+      <CustomLink
+        exact
+        data-testid={props.label}
+        to={props.url ? props.url : '/'}
+        activeStyle={{ color: theme.palette.primary.light }}
+      >
+        {props.label}
+      </CustomLink>
     </BaseComponent>
   );
 };

@@ -1,4 +1,4 @@
-import { SignatoryProgressModel } from './model';
+import { SignatoryProgressModel } from 'app/modules/signatory-progress/model';
 import { mockData as lineChartCardMockData } from 'app/components/surfaces/Cards/LineChartCard/mock';
 import { mockData as horizontalBarChartCardMockData } from 'app/components/surfaces/Cards/HorizontalBarChartCard/mock';
 import { mockDataVar1 as tableMock } from 'app/components/datadisplay/Table/mock';

@@ -2,19 +2,22 @@
 import React, { ReactNode } from 'react';
 import { Grid, Container, Box, Typography } from '@material-ui/core';
 import useTitle from 'react-use/lib/useTitle';
-import { ThemeProvider } from 'styled-components';
 
 export type PageProps = {
   title?: string;
   children?: ReactNode;
+  footer?: boolean;
 };
 
 //TODO: refactor to not use styled-flexboxgrid
 export const Page = (props: PageProps) => {
-  useTitle(`MLT - ${props.title}`);
+  useTitle(`IATI Humanitarian Data Portal - ${props.title}`);
 
   return (
-    <Container maxWidth="lg">
+    <Container
+      maxWidth="lg"
+      style={{ paddingBottom: props.footer ? '120px' : '0' }}
+    >
       <Grid container>
         <Grid item lg={7} md={9}>
           <Typography variant="h3" color="textPrimary">

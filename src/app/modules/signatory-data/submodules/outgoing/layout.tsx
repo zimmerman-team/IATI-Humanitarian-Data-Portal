@@ -1,10 +1,13 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
-import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { OutgoingModel } from './model';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
+import { OutgoingPledgesFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingPledgesFragment';
+import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/IncomingCommitmentsFragment';
+import { OutgoingDisbursements } from 'app/modules/signatory-data/submodules/outgoing/fragments/OutgoingDisbursements';
+import { ExpenditureFragment } from 'app/modules/signatory-data/submodules/outgoing/fragments/ExpenditureFragment';
 
 export const OutgoingLayout = (props: OutgoingModel) => {
   return (
@@ -12,7 +15,7 @@ export const OutgoingLayout = (props: OutgoingModel) => {
       {/** content */}
 
       <Grid container spacing={4}>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <HorizontalBarChartCard
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
@@ -33,77 +36,45 @@ export const OutgoingLayout = (props: OutgoingModel) => {
 
         */}
         <Hidden smDown>
-          <Grid item xs={3}>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <InPageNavigation
-                  locations={props.inPageNavigation.locations}
-                />
+          <Grid item xs={3} lg={3}>
+            <div
+              css={`
+                position: sticky;
+                top: 50px;
+                height: 400px;
+              `}
+            >
+              <Grid container spacing={4}>
+                <Grid item xs={12} lg={12}>
+                  {/** todo: add side menu */}
+                  <InPageNavigation lists={props.lists} />
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Grid>
         </Hidden>
 
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={9} lg={9}>
           <Grid container spacing={4}>
+            {/* ---------------------------------------- */}
             {/** 1 */}
             {/** Outgoing pledges */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing pledges
+            <OutgoingPledgesFragment lists={props.lists[0]} />
 
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List
-                title="Outgoing pledges"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
+            {/* ---------------------------------------- */}
             {/** 2 */}
-            {/** Outgoing commitments */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing commitments
+            {/** Incoming commitments */}
+            <IncomingCommitmentsFragment lists={props.lists[1]} />
 
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List
-                title="Outgoing commitments"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
+            {/* ---------------------------------------- */}
             {/** 3 */}
-            {/** Outgoing funds */}
-            <Grid item xs={12}>
-              {/**
-                  Outgoing funds
+            {/** Outgoing disbursements */}
+            <OutgoingDisbursements lists={props.lists[2]} />
 
-                    - Total no. of activities with Outgoing Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List
-                title="Outgoing funds"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
+            {/* ---------------------------------------- */}
+            {/** 4 */}
+            {/** Expenditure */}
+            <ExpenditureFragment lists={props.lists[3]} />
           </Grid>
         </Grid>
       </Grid>

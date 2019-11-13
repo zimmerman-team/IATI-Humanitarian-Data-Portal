@@ -1,8 +1,0 @@
-{
-  "repo": "mlt-frontend",
-  "owner": "zimmerman-zimmerman",
-  "email": "jim@zimmermanzimmerman.nl",
-  "plugins": [
-    "conventional-commits"
-  ]
-}

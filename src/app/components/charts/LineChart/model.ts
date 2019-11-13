@@ -1,5 +1,6 @@
 import { ColorSchemeType } from 'app/components/charts/BarCharts/common/colorUtil';
 import { LineProps, LineSvgProps } from '@nivo/line';
+import colors from 'app/theme/color';
 
 export type DataModel = {
   x: any;
@@ -66,10 +67,11 @@ export const lineModel: LineProps | LineSvgProps | LineChartModel = {
       itemWidth: 200,
       itemHeight: 20,
       itemsSpacing: 10,
-      symbolSize: 12,
-      symbolShape: 'circle',
+      symbolSize: 6,
+      symbolShape: 'square',
       itemDirection: 'left-to-right',
       itemTextColor: '#777',
+      symbolSpacing: 20,
     },
   ],
   animate: false,
@@ -80,6 +82,9 @@ export const lineModel: LineProps | LineSvgProps | LineChartModel = {
           fontWeight: 500,
           fontFamily: 'Inter',
           fontSize: 12,
+        },
+        line: {
+          stroke: colors.greylight30OrFontdisablet,
         },
       },
     },

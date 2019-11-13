@@ -1,45 +1,73 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import { TimeLinessModel } from 'app/modules/signatory-data/submodules/timelines/model';
+import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
-const ContentTypographyLG = styled(props => <Typography {...props} />)`
-  column-count: 2;
-  column-gap: 6rem;
-`;
+// const ContentTypographyLG = styled(props => <Typography {...props} />)`
+//   column-count: 2;
+//   column-gap: 6rem;
+// `;
 
-export const TimelinesLayout = () => {
+// const HighlightedTypography = styled.span`
+//   background-color: yellow;
+// `;
+
+export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
     <>
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Hidden mdDown>
+        <Box position="absolute" top="100px" left="0">
+          <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
+        </Box>
+      </Hidden>
+      {/* ---------- */}
       <Grid container spacing={4} direction="column">
-        <Grid item md={6}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="h4">
-            Humanitarian publishing frequency
+            <span>Publishing frequency</span>
           </Typography>
         </Grid>
-        <Grid item md={6}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1">
-            The table records the number of days in each of the last twelve
-            months on which the most recently recorded transaction date was
-            observed by the Dashboard to have changed.
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <Typography variant="h6" align="right">
-            Frequency Rating: Monthly
+            <span>
+              Publishing frequency measures how often an organisation updates
+              their published IATI data. This is useful for any data user to
+              know in order that they can assess how ‘useful’ the published
+              information might be.
+            </span>
           </Typography>
           <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            <span>
+              The table below shows the number of days for each month on which
+              the published IATI dataset has been assessed as having been
+              updated. An ‘update’ is recorded when a ‘more recent’ transaction
+              date (than the ‘most recent’ previously identified by the portal)
+              is detected.
+            </span>
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <Typography variant="h6" align="right">
+            <span>{`Frequency rating: ${props.freqRating}`}</span>
+          </Typography>
+          <Box width="100%" height="16px" />
+
           <TableModule
             title={mockDataVar7.title}
-            data={mockDataVar7.data}
+            data={props.freqData}
             columns={mockDataVar7.columns}
             options={mockDataVar7.options}
             columnsCell={mockDataVar7.columnsCell}
           />
         </Grid>
-        <Grid item md={6}>
+        <Grid item xs={12} md={12}>
           <Typography variant="caption">
             NB. The current month is also displayed for informational purposes,
             but is not used in the assessment.
@@ -50,37 +78,39 @@ export const TimelinesLayout = () => {
       <Box width="100%" height="100px" />
 
       <Grid container spacing={4} direction="column">
-        <Grid item md={6}>
-          <Typography variant="h4">Humanitarian data timelag</Typography>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h4">Data timelag</Typography>
         </Grid>
-        <Grid item xl={12}>
-          <ContentTypographyLG variant="body1">
-            The time-lag statistics attempt to assess how up to date the data is
-            at the point that it is refreshed. For instance a publisher may
-            refresh their data monthly, but the refreshed data is in fact three
-            months old. Alternatively a publisher may only refresh their data
-            once a year, but when they do it contains current data that is less
-            than one month out of date. Transactions are the most numerous and
-            most regularly refreshed elements in reported IATI activities and
-            they are therefore used to make this assessment. The table of
-            statistics shows the number of transaction dates reported in each of
-            the last twelve calendar months.
-          </ContentTypographyLG>
+        <Grid item xs={12} xl={12}>
+          <Typography variant="body1">
+            The time-lag statistics assess how up to date the data is. For
+            instance a publisher may update their data every month, but the
+            updated data is in fact three months old. Alternatively a publisher
+            may only update their data once a year, but when they do so it
+            contains current data that is less than one month old.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            Transactions are the most numerous and most regularly refreshed
+            elements in reported IATI activities and they are therefore used to
+            make this assessment. The table of statistics shows the number of
+            transaction dates reported for each calendar months.
+          </Typography>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">
-            Timelag value: Monthly
+            <span>{`Timelag value: ${props.timeLagName}`}</span>
           </Typography>
           <Box width="100%" height="16px" />
           <TableModule
             title={mockDataVar7.title}
-            data={mockDataVar7.data}
+            data={props.timelagData}
             columns={mockDataVar7.columns}
             options={mockDataVar7.options}
             columnsCell={mockDataVar7.columnsCell}
           />
         </Grid>
-        <Grid item md={6}>
+        <Grid item xs={12} md={12}>
           <Typography variant="caption">
             NB. The current month is also displayed for informational purposes,
             but is not used in the assessment.
@@ -89,7 +119,7 @@ export const TimelinesLayout = () => {
       </Grid>
       <Box width="100%" height="50px" />
       <Grid container>
-        <Grid item md={6}>
+        <Grid item xs={12} md={12}>
           <Typography variant="body2">
             NB. Frequency and Timelag calculated only using hum. transactions ie
             that relate to a hum activity or have been specifically marked as
@@ -98,6 +128,7 @@ export const TimelinesLayout = () => {
           </Typography>
         </Grid>
       </Grid>
+      <Box width="100%" height="16px" />
     </>
   );
 };

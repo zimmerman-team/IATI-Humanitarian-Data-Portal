@@ -223,7 +223,16 @@ export default createMuiTheme({
       paper: {
         boxShadow: 'none',
         backgroundColor: 'transparent',
+        width: '100%',
       },
+      responsiveScroll: {
+        maxHeight: '700px',
+      },
+    },
+    MuiTooltip: {
+      tooltip: {
+        whiteSpace: 'pre-wrap'
+      }
     },
     MUIDataTableToolbar: {
       root: {

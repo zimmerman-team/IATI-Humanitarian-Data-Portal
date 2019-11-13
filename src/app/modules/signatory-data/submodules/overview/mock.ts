@@ -1,6 +1,7 @@
-import { ListModel } from 'app/components/datadisplay/Lists/model';
+import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
-export const listMockData1: ListModel = {
+/*export const listMockData1: ListModel = {
+  elName: 'incComms',
   items: [
     {
       label: 'Latest version of the IATI standard used',
@@ -23,9 +24,10 @@ export const listMockData1: ListModel = {
       ],
     },
   ],
-};
+};*/
 
-export const listMockData2: ListModel = {
+/*export const listMockData2: ListModel = {
+  elName: 'incComms',
   items: [
     {
       label: 'Latest update',
@@ -46,6 +48,43 @@ export const listMockData2: ListModel = {
           version: '12 07 2009',
         },
       ],
+    },
+  ],
+};*/
+
+export const sigDataOverviewNavItems: InPageNavModel = {
+  lists: [
+    {
+      title: 'Activity summary',
+      elName: 'summary',
+    },
+    {
+      title: 'FTS Import related',
+      elName: 'fts',
+    },
+    {
+      title: 'Grand Bargain classifications',
+      elName: 'GBClass',
+    },
+    {
+      title: 'Other classifications of intererest',
+      elName: 'otherClass',
+    },
+    {
+      title: 'Results',
+      elName: 'humanitarian',
+    },
+    {
+      title: 'Location information',
+      elName: 'location',
+    },
+    // {
+    //   title: 'Hum. activites with multi-year funding',
+    //   elName: 'multiyear',
+    // },
+    {
+      title: 'Financial reporting',
+      elName: 'reporting',
     },
   ],
 };

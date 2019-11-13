@@ -1,5 +1,13 @@
+import { ListModel } from 'app/components/datadisplay/Lists/model';
+
 export type InPageNavModel = {
-  locations: LocationModel[];
+  lists: ListModel[];
+  dontShow?: boolean;
+};
+
+export type InpaheNavItemModel = {
+  label: string;
+  path: string;
 };
 
 export type LocationModel = {

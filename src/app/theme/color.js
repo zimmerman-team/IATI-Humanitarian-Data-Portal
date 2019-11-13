@@ -3,6 +3,7 @@
 export default {
   background: '#979797',
   black: '#000000',
+  tableInfoDark: '#3d3d3d',
   bluebase: '#5ca2d5',
   bluedark: '#4382b0',
   bluelight: '#77bef2',
@@ -21,7 +22,7 @@ export default {
   greylight40OrFontdisabled: '#ebebeb',
   lightGreyBlue: '#a1aebd',
   melon: '#ff8256',
-  midnight60: 'rgba(1 1 10, 0.6)',
+  midnight60: 'rgba(1, 1, 10, 0.6)',
   paleGrey: '#f0f3f7',
   primaryBase: '#5accbf',
   purplebase: '#6e5acc',

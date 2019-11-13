@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Providers from 'app/Providers';
@@ -9,3 +10,4 @@ storiesOf('Navigation|InPageNav', module).add('In Page Navigation', () => (
     <InPageNavigation locations={mockData.locations} />
   </Providers>
 ));
+*/

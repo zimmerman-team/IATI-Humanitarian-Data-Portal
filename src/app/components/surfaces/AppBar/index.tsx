@@ -1,22 +1,13 @@
 import React from 'react';
 import BaseAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import styled from 'styled-components';
-import theme from 'app/theme';
 import AppBarButton from 'app/components/inputs/buttons/AppBarButton';
-import Grid from '@material-ui/core/Grid';
 import useLocation from 'react-use/lib/useLocation';
-import { Link } from 'react-router-dom';
-/* state & utils */
-import { useStoreActions } from 'app/state/store/hooks';
-import { useStoreState } from 'easy-peasy';
+import logo from 'app/assets/images/logo.png';
 
-const LinkMod = styled(Link)`
-  text-decoration: none;
-  color: white;
-`;
-
+const scrollPoint = 25;
 type AppBarProps = {
   label?: string;
   size?: string;
@@ -24,52 +15,67 @@ type AppBarProps = {
 
 const BaseComponent = styled(props => <BaseAppBar {...props} />)`
   && {
-    background-color: #f7f7f7;
+    display: flex;
+    z-index: 10001;
+    flex-direction: row;
     margin-bottom: 64px;
+    background-color: #f7f7f7;
   }
 `;
 
-const AppBar = (props: AppBarProps) => {
+function AppBar(props: AppBarProps) {
   const state = useLocation();
-  const gbsignatoriesData = useStoreState(
-    reduxstate => reduxstate.gbsignatories
-  );
-  if (!gbsignatoriesData.success && !gbsignatoriesData.loading) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useStoreActions(actions => actions.gbsignatories.fetch)({});
+  const [scrollPos, setScrollPos] = React.useState(0);
+
+  function onScroll() {
+    setScrollPos(window.scrollY);
   }
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   return (
     <BaseComponent
-      position="static"
+      position="sticky"
       elevation={0}
       location={state.pathname}
       {...props}
     >
-      <Toolbar>
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid>
-            <AppBarButton label="Home" url="/" data-cy="appbar-button1" />
-            <AppBarButton label="About" url="/about" data-cy="appbar-button2" />
-            <AppBarButton
-              label="Signatory Progress"
-              url="/signatory-progress"
-              data-cy="appbar-button3"
-            />
-            <AppBarButton
-              label="Signatory Data"
-              url="/signatory-data"
-              data-cy="appbar-button4"
-            />
-            <AppBarButton label="FAQ's" url="/faq" data-cy="appbar-button5" />
-
-            {/*<AppBarButton label="API documentation" link="" data-cy="appbar-button3"/>*/}
-            {/*<AppBarButton label="Github" data-cy="appbar-button4"/>*/}
-          </Grid>
-        </Grid>
-      </Toolbar>
+      <Container maxWidth="lg">
+        <img
+          src={logo}
+          width={scrollPos > scrollPoint ? 160 : 250}
+          height={scrollPos > scrollPoint ? 70 : 110}
+          alt="logo"
+          style={{
+            position: 'absolute',
+            marginLeft: scrollPos > scrollPoint ? -32 : -48,
+            top: scrollPos > scrollPoint ? -5 : -20,
+          }}
+        />
+        <Toolbar
+          css={`
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+          `}
+          data-testid="main-nav-button-container"
+        >
+          <AppBarButton label="Home" url="/" />
+          <AppBarButton label="About" url="/about" />
+          <AppBarButton label="Signatory Progress" url="/signatory-progress" />
+          <AppBarButton label="Signatory Data" url="/signatory-data" />
+          <AppBarButton label="FAQ's" url="/faq" />
+        </Toolbar>
+      </Container>
     </BaseComponent>
   );
-};
+}
 
 export default AppBar;

@@ -1,19 +1,28 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Grid, Box, Hidden } from '@material-ui/core';
-import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
 import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
-import { IncomingModel } from './model';
+import { IncomingModel } from 'app/modules/signatory-data/submodules/incoming/model';
+import { DecoSigIncomingTopLeft } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSigIncomingTopLeft';
+import { IncomingPledgesFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingPledgesFragment';
+import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingCommitmentsFragment';
+import { IncomingFundsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingFundsFragment';
 
 export const IncomingLayout = (props: IncomingModel) => {
   return (
     <>
-      {/** content */}
+      {/* content */}
+
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="0" left="0" zIndex="10000">
+        <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
+      </Box>
+      {/* ---------- */}
 
       <Grid container spacing={4}>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <HorizontalBarChartCard
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
@@ -34,79 +43,43 @@ export const IncomingLayout = (props: IncomingModel) => {
 
         */}
         <Hidden smDown>
-          <Grid item xs={3}>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <InPageNavigation
-                  locations={props.inPageNavigation.locations}
-                />
+          <Grid item xs={12} sm={12} md={12} lg={3}>
+            <div
+              css={`
+                position: sticky;
+                top: 50px;
+                height: 400px;
+              `}
+            >
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  <InPageNavigation lists={props.lists} />
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Grid>
         </Hidden>
 
         <Grid item xs={12} md={9}>
           <Grid container spacing={4}>
-            {/** 1 */}
+            {/* ---------------------------------------- */}
             {/** Incoming pledges */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming pledges
+            {/** 1 */}
+            <IncomingPledgesFragment lists={props.lists[0]} />
 
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List
-                title="Incoming pledges"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
-            {/** 2 */}
+            {/* ---------------------------------------- */}
             {/** Incoming commitments */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming commitments
+            {/** 2 */}
+            <IncomingCommitmentsFragment lists={props.lists[1]} />
 
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
-
-              <List
-                title="Incoming commitments"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
-            {/** 3 */}
+            {/* ---------------------------------------- */}
             {/** Incoming funds */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming funds
-
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List
-                title="Incoming funds"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
+            {/** 3 */}
+            <IncomingFundsFragment lists={props.lists[2]} />
           </Grid>
         </Grid>
       </Grid>
+      <Box height="100px" width="100%" />
     </>
   );
 };

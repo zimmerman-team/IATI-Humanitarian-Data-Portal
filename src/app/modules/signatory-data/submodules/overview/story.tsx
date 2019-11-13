@@ -1,3 +1,4 @@
+/*
 // core
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -14,3 +15,4 @@ storiesOf('Modules|Page', module).add('Page - Signatory / Overview', () => (
     </Providers>
   </>
 ));
+*/

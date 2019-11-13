@@ -2,14 +2,13 @@ import React, { Suspense } from 'react';
 import { PageLoader } from 'app/modules/common/PageLoader';
 import { Route, Switch } from 'react-router';
 import { Overview } from 'app/modules/signatory-data/submodules/overview';
-import { ActivityList } from './activityList';
-import { SignatoryIncoming } from './incoming';
-import { ProvidersPage } from './providersPage';
-import { SignatoryOutgoing } from './outgoing';
-import { Recipients } from './recipients';
-import { Timelines } from './timelines';
-import { ActivityListDetails } from './activityListDetails';
-import { Coverage } from './coverage';
+import { ActivityList } from 'app/modules/signatory-data/submodules/activityList';
+import { SignatoryIncoming } from 'app/modules/signatory-data/submodules/incoming';
+import { ProvidersPage } from 'app/modules/signatory-data/submodules/providersPage';
+import { SignatoryOutgoing } from 'app/modules/signatory-data/submodules/outgoing';
+import { Recipients } from 'app/modules/signatory-data/submodules/recipients';
+import { Timelines } from 'app/modules/signatory-data/submodules/timelines';
+import { Coverage } from 'app/modules/signatory-data/submodules/coveragePage';
 
 export function SignatoryDataRoutes() {
   return (
@@ -32,7 +31,7 @@ export function SignatoryDataRoutes() {
         />
         <Route
           exact
-          path="/signatory-data/:code/providers"
+          path="/signatory-data/:code/funders"
           render={() => <ProvidersPage />}
         />
         <Route
@@ -47,7 +46,7 @@ export function SignatoryDataRoutes() {
         />
         <Route
           exact
-          path="/signatory-data/:code/timelines"
+          path="/signatory-data/:code/timeliness"
           render={() => <Timelines />}
         />
         {/*TODO: im missing!*/}
@@ -55,11 +54,6 @@ export function SignatoryDataRoutes() {
           exact
           path="/signatory-data/:code/coverage"
           render={() => <Coverage />}
-        />
-        <Route
-          exact
-          path="/signatory-data/:code/activity-list/:code/detail"
-          render={() => <ActivityListDetails />}
         />
       </Switch>
     </Suspense>

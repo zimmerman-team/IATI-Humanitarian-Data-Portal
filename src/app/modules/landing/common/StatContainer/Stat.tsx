@@ -21,17 +21,28 @@ const CustomTypo = styled(Typography)`
       default:
         return 'red';
     }
-  }}!important;
+  }};
 `;
 
 export const Stat = (props: StatModel) => {
   return (
-    <Grid direction="column" wrap="nowrap" alignItems="flex-start">
+    <Grid
+      direction="column"
+      wrap="nowrap"
+      alignItems="flex-start"
+      data-testid="stat"
+    >
       <Box minHeight="50px">
-        <Typography variant="subtitle1">{props.description}</Typography>
+        <Typography variant="subtitle1" data-testid="stat-description">
+          {props.description}
+        </Typography>
       </Box>
 
-      <CustomTypo variant="h4" signatorytype={props.signatorytype}>
+      <CustomTypo
+        variant="h4"
+        data-testid="stat-value"
+        signatorytype={props.signatorytype}
+      >
         {props.value}
       </CustomTypo>
     </Grid>

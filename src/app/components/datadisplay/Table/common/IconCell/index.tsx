@@ -38,9 +38,9 @@ function NotAvailableIcon(props: SvgIconProps) {
 
 function getIcon(value: string | string[]) {
   switch (value) {
-    case 'true':
+    case 'True':
       return <CheckIcon />;
-    case 'false':
+    case 'False':
       return <CrossIcon />;
     default:
       return <NotAvailableIcon />;

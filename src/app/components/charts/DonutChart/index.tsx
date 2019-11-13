@@ -3,8 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import Colours from 'app/theme/color';
-import Box from '@material-ui/core/Box';
-import { DonutChartModel } from './model';
+import { DonutChartModel } from 'app/components/charts/DonutChart/model';
 
 const SIZE = 158;
 
@@ -61,7 +60,7 @@ export const DonutChart = (props: DonutChartModel) => {
       <BackgroundDonut variant="static" value={100} size={SIZE} thickness={5} />
       <ProgressDonut
         variant="static"
-        value={completed}
+        value={props.value}
         size={SIZE}
         thickness={5}
       />

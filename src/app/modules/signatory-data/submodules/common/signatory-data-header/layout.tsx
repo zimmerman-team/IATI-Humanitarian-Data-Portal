@@ -2,17 +2,17 @@
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
 import { InsertLink } from '@material-ui/icons';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
+import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
+import { getLocations } from 'app/components/navigation/SignatoryNavigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import color from 'app/theme/color';
+import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
 
-export const SubmoduleHeaderLayout = () => {
+export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
   return (
     <>
       <Grid container>
         <BreadCrumbs
-          currentLocation="ActionAid UK"
+          currentLocation={props.organisationName}
           previousLocations={[
             { url: '/signatory-data', label: 'Signatory Data' },
           ]}
@@ -25,11 +25,11 @@ export const SubmoduleHeaderLayout = () => {
         <Grid item xs={12} md={6}>
           <Grid container direction="column">
             <Typography variant="h3" color="textPrimary">
-              ActionAid UK
+              {props.organisationName}
             </Typography>
             {/** todo: style */}
             <Typography variant="overline" color="textPrimary">
-              GB-CHC-274467 2017-2019
+              {decodeURIComponent(props.code)} | {props.yearRange}
             </Typography>
             {/** todo: style */}
             <Typography
@@ -37,17 +37,29 @@ export const SubmoduleHeaderLayout = () => {
               style={{ textTransform: 'none' }}
               color="textPrimary"
             >
-              *earliest and latest activity start dates
+              earliest and latest activity start dates
             </Typography>
 
             <Box height="14px" width="100%" />
 
             <Grid container>
-              <InsertLink color="secondary" />
+              <InsertLink color={props.suppLink ? 'secondary' : 'disabled'} />
               <Box width="5px" />
-              <Typography variant="body1" color="secondary">
-                {/**  todo: add link icon and make link of text */}
-                Publisher Supplementary Information
+              <Typography
+                variant="body1"
+                color={props.suppLink ? 'secondary' : 'textSecondary'}
+              >
+                {props.suppLink ? (
+                  <a
+                    href={props.suppLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {props.linkText}
+                  </a>
+                ) : (
+                  props.linkText
+                )}
               </Typography>
             </Grid>
           </Grid>
@@ -57,8 +69,8 @@ export const SubmoduleHeaderLayout = () => {
         </Hidden>
         <Grid item xs={12} md={6}>
           <SignatoryNavigation
-            locations={locations.locations}
-            activity={locations.activity}
+            activity={props.code}
+            locations={getLocations(props.orgType)}
           />
         </Grid>
       </Grid>
