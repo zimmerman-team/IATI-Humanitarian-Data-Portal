@@ -7,12 +7,12 @@ import { endpoints } from 'app/__consts__/endpoints';
 
 export const recipients: RecipientsInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };
 
 export const humRecTypes: RecTypesInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };

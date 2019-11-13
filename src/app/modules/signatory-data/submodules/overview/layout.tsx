@@ -17,15 +17,19 @@ import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fra
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
 import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
+import { ScrollToTop } from 'app/utils/scrollToTop';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
     <>
+      <ScrollToTop />
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10002">
-        <DecoSigOverviewTopLeft />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="10002">
+          <DecoSigOverviewTopLeft />
+        </Box>
+      </Hidden>
       {/* ---------- */}
 
       <Grid container>

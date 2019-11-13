@@ -3,7 +3,7 @@ import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import { CovOrgItemModel } from 'app/modules/signatory-data/submodules/coveragePage/store/interfaces';
 
 /* utils */
-import { getTooltipContent } from 'app/utils/generic';
+import { getTooltipContent, formatDate } from 'app/utils/generic';
 import {
   formatMoney,
   getInfoTHead,
@@ -18,9 +18,9 @@ export const covQuery = (
   return {
     q: `reporting_org_ref:${repOrgRef} AND transaction_type:(1 3 4) 
         AND (humanitarian:1 OR transaction_humanitarian:1 OR 
-      ((sector_vocabulary:1 OR -sector_vocabulary:*) AND 
+      (-(-sector_vocabulary:1 OR sector_vocabulary:*) AND 
       (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
-      ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND 
+      (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND 
       (transaction_sector_code:[70000 TO 79999] OR
        transaction_sector_code:[93010 TO 93018])))`,
     rows: 0,
@@ -63,12 +63,19 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
         name: 'Period started',
         options: {
           filter: false,
+          sortDirection: 'desc',
+          customBodyRender: (value, tableMeta, updateValue) => {
+            return formatDate(value);
+          },
         },
       },
       {
         name: 'Period end',
         options: {
           filter: false,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            return formatDate(value);
+          },
         },
       },
       {

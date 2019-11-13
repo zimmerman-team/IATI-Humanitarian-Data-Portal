@@ -3,7 +3,7 @@ import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
-import { locations } from 'app/components/navigation/SignatoryNavigation/mock';
+import { getLocations } from 'app/components/navigation/SignatoryNavigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
 
@@ -70,7 +70,7 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
         <Grid item xs={12} md={6}>
           <SignatoryNavigation
             activity={props.code}
-            locations={locations.locations}
+            locations={getLocations(props.orgType)}
           />
         </Grid>
       </Grid>

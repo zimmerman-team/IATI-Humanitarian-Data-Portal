@@ -66,6 +66,8 @@ export function formatCovData(
         let rating = 'no data';
         let startDate = '';
         let endDate = '';
+        let rawStartDate = 0;
+        let rawEndDate = 0;
 
         if (covOrgData) {
           // specific way to get the start and end date from the facet keys
@@ -79,6 +81,9 @@ export function formatCovData(
             .subtract(1, 'days')
             .format();
         }
+
+        rawStartDate = new Date(startDate).getTime();
+        rawEndDate = new Date(endDate).getTime();
 
         if (!defCurreny) {
           defCurreny = get(covValue, 'trans_currency.buckets[0].val', 'USD');
@@ -100,7 +105,11 @@ export function formatCovData(
           });
           opFunds =
             orgTotExp && defCurreny
-              ? convertHelper(orgTotExp.value, orgTotExp.currency, defCurreny)
+              ? convertHelper(
+                  orgTotExp.value.value,
+                  orgTotExp.value.currency.code,
+                  defCurreny
+                )
               : null;
         }
 
@@ -110,8 +119,8 @@ export function formatCovData(
         }
 
         tableData.push([
-          formatDate(startDate),
-          formatDate(endDate),
+          rawStartDate,
+          rawEndDate,
           opFunds,
           disbsExpValue,
           rating,

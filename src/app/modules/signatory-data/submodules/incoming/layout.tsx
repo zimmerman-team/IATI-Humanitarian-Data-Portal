@@ -22,7 +22,7 @@ export const IncomingLayout = (props: IncomingModel) => {
       {/* ---------- */}
 
       <Grid container spacing={4}>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <HorizontalBarChartCard
             title={props.horizontalBarChartCardData.title}
             data={props.horizontalBarChartCardData.data}
@@ -43,7 +43,7 @@ export const IncomingLayout = (props: IncomingModel) => {
 
         */}
         <Hidden smDown>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={12} md={12} lg={3}>
             <div
               css={`
                 position: sticky;

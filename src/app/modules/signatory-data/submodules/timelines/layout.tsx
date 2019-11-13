@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
 // import styled from 'styled-components';
@@ -21,17 +21,19 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
     <>
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="100px" left="0">
-        <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
-      </Box>
+      <Hidden mdDown>
+        <Box position="absolute" top="100px" left="0">
+          <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
       <Grid container spacing={4} direction="column">
-        <Grid item md={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="h4">
             <span>Publishing frequency</span>
           </Typography>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1">
             <span>
               Publishing frequency measures how often an organisation updates
@@ -51,7 +53,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             </span>
           </Typography>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">
             <span>{`Frequency rating: ${props.freqRating}`}</span>
           </Typography>
@@ -65,7 +67,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             columnsCell={mockDataVar7.columnsCell}
           />
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="caption">
             NB. The current month is also displayed for informational purposes,
             but is not used in the assessment.
@@ -76,10 +78,10 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       <Box width="100%" height="100px" />
 
       <Grid container spacing={4} direction="column">
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h4">Data timelag</Typography>
         </Grid>
-        <Grid item xl={12}>
+        <Grid item xs={12} xl={12}>
           <Typography variant="body1">
             The time-lag statistics assess how up to date the data is. For
             instance a publisher may update their data every month, but the
@@ -95,7 +97,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             transaction dates reported for each calendar months.
           </Typography>
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">
             <span>{`Timelag value: ${props.timeLagName}`}</span>
           </Typography>
@@ -108,7 +110,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             columnsCell={mockDataVar7.columnsCell}
           />
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="caption">
             NB. The current month is also displayed for informational purposes,
             but is not used in the assessment.
@@ -117,7 +119,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       </Grid>
       <Box width="100%" height="50px" />
       <Grid container>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <Typography variant="body2">
             NB. Frequency and Timelag calculated only using hum. transactions ie
             that relate to a hum activity or have been specifically marked as

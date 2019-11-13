@@ -26,6 +26,11 @@ export const getActivitySummaryData = (rawData, tooltipsData): ListModel => {
       },
       {
         label: 'Hum. activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Hum. activities'
+        ),
         values: [
           {
             ptc: percentage(
@@ -38,11 +43,16 @@ export const getActivitySummaryData = (rawData, tooltipsData): ListModel => {
       },
       {
         label: 'Current humanitarian activities',
+        tooltip: getTooltipContent(
+          tooltipsData,
+          'Signatory Data - Overview',
+          'Current humanitarian activities'
+        ),
         values: [
           {
             ptc: percentage(
               get(rawData.humData, 'facets.currentHumValuesData.count', 0),
-              allActivitiesCount
+              get(rawData.humData, 'facets.count', 0)
             ),
             qtc: get(rawData.humData, 'facets.currentHumValuesData.count', 0),
           },

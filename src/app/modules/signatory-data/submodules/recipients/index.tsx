@@ -61,7 +61,7 @@ function RecipientsF(props) {
     get(state.recipients.data, 'data', null),
     get(orgTypeNames, 'data', null),
     sigAllReceivers,
-    'Funding recipient types',
+    'Recipient OrganisationTypes',
     `facet_counts.facet_pivot.${pivotKey}`
   );
 

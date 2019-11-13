@@ -67,7 +67,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/codelists/country/select/?q=*:*&fl=code,name&rows=1000",
+      "url": "https://iati.cloud/search/codelists/country/?q=*:*&fl=code,name&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -1168,7 +1168,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
+      "url": "https://iati.cloud/search/activity/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -1629,7 +1629,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
+      "url": "https://iati.cloud/search/activity/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -3125,7 +3125,7 @@
   ],
   "should show the main navigation": [
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
+      "url": "https://iati.cloud/search/activity/?q=humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018]))&facet=on&facet.pivot=reporting_org_ref&rows=0&facet.limit=-1",
       "method": "GET",
       "status": 200,
       "headers": {},

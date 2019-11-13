@@ -45,7 +45,8 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
             color="textPrimary"
             data-testid="organisation"
           >
-            {props.organisation.name} | {props.organisation.code} | {props.organisation.type}
+            {props.organisation.name} | {props.organisation.code} |{' '}
+            {props.organisation.type}
           </Typography>
           <Box height="24px" width="100%" />
         </Grid>
