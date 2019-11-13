@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 // Apparently the default behaviour of react router when clicking a link is to save it's scroll position
 // Use this util where you want the page to start on top

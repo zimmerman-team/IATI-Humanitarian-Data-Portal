@@ -76,7 +76,6 @@ const NoDataMessage = styled(props => <Typography variant="h6" {...props} />)`
 
 // https://nivo.rocks/bar/
 export const HorizontalBarChart = (props: HorizontalBarChartModel) => {
-
   function renderBarchart() {
     if (typeof props.values !== 'undefined' && props.values.length > 0) {
       return (
@@ -86,15 +85,12 @@ export const HorizontalBarChart = (props: HorizontalBarChartModel) => {
           data={props.values}
           colors={colorScheme(props.colors)}
           barComponent={BarComponent}
-        />)
+        />
+      );
     }
 
-    return (<NoDataMessage>No data found</NoDataMessage>)
+    return <NoDataMessage>No data found</NoDataMessage>;
   }
 
-  return (
-    <ChartContainer>
-      {renderBarchart()}
-    </ChartContainer>
-  );
+  return <ChartContainer>{renderBarchart()}</ChartContainer>;
 };
