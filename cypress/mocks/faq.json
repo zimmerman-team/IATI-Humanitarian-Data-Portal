@@ -128,7 +128,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/codelists/country/select/?q=*:*&fl=code,name&rows=1000",
+      "url": "https://iati.cloud/search/codelists/country/?q=*:*&fl=code,name&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},
