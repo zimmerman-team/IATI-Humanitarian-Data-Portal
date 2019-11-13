@@ -46,7 +46,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/result-mlt/select/?q=iati_identifier:GB-CHC-274467-102013&fl=result_title_narrative,result_aggregation_status,result_type,id&rows=10000",
+      "url": "https://iati.cloud/search/result-mlt/?q=iati_identifier:GB-CHC-274467-102013&fl=result_title_narrative,result_aggregation_status,result_type,id&rows=10000",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -69,7 +69,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=iati_identifier:GB-CHC-274467-102013&wt=json&fl=default_currency,activity_status_code,collaboration_type_code,\n++++++++capital_spend_percentage,default_flow_type_code,hierarchy,\n++++++++iati_identifier,default_finance_type_code,default_tied_status_code,\n++++++++default_lang,reporting_org:[json],title,description,\n++++++++participating_org:[json],activity_date:[json],contact_info:[json],\n++++++++recipient_country:[json],sector:[json],country_budget_items:[json],\n++++++++policy_marker:[json],default_aid_type:[json],recipient_region:[json],\n++++++++planned_disbursement:[json],budget:[json],document_link:[json],\n++++++++other_identifier:[json],humanitarian_scope:[json],location:[json],\n++++++++reporting_org_narrative,reporting_org_ref,crs_add:[json],\n++++++++activity_date_type,activity_date_iso_date,fss:[json],related_activity:[json],\n++++++++legacy_data:[json],conditions:[json],activity_scope_code",
+      "url": "https://iati.cloud/search/activity/?q=iati_identifier:GB-CHC-274467-102013&wt=json&fl=default_currency,activity_status_code,collaboration_type_code,\n++++++++capital_spend_percentage,default_flow_type_code,hierarchy,\n++++++++iati_identifier,default_finance_type_code,default_tied_status_code,\n++++++++default_lang,reporting_org:[json],title,description,\n++++++++participating_org:[json],activity_date:[json],contact_info:[json],\n++++++++recipient_country:[json],sector:[json],country_budget_items:[json],\n++++++++policy_marker:[json],default_aid_type:[json],recipient_region:[json],\n++++++++planned_disbursement:[json],budget:[json],document_link:[json],\n++++++++other_identifier:[json],humanitarian_scope:[json],location:[json],\n++++++++reporting_org_narrative,reporting_org_ref,crs_add:[json],\n++++++++activity_date_type,activity_date_iso_date,fss:[json],related_activity:[json],\n++++++++legacy_data:[json],conditions:[json],activity_scope_code",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -254,7 +254,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/transaction-mlt/select/?q=iati_identifier:GB-CHC-274467-102013+AND+(transaction_type:1+OR+transaction_type:11+OR+transaction_type:13)&fl=transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id&rows=1000",
+      "url": "https://iati.cloud/search/transaction/?q=iati_identifier:GB-CHC-274467-102013+AND+(transaction_type:1+OR+transaction_type:11+OR+transaction_type:13)&fl=transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -298,7 +298,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/transaction-mlt/select/?q=iati_identifier:GB-CHC-274467-102013+AND+(transaction_type:2+OR+transaction_type:3+OR+transaction_type:4+OR+transaction_type:12)&fl=transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id&rows=1000",
+      "url": "https://iati.cloud/search/transaction/?q=iati_identifier:GB-CHC-274467-102013+AND+(transaction_type:2+OR+transaction_type:3+OR+transaction_type:4+OR+transaction_type:12)&fl=transaction_date_iso_date,transaction_provider_org_narrative,transaction_receiver_org_narrative,transaction_value,transaction_value_currency,transaction_type,transaction_provider_org_provider_activity_id,transaction_receiver_org_receiver_activity_id&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -1455,7 +1455,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/codelists/country/select/?q=*:*&fl=code,name&rows=1000",
+      "url": "https://iati.cloud/search/codelists/country/?q=*:*&fl=code,name&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},

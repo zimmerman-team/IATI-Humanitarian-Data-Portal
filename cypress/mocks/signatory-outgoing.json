@@ -46,7 +46,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
+      "url": "https://iati.cloud/search/activity/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -380,7 +380,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467+AND+(humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018])))&json.facet={\"outPledgeBar\":{\"type\":\"query\",\"q\":\"transaction_type:12\"},\"outCommitmentBar\":{\"type\":\"query\",\"q\":\"transaction_type:2\"},\"outDisbursementBar\":{\"type\":\"query\",\"q\":\"transaction_type:3\"},\"outExpenditureBar\":{\"type\":\"query\",\"q\":\"transaction_type:4\"},\"outPledge_2\":{\"type\":\"query\",\"q\":\"(transaction_type:12+AND+transaction_receiver_org_narrative:*)\"},\"outPledge_3\":{\"type\":\"query\",\"q\":\"(transaction_type:12+AND+transaction_receiver_org_type_code:*)\"},\"outCommitment_2\":{\"type\":\"query\",\"q\":\"(transaction_type:2+AND+transaction_receiver_org_narrative:*)\"},\"outCommitment_3\":{\"type\":\"query\",\"q\":\"(transaction_type:2+AND+transaction_receiver_org_type_code:*)\"},\"outDisbursement_2\":{\"type\":\"query\",\"q\":\"(transaction_type:3+AND+transaction_receiver_org_narrative:*)\"},\"outDisbursement_3\":{\"type\":\"query\",\"q\":\"(transaction_type:3+AND+transaction_receiver_org_type_code:*)\"},\"expenditure_3\":{\"type\":\"query\",\"q\":\"(transaction_type:4+AND+(transaction_receiver_org_narrative:*+OR+transaction_receiver_org_ref:*))\"},\"expenditure_4\":{\"type\":\"query\",\"q\":\"(transaction_type:4+AND+transaction_receiver_org_type_code:*)\"}}&rows=0",
+      "url": "https://iati.cloud/search/activity/?q=reporting_org_ref:GB-CHC-274467+AND+(humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018])))&json.facet={\"outPledgeBar\":{\"type\":\"query\",\"q\":\"transaction_type:12\"},\"outCommitmentBar\":{\"type\":\"query\",\"q\":\"transaction_type:2\"},\"outDisbursementBar\":{\"type\":\"query\",\"q\":\"transaction_type:3\"},\"outExpenditureBar\":{\"type\":\"query\",\"q\":\"transaction_type:4\"},\"outPledge_2\":{\"type\":\"query\",\"q\":\"(transaction_type:12+AND+transaction_receiver_org_narrative:*)\"},\"outPledge_3\":{\"type\":\"query\",\"q\":\"(transaction_type:12+AND+transaction_receiver_org_type_code:*)\"},\"outCommitment_2\":{\"type\":\"query\",\"q\":\"(transaction_type:2+AND+transaction_receiver_org_narrative:*)\"},\"outCommitment_3\":{\"type\":\"query\",\"q\":\"(transaction_type:2+AND+transaction_receiver_org_type_code:*)\"},\"outDisbursement_2\":{\"type\":\"query\",\"q\":\"(transaction_type:3+AND+transaction_receiver_org_narrative:*)\"},\"outDisbursement_3\":{\"type\":\"query\",\"q\":\"(transaction_type:3+AND+transaction_receiver_org_type_code:*)\"},\"expenditure_3\":{\"type\":\"query\",\"q\":\"(transaction_type:4+AND+(transaction_receiver_org_narrative:*+OR+transaction_receiver_org_ref:*))\"},\"expenditure_4\":{\"type\":\"query\",\"q\":\"(transaction_type:4+AND+transaction_receiver_org_type_code:*)\"}}&rows=0",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -442,7 +442,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=transaction_receiver_org_receiver_activity_id:*&fq=reporting_org_ref:GB-CHC-274467+AND+(humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018])))&json.facet={\"outDisbursement_4\":{\"type\":\"query\",\"q\":\"transaction_type:3\"}}&rows=0",
+      "url": "https://iati.cloud/search/activity/?q=transaction_receiver_org_receiver_activity_id:*&fq=reporting_org_ref:GB-CHC-274467+AND+(humanitarian:1+OR+transaction_humanitarian:1+OR+sector_vocabulary:1+OR+(-sector_vocabulary:*+AND+(sector_code:[70000+TO+79999]+OR+sector_code:[93010+TO+93018]))+OR+transaction_sector_vocabulary:1+OR+(-transaction_sector_vocabulary:*+AND+(transaction_sector_code:[70000+TO+79999]+OR+transaction_sector_code:[93010+TO+93018])))&json.facet={\"outDisbursement_4\":{\"type\":\"query\",\"q\":\"transaction_type:3\"}}&rows=0",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -472,7 +472,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
+      "url": "https://iati.cloud/search/activity/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -1921,7 +1921,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/codelists/country/select/?q=*:*&fl=code,name&rows=1000",
+      "url": "https://iati.cloud/search/codelists/country/?q=*:*&fl=code,name&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},

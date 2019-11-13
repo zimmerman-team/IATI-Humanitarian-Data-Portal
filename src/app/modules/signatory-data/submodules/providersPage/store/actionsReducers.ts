@@ -4,12 +4,12 @@ import { endpoints } from 'app/__consts__/endpoints';
 
 export const sigdataproviders: ActivityResponceInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };
 
 export const sigAllProviders: ActivityResponceInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.transaction}/`
   ),
 };

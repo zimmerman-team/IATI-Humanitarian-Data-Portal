@@ -46,7 +46,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
+      "url": "https://iati.cloud/search/activity/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -380,7 +380,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/transaction-mlt/select/",
+      "url": "https://iati.cloud/search/transaction/",
       "method": "POST",
       "status": 200,
       "headers": {},
@@ -901,7 +901,7 @@
       }
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/activity-mlt/select/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
+      "url": "https://iati.cloud/search/activity/?q=reporting_org_ref:GB-CHC-274467&facet=on&facet.pivot=activity_date_iso_date,humanitarian&fl=facet_counts",
       "method": "GET",
       "status": 200,
       "headers": {},
@@ -2350,7 +2350,7 @@
       ]
     },
     {
-      "url": "https://test-datastore.iatistandard.org/search/codelists/country/select/?q=*:*&fl=code,name&rows=1000",
+      "url": "https://iati.cloud/search/codelists/country/?q=*:*&fl=code,name&rows=1000",
       "method": "GET",
       "status": 200,
       "headers": {},
