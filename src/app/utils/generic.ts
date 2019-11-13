@@ -10,11 +10,14 @@ import { shortMonthNames } from 'app/__consts__/dates';
 // english text narratives from JSONString
 // variables, which do contain
 // the 'lang' variable
-export function getEngText(jsonStrTitle: string) {
-  const engTxt = JSON.parse(jsonStrTitle);
-  const engFound = find(engTxt, ['lang', 'en']);
+export function getEngText(jsonStrTitle, parse = true) {
+  let engTxt = jsonStrTitle;
+  if (parse) {
+    engTxt = JSON.parse(jsonStrTitle);
+  }
+  const engFound = find(engTxt.narratives, ['language.code', 'en']);
   if (engFound) {
-    return engFound.narrative;
+    return engFound.text;
   }
 
   if (engTxt[0] && engTxt[0].narrative) {
@@ -83,7 +86,7 @@ export function getActualDates(
 // helper function to get the english narrative from
 // narrative arrays
 export function getNarrativeText(narArray, doubleArray?: boolean) {
-  let engNarr = find(narArray, ['lang', 'en']);
+  let engNarr = find(narArray, ['language.code', 'en']);
 
   if (doubleArray) {
     // ye so because the response structure is bad
