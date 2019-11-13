@@ -12,7 +12,6 @@ import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAbout
 import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
 import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
 import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
-
 // TODO: -Correct page title => @jim?
 //      -Correct outer container margins of MD size => @jim?
 //      -Implement correct spacing between components
