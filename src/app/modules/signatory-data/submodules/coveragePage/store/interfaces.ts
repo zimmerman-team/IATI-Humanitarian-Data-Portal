@@ -11,7 +11,14 @@ export interface CovItemModel {
 export interface OrgTotExpItemModel {
   period_start: string;
   period_end: string;
-  value: number;
+  value: {
+    currency: {
+      code: string;
+      name: string;
+    };
+    date: string;
+    value: number;
+  };
   currency?: string;
   value_date: string;
   // this is any cause it shouldn't even exist in the

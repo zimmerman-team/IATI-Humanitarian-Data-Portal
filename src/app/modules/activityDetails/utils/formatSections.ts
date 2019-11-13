@@ -3,7 +3,7 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 import { SectionsModel } from 'app/modules/activityDetails/model';
 
 /* utils */
-import find from 'lodash/find';
+import { getEngText } from 'app/utils/generic';
 
 export function formatSections(
   actDetail: SingleDefActivity | null
@@ -20,19 +20,12 @@ export function formatSections(
     },
   ];
 
-  if (actDetail && actDetail.description) {
+  if (actDetail && actDetail.description && actDetail.description[0]) {
     // here we will get the english description
-    let engDesc: any = find(actDetail.description, descItem => {
-      return descItem.indexOf('"lang":"en"') !== -1;
-    });
-
-    engDesc = engDesc || actDetail.description[0];
-    engDesc = JSON.parse(engDesc);
-    engDesc = engDesc.narrative ? engDesc.narrative[0].narrative : 'no data';
 
     sections[0] = {
       title: 'Description',
-      content: engDesc,
+      content: getEngText(actDetail.description[0]),
     };
   }
 
