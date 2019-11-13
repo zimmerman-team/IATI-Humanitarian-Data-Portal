@@ -2,8 +2,8 @@ import { ActivityResponceInterface } from 'app/state/api/interfaces/activityInte
 import { apiModel } from './index';
 import { endpoints } from 'app/__consts__/endpoints';
 
-const sigdataactivitystatus: ActivityResponceInterface = {
+const sigdatadatesheader: ActivityResponceInterface = {
   ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
 };
 
-export default sigdataactivitystatus;
+export default sigdatadatesheader;

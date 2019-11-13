@@ -76,6 +76,10 @@ export const AboutLayout = (props: AboutPageModel) => {
         </Box>
       </Hidden>
 
+      <Hidden lgUp>
+        <Box height="100px" width="100%" />
+      </Hidden>
+
       <Footer />
     </Page>
   );

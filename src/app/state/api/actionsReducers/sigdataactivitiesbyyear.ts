@@ -4,7 +4,7 @@ import { endpoints } from 'app/__consts__/endpoints';
 
 const sigdataactivitiesbyyear: ActivityResponceInterface = {
   ...apiPOSTModel(
-    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/select/`
+    `${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`
   ),
 };
 

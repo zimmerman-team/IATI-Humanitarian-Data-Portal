@@ -79,8 +79,8 @@ export interface PeriodItem {
   period_end: {
     iso_date: string;
   };
-  target: PerTargActItem[];
-  actual: PerTargActItem[];
+  targets: PerTargActItem[];
+  actuals: PerTargActItem[];
 }
 
 export interface ResIndItem {
@@ -96,7 +96,7 @@ export interface ResIndItem {
   document_link: DocLinkItem[];
   reference: RefItem[];
   baseline: BaseItem[];
-  period: PeriodItem[];
+  periods: PeriodItem[];
 }
 
 export interface ResultItem {
@@ -110,7 +110,7 @@ export interface ResultItem {
   result_document_link?: DocLinkItem[];
   // note only the first array item is valid
   // so use that, cause the structure is incorrect
-  result_indicator: ResIndItem[][];
+  result_indicator: ResIndItem[];
 }
 
 export interface ResultsInterface

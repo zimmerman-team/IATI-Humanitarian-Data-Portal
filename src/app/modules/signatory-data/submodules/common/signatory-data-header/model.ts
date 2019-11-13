@@ -11,6 +11,7 @@ interface SubmoduleHeader {
 }
 
 export interface SubmoduleHeaderLayoutModel {
+  orgType: string;
   organisationName: string;
   yearRange: string;
   code: string;

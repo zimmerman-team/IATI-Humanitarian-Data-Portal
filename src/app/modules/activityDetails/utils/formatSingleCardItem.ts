@@ -5,6 +5,7 @@ import { ListItemModel } from 'app/components/datadisplay/Lists/model';
 /* utils */
 import get from 'lodash/get';
 import find from 'lodash/find';
+import { getNarrativeText } from 'app/utils/generic';
 
 interface ElementItem {
   key: string;
@@ -51,6 +52,11 @@ export function formatSingleCardItem(
 
     if (value !== 'no data' && element.suffix) {
       value += element.suffix;
+    }
+
+    if (element.key.indexOf('narrative') !== -1) {
+      // we get the english narrative
+      value = getNarrativeText(value);
     }
 
     items.push({

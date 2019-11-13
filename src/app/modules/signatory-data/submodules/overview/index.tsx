@@ -112,7 +112,7 @@ export function OverviewPage(props) {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(
           props.match.params.code
-        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR ((sector_vocabulary:1 OR -sector_vocabulary:*) AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR ((transaction_sector_vocabulary:1 OR -transaction_sector_vocabulary:*) AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
+        )} AND (humanitarian:1 OR transaction_humanitarian:1 OR (-(-sector_vocabulary:1 OR sector_vocabulary:*) AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])))`,
         'json.facet': JSON.stringify(humCallValues),
         rows: 0,
       },
@@ -126,13 +126,11 @@ export function OverviewPage(props) {
     };
     const sigdataoverviewhum4donutcallValues = {
       values: {
-        q: `reporting_org_ref:${decodeURIComponent(
-          props.match.params.code
-        )}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify(hum4DonutValues),
-        rows:0
-      }
-    }
+        rows: 0,
+      },
+    };
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
     sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);

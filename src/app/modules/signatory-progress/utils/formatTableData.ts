@@ -1,4 +1,4 @@
-import { dateRanges } from 'app/modules/signatory-progress/const';
+//import { dateRanges } from 'app/modules/signatory-progress/const';
 import {
   getAllSigCount,
   getIatiSigCount,
@@ -7,12 +7,26 @@ import {
 } from './general';
 import { SpecPubsItemModel } from './intefaces';
 import { SingleDefGBSignatory } from 'app/state/api/interfaces/gbsignatoryInterface';
+import { SignatoryProgress } from 'app/state/api/interfaces/signatoryProgressInterface';
+import { shortMonthNames } from '../../../__consts__/dates';
+import { constructDateRanges } from '../const';
 
 export function formatTableData(
   gbsignatories: SingleDefGBSignatory[] | null,
-  specPubsData: Array<SpecPubsItemModel>
+  specPubsData: Array<SpecPubsItemModel>,
+  signatoryProgressData: SignatoryProgress
 ): Array<Array<string | number>> {
   const tableData: Array<Array<string | number>> = [];
+  let dateRanges: any[] = [];
+  const today = new Date();
+
+  const currDate = `${today.getDate()}.${
+    shortMonthNames[today.getMonth()]
+  }.${today.getFullYear()}`;
+
+  if (signatoryProgressData !== null) {
+    dateRanges = constructDateRanges(signatoryProgressData);
+  }
 
   if (gbsignatories) {
     // so as discussed we only have a flat amount of them
@@ -42,20 +56,25 @@ export function formatTableData(
       }
 
       if (index === dateRanges.length - 1) {
+        //for today date
         iatiCount = allIatiSigCount;
         iatiPerc = Math.round((iatiCount * 100) / allSigCount);
         lastCount = iatiCount;
+        totGBSigs.push(Math.round((iatiCount * 100) / iatiPerc));
       }
 
       tableData[0].push(`${iatiPerc}% (${iatiCount})`);
+      if (range.label !== currDate) {
+        totGBSigs.push(range.totalGBSig);
+      }
 
-      if (iatiCount && iatiPerc) {
+      /*if (iatiCount && iatiPerc) {
         // and this is how we calculate the total no of GB
         // signatories according to the perc and count values
         // of the signatories publishing to iati
         const dateAllSigCount = Math.round((iatiCount * 100) / iatiPerc);
         totGBSigs.push(dateAllSigCount);
-      }
+      }*/
     });
 
     // and here we'll push in the calculation for changes between

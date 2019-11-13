@@ -201,11 +201,14 @@ export function InitialDataLoad() {
   );
   // const tooltipsData = useStoreState(reduxstate => reduxstate.tooltips);
   const getTooltips = useStoreActions(actions => actions.tooltips.fetch);
+  const getSignatoryProgress = useStoreActions(
+    actions => actions.signatoryProgress.fetch
+  );
 
   React.useEffect(() => {
-    if (!gbsignatoriesData.data) {
-      getGBSignatories({});
-    }
+    // if (!gbsignatoriesData.data) {
+    getGBSignatories({});
+    // }
     if (!actStatus.data) {
       getActStatus({});
     }
@@ -309,5 +312,6 @@ export function InitialDataLoad() {
       });
     }
     getTooltips({});
+    getSignatoryProgress({});
   }, []);
 }

@@ -11,13 +11,13 @@ jobs:
           at: ~/mlt-frontend
       - restore_cache:
           keys:
-            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run: yarn install --fronzen-lockfile
+            - dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn install
       - save_cache:
-          key: yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
-            - node_modules
+            - ./.cache/Cypress
       - persist_to_workspace:
           root: .
           paths:
@@ -48,6 +48,7 @@ jobs:
               echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
               echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
               echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
+              echo 'export REACT_APP_CMS_PROJECT_ID="$REACT_APP_CMS_PROJECT_ID_PROD"' >> $BASH_ENV
             else
               echo 'export REACT_APP_PROJECT_URL="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -108,6 +109,7 @@ jobs:
     parallelism: 2
     working_directory: ~/mlt-frontend
     steps:
+      - checkout
       - attach_workspace:
           at: ~/mlt-frontend
       # setting this env var to only test on dev server when deployed.
@@ -128,6 +130,7 @@ jobs:
                echo 'export REACT_APP_CLIENT_NAME="Humanitarian Portal"' >> $BASH_ENV
                echo 'export REACT_APP_CMS_API="$REACT_APP_CMS_API_PROD"' >> $BASH_ENV
                echo 'export REACT_APP_DS_API="$REACT_APP_DS_API_PROD"' >> $BASH_ENV
+               echo 'export REACT_APP_CMS_PROJECT_ID="$REACT_APP_CMS_PROJECT_ID_PROD"' >> $BASH_ENV
             else
                echo 'export CYPRESS_baseUrl="$REACT_APP_PROJECT_URL_DEV"' >> $BASH_ENV
             fi
@@ -199,7 +202,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - yarn-cached-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - dep-cache-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - attach_workspace:
           at: "."
       - store_artifacts:

@@ -20,18 +20,18 @@ export const getStatusData = (
       ),
       values: [{ version: get(rawData, 'facets.latest_iati_version', '') }],
     },
-    {
-      label: 'Data errors',
-      tooltip: getTooltipContent(
-        tooltipsData,
-        'Signatory Data - Overview',
-        'Data errors'
-      ),
-      values: [
-        { version: get(dataErrors, 'facets.x', 0) }, //currently change it to number but this number is inconsistent with actual data.
-        //{ version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
-      ],
-    },
+    // {
+    //   label: 'Data errors',
+    //   tooltip: getTooltipContent(
+    //     tooltipsData,
+    //     'Signatory Data - Overview',
+    //     'Data errors'
+    //   ),
+    //   values: [
+    //     { version: get(dataErrors, 'facets.x', 0) }, //currently change it to number but this number is inconsistent with actual data.
+    //     //{ version: percentage(get(dataErrors, 'facets.x', 0), allActCount) },
+    //   ],
+    // },
     {
       label: 'Latest update',
       tooltip: getTooltipContent(

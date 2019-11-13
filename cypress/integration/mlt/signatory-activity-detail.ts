@@ -11,7 +11,7 @@ const signatoryDetailTexts = [
   'Budget',
   'Sectors',
   'Contact information',
-  'Reporting organisation',
+  //'Reporting organisation',
   'Recipient countries',
   'Default aid type',
   'Activity dates',

@@ -5,6 +5,8 @@ import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
 import tooltips from 'app/state/api/actionsReducers/tooltips';
+import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
+import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
 import {
   sigdataincoming,
   sigdataincomingfundtrace,
@@ -19,6 +21,7 @@ import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
+import sigdatadatesheader from 'app/state/api/actionsReducers/sigdatadatesheader';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
 import sigdataoverviewhum4donut from 'app/state/api/actionsReducers/sigdataoverviewhum4donut';
 import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
@@ -46,6 +49,7 @@ export interface ApplicationStoreModel {
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
   tooltips: GBSignatoryResponseInterface;
+  signatoryProgress: SignatoryPrgoressResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
   sigdataoverviewhum: ActivityResponceInterface;
   sigdataoverviewhum4donut: ActivityResponceInterface;
@@ -62,6 +66,7 @@ export interface ApplicationStoreModel {
 
   sigDataOpts: DataTableOptions;
   sigDataActivityListFilter: SigDataActivityListFilterModel;
+  sigdatadatesheader: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -83,6 +88,8 @@ const applicationStore: ApplicationStoreModel = {
   organisationnarrative,
   sigdataoverviewdataerrors,
   tooltips,
+  signatoryProgress,
+  sigdatadatesheader,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
   sigDataActivityListFilter: {
