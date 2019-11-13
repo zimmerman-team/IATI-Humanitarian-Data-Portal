@@ -2,7 +2,7 @@ import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signato
 import { spaceCloudAPIModel } from './index';
 
 const signatoryProgress: SignatoryPrgoressResponseInterface = {
-  ...spaceCloudAPIModel('signatoryProgress'),
+  ...spaceCloudAPIModel('signatoriesProgress'),
 };
 
 export default signatoryProgress;
