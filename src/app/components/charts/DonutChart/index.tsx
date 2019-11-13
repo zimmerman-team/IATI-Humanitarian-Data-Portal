@@ -3,12 +3,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import Colours from 'app/theme/color';
-import Box from '@material-ui/core/Box';
-import { DonutChartModel } from './model';
+import { DonutChartModel } from 'app/components/charts/DonutChart/model';
 
 const SIZE = 158;
 
-const Container =  styled(props => <div {...props} />)`
+const Container = styled(props => <div {...props} />)`
   position: relative;
   height: ${SIZE}px;
   width: ${SIZE}px;
@@ -17,14 +16,14 @@ const Container =  styled(props => <div {...props} />)`
 
 const BackgroundDonut = styled(props => <CircularProgress {...props} />)`
   position: absolute;
-  &&{
+  && {
     color: ${Colours.greylight30OrFontdisablet};
   }
 `;
 
 const ProgressDonut = styled(props => <CircularProgress {...props} />)`
   position: absolute;
-  &&{
+  && {
     transform: rotate(90deg) !important;
   }
 `;
@@ -45,7 +44,9 @@ export const DonutChart = (props: DonutChartModel) => {
   // const [completed, setCompleted] = React.useState(0);
   React.useEffect(() => {
     function progress() {
-      setCompleted(prevCompleted => (prevCompleted >= props.value ? props.value : prevCompleted + 10));
+      setCompleted(prevCompleted =>
+        prevCompleted >= props.value ? props.value : prevCompleted + 10
+      );
     }
 
     const timer = setInterval(progress, 100);
@@ -56,10 +57,14 @@ export const DonutChart = (props: DonutChartModel) => {
 
   return (
     <Container>
-      <BackgroundDonut variant="static" value={100} size={SIZE} thickness={5}/>
-      <ProgressDonut variant="static" value={completed} size={SIZE} thickness={5} />
+      <BackgroundDonut variant="static" value={100} size={SIZE} thickness={5} />
+      <ProgressDonut
+        variant="static"
+        value={props.value}
+        size={SIZE}
+        thickness={5}
+      />
       <Typo variant="h6">{props.value}%</Typo>
     </Container>
   );
 };
-

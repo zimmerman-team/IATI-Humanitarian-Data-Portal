@@ -1,0 +1,21 @@
+exports[`About page > should show the correct title #0`] = `
+<h3 class="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextPrimary">
+  The Grand Bargain transparency commitment
+</h3>
+`;
+
+exports[`About page > should show the correct title #1`] = `
+<h6 class="MuiTypography-root MuiTypography-h6">What is the Grand Bargain?</h6>
+`;
+
+exports[`About page > should show the correct title #2`] = `
+<h6 class="MuiTypography-root MuiTypography-subtitle1">
+  What is the Grand Bargain transparency commitment?
+</h6>
+`;
+
+exports[`About page > should show the correct title #3`] = `
+<h6 class="MuiTypography-root MuiTypography-h6">
+  What is IATI and why is it part of the transparency commitment?
+</h6>
+`;

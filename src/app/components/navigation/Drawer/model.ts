@@ -1,9 +1,8 @@
-export type DrawerMenuModel  = {
+export type DrawerMenuModel = {
   links: Link[];
 };
 
 export type Link = {
-  label: string,
-  url: string
+  label: string;
+  url: string;
 };
-

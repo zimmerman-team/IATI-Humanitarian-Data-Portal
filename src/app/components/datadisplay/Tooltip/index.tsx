@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Tooltip } from '@material-ui/core';
@@ -28,7 +28,7 @@ const BaseButton = styled(props => <Button {...props} />)`
       text-transform: initial;
       line-height: 1;
     }
-    &:hover{
+    &:hover {
       background-color: ${Colours.greydark20OrFontsecondary};
     }
   }
@@ -38,20 +38,23 @@ const BaseButton = styled(props => <Button {...props} />)`
 export const TooltipButton = (props: Props) => {
   return (
     <Tooltip
-      title={props.tip ? props.tip : 'empty tooltip'}
+      title={
+        <span style={{ whiteSpace: 'pre-wrap' }}>
+          {props.tip ? props.tip : 'empty tooltip'}
+        </span>
+      }
       placement="top-end"
     >
       <span>
-      <BaseButton
-        {...props}
-        size={props.size}
-        variant="contained"
-        color="primary"
-      >
-        i
-      </BaseButton>
+        <BaseButton
+          {...props}
+          size={props.size}
+          variant="contained"
+          color="primary"
+        >
+          i
+        </BaseButton>
       </span>
     </Tooltip>
   );
 };
-

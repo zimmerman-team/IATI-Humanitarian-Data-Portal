@@ -56,9 +56,10 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ebebeb;
+  background-color: #f7f7f7;
 }
 
 code {
@@ -69,10 +70,24 @@ code {
 /* todo: should be solved in a cleaner way */
 a {
   text-decoration: initial;
-  color: #3074f1;
+  color: #25a898;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: initial;
+  color: #30c2b0;
+}
+
+ol{
+  font-family: Inter;
+  font-weight: bold;
 }
 
 .TotalCell {
   color: #ffffff !important;
   background: #3d3d3d !important;
+}
+
+.TransparentCell {
+  background: transparent !important;
 }

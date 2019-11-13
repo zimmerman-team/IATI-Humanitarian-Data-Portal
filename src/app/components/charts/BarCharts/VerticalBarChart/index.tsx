@@ -8,34 +8,35 @@ import { ChartTooltip } from 'app/components/charts/BarCharts/common/ChartToolti
 //  - Find a better solution to handle colours
 const barModel: BarSvgProps = {
   data: [],
-  keys: ['humanitarianActivities', 'activities'],
-  indexBy: "year",
-  margin:{ top: 0, right: 0, bottom: 50, left: 60 },
+  keys: ['Humanitarian Activities', 'Activities'],
+  indexBy: 'year',
+  margin: { top: 15, right: 0, bottom: 50, left: 60 },
   padding: 0.5,
-  colors:({ id, data }) => data[`${id}Color`],
+  colors: ({ id, data }) => data[`${id}Color`],
+  groupMode: 'stacked',
   axisRight: null,
   axisBottom: {
-      tickSize: 0,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: '',
-      legendPosition: 'middle',
-      legendOffset: 32
+    tickSize: 0,
+    tickPadding: 5,
+    tickRotation: 0,
+    legend: '',
+    legendPosition: 'middle',
+    legendOffset: 32,
   },
-  axisLeft:{
-      tickValues: 3,
-      tickSize: 0,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: '',
-      legendPosition: 'middle',
-      legendOffset: -40
+  axisLeft: {
+    tickValues: 3,
+    tickSize: 0,
+    tickPadding: 5,
+    tickRotation: 0,
+    legend: '',
+    legendPosition: 'middle',
+    legendOffset: -40,
   },
   enableLabel: false,
   labelSkipWidth: 12,
   labelSkipHeight: 12,
-  labelTextColor: { from: 'color', modifiers: [ [ 'darker', 1.6 ] ] },
-  legends:[
+  labelTextColor: { from: 'color', modifiers: [['darker', 1.6]] },
+  legends: [
     {
       dataFrom: 'keys',
       anchor: 'bottom-left',
@@ -48,27 +49,27 @@ const barModel: BarSvgProps = {
       itemHeight: 40,
       itemDirection: 'left-to-right',
       symbolSize: 10,
-    }
-    ],
+    },
+  ],
   //TODO: this logic should be refactored to a more generic solution.
   //As of Visual Design this is not nescesarry for now.
-  tooltip: function createChartTooltip({ data }){
+  tooltip: function createChartTooltip({ data }) {
     const items = [
       {
-        label: "All activities", //Object.keys(data)[0]
-        value: data.activities ? data.activities : "No data" ,
-        color: data.activitiesColor
+        label: 'All activities', //Object.keys(data)[0]
+        value: data.activitiesAct ? data.activitiesAct : 'No data',
+        color: data.ActivitiesColor,
       },
       {
-        label: "Humanitarian", //Object.keys(data)[3]
-        value: data.humanitarianActivities ? data.humanitarianActivities : "No data" ,
-        color: data.humanitarianActivitiesColor
-      }
+        label: 'Humanitarian', //Object.keys(data)[3]
+        value: data['Humanitarian Activities']
+          ? data['Humanitarian Activities']
+          : 'No data',
+        color: data['Humanitarian ActivitiesColor'],
+      },
     ];
 
-    return (
-      <ChartTooltip items={items}/>
-    )
+    return <ChartTooltip items={items} />;
   },
   animate: false,
   motionStiffness: 90,
@@ -79,22 +80,25 @@ const barModel: BarSvgProps = {
       ticks: {
         text: {
           fontWeight: 500,
-          fontFamily: "Inter",
+          fontFamily: 'Inter',
           fontSize: 12,
-        }
-      }
+        },
+      },
     },
     legends: {
       text: {
         fontWeight: 500,
-        fontFamily: "Inter",
+        fontFamily: 'Inter',
         fontSize: 12,
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
-const BarChart = styled(props => <ResponsiveBar {...props} />)`&&{}`;
+const BarChart = styled(props => <ResponsiveBar {...props} />)`
+  && {
+  }
+`;
 
 const ChartContainer = styled.div`
   height: 320px;
@@ -102,7 +106,7 @@ const ChartContainer = styled.div`
 
 // https://nivo.rocks/bar/
 export const VerticalBarChart = ({ data }) => {
-  return(
+  return (
     // make sure parent container have a defined height when using ResposinveBar
     <ChartContainer>
       <BarChart {...barModel} data={data} />

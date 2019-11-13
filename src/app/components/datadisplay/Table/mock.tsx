@@ -1,5 +1,6 @@
 /* core */
 import React from 'react';
+import get from 'lodash/get';
 
 /* project-comps */
 import {
@@ -13,9 +14,9 @@ import InfoCellModule from 'app/components/datadisplay/Table/common/InfoCell';
 import MultiValuesCell from 'app/components/datadisplay/Table/common/MultiValuesCell';
 
 export const mockDataVar1: TableModuleModel = {
-  title: 'Aggregated Signatory Data Publication Indicator Values',
+  title: 'Aggregated signatory data publication indicator values',
   data: [
-    ['Total no. of Grand Bargain Signatories', '51', '59', '20', '4'],
+    ['Total no. of Grand Bargain signatories', '51', '59', '20', '4'],
     [
       'Organisations* publishing to IATI',
       '73% (37)',
@@ -80,7 +81,7 @@ export const mockDataVar1: TableModuleModel = {
 };
 
 export const mockDataVar2: TableModuleModel = {
-  title: 'Signatories or their Affiliate Organisations ',
+  title: 'Signatories or their affiliate organisations ',
   data: [
     [
       'ActionAid UK',
@@ -105,30 +106,36 @@ export const mockDataVar2: TableModuleModel = {
   ],
   columns: [
     {
-      name: 'Publishing Organistion',
+      name: 'Publishing organisation',
       options: {
+        sortDirection: 'asc',
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: ['ActionAid UK'],
+        filterType: 'dropdown',
         customBodyRender: (value, tableMeta, updateValue) => {
-          return <LinkCellModule link="#" value={value} />;
+          return (
+            <LinkCellModule
+              link={`/signatory-data/${value.code}/overview`}
+              value={value.name}
+            />
+          );
         },
+        customFilterListRender: value => `Publishing organisation: ${value}`,
       },
     },
     {
       name: 'GB signatory',
       options: {
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: ['ActionAid UK'],
+        filterType: 'dropdown',
+        customFilterListRender: value => `GB signatory: ${value}`,
       },
     },
     {
       name: 'Organisation type',
       options: {
         filter: true,
-        filterType: 'checkbox',
-        filterOptions: ['International NGO', 'Multilateral'],
+        filterType: 'dropdown',
+        customFilterListRender: value => `Organisation type: ${value}`,
       },
     },
     {
@@ -136,51 +143,57 @@ export const mockDataVar2: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['2.03'],
+        customFilterListRender: value => `Latest IATI version: ${value}`,
       },
     },
     {
-      name: 'Publishing Hum.Data?',
+      name: 'Publishing hum.data?',
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value => `Publishing hum.data?: ${value}`,
       },
     },
     {
-      name: 'Publishing v2.02 Hum. Data?',
+      name: 'Publishing v2.02 hum. data?',
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value =>
+          `Publishing v2.02 hum. data?: ${value}`,
       },
     },
     {
-      name: 'Publishing v2.03 Hum. Data?',
+      name: 'Publishing v2.03 hum. data?',
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value =>
+          `Publishing v2.03 hum. data?: ${value}`,
       },
     },
     {
-      name: 'Incoming TS Traceability',
+      name: 'Incoming trans traceability',
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['true', 'false', 'na'],
+        filterOptions: { names: ['True', 'False', 'NA'] },
         customBodyRender: (value, tableMeta, updateValue) => {
           return <IconCellModule value={value} />;
         },
+        customFilterListRender: value => `Incoming TS traceability: ${value}`,
       },
     },
   ],
@@ -192,9 +205,52 @@ export const mockDataVar2: TableModuleModel = {
     rowHover: true,
     pagination: false,
     viewColumns: true,
-    responsive: 'scroll',
+    // responsive: 'scroll',
     filterType: 'checkbox',
     selectableRows: 'none',
+    sortFilterList: false,
+    onDownload: (
+      buildHead: (whatever) => string,
+      buildBody: (nodata) => string,
+      columns: any[],
+      data: any[]
+    ) => {
+      let csvData = '';
+      // building header
+      columns.forEach(column => {
+        csvData = csvData
+          .concat('"'.concat(column.name).concat('"'))
+          .concat(',');
+      });
+      csvData = csvData.concat('\n');
+      // building body
+      data.forEach(row => {
+        row.data.forEach((cell, index) => {
+          const cellVal = index === 0 ? cell.name : cell;
+          csvData = csvData.concat('"'.concat(cellVal).concat('"')).concat(',');
+        });
+        csvData = csvData.concat('\n');
+      });
+      return csvData;
+    },
+    customSort: (data, colIndex, order) => {
+      let indexStr = colIndex.toString();
+      if (colIndex === 0) {
+        indexStr = `[${colIndex}].name`;
+      }
+      const sortedData = data.sort((a, b) => {
+        const v1 = get(a.data, indexStr, '');
+        const v2 = get(b.data, indexStr, '');
+        if (v1 < v2) {
+          return -1;
+        }
+        if (v1 > v2) {
+          return 1;
+        }
+        return 0;
+      });
+      return order === 'asc' ? sortedData : sortedData.reverse();
+    },
   },
   columnsCell: [
     'LinkCellModule',
@@ -212,10 +268,10 @@ export const mockDataVar2: TableModuleModel = {
     { dataType: 'none' },
     { dataType: 'count' },
     { dataType: 'percentage', percValue: '2.03' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
-    { dataType: 'percentage', percValue: 'true' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
   ],
 };
 
@@ -320,10 +376,24 @@ export const mockDataVar4: TableModuleModel = {
       'National NGO',
       '3',
       '',
-      '€000,000.00',
+      { num: 0, currency: 'EUR' },
     ],
-    ['Aidsfonds', '000 000 00', 'National NGO', '3', '', '€000,000.00'],
-    ['UNESCO', '000 000 00', 'National NGO', '3', '', '€000,000.00'],
+    [
+      'Aidsfonds',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
+    [
+      'UNESCO',
+      '000 000 00',
+      'National NGO',
+      '3',
+      '',
+      { num: 0, currency: 'EUR' },
+    ],
   ],
   columns: [
     {
@@ -528,13 +598,13 @@ export const mockDataVar5: TableModuleModel = {
       },
     },
     {
-      name: 'Disbursements & Expenditure',
+      name: 'Disbursements & expenditure',
       options: {
         filter: false,
         customHeadRender: (columnMeta, updateDirection) =>
           getInfoTHead(
-            'Disbursements & Expenditure',
-            'Disbursements & Expenditure'
+            'Disbursements & expenditure',
+            'Disbursements & expenditure'
           ),
         customBodyRender: (value, tableMeta, updateValue) => {
           if (value && value > 0) return formatMoney(value);
@@ -699,7 +769,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['France', 'Germany'],
+        filterOptions: { names: ['France', 'Germany'] },
       },
     },
     {
@@ -707,7 +777,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['Netherlands'],
+        filterOptions: { names: ['Netherlands'] },
       },
     },
     {
@@ -745,7 +815,7 @@ export const mockDataVar6: TableModuleModel = {
       options: {
         filter: true,
         filterType: 'checkbox',
-        filterOptions: ['XM-DAV-7PPR-28317'],
+        filterOptions: { names: ['XM-DAV-7PPR-28317'] },
       },
     },
   ],
@@ -772,4 +842,163 @@ export const mockDataVar6: TableModuleModel = {
     { dataType: 'money' },
     { dataType: 'none' },
   ],
+};
+
+export const mockDataVar7: TableModuleModel = {
+  title: '',
+  data: [
+    [
+      '2019',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+    [
+      '2018',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+    [
+      '2017',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+      '00',
+    ],
+  ],
+  columns: [
+    {
+      name: 'Year',
+      options: {
+        filter: false,
+      },
+    },
+    {
+      name: 'Jan',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Feb',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Mar',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'April',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'May',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'June',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'July',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Aug',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Sep',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Oct',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Nov',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+    {
+      name: 'Dec',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+      },
+    },
+  ],
+  options: {
+    print: true,
+    search: false,
+    filter: false,
+    download: true,
+    rowHover: false,
+    pagination: false,
+    viewColumns: true,
+    responsive: 'scroll',
+    filterType: 'checkbox',
+    selectableRows: 'none',
+  },
+  columnsCell: [''],
 };

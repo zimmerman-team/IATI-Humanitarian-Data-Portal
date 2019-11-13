@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { Page } from '.';
 import Providers from 'app/Providers';
 
-
 storiesOf('Modules|Page', module).add('Page - layout', () => (
   <>
     <Providers>

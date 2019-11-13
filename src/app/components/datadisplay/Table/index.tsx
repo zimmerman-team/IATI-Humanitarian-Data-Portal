@@ -10,6 +10,8 @@ import {
 } from 'app/components/datadisplay/Table/helpers';
 
 const TableModule = (props: TableModuleModel) => {
+  const [totalData, setTotalData] = React.useState({});
+
   React.useEffect(() => {
     if (props.totalCell) {
       setTotalData(
@@ -25,7 +27,6 @@ const TableModule = (props: TableModuleModel) => {
     prevAction: '',
     rowsPerPage: 10,
   });
-  const [totalData, setTotalData] = React.useState({});
   const options = addConfig(
     props,
     localTableState,

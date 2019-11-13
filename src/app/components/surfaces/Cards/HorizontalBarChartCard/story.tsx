@@ -8,7 +8,7 @@ import { mockData } from './mock';
 storiesOf('Surfaces|Cards/', module).add('Horizontal Bar Chart card', () => (
   <Providers>
     <Grid container>
-      <HorizontalBarChartCard values={mockData} title={mockData.title}/>
+      <HorizontalBarChartCard data={mockData.data} title={mockData.title} />
     </Grid>
   </Providers>
 ));

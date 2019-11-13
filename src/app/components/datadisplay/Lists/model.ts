@@ -1,23 +1,30 @@
+import { ListCellModel } from './common/SimpleListItem/model';
+
 export type ListModel = {
   title?: string;
   subtitle?: string;
   valueHeaders?: boolean;
-  items: ListItemModel[];
-}
+  elName: string;
+  type?: 'Card' | 'TableCard' | 'ExpTableCard';
+  items?: ListItemModel[];
+  tableCItems?: ListCellModel[][];
+};
 
 export type ListItemModel = {
   label: string;
   values: ListItemValueModel[];
   tooltip?: string;
-}
+  highlight?: boolean;
+  onClick?: Function | undefined;
+};
 
 export type ListItemValueModel = {
-  qtc?: number;
-  ptc?: number;
-  date?: Date;
+  qtc?: number | string;
+  ptc?: number | string;
+  date?: string;
   version?: string;
   highlight?: string;
-}
+};
 
 //TODO: ListItemValueModel should be implemented different
 //-value: oneOf qtc, ptc, date, version
