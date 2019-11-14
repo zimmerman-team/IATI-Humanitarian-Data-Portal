@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { Card as MuiCard } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
-import { DonutChart } from 'app/components/charts/DonutChart/index';
-import { DonutChartCardModel } from './model';
+import { DonutChart } from 'app/components/charts/DonutChart';
+import { DonutChartCardModel } from 'app/components/surfaces/Cards/DonutChartCard/model';
 
 const Card = styled(props => <MuiCard {...props} />)`
   && {

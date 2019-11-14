@@ -1,13 +1,13 @@
 import React from 'react';
 import { hydrate, render } from 'react-dom';
-import { createBrowserHistory } from 'history';
 import App from 'app';
-import { setupNotification } from './notification';
-import * as serviceWorker from 'serviceWorker';
+// import { setupNotification } from 'notification';
+// import * as serviceWorker from 'serviceWorker';
+import * as _ from 'styled-components/cssprop';
 
 const rootElement = document.getElementById('root');
 
-if (rootElement != null) {
+if (rootElement !== null) {
   if (rootElement.hasChildNodes()) {
     hydrate(<App />, rootElement);
   } else {
@@ -15,10 +15,14 @@ if (rootElement != null) {
   }
 }
 
+/*
 if (process.env.REACT_APP_NODE_ENV === 'development') {
   serviceWorker.unregister();
 } else {
-  serviceWorker.register();
+  /!* for now just do not register the service worker*!/
+  serviceWorker.unregister();
+  // serviceWorker.register();
 }
+*/
 
-setupNotification();
+// setupNotification();

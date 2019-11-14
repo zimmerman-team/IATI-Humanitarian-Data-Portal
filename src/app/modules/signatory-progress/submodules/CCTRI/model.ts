@@ -5,5 +5,5 @@ export type CCTRIPageModel = {
 
 interface SectionModel {
   title?: string;
-  content: string | string[];
+  content: string;
 }

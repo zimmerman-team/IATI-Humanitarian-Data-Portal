@@ -56,9 +56,10 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ebebeb;
+  background-color: #f7f7f7;
 }
 
 code {
@@ -85,4 +86,8 @@ ol{
 .TotalCell {
   color: #ffffff !important;
   background: #3d3d3d !important;
+}
+
+.TransparentCell {
+  background: transparent !important;
 }

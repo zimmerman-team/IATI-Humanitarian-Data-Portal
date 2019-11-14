@@ -1,29 +1,109 @@
-import { createStore } from 'easy-peasy';
-import { ApplicationStoreModel } from 'app/state/models';
-import organisationTypes from 'app/state/interfaces/OrganisationTypesInterface';
-import organisations from 'app/state/interfaces/OrganisationsInterface';
-import sectors from 'app/state/interfaces/SectorsInterface';
-import regions from 'app/state/interfaces/RegionsInterface';
-import countries from 'app/state/interfaces/CountriesInterface';
-import sectorCategories from 'app/state/interfaces/SectorCategoryInterface';
-import { borgCollective } from 'app/state/models/CyborgModel';
-import { queryModel } from 'app/state/models/QueryModel';
+import { createStore, action } from 'easy-peasy';
+import { persistStore, persistReducer } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import activities from 'app/state/api/actionsReducers/activity';
+import humanitarian from 'app/state/api/actionsReducers/humanitarian';
+import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
+import tooltips from 'app/state/api/actionsReducers/tooltips';
+import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
+import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
+import {
+  sigdataincoming,
+  sigdataincomingfundtrace,
+  sigdataincomingtransactions,
+} from 'app/state/api/actionsReducers/sigdataincoming';
+import {
+  sigdataoutgoing,
+  sigdataoutgoingdisbtrace,
+  sigdataoutgoingtransactions,
+} from 'app/state/api/actionsReducers/sigdataoutgoing';
+import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
+import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
+import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
+import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
+import sigdatadatesheader from 'app/state/api/actionsReducers/sigdatadatesheader';
+import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
+import sigdataoverviewhum4donut from 'app/state/api/actionsReducers/sigdataoverviewhum4donut';
+import sigdataoverviewdataerrors from 'app/state/api/actionsReducers/sigdataoverviewdataerrors';
+import sigdataactivitiesbyyear from 'app/state/api/actionsReducers/sigdataactivitiesbyyear';
+import {
+  ActivityResponceInterface,
+  OrganisationNarrativeInterface,
+} from 'app/state/api/interfaces/activityInterface';
+import { CodeListInterface } from '../api/interfaces/codeListsInterface';
+import { codelists } from '../api/actionsReducers/codeLists';
+import organisationnarrative from 'app/state/api/actionsReducers/organisationNarrative';
+import { SigDataActivityListFilterModel } from '../api/interfaces';
+import { DataTableOptions } from 'app/state/general/interfaces';
+import { dataTableOpts } from 'app/state/general/actionsReducers';
 
-const applicationStore: ApplicationStoreModel = {
-  organisationTypes: organisationTypes,
-  organisations: organisations,
-  sectors: sectors,
-  regions: regions,
-  countries: countries,
-  sectorCategories: sectorCategories,
-  borgCollective: borgCollective,
-  query: queryModel,
+const persistSessionConfig = {
+  key: 'session',
+  storage: storageSession,
 };
 
-const appStore = createStore(applicationStore);
+export interface ApplicationStoreModel {
+  activities: ActivityResponceInterface;
+  humanitarian: ActivityResponceInterface;
+  sigdataincoming: ActivityResponceInterface;
+  sigdataoutgoing: ActivityResponceInterface;
+  gbsignatories: GBSignatoryResponseInterface;
+  tooltips: GBSignatoryResponseInterface;
+  signatoryProgress: SignatoryPrgoressResponseInterface;
+  iatigbsignatories: ActivityResponceInterface;
+  sigdataoverviewhum: ActivityResponceInterface;
+  sigdataoverviewhum4donut: ActivityResponceInterface;
+  sigdataactivityyears: ActivityResponceInterface;
+  sigdataactivitystatus: ActivityResponceInterface;
+  sigdataactivitiesbyyear: ActivityResponceInterface;
+  sigdataincomingfundtrace: ActivityResponceInterface;
+  sigdataincomingtransactions: ActivityResponceInterface;
+  sigdataoutgoingdisbtrace: ActivityResponceInterface;
+  sigdataoverviewdataerrors: ActivityResponceInterface;
+  sigdataoutgoingtransactions: ActivityResponceInterface;
+  codelists: CodeListInterface;
+  organisationnarrative: OrganisationNarrativeInterface;
 
-// export const useStoreActions = appStore.useStoreActions;
-// export const useStoreState = appStore.useStoreState;
-// export const useStoreDispatch = appStore.useStoreDispatch;
+  sigDataOpts: DataTableOptions;
+  sigDataActivityListFilter: SigDataActivityListFilterModel;
+  sigdatadatesheader: ActivityResponceInterface;
+}
 
-export default appStore;
+const applicationStore: ApplicationStoreModel = {
+  sigDataOpts: dataTableOpts,
+  codelists,
+  activities,
+  humanitarian,
+  gbsignatories,
+  sigdataincoming,
+  sigdataoutgoing,
+  iatigbsignatories,
+  sigdataoverviewhum,
+  sigdataoverviewhum4donut,
+  sigdataactivityyears,
+  sigdataactivitystatus,
+  sigdataactivitiesbyyear,
+  sigdataincomingfundtrace,
+  sigdataoutgoingdisbtrace,
+  organisationnarrative,
+  sigdataoverviewdataerrors,
+  tooltips,
+  signatoryProgress,
+  sigdatadatesheader,
+  sigdataoutgoingtransactions,
+  sigdataincomingtransactions,
+  sigDataActivityListFilter: {
+    activityListFilter: { label: '', value: '' },
+    setActivityListFilter: action((state, payload) => {
+      state.activityListFilter = payload;
+    }),
+  },
+};
+
+export const appStore = createStore(applicationStore, {
+  reducerEnhancer: reducer => {
+    return persistReducer(persistSessionConfig, reducer);
+  },
+});
+
+export const persistor = persistStore(appStore);

@@ -1,9 +1,10 @@
-import { ActivityDetailsHeaderCardModel } from './model';
+import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 
 export const mockData: ActivityDetailsHeaderCardModel = {
   organisation: {
     name: 'ActionAid UK',
     code: 'GB-CHC-274467',
+    type: 'International NGO',
   },
   activity: {
     title: 'Promoting Opportunities for Women’s Empowerment and Rights',

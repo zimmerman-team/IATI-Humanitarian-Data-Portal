@@ -1,4 +1,4 @@
-import { HorizontalBarChartModel } from './model';
+import { HorizontalBarChartModel } from 'app/components/charts/BarCharts/HorizontalBarChart/model';
 
 export const mockData: HorizontalBarChartModel = {
   values: [

@@ -5,10 +5,13 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
-import { ExpansionPanelModel } from './model';
+import parse from 'html-react-parser';
+import { ExpansionPanelModel } from 'app/components/surfaces/ExpansionPanel/model';
+import Box from '@material-ui/core/Box';
 
 const BaseExpansionPanel = styled(props => <MuiExpansionPanel {...props} />)`
   // todo: refactor to a less hacky solution
+  width: 100% !important;
   margin-bottom: 8px !important;
   margin-top: 8px !important;
   && {
@@ -45,20 +48,20 @@ const BaseExpandIcon = styled(props => <ExpandMoreIcon {...props} />)`
 
 const ExpansionPanel = (props: ExpansionPanelModel) => {
   return (
-    <div>
-      {props.questions.map(question => (
+    <Box width="100%">
+      {props.faqItems.map(question => (
         <BaseExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<BaseExpandIcon fontSize="large" />}
           >
-            <Typography variant="subtitle1">{question.question}</Typography>
+            <Typography variant="subtitle1">{question.title}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography variant="body1">{question.answer}</Typography>
+            <Typography variant="body1">{parse(question.expl)}</Typography>
           </ExpansionPanelDetails>
         </BaseExpansionPanel>
       ))}
-    </div>
+    </Box>
   );
 };
 

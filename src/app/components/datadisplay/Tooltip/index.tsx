@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Tooltip } from '@material-ui/core';
@@ -38,7 +38,11 @@ const BaseButton = styled(props => <Button {...props} />)`
 export const TooltipButton = (props: Props) => {
   return (
     <Tooltip
-      title={props.tip ? props.tip : 'empty tooltip'}
+      title={
+        <span style={{ whiteSpace: 'pre-wrap' }}>
+          {props.tip ? props.tip : 'empty tooltip'}
+        </span>
+      }
       placement="top-end"
     >
       <span>

@@ -1,30 +1,38 @@
-import { InPageNavModel } from './model';
+import { InPageNavModel } from 'app/components/navigation/InPageNavigation/model';
 
 export const mockData: InPageNavModel = {
-  locations: [
+  lists: [
     {
-      label: 'Activity Summary',
-      url: '#activity_summary',
+      title: 'Activity summary',
+      elName: 'summary',
     },
     {
-      label: 'FTS Import related',
-      url: '#FTS_import_related',
+      title: 'FTS Import related',
+      elName: 'fts',
     },
     {
-      label: 'Grand Bargain classifications',
-      url: '/1',
+      title: 'Grand Bargain classifications',
+      elName: 'GBClass',
     },
     {
-      label: 'Other classifications of intererest',
-      url: '/2',
+      title: 'Other classifications of intererest',
+      elName: 'otherClass',
     },
     {
-      label: 'Humanitarian results',
-      url: '/3',
+      title: 'Humanitarian results',
+      elName: 'humanitarian',
     },
     {
-      label: 'Location information',
-      url: '/4',
+      title: 'Location information',
+      elName: 'location',
+    },
+    {
+      title: 'Multi-year funding',
+      elName: 'multiyear',
+    },
+    {
+      title: 'Financial reporting',
+      elName: 'reporting',
     },
   ],
 };

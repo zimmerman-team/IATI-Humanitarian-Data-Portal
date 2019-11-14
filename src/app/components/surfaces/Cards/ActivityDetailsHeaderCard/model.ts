@@ -6,6 +6,7 @@ export type ActivityDetailsHeaderCardModel = {
 type OrganisationModel = {
   name: string;
   code: string;
+  type: string;
 };
 
 type ActivityModel = {

@@ -1,168 +1,85 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
-import { InsertLink } from '@material-ui/icons';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
-import { List } from 'app/components/datadisplay/Lists';
-import { listMockData } from 'app/components/datadisplay/Lists/mock';
-export const IncomingLayout = () => {
+import { Grid, Box, Hidden } from '@material-ui/core';
+import { InPageNavigation } from 'app/components/navigation/InPageNavigation';
+import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
+import { IncomingModel } from 'app/modules/signatory-data/submodules/incoming/model';
+import { DecoSigIncomingTopLeft } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSigIncomingTopLeft';
+import { IncomingPledgesFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingPledgesFragment';
+import { IncomingCommitmentsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingCommitmentsFragment';
+import { IncomingFundsFragment } from 'app/modules/signatory-data/submodules/incoming/fragments/IncomingFundsFragment';
+
+export const IncomingLayout = (props: IncomingModel) => {
   return (
-    <Container>
-      {/** header */}
-      <Grid container>
-        {/** todo: add breadcrumb component */}
-        <Typography variant="body2">Signatory Data / ActionAid UK</Typography>
-      </Grid>
+    <>
+      {/* content */}
 
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="h3" color="textPrimary">
-                ActionAid UK
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                GB-CHC-274467 2017-2019
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/** todo: style */}
-              <Typography variant="body2" color="textPrimary">
-                *earliest and latest activity start dates
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid container>
-                <Grid item>
-                  <InsertLink color="secondary" />
-                </Grid>
-                <Box width="5px" />
-                <Grid item>
-                  <Typography variant="body1" color="secondary">
-                    {/**  todo: add link icon and make link of text */}
-                    Publisher Supplementary Information
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Hidden mdUp>
-          <Box height="50px" width="100%" />
-        </Hidden>
-        <Grid item xs={12} md={6}>
-          {/** todo: add navigation 
-        - Overview 
-        - Activity List
-        - Incoming transactions
-        - Providers
-        - Outgoing transactions
-        - Recipents
-        - Timeliness
-        - Coverage
-        */}
+      {/* ---------------------------------------- */}
+      {/* decoration: top left */}
+      <Box position="absolute" top="0" left="0" zIndex="10000">
+        <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
+      </Box>
+      {/* ---------- */}
 
-          <SignatoryNavigation locations={locations} />
-        </Grid>
-      </Grid>
-      {/** content */}
-
-      <Box height="50px" width="100%" />
       <Grid container spacing={4}>
-        <Grid item md={12}>
-          <Box width="100%" height="335px" bgcolor="white" />
+        <Grid item xs={12} md={12}>
+          <HorizontalBarChartCard
+            title={props.horizontalBarChartCardData.title}
+            data={props.horizontalBarChartCardData.data}
+          />
         </Grid>
       </Grid>
 
       <Box height="50px" width="100%" />
       <Grid container spacing={4}>
-        {/** side menu 
-        
+        {/** side menu
+
         - Activity Summary
         - FTS Import related
         - Grand Bargain classifications
         - Other classifications of intererest
         - Humanitarian results
         - Location information
-        
+
         */}
         <Hidden smDown>
-          <Grid item xs={3}>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                {/** todo: add side menu */}
-                <Box width="100%" height="300px" bgcolor="white" />
+          <Grid item xs={12} sm={12} md={12} lg={3}>
+            <div
+              css={`
+                position: sticky;
+                top: 50px;
+                height: 400px;
+              `}
+            >
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  <InPageNavigation lists={props.lists} />
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Grid>
         </Hidden>
 
         <Grid item xs={12} md={9}>
           <Grid container spacing={4}>
-            {/** 1 */}
+            {/* ---------------------------------------- */}
             {/** Incoming pledges */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming pledges
-                  
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
+            {/** 1 */}
+            <IncomingPledgesFragment lists={props.lists[0]} />
 
-              <List
-                title="Incoming pledges"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
-            {/** 2 */}
+            {/* ---------------------------------------- */}
             {/** Incoming commitments */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming commitments
-                  
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                */}
+            {/** 2 */}
+            <IncomingCommitmentsFragment lists={props.lists[1]} />
 
-              <List
-                title="Incoming commitments"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
-
-            {/** 3 */}
+            {/* ---------------------------------------- */}
             {/** Incoming funds */}
-            <Grid item xs={12}>
-              {/**
-                  Incoming funds
-                  
-                    - Total no. of activities with Incoming Pledges
-                    - With funding provider details specified
-                    - With funding organisation type provided
-                    - With source traceability information
-                */}
-
-              <List
-                title="Incoming funds"
-                subtitle={listMockData.subtitle}
-                valueHeaders
-                items={listMockData.items}
-              />
-            </Grid>
+            {/** 3 */}
+            <IncomingFundsFragment lists={props.lists[2]} />
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+      <Box height="100px" width="100%" />
+    </>
   );
 };

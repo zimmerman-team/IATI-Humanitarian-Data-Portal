@@ -116,7 +116,10 @@ export const Typography = {
     fontFamily: 'Inter',
     fontSize: `${3}rem`,
     fontWeight: Weight.medium,
-    lineHeight: '1.3',
+    lineHeight: 'normal',
+    fontStretch: 'normal',
+    letterSpacing: 'normal',
+    fontStyle: 'normal',
   },
   h4: {
     fontSize: `${2.125}rem`,
@@ -127,6 +130,8 @@ export const Typography = {
     fontSize: `${1.25}rem`,
     fontWeight: Weight.bold,
     lineHeight: '1.5',
+    fontStretch: 'normal',
+    letterSpacing: 'normal',
   },
   h5: {
     fontSize: `${1.25}rem`,
@@ -136,6 +141,7 @@ export const Typography = {
   body1: {
     fontSize: `${1}rem`,
     fontWeight: Weight.regular,
+    letterSpacing: '0.5px',
   },
   body2: {
     fontSize: `${0.875}rem`,
@@ -168,6 +174,7 @@ export const Typography = {
   overline: {
     fontSize: `${0.75}rem`,
     fontWeight: Weight.regular,
+    letterSpacing: '2.0px',
   },
   code: {
     fontSize: `${0.875}rem`,
@@ -216,7 +223,16 @@ export default createMuiTheme({
       paper: {
         boxShadow: 'none',
         backgroundColor: 'transparent',
+        width: '100%',
       },
+      responsiveScroll: {
+        maxHeight: '700px',
+      },
+    },
+    MuiTooltip: {
+      tooltip: {
+        whiteSpace: 'pre-wrap'
+      }
     },
     MUIDataTableToolbar: {
       root: {

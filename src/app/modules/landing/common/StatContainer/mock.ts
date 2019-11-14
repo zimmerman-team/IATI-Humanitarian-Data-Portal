@@ -1,20 +1,22 @@
-import { StateContainerModel } from './models';
+import { StateContainerModel } from 'app/modules/landing/common/StatContainer/models';
+
 export const mockData: StateContainerModel = {
   items: [
     {
       description: 'Grand Bargain Signatories',
       value: 89,
-      signatoryType: 'gb',
+      signatorytype: 'gb',
     },
     {
       description: 'GB signatories publishing to IATI',
-      value: 250,
-      signatoryType: 'iati',
+      value: 300,
+      signatorytype: 'iati',
     },
     {
-      description: 'Signatories & affiliates publishing humanitarian data ',
+      description:
+        'Signatories or their affiliates publishing humanitarian data ',
       value: 2,
-      signatoryType: 'humanitarian',
+      signatorytype: 'humanitarian',
     },
   ],
 };

@@ -1,60 +1,26 @@
 import React from 'react';
-import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import Table from 'app/components/datadisplay/Table/index';
-import { SignatoryNavigation } from 'app/components/navigation/Signatory Navigation/index';
-import { locations } from 'app/components/navigation/Signatory Navigation/mock';
-import { ActivityListLayoutModel } from './model';
-import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import { DrawerMenu } from 'app/components/navigation/Drawer';
-import { mockData } from 'app/components/navigation/Drawer/mock';
+import { ActivityListLayoutModel } from 'app/modules/signatory-data/submodules/activityList/model';
+import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
+import { DecoSigActiveBottomRight } from 'app/modules/signatory-data/submodules/activityList/common/decoration/DecoSigActiveBottomRight';
+import { PageLoader } from 'app/modules/common/PageLoader';
 
 export const ActivityListLayout = (props: ActivityListLayoutModel) => {
   return (
-    <Container>
-      {/** --------------------------------------------------------------------------- */}
-      {/** Header */}
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Grid container direction="column">
-            <Hidden mdUp>
-              <Box height="72px" width="100%" />
-              {/*TODO: Replace with props*/}
-              <BreadCrumbs
-                currentLocation="ActionAid UK"
-                previousLocations={['Signatory Data']}
-              />
-              <Box height="12px" width="100%" />
-              {/*TODO: Replace with props */}
-              <DrawerMenu links={mockData.links} />
-            </Hidden>
-            <Grid item>
-              <Typography variant="h3" color="textPrimary">
-                {props.title}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                variant="overline"
-                style={{ color: 'rgba(1, 1, 10, 0.6)' }}
-              >
-                {props.subtitle}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Hidden mdUp>
-          <Box height="50px" width="100%" />
-        </Hidden>
-        <Grid item xs={12} md={6}>
-          <SignatoryNavigation locations={locations} />
-        </Grid>
-        {/** --------------------------------------------------------------------------- */}
+    <>
+      {props.loading && <PageLoader />}
+      {/* ---------------------------------------- */}
+      {/* decoration: top left*/}
+      <Box position="absolute" top="0" left="0" zIndex="10002">
+        <DecoSigOverviewTopLeft />
+      </Box>
+      {/* ---------- */}
 
-        {/*TODO: this box height should be 64 when SignatoryNavigation has been refactored*/}
-        <Box height="44px" width="100%" />
-        {/** --------------------------------------------------------------------------- */}
-        {/** Table */}
-        <Grid item>
+      <Grid container>
+        <Grid item md={12} style={{ position: 'relative' }}>
+          {/* ---------------------------------------- */}
+          {/* Humanitarian activities */}
           <Table
             title={props.activity.title}
             data={props.activity.data}
@@ -62,8 +28,16 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
             columns={props.activity.columns}
             columnsCell={props.activity.columnsCell}
           />
+          {/* ---------- */}
+
+          {/* ---------------------------------------- */}
+          {/* decoration: bottom right */}
+          <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
+            <DecoSigActiveBottomRight />
+          </Box>
+          {/* ---------- */}
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };

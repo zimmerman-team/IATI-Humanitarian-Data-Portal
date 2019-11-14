@@ -7,8 +7,8 @@ import mockData from './mock';
 
 storiesOf('Surfaces|Expansion Panel/', module).add('Expansion Panel', () => (
   <Providers>
-    <Grid container style={{backgroundColor: "#ebebeb"}}>
-      <Component questions={mockData.questions}/>
+    <Grid container style={{ backgroundColor: '#ebebeb' }}>
+      <Component faqItems={mockData.faqItems} />
     </Grid>
   </Providers>
 ));

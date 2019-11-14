@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Component from './index';
+import Component from '.';
 import Providers from 'app/Providers';
 import { Grid } from '@material-ui/core';
 
@@ -10,7 +10,7 @@ storiesOf('Feedback|Snackbar/', module).add('Snackbar', () => (
       <Component
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left'
+          horizontal: 'left',
         }}
         variant="error"
         message="This is an error message!"
@@ -19,7 +19,7 @@ storiesOf('Feedback|Snackbar/', module).add('Snackbar', () => (
       <Component
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         variant="warning"
         message="This is a warning message!"
@@ -29,7 +29,7 @@ storiesOf('Feedback|Snackbar/', module).add('Snackbar', () => (
       <Component
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left'
+          horizontal: 'left',
         }}
         variant="info"
         message="This is an info message!"
@@ -39,7 +39,7 @@ storiesOf('Feedback|Snackbar/', module).add('Snackbar', () => (
       <Component
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         variant="success"
         message="This is a success message!"

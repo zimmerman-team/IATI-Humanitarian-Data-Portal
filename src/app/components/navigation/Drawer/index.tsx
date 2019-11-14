@@ -8,7 +8,7 @@ import MuiListItemText from '@material-ui/core/ListItemText';
 import Colors from 'app/theme/color';
 import Box from '@material-ui/core/Box';
 import styled from 'styled-components';
-import { DrawerMenuModel } from './model';
+import { DrawerMenuModel } from 'app/components/navigation/Drawer/model';
 
 //TODO: code splitting
 
@@ -21,7 +21,8 @@ const Drawer = styled(props => <MuiDrawer {...props} />)`
 const MenuButton = styled(props => <MenuIcon {...props} />)`
   && {
     font-size: 40px;
-
+    margin-right: 25px;
+    //margin-bottom: 55px;
     :hover {
       cursor: pointer;
     }
@@ -111,6 +112,7 @@ export function DrawerMenu(props: DrawerMenuModel) {
       justifyContent="flex-end"
       alignItems="center"
       height="72px"
+      paddingBottom="56px"
     >
       <MenuButton onClick={toggleDrawer(true)} />
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer(false)}>
