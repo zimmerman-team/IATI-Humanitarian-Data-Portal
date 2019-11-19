@@ -12943,11 +12943,6 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-  
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -12960,6 +12955,11 @@ lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
+
+lodash._getnative@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
@@ -19291,7 +19291,7 @@ sourcemapped-stacktrace-node@2.1.8:
     isomorphic-fetch "^2.2.1"
     source-map "^0.6.1"
 
-space-api@^0.12.0:
+space-api@0.12.1:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/space-api/-/space-api-0.12.1.tgz#694a964a4e48df512466c9a928dc02f1ad743236"
   integrity sha512-4e+CWnSsTD+zNpZCM5xk7wDdPCCdRk4Gmr3u8WQ2nZOctBbtpyN0z1JJmpa13zB+Xnza8bzxyyzNL9d6R5J53Q==
