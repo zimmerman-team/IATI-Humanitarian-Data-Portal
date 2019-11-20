@@ -144,7 +144,7 @@ export const hum4DonutValues = {
 };
 
 export const activityStatusValues = {
-  latest_update: 'max(last_updated_datetime)',
+  latest_update: 'max(dataset_date_updated)',
   data_first_published: 'min(dataset_date_created)',
   latest_iati_version: 'max(dataset_iati_version)',
   currentHumValuesData: {
