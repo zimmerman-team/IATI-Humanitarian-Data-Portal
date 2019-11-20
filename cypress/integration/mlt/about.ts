@@ -14,6 +14,7 @@ describe('About', function() {
 
   it('should load the page', function() {
     cy.visit('/about');
+    cy.wait(1000);
   });
 
   /*it('image snapshot', function() {

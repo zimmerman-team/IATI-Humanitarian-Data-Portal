@@ -14,6 +14,7 @@ describe('CCTRI', function() {
 
   it('should load the page', function() {
     cy.visit('/signatory-progress/cctri-target');
+    cy.wait(1000);
   });
 
   it('check texts', function() {
