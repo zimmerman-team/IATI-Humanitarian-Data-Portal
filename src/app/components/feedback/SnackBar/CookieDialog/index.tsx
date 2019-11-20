@@ -52,7 +52,15 @@ export const CookieDialog = (props: SnackBarProps) => {
   const { message, onClose, ...other } = props;
 
   function handleClose(event?: SyntheticEvent, reason?: string) {
-    setCookie('false');
+    setCookie('false', {
+      expires: 31536000 * 20,
+      domain: '',
+      path: '',
+      secure: false,
+      httpOnly: false,
+      maxAge: 0,
+      sameSite: '',
+    });
     setVisibility(!visible);
 
     /*    if (reason === 'clickaway') {
