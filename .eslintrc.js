@@ -85,5 +85,6 @@ module.exports = {
     'object-shorthand': 0,
     'import/no-extraneous-dependencies': 0,
     'react/jsx-props-no-spreading': 0,
+    'react-hooks/exhaustive-deps': 0,
   },
 };

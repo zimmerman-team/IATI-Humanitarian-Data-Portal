@@ -77,7 +77,7 @@ export const formatTableSignatories = (
             : '0'
         ),
         orgType === 'Government'
-          ? returnFlagValue(fSig ? (fSig.traec.count > 0 ? true : null) : '0')
+          ? returnFlagValue(null)
           : returnFlagValue(fSig ? fSig.traec.count > 0 : '0'),
       ]);
     });

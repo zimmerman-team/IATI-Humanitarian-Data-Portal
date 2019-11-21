@@ -10,7 +10,6 @@ import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { StatContainer } from 'app/modules/landing/common/StatContainer/StatContainer';
 import { LandingModel } from 'app/modules/landing/model';
 import { DecorationLanding } from 'app/modules/common/ModuleBackground/assets/DecorationLanding';
-import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 
 const LandingPaper = styled.div`
   background-color: white;
@@ -89,12 +88,6 @@ export const LandingLayout = (props: LandingModel) => {
           The Initial Release: <span>Alpha Release</span>
         </Typography>
       </VersionBox>
-
-      <CookieDialog
-        data-testid="cookie-dialog"
-        message="The website uses cookies for tracking statistics. Read Grand Bargains data privacy for more details."
-        open
-      />
     </Container>
   );
 };
