@@ -70,10 +70,10 @@ export const sigDataOverviewNavItems: InPageNavModel = {
       title: 'Other classifications of intererest',
       elName: 'otherClass',
     },
-    {
-      title: 'Results',
-      elName: 'humanitarian',
-    },
+    // {
+    //   title: 'Results',
+    //   elName: 'humanitarian',
+    // },
     {
       title: 'Location information',
       elName: 'location',

@@ -136,7 +136,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
             {/** 5 */}
             {/** Humanitarian results */}
-            <Humanitarian humResultsData={props.humResultsData} />
+            {/* <Humanitarian humResultsData={props.humResultsData} /> */}
 
             {/** 6 */}
             {/** Hum. activites with location information */}
