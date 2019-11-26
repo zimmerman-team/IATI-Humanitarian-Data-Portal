@@ -55,7 +55,7 @@ export const LandingLayout = (props: LandingModel) => {
                 <Highlighter
                   autoEscape
                   searchWords={['Humanitarian']}
-                  textToHighlight="A Spotlight on International Humanitarian Assistance IATI Data"
+                  textToHighlight="A Spotlight on International Humanitarian Assistance Information"
                 />
               </LandingIntrotext>
             </Box>
