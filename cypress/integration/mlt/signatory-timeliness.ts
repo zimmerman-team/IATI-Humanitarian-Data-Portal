@@ -3,9 +3,8 @@
 import autoRecord from 'cypress-autorecord';
 
 const signatoryTimelinessTexts = [
-  'Publishing frequency',
-  'Publishing frequency measures how often an organisation updates their published IATI data. This is useful for any data user to know in order that they can assess how ‘useful’ the published information might be.',
-  'The table below shows the number of days for each month on which the published IATI dataset has been assessed as having been updated. An ‘update’ is recorded when a ‘more recent’ transaction date (than the ‘most recent’ previously identified by the portal) is detected.',
+  'Humanitarian publishing frequency',
+  'The table records the number of days in each of the last twelve months on which the most recently recorded transaction date was observed by the Dashboard to have changed.',
   'Data timelag',
 ];
 
