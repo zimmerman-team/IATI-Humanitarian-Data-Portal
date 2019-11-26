@@ -106,10 +106,14 @@ export const dateRanges = [
 
 export const linesOrder = [
   { n: 0, line: 'Publishing IATI traceability info' },
-  { n: 1, line: 'Providing granular v2.03 data' },
-  { n: 2, line: 'Providing granular v2.02 data' },
-  { n: 3, line: 'Publishing hum. activity data' },
-  { n: 4, line: 'Signatories publishing to IATI' },
+  {
+    n: 1,
+    line: 'Organisations using v2.02 or later of the IATI Standard',
+  },
+  { n: 2, line: 'Providing granular v2.03 data' },
+  { n: 3, line: 'Providing granular v2.02 data' },
+  { n: 4, line: 'Publishing hum. activity data' },
+  { n: 5, line: 'Signatories publishing to IATI' },
 ];
 
 // so this is mainly the result forming query that we need for the data
@@ -171,6 +175,17 @@ export const humPubQuery = {
 };
 
 // query for publishers publishing 2.02 data
+export const use202OrLaterQuery = {
+  q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
+        (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
+        (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10) OR (transaction_type:(12 13) OR
+        default_aid_type_vocabulary:(2 3 4) OR
+         reporting_org_type_code:24))`,
+  rows: 0,
+  'json.facet': jsonFacet,
+};
+
+// query for publishers publishing 2.02 data
 export const pub202Query = {
   q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
         (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
@@ -210,6 +225,14 @@ export function constructDateRanges(signatoryProgressData) {
         signatoryProgress.publishingOpenDataIATI
       ),
       //73,
+      use202OrLaterCount:
+        signatoryProgress.using202OrLater === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.using202OrLater,
+      use202OrLaterPerc: calculatePercentage(
+        signatoryProgress.publishingOpenDataIATI,
+        signatoryProgress.using202OrLater
+      ),
       humCount:
         signatoryProgress.publishingHumanitarianActivities === 'NOT MEASURED'
           ? null

@@ -155,7 +155,8 @@ export function OverviewPage(props) {
   const activityTimelineData = getYearBarChartData(yearsData);
   const humanitarianElementsData = getHumanitarianElementsData(
     get(sigdataoverviewhumData, 'data', []),
-    get(sigdataoverviewhum4donutData, 'data', [])
+    get(sigdataoverviewhum4donutData, 'data', []),
+    get(sigdataoverviewhumData, 'data', [])
   );
   const statusData = getStatusData(
     get(sigdataactivitystatusData, 'data', []),
