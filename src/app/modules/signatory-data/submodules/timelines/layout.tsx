@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { TimeLinessModel } from 'app/modules/signatory-data/submodules/timelines/model';
 import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
@@ -12,9 +12,10 @@ import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/ti
 //   column-gap: 6rem;
 // `;
 
-// const HighlightedTypography = styled.span`
-//   background-color: yellow;
-// `;
+const ColumnBox = styled.div`
+  column-count: 2;
+  column-gap: 6rem;
+`;
 
 export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
@@ -30,26 +31,15 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
       <Grid container spacing={4} direction="column">
         <Grid item xs={12} sm={12} md={12}>
           <Typography variant="h4">
-            <span>Publishing frequency</span>
+            <span>Humanitarian publishing frequency</span>
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1">
             <span>
-              Publishing frequency measures how often an organisation updates
-              their published IATI data. This is useful for any data user to
-              know in order that they can assess how ‘useful’ the published
-              information might be.
-            </span>
-          </Typography>
-          <Box width="100%" height="16px" />
-          <Typography variant="body1">
-            <span>
-              The table below shows the number of days for each month on which
-              the published IATI dataset has been assessed as having been
-              updated. An ‘update’ is recorded when a ‘more recent’ transaction
-              date (than the ‘most recent’ previously identified by the portal)
-              is detected.
+              The table records the number of days in each of the last twelve
+              months on which the most recently recorded transaction date was
+              observed by the Dashboard to have changed.
             </span>
           </Typography>
         </Grid>
@@ -79,23 +69,27 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
 
       <Grid container spacing={4} direction="column">
         <Grid item xs={12} md={6}>
-          <Typography variant="h4">Data timelag</Typography>
+          <Typography variant="h4">Humanitarian Data timelag</Typography>
         </Grid>
         <Grid item xs={12} xl={12}>
-          <Typography variant="body1">
-            The time-lag statistics assess how up to date the data is. For
-            instance a publisher may update their data every month, but the
-            updated data is in fact three months old. Alternatively a publisher
-            may only update their data once a year, but when they do so it
-            contains current data that is less than one month old.
-          </Typography>
-          <Box width="100%" height="16px" />
-          <Typography variant="body1">
-            Transactions are the most numerous and most regularly refreshed
-            elements in reported IATI activities and they are therefore used to
-            make this assessment. The table of statistics shows the number of
-            transaction dates reported for each calendar months.
-          </Typography>
+          <ColumnBox>
+            <Typography variant="body1">
+              The time-lag statistics attempt to assess how up to date the data
+              is at the point that it is refreshed. For instance a publisher may
+              refresh their data monthly, but the refreshed data is in fact
+              three months old. Alternatively a publisher may only refresh their
+              data once a year, but when they do it contains current data that
+              is less than one month out of date.
+            </Typography>
+            <Box width="100%" height="16px" />
+            <Typography variant="body1">
+              Transactions are the most numerous and most regularly refreshed
+              elements in reported IATI activities and they are therefore used
+              to make this assessment. The table of statistics shows the number
+              of transaction dates reported in each of the last twelve calendar
+              months.
+            </Typography>
+          </ColumnBox>
         </Grid>
         <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">
