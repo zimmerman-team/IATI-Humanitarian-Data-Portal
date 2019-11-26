@@ -170,6 +170,7 @@ export function formatLineChart(
     { id: '0', data: [{ x: 0, y: 0 }] },
     { id: '0', data: [{ x: 0, y: 0 }] },
     { id: '0', data: [{ x: 0, y: 0 }] },
+    { id: '0', data: [{ x: 0, y: 0 }] },
   ];
   lineData.values.values.forEach(item => {
     const orderObj = find(linesOrder, { line: item.id });
@@ -177,6 +178,7 @@ export function formatLineChart(
       orderedLineData[orderObj.n] = item;
     }
   });
+
 
   return { ...lineData, values: { values: orderedLineData } };
 }

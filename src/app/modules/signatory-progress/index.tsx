@@ -14,6 +14,7 @@ import {
   pubTracQuery,
   pub203Query,
   getBaseTable,
+  use202OrLaterQuery,
 } from './const';
 
 /* utils */
@@ -46,13 +47,18 @@ export function SignatoryProgress() {
     if (gbOrgRefs) {
       const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
       humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
-
+      use202OrLaterQuery.q = `${repOrgQuery} AND `.concat(use202OrLaterQuery.q);
       pub202Query.q = `${repOrgQuery} AND `.concat(pub202Query.q);
       pub203Query.q = `${repOrgQuery} AND `.concat(pub203Query.q);
       pubTracQuery.q = `${repOrgQuery} AND `.concat(pubTracQuery.q);
 
       // here we call the data for humanitarian publishers
       actions.humPublishers.fetch({ values: humPubQuery });
+
+      // here we call the data for orgs publishing 2.02 or later version
+      actions.use202OrLater.fetch({
+        values: use202OrLaterQuery,
+      });
 
       // and here we call the data for publishers publishing
       // v2.02 data
@@ -76,6 +82,15 @@ export function SignatoryProgress() {
       key: 'hum',
       specPub: get(
         state.humPublishers,
+        'data.data.facets.org_refs.buckets',
+        null
+      ),
+    },
+    {
+      name: 'Organisations using v2.02 or later of the IATI Standard',
+      key: '202OrLater',
+      specPub: get(
+        state.use202OrLater,
         'data.data.facets.org_refs.buckets',
         null
       ),

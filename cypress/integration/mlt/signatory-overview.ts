@@ -9,7 +9,7 @@ const signatoryOverviewTexts = [
   'Hum. activities with FTS Import related',
   'Hum. activities with Grand Bargain classifications',
   'Hum. activities with other classifications of intererest',
-  'Hum. activities with results',
+  // 'Hum. activities with results',
   'Hum. activites with location information',
   // 'Hum. activites with multi-year funding',
   'Financial reporting',

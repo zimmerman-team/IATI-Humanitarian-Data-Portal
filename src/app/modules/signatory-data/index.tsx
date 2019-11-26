@@ -128,6 +128,21 @@ export const SignatoryData = React.memo(
       );
     }, [iatigbsignatoriesData && organisationNarrativeData]);
 
+    React.useEffect(() => {
+      setColumns(
+        mockDataVar2.columns.map((column, index) => {
+          return {
+            // @ts-ignore
+            ...column,
+            options: {
+              ...column.options,
+              filterList: props.tableOptions.filterLists[index],
+            },
+          };
+        })
+      );
+    }, props.tableOptions.filterLists);
+
     // filterLists
     const sigTable = getBaseTable(tooltipsData);
     // mockDataVar2.columns = columns;
@@ -146,8 +161,8 @@ export const SignatoryData = React.memo(
 
     return (
       <SignatoryDataLayout
-        sigTable={sigTable}
         title={signatoryDataMock.title}
+        sigTable={{ ...sigTable, columns }}
         description={signatoryDataMock.description}
         loading={
           organisationNarrativeData.loading ||
