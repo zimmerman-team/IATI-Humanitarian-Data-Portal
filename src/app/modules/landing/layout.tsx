@@ -33,6 +33,7 @@ const LandingIntrotext = styled(Typography)`
 const VersionBox = styled(Box)`
   && {
     padding-bottom: 10px;
+    margin-top: 113px;
     span {
       color: #5accbf;
     }
