@@ -44,6 +44,7 @@ export const CoverageLayout = (props: CoverageModel) => {
         data={props.tableData.data}
         options={props.tableData.options}
       />
+      <Box height={'64px'} width={'100%'} />
       {/* ---------- */}
     </>
   );
