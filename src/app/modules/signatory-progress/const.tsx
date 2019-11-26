@@ -225,7 +225,10 @@ export function constructDateRanges(signatoryProgressData) {
         signatoryProgress.publishingOpenDataIATI
       ),
       //73,
-      use202OrLaterCount: signatoryProgress.using202OrLater,
+      use202OrLaterCount:
+        signatoryProgress.using202OrLater === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.using202OrLater,
       use202OrLaterPerc: calculatePercentage(
         signatoryProgress.publishingOpenDataIATI,
         signatoryProgress.using202OrLater
