@@ -4,23 +4,25 @@ export const mockData: PrivacyModel = {
   title: 'Privacy Policy',
   sections: [
     {
-      title: 'What is the Grand Bargain?',
+      title: '',
       content: [
-        '<p>This Privacy Policy sets out how we, Development Initiatives Poverty Research Ltd., obtain, store and use your personal information when you use or interact with our website, <a href="www.gbtportal.org" target="_blank">www.gbtportal.org</a> (our website).</p> <p>This Privacy Policy is effective from 1st August  2019.</p> <p>We reserve the right to modify this policy at any time, so please check it frequently.</p>',
+        '<p>This Privacy Policy sets out how we, Development Initiatives Poverty Research Ltd., obtain, store and use your personal information when you use or interact with our website, <a href="https://wwww.humportal.org" target="_blank">www.humportal.org </a>(our website).</p>',
+        '<p>This Privacy Policy is effective from 1st August 2019.</p>',
+        '<p>We reserve the right to modify this policy at any time, so please check it frequently.</p>',
       ],
     },
     {
       title: '1. The information we collect',
       content: [
         '<p> We collect data that you provide indirectly that may include personal data. “Personal Data” is information that identifies you.</p>',
-        '<p>For <a href="https://www.gbtportal.org" target="_blank">www.gbtportal.org</a>, this is collected only in the context of web site analytic information. Information about your computer and about your visits to and use of this website (these are information about your browser, your IP address, your general location as determined from your IP address and provided by your browser, the site from which you come, and the links followed when leaving our site). This information is also collected through cookies. </p>',
+        '<p>For <a href="https://www.humportal.org" target="_blank">www.humportal.org</a>, this is collected only in the context of web site analytic information. Information about your computer and about your visits to and use of this website (these are information about your browser, your IP address, your general location as determined from your IP address and provided by your browser, the site from which you come, and the links followed when leaving our site). This information is also collected through cookies. </p>',
         '<p>NB IP addresses which are considered as personal data are anonymised before being stored</p>',
       ],
     },
     {
       title: '2. How we use your information',
       content: [
-        '<p>How is the information used?</p>',
+        '<p><b>How is the information used?</b></p>',
         '<p>We use this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>',
         '<b>•</b> To  supply to you services provided via the website',
         '<b>•</b> For statistical purposes and analysis for management purposes in order to administer the website or improve the website experience',
@@ -50,8 +52,7 @@ export const mockData: PrivacyModel = {
       title: '5. Contact information',
       content: [
         '<p>If you wish to contact us or have any questions about or complaints in relation to this Privacy Policy, please contact us at the following address:</p>',
-        '<p>Development Initiatives North Quay House Quay Side Temple Back Bristol BS1 6FL</p>',
-        '<p>Email: <a href="mailto:privacy@devinit.org">privacy@devinit.org</a></p>',
+        '<p>Development Initiatives North Quay House Quay Side<br/>Temple Back Bristol BS1<br/>6FL<br/>Email: <a href="mailto:privacy@devinit.org">privacy@devinit.org</a> </p>',
         '<p>Or Data Protection Officer: <a href="mailto:leighton.james@devinit.org">leighton.james@devinit.org</a></p>',
       ],
     },
