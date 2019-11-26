@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import MuiBox from '@material-ui/core/Box';
 import Colors from 'app/theme/color';
@@ -7,7 +8,7 @@ import MuiLink from '@material-ui/core/Link';
 import { DILogo } from 'app/components/svgs/DevelopmentInitiatives';
 import { MONLogo } from 'app/components/svgs/MinistryOfNetherlands';
 import { WBLogo } from 'app/components/svgs/WorldBank';
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 const Box = styled(props => <MuiBox {...props} />)`
   && {
@@ -34,6 +35,21 @@ const Link = styled(props => <MuiLink {...props} />)`
   }
 `;
 
+const StyledNavLink = styled(props => <NavLink {...props} />)`
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  font-family: Inter;
+  letter-spacing: 0.5px;
+  color: ${Colors.whiteOrFontlightbase};
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: ${Colors.whiteOrFontlightbase};
+  }
+`;
+
 export const Footer = () => {
   return (
     <Box
@@ -42,24 +58,29 @@ export const Footer = () => {
       alignItems="center"
       data-testid="Footer"
     >
-      <Link data-testid="DI link" href="http://devinit.org/">
+      <Link data-testid="DI link" href="http://devinit.org/" target="_blank">
         <DILogo />
       </Link>
 
       <Link
         data-testid="GOV link"
         href="https://www.government.nl/ministries/ministry-of-foreign-affairs"
+        target="_blank"
       >
         <MONLogo />
       </Link>
 
-      <Link data-testid="World bank link" href="https://www.worldbank.org/">
+      <Link
+        data-testid="World bank link"
+        href="https://www.worldbank.org/"
+        target="_blank"
+      >
         <WBLogo />
       </Link>
 
-      <Link data-testid="GB link" href="/privacy">
+      <StyledNavLink data-testid="GB link" to="/privacy">
         Grand Bargains Data Privacy and Cookie Policy
-      </Link>
+      </StyledNavLink>
     </Box>
   );
 };
@@ -97,9 +118,9 @@ export const FooterSM = () => {
           <WBLogo />
         </Link>
 
-        <Link data-testid="GB link" href="/privacy">
+        <StyledNavLink data-testid="GB link" to="/privacy">
           Grand Bargains Data Privacy and Cookie Policy
-        </Link>
+        </StyledNavLink>
       </Grid>
     </GridContainer>
   );
