@@ -6,7 +6,7 @@ export const mockData: PrivacyModel = {
     {
       title: '',
       content: [
-        '<p>This Privacy Policy sets out how we, Development Initiatives Poverty Research Ltd., obtain, store and use your personal information when you use or interact with our website, <a href="https://wwww.humportal.org" target="_blank">www.humportal.org </a>(our website).</p>',
+        '<p>This Privacy Policy sets out how we, Development Initiatives Poverty Research Ltd., obtain, store and use your personal information when you use or interact with our website, <a href="https://www.humportal.org" target="_blank">www.humportal.org </a>(our website).</p>',
         '<p>This Privacy Policy is effective from 1st August 2019.</p>',
         '<p>We reserve the right to modify this policy at any time, so please check it frequently.</p>',
       ],
