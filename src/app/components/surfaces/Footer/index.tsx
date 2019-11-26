@@ -6,6 +6,8 @@ import Colors from 'app/theme/color';
 import MuiLink from '@material-ui/core/Link';
 import { DILogo } from 'app/components/svgs/DevelopmentInitiatives';
 import { MONLogo } from 'app/components/svgs/MinistryOfNetherlands';
+import { WBLogo } from 'app/components/svgs/WorldBank';
+import { Grid, Hidden } from '@material-ui/core';
 
 const Box = styled(props => <MuiBox {...props} />)`
   && {
@@ -51,9 +53,54 @@ export const Footer = () => {
         <MONLogo />
       </Link>
 
+      <Link data-testid="World bank link" href="https://www.worldbank.org/">
+        <WBLogo />
+      </Link>
+
       <Link data-testid="GB link" href="/privacy">
         Grand Bargains Data Privacy and Cookie Policy
       </Link>
     </Box>
+  );
+};
+
+const GridContainer = styled(props => <Grid {...props} />)`
+  && {
+    background-color: ${Colors.branddark};
+    padding: 32px 54px;
+    position: absolute;
+    left: 0;
+    width: calc(100%);
+  }
+`;
+
+export const FooterSM = () => {
+  return (
+    <GridContainer container width="100%">
+      <Grid container item justify="space-between" alignItems="center">
+        <Link data-testid="DI link" href="http://devinit.org/">
+          <DILogo />
+        </Link>
+
+        <Link
+          data-testid="GOV link"
+          href="https://www.government.nl/ministries/ministry-of-foreign-affairs"
+        >
+          <MONLogo />
+        </Link>
+      </Grid>
+
+      <MuiBox height="24px" width="100%" />
+
+      <Grid container item justify="space-between" alignItems="center">
+        <Link data-testid="World bank link" href="https://www.worldbank.org/">
+          <WBLogo />
+        </Link>
+
+        <Link data-testid="GB link" href="/privacy">
+          Grand Bargains Data Privacy and Cookie Policy
+        </Link>
+      </Grid>
+    </GridContainer>
   );
 };
