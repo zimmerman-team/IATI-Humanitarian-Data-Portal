@@ -75,7 +75,6 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
         <Grid item xs={12} md={6}>
           <List elName="incComms" items={props.statusData.slice(0, 1)} />
-          {console.log(props.statusData)}
         </Grid>
 
         <Grid item xs={12} md={6}>
