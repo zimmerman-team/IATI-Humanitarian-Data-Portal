@@ -6,6 +6,7 @@ export const colorScheme = colors => {
   if (colors === 'multi') {
     return [
       Colours.purplebase,
+      Colours.softBlue,
       Colours.primaryBase,
       Colours.yellowbase,
       Colours.redbase,

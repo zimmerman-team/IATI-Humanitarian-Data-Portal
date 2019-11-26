@@ -1,6 +1,7 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
+import { Legend } from 'app/components/charts/LineChart/common/Legend';
 import { Tooltip } from 'app/components/charts/LineChart/common/Tooltip';
 import {
   LineChartModel,
@@ -27,6 +28,7 @@ const Linechart = styled(props => <ResponsiveLine {...props} />)`
 
 const ChartContainer = styled.div`
   height: 320px;
+  padding-bottom: 20px;
   [y='7'] {
     width: 16px;
     height: 8px;
@@ -34,6 +36,7 @@ const ChartContainer = styled.div`
 `;
 
 export const LineChart = (props: LineChartModel) => {
+  console.log(props);
   return (
     <ChartContainer>
       <Linechart
@@ -42,6 +45,7 @@ export const LineChart = (props: LineChartModel) => {
         colors={colorScheme(props.colors)}
         sliceTooltip={tProps => <Tooltip {...tProps} />}
       />
+      <Legend items={props.values} colors={colorScheme(props.colors)} />
     </ChartContainer>
   );
 };
