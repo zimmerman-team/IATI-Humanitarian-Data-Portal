@@ -60,7 +60,7 @@ export const dateRanges = [
   // },
   {
     // label used for the linechart
-    label: '1.May.2018',
+    label: 'May.2018',
     // label for the column header in the table
     colLabel: 'May 2018',
     // value in the response and query
@@ -307,7 +307,7 @@ export const getBaseTable = (
   const columns: MUIDataTableColumnDef[] = dateranges.map(range => {
     return {
       name: range.colLabel.includes('Today')
-        ? `Today [${currDate}]`
+        ? `Today ${currDate}`
         : date(new Date(range.colLabel)),
       //: new Date(range.colLabel).toString().slice(3, 16),
       options: {
@@ -335,8 +335,8 @@ export const getBaseTable = (
 
   // and we push in changes made as the last column
   columns.push({
-    name: `Changes [${signatoryProgressData !== null &&
-      date(new Date(signatoryProgressData[0].Date))}] to today`,
+    name: `Changes ${signatoryProgressData !== null &&
+      date(new Date(signatoryProgressData[0].Date))} to today`,
     options: {
       filter: true,
       filterType: 'checkbox',

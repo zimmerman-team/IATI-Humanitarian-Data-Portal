@@ -32,10 +32,8 @@ const LandingIntrotext = styled(Typography)`
 
 const VersionBox = styled(Box)`
   && {
+    margin-top: 113px;
     padding-bottom: 10px;
-    span {
-      color: #5accbf;
-    }
   }
 `;
 
@@ -85,7 +83,7 @@ export const LandingLayout = (props: LandingModel) => {
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          The Initial Release: <span>Alpha Release</span>
+          The Initial Release: <b>Alpha Release</b>
         </Typography>
       </VersionBox>
     </Container>

@@ -71,7 +71,7 @@ function AppBar(props: AppBarProps) {
           <AppBarButton label="About" url="/about" />
           <AppBarButton label="Signatory Progress" url="/signatory-progress" />
           <AppBarButton label="Signatory Data" url="/signatory-data" />
-          <AppBarButton label="FAQ's" url="/faq" />
+          <AppBarButton label="FAQs" url="/faq" />
         </Toolbar>
       </Container>
     </BaseComponent>

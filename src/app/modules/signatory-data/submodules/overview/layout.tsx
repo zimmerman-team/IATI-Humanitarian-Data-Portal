@@ -74,11 +74,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List elName="incComms" items={props.statusData.slice(0, 2)} />
+          <List elName="incComms" items={props.statusData.slice(0, 1)} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List elName="incComms" items={props.statusData.slice(2, 4)} />
+          <List elName="incComms" items={props.statusData.slice(1, 3)} />
         </Grid>
       </Grid>
       <Box height="50px" />
