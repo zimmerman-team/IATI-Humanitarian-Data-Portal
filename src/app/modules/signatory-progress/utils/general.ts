@@ -98,6 +98,11 @@ export function getSpecFixedValues(rangeItem, key: string): SpecKeyModel {
         count: rangeItem.count203,
         percentage: rangeItem.perc203,
       };
+    case '202OrLater':
+      return {
+        count: rangeItem.use202OrLaterCount,
+        percentage: rangeItem.use202OrLaterPerc,
+      };
   }
 
   return {

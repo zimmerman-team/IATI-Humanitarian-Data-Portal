@@ -6,17 +6,12 @@ import { AboutPageModel } from 'app/modules/about/model';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
 import ContainedButton from 'app/components/inputs/buttons/IconButton';
-import { Footer } from 'app/components/surfaces/Footer';
+import { Footer, FooterSM } from 'app/components/surfaces/Footer';
 import { DecoAboutTopLeft } from 'app/modules/about/common/decorations/DecoAboutTopLeft';
 import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAboutMidLeft';
 import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
 import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
 import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
-// TODO: -Correct page title => @jim?
-//      -Correct outer container margins of MD size => @jim?
-//      -Implement correct spacing between components
-//      -Implement background with artworks
-//      -Implement footer component
 
 export const AboutLayout = (props: AboutPageModel) => {
   return (
@@ -79,7 +74,13 @@ export const AboutLayout = (props: AboutPageModel) => {
         <Box height="100px" width="100%" />
       </Hidden>
 
-      <Footer />
+      <Hidden mdDown>
+        <Footer />
+      </Hidden>
+
+      <Hidden lgUp>
+        <FooterSM />
+      </Hidden>
     </Page>
   );
 };

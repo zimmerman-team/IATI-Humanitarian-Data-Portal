@@ -4,7 +4,8 @@ import { HumanitarianDonutModel } from 'app/modules/signatory-data/submodules/ov
 
 export const getHumanitarianElementsData = (
   rawData,
-  donut4Data
+  donut4Data,
+  humOverviewData
 ): HumanitarianDonutModel[] => {
   const donutValues: HumanitarianDonutModel[] = [
     { activity: 'Hum. activities with UN HRP codes *', value: 0 },
@@ -22,11 +23,11 @@ export const getHumanitarianElementsData = (
       if (index < 3) {
         value =
           (get(rawData, `facets.humElData_${index + 1}.count`, 0) * 100) /
-          get(rawData, 'facets.count', 0);
+          get(humOverviewData, 'facets.count', 0);
       } else {
         value =
           (get(donut4Data, 'facets.data.count', 0) * 100) /
-          get(donut4Data, 'facets.count', 0);
+          get(humOverviewData, 'facets.count', 0);
       }
       donutValues[index].value = isNaN(value) ? 0 : Math.round(value);
     });

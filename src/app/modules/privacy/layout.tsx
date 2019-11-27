@@ -15,9 +15,9 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
     <Page title={props.title} footer>
       {/*SECTION*/}
       <Grid container spacing={2}>
-        <Grid item lg={8} md={10}>
-          <Typography variant="h6">{props.sections[0].title}</Typography>
-        </Grid>
+        {/*<Grid item lg={8} md={10}>*/}
+        {/*  <Typography variant="h6">{props.sections[0].title}</Typography>*/}
+        {/*</Grid>*/}
         <Box height="16px" width="100%" />
 
         <Grid item lg={8} md={10}>
@@ -188,11 +188,6 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
         <Grid item lg={8} md={10}>
           <Typography variant="body1">
             {parse(props.sections[5].content[2])}
-          </Typography>
-        </Grid>
-        <Grid item lg={8} md={10}>
-          <Typography variant="body1">
-            {parse(props.sections[5].content[3])}
           </Typography>
         </Grid>
       </Grid>

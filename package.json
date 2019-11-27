@@ -36,6 +36,7 @@
     "react-use": "^12.2.0",
     "redux-persist": "^5.10.0",
     "space-api": "0.12.1",
+    "start-server-and-test": "^1.10.6",
     "styled-components": "^4.3.2",
     "use-debounce": "^3.1.0"
   },
@@ -203,6 +204,7 @@
     "storybook": "start-storybook -p 9009 -s public --ci",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "check-types": "tsc",
+    "cy:ci-start": "start-server-and-test start http://localhost:3000 cy:run:record:parallel",
     "cy:run": "cypress run",
     "cy:run:record:parallel": "cypress run --record --key 9f5380f4-1876-4758-aded-8e30971fb7b6 --parallel",
     "cy:open": "cypress open",

@@ -7,6 +7,10 @@ export const humPublishers: PublisherInterface = {
   ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
 };
 
+export const use202OrLater: PublisherInterface = {
+  ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
+};
+
 export const publishers202: PublisherInterface = {
   ...apiModel(`${process.env.REACT_APP_DS_API}/search/${endpoints.activity}/`),
 };
