@@ -20,9 +20,9 @@ export const currDate = `${today.getDate()}.${
 }.${today.getFullYear()}`;
 
 const date = (value: Date) => {
-  return `${value.getDate()}.${
+  return `${
     shortMonthNames[value.getMonth()]
-  }.${value.getFullYear()}`;
+  } ${value.getFullYear()}`;
 };
 
 // this variable basically stores the fixed date

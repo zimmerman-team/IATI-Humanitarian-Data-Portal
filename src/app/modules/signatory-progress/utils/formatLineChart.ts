@@ -32,9 +32,7 @@ export interface FirstDataItemModel {
 }
 
 const date = (value: Date) => {
-  return `${value.getDate()}.${
-    shortMonthNames[value.getMonth()]
-  }.${value.getFullYear()}`;
+  return `${shortMonthNames[value.getMonth()]} ${value.getFullYear()}`;
 };
 
 function formatFirstLine(
@@ -71,7 +69,7 @@ function formatFirstLine(
     }
 
     firstData.push({
-      x: range.colLabel.includes(currDate)
+      x: range.label.includes(currDate)
         ? currDate
         : date(new Date(range.label)),
       y: percentage,
@@ -150,7 +148,7 @@ export function formatLineChart(
         }
 
         data.push({
-          x: range.colLabel.includes(currDate)
+          x: range.label.includes(currDate)
             ? currDate
             : date(new Date(range.label)),
           y: percentage,
@@ -178,7 +176,6 @@ export function formatLineChart(
       orderedLineData[orderObj.n] = item;
     }
   });
-
 
   return { ...lineData, values: { values: orderedLineData } };
 }
