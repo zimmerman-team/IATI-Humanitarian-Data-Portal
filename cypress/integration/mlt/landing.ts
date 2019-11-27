@@ -5,7 +5,7 @@ import autoRecord from 'cypress-autorecord';
 const texts = [
   'A Spotlight on International',
   'Humanitarian',
-  'Assistance Information',
+  'Assistance IATI Data',
   // 'Why the Grand Bargain Transparency Commitment is aiming to improve the availability of timely, high quality, harmonised and transparent open data on global humanitarian action.',
   'Grand Bargain Signatories',
   'GB signatories publishing to IATI',

@@ -15,7 +15,7 @@ export function Faqs() {
       faqItems={sortBy(state.faqItems, item =>
         parseInt(item.title.substring(0, item.title.indexOf('.')), 10)
       )}
-      title="FAQ"
+      title="FAQs"
     />
   );
 }

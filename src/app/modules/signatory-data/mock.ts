@@ -3,7 +3,7 @@ import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
 
 export const signatoryDataMock: SignatoryDataModel = {
   loading: false,
-  title: 'Grand Bargin signatories',
+  title: 'Signatory IATI data',
   description:
     "<p>This page provides an overview of the IATI ('open') data currently published by individual Grand Bargain signatories and/or their affiliated organisations. Its primary purpose is to enable signatories to monitor their own progress in relation to meeting the data publication commitment of the Grand Bargain.</p>" +
     "<p>Each column in the table relates to a specific IATI publishing indicator as defined within the workstream <a href='http://gbtransparency.org/dashboard/datapubindicators.html' target='_blank'>core commitment target results and indicators (CCTRIs)</a>.</p>",

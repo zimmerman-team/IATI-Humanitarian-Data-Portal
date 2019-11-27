@@ -1,7 +1,7 @@
 import { FaqsPageModel } from 'app/modules/faqs/model';
 
 export const mockData: FaqsPageModel = {
-  title: 'FAQ',
+  title: 'FAQs',
   faqItems: [
     {
       title:

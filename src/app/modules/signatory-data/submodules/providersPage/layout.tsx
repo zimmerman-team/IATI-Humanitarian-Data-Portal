@@ -6,10 +6,12 @@ import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/Horizontal
 import Box from '@material-ui/core/Box';
 import { DecoSigProviderTopLeft } from 'app/modules/signatory-data/submodules/providersPage/common/decoration/DecoSigProviderTopLeft';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
+import { PageLoader } from 'app/modules/common/PageLoader';
 
 export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
     <>
+      {props.loading && <PageLoader />}
       {/* ---------------------------------------- */}
       {/* Charts */}
 

@@ -32,11 +32,8 @@ const LandingIntrotext = styled(Typography)`
 
 const VersionBox = styled(Box)`
   && {
-    padding-bottom: 10px;
     margin-top: 113px;
-    span {
-      color: #5accbf;
-    }
+    padding-bottom: 10px;
   }
 `;
 
@@ -56,7 +53,7 @@ export const LandingLayout = (props: LandingModel) => {
                 <Highlighter
                   autoEscape
                   searchWords={['Humanitarian']}
-                  textToHighlight="A Spotlight on International Humanitarian Assistance Information"
+                  textToHighlight="A Spotlight on International Humanitarian Assistance IATI Data"
                 />
               </LandingIntrotext>
             </Box>
@@ -86,7 +83,7 @@ export const LandingLayout = (props: LandingModel) => {
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          The Initial Release: <span>Alpha Release</span>
+          The Initial Release: <b>Alpha Release</b>
         </Typography>
       </VersionBox>
     </Container>

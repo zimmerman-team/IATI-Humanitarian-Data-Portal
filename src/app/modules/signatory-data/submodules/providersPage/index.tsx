@@ -78,6 +78,10 @@ export function ProvidersPageFunc(props) {
         ...baseProviderConfig(true, onItemClick),
         data: tableData,
       }}
+      loading={
+        state.sigdataproviders.loading ||
+        state.sigAllProviders.loading
+      }
     />
   );
 }

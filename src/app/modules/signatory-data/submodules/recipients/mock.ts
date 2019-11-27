@@ -5,4 +5,5 @@ import { mockData as mockBarChartCard } from 'app/components/surfaces/Cards/Hori
 export const mockData: RecipientsModel = {
   barChartData: mockBarChartCard,
   tableData: mockTable,
+  loading: false,
 };

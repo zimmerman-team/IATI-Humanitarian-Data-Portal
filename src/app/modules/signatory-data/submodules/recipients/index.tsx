@@ -81,6 +81,11 @@ function RecipientsF(props) {
         ...baseProviderConfig(false, onItemClick),
         data: recTableData,
       }}
+      loading={
+        state.recipients.loading ||
+        state.humRecTypes.loading ||
+        state.sigAllReceivers.loading
+      }
     />
   );
 }
