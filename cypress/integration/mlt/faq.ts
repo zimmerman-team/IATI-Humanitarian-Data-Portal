@@ -2,7 +2,7 @@
 
 import autoRecord from 'cypress-autorecord';
 
-const signatoryFAQTexts = ['FAQ'];
+const signatoryFAQTexts = ['FAQs'];
 
 describe('FAQ', function() {
   // autoRecord();
