@@ -72,18 +72,36 @@ export const baseProviderConfig = (
           customBodyRender: (value, tableMeta, updateValue) => {
             let label = 'Recipient';
             let filterName = 'transaction_receiver_org_ref';
+            let filterValue = tableMeta.rowData[1];
 
             if (funder) {
               label = 'Funder';
-              filterName = 'transaction_provider_org_ref';
+              filterName =
+                tableMeta.rowData[1] === 'Not Provided'
+                  ? 'transaction_provider_org_narrative'
+                  : 'transaction_provider_org_ref';
+              filterValue =
+                tableMeta.rowData[1] === 'Not Provided'
+                  ? `"${tableMeta.rowData[0]}"`
+                  : tableMeta.rowData[1];
+            } else {
+              label = 'Recipient';
+              filterName =
+                tableMeta.rowData[1] === 'Not Provided'
+                  ? 'transaction_receiver_org_narrative'
+                  : 'transaction_receiver_org_ref';
+              filterValue =
+                tableMeta.rowData[1] === 'Not Provided'
+                  ? `"${tableMeta.rowData[0]}"`
+                  : tableMeta.rowData[1];
             }
 
             const filter = {
               label: `${label}: ${tableMeta.rowData[0]}`,
-              value: `(${filterName}:${tableMeta.rowData[1]})`,
+              value: `(${filterName}:${filterValue})`,
             };
             return activityListFilterAction &&
-              tableMeta.rowData[1] !== 'Not Provided' ? (
+              value > 0 ? (
               <NumberLink
                 onClick={e => {
                   e.stopPropagation();
