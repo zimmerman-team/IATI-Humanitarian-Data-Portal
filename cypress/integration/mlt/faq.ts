@@ -12,7 +12,7 @@ describe('FAQ', function() {
   });
 
   it('check texts', function() {
-    signatoryFAQTexts.map(text => cy.queryByText(text).should('exist'));
+    signatoryFAQTexts.map(text => cy.queryAllByText(text).should('exist'));
   });
 
   it('should show background decoration', function() {
