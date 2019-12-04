@@ -61,8 +61,9 @@ function RecipientsF(props) {
     get(state.recipients.data, 'data', null),
     get(orgTypeNames, 'data', null),
     sigAllReceivers,
-    'Recipient OrganisationTypes',
-    `facet_counts.facet_pivot.${pivotKey}`
+    'Recipient Organisation Types',
+    `facet_counts.facet_pivot.${pivotKey}`,
+    recTableData
   );
 
   const sigDataActivityListFilterAction = useStoreActions(

@@ -71,17 +71,15 @@ export function ProvidersPageFunc(props) {
         get(state.sigdataproviders.data, 'data', null),
         get(orgTypeNames.data, 'data', null),
         sigAllProviders,
-        'Funder OrganisationTypes',
-        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
+        'Funder Organisation Types',
+        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`,
+        tableData
       )}
       tableData={{
         ...baseProviderConfig(true, onItemClick),
         data: tableData,
       }}
-      loading={
-        state.sigdataproviders.loading ||
-        state.sigAllProviders.loading
-      }
+      loading={state.sigdataproviders.loading || state.sigAllProviders.loading}
     />
   );
 }

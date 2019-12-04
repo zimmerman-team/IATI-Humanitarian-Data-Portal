@@ -66,7 +66,8 @@ export const getBarChartData = (
   codelist,
   allProviders,
   title,
-  facetKey
+  facetKey,
+  tableData
 ): HorizontalBarChartCardModel => {
   const barData: any = {
     title,
@@ -77,7 +78,7 @@ export const getBarChartData = (
 
   if (allProviders && codelist && rawData) {
     const orgData = get(rawData, facetKey);
-    const totalCount = getTotalCount(allProviders);
+    const totalCount = tableData.length; //getTotalCount(allProviders);
     const values: ValueItem[] = [];
     // now if an organisation doesn't have
     // a title or a ref
