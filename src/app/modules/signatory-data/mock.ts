@@ -11,10 +11,10 @@ export const signatoryDataMock: SignatoryDataModel = {
 };
 
 export const iatigbsignatoriesCallValues = {
-  values: {
-    q: '*:*',
-    rows: 0,
-    'json.facet': `{
+         values: {
+           q: '*:*',
+           rows: 0,
+           'json.facet': `{
       iati_orgs: {
         type: 'terms',
         limit: -1,
@@ -48,13 +48,17 @@ export const iatigbsignatoriesCallValues = {
           },
           traec: {
             type: 'query',
-            q: 'transaction_provider_org_provider_activity_id: *',
+            q: 'humanitarian:1 OR transaction_humanitarian:1 
+              OR (-(-sector_vocabulary:1 OR sector_vocabulary:*)
+              AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018]))
+              OR (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*)
+              AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018])) AND transaction_provider_org_provider_activity_id: *',
           },
         },
       },
     }`,
-  },
-};
+         },
+       };
 
 export const OrgNarrative = {
   values: {

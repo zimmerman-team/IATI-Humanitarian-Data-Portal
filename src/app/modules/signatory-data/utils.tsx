@@ -6,6 +6,7 @@ import IconCellModule from 'app/components/datadisplay/Table/common/IconCell';
 /* utils */
 import get from 'lodash/get';
 import find from 'lodash/find';
+import sortBy from 'lodash/sortBy';
 import { getTooltipContent } from 'app/utils/generic';
 import { getInfoTHead } from 'app/components/datadisplay/Table/helpers';
 /* mock */
@@ -37,7 +38,7 @@ export const formatTableSignatories = (
 ) => {
   const formatSigs: any = [];
   if (gbsignatoriesFromCMS && gbsignatoriesFromCMS.length > 0) {
-    gbsignatoriesFromCMS.forEach((cmsSig: any) => {
+    sortBy(gbsignatoriesFromCMS, 'name').forEach((cmsSig: any) => {
       const narrative = find(organisationNarrative, [
         'groupValue',
         cmsSig.IATIOrgRef,
@@ -61,7 +62,7 @@ export const formatTableSignatories = (
         },
         get(cmsSig, 'name', ''),
         orgType,
-        fSig && fSig.latest_iati_version,
+        fSig && fSig.latest_iati_version ? fSig.latest_iati_version : 'blank',
         returnFlagValue(fSig ? fSig.pubHumData.count > 0 : '0'),
         returnFlagValue(
           fSig
@@ -161,6 +162,15 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
               'Latest IATI version'
             )
           ),
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return (
+            <div
+              style={{ visibility: value === 'blank' ? 'hidden' : 'visible' }}
+            >
+              {value}
+            </div>
+          );
+        },
         customFilterListRender: value => `Latest IATI version: ${value}`,
       },
     },

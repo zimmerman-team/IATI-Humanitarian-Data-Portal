@@ -73,7 +73,7 @@ export const getHumActwGBClassificationsData = (
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Overview',
-          'Cash transfer'
+          'Cash Transfer or Vouchers'
         ),
         onClick: () => {
           onItemClick({
