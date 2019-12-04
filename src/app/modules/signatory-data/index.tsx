@@ -90,6 +90,20 @@ export const SignatoryData = React.memo(
       //   ...mockDataVar2.options,
       //   searchText: props.tableOptions.searchTerm,
       // });
+      window.addEventListener('scroll', () => {
+        const tableComp = document.getElementById('sig-data-table');
+        if (tableComp) {
+          const thead = tableComp.querySelector('thead');
+          if (tableComp.offsetTop - window.pageYOffset < -132) {
+            if (thead) {
+              thead.style.transform = `translateY(${window.pageYOffset -
+                400}px)`;
+            }
+          } else if (thead) {
+            thead.style.transform = ``;
+          }
+        }
+      });
     }, []);
 
     /* use useEffect as componentDidMount and commit the API calls */
@@ -141,7 +155,7 @@ export const SignatoryData = React.memo(
           };
         })
       );
-    }, props.tableOptions.filterLists);
+    }, [props.tableOptions.filterLists]);
 
     // filterLists
     const sigTable = getBaseTable(tooltipsData);

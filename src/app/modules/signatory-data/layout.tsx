@@ -28,7 +28,9 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       <Box height="50px" />
       <Grid container>
         <Grid item xs={12}>
-          <TableModule {...props.sigTable} />
+          <div id="sig-data-table">
+            <TableModule {...props.sigTable} />
+          </div>
         </Grid>
       </Grid>
       <Box height="20px" />
