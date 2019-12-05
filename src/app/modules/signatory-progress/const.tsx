@@ -20,9 +20,7 @@ export const currDate = `${today.getDate()}.${
 }.${today.getFullYear()}`;
 
 const date = (value: Date) => {
-  return `${
-    shortMonthNames[value.getMonth()]
-  } ${value.getFullYear()}`;
+  return `${shortMonthNames[value.getMonth()]} ${value.getFullYear()}`;
 };
 
 // this variable basically stores the fixed date
@@ -180,7 +178,7 @@ export const use202OrLaterQuery = {
         (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
         (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10) OR (transaction_type:(12 13) OR
         default_aid_type_vocabulary:(2 3 4) OR
-         reporting_org_type_code:24))`,
+         reporting_org_type_code:24) OR dataset_iati_version:(2.02 2.03))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
