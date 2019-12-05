@@ -97,7 +97,7 @@ export const SignatoryData = React.memo(
           if (tableComp.offsetTop - window.pageYOffset < -132) {
             if (thead) {
               thead.style.transform = `translateY(${window.pageYOffset -
-                400}px)`;
+                447}px)`;
             }
           } else if (thead) {
             thead.style.transform = ``;

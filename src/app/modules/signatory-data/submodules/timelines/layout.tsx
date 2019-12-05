@@ -36,26 +36,30 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1">
-            <span>
-              Publishing frequency measures how often an organisation updates
-              their published IATI data. This is useful for any data user to
-              know in order that they can assess how ‘useful’ the published
-              information might be. The table below shows the number of days for
-              each month on which the published IATI dataset has been assessed
-              as having been updated. An ‘update’ is recorded when a ‘more
-              recent’ transaction date (than the ‘most recent’ previously
-              identified by the portal) is detected. The methodology for the
-              calculation of frequency (although the portal uses humanitarian
-              activities only) is documented on the{' '}
-              <a
-                href="http://publishingstats.iatistandard.org/timeliness.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                IATI dashboard
-              </a>
-              .
-            </span>
+            Publishing frequency measures how often an organisation updates
+            their published IATI data. This is useful for any data user to know
+            in order that they can assess how ‘useful’ the published information
+            might be.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            The table below shows the number of days for each month on which the
+            published IATI dataset has been assessed as having been updated. An
+            ‘update’ is recorded when a ‘more recent’ transaction date (than the
+            ‘most recent’ previously identified by the portal) is detected.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            The methodology for the calculation of frequency (although the
+            portal uses humanitarian activities only) is documented on the{' '}
+            <a
+              href="http://publishingstats.iatistandard.org/timeliness.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IATI dashboard
+            </a>
+            .
           </Typography>
         </Grid>
         <Grid item xs={12} md={12}>
@@ -87,35 +91,33 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
           <Typography variant="h4">Data timelag</Typography>
         </Grid>
         <Grid item xs={12} xl={12}>
-          <ColumnBox>
-            <Typography variant="body1">
-              The time-lag statistics assess how up to date the data is. For
-              instance a publisher may update their data every month, but the
-              updated data is in fact three months old. Alternatively a
-              publisher may only update their data once a year, but when they do
-              so it contains current data that is less than one month old.
-            </Typography>
-            <Box width="100%" height="16px" />
-            <Typography variant="body1">
-              Transactions are the most numerous and most regularly refreshed
-              elements in reported IATI activities and they are therefore used
-              to make this assessment. The table of statistics shows the number
-              of transaction dates reported for each calendar month.
-            </Typography>
-            <Box width="100%" height="16px" />
-            <Typography variant="body1">
-              The methodology for the calculation of timelag (although the
-              portal uses humanitarian activities only) is documented on the{' '}
-              <a
-                href="http://publishingstats.iatistandard.org/timeliness_timelag.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                IATI dashboard
-              </a>
-              .
-            </Typography>
-          </ColumnBox>
+          <Typography variant="body1">
+            The time-lag statistics assess how up to date the data is. For
+            instance a publisher may update their data every month, but the
+            updated data is in fact three months old. Alternatively a publisher
+            may only update their data once a year, but when they do so it
+            contains current data that is less than one month old.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            Transactions are the most numerous and most regularly refreshed
+            elements in reported IATI activities and they are therefore used to
+            make this assessment. The table of statistics shows the number of
+            transaction dates reported for each calendar month.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            The methodology for the calculation of timelag (although the portal
+            uses humanitarian activities only) is documented on the{' '}
+            <a
+              href="http://publishingstats.iatistandard.org/timeliness_timelag.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IATI dashboard
+            </a>
+            .
+          </Typography>
         </Grid>
         <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">

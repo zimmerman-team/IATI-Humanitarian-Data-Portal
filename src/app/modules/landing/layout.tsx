@@ -61,11 +61,11 @@ export const LandingLayout = (props: LandingModel) => {
           <Box height="40px" />
           <Grid item md={7}>
             <Typography variant="h5">
-              Why the{' '}
-              <Link to="/about">Grand Bargain Transparency Commitment</Link> is
-              aiming to improve the availability of timely, high quality,
-              harmonised and transparent open data on global humanitarian
-              action.
+              Explore the humanitarian data that Grand Bargain Signatories are
+              publishing to IATI and learn more about how the{' '}
+              <Link to="/about">Grand Bargain Transparency commitments</Link>{' '}
+              are helping signatories to publish better data on global
+              humanitarian action.
             </Typography>
           </Grid>
         </Grid>
