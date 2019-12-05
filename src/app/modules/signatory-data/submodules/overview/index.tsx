@@ -28,11 +28,6 @@ import { getHumActWLocationInfoData } from 'app/modules/signatory-data/submodule
 import { getHumActWMultiYearFundingData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWMultiYearFundingData';
 import { getFinancialReportingData } from 'app/modules/signatory-data/submodules/overview/utils/getFinancialReportingData';
 import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
-import {
-  RouteComponentProps,
-  WithRouterProps,
-  WithRouterStatics,
-} from 'react-router';
 
 export function OverviewPage(props) {
   /* local state */
@@ -202,7 +197,7 @@ export function OverviewPage(props) {
     signatory,
     tooltipsData
   );
-
+  
   return (
     <OverviewLayout
       statusData={statusData}

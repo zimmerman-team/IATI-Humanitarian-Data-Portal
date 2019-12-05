@@ -116,13 +116,13 @@ export const getBarChartData = (
                 code: orgType.value,
                 name: typeName,
                 value: 1,
-                percentage: Math.round(100 / totalCount),
+                percentage: parseFloat((100 / totalCount).toFixed(2)),
               });
             } else {
               const newValue = values[valIndex].value + 1;
               values[valIndex].value = newValue;
-              values[valIndex].percentage = Math.round(
-                (newValue * 100) / totalCount
+              values[valIndex].percentage = parseFloat(
+                ((newValue * 100) / totalCount).toFixed(2)
               );
             }
           });

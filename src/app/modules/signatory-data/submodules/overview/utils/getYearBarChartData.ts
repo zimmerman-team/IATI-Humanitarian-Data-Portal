@@ -8,12 +8,18 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
   if (!isEmpty(rawData)) {
     Object.keys(rawData).forEach(y => {
       if (typeof rawData[y] === 'object' && rawData[y]) {
+        const activitiesAct = rawData[y].count;
+        const humActivities = get(rawData[y], 'hum_count.count', 0);
+        const activities =
+          humActivities === activitiesAct
+            ? activitiesAct
+            : activitiesAct - get(rawData[y], 'hum_count.count', 0);
         yearValues.push({
           year: y,
-          activitiesAct: rawData[y].count,
-          Activities: rawData[y].count - get(rawData[y], 'hum_count.count', 0),
+          activitiesAct: activitiesAct,
+          Activities: activities,
           ActivitiesColor: '#d7d8d9',
-          'Humanitarian Activities': get(rawData[y], 'hum_count.count', 0),
+          'Humanitarian Activities': humActivities,
           'Humanitarian ActivitiesColor': '#5accbf',
         });
       }
