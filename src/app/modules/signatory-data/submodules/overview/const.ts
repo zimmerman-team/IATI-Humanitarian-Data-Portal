@@ -159,13 +159,13 @@ export const activityStatusValues = {
   },
 };
 
-export const barJsonFacet = years => {
+export const barJsonFacet = (years, queryDateField) => {
   const result = {};
 
   years.forEach(year => {
     result[year] = {
       type: 'query',
-      q: `activity_date_start_actual:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
+      q: `${queryDateField}:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
       facet: {
         hum_count: {
           type: 'query',

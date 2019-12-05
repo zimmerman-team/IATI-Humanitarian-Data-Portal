@@ -37,7 +37,6 @@ import {
 export function OverviewPage(props) {
   /* local state */
   const [signatory, setSignatory] = React.useState({});
-
   /* redux store variables */
   let gbsignatories: any = useStoreState(state => state.gbsignatories);
   gbsignatories = get(gbsignatories, 'data', []);
@@ -83,7 +82,7 @@ export function OverviewPage(props) {
   const years = getAllYears(
     get(
       sigdataactivityyearsData,
-      "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
+      `data.facet_counts.facet_pivot['${props.queryDateField},humanitarian']`,
       []
     )
   );
@@ -142,7 +141,7 @@ export function OverviewPage(props) {
     const sigdataactivitiesbyyearcallValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify(barJsonFacet(years)),
+        'json.facet': JSON.stringify(barJsonFacet(years, props.queryDateField)),
         rows: 0,
       },
     };
@@ -221,8 +220,4 @@ export function OverviewPage(props) {
   );
 }
 
-export const Overview: React.ComponentClass<
-  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
-    WithRouterProps<(props) => any>
-> &
-  WithRouterStatics<(props) => any> = withRouter(OverviewPage);
+export const Overview: any = withRouter(OverviewPage);

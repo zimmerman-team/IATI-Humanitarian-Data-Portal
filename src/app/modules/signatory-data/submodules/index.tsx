@@ -10,10 +10,15 @@ import { SignatoryDataRoutes } from 'app/modules/signatory-data/submodules/route
 import get from 'lodash/get';
 import find from 'lodash/find';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import { getHeaderDateRange } from 'app/modules/signatory-data/submodules/utils';
+import { sigDataStore } from 'app/modules/signatory-data/submodules/store';
+import {
+  getHeaderDateRange,
+  getActivityDateTypeField,
+} from 'app/modules/signatory-data/submodules/utils';
 
 export function SubmoduleContainer(props) {
   // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
+  const [locStore, locActions] = sigDataStore();
   const gbsignatoriesData = useStoreState(state => state.gbsignatories);
   const sigdatadatesheaderData = useStoreState(
     state => state.sigdatadatesheader.data
@@ -28,7 +33,7 @@ export function SubmoduleContainer(props) {
   );
   const singleOrgNarrativeData = find(orgNarrativeDetails, [
     'groupValue',
-    decodeURIComponent(props.match.params.code),
+    decodeURIComponent(props.match.params.code).toLowerCase(),
   ]);
   const orgDetails = find(gbsignatoriesData.data as any, {
     IATIOrgRef: decodeURIComponent(props.match.params.code),
@@ -40,13 +45,25 @@ export function SubmoduleContainer(props) {
   const sigdatadatesheaderCall = useStoreActions(
     actions => actions.sigdatadatesheader.fetch
   );
+  const queryDateField = getActivityDateTypeField(
+    get(locStore.checkSigDateTypeAvailable, 'data.data.response.docs', [])
+  );
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
     const callValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+        fl: 'activity_date_type',
+      },
+    };
+    locActions.checkSigDateTypeAvailable.fetch(callValues);
+  }, []);
+  React.useEffect(() => {
+    const callValues = {
+      values: {
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         facet: 'on',
-        'facet.pivot': 'activity_date_start_actual,humanitarian',
+        'facet.pivot': `${queryDateField},humanitarian`,
         fl: 'facet_counts',
       },
     };
@@ -55,13 +72,18 @@ export function SubmoduleContainer(props) {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify({
-          date1: 'min(activity_date_start_actual)',
-          date2: 'max(activity_date_start_actual)',
+          date1: `min(${queryDateField})`,
+          date2: `max(${queryDateField})`,
         }),
         rows: 0,
       },
     });
-  }, [gbsignatoriesData, props.match.params.code, sigdataactivityyearsCall]);
+  }, [
+    gbsignatoriesData,
+    props.match.params.code,
+    sigdataactivityyearsCall,
+    locStore.checkSigDateTypeAvailable,
+  ]);
 
   let suppLink = get(orgDetails, 'suppInfoUrl', 'no url provided');
   suppLink =
@@ -90,7 +112,7 @@ export function SubmoduleContainer(props) {
         )}
       />
       {/** contains the routes of the submodules of the signatory data */}
-      <SignatoryDataRoutes />
+      <SignatoryDataRoutes queryDateField={queryDateField} />
     </Container>
   );
 }

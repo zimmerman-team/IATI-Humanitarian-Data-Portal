@@ -10,14 +10,14 @@ import { Recipients } from 'app/modules/signatory-data/submodules/recipients';
 import { Timelines } from 'app/modules/signatory-data/submodules/timelines';
 import { Coverage } from 'app/modules/signatory-data/submodules/coveragePage';
 
-export function SignatoryDataRoutes() {
+export function SignatoryDataRoutes(props: any) {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
         <Route
           exact
           path="/signatory-data/:code/overview"
-          render={() => <Overview />}
+          render={() => <Overview queryDateField={props.queryDateField} />}
         />
         <Route
           exact
