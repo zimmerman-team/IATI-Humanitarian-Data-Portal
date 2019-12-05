@@ -38,7 +38,10 @@ export function SignatoryProgress() {
     globalState => globalState.signatoryProgress.data
   );
 
-  const gbOrgData = get(iatigbsignatoriesData, 'data', null);
+  const gbOrgData = get(iatigbsignatoriesData, 'data', null).map(sig => ({
+    ...sig,
+    IATIOrgRef: sig.IATIOrgRef.toLowerCase(),
+  }));
 
   const gbOrgRefs =
     gbOrgData && map(gbOrgData, item => item.IATIOrgRef).join(' ');
@@ -72,7 +75,7 @@ export function SignatoryProgress() {
       // traceability data
       actions.publishersTrac.fetch({ values: pubTracQuery });
     }
-  }, [gbOrgData]);
+  }, [iatigbsignatoriesData.data]);
 
   // array for specific publisher data, be it publishers publishing humanitarian,
   // v2.02 data and etc.

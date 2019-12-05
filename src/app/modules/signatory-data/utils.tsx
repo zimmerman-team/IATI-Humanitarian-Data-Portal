@@ -43,7 +43,7 @@ export const formatTableSignatories = (
         'groupValue',
         cmsSig.IATIOrgRef,
       ]);
-      const fSig = find(signatories, ['val', cmsSig.IATIOrgRef]);
+      const fSig = find(signatories, { val: cmsSig.IATIOrgRef.toLowerCase() });
       const orgType = get(cmsSig, 'orgType', '');
       let sigOrgName = get(
         narrative,
