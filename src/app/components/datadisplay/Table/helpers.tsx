@@ -19,6 +19,7 @@ import {
   TotalRowColModel,
 } from 'app/components/datadisplay/Table/model';
 import { MUIDataTableState } from 'mui-datatables';
+import get from 'lodash/get';
 
 const nf = (currency: string) => {
   return new Intl.NumberFormat(undefined, {
@@ -81,7 +82,7 @@ export function getInfoTHead(value: string, infoText: string): React.ReactNode {
 
 function onTableChange(
   action: string,
-  tableState: MUIDataTableState,
+  tableState: any,
   localTableState: LocalTableStateModel,
   setLocalTableState: Function,
   setTotalData: Function,
@@ -95,6 +96,7 @@ function onTableChange(
       page: tableState.page,
       prevAction: action,
       rowsPerPage: tableState.rowsPerPage,
+      displayData: tableState.displayData,
     });
   }
   if (
@@ -105,6 +107,7 @@ function onTableChange(
     setLocalTableState({
       ...localTableState,
       prevAction: action,
+      displayData: tableState.displayData,
     });
     setTotalData(calculateTotalRow(tableState, totalRowColsDef));
   }
@@ -156,7 +159,12 @@ export function formatMoney(value: number, currency?: string): string {
 export function calculateTotalRow(tableState, totalRowColsDef) {
   const data = tableState.displayData
     ? filter(tableState.data, d => {
-        return find(tableState.displayData, { dataIndex: d.index });
+        if (!d.data[0]) {
+          return false;
+        }
+        return find(tableState.displayData, dd => {
+          return get(dd.data[0], 'props.value', dd.data[0]) === d.data[0].name;
+        });
       })
     : tableState.data;
   const totalRowData = totalRowColsDef.map((cd, index) => {
