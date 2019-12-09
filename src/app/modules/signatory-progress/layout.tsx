@@ -4,6 +4,7 @@ import { Container, Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { SignatoryProgressModel } from 'app/modules/signatory-progress/model';
 import { LineChartCard } from 'app/components/surfaces/Cards/LineChartCard';
 import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/HorizontalBarChartCard';
+import { PageLoader } from 'app/modules/common/PageLoader';
 import TableModule from 'app/components/datadisplay/Table';
 import parse from 'html-react-parser';
 import { DecoSigProgTopLeft } from 'app/modules/signatory-progress/common/decoration/DecoSigProgTopLeft';
@@ -14,6 +15,7 @@ import { DecoSigProgMidLeft } from 'app/modules/signatory-progress/common/decora
 export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
   return (
     <Container maxWidth="lg">
+      {props.loading && <PageLoader />}
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
       <Box position="absolute" top="10px" left="10px" zIndex="10002">

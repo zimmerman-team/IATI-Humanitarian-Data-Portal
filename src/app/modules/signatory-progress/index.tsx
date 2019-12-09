@@ -37,8 +37,11 @@ export function SignatoryProgress() {
   const signatoryProgressData: any = useStoreState(
     globalState => globalState.signatoryProgress.data
   );
+  const signatoryProgressDataLoading: any = useStoreState(
+    globalState => globalState.signatoryProgress.loading
+  );
 
-  const gbOrgData = get(iatigbsignatoriesData, 'data', null).map(sig => ({
+  const gbOrgData = map(iatigbsignatoriesData.data, sig => ({
     ...sig,
     IATIOrgRef: sig.IATIOrgRef.toLowerCase(),
   }));
@@ -140,8 +143,11 @@ export function SignatoryProgress() {
     signatoryProgressData
   ) as never;
 
+  console.log(iatigbsignatoriesData, signatoryProgressData);
+
   return (
     <SignatoryProgressLayout
+      loading={iatigbsignatoriesData.loading || signatoryProgressDataLoading}
       title={SignatoryProgressMock.title}
       description={SignatoryProgressMock.description}
       horizontalBarChartCardData={barData}
