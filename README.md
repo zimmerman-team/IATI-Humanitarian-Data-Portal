@@ -12,7 +12,7 @@ The IATI Humanitarian Data Portal has been developed by Development Initiatives 
 
 ## About the project
 * Website:         <a href="https://www.humportal.org/" target="_blank">IATI Humanitarian Data Portal</a>
-* License:          AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
+* License:          AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal/blob/develop/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
 * Github Repo:      <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal" target="_blank">github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal</a>
 
 
