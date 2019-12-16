@@ -18,7 +18,7 @@ The IATI Humanitarian Data Portal has been developed by Development Initiatives 
 
 ## Installing
 
-<b>1.</b> Set up the <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal-CMS" target="_blank">CMS for this project</a>as a starter<br/>
+<b>1.</b> Set up the <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal-CMS" target="_blank">CMS for this project</a> as a starter<br/>
 <b>2.</b> Checkout repo to local folder<br/>
 <b>3.</b> Make sure you've installed node.js 10.16.3 or higher<br/>
 <b>4.</b> Run yarn install <br/>
@@ -37,10 +37,3 @@ The IATI Humanitarian Data Portal has been developed by Development Initiatives 
 
 Yes please! We are mainly looking for coders to help on the project. If you are a coder feel free to *Fork* the repository and send us Pull requests!
 
-## License
-
-This project is licensed under the terms of the [LICENSE TYPE]
-
-## Contributors
-
-## Supporters
