@@ -4,11 +4,11 @@ jobs:
   checkout_repo:
     docker:
       - image: circleci/node:10.13.0
-    working_directory: ~/mlt-frontend
+    working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
       - attach_workspace:
-          at: ~/mlt-frontend
+          at: ~/IATI-Humanitarian-Data-Portal
       - restore_cache:
           keys:
             - dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -28,11 +28,11 @@ jobs:
   build_deploy:
     docker:
       - image: circleci/node:10.13.0-browsers
-    working_directory: ~/mlt-frontend
+    working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
       - attach_workspace:
-          at: ~/mlt-frontend
+          at: ~/IATI-Humanitarian-Data-Portal
       - run: sudo apt-get install python-dev
       - run:
           name: Set REACT_APP_PROJECT_URL env var and production envs
@@ -85,21 +85,21 @@ jobs:
           name: Upload build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/test/build
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/build/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/mlt-frontend/build
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/build/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/mlt-frontend/build
             else
-              rsync -O -ave ssh ~/mlt-frontend/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/build/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/build
             fi
       - run:
           name: Upload storybook build folder to target host
           command: |
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              rsync -O -ave ssh ~/mlt-frontend/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
+              rsync -O -ave ssh ~/IATI-Humanitarian-Data-Portal/.out/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/staging/build-storybook
             fi
 
   #  RUN CYPRESS END TO END TESTS
@@ -107,11 +107,11 @@ jobs:
     docker:
       - image: circleci/node:10.13.0-browsers
     parallelism: 2
-    working_directory: ~/mlt-frontend
+    working_directory: ~/IATI-Humanitarian-Data-Portal 
     steps:
       - checkout
       - attach_workspace:
-          at: ~/mlt-frontend
+          at: ~/IATI-Humanitarian-Data-Portal
       # setting this env var to only test on dev server when deployed.
       - run:
           name: Install Cypress -> OPTIMISE, UNESCESSARY STEP!!!
@@ -232,7 +232,7 @@ jobs:
             elif [ "${CIRCLE_BRANCH}" == "feature" ]; then
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                rsync -O -ave ssh ./reports/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/mlt-frontend/lighthouse-reports
+                rsync -O -ave ssh ./reports/ "$PROD_SSH_USER"@"$PROD_SSH_HOST":~/IATI-Humanitarian-Data-Portal/lighthouse-reports
             else
                 rsync -O -ave ssh ./reports/ "$SSH_USER"@"$SSH_HOST":~/mlt-apps/dev/lighthouse-reports
             fi
