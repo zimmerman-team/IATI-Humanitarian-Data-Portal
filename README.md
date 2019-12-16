@@ -10,6 +10,8 @@
 
 The IATI Humanitarian Data Portal has been developed by Development Initiatives as part of its programme to support the Grand Bargain transparency workstream. The portal provides information on the Grand Bargain transparency commitments, how they are measured , and monitors progress at an aggregate level for signatories in meeting their commitment to publish timely, high quality, harmonised and transparent open data on global humanitarian action.
 
+Data flows in from the <a href="https://iati.cloud/" target="_blank">IATI Datastore (IATI.cloud)</a> and non IATI data elements are controlled by the CMS.
+
 ## About the project
 * Website:         <a href="https://www.humportal.org/" target="_blank">IATI Humanitarian Data Portal</a>
 * License:          AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal/blob/develop/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
