@@ -30,3 +30,15 @@ export const getActivityDateTypeField = data => {
   }
   return field;
 };
+
+export const getYearRange = (date1, date2) => {
+  const result = [];
+  if (date1 && date2) {
+    const year1 = parseInt(date1.slice(0, 4), 10);
+    const year2 = parseInt(date2.slice(0, 4), 10);
+    for (let i = year1; i < year2 + 1; i++) {
+      result.push(i as never);
+    }
+  }
+  return result;
+};

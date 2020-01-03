@@ -72,12 +72,10 @@ export function SubmoduleContainer(props) {
     sigdataactivityyearsCall(callValues);
     sigdatadatesheaderCall({
       values: {
-        q: `reporting_org_ref:${decodeURIComponent(
-          props.match.params.code
-        )}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify({
-          date1: `min(${queryDateField})`,
-          date2: `max(${queryDateField})`,
+          date1: `min(activity_date_start_actual)`,
+          date2: `max(activity_date_start_planned)`,
         }),
         rows: 0,
       },
