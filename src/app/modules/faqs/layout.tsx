@@ -10,13 +10,16 @@ import { DecoFaqTopRight } from 'app/modules/faqs/common/decoration/DecoFaqTopRi
 export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoFaqTopLeft data-testid="DecoFaqTopLeft" />
-      </Box>
-
-      <Box position="absolute" top="145px" right="0" zIndex="-1">
-        <DecoFaqTopRight data-testid="DecoFaqTopRight" />
-      </Box>
+      <Hidden mdDown>
+        <Box position="absolute" top="0" left="0" zIndex="10000">
+          <DecoFaqTopLeft data-testid="DecoFaqTopLeft" />
+        </Box>
+      </Hidden>
+      <Hidden lgDown>
+        <Box position="absolute" top="145px" right="0" zIndex="-1">
+          <DecoFaqTopRight data-testid="DecoFaqTopRight" />
+        </Box>
+      </Hidden>
       <Page title={props.title} footer>
         <Grid container>
           <ExpansionPanel faqItems={props.faqItems} />
