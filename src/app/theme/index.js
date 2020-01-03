@@ -1,4 +1,6 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import responsiveFontSizes from '@material-ui/core/styles/responsiveFontSizes';
+
 import color from './color';
 
 export const Spacing = {
@@ -110,13 +112,13 @@ export const Typography = {
   h2: {
     fontSize: `${3.5}rem`,
     fontWeight: Weight.regular,
-    lineHeight: '64px',
+    lineHeight: '1',
   },
   h3: {
     fontFamily: 'Inter',
     fontSize: `${3}rem`,
     fontWeight: Weight.medium,
-    lineHeight: 'normal',
+    lineHeight: '1',
     fontStretch: 'normal',
     letterSpacing: 'normal',
     fontStyle: 'normal',
@@ -203,7 +205,7 @@ const Mixins = {
   },
 };
 
-export default createMuiTheme({
+const theme = createMuiTheme({
   palette: Palette,
   typography: Typography,
   props: {
@@ -231,8 +233,8 @@ export default createMuiTheme({
     },
     MuiTooltip: {
       tooltip: {
-        whiteSpace: 'pre-wrap'
-      }
+        whiteSpace: 'pre-wrap',
+      },
     },
     MUIDataTableToolbar: {
       root: {
@@ -269,3 +271,5 @@ export default createMuiTheme({
     },
   },
 });
+
+export default responsiveFontSizes(theme);
