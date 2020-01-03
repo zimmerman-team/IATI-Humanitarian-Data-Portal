@@ -59,6 +59,17 @@ const CloseIcon = styled(props => <MuiCloseIcon {...props} />)`
   }
 `;
 
+const HeaderBox = styled(props => <Box {...props} />)`
+  && {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 72px;
+    padding-bottom: 56px;
+  }
+`;
+
 const LINK = '/';
 export function DrawerMenu(props: DrawerMenuModel) {
   const [state, setState] = React.useState({
@@ -107,17 +118,11 @@ export function DrawerMenu(props: DrawerMenuModel) {
   );
 
   return (
-    <Box
-      display="flex"
-      justifyContent="flex-end"
-      alignItems="center"
-      height="72px"
-      paddingBottom="56px"
-    >
+    <HeaderBox display="flex" justifyContent="flex-end" alignItems="center">
       <MenuButton onClick={toggleDrawer(true)} />
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer(false)}>
         {sideList()}
       </Drawer>
-    </Box>
+    </HeaderBox>
   );
 }
