@@ -15,65 +15,66 @@ import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoA
 
 export const AboutLayout = (props: AboutPageModel) => {
   return (
-    <Page title={props.title} footer>
-      {props.cmsTextBlocks.map(block => (
-        <>
-          <Grid container>
-            <Grid item lg={8} md={10}>
-              <Typography variant="h6" data-testid="title">
-                {block.title}
-              </Typography>
-            </Grid>
-            <Box height="16px" width="100%" />
-            {parse(block.body)}
-            {block.moreLink && (
-              <>
-                <Box height="50px" width="100%" />
-                {/* disable for now */}
-                {/*<Grid item lg={8} md={10}>
+    <>
+      <Page title={props.title} footer>
+        {props.cmsTextBlocks.map(block => (
+          <>
+            <Grid container>
+              <Grid item lg={8} md={10}>
+                <Typography variant="h6" data-testid="title">
+                  {block.title}
+                </Typography>
+              </Grid>
+              <Box height="16px" width="100%" />
+              {parse(block.body)}
+              {block.moreLink && (
+                <>
+                  <Box height="50px" width="100%" />
+                  {/* disable for now */}
+                  {/*<Grid item lg={8} md={10}>
                   <ContainedButton text="More info" />
                 </Grid>*/}
-              </>
-            )}
-          </Grid>
-          <Box height="50px" width="100%" />
-        </>
-      ))}
+                </>
+              )}
+            </Grid>
+            <Box height="50px" width="100%" />
+          </>
+        ))}
 
-      <Grid container spacing={2}>
-        <Box position="absolute" top="10px" left="10px" zIndex="10000">
-          <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
-        </Box>
+        <Grid container spacing={2}>
+          <Box position="absolute" top="10px" left="10px" zIndex="10000">
+            <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
+          </Box>
 
-        <Hidden mdDown>
-          <Box position="absolute" top="360px" right="100px">
-            <DecoAboutRight data-testid="DecoAboutRight" />
+          <Hidden mdDown>
+            <Box position="absolute" top="360px" right="100px">
+              <DecoAboutRight data-testid="DecoAboutRight" />
+            </Box>
+          </Hidden>
+
+          <Hidden mdDown>
+            <Box position="absolute" top="1050px" right="100px">
+              <DecoAboutMidRight data-testid="DecoAboutMidRight" />
+            </Box>
+          </Hidden>
+        </Grid>
+
+        <Hidden smDown>
+          <Box position="absolute" top="258px" left="0">
+            <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
           </Box>
         </Hidden>
 
-        <Hidden mdDown>
-          <Box position="absolute" top="1050px" right="100px">
-            <DecoAboutMidRight data-testid="DecoAboutMidRight" />
+        <Hidden smDown>
+          <Box position="absolute" bottom="-270px" right="0">
+            <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
           </Box>
         </Hidden>
-      </Grid>
 
-      <Hidden smDown>
-        <Box position="absolute" top="258px" left="0">
-          <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
-        </Box>
-      </Hidden>
-
-      <Hidden smDown>
-        <Box position="absolute" bottom="-270px" right="0">
-          <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
-        </Box>
-      </Hidden>
-
-      <Hidden lgUp>
-        <Box height="100px" width="100%" />
-      </Hidden>
-
+        <Hidden lgUp>
+          <Box height="100px" width="100%" />
+        </Hidden>
+      </Page>
       <Hidden mdDown>
         <Footer />
       </Hidden>
@@ -81,6 +82,6 @@ export const AboutLayout = (props: AboutPageModel) => {
       <Hidden lgUp>
         <FooterSM />
       </Hidden>
-    </Page>
+    </>
   );
 };
