@@ -15,6 +15,7 @@ import {
   barJsonFacet,
   humCallValues,
   hum4DonutValues,
+  currencyCallValues,
   activityStatusValues,
 } from 'app/modules/signatory-data/submodules/overview/const';
 import { getYearBarChartData } from 'app/modules/signatory-data/submodules/overview/utils/getYearBarChartData';
@@ -51,6 +52,9 @@ export function OverviewPage(props) {
   const sigdataoverviewhum4donutData = useStoreState(
     state => state.sigdataoverviewhum4donut.data
   );
+  const sigdataoverviewcurrencyData = useStoreState(
+    state => state.sigdataoverviewcurrency.data
+  );
   const sigdataoverviewdataerrorsData = useStoreState(
     state => state.sigdataoverviewdataerrors.data
   );
@@ -70,6 +74,9 @@ export function OverviewPage(props) {
   );
   const sigdataoverviewdataerrorsCall = useStoreActions(
     actions => actions.sigdataoverviewdataerrors.fetch
+  );
+  const sigdataoverviewcurrencyCall = useStoreActions(
+    actions => actions.sigdataoverviewcurrency.fetch
   );
   const sigDataActivityListFilterAction = useStoreActions(
     actions => actions.sigDataActivityListFilter.setActivityListFilter
@@ -125,10 +132,18 @@ export function OverviewPage(props) {
         rows: 0,
       },
     };
+    const sigdataoverviewcurrencyCallValues = {
+      values: {
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+        'json.facet': JSON.stringify(currencyCallValues),
+        rows: 0,
+      },
+    };
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
     sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);
     sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
+    sigdataoverviewcurrencyCall(sigdataoverviewcurrencyCallValues);
   }, []);
 
   /* componentDidUpdate based on sigdataactivityyearsData */
@@ -194,10 +209,11 @@ export function OverviewPage(props) {
   );
   const financialReportingData = getFinancialReportingData(
     get(sigdataactivitystatusData, 'data', {}),
+    get(sigdataoverviewcurrencyData, 'data', {}),
     signatory,
     tooltipsData
   );
-  
+
   return (
     <OverviewLayout
       statusData={statusData}

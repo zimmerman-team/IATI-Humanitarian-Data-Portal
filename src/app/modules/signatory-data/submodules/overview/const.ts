@@ -159,6 +159,13 @@ export const activityStatusValues = {
   },
 };
 
+export const currencyCallValues = {
+  currency: {
+    type: 'terms',
+    field: 'transaction_value_currency',
+    limit: 1,
+  },
+};
 export const barJsonFacet = (years, queryDateField) => {
   const result = {};
 
