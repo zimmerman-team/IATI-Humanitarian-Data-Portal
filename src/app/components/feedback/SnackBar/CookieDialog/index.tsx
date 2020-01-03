@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import useCookie from '@devhammed/use-cookie';
 import { Message } from './common/message';
+import MobileDialog from '../../MobileDialog';
+import { Hidden } from '@material-ui/core';
 
 type SnackBarProps = {
   message?: string;
@@ -39,11 +41,11 @@ const BaseSnackbar = styled(props => <Snackbar {...props} />)`
 
 export const CookieDialog = (props: SnackBarProps) => {
   /* this hook is for setting the cookie */
-  const [cookie, setCookie] = useCookie('cookieNo', 'true');
+  const [cookie, setCookie] = useCookie('cookieNotice', 'true');
   /* this hook is for visually hiding the component */
   const [visible, setVisibility] = useState(cookie);
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(props.open);
   const { message, onClose, ...other } = props;
 
   function handleClose(event?: SyntheticEvent, reason?: string) {
@@ -62,21 +64,26 @@ export const CookieDialog = (props: SnackBarProps) => {
   return (
     visible &&
     (cookie && (
-      <BaseSnackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        open={open}
-        autoHideDuration={null}
-        onClose={handleClose}
-      >
-        <SnackbarContent
-          aria-describedby="client-snackbar"
-          message={<Message onClose={handleClose} />}
-          {...other}
-        />
-      </BaseSnackbar>
+      <>
+        <Hidden smUp>
+          <MobileDialog />
+        </Hidden>
+        <BaseSnackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          open={open}
+          autoHideDuration={null}
+          onClose={handleClose}
+        >
+          <SnackbarContent
+            aria-describedby="client-snackbar"
+            message={<Message onClose={handleClose} />}
+            {...other}
+          />
+        </BaseSnackbar>
+      </>
     ))
   );
 };
