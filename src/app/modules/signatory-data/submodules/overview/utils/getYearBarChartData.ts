@@ -12,7 +12,7 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
         const humActivities = get(rawData[y], 'hum_count.count', 0);
         const activities =
           humActivities === activitiesAct
-            ? activitiesAct
+            ? 0
             : activitiesAct - get(rawData[y], 'hum_count.count', 0);
         yearValues.push({
           year: y,
