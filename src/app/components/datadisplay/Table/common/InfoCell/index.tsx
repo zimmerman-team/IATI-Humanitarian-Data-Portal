@@ -16,8 +16,10 @@ const Tooltip = styled(TooltipButton)`
 const InfoCellModule = (props: InfoCellModuleModel) => {
   return (
     <Container>
-      <span>{props.value}</span>
-      {props.info && <Tooltip tip={props.info} />}
+      <div>
+        {props.value}
+        {props.info && <Tooltip tip={props.info} display="inline-block" />}
+      </div>
     </Container>
   );
 };

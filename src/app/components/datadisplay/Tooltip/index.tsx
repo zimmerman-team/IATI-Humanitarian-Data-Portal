@@ -8,6 +8,7 @@ type Props = {
   size?: string;
   label?: string;
   tip?: string;
+  display?: string;
 };
 
 const BaseButton = styled(props => <Button {...props} />)`
@@ -16,7 +17,7 @@ const BaseButton = styled(props => <Button {...props} />)`
     border-radius: 50%;
     height: 15px;
     width: 15px;
-    display: flex;
+    display: ${props => props.display || 'flex'};
     justify-content: center;
     align-items: center;
     padding: 0;
@@ -30,6 +31,9 @@ const BaseButton = styled(props => <Button {...props} />)`
     }
     &:hover {
       background-color: ${Colours.greydark20OrFontsecondary};
+    }
+    .MuiButton-label {
+      display: block;
     }
   }
 `;
