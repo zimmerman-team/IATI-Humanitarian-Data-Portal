@@ -98,7 +98,6 @@ export function OverviewPage(props) {
     get(sigdatadatesheaderData, 'data.facets.date1', ''),
     get(sigdatadatesheaderData, 'data.facets.date2', '')
   );
-  console.log(sigdatadatesheaderData);
 
   const onItemClick = value => {
     sigDataActivityListFilterAction(value);
