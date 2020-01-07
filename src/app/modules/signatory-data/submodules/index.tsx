@@ -75,7 +75,9 @@ export function SubmoduleContainer(props) {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         'json.facet': JSON.stringify({
           date1: `min(activity_date_start_actual)`,
-          date2: `max(activity_date_start_planned)`,
+          date2: `min(activity_date_start_planned)`,
+          date3: `max(activity_date_start_actual)`,
+          date4: `max(activity_date_start_planned)`,
         }),
         rows: 0,
       },

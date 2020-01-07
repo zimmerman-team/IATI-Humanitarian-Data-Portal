@@ -26,6 +26,6 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
       }
     });
   }
-  remove(yearValues, { Activities: 0 });
+  remove(yearValues, { activitiesAct: 0 });
   return sortBy(yearValues, 'year');
 };

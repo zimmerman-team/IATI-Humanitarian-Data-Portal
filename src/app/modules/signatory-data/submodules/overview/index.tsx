@@ -96,7 +96,9 @@ export function OverviewPage(props) {
   );
   const years2 = getYearRange(
     get(sigdatadatesheaderData, 'data.facets.date1', ''),
-    get(sigdatadatesheaderData, 'data.facets.date2', '')
+    get(sigdatadatesheaderData, 'data.facets.date2', ''),
+    get(sigdatadatesheaderData, 'data.facets.date3', ''),
+    get(sigdatadatesheaderData, 'data.facets.date4', '')
   );
 
   const onItemClick = value => {
