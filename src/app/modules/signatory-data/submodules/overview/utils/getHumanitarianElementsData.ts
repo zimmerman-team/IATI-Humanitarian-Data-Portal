@@ -20,7 +20,7 @@ export const getHumanitarianElementsData = (
   if (rawData) {
     donutValues.forEach((item, index) => {
       let value = 0;
-      if (index < 3) {
+      if (index < 4) {
         value =
           (get(rawData, `facets.humElData_${index + 1}.count`, 0) * 100) /
           get(humOverviewData, 'facets.count', 0);

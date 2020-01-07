@@ -10,7 +10,10 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import { getAllYears } from 'app/modules/signatory-data/submodules/utils';
+import {
+  getAllYears,
+  getYearRange,
+} from 'app/modules/signatory-data/submodules/utils';
 import {
   barJsonFacet,
   humCallValues,
@@ -88,6 +91,15 @@ export function OverviewPage(props) {
       []
     )
   );
+  const sigdatadatesheaderData = useStoreState(
+    state => state.sigdatadatesheader.data
+  );
+  const years2 = getYearRange(
+    get(sigdatadatesheaderData, 'data.facets.date1', ''),
+    get(sigdatadatesheaderData, 'data.facets.date2', ''),
+    get(sigdatadatesheaderData, 'data.facets.date3', ''),
+    get(sigdatadatesheaderData, 'data.facets.date4', '')
+  );
 
   const onItemClick = value => {
     sigDataActivityListFilterAction(value);
@@ -151,7 +163,9 @@ export function OverviewPage(props) {
     const sigdataactivitiesbyyearcallValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify(barJsonFacet(years, props.queryDateField)),
+        'json.facet': JSON.stringify(
+          barJsonFacet(years2 || years, props.queryDateField)
+        ),
         rows: 0,
       },
     };
