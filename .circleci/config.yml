@@ -22,7 +22,7 @@ jobs:
           root: .
           paths:
             - ./.
-            - .cache/Cypress
+            - ~/.cache/Cypress
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
