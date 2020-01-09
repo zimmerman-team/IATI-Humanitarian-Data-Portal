@@ -17,9 +17,9 @@ jobs:
           key: bock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
-            - ~/.cache/Cypress
+            - home/circleci/.cache/Cypress
       - persist_to_workspace:
-          root: .
+          root: /home/circleci
           paths:
             - .cache/Cypress
             - ./.
