@@ -19,10 +19,10 @@ jobs:
             - ./.cache
             - ./.cache/Cypress
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - .
-            - ./.cache/Cypress
+            - .cache/Cypress
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
