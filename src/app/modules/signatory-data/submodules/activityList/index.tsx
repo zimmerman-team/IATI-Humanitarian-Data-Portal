@@ -39,11 +39,25 @@ const HighlighterCont = styled(Typography)`
 function ActivityListz(props) {
   // todo: look into Error:(26, 10) TS2589: Type instantiation is excessively deep and possibly infinite.
   const [locState, locAction] = countFilterz();
-  const countryFilters = get(
-    locState.countFilters,
-    'data.data.facet_counts.facet_pivot.recipient_country_code',
-    null
-  );
+  const countryFilters =
+    get(
+      locState.countFilters,
+      'data.data.facet_counts.facet_pivot.transaction_recipient_country_code',
+      null
+    ) !== null
+      ? [
+          ...get(
+            locState.countFilters,
+            'data.data.facet_counts.facet_pivot.transaction_recipient_country_code',
+            []
+          ),
+          ...get(
+            locState.countFilters,
+            'data.data.facet_counts.facet_pivot.recipient_country_code',
+            []
+          ),
+        ]
+      : null;
   const [countries, setCountries] = useState<string[]>([]);
   const sigDataActivityListFilter = useStoreState(
     state => state.sigDataActivityListFilter.activityListFilter
@@ -112,7 +126,7 @@ function ActivityListz(props) {
         })
       );
     }
-  }, [countryFilters]);
+  }, [locState.countFilters]);
 
   useEffect(() => {
     activitiesAction({
@@ -191,6 +205,8 @@ function ActivityListz(props) {
           .map(
             filterName =>
               `recipient_country_code:${
+                find(countryCodeList, ['name', filterName]).code
+              } OR transaction_recipient_country_code:${
                 find(countryCodeList, ['name', filterName]).code
               }`
           )

@@ -4,6 +4,7 @@ import { ListModel } from 'app/components/datadisplay/Lists/model';
 
 export const getFinancialReportingData = (
   rawData,
+  rawData2,
   sigMetadata,
   tooltipsData
 ): ListModel => {
@@ -23,7 +24,10 @@ export const getFinancialReportingData = (
         values: [
           {
             qtc: '',
-            ptc: itemCounts[0],
+            ptc:
+              itemCounts[0] === ''
+                ? get(rawData2, 'facets.currency.buckets[0].val', '')
+                : itemCounts[0],
           },
         ],
       },

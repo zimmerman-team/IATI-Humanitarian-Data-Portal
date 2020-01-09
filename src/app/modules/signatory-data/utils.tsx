@@ -58,7 +58,9 @@ export const formatTableSignatories = (
         {
           name: sigOrgName,
           code:
-            fSig && fSig.count > 0 ? encodeURIComponent(cmsSig.IATIOrgRef) : '',
+            fSig && fSig.count > 0 && fSig.pubHumData.count > 0
+              ? encodeURIComponent(cmsSig.IATIOrgRef)
+              : '',
         },
         get(cmsSig, 'name', ''),
         orgType,

@@ -13,8 +13,25 @@ export const getAllYears = data => {
 export const getHeaderDateRange = dates => {
   const date1 = get(dates, 'date1', null);
   const date2 = get(dates, 'date2', null);
-  return `${date1 ? formatDate(date1).slice(2) : ''} - ${
-    date2 ? formatDate(date2).slice(2) : ''
+  const date3 = get(dates, 'date3', null);
+  const date4 = get(dates, 'date4', null);
+  const _dates = [];
+  if (new Date(date1) < new Date(date2)) {
+    if (date1) {
+      _dates.push(date1 as never);
+    } else {
+      _dates.push(date2 as never);
+    }
+  } else {
+    _dates.push(date2 as never);
+  }
+  if (new Date(date3) > new Date(date4)) {
+    _dates.push(date3 as never);
+  } else {
+    _dates.push(date4 as never);
+  }
+  return `${_dates[0] ? formatDate(_dates[0]).slice(2) : ''} - ${
+    _dates[1] ? formatDate(_dates[1]).slice(2) : ''
   }`;
 };
 
@@ -29,4 +46,31 @@ export const getActivityDateTypeField = data => {
     }
   }
   return field;
+};
+
+export const getYearRange = (date1, date2, date3, date4) => {
+  const result = [];
+  const _dates = [];
+  if (new Date(date1) < new Date(date2)) {
+    if (date1) {
+      _dates.push(date1 as never);
+    } else {
+      _dates.push(date2 as never);
+    }
+  } else {
+    _dates.push(date2 as never);
+  }
+  if (new Date(date3) > new Date(date4)) {
+    _dates.push(date3 as never);
+  } else {
+    _dates.push(date4 as never);
+  }
+  if (_dates.length === 2) {
+    const year1 = parseInt((_dates[0] as string).slice(0, 4), 10);
+    const year2 = parseInt((_dates[1] as string).slice(0, 4), 10);
+    for (let i = year1; i < year2 + 1; i++) {
+      result.push(i as never);
+    }
+  }
+  return result;
 };
