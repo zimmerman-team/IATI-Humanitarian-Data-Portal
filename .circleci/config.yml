@@ -11,10 +11,10 @@ jobs:
           at: ~/IATI-Humanitarian-Data-Portal
       - restore_cache:
           keys:
-            - bock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - zock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
       - save_cache:
-          key: bock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: zock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
             - home/circleci/.cache/Cypress
