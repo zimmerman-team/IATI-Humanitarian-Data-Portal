@@ -11,18 +11,18 @@ jobs:
           at: ~/IATI-Humanitarian-Data-Portal
       - restore_cache:
           keys:
-            - zock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - rock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
       - save_cache:
-          key: zock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: rock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ./.cache
-            - home/circleci/.cache/Cypress
+            - .cache
+            - .cache/Cypress
       - persist_to_workspace:
           root: /home/circleci
           paths:
+            - .cache
             - .cache/Cypress
-            - ./.
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
