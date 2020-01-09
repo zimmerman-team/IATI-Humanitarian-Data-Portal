@@ -94,6 +94,7 @@ export interface SingleDefActivity {
   related_activity_ref: string[];
   related_activity_type: string[];
   recipient_country_narrative?: string[];
+  transaction_recipient_country_code: string;
   conditions?: {
     attached: string;
     condition: ConditionItem[];
@@ -135,7 +136,10 @@ interface ActivityQuery {
 }
 
 export interface ActivityResponceInterface
-  extends ApiModel<ActivityQuery, ActivityResponse> {}
+  extends ApiModel<
+    ActivityQuery | ActivityQuery[] | string,
+    ActivityResponse
+  > {}
 
 export interface ActivityResponceStringQueryInterface
   extends ApiModel<string, ActivityResponse> {}

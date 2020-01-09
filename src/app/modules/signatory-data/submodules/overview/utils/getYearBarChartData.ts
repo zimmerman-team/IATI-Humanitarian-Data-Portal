@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import remove from 'lodash/remove';
 import sortBy from 'lodash/sortBy';
 import isEmpty from 'lodash/isEmpty';
 import { YearBarChartObjectModel } from 'app/modules/signatory-data/submodules/overview/model';
@@ -25,5 +26,6 @@ export const getYearBarChartData = (rawData): YearBarChartObjectModel[] => {
       }
     });
   }
+  remove(yearValues, { activitiesAct: 0 });
   return sortBy(yearValues, 'year');
 };

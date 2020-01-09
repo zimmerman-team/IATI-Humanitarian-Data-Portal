@@ -174,21 +174,39 @@ export const apiPOSTModel = <QueryModel, ResponseModel>(
   }),
   fetch: thunk(async (actions, query: RequestValues<QueryModel>) => {
     actions.onRequest();
+    if (Array.isArray(query.values)) {
+      const calls = query.values.map(v => {
+        const formData = new FormData();
+        const qValues = v as QueryModel;
+        Object.keys(qValues).forEach(key => {
+          formData.append(key, qValues[key]);
+        });
+        return axios.post(url, formData);
+      });
+      axios.all(calls).then(
+        (resp: any[]) => {
+          actions.onSuccess(resp);
+        },
+        (error: any) => {
+          actions.onError(error.response);
+        }
+      );
+    } else {
+      const formData = new FormData();
+      const qValues = query.values as QueryModel;
+      Object.keys(qValues).forEach(key => {
+        formData.append(key, qValues[key]);
+      });
 
-    const formData = new FormData();
-    const qValues = query.values as QueryModel;
-    Object.keys(qValues).forEach(key => {
-      formData.append(key, qValues[key]);
-    });
-
-    axios.post(url, formData).then(
-      (resp: AxiosResponse) => {
-        actions.onSuccess({ data: resp.data });
-      },
-      (error: any) => {
-        actions.onError(error.response);
-      }
-    );
+      axios.post(url, formData).then(
+        (resp: AxiosResponse) => {
+          actions.onSuccess({ data: resp.data });
+        },
+        (error: any) => {
+          actions.onError(error.response);
+        }
+      );
+    }
   }),
   // so this basically will work as fetch just that it will not set new data
   // in the reducer
