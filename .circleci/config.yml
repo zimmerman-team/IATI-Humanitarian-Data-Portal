@@ -3,7 +3,7 @@ jobs:
   #  CHECKOUT REPOSITORY
   checkout_repo:
     docker:
-      - image: circleci/node:10.13.0
+      - image: circleci/node:10.13.0-browsers
     working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
@@ -11,18 +11,18 @@ jobs:
           at: ~/IATI-Humanitarian-Data-Portal
       - restore_cache:
           keys:
-            - lock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - bock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
       - save_cache:
-          key: lock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: bock-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
             - ~/.cache/Cypress
       - persist_to_workspace:
           root: .
           paths:
+            - .cache/Cypress
             - ./.
-            - ~/.cache/Cypress
 
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
