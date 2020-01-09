@@ -13,6 +13,8 @@ export interface SingleDefActivity {
   id: string;
   iati_identifier: string;
   recipient_country_name?: string[];
+  recipient_country?: any[];
+  sector: any[];
   reporting_org: {
     ref: string;
     secondary_reporter: string;

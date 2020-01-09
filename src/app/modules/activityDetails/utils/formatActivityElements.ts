@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/camelcase */
 /* models and interfaces */
 import { ListModel } from 'app/components/datadisplay/Lists/model';
 import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
@@ -34,6 +36,7 @@ import {
 import get from 'lodash/get';
 import { formatSingleCardItem } from './formatSingleCardItem';
 import { formatTableCardItems } from './formatTableCardItems';
+import uniq from 'lodash/uniq';
 
 // so this formating function will format all of the existing elements of the activity
 //
@@ -94,6 +97,42 @@ export function formatActivityElements(
       ),
     });
 
+    let transCountF: any[] = [];
+    const transCount = get(
+      actDetail,
+      'transaction_recipient_country_code',
+      []
+    ) as string[];
+    if (transCount) {
+      transCountF = uniq(transCount).map(c => ({
+        country: {
+          code: c,
+          name: get(
+            find(get(codeLists.countNames, 'data.data.response.docs', []), {
+              code: c,
+            }),
+            'name',
+            ''
+          ),
+        },
+        // percentage: 0,
+      }));
+      if (get(actDetail, 'recipient_country', null)) {
+        actDetail = {
+          ...actDetail,
+          recipient_country: [
+            ...get(actDetail, 'recipient_country', []),
+            ...transCountF,
+          ],
+        };
+      } else {
+        actDetail = {
+          ...actDetail,
+          recipient_country: transCountF,
+        };
+      }
+    }
+
     //4
     // pushing recipient countries
     elementLists.push({
@@ -153,6 +192,39 @@ export function formatActivityElements(
         )
       ),
     });
+
+    let transSectorF: any[] = [];
+    const transSector = get(
+      actDetail,
+      'transaction_sector_code',
+      []
+    ) as string[];
+    if (transSector) {
+      transSectorF = uniq(transSector).map(c => ({
+        sector: {
+          code: c,
+          name: get(
+            find(get(codeLists.sectors, 'data.data', []), {
+              code: c,
+            }),
+            'name',
+            ''
+          ),
+        },
+        // percentage: 0,
+      }));
+      if (get(actDetail, 'sector', null)) {
+        actDetail = {
+          ...actDetail,
+          sector: [...get(actDetail, 'sector', []), ...transSectorF],
+        };
+      } else {
+        actDetail = {
+          ...actDetail,
+          sector: transSectorF,
+        };
+      }
+    }
 
     // 8
     // pushing sectors
@@ -215,7 +287,7 @@ export function formatActivityElements(
     actDetail.contact_info.forEach((info, index) => {
       elementLists.push({
         title: `Contact information ${
-          actDetail.contact_info.length > 1 ? index + 1 : ''
+          get(actDetail, 'contact_info', '').length > 1 ? index + 1 : ''
         }`,
         type: 'Card',
         elName: `contInfo${index}`,
