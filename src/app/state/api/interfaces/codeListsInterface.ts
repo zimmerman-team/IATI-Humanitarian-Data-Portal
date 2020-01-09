@@ -39,5 +39,6 @@ export interface CodeListInterface {
   relActTypes: ApiModel<any, CodeItemInterface[]>;
   condCodeNames: ApiModel<any, CodeItemInterface[]>;
   sectorVocabs: ApiModel<any, CodeItemInterface[]>;
+  sectors: ApiModel<any, CodeItemInterface[]>;
   countNames: ApiModel<BaseQuery, BaseRespModel<BaseQuery, CodeItemInterface>>;
 }
