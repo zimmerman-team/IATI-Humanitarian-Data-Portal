@@ -61,9 +61,7 @@ export function SubmoduleContainer(props) {
   React.useEffect(() => {
     const callValues = {
       values: {
-        q: `reporting_org_ref:${decodeURIComponent(
-          props.match.params.code
-        )}`,
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
         facet: 'on',
         'facet.pivot': `${queryDateField},humanitarian`,
         fl: 'facet_counts',

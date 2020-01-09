@@ -231,8 +231,8 @@ export default createMuiTheme({
     },
     MuiTooltip: {
       tooltip: {
-        whiteSpace: 'pre-wrap'
-      }
+        whiteSpace: 'pre-wrap',
+      },
     },
     MUIDataTableToolbar: {
       root: {

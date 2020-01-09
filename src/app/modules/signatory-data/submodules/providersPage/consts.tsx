@@ -100,8 +100,7 @@ export const baseProviderConfig = (
               label: `${label}: ${tableMeta.rowData[0]}`,
               value: `(${filterName}:${filterValue})`,
             };
-            return activityListFilterAction &&
-              value > 0 ? (
+            return activityListFilterAction && value > 0 ? (
               <NumberLink
                 onClick={e => {
                   e.stopPropagation();
