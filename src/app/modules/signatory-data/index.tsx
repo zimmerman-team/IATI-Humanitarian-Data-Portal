@@ -165,6 +165,8 @@ export const SignatoryData = React.memo(
     sigTable.options.onFilterChange = (changedColumn, filterList) => {
       optionActions.setFilterLists(filterList);
     };
+    sigTable.options.responsive = 'scroll';
+    sigTable.options.fixedHeader = true;
     // sigTable.options.onColumnSortChange = (sortCol, direction) => {
     //   const sortDir = direction === 'ascending' ? 'asc' : 'desc';
     //   optionActions.setSort({ sortCol, sortDir });
