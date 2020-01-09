@@ -13,8 +13,11 @@ const ContentContainer = styled.div`
   align-items: center;
   background-color: ${colors.purplebase};
   padding: 24px;
-  width: 100%;
   justify-content: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
 `;
 
 const Text = styled(props => <Typography {...props} />)`
