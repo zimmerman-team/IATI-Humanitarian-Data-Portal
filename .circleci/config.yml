@@ -11,10 +11,10 @@ jobs:
           at: ~/IATI-Humanitarian-Data-Portal
       - restore_cache:
           keys:
-            - dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run: yarn install
       - save_cache:
-          key: dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ./.cache
             - ./.cache/Cypress
