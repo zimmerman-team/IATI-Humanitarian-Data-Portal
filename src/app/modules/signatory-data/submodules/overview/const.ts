@@ -78,7 +78,7 @@ export const humCallValues = {
   humOtherClassOfInterestData_3: {
     type: 'query',
     q:
-      '(policy_marker_code:1 AND sector_vocabulary:1 OR transaction_sector_vocabulary:1)',
+      '(policy_marker_code:1 AND (sector_vocabulary:1 OR transaction_sector_vocabulary:1))',
   },
   humOtherClassOfInterestData_4: {
     type: 'query',

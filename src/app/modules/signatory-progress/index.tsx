@@ -143,8 +143,6 @@ export function SignatoryProgress() {
     signatoryProgressData
   ) as never;
 
-  console.log(iatigbsignatoriesData, signatoryProgressData);
-
   return (
     <SignatoryProgressLayout
       loading={iatigbsignatoriesData.loading || signatoryProgressDataLoading}
