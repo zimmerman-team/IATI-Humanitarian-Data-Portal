@@ -3,6 +3,21 @@ import MUIDataTable from 'mui-datatables';
 
 import { TableLayoutModel } from 'app/components/datadisplay/Table/model';
 import { changeTableRowColor } from 'app/components/datadisplay/Table/helpers';
+import styled from 'styled-components';
+
+const DataTable = styled(props => <MUIDataTable {...props} />)`
+  .TotalCell {
+    &:first-child {
+      &::before {
+        content: '** %s and totals relate to publishing organisations';
+      }
+    }
+  }
+
+  .MuiTablePagination-actions {
+    margin-left: 0;
+  }
+`;
 
 const TableLayout = (props: TableLayoutModel) => {
   React.useEffect(() => {
@@ -10,21 +25,11 @@ const TableLayout = (props: TableLayoutModel) => {
   }, [props.changeTableRowColor]);
 
   return (
-    <MUIDataTable
+    <DataTable
       data={props.data}
       title={props.title}
       options={props.options}
       columns={props.columns}
-      /* todo: figure out a cleaner way to do this*/
-      css={`
-        .TotalCell {
-          &:first-child {
-            &::before {
-              content: '** %s and totals relate to publishing organisations';
-            }
-          }
-        }
-      `}
     />
   );
 };
