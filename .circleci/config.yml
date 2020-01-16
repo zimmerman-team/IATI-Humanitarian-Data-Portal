@@ -107,7 +107,7 @@ jobs:
     docker:
       - image: circleci/node:10.13.0-browsers
     parallelism: 2
-    working_directory: ~/IATI-Humanitarian-Data-Portal 
+    working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
       - attach_workspace:
@@ -249,9 +249,9 @@ workflows:
       - build_deploy:
           requires:
             - checkout_repo
-      - test_e2e:
-          requires:
-            - build_deploy
+#      - test_e2e:
+#          requires:
+#            - build_deploy
 #      - performance_test:
 #          requires:
 #            - build_deploy
