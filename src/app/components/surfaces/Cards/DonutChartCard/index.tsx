@@ -15,17 +15,21 @@ const Card = styled(props => <MuiCard {...props} />)`
 const Content = styled(props => <CardContent {...props} />)`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   && {
     padding: 32px !important;
+  }
+
+  @media (max-width: 960px) {
+    && {
+      padding: 32px 16px !important;
+    }
   }
 `;
 
 const Typo = styled(props => <Typography {...props} />)`
   width: 300px;
   max-width: 300px;
-  && {
-    margin-right: 100px;
-  }
 `;
 
 export const DonutChartCard = (props: DonutChartCardModel) => {

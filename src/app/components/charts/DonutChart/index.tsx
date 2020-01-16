@@ -4,14 +4,23 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import Colours from 'app/theme/color';
 import { DonutChartModel } from 'app/components/charts/DonutChart/model';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-const SIZE = 158;
+const mdUpSize = 158;
+const mdDownSize = 128;
 
 const Container = styled(props => <div {...props} />)`
   position: relative;
-  height: ${SIZE}px;
-  width: ${SIZE}px;
-  min-width: ${SIZE}px;
+  @media (max-width: 960px) {
+    height: ${mdDownSize}px;
+    width: ${mdDownSize}px;
+    min-width: ${mdDownSize}px;
+  }
+
+  height: ${mdUpSize}px;
+  width: ${mdUpSize}px;
+  min-width: ${mdUpSize}px;
 `;
 
 const BackgroundDonut = styled(props => <CircularProgress {...props} />)`
@@ -30,10 +39,15 @@ const ProgressDonut = styled(props => <CircularProgress {...props} />)`
 
 const Typo = styled(props => <Typography {...props} />)`
   position: absolute;
-  left: calc(${SIZE}px / 2);
+  left: calc(${mdUpSize}px / 2);
   transform: translateX(-50%) translateY(-50%);
-  top: calc(${SIZE}px / 2);
+  top: calc(${mdUpSize}px / 2);
   color: black;
+
+  @media (max-width: 960px) {
+    left: calc(${mdDownSize}px / 2);
+    top: calc(${mdDownSize}px / 2);
+  }
 `;
 
 // https://material-ui.com/components/progress/#CircularStatic.js
@@ -55,13 +69,21 @@ export const DonutChart = (props: DonutChartModel) => {
     };
   }, []);
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
     <Container>
-      <BackgroundDonut variant="static" value={100} size={SIZE} thickness={5} />
+      <BackgroundDonut
+        variant="static"
+        value={100}
+        size={matches ? 158 : 128}
+        thickness={5}
+      />
       <ProgressDonut
         variant="static"
         value={props.value}
-        size={SIZE}
+        size={matches ? 158 : 128}
         thickness={5}
       />
       <Typo variant="h6">{props.value}%</Typo>
