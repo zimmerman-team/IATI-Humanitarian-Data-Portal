@@ -19,7 +19,7 @@ jobs:
             - .cache
             - .cache/Cypress
       - persist_to_workspace:
-          root: /home/circleci
+          root: ~/IATI-Humanitarian-Data-Portal
           paths:
             - .cache
             - .cache/Cypress
