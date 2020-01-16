@@ -15,6 +15,12 @@ import { Typography } from '@material-ui/core';
 
 export const Base = styled(props => <Paper {...props} />)`
   padding: 8px 28px 32px 28px;
+  @media (max-width: 960px) {
+    padding: 8px 16px;
+  }
+
+  overflow: auto;
+
   && {
     box-shadow: 0 0 2px 1px rgba(130, 136, 148, 0.08);
   }
