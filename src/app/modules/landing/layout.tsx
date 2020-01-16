@@ -16,6 +16,9 @@ const LandingPaper = styled.div`
   max-width: 839px;
   padding: 40px;
   position: relative;
+  @media (max-width: 960px) {
+    padding: 8px;
+  }
 `;
 
 const LandingIntrotext = styled(Typography)`
@@ -43,11 +46,13 @@ export const LandingLayout = (props: LandingModel) => {
       {/*<DebugBox>*/}
       <LandingPaper>
         <Grid container direction="column">
-          <Grid item md={12}>
+          <Grid item md={12} xs={12}>
             <Box width="97%">
-              <Typography variant="h5" color="primary">
-                <b>Welcome to the IATI Humanitarian Data Portal</b>
-              </Typography>
+              <Hidden smDown>
+                <Typography variant="h5" color="primary">
+                  <b>Welcome to the IATI Humanitarian Data Portal</b>
+                </Typography>
+              </Hidden>
               <Box height="10px" />
               <LandingIntrotext variant="h1">
                 <Highlighter

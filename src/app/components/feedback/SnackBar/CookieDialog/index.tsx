@@ -2,10 +2,11 @@ import React, { SyntheticEvent, useState } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import styled from 'styled-components';
-import ContainedButton from 'app/components/inputs/buttons/ContainedButton';
-import Typography from '@material-ui/core/Typography';
+
 import useCookie from '@devhammed/use-cookie';
-import { Link } from 'react-router-dom';
+import { Message } from './common/message';
+import MobileDialog from '../../MobileDialog';
+import { Hidden } from '@material-ui/core';
 
 type SnackBarProps = {
   message?: string;
@@ -29,17 +30,13 @@ const BaseSnackbar = styled(props => <Snackbar {...props} />)`
 
   & [class*='MuiSnackbarContent-message'] {
     padding-left: 0px;
-    padding-top: 28px;
-    padding-bottom: 28px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   & [class*='MuiSnackbarContent-action'] {
     padding-left: 64px;
   }
-`;
-
-const Typo = styled(props => <Typography {...props} />)`
-  color: black;
 `;
 
 export const CookieDialog = (props: SnackBarProps) => {
@@ -62,41 +59,31 @@ export const CookieDialog = (props: SnackBarProps) => {
       sameSite: '',
     });
     setVisibility(!visible);
-
-    /*    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);*/
   }
 
   return (
     visible &&
     (cookie && (
-      <BaseSnackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        open={open}
-        autoHideDuration={null}
-        onClose={handleClose}
-      >
-        <SnackbarContent
-          aria-describedby="client-snackbar"
-          message={
-            <span id="client-snackbar">
-              <Typo variant="body1">
-                The website uses cookies for tracking statistics. Read{' '}
-                <Link to="/privacy">Grand Bargains data privacy</Link> for more
-                details.
-              </Typo>
-            </span>
-          }
-          action={[<ContainedButton text="Accept" onClick={handleClose} />]}
-          {...other}
-        />
-      </BaseSnackbar>
+      <>
+        <Hidden smUp>
+          <MobileDialog />
+        </Hidden>
+        <BaseSnackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          open={open}
+          autoHideDuration={null}
+          onClose={handleClose}
+        >
+          <SnackbarContent
+            aria-describedby="client-snackbar"
+            message={<Message onClose={handleClose} />}
+            {...other}
+          />
+        </BaseSnackbar>
+      </>
     ))
   );
 };
