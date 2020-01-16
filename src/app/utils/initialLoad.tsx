@@ -193,6 +193,12 @@ export function InitialDataLoad() {
   const getSectorVocabs = useStoreActions(
     actions => actions.codelists.sectorVocabs.fetch
   );
+  const sectors = useStoreState(
+    reduxstate => reduxstate.codelists.sectors
+  );
+  const getSectors = useStoreActions(
+    actions => actions.codelists.sectors.fetch
+  );
   const countNames = useStoreState(
     reduxstate => reduxstate.codelists.countNames
   );
@@ -301,6 +307,9 @@ export function InitialDataLoad() {
     }
     if (!sectorVocabs.data) {
       getSectorVocabs({});
+    }
+    if (!sectors.data) {
+      getSectors({});
     }
     if (!countNames.data) {
       getCountNames({

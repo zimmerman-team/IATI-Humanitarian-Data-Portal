@@ -55,7 +55,7 @@ export function formatTableData(
       let iatiPerc = range.allPerc;
       let iatiCount = range.allCount;
 
-      if (index === 1) {
+      if (index === 0) {
         befLastCount = iatiCount;
       }
 

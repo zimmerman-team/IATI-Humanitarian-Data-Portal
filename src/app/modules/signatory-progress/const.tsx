@@ -201,9 +201,7 @@ export const pubTracQuery = {
 
 // query for publishers publishing 2.03 data
 export const pub203Query = {
-  q: `(transaction_type:(12 13) OR
-        default_aid_type_vocabulary:(2 3 4) OR
-         reporting_org_type_code:24)`,
+  q: `(transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) OR ((participating_org_type:24 AND participating_org_role:4) OR transaction_receiver_org_type_code:24))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
