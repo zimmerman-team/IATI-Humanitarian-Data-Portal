@@ -6,7 +6,7 @@ import { SignatoryNavigationModel } from 'app/components/navigation/SignatoryNav
 import { Grid } from '@material-ui/core';
 import useLocation from 'react-use/lib/useLocation';
 import get from 'lodash/get';
-
+import { css } from 'styled-components/macro';
 //TODO: Component too convoluted, should be refactored to work the same as the App Bar
 const LocationLink = styled(props => <NavLink {...props} />)`
   && {
@@ -63,39 +63,38 @@ export function SignatoryNavigation(props: SignatoryNavigationModel) {
   const state = useLocation();
 
   return (
-    <>
-      {props.locations.map(lines => {
+    <Grid
+      container
+      css={`
+        flex-direction: row;
+        justify-content: flex-end;
+      `}
+    >
+      {props.items.map(item => {
         return (
-          /* todo: serious layout flaw, needs to be fixed */
-          <Grid container justify="flex-end" xs={12}>
-            {lines.items.map(location => {
-              if (get(state, 'pathname', '').includes(location.url)) {
-                return (
-                  <CurrentLocationLink
-                    fontSize={lines.fontSize}
-                    variant="button"
-                    key={location.label}
-                    to={`/signatory-data/${props.activity}/${location.url}`}
-                  >
-                    {location.label}
-                    <Underline show="true" />
-                  </CurrentLocationLink>
-                );
+          <Grid
+            item
+            xs={5}
+            css={`
+              display: flex;
+
+              justify-content: flex-end;
+
+              :nth-child(even) {
+                opacity: 0.5;
               }
-              return (
-                <LocationLink
-                  fontSize={lines.fontSize}
-                  key={location.label}
-                  to={`/signatory-data/${props.activity}/${location.url}`}
-                >
-                  {location.label}
-                  <Underline />
-                </LocationLink>
-              );
-            })}
+            `}
+          >
+            <LocationLink
+              key={item.label}
+              to={`/signatory-data/${props.activity}/${item.url}`}
+            >
+              {item.label}
+              <Underline />
+            </LocationLink>
           </Grid>
         );
       })}
-    </>
+    </Grid>
   );
 }

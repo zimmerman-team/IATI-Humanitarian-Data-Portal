@@ -78,7 +78,7 @@ a:hover {
   color: #30c2b0;
 }
 
-ol{
+ol {
   font-family: Inter;
   font-weight: bold;
 }
@@ -90,4 +90,9 @@ ol{
 
 .TransparentCell {
   background: transparent !important;
+}
+
+* {
+  outline: 1px solid rgba(0, 0, 0, 0.2) !important;
+  /* outline: 1px solid red !important; */
 }
