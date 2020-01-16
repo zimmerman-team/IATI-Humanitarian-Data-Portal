@@ -2,10 +2,7 @@
 
 import autoRecord from 'cypress-autorecord';
 
-const signatoryTimelinessTexts = [
-  'Publishing frequency',
-  'Data timelag',
-];
+const signatoryTimelinessTexts = ['Publishing frequency', 'Data timelag'];
 
 describe('Signatory data - timeliness', function() {
   // autoRecord();

@@ -29,7 +29,7 @@ describe('Landing', function() {
     cy.findByTestId('About').should('exist');
     cy.findByTestId('Signatory Progress').should('exist');
     cy.findByTestId('Signatory Data').should('exist');
-    cy.findByTestId("FAQs").should('exist');
+    cy.findByTestId('FAQs').should('exist');
   });
 
   it('should show the correct texts', function() {

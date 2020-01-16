@@ -193,9 +193,7 @@ export function InitialDataLoad() {
   const getSectorVocabs = useStoreActions(
     actions => actions.codelists.sectorVocabs.fetch
   );
-  const sectors = useStoreState(
-    reduxstate => reduxstate.codelists.sectors
-  );
+  const sectors = useStoreState(reduxstate => reduxstate.codelists.sectors);
   const getSectors = useStoreActions(
     actions => actions.codelists.sectors.fetch
   );
