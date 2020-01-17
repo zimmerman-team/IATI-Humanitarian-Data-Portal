@@ -3,7 +3,7 @@ import { Page } from 'app/modules/common/Page';
 import { Box, Grid, Hidden } from '@material-ui/core';
 import { FaqsPageModel } from 'app/modules/faqs/model';
 import ExpansionPanel from 'app/components/surfaces/ExpansionPanel';
-import { Footer, FooterSM } from 'app/components/surfaces/Footer';
+import { Footer } from 'app/components/surfaces/Footer';
 import { DecoFaqTopLeft } from 'app/modules/faqs/common/decoration/DecoFaqTopLeft';
 import { DecoFaqTopRight } from 'app/modules/faqs/common/decoration/DecoFaqTopRight';
 
@@ -26,13 +26,8 @@ export const FaqsLayout = (props: FaqsPageModel) => {
         </Grid>
       </Page>
       <Box height="40px" width="100%" />
-      <Hidden mdDown>
-        <Footer />
-      </Hidden>
 
-      <Hidden lgUp>
-        <FooterSM />
-      </Hidden>
+      <Footer />
     </>
   );
 };
