@@ -67,7 +67,10 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
         <Hidden mdUp>
           <Box height="50px" width="100%" />
         </Hidden>
-        <Grid item xs={12} md={6}>
+        {/*Helper Grid Item*/}
+        <Grid item xs={1} md={1} sm={1} />
+
+        <Grid item xs={11} sm={11} md={5} justify="flex-end">
           {/* implement conditional here that differentiates between organisation types */}
           <SignatoryNavigation
             activity={props.code}
