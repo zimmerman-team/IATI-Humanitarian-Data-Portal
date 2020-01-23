@@ -1,3 +1,5 @@
+import { SignatoryNavigationModel } from 'app/components/navigation/SignatoryNavigation/model';
+
 export const getLocations = orgType => {
   if (orgType === 'Government') {
     return [
@@ -19,11 +21,6 @@ export const getLocations = orgType => {
             label: 'Coverage',
             url: 'coverage',
           },
-        ],
-      },
-      {
-        fontSize: '13px',
-        items: [
           {
             label: 'Outgoing',
             url: 'outgoing',
@@ -55,11 +52,6 @@ export const getLocations = orgType => {
           label: 'Coverage',
           url: 'coverage',
         },
-      ],
-    },
-    {
-      fontSize: '13px',
-      items: [
         {
           label: 'Incoming',
           url: 'incoming',
@@ -79,4 +71,41 @@ export const getLocations = orgType => {
       ],
     },
   ];
+};
+
+export const SubNavItemRegularMock: SignatoryNavigationModel = {
+  items: [
+    {
+      label: 'Overview',
+      url: 'overview',
+    },
+    {
+      label: 'Activity List',
+      url: 'activity-list',
+    },
+    {
+      label: 'Timeliness',
+      url: 'timeliness',
+    },
+    {
+      label: 'Coverage',
+      url: 'coverage',
+    },
+    {
+      label: 'Incoming',
+      url: 'incoming',
+    },
+    {
+      label: 'Funders',
+      url: 'funders',
+    },
+    {
+      label: 'Outgoing',
+      url: 'outgoing',
+    },
+    {
+      label: 'Recipients',
+      url: 'recipients',
+    },
+  ],
 };

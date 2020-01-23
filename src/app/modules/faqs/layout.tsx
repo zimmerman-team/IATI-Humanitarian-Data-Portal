@@ -11,7 +11,7 @@ export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
       <Hidden mdDown>
-        <Box position="absolute" top="0" left="0" zIndex="10000">
+        <Box position="absolute" top="0" left="0" zIndex="9998">
           <DecoFaqTopLeft data-testid="DecoFaqTopLeft" />
         </Box>
       </Hidden>
