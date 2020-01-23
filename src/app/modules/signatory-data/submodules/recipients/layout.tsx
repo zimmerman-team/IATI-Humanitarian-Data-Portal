@@ -17,9 +17,11 @@ export const RecipientsLayout = (props: RecipientsModel) => {
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigRecTopLeft data-testid="DecoSigRecTopLeft" />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="9998">
+          <DecoSigRecTopLeft data-testid="DecoSigRecTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
 
       <Grid item lg={12} style={{ position: 'relative' }}>

@@ -18,7 +18,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden mdDown>
-        <Box position="absolute" top="0" left="0" zIndex="10000">
+        <Box position="absolute" top="0" left="0" zIndex="9998">
           <DecoSigProviderTopLeft data-testid="DecoSigProviderTopLeft" />
         </Box>
       </Hidden>

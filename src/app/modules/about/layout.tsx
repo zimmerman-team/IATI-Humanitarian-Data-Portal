@@ -42,7 +42,7 @@ export const AboutLayout = (props: AboutPageModel) => {
         ))}
 
         <Grid container spacing={2}>
-          <Box position="absolute" top="10px" left="10px" zIndex="10000">
+          <Box position="absolute" top="10px" left="10px" zIndex="9998">
             <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
           </Box>
 

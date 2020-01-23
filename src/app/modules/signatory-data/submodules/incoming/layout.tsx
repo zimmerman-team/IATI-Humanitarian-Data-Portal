@@ -16,9 +16,11 @@ export const IncomingLayout = (props: IncomingModel) => {
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="9998">
+          <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
 
       <Grid container spacing={4}>
