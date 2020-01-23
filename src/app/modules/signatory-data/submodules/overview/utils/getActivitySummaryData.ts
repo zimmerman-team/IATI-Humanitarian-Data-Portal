@@ -25,11 +25,11 @@ export const getActivitySummaryData = (rawData, tooltipsData): ListModel => {
         ],
       },
       {
-        label: 'Hum. activities',
+        label: 'Humanitarian activities',
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Overview',
-          'Hum. activities'
+          'Humanitarian activities'
         ),
         values: [
           {

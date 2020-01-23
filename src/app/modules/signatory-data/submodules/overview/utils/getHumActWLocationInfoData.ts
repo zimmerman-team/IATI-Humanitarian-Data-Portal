@@ -16,7 +16,7 @@ export const getHumActWLocationInfoData = (
     get(rawData, 'facets.humActWLocationInfoData_region.count', 0),
   ];
   return {
-    title: 'Hum. activites with location information',
+    title: 'Humanitarian activites with location information',
     elName: 'incComms',
     items: [
       {
