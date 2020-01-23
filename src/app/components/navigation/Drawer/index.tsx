@@ -14,6 +14,7 @@ import { DrawerMenuModel } from 'app/components/navigation/Drawer/model';
 
 const Drawer = styled(props => <MuiDrawer {...props} />)`
   && {
+    z-index: 9999 !important;
     [class*='MuiBackdrop-root'] {
       background-color: rgba(0, 0, 0, 0.3);
     }

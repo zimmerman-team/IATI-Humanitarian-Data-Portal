@@ -1,14 +1,9 @@
 export type SignatoryNavigationModel = {
-  locations: LineModel[];
-  activity: string; //or whole activity
+  items: NavItemModel[];
+  activity?: string; //or whole activity
 };
 
-export type LineModel = {
-  fontSize?: string;
-  items: LocationModel[];
-};
-
-export type LocationModel = {
+export type NavItemModel = {
   label: string;
   url: string;
 };
