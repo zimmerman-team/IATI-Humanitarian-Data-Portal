@@ -5,8 +5,7 @@ import { Page } from 'app/modules/common/Page';
 import { AboutPageModel } from 'app/modules/about/model';
 import { Box, Grid, Hidden, Typography } from '@material-ui/core';
 import parse from 'html-react-parser';
-import ContainedButton from 'app/components/inputs/buttons/IconButton';
-import { Footer, FooterSM } from 'app/components/surfaces/Footer';
+import { Footer } from 'app/components/surfaces/Footer';
 import { DecoAboutTopLeft } from 'app/modules/about/common/decorations/DecoAboutTopLeft';
 import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAboutMidLeft';
 import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
@@ -59,13 +58,13 @@ export const AboutLayout = (props: AboutPageModel) => {
           </Hidden>
         </Grid>
 
-        <Hidden smDown>
+        <Hidden mdDown>
           <Box position="absolute" top="258px" left="0">
             <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
           </Box>
         </Hidden>
 
-        <Hidden smDown>
+        <Hidden mdDown>
           <Box position="absolute" bottom="-270px" right="0">
             <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
           </Box>
@@ -75,13 +74,8 @@ export const AboutLayout = (props: AboutPageModel) => {
           <Box height="100px" width="100%" />
         </Hidden>
       </Page>
-      <Hidden mdDown>
-        <Footer />
-      </Hidden>
 
-      <Hidden lgUp>
-        <FooterSM />
-      </Hidden>
+      <Footer />
     </>
   );
 };

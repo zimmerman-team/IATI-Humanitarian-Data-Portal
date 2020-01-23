@@ -72,7 +72,7 @@ const Weight = {
   bold: 600,
 };
 
-const Breakpoints = {
+export const Breakpoints = {
   xs: 0,
   sm: 600,
   md: 960,
