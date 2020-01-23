@@ -1,6 +1,10 @@
 import React from 'react';
-import { ColorSchemeType } from 'app/components/charts/BarCharts/common/colorUtil';
+import {
+  colorScheme,
+  ColorSchemeType,
+} from 'app/components/charts/BarCharts/common/colorUtil';
 import colors from 'app/theme/color';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 
 export type HorizontalBarChartValueModel = {
   name: string;
@@ -18,7 +22,7 @@ export const barModel: any = {
   data: [],
   keys: ['percentage'],
   indexBy: 'name',
-  margin: { top: 40, right: 50, bottom: 0, left: 200 },
+  margin: { top: 0, right: 0, bottom: 0, left: 140 },
   padding: 0.4,
   layout: 'horizontal',
   axisTop: {
@@ -39,7 +43,7 @@ export const barModel: any = {
     legend: '',
     legendPosition: 'middle',
     legendOffset: -40,
-    renderTick: ({ textX, value, x, y }) => {
+    renderTick: function Tick({ textX, value, x, y }) {
       return (
         <g transform={`translate(${x},${y})`}>
           <text
@@ -50,14 +54,25 @@ export const barModel: any = {
               dominantBaseline: 'auto',
             }}
             x="-16%"
-            textAnchor="start"
-            transform={`translate(${textX}, -5)`}
+            textAnchor="end"
+            css={`
+              @media (min-width: 320px) {
+                transform: translate(30px, -5px);
+              }
+              @media (min-width: 600px) {
+                transform: translate(100px, -5px);
+              }
+              @media (min-width: 960px) {
+                transform: translate(175px, -5px);
+              }
+            `}
+            // transform={`translate(${get()}, -5)`}
           >
             {value}
           </text>
           <line
             x1="0"
-            x2="-200"
+            x2="-140"
             y1="0"
             y2="0"
             style={{
