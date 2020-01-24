@@ -64,7 +64,7 @@ export const barModel: any = {
                 transform: translate(135px, -5px);
               }
 
-              @media (min-width: 1024px) {
+              @media (min-width: 1025px) {
                 transform: translate(175px, -5px);
               }
             `}
