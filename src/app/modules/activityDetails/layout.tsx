@@ -5,29 +5,52 @@ import { ActivityDetailModel } from 'app/modules/activityDetails/model';
 
 // Components
 import { TableWTotal } from 'app/components/datadisplay/TableWTotal';
-import { Grid, Typography, Box, Container } from '@material-ui/core';
+import { Grid, Typography, Box, Container, Hidden } from '@material-ui/core';
 import { ActivityHeaderLayout } from 'app/modules/activityDetails/common/activityHeader';
 
 // Mock Data
 import { TableCard } from 'app/components/datadisplay/Lists/variants/TableCard';
 import { TableCardContainer } from 'app/components/datadisplay/NavLists';
+import { DecoDetailTopLeft } from './common/decoration/DecoDetailTopLeft';
+import { DecoDetailMidRight } from './common/decoration/DecoDetailMidRight';
+import { DecoDetailMidLeft } from './common/decoration/DecoDetailMidLeft';
 
 export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
   return (
     <Container maxWidth="lg">
       {/** --------------------------------------------------------------------------- */}
+      {/** Decoration */}
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="-1">
+          <DecoDetailTopLeft data-testid="DecoDetailTopLeft" />
+        </Box>
+
+        <Box position="absolute" top="180px" right="0" zIndex="-1">
+          <DecoDetailMidRight data-testid="DecoDetailMidRight" />
+        </Box>
+
+        <Box position="absolute" top="158px" left="0">
+          <DecoDetailMidLeft data-testid="DecoDetailMidLeft" />
+        </Box>
+      </Hidden>
+
+      {/** --------------------------------------------------------------------------- */}
       {/** Header Section */}
-      <ActivityHeaderLayout
-        activity={props.header.activity}
-        organisation={props.header.organisation}
-      />
+      <Box bgcolor={'white'} maxWidth="75%" padding="36px" paddingLeft={0}>
+        <Grid item md={9}>
+          <ActivityHeaderLayout
+            activity={props.header.activity}
+            organisation={props.header.organisation}
+          />
+        </Grid>
+      </Box>
 
       <Box width="100%" height="91px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
       {/*<Box width="50px" height="50px" bgcolor="yellow" />*/}
       {/*<Grid container>*/}
-      <Grid container item md={12}>
+      <Grid container item md={9}>
         <Typography variant="subtitle1">{props.sections[0].title}</Typography>
         <Box width="100%" height="25px" />
         <Typography variant="body1">{props.sections[0].content}</Typography>
