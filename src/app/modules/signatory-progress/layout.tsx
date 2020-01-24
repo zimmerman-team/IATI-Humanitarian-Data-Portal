@@ -18,86 +18,86 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
       {props.loading && <PageLoader />}
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="10px" left="10px" zIndex="10002">
+      <Box position="absolute" top="10px" left="10px">
         <DecoSigProgTopLeft />
       </Box>
       {/* -------------------------------------------------------------- */}
 
-      {/* -------------------------------------------------------------- */}
-      {/* decoration: mid left */}
-      <Box position="absolute" top="200px" left="0">
-        <DecoSigProgMidLeft />
-      </Box>
-      {/* -------------------------------------------------------------- */}
-
-      {/* -------------------------------------------------------------- */}
-      {/* decoration: bottom right */}
-      <Box position="fixed" bottom="0" right="0">
-        <DecoSigProgBottomRight />
-      </Box>
-      {/* -------------------------------------------------------------- */}
-
-      <Grid container>
+      <Hidden smDown>
         {/* -------------------------------------------------------------- */}
-        {/* description */}
-        <Grid item lg={8} md={12} style={{ position: 'relative' }}>
-          {/* -------------------------------------------------------------- */}
-          {/* decoration: top right */}
-          <Hidden smDown>
-            <Box position="absolute" top="125px" right="-405px">
-              <DecoSigProgTopRight />
-            </Box>
-          </Hidden>
-          {/* -------------------------------------------------------------- */}
-          <Typography variant="h3">{props.title}</Typography>
-          <Box height="calc(64px - 16px)" width="100%" />
-          <Typography variant="body1">{parse(props.description)}</Typography>
-        </Grid>
+        {/* decoration: mid left */}
+        <Box position="absolute" top="200px" left="0">
+          <DecoSigProgMidLeft />
+        </Box>
+        {/* -------------------------------------------------------------- */}
 
-        <Box height="calc(112px - 16px)" width="100%" />
+        {/* -------------------------------------------------------------- */}
+        {/* decoration: bottom right */}
+        <Box position="fixed" bottom="0" right="0" zIndex="-1">
+          <DecoSigProgBottomRight />
+        </Box>
+      </Hidden>
+      {/* -------------------------------------------------------------- */}
 
-        <Grid item lg={12} md={12} style={{ zIndex: 1001 }}>
-          {/* -------------------------------------------------------------- */}
-          {/* Data Publication Aggregated Signatory Progress */}
-          <LineChartCard
-            colors="multi"
-            title={props.lineChartCardData.title}
-            values={props.lineChartCardData.values}
-          />
-          {/* -------------------------------------------------------------- */}
+      {/* -------------------------------------------------------------- */}
+      {/* description */}
+      <Grid item lg={8} md={12} style={{ position: 'relative' }}>
+        {/* -------------------------------------------------------------- */}
+        {/* decoration: top right */}
+        <Hidden smDown>
+          <Box position="absolute" top="125px" right="-405px">
+            <DecoSigProgTopRight />
+          </Box>
+        </Hidden>
+        {/* -------------------------------------------------------------- */}
+        <Typography variant="h3">{props.title}</Typography>
+        <Box height="calc(64px - 16px)" width="100%" />
+        <Typography variant="body1">{parse(props.description)}</Typography>
+      </Grid>
 
-          <Box height="64px" width="100%" />
+      <Box height="calc(112px - 16px)" width="100%" />
 
-          {/* -------------------------------------------------------------- */}
-          {/* Signatories meeting Data Publication CCTRIs */}
-          <HorizontalBarChartCard
-            colors="multi"
-            title={props.horizontalBarChartCardData.title}
-            data={props.horizontalBarChartCardData.data}
-          />
-          {/* -------------------------------------------------------------- */}
+      <Grid item lg={12} md={12} style={{ zIndex: 1001 }}>
+        {/* -------------------------------------------------------------- */}
+        {/* Data Publication Aggregated Signatory Progress */}
+        <LineChartCard
+          colors="multi"
+          title={props.lineChartCardData.title}
+          values={props.lineChartCardData.values}
+        />
+        {/* -------------------------------------------------------------- */}
 
-          <Box height="64px" width="100%" />
+        <Box height="64px" width="100%" />
 
-          {/* -------------------------------------------------------------- */}
-          {/* Aggregated Signatory Data Publication Indicator Values */}
-          <TableModule
-            changeTableRowColor={2}
-            title={props.tableChartData.title}
-            options={props.tableChartData.options}
-            data={props.tableChartData.data}
-            columns={props.tableChartData.columns}
-            columnsCell={props.tableChartData.columnsCell}
-          />
-          {/* -------------------------------------------------------------- */}
+        {/* -------------------------------------------------------------- */}
+        {/* Signatories meeting Data Publication CCTRIs */}
+        <HorizontalBarChartCard
+          colors="multi"
+          title={props.horizontalBarChartCardData.title}
+          data={props.horizontalBarChartCardData.data}
+        />
+        {/* -------------------------------------------------------------- */}
 
-          <Box height="28px" width="100%" />
+        <Box height="64px" width="100%" />
 
-          <Typography variant="caption">
-            * An organisation is either the Signatory itself or at least one of
-            its agencies or its affiliates that is currently publishing to IATI
-          </Typography>
-        </Grid>
+        {/* -------------------------------------------------------------- */}
+        {/* Aggregated Signatory Data Publication Indicator Values */}
+        <TableModule
+          changeTableRowColor={2}
+          title={props.tableChartData.title}
+          options={props.tableChartData.options}
+          data={props.tableChartData.data}
+          columns={props.tableChartData.columns}
+          columnsCell={props.tableChartData.columnsCell}
+        />
+        {/* -------------------------------------------------------------- */}
+
+        <Box height="28px" width="100%" />
+
+        <Typography variant="caption">
+          * An organisation is either the Signatory itself or at least one of
+          its agencies or its affiliates that is currently publishing to IATI
+        </Typography>
         <Box width="100%" height="200px" />
       </Grid>
     </Container>
