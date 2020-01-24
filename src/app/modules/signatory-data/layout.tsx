@@ -11,7 +11,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
     <Container maxWidth="lg">
       {/* ------------------------------------------------------------------ */}
       {/* decoration: top left */}
-      <Hidden mdDown>
+      <Hidden smDown>
         <Box position="absolute" top="0" left="0">
           <DecoSigDataTopLeft data-testid="DecoSigDataTopLeft" />
         </Box>

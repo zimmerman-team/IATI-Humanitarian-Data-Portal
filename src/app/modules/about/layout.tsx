@@ -45,26 +45,26 @@ export const AboutLayout = (props: AboutPageModel) => {
             <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
           </Box>
 
-          <Hidden mdDown>
+          <Hidden smDown>
             <Box position="absolute" top="360px" right="100px">
               <DecoAboutRight data-testid="DecoAboutRight" />
             </Box>
           </Hidden>
 
-          <Hidden mdDown>
+          <Hidden smDown>
             <Box position="absolute" top="1050px" right="100px">
               <DecoAboutMidRight data-testid="DecoAboutMidRight" />
             </Box>
           </Hidden>
         </Grid>
 
-        <Hidden mdDown>
+        <Hidden smDown>
           <Box position="absolute" top="258px" left="0">
             <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
           </Box>
         </Hidden>
 
-        <Hidden mdDown>
+        <Hidden smDown>
           <Box position="absolute" bottom="-270px" right="0">
             <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
           </Box>
