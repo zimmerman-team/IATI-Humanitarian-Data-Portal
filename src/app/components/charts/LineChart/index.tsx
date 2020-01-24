@@ -37,14 +37,16 @@ const ChartContainer = styled.div`
 
 export const LineChart = (props: LineChartModel) => {
   return (
-    <ChartContainer>
-      <Linechart
-        {...lineModel}
-        data={props.values}
-        colors={colorScheme(props.colors)}
-        sliceTooltip={tProps => <Tooltip {...tProps} />}
-      />
+    <>
+      <ChartContainer>
+        <Linechart
+          {...lineModel}
+          data={props.values}
+          colors={colorScheme(props.colors)}
+          sliceTooltip={tProps => <Tooltip {...tProps} />}
+        />
+      </ChartContainer>
       <Legend items={props.values} colors={colorScheme(props.colors)} />
-    </ChartContainer>
+    </>
   );
 };
