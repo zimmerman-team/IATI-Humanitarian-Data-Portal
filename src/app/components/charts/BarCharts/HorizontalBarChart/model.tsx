@@ -4,7 +4,6 @@ import {
   ColorSchemeType,
 } from 'app/components/charts/BarCharts/common/colorUtil';
 import colors from 'app/theme/color';
-import { useMediaQuery, useTheme } from '@material-ui/core';
 
 export type HorizontalBarChartValueModel = {
   name: string;
@@ -17,7 +16,6 @@ export type HorizontalBarChartModel = {
   colors?: ColorSchemeType;
 };
 
-// todo: add BarSvgProps when axis/renderTick function declaration is included
 export const barModel: any = {
   data: [],
   keys: ['percentage'],
@@ -57,16 +55,19 @@ export const barModel: any = {
             textAnchor="end"
             css={`
               @media (min-width: 320px) {
-                transform: translate(30px, -5px);
+                transform: translate(35px, -5px);
               }
               @media (min-width: 600px) {
                 transform: translate(100px, -5px);
               }
               @media (min-width: 960px) {
+                transform: translate(135px, -5px);
+              }
+
+              @media (min-width: 1024px) {
                 transform: translate(175px, -5px);
               }
             `}
-            // transform={`translate(${get()}, -5)`}
           >
             {value}
           </text>
