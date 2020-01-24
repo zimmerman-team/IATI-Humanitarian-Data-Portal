@@ -131,6 +131,7 @@ export const baseTranstable: TableModuleModel = {
     rowHover: true,
     pagination: true,
     viewColumns: true,
+    responsive: 'scroll',
     selectableRows: 'none',
   },
 };
