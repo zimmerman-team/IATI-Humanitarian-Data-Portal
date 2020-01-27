@@ -10,7 +10,7 @@ const barModel: BarSvgProps = {
   data: [],
   keys: ['Humanitarian Activities', 'Activities'],
   indexBy: 'year',
-  margin: { top: 15, right: 0, bottom: 50, left: 60 },
+  margin: { top: 40, right: 50, bottom: 0, left: 60 },
   padding: 0.5,
   colors: ({ id, data }) => data[`${id}Color`],
   groupMode: 'stacked',

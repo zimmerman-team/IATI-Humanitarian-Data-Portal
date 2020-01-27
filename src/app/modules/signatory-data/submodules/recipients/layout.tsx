@@ -51,9 +51,11 @@ export const RecipientsLayout = (props: RecipientsModel) => {
 
         {/* ---------------------------------------- */}
         {/* decoration: bottom right */}
-        <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
-          <DecoSigRecBottomRight data-testid="DecoSigRecBottomRight" />
-        </Box>
+        <Hidden smDown>
+          <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
+            <DecoSigRecBottomRight data-testid="DecoSigRecBottomRight" />
+          </Box>
+        </Hidden>
         {/* ---------- */}
       </Grid>
     </>

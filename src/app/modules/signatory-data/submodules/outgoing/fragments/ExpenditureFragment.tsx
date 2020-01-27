@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'app/components/datadisplay/Lists';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Hidden } from '@material-ui/core';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
 
 export const ExpenditureFragment = ({ lists }) => (
@@ -18,9 +18,11 @@ export const ExpenditureFragment = ({ lists }) => (
 
     {/* ---------------------------------------- */}
     {/* decoration: bottom rightt */}
-    <Box position="absolute" bottom="-200px" right="-100px" zIndex="-1">
-      <DecoSignIncomingBottomRight />
-    </Box>
+    <Hidden smDown>
+      <Box position="absolute" bottom="-200px" right="-100px" zIndex="-1">
+        <DecoSignIncomingBottomRight />
+      </Box>
+    </Hidden>
     {/* ---------- */}
   </Grid>
 );
