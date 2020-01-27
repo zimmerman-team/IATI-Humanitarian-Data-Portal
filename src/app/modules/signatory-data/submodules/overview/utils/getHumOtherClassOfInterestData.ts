@@ -16,7 +16,7 @@ export const getHumOtherClassOfInterestData = (
     get(rawData, 'facets.humOtherClassOfInterestData_5.count', 0),
   ];
   return {
-    title: 'Hum. activities with other classifications of intererest',
+    title: 'Humanitarian. activities with other classifications of intererest',
     elName: 'incComms',
     items: [
       {
