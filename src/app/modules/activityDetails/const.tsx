@@ -129,6 +129,7 @@ export const baseTranstable: TableModuleModel = {
     filter: true,
     download: true,
     rowHover: true,
+    responsive: 'scroll',
     pagination: true,
     viewColumns: true,
     selectableRows: 'none',

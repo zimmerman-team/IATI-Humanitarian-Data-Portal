@@ -29,13 +29,13 @@ export const PrivacyModuleLayout = (props: PrivacyModel) => {
           <DecoAboutTopLeft />
         </Box>
 
-        <Hidden mdDown>
+        <Hidden smDown>
           <Box position="absolute" top="360px" right="100px">
             <DecoAboutRight />
           </Box>
         </Hidden>
 
-        <Hidden mdDown>
+        <Hidden smDown>
           <Box position="absolute" top="1050px" right="100px">
             <DecoAboutMidRight />
           </Box>

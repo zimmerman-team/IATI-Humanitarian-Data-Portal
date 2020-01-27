@@ -18,7 +18,7 @@ export const getHumActFTSData = (
     get(rawData, 'facets.humActFTSData_6.count', 0),
   ];
   return {
-    title: 'Hum. activities with FTS Import related',
+    title: 'Humanitarian activities with FTS Import related',
     elName: 'incComms',
     items: [
       {

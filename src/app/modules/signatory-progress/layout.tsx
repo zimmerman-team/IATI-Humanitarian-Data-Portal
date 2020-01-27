@@ -18,12 +18,21 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
       {props.loading && <PageLoader />}
       {/* -------------------------------------------------------------- */}
       {/* decoration: top left */}
+
       <Box position="absolute" top="10px" left="10px">
         <DecoSigProgTopLeft />
       </Box>
+      
       {/* -------------------------------------------------------------- */}
 
       <Hidden smDown>
+        {/*<Box position="absolute" top="10px" left="10px" zIndex="0">
+          <DecoSigProgTopLeft />
+        </Box>
+        */}
+        {/* -------------------------------------------------------------- */}
+
+
         {/* -------------------------------------------------------------- */}
         {/* decoration: mid left */}
         <Box position="absolute" top="200px" left="0">
@@ -39,9 +48,11 @@ export const SignatoryProgressLayout = (props: SignatoryProgressModel) => {
       </Hidden>
       {/* -------------------------------------------------------------- */}
 
+
       {/* -------------------------------------------------------------- */}
       {/* description */}
       <Grid item lg={8} md={12} style={{ position: 'relative' }}>
+
         {/* -------------------------------------------------------------- */}
         {/* decoration: top right */}
         <Hidden smDown>

@@ -14,7 +14,7 @@ export const getHumActWMultiYearFundingData = (
     get(rawData, 'facets.humActWMultiYearFundData_3.count', 0),
   ];
   return {
-    title: 'Hum. activites with multi-year funding',
+    title: 'Humanitarian activites with multi-year funding',
     elName: 'incComms',
     items: [
       {
