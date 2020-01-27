@@ -44,7 +44,7 @@ export const IncomingLayout = (props: IncomingModel) => {
         - Location information
 
         */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <Grid item xs={12} sm={12} md={12} lg={3}>
             <div
               css={`
@@ -62,7 +62,7 @@ export const IncomingLayout = (props: IncomingModel) => {
           </Grid>
         </Hidden>
 
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={12} lg={9}>
           <Grid container spacing={4}>
             {/* ---------------------------------------- */}
             {/** Incoming pledges */}

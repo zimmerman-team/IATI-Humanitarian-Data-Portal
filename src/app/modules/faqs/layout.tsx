@@ -10,7 +10,7 @@ import { DecoFaqTopRight } from 'app/modules/faqs/common/decoration/DecoFaqTopRi
 export const FaqsLayout = (props: FaqsPageModel) => {
   return (
     <>
-      <Hidden mdDown>
+      <Hidden smDown>
         <Box position="absolute" top="0" left="0" zIndex="9998">
           <DecoFaqTopLeft data-testid="DecoFaqTopLeft" />
         </Box>

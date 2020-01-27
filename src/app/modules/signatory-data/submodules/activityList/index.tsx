@@ -177,6 +177,7 @@ function ActivityListz(props) {
   activityBaseTable.columns[4].options.filterOptions = {
     names: countries,
   };
+  activityBaseTable.options.responsive = 'scroll';
   activityBaseTable.options.count = activities.numFound;
   activityBaseTable.options.onChangePage = setPage;
   activityBaseTable.options.onChangeRowsPerPage = setRows;
