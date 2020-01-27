@@ -13,11 +13,12 @@ export const IncomingFundsFragment = ({ lists }) => (
      - With funding organisation type provided
      - With source traceability information
      */}
-
     <List valueHeaders {...lists} />
-
     {/* ---------------------------------------- */}
     {/* decoration: top left */}
+{/* <<<<<<< feature/MLT-817
+    <Hidden smDown>
+    */}
     <Hidden mdDown>
       <Box position="absolute" bottom="-200px" right="-100px" zIndex="-1">
         <DecoSignIncomingBottomRight />

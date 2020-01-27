@@ -88,7 +88,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       {/** side nav */}
 
       <Grid container spacing={4}>
-        <Hidden mdDown>
+        <Hidden smDown>
           <Grid item xs={3}>
             <div
               css={`

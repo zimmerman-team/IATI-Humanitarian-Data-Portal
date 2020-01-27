@@ -20,7 +20,7 @@ export const FtsImportRelated = ({ humActFTSData }) => (
     <List valueHeaders {...humActFTSData} />
     {/* ---------------------------------------- */}
     {/* decoration: mid right */}
-    <Hidden mdDown>
+    <Hidden smDown>
       <Box position="absolute" top="-20px" right="-100px" zIndex="-1">
         <DecoSigOverviewMidRight />
       </Box>
