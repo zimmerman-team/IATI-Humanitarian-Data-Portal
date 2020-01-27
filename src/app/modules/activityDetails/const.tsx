@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 
 /* models/ interfaces */

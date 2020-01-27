@@ -210,7 +210,7 @@
     "cy:open": "cypress open",
     "analyse": "madge src/index.tsx",
     "depcheck": "depcheck",
-    "why": "whybundled build/stats.json --duplicatesOnly ",
+    "why": "whybundled build/stats.json --duplicatesOnly",
     "mon": "nodemon"
   },
   "eslintConfig": {
