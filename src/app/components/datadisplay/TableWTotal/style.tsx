@@ -14,7 +14,9 @@ interface TotTableModel {
   infoData: boolean;
 }
 
-export const TotTable = styled(props => <MUIDataTable {...props} />)`
+export const TotTable = styled(props => (
+  <MUIDataTable {...props} options={{ responsive: 'scroll' }} />
+))`
   && {
     tfoot {
       tr {
@@ -25,6 +27,7 @@ export const TotTable = styled(props => <MUIDataTable {...props} />)`
           div {
             background-color: ${color.whiteOrFontlightbase};
             padding: 0 24px;
+            overflow-x: scroll;
           }
         }
       }
