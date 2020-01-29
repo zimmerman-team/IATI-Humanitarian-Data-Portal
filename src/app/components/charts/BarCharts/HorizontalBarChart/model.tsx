@@ -20,7 +20,7 @@ export const barModel: any = {
   data: [],
   keys: ['percentage'],
   indexBy: 'name',
-  margin: { top: 0, right: 0, bottom: 0, left: 140 },
+  margin: { top: 0, right: 0, bottom: 0, left: 220 },
   padding: 0.4,
   layout: 'horizontal',
   axisTop: {
@@ -73,7 +73,7 @@ export const barModel: any = {
           </text>
           <line
             x1="0"
-            x2="-140"
+            x2="-220"
             y1="0"
             y2="0"
             style={{
