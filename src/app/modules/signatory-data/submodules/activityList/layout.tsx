@@ -34,9 +34,11 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
 
           {/* ---------------------------------------- */}
           {/* decoration: bottom right */}
-          <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
-            <DecoSigActiveBottomRight />
-          </Box>
+          <Hidden smDown>
+            <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
+              <DecoSigActiveBottomRight />
+            </Box>
+          </Hidden>
           {/* ---------- */}
         </Grid>
       </Grid>

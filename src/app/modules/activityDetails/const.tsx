@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 
 /* models/ interfaces */
@@ -129,8 +131,10 @@ export const baseTranstable: TableModuleModel = {
     filter: true,
     download: true,
     rowHover: true,
+    responsive: 'scroll',
     pagination: true,
     viewColumns: true,
+    responsive: 'scroll',
     selectableRows: 'none',
   },
 };

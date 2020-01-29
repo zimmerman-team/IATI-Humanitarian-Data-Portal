@@ -22,7 +22,7 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
     <>
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Hidden mdDown>
+      <Hidden smDown>
         <Box position="absolute" top="100px" left="0">
           <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
         </Box>

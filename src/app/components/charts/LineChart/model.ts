@@ -19,7 +19,7 @@ export type LineChartModel = {
 
 export const lineModel: LineProps | LineSvgProps | LineChartModel = {
   data: [],
-  margin: { top: 10, right: 110, bottom: 80, left: 70 },
+  margin: { top: 10, right: 50, bottom: 80, left: 70 },
   xScale: { type: 'point' },
   yScale: { type: 'linear', stacked: false, min: 0, max: 100 },
   axisTop: null,

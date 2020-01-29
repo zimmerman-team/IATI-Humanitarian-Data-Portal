@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const LegendItem = styled(props => <Typography {...props} />)`
@@ -14,7 +16,12 @@ const LegendItem = styled(props => <Typography {...props} />)`
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    max-width: calc(100% * (1 / ${props => props.count}) - 10px);
+    @media (max-width: 960px) {
+      margin-bottom: 16px;
+    }
+    @media (min-width: 960px) {
+      max-width: calc(100% * (1 / ${props => props.count}) - 10px);
+    }
   }
 `;
 
