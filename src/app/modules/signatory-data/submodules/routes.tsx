@@ -17,7 +17,12 @@ export function SignatoryDataRoutes(props: any) {
         <Route
           exact
           path="/signatory-data/:code/overview"
-          render={() => <Overview queryDateField={props.queryDateField} />}
+          render={() => (
+            <Overview
+              queryDateField={props.queryDateField}
+              suppLink={props.suppLink}
+            />
+          )}
         />
         <Route
           exact

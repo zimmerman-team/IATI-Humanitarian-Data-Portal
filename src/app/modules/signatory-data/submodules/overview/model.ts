@@ -29,4 +29,5 @@ export interface OverviewLayoutModel {
   humActwGBClassificationsData: ListModel;
   activityTimelineData: YearBarChartObjectModel[];
   humanitarianElementsData: HumanitarianDonutModel[];
+  description: string;
 }

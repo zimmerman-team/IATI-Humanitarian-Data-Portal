@@ -15,6 +15,7 @@ import {
   getHeaderDateRange,
   getActivityDateTypeField,
 } from 'app/modules/signatory-data/submodules/utils';
+import log from 'neon-cli/lib/log';
 
 export function SubmoduleContainer(props) {
   // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
@@ -114,7 +115,10 @@ export function SubmoduleContainer(props) {
         )}
       />
       {/** contains the routes of the submodules of the signatory data */}
-      <SignatoryDataRoutes queryDateField={queryDateField} />
+      <SignatoryDataRoutes
+        queryDateField={queryDateField}
+        suppLink={suppLink}
+      />
     </Container>
   );
 }
