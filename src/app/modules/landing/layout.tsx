@@ -17,7 +17,9 @@ const LandingPaper = styled.div`
   padding: 40px;
   position: relative;
   @media (max-width: 960px) {
-    padding: 8px;
+    padding: 24px;
+    width: calc(100% - 16px);
+    left: -16px;
   }
 `;
 
@@ -25,7 +27,9 @@ const LandingIntrotext = styled(Typography)`
   &&& {
     line-height: 1.2;
     mark {
-      color: white;
+      @media (min-width: 960px) {
+        color: white;
+      }
       background: #5accbf;
       padding-left: 5px;
       padding-right: 5px;
@@ -38,6 +42,13 @@ const VersionBox = styled(Box)`
     margin-top: 113px;
     padding-bottom: 10px;
   }
+`;
+
+const StatBox = styled(Box)`
+  @media (min-width: 960px) {
+    padding-left: 40px;
+  }
+  padding-left: 8px;
 `;
 
 export const LandingLayout = (props: LandingModel) => {
@@ -74,7 +85,7 @@ export const LandingLayout = (props: LandingModel) => {
             </Typography>
           </Grid>
         </Grid>
-        <Hidden smDown>
+        <Hidden mdDown>
           <Box position="absolute" zIndex="-1" right="-332px" top="0px">
             <DecorationLanding data-testid="landing-decoration" />
           </Box>
@@ -82,9 +93,10 @@ export const LandingLayout = (props: LandingModel) => {
       </LandingPaper>
       {/*</DebugBox>*/}
       <Box height="40px" />
-      <Box paddingLeft="40px">
+
+      <StatBox>
         <StatContainer items={props.stats} />
-      </Box>
+      </StatBox>
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
