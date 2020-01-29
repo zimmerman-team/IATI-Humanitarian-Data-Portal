@@ -17,24 +17,30 @@ export const CoverageLayout = (props: CoverageModel) => {
       {/* ---------- */}
 
       <Grid container spacing={4}>
-        <Grid item md={12}>
-          <Typography variant="body1">
+        <Grid
+          item
+          xs={12}
+          md={7}
+          css={`
+            position: relative;
+            top: -25px;
+          `}
+        >
+          <Typography variant="body2">
             The purpose of coverage is to enable any data user to know whether
             the publishing organisation is providing information about all of
             its humanitarian activities or if it is only publishing to IATI in
             relation to a subset of interventions.
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <Typography variant="body1">
-            Coverage is measured by comparing a self-reported but verifiable
-            total of the publishing organisation’s available spend on
-            humanitarian activities against the sum of all disbursement and
-            expenditure transactions for humanitarian activities.
+            <p>
+              Coverage is measured by comparing a self-reported but verifiable
+              total of the publishing organisation’s available spend on
+              humanitarian activities against the sum of all disbursement and
+              expenditure transactions for humanitarian activities.
+            </p>
           </Typography>
         </Grid>
       </Grid>
-      <Box height="50px" />
+      <Box height="25px" />
 
       {/* ---------------------------------------- */}
       {/* Coverage data */}

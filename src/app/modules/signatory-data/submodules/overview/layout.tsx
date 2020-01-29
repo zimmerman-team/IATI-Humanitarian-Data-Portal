@@ -32,8 +32,17 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Box>
       </Hidden>
       {/* ---------- */}
-      <Grid item xs={12} md={7}>
+      <Grid
+        item
+        xs={12}
+        md={7}
+        css={`
+          position: relative;
+          top: -25px;
+        `}
+      >
         <Typography variant="body2">{parse(props.description)}</Typography>
+        <Box height="25px" />
       </Grid>
       <Grid container>
         <Grid item xs={12}>
