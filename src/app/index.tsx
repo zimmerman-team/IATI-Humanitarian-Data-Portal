@@ -27,10 +27,10 @@ function App(props: AppProps) {
     <Providers>
       <Router>
         <ScrollToTop />
-        <Hidden lgUp>
+        <Hidden mdUp>
           <DrawerMenu links={drawerMockData.links} />
         </Hidden>
-        <Hidden mdDown>
+        <Hidden smDown>
           <AppBar data-testid="main-navigation" />
         </Hidden>
         <Routes />
