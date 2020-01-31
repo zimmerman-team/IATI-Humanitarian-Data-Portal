@@ -17,6 +17,7 @@ import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fra
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
 import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
+import parse from 'html-react-parser';
 // import { ScrollToTop } from 'app/utils/scrollToTop';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
@@ -31,7 +32,18 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Box>
       </Hidden>
       {/* ---------- */}
-
+      <Grid
+        item
+        xs={12}
+        md={7}
+        css={`
+          position: relative;
+          top: -25px;
+        `}
+      >
+        <Typography variant="body2">{parse(props.description)}</Typography>
+        <Box height="25px" />
+      </Grid>
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
@@ -49,11 +61,6 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         <Grid item xs={12}>
           <Typography color="textPrimary" variant="h4">
             Humanitarian elements
-          </Typography>
-          <Box height="10px" />
-          <Typography color="textPrimary" variant="body1">
-            Please note that publishing organisations are not generally expected
-            to reach a value of 100% for those elements marked with an *
           </Typography>
         </Grid>
         {props.humanitarianElementsData.map(humEl => (
