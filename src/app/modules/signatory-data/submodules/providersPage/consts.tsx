@@ -147,7 +147,8 @@ export const baseProviderConfig = (
       pagination: true,
       viewColumns: true,
       fixedHeader: true,
-      responsive: 'scroll',
+      responsive: 'scrollFullHeight',
+
       selectableRows: 'none',
       customSort: (data: any[], colIndex: number, order: string) => {
         if (colIndex === 5) {

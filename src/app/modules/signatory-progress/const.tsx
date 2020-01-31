@@ -351,7 +351,8 @@ export const getBaseTable = (
       rowHover: false,
       pagination: false,
       viewColumns: false,
-      responsive: 'scroll',
+      responsive: 'scrollFullHeight',
+
       filterType: 'checkbox',
       selectableRows: 'none',
     },
