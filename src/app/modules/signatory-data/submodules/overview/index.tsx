@@ -32,6 +32,7 @@ import { getHumActWLocationInfoData } from 'app/modules/signatory-data/submodule
 import { getHumActWMultiYearFundingData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWMultiYearFundingData';
 import { getFinancialReportingData } from 'app/modules/signatory-data/submodules/overview/utils/getFinancialReportingData';
 import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
+import { getDescription } from './utils/getDescription';
 
 export function OverviewPage(props) {
   /* local state */
@@ -228,6 +229,8 @@ export function OverviewPage(props) {
     tooltipsData
   );
 
+  const description = getDescription(props.suppLink);
+
   return (
     <OverviewLayout
       statusData={statusData}
@@ -241,6 +244,7 @@ export function OverviewPage(props) {
       humActWMultiYearFundData={humActWMultiYearFundData}
       humOtherClassOfInterestData={humOtherClassOfInterestData}
       humActwGBClassificationsData={humActwGBClassificationsData}
+      description={description}
     />
   );
 }

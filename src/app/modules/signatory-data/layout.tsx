@@ -10,15 +10,6 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
   return (
     <Container maxWidth="lg">
       {/* ------------------------------------------------------------------ */}
-      {/* decoration: top left */}
-
-      {/*
-      todo: @juan, there was a merge conflict; which fragment is supposed to be used? the smDown or the mdDown?
-      
-      <Hidden smDown>
-        <Box position="absolute" top="0" left="0">
-        
-        */}
       <Hidden mdDown>
         <Box position="absolute" top="0" left="0" zIndex="-1">
           <DecoSigDataTopLeft data-testid="DecoSigDataTopLeft" />
@@ -27,7 +18,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* ------------------------------------------------------------------ */}
       {props.loading && <PageLoader />}
       <Grid container direction="column">
-        <Grid item xs={12}>
+        <Grid item xs={12} md={7}>
           <Typography variant="h3">{props.title}</Typography>
           <Box height="50px" />
           <Typography variant="body2">{parse(props.description)}</Typography>
