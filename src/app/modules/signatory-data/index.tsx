@@ -1,7 +1,6 @@
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 /* models/interfaces */
 import { SignatoryDataModule } from 'app/modules/signatory-data/model';
@@ -93,16 +92,18 @@ export const SignatoryData = React.memo(
       //   searchText: props.tableOptions.searchTerm,
       // });
       window.addEventListener('scroll', () => {
-        const tableComp = document.getElementById('sig-data-table');
-        if (tableComp) {
-          const thead = tableComp.querySelector('thead');
-          if (tableComp.offsetTop - window.pageYOffset < -132) {
-            if (thead) {
-              thead.style.transform = `translateY(${window.pageYOffset -
-                579}px)`;
+        if (window.innerWidth > theme.breakpoints.values.md) {
+          const tableComp = document.getElementById('sig-data-table');
+          if (tableComp) {
+            const thead = tableComp.querySelector('thead');
+            if (tableComp.offsetTop - window.pageYOffset < -132) {
+              if (thead) {
+                thead.style.transform = `translateY(${window.pageYOffset -
+                  579}px)`;
+              }
+            } else if (thead) {
+              thead.style.transform = ``;
             }
-          } else if (thead) {
-            thead.style.transform = ``;
           }
         }
       });
