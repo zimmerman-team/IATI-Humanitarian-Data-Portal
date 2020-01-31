@@ -14,7 +14,7 @@ const NumberLink = styled.a`
   }
 `;
 
-export const providersTableCallValues = pubRef => {
+export const providersTableCallValues = (pubRef: string, offset: number) => {
   return {
     q: `reporting_org_ref:${pubRef} AND transaction_type:(13 11 1) AND 
         (humanitarian:1 OR transaction_humanitarian:1 OR 
@@ -27,7 +27,8 @@ export const providersTableCallValues = pubRef => {
     'facet.pivot':
       '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency',
     rows: 0,
-    'facet.limit': -1,
+    'facet.limit': 10,
+    'f.transaction_provider_org_narrative.facet.offset': offset,
     facet: 'on',
     'facet.missing': 'true',
     'stats.field': '{!tag=piv1 sum=true}transaction_value',
@@ -36,7 +37,13 @@ export const providersTableCallValues = pubRef => {
 
 export const allProvidersQuery = (pubRef: string, field: string) => {
   return {
-    q: `reporting_org_ref:${pubRef}`,
+    q: `reporting_org_ref:${pubRef} AND transaction_type:(13 11 1) AND 
+    (humanitarian:1 OR transaction_humanitarian:1 OR 
+  (-(-sector_vocabulary:1 OR sector_vocabulary:*) AND 
+  (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018])) OR 
+  (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*) AND 
+  (transaction_sector_code:[70000 TO 79999] OR
+   transaction_sector_code:[93010 TO 93018])))`,
     'facet.limit': -1,
     'facet.pivot': field,
     'facet.missing': 'true',
