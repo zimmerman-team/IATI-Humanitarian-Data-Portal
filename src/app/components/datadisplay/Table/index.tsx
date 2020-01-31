@@ -7,6 +7,7 @@ import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 import {
   addConfig,
   calculateTotalRow,
+  VerticalScrollHelper,
 } from 'app/components/datadisplay/Table/helpers';
 
 const TableModule = (props: TableModuleModel) => {
@@ -38,7 +39,11 @@ const TableModule = (props: TableModuleModel) => {
     setLocalTableState,
     setTotalData
   );
-  return <TableLayout {...props} options={options} />;
+  return (
+    <VerticalScrollHelper>
+      <TableLayout {...props} options={options} />
+    </VerticalScrollHelper>
+  );
 };
 
 export default TableModule;

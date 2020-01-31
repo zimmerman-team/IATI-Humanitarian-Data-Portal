@@ -5,6 +5,7 @@ import { ActivityListLayoutModel } from 'app/modules/signatory-data/submodules/a
 import { DecoSigOverviewTopLeft } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewTopLeft';
 import { DecoSigActiveBottomRight } from 'app/modules/signatory-data/submodules/activityList/common/decoration/DecoSigActiveBottomRight';
 import { PageLoader } from 'app/modules/common/PageLoader';
+import { VerticalScrollHelper } from 'app/components/datadisplay/Table/helpers';
 
 export const ActivityListLayout = (props: ActivityListLayoutModel) => {
   return (
@@ -23,13 +24,15 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
         <Grid item md={12} style={{ position: 'relative' }}>
           {/* ---------------------------------------- */}
           {/* Humanitarian activities */}
-          <Table
-            title={props.activity.title}
-            data={props.activity.data}
-            options={props.activity.options}
-            columns={props.activity.columns}
-            columnsCell={props.activity.columnsCell}
-          />
+          <VerticalScrollHelper>
+            <Table
+              title={props.activity.title}
+              data={props.activity.data}
+              options={props.activity.options}
+              columns={props.activity.columns}
+              columnsCell={props.activity.columnsCell}
+            />
+          </VerticalScrollHelper>
           {/* ---------- */}
 
           {/* ---------------------------------------- */}
