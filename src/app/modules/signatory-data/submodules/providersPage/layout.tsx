@@ -11,7 +11,9 @@ import { PageLoader } from 'app/modules/common/PageLoader';
 export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
     <>
-      {props.loading && <PageLoader />}
+      {props.loading && (
+        <PageLoader message="This might take a bit more time than other pages cause of the huge data load and aggregations" />
+      )}
       {/* ---------------------------------------- */}
       {/* Charts */}
 
