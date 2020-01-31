@@ -8,9 +8,9 @@ export const getHumanitarianElementsData = (
   humOverviewData
 ): HumanitarianDonutModel[] => {
   const donutValues: HumanitarianDonutModel[] = [
-    { activity: 'Humanitarian activities with UN HRP codes *', value: 0 },
-    { activity: 'Humanitarian activities with cluster codes *', value: 0 },
-    { activity: 'Humanitarian activities glide codes *', value: 0 },
+    { activity: 'Humanitarian activities with UN HRP codes', value: 0 },
+    { activity: 'Humanitarian activities with cluster codes', value: 0 },
+    { activity: 'Humanitarian activities glide codes', value: 0 },
     {
       activity:
         '% of activities with both humanitarian indicator and also a valid humanitarian sector code',
