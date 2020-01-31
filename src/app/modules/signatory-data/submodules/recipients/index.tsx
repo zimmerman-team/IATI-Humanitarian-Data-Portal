@@ -7,16 +7,17 @@ import { recStore } from 'app/modules/signatory-data/submodules/recipients/store
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 /* consts */
-import { recipientsQuery } from 'app/modules/signatory-data/submodules/recipients/const';
-import { pivotKey } from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
 import {
-  allProvidersQuery,
-  baseProviderConfig,
-} from 'app/modules/signatory-data/submodules/providersPage/consts';
-
+  recipientsQuery,
+  allRecipientsQuery,
+} from 'app/modules/signatory-data/submodules/recipients/const';
+import { pivotKey } from 'app/modules/signatory-data/submodules/recipients/store/interfaces';
+import { baseProviderConfig } from 'app/modules/signatory-data/submodules/providersPage/consts';
+import { CustomFooter } from 'app/modules/signatory-data/submodules/providersPage/common/CustomFooter';
 /* utils */
 import get from 'lodash/get';
-import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
+import uniq from 'lodash/uniq';
+import { getBarChartData1 } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
 
 function RecipientsF(props) {
@@ -28,25 +29,30 @@ function RecipientsF(props) {
     // and here we get all the receiving organisation types
     // of the signatory
     actions.sigAllReceivers.fetch({
-      values: allProvidersQuery(
+      values: allRecipientsQuery(
         decodeURIComponent(props.match.params.code),
-        'transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type'
+        'transaction_receiver_org_type,transaction_receiver_org_narrative'
       ),
     });
   }, []);
 
+  const [facetOffset, setFacetOffset] = React.useState(0);
+
   useEffect(() => {
     // so we call table data here
     actions.recipients.fetch({
-      values: recipientsQuery(decodeURIComponent(props.match.params.code)),
+      values: recipientsQuery(
+        decodeURIComponent(props.match.params.code),
+        facetOffset
+      ),
     });
-  }, [orgTypeNames]);
+  }, [orgTypeNames, facetOffset]);
 
   const recData = get(state.recipients, `data.data`, null);
 
   const sigAllReceivers = get(
     state.sigAllReceivers,
-    'data.data.facet_counts.facet_pivot.transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type',
+    'data.data.facet_counts.facet_pivot.transaction_receiver_org_type,transaction_receiver_org_narrative',
     null
   );
 
@@ -57,13 +63,10 @@ function RecipientsF(props) {
     '3'
   );
 
-  const barChartData = getBarChartData(
-    get(state.recipients.data, 'data', null),
+  const barChartData = getBarChartData1(
     get(orgTypeNames, 'data', null),
     sigAllReceivers,
-    'Funding Recipient Organisation Types',
-    `facet_counts.facet_pivot.${pivotKey}`,
-    recTableData
+    'Funding Recipient Organisation Types'
   );
 
   const sigDataActivityListFilterAction = useStoreActions(
@@ -75,11 +78,24 @@ function RecipientsF(props) {
     props.history.push('activity-list');
   };
 
+  const tableDataConfig = baseProviderConfig(false, onItemClick);
+
   return (
     <RecipientsLayout
       barChartData={barChartData}
       tableData={{
-        ...baseProviderConfig(false, onItemClick),
+        ...tableDataConfig,
+        options: {
+          ...tableDataConfig.options,
+          customFooter: () => (
+            <CustomFooter
+              facetOffset={facetOffset}
+              setFacetOffset={setFacetOffset}
+              nextEnabled={uniq(recTableData.map(item => item[0])).length > 9}
+            />
+          ),
+          rowsPerPage: 100,
+        },
         data: recTableData,
       }}
       loading={

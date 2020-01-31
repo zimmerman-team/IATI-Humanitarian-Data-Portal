@@ -2,6 +2,7 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
 import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
+import sumBy from 'lodash/sumBy';
 
 interface ValueItem {
   code: string | null;
@@ -129,6 +130,52 @@ export const getBarChartData = (
         }
       });
     });
+
+    barData.data.values = values;
+  }
+
+  return barData;
+};
+
+export const getBarChartData1 = (
+  codelist,
+  allProviders,
+  title
+): HorizontalBarChartCardModel => {
+  const barData: any = {
+    title,
+    data: {
+      values: [],
+    },
+  };
+
+  if (allProviders && codelist) {
+    let values: any = [];
+    const totalCount = sumBy(allProviders, (p: any) => p.pivot.length);
+    allProviders.forEach(orgType => {
+      let typeName = find(codelist, ['code', orgType.value]);
+
+      if (typeName) {
+        typeName = typeName.name;
+      } else {
+        typeName = 'Not Provided';
+      }
+
+      values.push({
+        code: orgType.value,
+        name: typeName,
+        value: orgType.pivot.length,
+        percentage: parseFloat(
+          ((orgType.pivot.length * 100) / totalCount).toFixed(2)
+        ),
+      });
+    });
+
+    if (values.length === 1) {
+      if (values[0].name === 'Not Provided' && values[0].value === 1) {
+        values = [];
+      }
+    }
 
     barData.data.values = values;
   }
