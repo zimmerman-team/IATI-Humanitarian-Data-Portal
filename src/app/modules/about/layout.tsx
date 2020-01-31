@@ -36,22 +36,22 @@ export const AboutLayout = (props: AboutPageModel) => {
                 </>
               )}
             </Grid>
-            <Box height="50px" width="100%" />
+            <Hidden smDown>
+              <Box height="50px" width="100%" />
+            </Hidden>
           </>
         ))}
 
         <Grid container spacing={2}>
-          <Box position="absolute" top="10px" left="10px" zIndex="9998">
-            <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
-          </Box>
-
           <Hidden smDown>
+            <Box position="absolute" top="10px" left="10px" zIndex="9998">
+              <DecoAboutTopLeft data-testid="DecoAboutTopLeft" />
+            </Box>
+
             <Box position="absolute" top="360px" right="100px">
               <DecoAboutRight data-testid="DecoAboutRight" />
             </Box>
-          </Hidden>
 
-          <Hidden smDown>
             <Box position="absolute" top="1050px" right="100px">
               <DecoAboutMidRight data-testid="DecoAboutMidRight" />
             </Box>
@@ -62,15 +62,11 @@ export const AboutLayout = (props: AboutPageModel) => {
           <Box position="absolute" top="258px" left="0">
             <DecoAboutMidLeft data-testid="DecoAboutMidLeft" />
           </Box>
-        </Hidden>
 
-        <Hidden smDown>
-          <Box position="absolute" bottom="-270px" right="0">
+          <Box position="absolute" bottom="-270px" right="0" zIndex="-1">
             <DecoAboutBottomRight data-testid="DecoAboutBottomRight" />
           </Box>
-        </Hidden>
 
-        <Hidden lgUp>
           <Box height="100px" width="100%" />
         </Hidden>
       </Page>

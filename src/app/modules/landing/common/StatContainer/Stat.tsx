@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Box } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { StatModel } from 'app/modules/landing/common/StatContainer/models';
 import styled from 'styled-components';
 
@@ -26,25 +26,32 @@ const CustomTypo = styled(Typography)`
 
 export const Stat = (props: StatModel) => {
   return (
-    <Grid
-      direction="column"
-      wrap="nowrap"
-      alignItems="flex-start"
-      data-testid="stat"
-    >
-      <Box minHeight="50px">
+    <Grid container item xs={12} md={4} lg={3} alignItems="center">
+      <Grid item xs={6} md={12}>
         <Typography variant="subtitle1" data-testid="stat-description">
           {props.description}
         </Typography>
-      </Box>
+      </Grid>
 
-      <CustomTypo
-        variant="h4"
-        data-testid="stat-value"
-        signatorytype={props.signatorytype}
+      <Grid
+        item
+        xs={6}
+        lg={12}
+        justify="flex-end"
+        css={`
+          @media (max-width: 960px) {
+            display: flex;
+          }
+        `}
       >
-        {props.value}
-      </CustomTypo>
+        <CustomTypo
+          variant="h4"
+          data-testid="stat-value"
+          signatorytype={props.signatorytype}
+        >
+          {props.value}
+        </CustomTypo>
+      </Grid>
     </Grid>
   );
 };

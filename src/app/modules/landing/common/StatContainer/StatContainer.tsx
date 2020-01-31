@@ -7,13 +7,11 @@ export const StatContainer = (props: StateContainerModel) => {
   return (
     <Grid container direction="row" spacing={2} data-testid="stat-container">
       {props.items.map(item => (
-        <Grid item md={3}>
-          <Stat
-            description={item.description}
-            value={item.value}
-            signatorytype={item.signatorytype}
-          />
-        </Grid>
+        <Stat
+          description={item.description}
+          value={item.value}
+          signatorytype={item.signatorytype}
+        />
       ))}
     </Grid>
   );
