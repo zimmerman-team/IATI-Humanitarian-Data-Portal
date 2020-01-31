@@ -205,7 +205,7 @@ export const mockDataVar2: TableModuleModel = {
     rowHover: true,
     pagination: false,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'stacked',
     filterType: 'checkbox',
     selectableRows: 'none',
     sortFilterList: false,
