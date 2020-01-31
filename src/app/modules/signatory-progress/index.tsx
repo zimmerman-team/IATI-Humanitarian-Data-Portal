@@ -93,7 +93,7 @@ export function SignatoryProgress() {
       ),
     },
     {
-      name: 'Organisations using v2.02 or later of the IATI Standard',
+      name: 'Orgs. using v2.02 or later IATI data',
       key: '202OrLater',
       specPub: get(
         state.use202OrLater,

@@ -20,8 +20,8 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
       </Hidden>
       {/* ---------- */}
 
-      <Grid container>
-        <Grid item md={12} style={{ position: 'relative' }}>
+      <Grid container item>
+        <Grid item xs={12}>
           {/* ---------------------------------------- */}
           {/* Humanitarian activities */}
           <VerticalScrollHelper>

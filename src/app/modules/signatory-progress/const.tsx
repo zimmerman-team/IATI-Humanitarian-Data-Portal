@@ -106,7 +106,7 @@ export const linesOrder = [
   { n: 0, line: 'Publishing IATI traceability info' },
   {
     n: 1,
-    line: 'Organisations using v2.02 or later of the IATI Standard',
+    line: 'Orgs. using v2.02 or later IATI data',
   },
   { n: 2, line: 'Providing granular v2.03 data' },
   { n: 3, line: 'Providing granular v2.02 data' },

@@ -69,7 +69,6 @@ const HeaderBox = styled(props => <Box {...props} />)`
     z-index: 100;
     width: 100vw;
     height: 72px;
-    padding-bottom: 56px;
   }
 `;
 
