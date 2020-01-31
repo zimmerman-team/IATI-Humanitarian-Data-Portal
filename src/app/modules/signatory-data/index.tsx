@@ -1,6 +1,7 @@
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 /* models/interfaces */
 import { SignatoryDataModule } from 'app/modules/signatory-data/model';
@@ -24,6 +25,7 @@ import {
   formatTableSignatories,
 } from 'app/modules/signatory-data/utils';
 import { mockDataVar2 } from 'app/components/datadisplay/Table/mock';
+import theme from 'app/theme';
 
 export const SignatoryData = React.memo(
   (props: SignatoryDataModule) => {
@@ -97,7 +99,7 @@ export const SignatoryData = React.memo(
           if (tableComp.offsetTop - window.pageYOffset < -132) {
             if (thead) {
               thead.style.transform = `translateY(${window.pageYOffset -
-                447}px)`;
+                579}px)`;
             }
           } else if (thead) {
             thead.style.transform = ``;
@@ -176,7 +178,16 @@ export const SignatoryData = React.memo(
     return (
       <SignatoryDataLayout
         title={signatoryDataMock.title}
-        sigTable={{ ...sigTable, columns }}
+        sigTable={{
+          ...sigTable,
+          columns,
+          options: {
+            ...sigTable.options,
+            responsive: useMediaQuery(theme.breakpoints.down('md'))
+              ? 'scroll'
+              : 'stacked',
+          },
+        }}
         description={signatoryDataMock.description}
         loading={
           organisationNarrativeData.loading ||
