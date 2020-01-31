@@ -27,9 +27,7 @@ const LandingIntrotext = styled(Typography)`
   &&& {
     line-height: 1.2;
     mark {
-      @media (min-width: 960px) {
-        color: white;
-      }
+      color: white;
       background: #5accbf;
       padding-left: 5px;
       padding-right: 5px;
