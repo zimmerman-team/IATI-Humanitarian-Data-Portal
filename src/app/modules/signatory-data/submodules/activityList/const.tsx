@@ -121,7 +121,8 @@ export const activityBaseTable: TableModuleModel = {
     rowHover: true,
     pagination: true,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
     serverSide: true,
