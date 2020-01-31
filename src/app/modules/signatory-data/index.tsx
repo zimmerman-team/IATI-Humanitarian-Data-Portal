@@ -181,12 +181,6 @@ export const SignatoryData = React.memo(
         sigTable={{
           ...sigTable,
           columns,
-          options: {
-            ...sigTable.options,
-            responsive: useMediaQuery(theme.breakpoints.down('md'))
-              ? 'scroll'
-              : 'stacked',
-          },
         }}
         description={signatoryDataMock.description}
         loading={
