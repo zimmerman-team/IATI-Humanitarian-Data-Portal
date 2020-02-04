@@ -11,6 +11,7 @@ import { SignatoryDataLayout } from 'app/modules/signatory-data/layout';
 /* state & utils */
 import get from 'lodash/get';
 import map from 'lodash/map';
+import find from 'lodash/find';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
 
 /* mock */
@@ -122,7 +123,9 @@ export const SignatoryData = React.memo(
             if (tableComp.offsetTop - window.pageYOffset < -132) {
               if (thead) {
                 thead.style.transform = `translateY(${window.pageYOffset -
-                  579}px)`;
+                  (find(props.tableOptions.filterLists, fl => fl.length > 0)
+                    ? 619
+                    : 579)}px)`;
               }
             } else if (thead) {
               thead.style.transform = ``;
