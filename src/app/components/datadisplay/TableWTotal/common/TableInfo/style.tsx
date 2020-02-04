@@ -3,11 +3,11 @@ import color from 'app/theme/color';
 import { Typography } from 'app/theme';
 
 export const TableInfoContainer = styled.div`
+  bottom: 123px;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
-  bottom: 114px;
   min-height: 56px;
+  position: relative;
   background-color: ${color.tableInfoDark};
 `;
 

@@ -132,12 +132,10 @@ export const baseTranstable: TableModuleModel = {
     download: true,
     rowHover: true,
     responsive: 'scrollFullHeight',
-
     pagination: true,
     viewColumns: true,
-    responsive: 'scrollFullHeight',
-
     selectableRows: 'none',
+    selectableRowsHeader: false,
   },
 };
 

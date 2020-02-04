@@ -247,5 +247,5 @@ export function changeTableRowColor(index) {
 }
 
 export const VerticalScrollHelper = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
 `;

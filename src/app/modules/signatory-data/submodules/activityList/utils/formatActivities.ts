@@ -35,7 +35,7 @@ export function formatActivities(
       const countryNames =
         countries.length > 0 &&
         countries.map(countryCode => {
-          const countName = find(countryCodeList, ['code', countryCode]);
+          const countName = find(countryCodeList, ['code[0]', countryCode]);
           if (countName) {
             return countName.name;
           }

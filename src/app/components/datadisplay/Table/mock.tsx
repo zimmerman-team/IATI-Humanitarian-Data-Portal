@@ -207,7 +207,6 @@ export const mockDataVar2: TableModuleModel = {
     pagination: false,
     viewColumns: true,
     responsive: 'scrollFullHeight',
-
     filterType: 'checkbox',
     selectableRows: 'none',
     sortFilterList: false,
