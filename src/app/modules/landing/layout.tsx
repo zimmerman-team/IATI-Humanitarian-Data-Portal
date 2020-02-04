@@ -98,7 +98,7 @@ export const LandingLayout = (props: LandingModel) => {
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          The Initial Release: <b>Alpha Release</b>
+          The Initial Release: <b>Beta Release</b>
         </Typography>
       </VersionBox>
     </Container>
