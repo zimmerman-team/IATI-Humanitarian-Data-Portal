@@ -31,7 +31,7 @@ export const LoadingComp = styled.div`
   height: 100vh;
   z-index: 100000;
   position: fixed;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const PageLoader = (props: { message?: string }) => {

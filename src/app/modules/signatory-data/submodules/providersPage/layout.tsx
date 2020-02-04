@@ -12,7 +12,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
     <>
       {props.loading && (
-        <PageLoader message="This might take a bit more time than other pages due to huge data load and aggregations" />
+        <PageLoader message="Please hold on while we process your request." />
       )}
       {/* ---------------------------------------- */}
       {/* Charts */}
