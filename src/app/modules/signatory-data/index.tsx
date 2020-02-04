@@ -56,9 +56,32 @@ export const SignatoryData = React.memo(
       actions => actions.organisationnarrative.fetch
     );
 
+    const loadData = () => {
+      const publishers = map(get(gbsignatoriesData, 'data', []), sig =>
+        get(sig, 'IATIOrgRef', '')
+      ).join(' ');
+      const callValuesNarrative = {
+        values: {
+          ...OrgNarrative.values,
+          q: `reporting_org_ref:(${publishers})`,
+        },
+      };
+      const callValuesIatiSig = {
+        values: {
+          ...iatigbsignatoriesCallValues.values,
+          q: `reporting_org_ref:(${publishers})`,
+        },
+      };
+      if (publishers !== '') {
+        organisationNarrativeCall(callValuesNarrative);
+        iatigbsignatoriesCall(callValuesIatiSig);
+      }
+    };
+
     // so when the component mounts we want to set the
     // table options stored in global easy peasy state
     React.useEffect(() => {
+      loadData();
       setColumns(
         mockDataVar2.columns.map((column, index) => {
           // @ts-ignore
@@ -110,25 +133,18 @@ export const SignatoryData = React.memo(
     }, []);
 
     /* use useEffect as componentDidMount and commit the API calls */
-
     React.useEffect(() => {
-      const publishers = map(get(gbsignatoriesData, 'data', []), sig =>
-        get(sig, 'IATIOrgRef', '')
-      ).join(' ');
-      const callValuesNarrative = {
-        values: {
-          ...OrgNarrative.values,
-          q: `reporting_org_ref:(${publishers})`,
-        },
-      };
-      const callValuesIatiSig = {
-        values: {
-          ...iatigbsignatoriesCallValues.values,
-          q: `reporting_org_ref:(${publishers})`,
-        },
-      };
-      organisationNarrativeCall(callValuesNarrative);
-      iatigbsignatoriesCall(callValuesIatiSig);
+      if (
+        get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []) ===
+          [] &&
+        get(
+          organisationNarrativeData,
+          'data.data.grouped.reporting_org_ref.groups',
+          []
+        ) === []
+      ) {
+        loadData();
+      }
     }, [gbsignatoriesData]);
 
     React.useEffect(() => {
@@ -143,7 +159,7 @@ export const SignatoryData = React.memo(
           )
         )
       );
-    }, [iatigbsignatoriesData && organisationNarrativeData]);
+    }, [iatigbsignatoriesData, organisationNarrativeData]);
 
     React.useEffect(() => {
       setColumns(
