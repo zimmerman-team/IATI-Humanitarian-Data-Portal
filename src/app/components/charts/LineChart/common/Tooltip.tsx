@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 
 const Base = styled.div`
-  width: 350px;
+  width: 400px;
   background: #fff;
   padding: 30px 20px;
   box-shadow: 0 6px 15px -4px rgba(130, 136, 148, 0.24),

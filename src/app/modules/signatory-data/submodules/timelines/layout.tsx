@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import TableModule from 'app/components/datadisplay/Table';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { TimeLinessModel } from 'app/modules/signatory-data/submodules/timelines/model';
 import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
@@ -12,16 +12,17 @@ import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/ti
 //   column-gap: 6rem;
 // `;
 
-// const HighlightedTypography = styled.span`
-//   background-color: yellow;
-// `;
+const ColumnBox = styled.div`
+  column-count: 2;
+  column-gap: 6rem;
+`;
 
 export const TimelinesLayout = (props: TimeLinessModel) => {
   return (
     <>
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Hidden mdDown>
+      <Hidden smDown>
         <Box position="absolute" top="100px" left="0">
           <DecoSigTimelineTopLeft data-testid="DecoSigTimelineTopLeft" />
         </Box>
@@ -35,22 +36,30 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1">
-            <span>
-              Publishing frequency measures how often an organisation updates
-              their published IATI data. This is useful for any data user to
-              know in order that they can assess how ‘useful’ the published
-              information might be.
-            </span>
+            Publishing frequency measures how often an organisation updates
+            their published IATI data. This is useful for any data user to know
+            in order that they can assess how ‘useful’ the published information
+            might be.
           </Typography>
           <Box width="100%" height="16px" />
           <Typography variant="body1">
-            <span>
-              The table below shows the number of days for each month on which
-              the published IATI dataset has been assessed as having been
-              updated. An ‘update’ is recorded when a ‘more recent’ transaction
-              date (than the ‘most recent’ previously identified by the portal)
-              is detected.
-            </span>
+            The table below shows the number of days for each month on which the
+            published IATI dataset has been assessed as having been updated. An
+            ‘update’ is recorded when a ‘more recent’ transaction date (than the
+            ‘most recent’ previously identified by the portal) is detected.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            The methodology for the calculation of frequency (although the
+            portal uses humanitarian activities only) is documented on the{' '}
+            <a
+              href="http://publishingstats.iatistandard.org/timeliness.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IATI dashboard
+            </a>
+            .
           </Typography>
         </Grid>
         <Grid item xs={12} md={12}>
@@ -94,7 +103,20 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
             Transactions are the most numerous and most regularly refreshed
             elements in reported IATI activities and they are therefore used to
             make this assessment. The table of statistics shows the number of
-            transaction dates reported for each calendar months.
+            transaction dates reported for each calendar month.
+          </Typography>
+          <Box width="100%" height="16px" />
+          <Typography variant="body1">
+            The methodology for the calculation of timelag (although the portal
+            uses humanitarian activities only) is documented on the{' '}
+            <a
+              href="http://publishingstats.iatistandard.org/timeliness_timelag.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IATI dashboard
+            </a>
+            .
           </Typography>
         </Grid>
         <Grid item xs={12} md={12}>

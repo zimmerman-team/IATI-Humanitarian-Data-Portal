@@ -14,6 +14,7 @@ import {
   pubTracQuery,
   pub203Query,
   getBaseTable,
+  use202OrLaterQuery,
 } from './const';
 
 /* utils */
@@ -36,8 +37,14 @@ export function SignatoryProgress() {
   const signatoryProgressData: any = useStoreState(
     globalState => globalState.signatoryProgress.data
   );
+  const signatoryProgressDataLoading: any = useStoreState(
+    globalState => globalState.signatoryProgress.loading
+  );
 
-  const gbOrgData = get(iatigbsignatoriesData, 'data', null);
+  const gbOrgData = map(iatigbsignatoriesData.data, sig => ({
+    ...sig,
+    IATIOrgRef: sig.IATIOrgRef.toLowerCase(),
+  }));
 
   const gbOrgRefs =
     gbOrgData && map(gbOrgData, item => item.IATIOrgRef).join(' ');
@@ -46,13 +53,18 @@ export function SignatoryProgress() {
     if (gbOrgRefs) {
       const repOrgQuery = `reporting_org_ref:(${gbOrgRefs})`;
       humPubQuery.q = `${repOrgQuery} AND `.concat(humPubQuery.q);
-
+      use202OrLaterQuery.q = `${repOrgQuery} AND `.concat(use202OrLaterQuery.q);
       pub202Query.q = `${repOrgQuery} AND `.concat(pub202Query.q);
       pub203Query.q = `${repOrgQuery} AND `.concat(pub203Query.q);
       pubTracQuery.q = `${repOrgQuery} AND `.concat(pubTracQuery.q);
 
       // here we call the data for humanitarian publishers
       actions.humPublishers.fetch({ values: humPubQuery });
+
+      // here we call the data for orgs publishing 2.02 or later version
+      actions.use202OrLater.fetch({
+        values: use202OrLaterQuery,
+      });
 
       // and here we call the data for publishers publishing
       // v2.02 data
@@ -66,7 +78,7 @@ export function SignatoryProgress() {
       // traceability data
       actions.publishersTrac.fetch({ values: pubTracQuery });
     }
-  }, [gbOrgData]);
+  }, [iatigbsignatoriesData.data]);
 
   // array for specific publisher data, be it publishers publishing humanitarian,
   // v2.02 data and etc.
@@ -76,6 +88,15 @@ export function SignatoryProgress() {
       key: 'hum',
       specPub: get(
         state.humPublishers,
+        'data.data.facets.org_refs.buckets',
+        null
+      ),
+    },
+    {
+      name: 'Orgs. using v2.02 or later IATI data',
+      key: '202OrLater',
+      specPub: get(
+        state.use202OrLater,
         'data.data.facets.org_refs.buckets',
         null
       ),
@@ -124,6 +145,7 @@ export function SignatoryProgress() {
 
   return (
     <SignatoryProgressLayout
+      loading={iatigbsignatoriesData.loading || signatoryProgressDataLoading}
       title={SignatoryProgressMock.title}
       description={SignatoryProgressMock.description}
       horizontalBarChartCardData={barData}

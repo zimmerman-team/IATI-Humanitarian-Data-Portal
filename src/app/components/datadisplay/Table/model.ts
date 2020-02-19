@@ -13,13 +13,7 @@ export type moneyType = {
 
 export interface TableModuleModel {
   title: string | React.ReactNode;
-  data: (
-    | number
-    | string
-    | undefined
-    | null
-    | (string | number | null)[]
-    | moneyType)[][];
+  data: any[][];
   columns: MUIDataTableColumnDef[];
   options: MUIDataTableOptions;
   columnsCell?: string[];

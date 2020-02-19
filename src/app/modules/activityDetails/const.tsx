@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 
 /* models/ interfaces */
@@ -26,7 +28,7 @@ export const actMetadataQuery: ActDetailQuery = {
         other_identifier:[json],humanitarian_scope:[json],location:[json],
         reporting_org_narrative,reporting_org_ref,crs_add:[json],
         activity_date_type,activity_date_iso_date,fss:[json],related_activity:[json],
-        legacy_data:[json],conditions:[json],activity_scope_code`,
+        legacy_data:[json],conditions:[json],activity_scope_code,transaction_recipient_country_code,transaction_sector_code`,
 };
 
 export const actResultsQuery = (activityIdentifier: string): ActDetailQuery => {
@@ -129,9 +131,11 @@ export const baseTranstable: TableModuleModel = {
     filter: true,
     download: true,
     rowHover: true,
+    responsive: 'scrollFullHeight',
     pagination: true,
     viewColumns: true,
     selectableRows: 'none',
+    selectableRowsHeader: false,
   },
 };
 
@@ -423,7 +427,7 @@ export const sectorFields = sectorVocabs => {
     },
     {
       colHeading: 'Description',
-      key: 'narratives',
+      key: 'sector.name',
     },
     {
       colHeading: 'Percentage',
@@ -470,7 +474,7 @@ export const recRegFields = regVocNames => {
 export const recCountFields = [
   {
     colHeading: 'Description',
-    key: 'narrative',
+    key: 'country.name',
   },
   {
     colHeading: 'Code',

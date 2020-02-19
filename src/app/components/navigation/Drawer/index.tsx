@@ -14,7 +14,10 @@ import { DrawerMenuModel } from 'app/components/navigation/Drawer/model';
 
 const Drawer = styled(props => <MuiDrawer {...props} />)`
   && {
-    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 9999 !important;
+    [class*='MuiBackdrop-root'] {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 `;
 
@@ -56,6 +59,16 @@ const CloseIcon = styled(props => <MuiCloseIcon {...props} />)`
     margin-top: 30px;
     margin-right: 30px;
     margin-bottom: 34px;
+  }
+`;
+
+const HeaderBox = styled(props => <Box {...props} />)`
+  && {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 72px;
   }
 `;
 
@@ -107,17 +120,11 @@ export function DrawerMenu(props: DrawerMenuModel) {
   );
 
   return (
-    <Box
-      display="flex"
-      justifyContent="flex-end"
-      alignItems="center"
-      height="72px"
-      paddingBottom="56px"
-    >
+    <HeaderBox display="flex" justifyContent="flex-end" alignItems="center">
       <MenuButton onClick={toggleDrawer(true)} />
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer(false)}>
         {sideList()}
       </Drawer>
-    </Box>
+    </HeaderBox>
   );
 }

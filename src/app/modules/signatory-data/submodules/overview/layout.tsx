@@ -17,21 +17,33 @@ import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fra
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
 import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
-import { ScrollToTop } from 'app/utils/scrollToTop';
+import parse from 'html-react-parser';
+// import { ScrollToTop } from 'app/utils/scrollToTop';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
     <>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden smDown>
-        <Box position="absolute" top="0" left="0" zIndex="10002">
+        <Box position="absolute" top="0" left="0" zIndex="-1">
           <DecoSigOverviewTopLeft />
         </Box>
       </Hidden>
       {/* ---------- */}
-
+      <Grid
+        item
+        xs={12}
+        md={7}
+        css={`
+          position: relative;
+          top: -25px;
+        `}
+      >
+        <Typography variant="body2">{parse(props.description)}</Typography>
+        <Box height="25px" />
+      </Grid>
       <Grid container>
         <Grid item xs={12}>
           <VerticalBarChartCard
@@ -49,11 +61,6 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         <Grid item xs={12}>
           <Typography color="textPrimary" variant="h4">
             Humanitarian elements
-          </Typography>
-          <Box height="10px" />
-          <Typography color="textPrimary" variant="body1">
-            Please note that publishing organisations are not generally expected
-            to reach a value of 100% for those elements marked with an *
           </Typography>
         </Grid>
         {props.humanitarianElementsData.map(humEl => (
@@ -74,11 +81,11 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List elName="incComms" items={props.statusData.slice(0, 2)} />
+          <List elName="incComms" items={props.statusData.slice(0, 1)} />
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <List elName="incComms" items={props.statusData.slice(2, 4)} />
+          <List elName="incComms" items={props.statusData.slice(1, 3)} />
         </Grid>
       </Grid>
       <Box height="50px" />
@@ -88,7 +95,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       {/** side nav */}
 
       <Grid container spacing={4}>
-        <Hidden mdDown>
+        <Hidden smDown>
           <Grid item xs={3}>
             <div
               css={`
@@ -136,7 +143,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
 
             {/** 5 */}
             {/** Humanitarian results */}
-            <Humanitarian humResultsData={props.humResultsData} />
+            {/* <Humanitarian humResultsData={props.humResultsData} /> */}
 
             {/** 6 */}
             {/** Hum. activites with location information */}

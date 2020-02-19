@@ -16,9 +16,11 @@ export const IncomingLayout = (props: IncomingModel) => {
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="9998">
+          <DecoSigIncomingTopLeft data-testid="DecoSigIncomingTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
 
       <Grid container spacing={4}>
@@ -42,7 +44,7 @@ export const IncomingLayout = (props: IncomingModel) => {
         - Location information
 
         */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <Grid item xs={12} sm={12} md={12} lg={3}>
             <div
               css={`
@@ -60,7 +62,7 @@ export const IncomingLayout = (props: IncomingModel) => {
           </Grid>
         </Hidden>
 
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={12} lg={9}>
           <Grid container spacing={4}>
             {/* ---------------------------------------- */}
             {/** Incoming pledges */}

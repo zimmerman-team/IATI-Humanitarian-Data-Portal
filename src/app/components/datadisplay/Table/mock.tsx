@@ -73,7 +73,8 @@ export const mockDataVar1: TableModuleModel = {
     rowHover: false,
     pagination: false,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
   },
@@ -205,7 +206,7 @@ export const mockDataVar2: TableModuleModel = {
     rowHover: true,
     pagination: false,
     viewColumns: true,
-    // responsive: 'scroll',
+    responsive: 'scrollFullHeight',
     filterType: 'checkbox',
     selectableRows: 'none',
     sortFilterList: false,
@@ -359,7 +360,8 @@ export const mockDataVar3: TableModuleModel = {
     rowHover: true,
     pagination: true,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
   },
@@ -429,7 +431,8 @@ export const mockDataVar4: TableModuleModel = {
     rowHover: true,
     pagination: true,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     expandableRows: true,
     selectableRows: 'none',
     expandableRowsOnClick: true,
@@ -629,7 +632,8 @@ export const mockDataVar5: TableModuleModel = {
     rowHover: false,
     pagination: false,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
   },
@@ -827,7 +831,8 @@ export const mockDataVar6: TableModuleModel = {
     rowHover: false,
     pagination: true,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
   },
@@ -996,7 +1001,8 @@ export const mockDataVar7: TableModuleModel = {
     rowHover: false,
     pagination: false,
     viewColumns: true,
-    responsive: 'scroll',
+    responsive: 'scrollFullHeight',
+
     filterType: 'checkbox',
     selectableRows: 'none',
   },

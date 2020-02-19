@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'app/components/datadisplay/Lists';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Hidden } from '@material-ui/core';
 import { DecoSigOverviewMidRight } from 'app/modules/signatory-data/submodules/overview/common/decoration/DecoSigOverviewMidRight';
 
 export const FtsImportRelated = ({ humActFTSData }) => (
@@ -20,9 +20,11 @@ export const FtsImportRelated = ({ humActFTSData }) => (
     <List valueHeaders {...humActFTSData} />
     {/* ---------------------------------------- */}
     {/* decoration: mid right */}
-    <Box position="absolute" top="-20px" right="-100px" zIndex="-1">
-      <DecoSigOverviewMidRight />
-    </Box>
+    <Hidden smDown>
+      <Box position="absolute" top="-20px" right="-100px" zIndex="-1">
+        <DecoSigOverviewMidRight />
+      </Box>
+    </Hidden>
     {/* ---------- */}
   </Grid>
 );

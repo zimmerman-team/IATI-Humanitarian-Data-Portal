@@ -1,6 +1,6 @@
 /* core */
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 /* third-party */
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -31,16 +31,30 @@ export const LoadingComp = styled.div`
   height: 100vh;
   z-index: 100000;
   position: fixed;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
-export const PageLoader = () => {
+export const PageLoader = (props: { message?: string }) => {
   return (
     <LoadingComp>
       <Container data-cy="general-loader">
         <Background>
           <CircularProgress disableShrink />
         </Background>
+        {props.message && (
+          <div
+            css={`
+              padding: 5px;
+              margin-top: 15px;
+              background: white;
+              border-radius: 2px;
+              text-align: center;
+              font-family: Inter;
+            `}
+          >
+            {props.message}
+          </div>
+        )}
       </Container>
     </LoadingComp>
   );

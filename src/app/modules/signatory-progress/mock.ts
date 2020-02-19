@@ -4,6 +4,7 @@ import { mockData as horizontalBarChartCardMockData } from 'app/components/surfa
 import { mockDataVar1 as tableMock } from 'app/components/datadisplay/Table/mock';
 
 export const SignatoryProgressMock: SignatoryProgressModel = {
+  loading: false,
   title: 'Aggregated signatory progress',
   description:
     '<p>The Grand Bargain transparency workstream uses the following IATI publishing indicators for the workstream <a href="/signatory-progress/cctri-target">Core Commitment Target Results & Indicators (CCTRIs).</a>The aim of these indicators is to track the improvement in the quality and usability of the IATI data published by the Grand Bargain signatories.</p>',

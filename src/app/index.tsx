@@ -10,6 +10,7 @@ import { DrawerMenu } from 'app/components/navigation/Drawer';
 import { mockData as drawerMockData } from 'app/components/navigation/Drawer/mock';
 import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 import { getCookie } from 'app/utils/generic';
+import ScrollToTop from 'app/utils/scrollToTop';
 
 type AppProps = {
   openSnackbar?: boolean;
@@ -25,10 +26,11 @@ function App(props: AppProps) {
   return (
     <Providers>
       <Router>
-        <Hidden lgUp>
+        <ScrollToTop />
+        <Hidden mdUp>
           <DrawerMenu links={drawerMockData.links} />
         </Hidden>
-        <Hidden mdDown>
+        <Hidden smDown>
           <AppBar data-testid="main-navigation" />
         </Hidden>
         <Routes />

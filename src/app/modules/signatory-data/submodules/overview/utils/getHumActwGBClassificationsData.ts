@@ -16,7 +16,7 @@ export const getHumActwGBClassificationsData = (
     get(rawData, 'facets.humActwGBClassificationsData_4.count', 0),
   ];
   return {
-    title: 'Hum. activities with Grand Bargain classifications',
+    title: 'Humanitarian activities with Grand Bargain classifications',
     elName: 'incComms',
     // subtitle: 'Activities with humanitarian OECD DAC sector code(s)',
     items: [
@@ -73,7 +73,7 @@ export const getHumActwGBClassificationsData = (
         tooltip: getTooltipContent(
           tooltipsData,
           'Signatory Data - Overview',
-          'Cash transfer'
+          'Cash Transfer or Vouchers'
         ),
         onClick: () => {
           onItemClick({

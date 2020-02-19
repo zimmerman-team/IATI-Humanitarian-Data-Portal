@@ -3,7 +3,7 @@ import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import React from 'react';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
-import { getLocations } from 'app/components/navigation/SignatoryNavigation/mock';
+import { SubNavItemRegularMock } from 'app/components/navigation/SignatoryNavigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
 
@@ -67,10 +67,14 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
         <Hidden mdUp>
           <Box height="50px" width="100%" />
         </Hidden>
-        <Grid item xs={12} md={6}>
+        {/*Helper Grid Item*/}
+        <Grid item xs={1} md={1} sm={1} />
+
+        <Grid item xs={11} sm={11} md={5} justify="flex-end">
+          {/* implement conditional here that differentiates between organisation types */}
           <SignatoryNavigation
             activity={props.code}
-            locations={getLocations(props.orgType)}
+            items={SubNavItemRegularMock.items}
           />
         </Grid>
       </Grid>

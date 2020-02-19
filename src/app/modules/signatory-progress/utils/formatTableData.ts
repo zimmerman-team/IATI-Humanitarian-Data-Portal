@@ -23,6 +23,10 @@ export function formatTableData(
   const currDate = `${today.getDate()}.${
     shortMonthNames[today.getMonth()]
   }.${today.getFullYear()}`;
+  // console.log(currDate);
+  //Removes a the day if it is the first day
+  // 1.May.2017 -> May.2017
+  // function removeDayFrom() {}
 
   if (signatoryProgressData !== null) {
     dateRanges = constructDateRanges(signatoryProgressData);
@@ -51,7 +55,7 @@ export function formatTableData(
       let iatiPerc = range.allPerc;
       let iatiCount = range.allCount;
 
-      if (index === 1) {
+      if (index === 0) {
         befLastCount = iatiCount;
       }
 
@@ -63,7 +67,7 @@ export function formatTableData(
         totGBSigs.push(Math.round((iatiCount * 100) / iatiPerc));
       }
 
-      tableData[0].push(`${iatiPerc}% (${iatiCount})`);
+      tableData[0].push(`${iatiCount} organisations (${iatiPerc}%)`);
       if (range.label !== currDate) {
         totGBSigs.push(range.totalGBSig);
       }
@@ -133,7 +137,7 @@ export function formatTableData(
           lastSigCount = specSigCount;
         }
 
-        let tableCell = `${percentage}% (${value})`;
+        let tableCell = `${value} organisations (${percentage}%)`;
         if (percentage === null || value === null) {
           tableCell = 'NOT MEASURED';
         }

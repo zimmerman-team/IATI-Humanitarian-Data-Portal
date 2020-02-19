@@ -4,6 +4,7 @@ import { SingleDefActivity } from 'app/state/api/interfaces/activityInterface';
 import { formatDate, getEngText } from 'app/utils/generic';
 import get from 'lodash/get';
 import find from 'lodash/find';
+import uniq from 'lodash/uniq';
 
 export function formatActivities(
   actStatusCodeList,
@@ -26,10 +27,15 @@ export function formatActivities(
         activity.activity_status_code,
       ]);
 
+      const countries = uniq([
+        ...get(activity, 'recipient_country_code', []),
+        ...get(activity, 'transaction_recipient_country_code', []),
+      ]);
+
       const countryNames =
-        activity.recipient_country_code &&
-        activity.recipient_country_code.map(countryCode => {
-          const countName = find(countryCodeList, ['code', countryCode]);
+        countries.length > 0 &&
+        countries.map(countryCode => {
+          const countName = find(countryCodeList, ['code[0]', countryCode]);
           if (countName) {
             return countName.name;
           }

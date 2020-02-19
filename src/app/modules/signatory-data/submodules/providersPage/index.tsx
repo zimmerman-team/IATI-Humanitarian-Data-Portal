@@ -4,8 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { useStoreActions } from 'app/state/store/hooks';
 /* components */
 import { ProvidersPageLayout } from 'app/modules/signatory-data/submodules/providersPage/layout';
+import { CustomFooter } from 'app/modules/signatory-data/submodules/providersPage/common/CustomFooter';
 /* state & utils */
 import get from 'lodash/get';
+import uniq from 'lodash/uniq';
+import 'styled-components/macro';
 import { sigDataProvidersStore } from 'app/modules/signatory-data/submodules/providersPage/store';
 import {
   allProvidersQuery,
@@ -13,7 +16,7 @@ import {
   providersTableCallValues,
 } from 'app/modules/signatory-data/submodules/providersPage/consts';
 import { getTableData } from 'app/modules/signatory-data/submodules/providersPage/utils/getTableData';
-import { getBarChartData } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
+import { getBarChartData1 } from 'app/modules/signatory-data/submodules/providersPage/utils/getBarChartData';
 import { useStoreState } from 'easy-peasy';
 import {
   RouteComponentProps,
@@ -33,17 +36,21 @@ export function ProvidersPageFunc(props) {
     actions.sigAllProviders.fetch({
       values: allProvidersQuery(
         decodeURIComponent(props.match.params.code),
-        'transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type'
+        'transaction_provider_org_type,transaction_provider_org_narrative'
       ),
     });
   }, []);
+
+  const [facetOffset, setFacetOffset] = React.useState(0);
+
   React.useEffect(() => {
     actions.sigdataproviders.fetch({
       values: providersTableCallValues(
-        decodeURIComponent(props.match.params.code)
+        decodeURIComponent(props.match.params.code),
+        facetOffset
       ),
     });
-  }, [orgTypeNames.data]);
+  }, [orgTypeNames.data, facetOffset]);
 
   const sigDataActivityListFilterAction = useStoreActions(
     actionsGen => actionsGen.sigDataActivityListFilter.setActivityListFilter
@@ -55,7 +62,7 @@ export function ProvidersPageFunc(props) {
 
   const sigAllProviders = get(
     state.sigAllProviders,
-    'data.data.facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type',
+    'data.data.facet_counts.facet_pivot.transaction_provider_org_type,transaction_provider_org_narrative',
     null
   );
 
@@ -65,19 +72,34 @@ export function ProvidersPageFunc(props) {
     get(orgTypeNames.data, 'data', {}),
     '1'
   );
+
+  const barChartData = getBarChartData1(
+    get(orgTypeNames.data, 'data', null),
+    sigAllProviders,
+    'Funder Organisation Types'
+  );
+
+  const tableDataConfig = baseProviderConfig(false, onItemClick);
+
   return (
     <ProvidersPageLayout
-      barChartData={getBarChartData(
-        get(state.sigdataproviders.data, 'data', null),
-        get(orgTypeNames.data, 'data', null),
-        sigAllProviders,
-        'Funder OrganisationTypes',
-        `facet_counts.facet_pivot.transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency`
-      )}
+      barChartData={barChartData}
       tableData={{
-        ...baseProviderConfig(true, onItemClick),
+        ...tableDataConfig,
+        options: {
+          ...tableDataConfig.options,
+          customFooter: () => (
+            <CustomFooter
+              facetOffset={facetOffset}
+              setFacetOffset={setFacetOffset}
+              nextEnabled={uniq(tableData.map(item => item[0])).length > 9}
+            />
+          ),
+          rowsPerPage: 100,
+        },
         data: tableData,
       }}
+      loading={state.sigdataproviders.loading || state.sigAllProviders.loading}
     />
   );
 }

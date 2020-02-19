@@ -6,7 +6,8 @@ export const signatoryDataMock: SignatoryDataModel = {
   title: 'Signatory IATI data',
   description:
     "<p>This page provides an overview of the IATI ('open') data currently published by individual Grand Bargain signatories and/or their affiliated organisations. Its primary purpose is to enable signatories to monitor their own progress in relation to meeting the data publication commitment of the Grand Bargain.</p>" +
-    "<p>Each column in the table relates to a specific IATI publishing indicator as defined within the workstream <a href='http://gbtransparency.org/dashboard/datapubindicators.html' target='_blank'>core commitment target results and indicators (CCTRIs)</a>.</p>",
+    "<p>Each column in the table relates to a specific IATI publishing indicator as defined within the workstream <a href='http://gbtransparency.org/dashboard/datapubindicators.html' target='_blank'>core commitment target results and indicators (CCTRIs)</a>. </p>" +
+    '<br><p><b>PLEASE NOTE: it is important to assess the indicator values in the context of how each organisation operates e.g. not all affiliate or other organisations undertake humanitarian work so may not as yet be publishing any humanitarian information.\n</b></p>',
   sigTable: mockDataVar2,
 };
 
@@ -48,7 +49,11 @@ export const iatigbsignatoriesCallValues = {
           },
           traec: {
             type: 'query',
-            q: 'transaction_provider_org_provider_activity_id: *',
+            q: '(humanitarian:1 OR transaction_humanitarian:1 
+              OR (-(-sector_vocabulary:1 OR sector_vocabulary:*)
+              AND (sector_code:[70000 TO 79999] OR sector_code:[93010 TO 93018]))
+              OR (-(-transaction_sector_vocabulary:1 OR transaction_sector_vocabulary:*)
+              AND (transaction_sector_code:[70000 TO 79999] OR transaction_sector_code:[93010 TO 93018]))) AND transaction_provider_org_provider_activity_id:* AND transaction_type:1',
           },
         },
       },

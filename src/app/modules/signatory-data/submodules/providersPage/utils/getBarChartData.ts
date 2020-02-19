@@ -2,6 +2,7 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
 import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/HorizontalBarChartCard/model';
+import sumBy from 'lodash/sumBy';
 
 interface ValueItem {
   code: string | null;
@@ -66,7 +67,8 @@ export const getBarChartData = (
   codelist,
   allProviders,
   title,
-  facetKey
+  facetKey,
+  tableData
 ): HorizontalBarChartCardModel => {
   const barData: any = {
     title,
@@ -77,7 +79,7 @@ export const getBarChartData = (
 
   if (allProviders && codelist && rawData) {
     const orgData = get(rawData, facetKey);
-    const totalCount = getTotalCount(allProviders);
+    const totalCount = tableData.length; //getTotalCount(allProviders);
     const values: ValueItem[] = [];
     // now if an organisation doesn't have
     // a title or a ref
@@ -115,19 +117,65 @@ export const getBarChartData = (
                 code: orgType.value,
                 name: typeName,
                 value: 1,
-                percentage: Math.round(100 / totalCount),
+                percentage: parseFloat((100 / totalCount).toFixed(2)),
               });
             } else {
               const newValue = values[valIndex].value + 1;
               values[valIndex].value = newValue;
-              values[valIndex].percentage = Math.round(
-                (newValue * 100) / totalCount
+              values[valIndex].percentage = parseFloat(
+                ((newValue * 100) / totalCount).toFixed(2)
               );
             }
           });
         }
       });
     });
+
+    barData.data.values = values;
+  }
+
+  return barData;
+};
+
+export const getBarChartData1 = (
+  codelist,
+  allProviders,
+  title
+): HorizontalBarChartCardModel => {
+  const barData: any = {
+    title,
+    data: {
+      values: [],
+    },
+  };
+
+  if (allProviders && codelist) {
+    let values: any = [];
+    const totalCount = sumBy(allProviders, (p: any) => p.pivot.length);
+    allProviders.forEach(orgType => {
+      let typeName = find(codelist, ['code', orgType.value]);
+
+      if (typeName) {
+        typeName = typeName.name;
+      } else {
+        typeName = 'Not Provided';
+      }
+
+      values.push({
+        code: orgType.value,
+        name: typeName,
+        value: orgType.pivot.length,
+        percentage: parseFloat(
+          ((orgType.pivot.length * 100) / totalCount).toFixed(2)
+        ),
+      });
+    });
+
+    if (values.length === 1) {
+      if (values[0].name === 'Not Provided' && values[0].value === 1) {
+        values = [];
+      }
+    }
 
     barData.data.values = values;
   }

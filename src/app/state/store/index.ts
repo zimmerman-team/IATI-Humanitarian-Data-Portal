@@ -20,6 +20,7 @@ import {
 import iatigbsignatories from 'app/state/api/actionsReducers/iatigbsignatories';
 import sigdataoverviewhum from 'app/state/api/actionsReducers/sigdataoverviewhum';
 import sigdataactivityyears from 'app/state/api/actionsReducers/sigdataactivityyears';
+import sigdataoverviewcurrency from 'app/state/api/actionsReducers/sigdataoverviewcurrency';
 import sigdataactivitystatus from 'app/state/api/actionsReducers/sigdataactivitystatus';
 import sigdatadatesheader from 'app/state/api/actionsReducers/sigdatadatesheader';
 import GBSignatoryResponseInterface from 'app/state/api/interfaces/gbsignatoryInterface';
@@ -67,6 +68,7 @@ export interface ApplicationStoreModel {
   sigDataOpts: DataTableOptions;
   sigDataActivityListFilter: SigDataActivityListFilterModel;
   sigdatadatesheader: ActivityResponceInterface;
+  sigdataoverviewcurrency: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -92,6 +94,7 @@ const applicationStore: ApplicationStoreModel = {
   sigdatadatesheader,
   sigdataoutgoingtransactions,
   sigdataincomingtransactions,
+  sigdataoverviewcurrency,
   sigDataActivityListFilter: {
     activityListFilter: { label: '', value: '' },
     setActivityListFilter: action((state, payload) => {

@@ -6,18 +6,24 @@ import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/Horizontal
 import Box from '@material-ui/core/Box';
 import { DecoSigRecTopLeft } from 'app/modules/signatory-data/submodules/recipients/common/decoration/DecoSigRecTopLeft';
 import { DecoSigRecBottomRight } from 'app/modules/signatory-data/submodules/recipients/common/decoration/DecoSigRecBottomRight';
+import { PageLoader } from 'app/modules/common/PageLoader';
 
 export const RecipientsLayout = (props: RecipientsModel) => {
   return (
     <>
+      {props.loading && (
+        <PageLoader message="Please hold on while we process your request." />
+      )}
       {/* ---------------------------------------- */}
       {/* Charts */}
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigRecTopLeft data-testid="DecoSigRecTopLeft" />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="9998">
+          <DecoSigRecTopLeft data-testid="DecoSigRecTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
 
       <Grid item lg={12} style={{ position: 'relative' }}>
@@ -47,9 +53,11 @@ export const RecipientsLayout = (props: RecipientsModel) => {
 
         {/* ---------------------------------------- */}
         {/* decoration: bottom right */}
-        <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
-          <DecoSigRecBottomRight data-testid="DecoSigRecBottomRight" />
-        </Box>
+        <Hidden smDown>
+          <Box position="absolute" bottom="-100px" right="-100px" zIndex="-1">
+            <DecoSigRecBottomRight data-testid="DecoSigRecBottomRight" />
+          </Box>
+        </Hidden>
         {/* ---------- */}
       </Grid>
     </>

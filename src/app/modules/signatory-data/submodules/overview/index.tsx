@@ -10,11 +10,15 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { withRouter } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'app/state/store/hooks';
-import { getAllYears } from 'app/modules/signatory-data/submodules/utils';
+import {
+  getAllYears,
+  getYearRange,
+} from 'app/modules/signatory-data/submodules/utils';
 import {
   barJsonFacet,
   humCallValues,
   hum4DonutValues,
+  currencyCallValues,
   activityStatusValues,
 } from 'app/modules/signatory-data/submodules/overview/const';
 import { getYearBarChartData } from 'app/modules/signatory-data/submodules/overview/utils/getYearBarChartData';
@@ -28,16 +32,11 @@ import { getHumActWLocationInfoData } from 'app/modules/signatory-data/submodule
 import { getHumActWMultiYearFundingData } from 'app/modules/signatory-data/submodules/overview/utils/getHumActWMultiYearFundingData';
 import { getFinancialReportingData } from 'app/modules/signatory-data/submodules/overview/utils/getFinancialReportingData';
 import { getActivitySummaryData } from 'app/modules/signatory-data/submodules/overview/utils/getActivitySummaryData';
-import {
-  RouteComponentProps,
-  WithRouterProps,
-  WithRouterStatics,
-} from 'react-router';
+import { getDescription } from './utils/getDescription';
 
 export function OverviewPage(props) {
   /* local state */
   const [signatory, setSignatory] = React.useState({});
-
   /* redux store variables */
   let gbsignatories: any = useStoreState(state => state.gbsignatories);
   gbsignatories = get(gbsignatories, 'data', []);
@@ -56,6 +55,9 @@ export function OverviewPage(props) {
   );
   const sigdataoverviewhum4donutData = useStoreState(
     state => state.sigdataoverviewhum4donut.data
+  );
+  const sigdataoverviewcurrencyData = useStoreState(
+    state => state.sigdataoverviewcurrency.data
   );
   const sigdataoverviewdataerrorsData = useStoreState(
     state => state.sigdataoverviewdataerrors.data
@@ -77,15 +79,27 @@ export function OverviewPage(props) {
   const sigdataoverviewdataerrorsCall = useStoreActions(
     actions => actions.sigdataoverviewdataerrors.fetch
   );
+  const sigdataoverviewcurrencyCall = useStoreActions(
+    actions => actions.sigdataoverviewcurrency.fetch
+  );
   const sigDataActivityListFilterAction = useStoreActions(
     actions => actions.sigDataActivityListFilter.setActivityListFilter
   );
   const years = getAllYears(
     get(
       sigdataactivityyearsData,
-      "data.facet_counts.facet_pivot['activity_date_start_actual,humanitarian']",
+      `data.facet_counts.facet_pivot['${props.queryDateField},humanitarian']`,
       []
     )
+  );
+  const sigdatadatesheaderData = useStoreState(
+    state => state.sigdatadatesheader.data
+  );
+  const years2 = getYearRange(
+    get(sigdatadatesheaderData, 'data.facets.date1', ''),
+    get(sigdatadatesheaderData, 'data.facets.date2', ''),
+    get(sigdatadatesheaderData, 'data.facets.date3', ''),
+    get(sigdatadatesheaderData, 'data.facets.date4', '')
   );
 
   const onItemClick = value => {
@@ -131,10 +145,18 @@ export function OverviewPage(props) {
         rows: 0,
       },
     };
+    const sigdataoverviewcurrencyCallValues = {
+      values: {
+        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+        'json.facet': JSON.stringify(currencyCallValues),
+        rows: 0,
+      },
+    };
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
     sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);
     sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
+    sigdataoverviewcurrencyCall(sigdataoverviewcurrencyCallValues);
   }, []);
 
   /* componentDidUpdate based on sigdataactivityyearsData */
@@ -142,7 +164,9 @@ export function OverviewPage(props) {
     const sigdataactivitiesbyyearcallValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify(barJsonFacet(years)),
+        'json.facet': JSON.stringify(
+          barJsonFacet(years2 || years, props.queryDateField)
+        ),
         rows: 0,
       },
     };
@@ -155,7 +179,8 @@ export function OverviewPage(props) {
   const activityTimelineData = getYearBarChartData(yearsData);
   const humanitarianElementsData = getHumanitarianElementsData(
     get(sigdataoverviewhumData, 'data', []),
-    get(sigdataoverviewhum4donutData, 'data', [])
+    get(sigdataoverviewhum4donutData, 'data', []),
+    get(sigdataoverviewhumData, 'data', [])
   );
   const statusData = getStatusData(
     get(sigdataactivitystatusData, 'data', []),
@@ -199,9 +224,12 @@ export function OverviewPage(props) {
   );
   const financialReportingData = getFinancialReportingData(
     get(sigdataactivitystatusData, 'data', {}),
+    get(sigdataoverviewcurrencyData, 'data', {}),
     signatory,
     tooltipsData
   );
+
+  const description = getDescription(props.suppLink);
 
   return (
     <OverviewLayout
@@ -216,12 +244,9 @@ export function OverviewPage(props) {
       humActWMultiYearFundData={humActWMultiYearFundData}
       humOtherClassOfInterestData={humOtherClassOfInterestData}
       humActwGBClassificationsData={humActwGBClassificationsData}
+      description={description}
     />
   );
 }
 
-export const Overview: React.ComponentClass<
-  Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> &
-    WithRouterProps<(props) => any>
-> &
-  WithRouterStatics<(props) => any> = withRouter(OverviewPage);
+export const Overview: any = withRouter(OverviewPage);

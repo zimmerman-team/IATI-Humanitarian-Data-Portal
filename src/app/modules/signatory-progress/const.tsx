@@ -20,9 +20,7 @@ export const currDate = `${today.getDate()}.${
 }.${today.getFullYear()}`;
 
 const date = (value: Date) => {
-  return `${value.getDate()}.${
-    shortMonthNames[value.getMonth()]
-  }.${value.getFullYear()}`;
+  return `${shortMonthNames[value.getMonth()]} ${value.getFullYear()}`;
 };
 
 // this variable basically stores the fixed date
@@ -60,7 +58,7 @@ export const dateRanges = [
   // },
   {
     // label used for the linechart
-    label: '1.May.2018',
+    label: 'May.2018',
     // label for the column header in the table
     colLabel: 'May 2018',
     // value in the response and query
@@ -106,10 +104,14 @@ export const dateRanges = [
 
 export const linesOrder = [
   { n: 0, line: 'Publishing IATI traceability info' },
-  { n: 1, line: 'Providing granular v2.03 data' },
-  { n: 2, line: 'Providing granular v2.02 data' },
-  { n: 3, line: 'Publishing hum. activity data' },
-  { n: 4, line: 'Signatories publishing to IATI' },
+  {
+    n: 1,
+    line: 'Orgs. using v2.02 or later IATI data',
+  },
+  { n: 2, line: 'Providing granular v2.03 data' },
+  { n: 3, line: 'Providing granular v2.02 data' },
+  { n: 4, line: 'Publishing hum. activity data' },
+  { n: 5, line: 'Signatories publishing to IATI' },
 ];
 
 // so this is mainly the result forming query that we need for the data
@@ -171,6 +173,17 @@ export const humPubQuery = {
 };
 
 // query for publishers publishing 2.02 data
+export const use202OrLaterQuery = {
+  q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
+        (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
+        (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* AND transaction_sector_vocabulary:10) OR (transaction_type:(12 13) OR
+        default_aid_type_vocabulary:(2 3 4) OR
+         reporting_org_type_code:24) OR dataset_iati_version:(2.02 2.03))`,
+  rows: 0,
+  'json.facet': jsonFacet,
+};
+
+// query for publishers publishing 2.02 data
 export const pub202Query = {
   q: `((humanitarian_scope_vocabulary:1-2 AND humanitarian_scope_code:*) OR
         (humanitarian_scope_vocabulary:2-1 AND humanitarian_scope_code:*) OR
@@ -188,9 +201,7 @@ export const pubTracQuery = {
 
 // query for publishers publishing 2.03 data
 export const pub203Query = {
-  q: `(transaction_type:(12 13) OR
-        default_aid_type_vocabulary:(2 3 4) OR
-         reporting_org_type_code:24)`,
+  q: `(transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) OR ((participating_org_type:24 AND participating_org_role:4) OR transaction_receiver_org_type_code:24))`,
   rows: 0,
   'json.facet': jsonFacet,
 };
@@ -210,6 +221,14 @@ export function constructDateRanges(signatoryProgressData) {
         signatoryProgress.publishingOpenDataIATI
       ),
       //73,
+      use202OrLaterCount:
+        signatoryProgress.using202OrLater === 'NOT MEASURED'
+          ? null
+          : signatoryProgress.using202OrLater,
+      use202OrLaterPerc: calculatePercentage(
+        signatoryProgress.publishingOpenDataIATI,
+        signatoryProgress.using202OrLater
+      ),
       humCount:
         signatoryProgress.publishingHumanitarianActivities === 'NOT MEASURED'
           ? null
@@ -284,7 +303,7 @@ export const getBaseTable = (
   const columns: MUIDataTableColumnDef[] = dateranges.map(range => {
     return {
       name: range.colLabel.includes('Today')
-        ? `Today [${currDate}]`
+        ? `Today ${currDate}`
         : date(new Date(range.colLabel)),
       //: new Date(range.colLabel).toString().slice(3, 16),
       options: {
@@ -312,8 +331,8 @@ export const getBaseTable = (
 
   // and we push in changes made as the last column
   columns.push({
-    name: `Changes [${signatoryProgressData !== null &&
-      date(new Date(signatoryProgressData[0].Date))}] to today`,
+    name: `Changes ${signatoryProgressData !== null &&
+      date(new Date(signatoryProgressData[0].Date))} to today`,
     options: {
       filter: true,
       filterType: 'checkbox',
@@ -332,7 +351,8 @@ export const getBaseTable = (
       rowHover: false,
       pagination: false,
       viewColumns: false,
-      responsive: 'scroll',
+      responsive: 'scrollFullHeight',
+
       filterType: 'checkbox',
       selectableRows: 'none',
     },

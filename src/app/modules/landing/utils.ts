@@ -47,7 +47,7 @@ export const getStatsFromApiResponses = (
       // into signatory publishing humanitarian data array
       if (
         humPubSignatories.indexOf(sigOrg.name) === -1 &&
-        find(humSigOrgs, ['value', sigOrg.IATIOrgRef])
+        find(humSigOrgs, { value: sigOrg.IATIOrgRef.toLowerCase() })
       ) {
         humPubSignatories.push(sigOrg.name);
       }

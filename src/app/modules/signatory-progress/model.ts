@@ -3,6 +3,7 @@ import { HorizontalBarChartCardModel } from 'app/components/surfaces/Cards/Horiz
 import { TableModuleModel } from 'app/components/datadisplay/Table/model';
 
 export interface SignatoryProgressModel {
+  loading: boolean;
   title: string;
   description: string;
   lineChartCardData: LineChartCardModel;

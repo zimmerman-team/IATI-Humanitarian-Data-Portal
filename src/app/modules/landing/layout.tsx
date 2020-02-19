@@ -16,6 +16,11 @@ const LandingPaper = styled.div`
   max-width: 839px;
   padding: 40px;
   position: relative;
+  @media (max-width: 960px) {
+    padding: 24px;
+    width: calc(100% - 16px);
+    left: -16px;
+  }
 `;
 
 const LandingIntrotext = styled(Typography)`
@@ -32,11 +37,16 @@ const LandingIntrotext = styled(Typography)`
 
 const VersionBox = styled(Box)`
   && {
+    margin-top: 113px;
     padding-bottom: 10px;
-    span {
-      color: #5accbf;
-    }
   }
+`;
+
+const StatBox = styled(Box)`
+  @media (min-width: 960px) {
+    padding-left: 40px;
+  }
+  padding-left: 8px;
 `;
 
 export const LandingLayout = (props: LandingModel) => {
@@ -45,11 +55,13 @@ export const LandingLayout = (props: LandingModel) => {
       {/*<DebugBox>*/}
       <LandingPaper>
         <Grid container direction="column">
-          <Grid item md={12}>
+          <Grid item md={12} xs={12}>
             <Box width="97%">
-              <Typography variant="h5" color="primary">
-                <b>Welcome to the IATI Humanitarian Data Portal</b>
-              </Typography>
+              <Hidden smDown>
+                <Typography variant="h5" color="primary">
+                  <b>Welcome to the IATI Humanitarian Data Portal</b>
+                </Typography>
+              </Hidden>
               <Box height="10px" />
               <LandingIntrotext variant="h1">
                 <Highlighter
@@ -63,15 +75,15 @@ export const LandingLayout = (props: LandingModel) => {
           <Box height="40px" />
           <Grid item md={7}>
             <Typography variant="h5">
-              Why the{' '}
-              <Link to="/about">Grand Bargain Transparency Commitment</Link> is
-              aiming to improve the availability of timely, high quality,
-              harmonised and transparent open data on global humanitarian
-              action.
+              Explore the humanitarian data that Grand Bargain Signatories are
+              publishing to IATI and learn more about how the{' '}
+              <Link to="/about">Grand Bargain Transparency commitments</Link>{' '}
+              are helping signatories to publish better data on global
+              humanitarian action.
             </Typography>
           </Grid>
         </Grid>
-        <Hidden smDown>
+        <Hidden mdDown>
           <Box position="absolute" zIndex="-1" right="-332px" top="0px">
             <DecorationLanding data-testid="landing-decoration" />
           </Box>
@@ -79,13 +91,14 @@ export const LandingLayout = (props: LandingModel) => {
       </LandingPaper>
       {/*</DebugBox>*/}
       <Box height="40px" />
-      <Box paddingLeft="40px">
+
+      <StatBox>
         <StatContainer items={props.stats} />
-      </Box>
+      </StatBox>
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          The Initial Release: <span>Alpha Release</span>
+          The Initial Release: <b>Beta Release</b>
         </Typography>
       </VersionBox>
     </Container>

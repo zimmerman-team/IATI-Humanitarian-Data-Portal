@@ -109,7 +109,19 @@ export const VerticalBarChart = ({ data }) => {
   return (
     // make sure parent container have a defined height when using ResposinveBar
     <ChartContainer>
-      <BarChart {...barModel} data={data} />
+      <BarChart
+        {...barModel}
+        data={data}
+        axisBottom={{
+          ...barModel.axisBottom,
+          format: (value: string) => {
+            if (data.length > 10) {
+              return value.slice(2, 4);
+            }
+            return value;
+          },
+        }}
+      />
     </ChartContainer>
   );
 };

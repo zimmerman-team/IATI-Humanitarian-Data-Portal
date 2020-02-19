@@ -9,10 +9,11 @@ export interface RecTypesQueryModel extends BaseQuery {
 export interface RecipientsQueryModel extends BaseQuery {
   facet: string;
   'facet.pivot': string;
-  'facet.limit': number;
+  'f.transaction_receiver_org_narrative.facet.limit': number;
   stats: boolean;
   'stats.field': string;
   'facet.missing': boolean;
+  'f.transaction_receiver_org_narrative.facet.offset': number;
 }
 
 export interface RecTypesItemModel {

@@ -6,18 +6,24 @@ import { HorizontalBarChartCard } from 'app/components/surfaces/Cards/Horizontal
 import Box from '@material-ui/core/Box';
 import { DecoSigProviderTopLeft } from 'app/modules/signatory-data/submodules/providersPage/common/decoration/DecoSigProviderTopLeft';
 import { DecoSignIncomingBottomRight } from 'app/modules/signatory-data/submodules/incoming/common/decoration/DecoSignIncomingBottomRight';
+import { PageLoader } from 'app/modules/common/PageLoader';
 
 export const ProvidersPageLayout = (props: ProvidersPageModel) => {
   return (
     <>
+      {props.loading && (
+        <PageLoader message="Please hold on while we process your request." />
+      )}
       {/* ---------------------------------------- */}
       {/* Charts */}
 
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
-      <Box position="absolute" top="0" left="0" zIndex="10000">
-        <DecoSigProviderTopLeft data-testid="DecoSigProviderTopLeft" />
-      </Box>
+      <Hidden smDown>
+        <Box position="absolute" top="0" left="0" zIndex="9998">
+          <DecoSigProviderTopLeft data-testid="DecoSigProviderTopLeft" />
+        </Box>
+      </Hidden>
       {/* ---------- */}
       <Grid item lg={12} style={{ position: 'relative' }}>
         {/* ---------------------------------------- */}
@@ -40,9 +46,11 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
 
         {/* ---------------------------------------- */}
         {/* decoration: bottom rightt */}
-        <Box position="absolute" bottom="-400px" right="-100px" zIndex="-1">
-          <DecoSignIncomingBottomRight data-testid="DecoSignIncomingBottomRight" />
-        </Box>
+        <Hidden smDown>
+          <Box position="absolute" bottom="-400px" right="-100px" zIndex="-1">
+            <DecoSignIncomingBottomRight data-testid="DecoSignIncomingBottomRight" />
+          </Box>
+        </Hidden>
         {/* ---------- */}
       </Grid>
     </>

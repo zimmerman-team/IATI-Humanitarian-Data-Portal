@@ -19,7 +19,7 @@ export type LineChartModel = {
 
 export const lineModel: LineProps | LineSvgProps | LineChartModel = {
   data: [],
-  margin: { top: 10, right: 110, bottom: 100, left: 70 },
+  margin: { top: 10, right: 50, bottom: 80, left: 70 },
   xScale: { type: 'point' },
   yScale: { type: 'linear', stacked: false, min: 0, max: 100 },
   axisTop: null,
@@ -58,21 +58,21 @@ export const lineModel: LineProps | LineSvgProps | LineChartModel = {
   useMesh: true,
   //TODO: we should implement custom legend component, itemWidth prop is not dynamic
   legends: [
-    {
-      anchor: 'bottom-left',
-      direction: 'row',
-      justify: false,
-      translateX: -32,
-      translateY: 90,
-      itemWidth: 200,
-      itemHeight: 20,
-      itemsSpacing: 10,
-      symbolSize: 6,
-      symbolShape: 'square',
-      itemDirection: 'left-to-right',
-      itemTextColor: '#777',
-      symbolSpacing: 20,
-    },
+    // {
+    //   anchor: 'bottom-left',
+    //   direction: 'row',
+    //   justify: false,
+    //   translateX: -32,
+    //   translateY: 90,
+    //   itemWidth: 200,
+    //   itemHeight: 20,
+    //   itemsSpacing: 10,
+    //   symbolSize: 6,
+    //   symbolShape: 'square',
+    //   itemDirection: 'left-to-right',
+    //   itemTextColor: '#777',
+    //   symbolSpacing: 20,
+    // },
   ],
   animate: false,
   theme: {
