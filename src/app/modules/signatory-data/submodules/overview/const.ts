@@ -7,7 +7,7 @@ export const humCallValues = {
   humElData_2: {
     type: 'query',
     q:
-      '(sector_vocabulary:10 AND sector:[* TO *]) OR (transaction_sector_vocabulary:10 AND transaction_sector_code:*)',
+      '(sector_vocabulary:10 AND sector_code:*) OR (transaction_sector_vocabulary:10 AND transaction_sector_code:*)',
   },
   humElData_3: {
     type: 'query',
