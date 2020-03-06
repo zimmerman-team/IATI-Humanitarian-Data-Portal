@@ -2,7 +2,13 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import { convertCurr } from 'app/utils/currency';
 
-export const getTableData = (rawData, facetKey, codelist, typeSum) => {
+export const getTableData = (
+  rawData,
+  facetKey,
+  codelist,
+  typeSum,
+  tableType
+) => {
   const providers = [];
   const arr = get(rawData, facetKey, []);
   arr.forEach(facet => {
@@ -66,14 +72,22 @@ export const getTableData = (rawData, facetKey, codelist, typeSum) => {
           });
 
           providers.push([
-            facet.value || 'Not Provided',
             fpivot.value || 'Not Provided',
+            facet.value || 'Not Provided',
+            // tableType === 'provider'
+            //   ? fpivot.value || 'Not Provided'
+            //   : facet.value || 'Not Provided',
+            // tableType === 'receiver'
+            //   ? fpivot.value || 'Not Provided'
+            //   : facet.value || 'Not Provided',
             get(
               find(codelist, { code: fpivotpivot.value }),
               'name',
               'Not Provided'
             ),
-            fpivotpivot.pivot.length,
+            fpivotpivot.pivot.length === 10 || fpivotpivot.pivot.length === 100
+              ? `${fpivotpivot.pivot.length}+`
+              : fpivotpivot.pivot.length,
             {
               currency: currency || 'USD',
               num: value,
