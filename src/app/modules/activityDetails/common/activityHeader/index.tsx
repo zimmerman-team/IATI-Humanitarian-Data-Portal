@@ -62,6 +62,17 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
             variant="overline"
             color="textPrimary"
             data-testid="organisation"
+            css={`
+              font-size: 12px;
+
+              text-transform: none;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.33;
+              letter-spacing: 2px;
+              opacity: 0.6;
+            `}
           >
             {props.organisation.name} | {props.organisation.code} |{' '}
             {props.organisation.type}
@@ -69,7 +80,19 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
           <Box height="24px" width="100%" />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h3" color="textPrimary" data-testid="title">
+          <Typography
+            variant="h3"
+            color="textPrimary"
+            data-testid="title"
+            css={`
+              font-size: 48px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+            `}
+          >
             {props.activity.title}
           </Typography>
           <Box height="24px" width="100%" />
@@ -93,6 +116,16 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
                 variant="overline"
                 color="textPrimary"
                 data-testid="activity-code"
+                css={`
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: 1.71;
+                  letter-spacing: 0.25px;
+
+                  opacity: 0.6;
+                `}
               >
                 {props.activity.code}
               </Typography>
@@ -109,12 +142,16 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
               <Typography
                 variant="overline"
                 color="textPrimary"
-                style={{
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  textTransform: 'capitalize',
-                  marginRight: '8px',
-                }}
+                css={`
+                  font-size: 16px;
+                  font-weight: 500;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: 1.5;
+                  letter-spacing: 0.25px;
+                  text-transform: capitalize;
+                  margin-right: 8px;
+                `}
               >
                 Activity dates
               </Typography>
@@ -124,6 +161,15 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
                 color="textPrimary"
                 style={{ textTransform: 'capitalize' }}
                 data-testid="dates"
+                css={`
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: 1.71;
+                  letter-spacing: 0.25px;
+                  opacity: 0.6;
+                `}
               >
                 {props.activity.startDate} to {props.activity.endDate}
               </Typography>
