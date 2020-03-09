@@ -11,27 +11,26 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
     <React.Fragment>
       {/** --------------------------------------------------------------------------- */}
       {/** breadcrumbs */}
-      <Grid container>
-        <Grid item md={12}>
-          <BreadCrumbs
-            currentLocation="Details Activity"
-            previousLocations={[
-              { url: '/signatory-data', label: 'Signatory Data' },
-              {
-                url: `/signatory-data/${props.organisation.code}/activity-list`,
-                label: props.organisation.name,
-              },
-            ]}
-          />
-          <Box height="50px" width="100%" />
-        </Grid>
+
+      <Grid item xs={12} md={12}>
+        <BreadCrumbs
+          currentLocation="Details Activity"
+          previousLocations={[
+            { url: '/signatory-data', label: 'Signatory Data' },
+            {
+              url: `/signatory-data/${props.organisation.code}/activity-list`,
+              label: props.organisation.name,
+            },
+          ]}
+        />
+        <Box height="50px" width="100%" />
       </Grid>
+
       {/** --------------------------------------------------------------------------- */}
       {/** Header */}
       <Grid
         container
         css={`
-          /* background-color: white; */
           position: relative;
         `}
       >
@@ -46,7 +45,19 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
             z-index: -1;
           `}
         />
-        <Grid item md={12}>
+
+        <div
+          css={`
+            top: -15%;
+            left: -50vw;
+            width: 100vw;
+            height: 130%;
+            background-color: white;
+            position: absolute;
+            z-index: -1;
+          `}
+        />
+        <Grid item xs={12} md={12}>
           <Typography
             variant="overline"
             color="textPrimary"
@@ -63,7 +74,7 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
           </Typography>
           <Box height="24px" width="100%" />
         </Grid>
-        <Grid item md={12}>
+        <Grid item xs={12} md={12}>
           <div
             css={`
               display: flex;
