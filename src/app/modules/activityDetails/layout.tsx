@@ -36,32 +36,28 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
 
       {/** --------------------------------------------------------------------------- */}
       {/** Header Section */}
-      <Box bgcolor="white" padding="36px" paddingLeft="25px">
-        <Grid item xs={12}>
-          <ActivityHeaderLayout
-            activity={props.header.activity}
-            organisation={props.header.organisation}
-          />
-        </Grid>
-      </Box>
+      <Grid item xs={12}>
+        <ActivityHeaderLayout
+          activity={props.header.activity}
+          organisation={props.header.organisation}
+        />
+      </Grid>
 
       <Box width="100%" height="91px" />
       {/** --------------------------------------------------------------------------- */}
       {/** Section1 */}
-      {/*<Box width="50px" height="50px" bgcolor="yellow" />*/}
-      {/*<Grid container>*/}
+
       <Grid container item md={9}>
         <Typography variant="subtitle1">{props.sections[0].title}</Typography>
         <Box width="100%" height="25px" />
         <Typography variant="body1">{props.sections[0].content}</Typography>
       </Grid>
-      {/*</Grid>*/}
 
       <Box width="100%" height="91px" />
 
       {/** --------------------------------------------------------------------------- */}
       {/** Tables */}
-      {/*<Grid container>*/}
+
       <Grid container item md={12}>
         {/*TODO: where is the black total sum up bar?*/}
         {/*TODO: Tables need to be horizontally scrollable and may not exceed parent width*/}
@@ -86,7 +82,6 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
           infoItems={props.outgoingTransactionsTableData.infoItems}
         />
       </Grid>
-      {/*</Grid>*/}
 
       <Box height="112px" width="100%" />
 

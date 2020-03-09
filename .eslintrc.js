@@ -26,6 +26,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
   rules: {
+    'react/jsx-fragments': 0,
     'react/jsx-filename-extension': [
       0,
       { extensions: ['.js', '.jsx', '.tsx', '.ts'] },

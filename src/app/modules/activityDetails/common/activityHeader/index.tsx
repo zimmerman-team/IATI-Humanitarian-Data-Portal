@@ -2,25 +2,15 @@
 import { Grid, Typography, Box } from '@material-ui/core';
 import React from 'react';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
-import styled from 'styled-components';
 import { ActivityDetailsHeaderCardModel } from 'app/components/surfaces/Cards/ActivityDetailsHeaderCard/model';
 
-const DatesContainer = styled.div`
-  display: flex;
-`;
-
-const DatesLabel = styled.div`
-  margin-top: 3px;
-  margin-right: 8px;
-`;
-
-const IdentifierContainer = styled.div`
-  margin-right: 58px;
-`;
+import 'styled-components/macro';
 
 export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
   return (
-    <>
+    <React.Fragment>
+      {/** --------------------------------------------------------------------------- */}
+      {/** breadcrumbs */}
       <Grid container>
         <Grid item md={12}>
           <BreadCrumbs
@@ -33,12 +23,29 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
               },
             ]}
           />
-          <Box height="24px" width="100%" />
+          <Box height="50px" width="100%" />
         </Grid>
       </Grid>
       {/** --------------------------------------------------------------------------- */}
       {/** Header */}
-      <Grid container>
+      <Grid
+        container
+        css={`
+          /* background-color: white; */
+          position: relative;
+        `}
+      >
+        <div
+          css={`
+            top: -15%;
+            left: -10%;
+            width: 90%;
+            height: 130%;
+            background-color: white;
+            position: absolute;
+            z-index: -1;
+          `}
+        />
         <Grid item md={12}>
           <Typography
             variant="overline"
@@ -113,6 +120,6 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
           </div>
         </Grid>
       </Grid>
-    </>
+    </React.Fragment>
   );
 };
