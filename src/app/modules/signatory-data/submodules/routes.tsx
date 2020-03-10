@@ -16,7 +16,7 @@ export function SignatoryDataRoutes(props: any) {
       <Switch>
         <Route
           exact
-          path="/signatory-data/:code/overview"
+          path="/signatory-data/:code/:organisation/overview"
           render={() => (
             <Overview
               queryDateField={props.queryDateField}

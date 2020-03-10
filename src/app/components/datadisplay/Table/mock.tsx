@@ -115,7 +115,7 @@ export const mockDataVar2: TableModuleModel = {
         customBodyRender: (value, tableMeta, updateValue) => {
           return (
             <LinkCellModule
-              link={`/signatory-data/${value.code}/overview`}
+              link={`/signatory-data/${value.code}/${value.name}/overview`}
               value={value.name}
             />
           );

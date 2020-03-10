@@ -1,18 +1,25 @@
 /* eslint-disable react/jsx-max-depth */
 import { Grid, Typography, Box, Hidden } from '@material-ui/core';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { InsertLink } from '@material-ui/icons';
 import { SignatoryNavigation } from 'app/components/navigation/SignatoryNavigation';
 import { SubNavItemRegularMock } from 'app/components/navigation/SignatoryNavigation/mock';
 import { BreadCrumbs } from 'app/components/navigation/Breadcrumbs';
 import { SubmoduleHeaderLayoutModel } from 'app/modules/signatory-data/submodules/common/signatory-data-header/model';
+import { useLocation } from 'react-router';
 
 export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const splittedPath = pathname.split('/');
+  const organisationName = splittedPath[3];
+
   return (
     <>
       <Grid container>
         <BreadCrumbs
-          currentLocation={props.organisationName}
+          // currentLocation={props.organisationName}
+          currentLocation={organisationName}
           previousLocations={[
             { url: '/signatory-data', label: 'Signatory Data' },
           ]}
@@ -25,7 +32,8 @@ export const SubmoduleHeaderLayout = (props: SubmoduleHeaderLayoutModel) => {
         <Grid item xs={12} md={6}>
           <Grid container direction="column">
             <Typography variant="h3" color="textPrimary">
-              {props.organisationName}
+              {/* {props.organisationName} */}
+              {organisationName}
             </Typography>
             {/** todo: style */}
             <Typography variant="overline" color="textPrimary">

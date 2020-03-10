@@ -110,7 +110,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
         customBodyRender: (value, tableMeta, updateValue) => {
           return value.code !== '' ? (
             <LinkCellModule
-              link={`/signatory-data/${value.code}/overview`}
+              link={`/signatory-data/${value.code}/${value.name}/overview`}
               value={value.name}
             />
           ) : (
