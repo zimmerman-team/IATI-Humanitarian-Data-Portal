@@ -178,7 +178,7 @@ export const barJsonFacet = (years, queryDateField) => {
   years.forEach(year => {
     result[year] = {
       type: 'query',
-      q: `activity_date_start_actual_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]' OR activity_date_start_planned_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
+      q: `activity_date_start_actual_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T23:59:59Z] OR activity_date_start_planned_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T23:59:59Z]`,
       facet: {
         hum_count: {
           type: 'query',
