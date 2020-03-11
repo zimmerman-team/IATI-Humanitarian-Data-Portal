@@ -6,16 +6,26 @@ import { changeTableRowColor } from 'app/components/datadisplay/Table/helpers';
 import styled from 'styled-components';
 
 const DataTable = styled(props => <MUIDataTable {...props} />)`
-  .TotalCell {
-    &:first-child {
-      &::before {
-        content: '** %s and totals relate to publishing organisations';
+  && {
+    .TotalCell {
+      &:first-child {
+        &::before {
+          content: '** %s and totals relate to publishing organisations';
+        }
       }
     }
-  }
 
-  .MuiTablePagination-actions {
-    margin-left: 0;
+    .MuiTablePagination-actions {
+      margin-left: 0;
+    }
+
+    [class*='MUIDataTableHeadCell-sortAction'] {
+      align-items: center;
+    }
+
+    .MuiTableSortLabel-root {
+      height: 0;
+    }
   }
 `;
 
