@@ -63,6 +63,15 @@ export function OverviewPage(props) {
     state => state.sigdataoverviewdataerrors.data
   );
   const tooltipsData = useStoreState(globalState => globalState.tooltips.data);
+  const loading = useStoreState(
+    state =>
+      state.sigdataactivityyears.loading ||
+      state.sigdataactivitiesbyyear.loading ||
+      state.sigdataactivitystatus.loading ||
+      state.sigdataoverviewhum.loading ||
+      state.sigdataoverviewhum4donut.loading ||
+      state.sigdataoverviewcurrency.loading
+  );
   /* create the API call instances */
   const sigdataactivitiesbyyearCall = useStoreActions(
     actions => actions.sigdataactivitiesbyyear.fetch
@@ -245,6 +254,7 @@ export function OverviewPage(props) {
       humOtherClassOfInterestData={humOtherClassOfInterestData}
       humActwGBClassificationsData={humActwGBClassificationsData}
       description={description}
+      loading={loading}
     />
   );
 }
