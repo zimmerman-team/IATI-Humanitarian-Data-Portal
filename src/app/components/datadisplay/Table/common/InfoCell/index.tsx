@@ -7,19 +7,17 @@ import { TooltipButton } from 'app/components/datadisplay/Tooltip';
 const Container = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Tooltip = styled(TooltipButton)`
-  margin-left: 8px !important;
+  span {
+    margin-left: 10px;
+    line-height: 0;
+  }
 `;
 
 const InfoCellModule = (props: InfoCellModuleModel) => {
   return (
     <Container>
-      <div>
-        {props.value}
-        {props.info && <Tooltip tip={props.info} display="inline-block" />}
-      </div>
+      {props.value}
+      {props.info && <TooltipButton tip={props.info} display="inline-block" />}
     </Container>
   );
 };
