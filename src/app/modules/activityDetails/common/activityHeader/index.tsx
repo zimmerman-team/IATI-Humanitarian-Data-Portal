@@ -150,7 +150,7 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
                   line-height: 1.5;
                   letter-spacing: 0.25px;
                   text-transform: capitalize;
-                  margin-right: 8px;
+                  margin-right: 8px !important;
                 `}
               >
                 Activity dates
