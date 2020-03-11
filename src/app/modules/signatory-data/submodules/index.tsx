@@ -15,9 +15,7 @@ import {
   getHeaderDateRange,
   getActivityDateTypeField,
 } from 'app/modules/signatory-data/submodules/utils';
-
-/* mock */
-import { OrgNarrative } from 'app/modules/signatory-data/mock';
+import log from 'neon-cli/lib/log';
 
 export function SubmoduleContainer(props) {
   // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
@@ -51,25 +49,8 @@ export function SubmoduleContainer(props) {
   const queryDateField = getActivityDateTypeField(
     get(locStore.checkSigDateTypeAvailable, 'data.data.response.docs', [])
   );
-  const organisationNarrativeCall = useStoreActions(
-    actions => actions.organisationnarrative.fetch
-  );
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
-    if (
-      organisationNarrativeData.data === null &&
-      !organisationNarrativeData.loading
-    ) {
-      const callValuesNarrative = {
-        values: {
-          ...OrgNarrative.values,
-          q: `reporting_org_ref:(${decodeURIComponent(
-            props.match.params.code
-          )})`,
-        },
-      };
-      organisationNarrativeCall(callValuesNarrative);
-    }
     const callValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,

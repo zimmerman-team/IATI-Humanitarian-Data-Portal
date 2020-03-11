@@ -5,9 +5,10 @@ import styled from 'styled-components';
 import Colours from 'app/theme/color';
 import { colorScheme } from 'app/components/charts/BarCharts/common/colorUtil';
 import Typography from '@material-ui/core/Typography';
-import { HorizontalBarChartModel } from 'app/components/charts/BarCharts/HorizontalBarChart/model';
-import { calculateAxisPosition } from './utils';
-import { barModel } from './consts';
+import {
+  HorizontalBarChartModel,
+  barModel,
+} from 'app/components/charts/BarCharts/HorizontalBarChart/model';
 
 //TODO:
 //  - Find a way to implement the colouring.
@@ -37,7 +38,7 @@ const BarComponent = props => {
     <g {...fprops}>
       <rect {...fprops} fill={props.color} height={props.height / 2} />
       <text
-        x={calculateAxisPosition(props.width, 64)}
+        x={props.width - 64}
         y={props.y - 5}
         fontFamily="Inter"
         fontSize="12px"
