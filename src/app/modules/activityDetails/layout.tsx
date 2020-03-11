@@ -36,8 +36,8 @@ export const ActivityDetailsLayout = (props: ActivityDetailModel) => {
 
       {/** --------------------------------------------------------------------------- */}
       {/** Header Section */}
-      <Box bgcolor="white" padding="36px" paddingLeft="25px">
-        <Grid item xs={12}>
+      <Box bgcolor={'white'} maxWidth="75%" padding="36px" paddingLeft={0}>
+        <Grid item md={9}>
           <ActivityHeaderLayout
             activity={props.header.activity}
             organisation={props.header.organisation}

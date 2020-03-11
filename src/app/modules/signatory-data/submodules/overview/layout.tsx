@@ -13,18 +13,16 @@ import { ActivitySummaryFragment } from 'app/modules/signatory-data/submodules/o
 import { FtsImportRelated } from 'app/modules/signatory-data/submodules/overview/fragments/FtsImportRelated';
 import { GBClass } from 'app/modules/signatory-data/submodules/overview/fragments/GBClass';
 import { OtherClass } from 'app/modules/signatory-data/submodules/overview/fragments/OtherClass';
-// import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fragments/Humanitarian';
+import { Humanitarian } from 'app/modules/signatory-data/submodules/overview/fragments/Humanitarian';
 import { LocationInformation } from 'app/modules/signatory-data/submodules/overview/fragments/LocationInformation';
-// import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
+import { MultiyearFunding } from 'app/modules/signatory-data/submodules/overview/fragments/MultiyearFunding';
 import { FinancialReporting } from 'app/modules/signatory-data/submodules/overview/fragments/FinancialReporting';
 import parse from 'html-react-parser';
 // import { ScrollToTop } from 'app/utils/scrollToTop';
-import { PageLoader } from 'app/modules/common/PageLoader';
 
 export const OverviewLayout = (props: OverviewLayoutModel) => {
   return (
     <>
-      {props.loading && <PageLoader />}
       {/* <ScrollToTop /> */}
       {/* ---------------------------------------- */}
       {/* decoration: top left */}

@@ -19,7 +19,7 @@ const dateRangeFacet = (startDate: string, endDate: string): string => {
   return `"date_range_${startDate}_${endDate}": {
             type: 'query',
             q:
-              'transaction_date_iso_date_f:[${startDate} TO ${endDate}]',
+              'transaction_date_iso_date:[${startDate} TO ${endDate}]',
             facet: {
               trans_currency: {
                 type: 'terms',
