@@ -4,6 +4,7 @@ import MUIDataTable from 'mui-datatables';
 import { TableLayoutModel } from 'app/components/datadisplay/Table/model';
 import { changeTableRowColor } from 'app/components/datadisplay/Table/helpers';
 import styled from 'styled-components';
+import Colors from 'app/theme/color';
 
 const DataTable = styled(props => <MUIDataTable {...props} />)`
   && {
@@ -25,6 +26,14 @@ const DataTable = styled(props => <MUIDataTable {...props} />)`
 
     .MuiTableSortLabel-root {
       height: 0;
+    }
+
+    .MuiTableCell-head {
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 1.33;
+      letter-spacing: 0.42px;
+      color: ${Colors.midnight60};
     }
   }
 `;
