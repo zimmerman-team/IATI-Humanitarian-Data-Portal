@@ -24,6 +24,17 @@ export interface OrgTotExpItemModel {
   // this is any cause it shouldn't even exist in the
   // response and we will definetely NOT gonna use it
   budget_line: any;
+  expense_line: {
+    ref: string;
+    value: {
+      currency: {
+        code: string;
+        name: string;
+      };
+      date: string;
+      value: number;
+    };
+  }[];
 }
 
 export interface CovOrgItemModel {

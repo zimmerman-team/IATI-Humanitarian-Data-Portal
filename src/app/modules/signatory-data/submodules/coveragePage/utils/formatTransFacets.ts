@@ -16,10 +16,14 @@ function getQueryDate(rawDate: string): string {
 }
 
 const dateRangeFacet = (startDate: string, endDate: string): string => {
-  return `"date_range_${startDate}_${endDate}": {
+  return `"date_range_${
+    startDate.includes('Z') ? startDate : `${startDate}T00:00:00Z`
+  }_${endDate}": {
             type: 'query',
             q:
-              'transaction_date_iso_date_f:[${startDate} TO ${endDate}]',
+              'transaction_date_iso_date_f:[${
+                startDate.includes('Z') ? startDate : `${startDate}T00:00:00Z`
+              } TO ${endDate}]',
             facet: {
               trans_currency: {
                 type: 'terms',

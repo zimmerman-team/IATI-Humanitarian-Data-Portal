@@ -103,14 +103,23 @@ export function formatCovData(
               orgItem.period_end === endDate
             );
           });
-          opFunds =
-            orgTotExp && defCurreny
-              ? convertHelper(
-                  orgTotExp.value.value,
-                  orgTotExp.value.currency.code,
-                  defCurreny
-                )
-              : null;
+          if (orgTotExp) {
+            const orgHumTot = find(
+              orgTotExp.expense_line,
+              (l: any) => l.ref === 'HUMTOT'
+            );
+            console.log(orgHumTot);
+            opFunds =
+              orgHumTot && defCurreny
+                ? convertHelper(
+                    orgHumTot.value.value,
+                    orgHumTot.value.currency.code,
+                    defCurreny
+                  )
+                : null;
+          } else {
+            opFunds = null;
+          }
         }
 
         // aaand we calculate the rating
