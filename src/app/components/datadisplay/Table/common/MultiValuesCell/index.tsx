@@ -5,6 +5,7 @@ import { Paper } from '@material-ui/core';
 import { MultiValuesCellModuleModel } from 'app/components/datadisplay/Table/model';
 
 const MoreTooltip = styled(Paper)`
+  z-index: 10;
   width: 150px;
   margin-top: 5px;
   position: absolute;
