@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import BaseAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
@@ -50,8 +51,8 @@ function AppBar(props: AppBarProps) {
       <Container maxWidth="lg">
         <Grid container justify="space-between">
           <Grid item md={1}>
-            <a
-              href="/"
+            <NavLink
+              to="/"
               css={`
                 z-index: 3;
                 background-size: contain;
@@ -60,6 +61,7 @@ function AppBar(props: AppBarProps) {
                 height: ${scrollPos > scrollPoint ? 70 : 110}px;
                 position: absolute;
                 top: ${scrollPos > scrollPoint ? -5 : -20}px;
+                margin-left: ${scrollPos > scrollPoint ? '-10px' : '-48px'};
               `}
             >
               <img
@@ -68,7 +70,7 @@ function AppBar(props: AppBarProps) {
                 height={scrollPos > scrollPoint ? 70 : 110}
                 alt="logo"
               />
-            </a>
+            </NavLink>
           </Grid>
 
           <Grid item container justify="center" md={12}>
