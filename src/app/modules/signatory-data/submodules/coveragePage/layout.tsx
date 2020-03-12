@@ -10,7 +10,7 @@ export const CoverageLayout = (props: CoverageModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden smDown>
-        <Box position="absolute" top="0" left="0" zIndex="10002">
+        <Box position="absolute" top="0" left="0" zIndex="1">
           <DecoSigOverviewTopLeft data-testid="DecoSigOverviewTopLeft" />
         </Box>
       </Hidden>

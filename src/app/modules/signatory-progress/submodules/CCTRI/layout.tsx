@@ -20,7 +20,7 @@ export const CCTRILayout = (props: CCTRIPageModel) => {
   return (
     <Container>
       <Hidden smDown>
-        <Box position="absolute" top="0" left="0" zIndex="10002">
+        <Box position="absolute" top="0" left="0" zIndex="1">
           <DecoTargetTopLeft data-testid="DecoTargetTopLeft" />
         </Box>
       </Hidden>

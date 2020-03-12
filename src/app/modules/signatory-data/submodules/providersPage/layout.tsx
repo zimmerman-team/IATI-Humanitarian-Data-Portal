@@ -20,7 +20,7 @@ export const ProvidersPageLayout = (props: ProvidersPageModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left */}
       <Hidden smDown>
-        <Box position="absolute" top="0" left="0" zIndex="9998">
+        <Box position="absolute" top="0" left="0" zIndex="1">
           <DecoSigProviderTopLeft data-testid="DecoSigProviderTopLeft" />
         </Box>
       </Hidden>

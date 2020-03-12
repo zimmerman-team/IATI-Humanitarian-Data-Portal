@@ -14,7 +14,7 @@ export const ActivityListLayout = (props: ActivityListLayoutModel) => {
       {/* ---------------------------------------- */}
       {/* decoration: top left*/}
       <Hidden smDown>
-        <Box position="absolute" top="0" left="0" zIndex="10002">
+        <Box position="absolute" top="0" left="0" zIndex="1">
           <DecoSigOverviewTopLeft />
         </Box>
       </Hidden>
