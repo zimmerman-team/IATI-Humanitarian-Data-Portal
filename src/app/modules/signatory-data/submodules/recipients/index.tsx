@@ -60,7 +60,8 @@ function RecipientsF(props) {
     recData,
     `facet_counts.facet_pivot.${pivotKey}`,
     get(orgTypeNames, 'data', {}),
-    '3'
+    '3',
+    'receiver'
   );
 
   const barChartData = getBarChartData1(
