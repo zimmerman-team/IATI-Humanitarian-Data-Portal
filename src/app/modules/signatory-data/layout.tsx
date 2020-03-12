@@ -18,7 +18,7 @@ export const SignatoryDataLayout = (props: SignatoryDataModel) => {
       {/* ------------------------------------------------------------------ */}
       {props.loading && <PageLoader />}
       <Grid container direction="column">
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={12}>
           <Typography variant="h3">{props.title}</Typography>
           <Box height="50px" />
           <Typography variant="body2">{parse(props.description)}</Typography>
