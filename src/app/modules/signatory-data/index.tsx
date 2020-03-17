@@ -124,8 +124,8 @@ export const SignatoryData = React.memo(
               if (thead) {
                 thead.style.transform = `translateY(${window.pageYOffset -
                   (find(props.tableOptions.filterLists, fl => fl.length > 0)
-                    ? 619
-                    : 579)}px)`;
+                    ? 530
+                    : 490)}px)`;
               }
             } else if (thead) {
               thead.style.transform = ``;
