@@ -14,7 +14,7 @@ export const TooltipButton = (props: Props) => {
   return (
     <Tooltip
       title={
-        <span style={{ whiteSpace: 'pre-wrap' }}>
+        <span style={{ whiteSpace: 'pre-wrap', fontSize: '12px' }}>
           {props.tip ? props.tip : 'empty tooltip'}
         </span>
       }

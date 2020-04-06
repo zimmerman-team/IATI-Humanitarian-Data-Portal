@@ -32,7 +32,7 @@ export const recipientsQuery = (
        transaction_sector_code:[93010 TO 93018])))`,
     stats: true,
     'facet.pivot':
-      '{!stats=piv1}transaction_receiver_org_narrative,transaction_receiver_org_ref,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency',
+      '{!stats=piv1}transaction_receiver_org_ref,transaction_receiver_org_narrative,transaction_receiver_org_type,iati_identifier,transaction_type,transaction_value_currency',
     // rows: 0,
     facet: 'on',
     'stats.field': '{!tag=piv1 sum=true}transaction_value',

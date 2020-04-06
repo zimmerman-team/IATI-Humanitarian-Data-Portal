@@ -98,7 +98,7 @@ export const LandingLayout = (props: LandingModel) => {
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          The Initial Release: <b>Beta Release</b>
+          Portal Status: <b>LIVE Version 1.0</b>
         </Typography>
       </VersionBox>
     </Container>

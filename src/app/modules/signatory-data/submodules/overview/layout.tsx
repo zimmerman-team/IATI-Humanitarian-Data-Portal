@@ -35,7 +35,7 @@ export const OverviewLayout = (props: OverviewLayoutModel) => {
       <Grid
         item
         xs={12}
-        md={7}
+        md={12}
         css={`
           position: relative;
           top: -25px;

@@ -102,7 +102,7 @@ export const humCallValues = {
   },
   humActWLocationInfoData_3: {
     type: 'query',
-    q: 'location_id_code:*',
+    q: 'location_id_code:* OR location_point_pos:*',
   },
   humActWLocationInfoData_4: {
     type: 'query',

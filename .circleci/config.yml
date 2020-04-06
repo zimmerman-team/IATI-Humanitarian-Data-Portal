@@ -240,6 +240,15 @@ jobs:
           name: Analyze and report desired vs actual lighthouse scores
           command: ./scripts/analyze_scores.js package.json reports
 
+  #  CREATE GIT RELEASE
+  release:
+    docker:
+      - image: circleci/node:12.14.1-stretch-browsers
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npx semantic-release
+
 # WORKFLOWS
 workflows:
   version: 2
@@ -249,6 +258,12 @@ workflows:
       - build_deploy:
           requires:
             - checkout_repo
+      - release:
+          requires:
+            - build_deploy
+          filters:
+            branches:
+              only: master
 #      - test_e2e:
 #          requires:
 #            - build_deploy

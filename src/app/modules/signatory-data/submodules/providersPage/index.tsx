@@ -68,9 +68,10 @@ export function ProvidersPageFunc(props) {
 
   const tableData = getTableData(
     get(state.sigdataproviders.data, 'data', {}),
-    'facet_counts.facet_pivot["transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency"]',
+    'facet_counts.facet_pivot["transaction_provider_org_ref,transaction_provider_org_narrative,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency"]',
     get(orgTypeNames.data, 'data', {}),
-    '1'
+    '1',
+    'provider'
   );
 
   const barChartData = getBarChartData1(
@@ -79,7 +80,7 @@ export function ProvidersPageFunc(props) {
     'Funder Organisation Types'
   );
 
-  const tableDataConfig = baseProviderConfig(false, onItemClick);
+  const tableDataConfig = baseProviderConfig(true, onItemClick);
 
   return (
     <ProvidersPageLayout

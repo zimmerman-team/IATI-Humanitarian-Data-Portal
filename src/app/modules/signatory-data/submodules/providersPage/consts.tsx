@@ -25,7 +25,7 @@ export const providersTableCallValues = (pubRef: string, offset: number) => {
        transaction_sector_code:[93010 TO 93018])))`,
     stats: 'true',
     'facet.pivot':
-      '{!stats=piv1}transaction_provider_org_narrative,transaction_provider_org_ref,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency',
+      '{!stats=piv1}transaction_provider_org_ref,transaction_provider_org_narrative,transaction_provider_org_type,iati_identifier,transaction_type,transaction_value_currency',
     rows: 0,
     'facet.limit': 10,
     'f.transaction_provider_org_narrative.facet.offset': offset,
@@ -80,6 +80,10 @@ export const baseProviderConfig = (
             let label = 'Recipient';
             let filterName = 'transaction_receiver_org_ref';
             let filterValue = tableMeta.rowData[1];
+            const fvalue =
+              typeof value === 'string'
+                ? parseInt(value.replace('+', ''), 10)
+                : value;
 
             if (funder) {
               label = 'Funder';
@@ -107,7 +111,7 @@ export const baseProviderConfig = (
               label: `${label}: ${tableMeta.rowData[0]}`,
               value: `(${filterName}:${filterValue})`,
             };
-            return activityListFilterAction && value > 0 ? (
+            return activityListFilterAction && fvalue > 0 ? (
               <NumberLink
                 onClick={e => {
                   e.stopPropagation();
