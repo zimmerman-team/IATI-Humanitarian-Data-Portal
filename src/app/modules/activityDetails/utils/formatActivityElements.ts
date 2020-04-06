@@ -284,7 +284,7 @@ export function formatActivityElements(
 
     //12
     // pushing contact info
-    (actDetail.contact_info || []).forEach((info, index) => {
+    actDetail.contact_info.forEach((info, index) => {
       elementLists.push({
         title: `Contact information ${
           get(actDetail, 'contact_info', '').length > 1 ? index + 1 : ''
