@@ -7,7 +7,7 @@ export const humCallValues = {
   humElData_2: {
     type: 'query',
     q:
-      '(sector_vocabulary:10 AND sector:[* TO *]) OR (transaction_sector_vocabulary:10 AND transaction_sector_code:*)',
+      '(sector_vocabulary:10 AND sector_code:*) OR (transaction_sector_vocabulary:10 AND transaction_sector_code:*)',
   },
   humElData_3: {
     type: 'query',
@@ -51,15 +51,18 @@ export const humCallValues = {
   },
   humActwGBClassificationsData_1: {
     type: 'query',
-    q: '(default_aid_type_vocabulary:2 AND default_aid_type_code:*)',
+    q:
+      '((default_aid_type_vocabulary:2 AND default_aid_type_code:*) OR (transaction_aid_type_vocabulary:2 AND transaction_aid_type_code:*))',
   },
   humActwGBClassificationsData_2: {
     type: 'query',
-    q: '(default_aid_type_vocabulary:3 AND default_aid_type_code:*)',
+    q:
+      '((default_aid_type_vocabulary:3 AND default_aid_type_code:*) OR (transaction_aid_type_vocabulary:3 AND transaction_aid_type_code:*))',
   },
   humActwGBClassificationsData_3: {
     type: 'query',
-    q: '(participating_org_type:24 AND participating_org_role:4)',
+    q:
+      '((participating_org_type:24 AND participating_org_role:4) OR transaction_receiver_org_type:24)',
   },
   humActwGBClassificationsData_4: {
     type: 'query',
@@ -178,7 +181,7 @@ export const barJsonFacet = (years, queryDateField) => {
   years.forEach(year => {
     result[year] = {
       type: 'query',
-      q: `activity_date_start_actual:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]' OR activity_date_start_planned:[${year}-01-01T00:00:00Z TO ${year}-12-31T24:00:00Z]'`,
+      q: `activity_date_start_actual_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T23:59:59Z] OR activity_date_start_planned_f:[${year}-01-01T00:00:00Z TO ${year}-12-31T23:59:59Z]`,
       facet: {
         hum_count: {
           type: 'query',
