@@ -66,7 +66,8 @@ export const humCallValues = {
   },
   humActwGBClassificationsData_4: {
     type: 'query',
-    q: '(default_aid_type_vocabulary:4 AND default_aid_type_code:*)',
+    q:
+      '((default_aid_type_vocabulary:4 AND default_aid_type_code:*) OR (transaction_aid_type_vocabulary:4 AND transaction_aid_type_code:*))',
   },
   humOtherClassOfInterestData_1: {
     type: 'query',

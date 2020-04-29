@@ -41,7 +41,7 @@ export const iatigbsignatoriesCallValues = {
               v203: {
                 type: 'query',
                 q:
-                  'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) 
+                  'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) OR transaction_aid_type_vocabulary:(2 3 4) 
                   OR ((participating_org_type:24 AND participating_org_role:4) 
                   OR transaction_receiver_org_type_code:24)',
               },
