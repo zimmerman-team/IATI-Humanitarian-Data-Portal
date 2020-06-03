@@ -11,6 +11,8 @@ import { mockData as drawerMockData } from 'app/components/navigation/Drawer/moc
 import { CookieDialog } from 'app/components/feedback/SnackBar/CookieDialog';
 import { getCookie } from 'app/utils/generic';
 import ScrollToTop from 'app/utils/scrollToTop';
+import { isIE, isChrome } from 'react-device-detect';
+import { BrowserNotSupported } from 'app/components/browser-not-supported';
 
 type AppProps = {
   openSnackbar?: boolean;
@@ -22,11 +24,12 @@ function App(props: AppProps) {
       ReactGA.initialize('UA-6109435-18');
     }
   }, []);
-
+  if (isIE) return <BrowserNotSupported />;
   return (
     <Providers>
       <Router>
         <ScrollToTop />
+
         <Hidden mdUp>
           <DrawerMenu links={drawerMockData.links} />
         </Hidden>

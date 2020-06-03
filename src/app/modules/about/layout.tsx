@@ -11,6 +11,8 @@ import { DecoAboutMidLeft } from 'app/modules/about/common/decorations/DecoAbout
 import { DecoAboutRight } from 'app/modules/about/common/decorations/DecoAboutRight';
 import { DecoAboutMidRight } from 'app/modules/about/common/decorations/DecoAboutMidRight';
 import { DecoAboutBottomRight } from 'app/modules/about/common/decorations/DecoAboutBottomRight';
+import { BrowserNotSupported } from 'app/components/browser-not-supported';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export const AboutLayout = (props: AboutPageModel) => {
   return (
