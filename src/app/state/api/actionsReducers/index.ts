@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-param-reassign */
 import axios, { AxiosResponse } from 'axios';
 import { action, thunk } from 'easy-peasy';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { ActivityListLayout } from 'app/modules/signatory-data/submodules/activityList/layout';
@@ -168,12 +169,10 @@ function ActivityListz(props) {
   // here we load the filters retrieved from the codelists
   // into appropriate columns
   // we load the status names
-  // @ts-ignore
   activityBaseTable.columns[2].options.filterOptions = {
     names: actStatusCodeList.map(item => item.name),
   };
   // we load the country names
-  // @ts-ignore
   activityBaseTable.columns[4].options.filterOptions = {
     names: countries,
   };
@@ -216,14 +215,12 @@ function ActivityListz(props) {
     } else {
       setSelCountry('');
     }
-    // @ts-ignore
     activityBaseTable.columns[2].options.filterList = filteredList[2];
-    // @ts-ignore
     activityBaseTable.columns[4].options.filterList = filteredList[4];
   };
   // oke so because this library is broken when typescript
   // is used, we ignore this nonsense typescript errors
-  // @ts-ignore
+
   activityBaseTable.options.onDownload = (
     buildHead: (whatever) => string,
     buildBody: (nodata) => string,
@@ -266,9 +263,7 @@ function ActivityListz(props) {
       // we need to remove all of the sortDirection items from
       // previous elements, before applying a new sort direction...
       activityBaseTable.columns.forEach(column => {
-        // @ts-ignore
         if (column.options.sortDirection) {
-          // @ts-ignore
           delete column.options.sortDirection;
         }
       });
@@ -277,7 +272,7 @@ function ActivityListz(props) {
       // and still treats columns as a string
       // even though it IS an object with options in it
       // #JustTypeScriptThings
-      // @ts-ignore
+
       activityBaseTable.columns[colIndex].options.sortDirection = sortDir;
     }
 

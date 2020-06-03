@@ -1,16 +1,31 @@
+// {
+//   "presets": ["react-app", "@babel/env", "@babel/preset-typescript"],
+//   "plugins": [
+//     ["@babel/plugin-proposal-decorators", { "legacy": true }],
+//     "@babel/plugin-syntax-dynamic-import",
+//     ["@babel/plugin-proposal-class-properties", { "loose": true }],
+//     "@babel/plugin-proposal-export-namespace-from",
+//     "@babel/plugin-proposal-throw-expressions",
+//     [
+//       "babel-plugin-styled-components",
+//       { "displayName": true, "ssr": false, "pure": true }
+//     ],
+//     "@babel/plugin-transform-react-inline-elements",
+//     "@babel/plugin-transform-runtime"
+//   ]
+// }
+
 {
-  "presets": ["react-app", "@babel/env", "@babel/preset-typescript"],
+  "presets": ["react-app"],
   "plugins": [
-    ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    "@babel/plugin-syntax-dynamic-import",
-    ["@babel/plugin-proposal-class-properties", { "loose": true }],
-    "@babel/plugin-proposal-export-namespace-from",
-    "@babel/plugin-proposal-throw-expressions",
+    // "react-hot-loader/babel",
     [
       "babel-plugin-styled-components",
-      { "displayName": true, "ssr": false, "pure": true }
+      {
+        "ssr": false,
+        "minify": false
+      }
     ],
-    "@babel/plugin-transform-react-inline-elements",
-    "@babel/plugin-transform-runtime"
+    "macros"
   ]
 }

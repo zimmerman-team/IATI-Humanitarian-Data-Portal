@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components';
 import { Base } from '../../index';
 import { TableHeadProps } from '@material-ui/core/TableHead';

@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 import { getCookie } from 'app/utils/generic';
 
 export const withTracker = (WrappedComponent, props = {}) => {
-  const trackPage = page => {
+  const trackPage = (page: string) => {
     if (
       getCookie('cookieNotice') &&
       window.location.hostname === 'www.humportal.org'

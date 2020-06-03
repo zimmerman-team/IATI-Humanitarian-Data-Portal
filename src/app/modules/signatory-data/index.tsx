@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* core */
 import React from 'react';
 import useTitle from 'react-use/lib/useTitle';
