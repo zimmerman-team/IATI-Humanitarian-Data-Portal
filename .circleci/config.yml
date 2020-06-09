@@ -12,7 +12,7 @@ jobs:
       - restore_cache:
           keys:
             - dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run: yarn install
+      - run: CHILD_CONCURRENCY=1 yarn install
       - save_cache:
           key: dep-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
