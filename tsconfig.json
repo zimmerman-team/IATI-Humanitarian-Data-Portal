@@ -5,7 +5,7 @@
     "allowJs": true,
     "allowUnreachableCode": true,
     "module": "esnext",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "jsx": "react",
     "isolatedModules": false,
     "skipLibCheck": true,

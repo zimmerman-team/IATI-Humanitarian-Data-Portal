@@ -81,7 +81,7 @@ function ActivityListz(props) {
   const countryCodeList = get(countNames, 'data.data.response.docs', []);
   const [debouncedCallback] = useDebouncedCallback(
     // function
-    value => {
+    (value: string) => {
       setSearchTerm(value);
     },
     // delay in ms

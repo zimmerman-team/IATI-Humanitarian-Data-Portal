@@ -54,6 +54,20 @@ export function SubmoduleContainer(props) {
   const organisationNarrativeCall = useStoreActions(
     actions => actions.organisationnarrative.fetch
   );
+
+  const sigdataactivityyearsLoading = useStoreState(
+    state => state.sigdataactivityyears.loading
+  );
+  const sigdatadatesheaderLoading = useStoreState(
+    state => state.sigdatadatesheader.loading
+  );
+  const sigdataactivityyearsSuccess = useStoreState(
+    state => state.sigdataactivityyears.success
+  );
+  const sigdatadatesheaderSuccess = useStoreState(
+    state => state.sigdatadatesheader.success
+  );
+
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
     if (
@@ -79,33 +93,32 @@ export function SubmoduleContainer(props) {
     locActions.checkSigDateTypeAvailable.fetch(callValues);
   }, []);
   React.useEffect(() => {
-    const callValues = {
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        facet: 'on',
-        'facet.pivot': `${queryDateField},humanitarian`,
-        fl: 'facet_counts',
-      },
-    };
-    sigdataactivityyearsCall(callValues);
-    sigdatadatesheaderCall({
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify({
-          date1: `min(activity_date_start_actual)`,
-          date2: `min(activity_date_start_planned)`,
-          date3: `max(activity_date_start_actual)`,
-          date4: `max(activity_date_start_planned)`,
-        }),
-        rows: 0,
-      },
-    });
-  }, [
-    gbsignatoriesData,
-    props.match.params.code,
-    sigdataactivityyearsCall,
-    locStore.checkSigDateTypeAvailable,
-  ]);
+    if (!sigdataactivityyearsLoading) {
+      const callValues = {
+        values: {
+          q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+          facet: 'on',
+          'facet.pivot': `${queryDateField},humanitarian`,
+          fl: 'facet_counts',
+        },
+      };
+      sigdataactivityyearsCall(callValues);
+    }
+    if (!sigdatadatesheaderLoading) {
+      sigdatadatesheaderCall({
+        values: {
+          q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+          'json.facet': JSON.stringify({
+            date1: `min(activity_date_start_actual)`,
+            date2: `min(activity_date_start_planned)`,
+            date3: `max(activity_date_start_actual)`,
+            date4: `max(activity_date_start_planned)`,
+          }),
+          rows: 0,
+        },
+      });
+    }
+  }, [props.match.params.code, locStore.checkSigDateTypeAvailable.success]);
 
   let suppLink = get(orgDetails, 'suppInfoUrl', 'no url provided');
   suppLink =
