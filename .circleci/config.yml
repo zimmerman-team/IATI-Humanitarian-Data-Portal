@@ -3,7 +3,7 @@ jobs:
   #  CHECKOUT REPOSITORY
   checkout_repo:
     docker:
-      - image: circleci/node:10.13.0
+      - image: circleci/node:10.16.2
     working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
@@ -27,7 +27,7 @@ jobs:
   #  BUILD SOURCE AND DEPLOY TO SERVER
   build_deploy:
     docker:
-      - image: circleci/node:10.13.0-browsers
+      - image: circleci/node:10.16.2-browsers
     working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
       - checkout
@@ -105,7 +105,7 @@ jobs:
   #  RUN CYPRESS END TO END TESTS
   test_e2e:
     docker:
-      - image: circleci/node:10.13.0-browsers
+      - image: circleci/node:10.16.2-browsers
     parallelism: 2
     working_directory: ~/IATI-Humanitarian-Data-Portal
     steps:
@@ -197,7 +197,7 @@ jobs:
   #  CREATE GITHUB REPORT AND SEND REPORT TO SERVER
   process_performance_test_results:
     docker:
-      - image: circleci/node:10.13.0
+      - image: circleci/node:10.16.2
     steps:
       - checkout
       - restore_cache:
