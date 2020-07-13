@@ -170,7 +170,7 @@
     "sass-loader": "^7.1.0",
     "semantic-release": "^15.13.24",
     "semver": "^6.3.0",
-    "standard-version": "^7.0.0",
+    "standard-version": "^8.0.1",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
     "stylelint-a11y": "^1.2.1",
