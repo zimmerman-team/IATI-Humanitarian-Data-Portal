@@ -64,7 +64,7 @@ export const iatigbsignatoriesCallValues = {
 export const OrgNarrative = {
   values: {
     q: '*:*',
-    rows: 500000,
+    rows: 500,
     group: 'on',
     'group.field': 'reporting_org_ref',
     fl: 'reporting_org_narrative',

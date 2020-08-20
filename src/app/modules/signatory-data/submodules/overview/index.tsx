@@ -44,8 +44,14 @@ export function OverviewPage(props) {
   const sigdataactivityyearsData = useStoreState(
     state => state.sigdataactivityyears.data
   );
+  const sigdataactivityyearsLoading = useStoreState(
+    state => state.sigdataactivityyears.loading
+  );
   const sigdataactivitiesbyyearData = useStoreState(
     state => state.sigdataactivitiesbyyear.data
+  );
+  const sigdataactivitiesbyyearLoading = useStoreState(
+    state => state.sigdataactivitiesbyyear.loading
   );
   const sigdataactivitystatusData = useStoreState(
     state => state.sigdataactivitystatus.data
@@ -85,30 +91,18 @@ export function OverviewPage(props) {
   const sigdataoverviewhum4donutCall = useStoreActions(
     actions => actions.sigdataoverviewhum4donut.fetch
   );
-  const sigdataoverviewdataerrorsCall = useStoreActions(
-    actions => actions.sigdataoverviewdataerrors.fetch
-  );
+  // const sigdataoverviewdataerrorsCall = useStoreActions(
+  //   actions => actions.sigdataoverviewdataerrors.fetch
+  // );
   const sigdataoverviewcurrencyCall = useStoreActions(
     actions => actions.sigdataoverviewcurrency.fetch
   );
   const sigDataActivityListFilterAction = useStoreActions(
     actions => actions.sigDataActivityListFilter.setActivityListFilter
   );
-  const years = getAllYears(
-    get(
-      sigdataactivityyearsData,
-      `data.facet_counts.facet_pivot['${props.queryDateField},humanitarian']`,
-      []
-    )
-  );
+
   const sigdatadatesheaderData = useStoreState(
     state => state.sigdatadatesheader.data
-  );
-  const years2 = getYearRange(
-    get(sigdatadatesheaderData, 'data.facets.date1', ''),
-    get(sigdatadatesheaderData, 'data.facets.date2', ''),
-    get(sigdatadatesheaderData, 'data.facets.date3', ''),
-    get(sigdatadatesheaderData, 'data.facets.date4', '')
   );
 
   const onItemClick = value => {
@@ -140,13 +134,13 @@ export function OverviewPage(props) {
         rows: 0,
       },
     };
-    const sigdataoverviewdataerrorscallValues = {
-      values: {
-        q: `publisher_iati_id:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet.x': '"unique(iati_identifier)"',
-        rows: 0,
-      },
-    };
+    // const sigdataoverviewdataerrorscallValues = {
+    //   values: {
+    //     q: `publisher_iati_id:${decodeURIComponent(props.match.params.code)}`,
+    //     'json.facet.x': '"unique(iati_identifier)"',
+    //     rows: 0,
+    //   },
+    // };
     const sigdataoverviewhum4donutcallValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
@@ -164,22 +158,37 @@ export function OverviewPage(props) {
     sigdataactivitystatusCall(sigdataactivitystatuscallValues);
     sigdataoverviewhumCall(sigdataoverviewhumcallValues);
     sigdataoverviewhum4donutCall(sigdataoverviewhum4donutcallValues);
-    sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
+    // sigdataoverviewdataerrorsCall(sigdataoverviewdataerrorscallValues);
     sigdataoverviewcurrencyCall(sigdataoverviewcurrencyCallValues);
   }, []);
 
   /* componentDidUpdate based on sigdataactivityyearsData */
   React.useEffect(() => {
-    const sigdataactivitiesbyyearcallValues = {
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify(
-          barJsonFacet(years2 || years, props.queryDateField)
-        ),
-        rows: 0,
-      },
-    };
-    sigdataactivitiesbyyearCall(sigdataactivitiesbyyearcallValues);
+    if (!sigdataactivityyearsLoading && !sigdataactivitiesbyyearLoading) {
+      const years = getAllYears(
+        get(
+          sigdataactivityyearsData,
+          `data.facet_counts.facet_pivot['${props.queryDateField},humanitarian']`,
+          []
+        )
+      );
+      const years2 = getYearRange(
+        get(sigdatadatesheaderData, 'data.facets.date1', ''),
+        get(sigdatadatesheaderData, 'data.facets.date2', ''),
+        get(sigdatadatesheaderData, 'data.facets.date3', ''),
+        get(sigdatadatesheaderData, 'data.facets.date4', '')
+      );
+      const sigdataactivitiesbyyearcallValues = {
+        values: {
+          q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+          'json.facet': JSON.stringify(
+            barJsonFacet(years2 || years, props.queryDateField)
+          ),
+          rows: 0,
+        },
+      };
+      sigdataactivitiesbyyearCall(sigdataactivitiesbyyearcallValues);
+    }
   }, [sigdataactivityyearsData]);
 
   const yearsData = get(sigdataactivitiesbyyearData, 'data.facets', {});
