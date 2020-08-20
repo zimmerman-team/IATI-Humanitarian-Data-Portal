@@ -16,7 +16,8 @@ export function formatActivities(
   if (activities) {
     activities.forEach(activity => {
       // we get the english activity title here
-      const engTitle = getEngText(get(activity, 'title[0]', '""'));
+      // const engTitle = getEngText(get(activity, 'title[0]', '""'));
+      const title = get(activity, 'title_narrative_text', '');
 
       const resultCount = activity.result_type
         ? activity.result_type.length
@@ -53,7 +54,7 @@ export function formatActivities(
         formatDate(startDate),
         formatDate(endDate),
         statusName ? statusName.name : 'no data',
-        [activity.iati_identifier, engTitle],
+        [activity.iati_identifier, title],
         countryNames || [],
         resultCount > 0
           ? { value: resultCount, activityId: activity.iati_identifier }
