@@ -20,7 +20,7 @@ export const actMetadataQuery: ActDetailQuery = {
   fl: `default_currency,activity_status_code,collaboration_type_code,
         capital_spend_percentage,default_flow_type_code,hierarchy,
         iati_identifier,default_finance_type_code,default_tied_status_code,
-        default_lang,reporting_org:[json],title,description,
+        default_lang,reporting_org:[json],title,title_narrative_text,description,
         participating_org:[json],activity_date:[json],contact_info:[json],
         recipient_country:[json],sector:[json],country_budget_items:[json],
         policy_marker:[json],default_aid_type:[json],recipient_region:[json],
