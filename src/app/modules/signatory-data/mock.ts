@@ -34,14 +34,14 @@ export const iatigbsignatoriesCallValues = {
                 type: 'query',
                 q:
                   '(humanitarian_scope_vocabulary:"2-1" AND humanitarian_scope_code:*) 
-                  OR (sector:* AND sector_vocabulary:10) OR (transaction_sector_code:* 
+                  OR (sector_code:* AND sector_vocabulary:10) OR (transaction_sector_code:* 
                   AND transaction_sector_vocabulary:10) 
                   OR (humanitarian_scope_vocabulary:"1-2" AND humanitarian_scope_code:*)',
               },
               v203: {
                 type: 'query',
                 q:
-                  'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) 
+                  'transaction_type:(12 13) OR default_aid_type_vocabulary:(2 3 4) OR transaction_aid_type_vocabulary:(2 3 4) 
                   OR ((participating_org_type:24 AND participating_org_role:4) 
                   OR transaction_receiver_org_type_code:24)',
               },
@@ -64,7 +64,7 @@ export const iatigbsignatoriesCallValues = {
 export const OrgNarrative = {
   values: {
     q: '*:*',
-    rows: 500000,
+    rows: 500,
     group: 'on',
     'group.field': 'reporting_org_ref',
     fl: 'reporting_org_narrative',

@@ -50,7 +50,7 @@ export const ActivityHeaderLayout = (props: ActivityDetailsHeaderCardModel) => {
           </Typography>
           <Box height="24px" width="100%" />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <Typography variant="h3" color="textPrimary" data-testid="title">
             {props.activity.title}
           </Typography>

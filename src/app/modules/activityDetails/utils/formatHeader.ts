@@ -28,7 +28,8 @@ export function formatHeader(
     header.organisation.code = actDetail.reporting_org_ref;
     header.organisation.type = actDetail.reporting_org.type.name;
     header.activity.code = actDetail.iati_identifier;
-    header.activity.title = getEngText(get(actDetail, 'title[0]', '""'));
+    // header.activity.title = getEngText(get(actDetail, 'title[0]', '""'));
+    header.activity.title = get(actDetail, 'title_narrative_text', '""');
     const dates = getActualDates(
       get(actDetail, 'activity_date_iso_date', []),
       get(actDetail, 'activity_date_type', [])

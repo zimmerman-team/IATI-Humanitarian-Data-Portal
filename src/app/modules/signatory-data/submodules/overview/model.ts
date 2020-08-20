@@ -30,4 +30,5 @@ export interface OverviewLayoutModel {
   activityTimelineData: YearBarChartObjectModel[];
   humanitarianElementsData: HumanitarianDonutModel[];
   description: string;
+  loading: boolean;
 }

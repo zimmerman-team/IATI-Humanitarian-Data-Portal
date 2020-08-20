@@ -98,7 +98,13 @@ export const LandingLayout = (props: LandingModel) => {
 
       <VersionBox paddingLeft="40px">
         <Typography variant="body2">
-          Portal Status: <b>LIVE Version 1.0</b>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/zimmerman-zimmerman/IATI-Humanitarian-Data-Portal/releases"
+          >
+            Portal Status: <b>LIVE Version 1.0</b>
+          </a>
         </Typography>
       </VersionBox>
     </Container>

@@ -15,7 +15,9 @@ import {
   getHeaderDateRange,
   getActivityDateTypeField,
 } from 'app/modules/signatory-data/submodules/utils';
-import log from 'neon-cli/lib/log';
+
+/* mock */
+import { OrgNarrative } from 'app/modules/signatory-data/mock';
 
 export function SubmoduleContainer(props) {
   // todo: look into Error:(16, 43) TS2589: Type instantiation is excessively deep and possibly infinite.
@@ -49,8 +51,39 @@ export function SubmoduleContainer(props) {
   const queryDateField = getActivityDateTypeField(
     get(locStore.checkSigDateTypeAvailable, 'data.data.response.docs', [])
   );
+  const organisationNarrativeCall = useStoreActions(
+    actions => actions.organisationnarrative.fetch
+  );
+
+  const sigdataactivityyearsLoading = useStoreState(
+    state => state.sigdataactivityyears.loading
+  );
+  const sigdatadatesheaderLoading = useStoreState(
+    state => state.sigdatadatesheader.loading
+  );
+  const sigdataactivityyearsSuccess = useStoreState(
+    state => state.sigdataactivityyears.success
+  );
+  const sigdatadatesheaderSuccess = useStoreState(
+    state => state.sigdatadatesheader.success
+  );
+
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
+    if (
+      organisationNarrativeData.data === null &&
+      !organisationNarrativeData.loading
+    ) {
+      const callValuesNarrative = {
+        values: {
+          ...OrgNarrative.values,
+          q: `reporting_org_ref:(${decodeURIComponent(
+            props.match.params.code
+          )})`,
+        },
+      };
+      organisationNarrativeCall(callValuesNarrative);
+    }
     const callValues = {
       values: {
         q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
@@ -60,33 +93,32 @@ export function SubmoduleContainer(props) {
     locActions.checkSigDateTypeAvailable.fetch(callValues);
   }, []);
   React.useEffect(() => {
-    const callValues = {
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        facet: 'on',
-        'facet.pivot': `${queryDateField},humanitarian`,
-        fl: 'facet_counts',
-      },
-    };
-    sigdataactivityyearsCall(callValues);
-    sigdatadatesheaderCall({
-      values: {
-        q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
-        'json.facet': JSON.stringify({
-          date1: `min(activity_date_start_actual)`,
-          date2: `min(activity_date_start_planned)`,
-          date3: `max(activity_date_start_actual)`,
-          date4: `max(activity_date_start_planned)`,
-        }),
-        rows: 0,
-      },
-    });
-  }, [
-    gbsignatoriesData,
-    props.match.params.code,
-    sigdataactivityyearsCall,
-    locStore.checkSigDateTypeAvailable,
-  ]);
+    if (!sigdataactivityyearsLoading) {
+      const callValues = {
+        values: {
+          q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+          facet: 'on',
+          'facet.pivot': `${queryDateField},humanitarian`,
+          fl: 'facet_counts',
+        },
+      };
+      sigdataactivityyearsCall(callValues);
+    }
+    if (!sigdatadatesheaderLoading) {
+      sigdatadatesheaderCall({
+        values: {
+          q: `reporting_org_ref:${decodeURIComponent(props.match.params.code)}`,
+          'json.facet': JSON.stringify({
+            date1: `min(activity_date_start_actual)`,
+            date2: `min(activity_date_start_planned)`,
+            date3: `max(activity_date_start_actual)`,
+            date4: `max(activity_date_start_planned)`,
+          }),
+          rows: 0,
+        },
+      });
+    }
+  }, [props.match.params.code, locStore.checkSigDateTypeAvailable.success]);
 
   let suppLink = get(orgDetails, 'suppInfoUrl', 'no url provided');
   suppLink =

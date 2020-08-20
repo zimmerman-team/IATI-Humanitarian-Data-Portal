@@ -8,7 +8,7 @@ import { Palette } from 'app/theme';
 
 const MessageContainer = styled(props => <Box {...props} />)`
   align-items: center;
-  border: 1px red solid;
+  // border: 1px red solid;
   @media (max-width: 960px) {
     flex-direction: column;
     align-items: normal;

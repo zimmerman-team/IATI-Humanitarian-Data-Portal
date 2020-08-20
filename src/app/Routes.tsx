@@ -24,7 +24,6 @@ import { ResultDetail } from './modules/ResultDetails';
 /* utils */
 import { InitialDataLoad } from './utils/initialLoad';
 import { NoMatchPage } from 'app/modules/common/NoMatchPage';
-import { withTracker } from 'app/withTracker';
 
 export function Routes() {
   InitialDataLoad();
@@ -35,46 +34,35 @@ export function Routes() {
     <Suspense fallback={<PageLoader />}>
       <Switch>
         {/* App Bar */}
-        <Route exact path="/" component={withTracker(Landing)} />
-        <Route exact path="/about" component={withTracker(About)} />
-        <Route exact path="/faq" component={withTracker(Faqs)} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/faq" component={Faqs} />
         <Route
           exact
           path="/signatory-data"
-          component={withTracker(SignatoryData, { tableOptions: tableOptions })}
+          render={() => <SignatoryData tableOptions={tableOptions} />}
         />
-        <Route
-          path="/signatory-data/:code"
-          component={withTracker(SubmoduleContainer)}
-        />
+        <Route path="/signatory-data/:code" component={SubmoduleContainer} />
         {/*TODO: im missing!*/}
-        <Route
-          exact
-          path="/signatory-progress"
-          component={withTracker(SignatoryProgress)}
-        />
+        <Route exact path="/signatory-progress" component={SignatoryProgress} />
 
         {/* Signatory Progress Sub Pages */}
         <Route
           exact
           path="/signatory-progress/cctri-target"
-          component={withTracker(CCTRI)}
+          component={CCTRI}
         />
 
         <Route
           exact
           path="/activity-detail/:code"
-          component={withTracker(ActivityDetails)}
+          component={ActivityDetails}
         />
 
-        <Route exact path="/privacy" component={withTracker(PrivacyModule)} />
-        <Route
-          exact
-          path="/result-detail/:code"
-          component={withTracker(ResultDetail)}
-        />
+        <Route exact path="/privacy" component={PrivacyModule} />
+        <Route exact path="/result-detail/:code" component={ResultDetail} />
 
-        <Route exact path="/notFound" component={withTracker(NoMatchPage)} />
+        <Route exact path="/notFound" component={NoMatchPage} />
         {/* Signatory Data Container*/}
         {/* <SubmoduleContainer /> */}
       </Switch>
