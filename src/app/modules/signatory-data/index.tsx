@@ -52,6 +52,8 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
   const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
   const shouldLoad = useStoreState(
     state =>
+      // !state.gbsignatories.loading &&
+      // !state.gbsignatories.success &&
       !state.iatigbsignatories.loading &&
       !state.iatigbsignatories.success &&
       !state.organisationnarrative.loading &&
@@ -147,15 +149,16 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
 
   /* use useEffect as componentDidMount and commit the API calls */
   React.useEffect(() => {
-    if (
-      get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', []) ===
-        [] &&
+    const check1 =
+      get(iatigbsignatoriesData, 'data.data.facets.iati_orgs.buckets', [])
+        .length === 0;
+    const check2 =
       get(
         organisationNarrativeData,
         'data.data.grouped.reporting_org_ref.groups',
         []
-      ) === []
-    ) {
+      ).length === 0;
+    if (check1 && check2) {
       loadData();
     }
   }, [gbsignatoriesData]);
