@@ -263,7 +263,9 @@ workflows:
             - build_deploy
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - develop
 #      - test_e2e:
 #          requires:
 #            - build_deploy
