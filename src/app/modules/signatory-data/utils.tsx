@@ -34,7 +34,8 @@ const returnFlagValue = value => {
 export const formatTableSignatories = (
   signatories,
   gbsignatoriesFromCMS,
-  organisationNarrative
+  organisationNarrative,
+  signatoriesFrequency
 ) => {
   const formatSigs: any = [];
   if (gbsignatoriesFromCMS && gbsignatoriesFromCMS.length > 0) {
@@ -52,6 +53,10 @@ export const formatTableSignatories = (
       );
 
       sigOrgName = sigOrgName || cmsSig.pubName;
+
+      const sigFrequency = find(signatoriesFrequency, {
+        sig_ref: cmsSig.IATIOrgRef,
+      });
 
       formatSigs.push([
         //{name: get(fSig,'pubName',''), code: encodeURIComponent(sig.val)},
@@ -83,6 +88,7 @@ export const formatTableSignatories = (
         orgType === 'Government'
           ? returnFlagValue(null)
           : returnFlagValue(fSig ? fSig.traec.count > 0 : '0'),
+        returnFlagValue(sigFrequency ? sigFrequency.value === 'Monthly' : 'na'),
       ]);
     });
   }
@@ -261,6 +267,28 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
           ),
         customFilterListRender: value =>
           `Incoming trans traceability: ${value}`,
+      },
+    },
+    {
+      name: 'Publishing monthly (at least)',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customHeadRender: (columnMeta, updateDirection) =>
+          getInfoTHead(
+            'Publishing monthly (at least)',
+            getTooltipContent(
+              tooltipsData,
+              'Signatory Data',
+              'Publishing monthly (at least)'
+            )
+          ),
+        customFilterListRender: value =>
+          `Publishing monthly (at least): ${value}`,
       },
     },
   ];

@@ -4,6 +4,7 @@ import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
+import sigFrequencies from 'app/state/api/actionsReducers/sigFrequencies';
 import tooltips from 'app/state/api/actionsReducers/tooltips';
 import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
 import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
@@ -49,6 +50,7 @@ export interface ApplicationStoreModel {
   sigdataincoming: ActivityResponceInterface;
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
+  sigFrequencies: GBSignatoryResponseInterface;
   tooltips: GBSignatoryResponseInterface;
   signatoryProgress: SignatoryPrgoressResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
@@ -101,6 +103,7 @@ const applicationStore: ApplicationStoreModel = {
       state.activityListFilter = payload;
     }),
   },
+  sigFrequencies,
 };
 
 export const appStore = createStore(applicationStore, {
