@@ -182,7 +182,7 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
         signatoriesFrequency.data || []
       )
     );
-  }, [iatigbsignatoriesData, organisationNarrativeData]);
+  }, [iatigbsignatoriesData, organisationNarrativeData, signatoriesFrequency]);
 
   React.useEffect(() => {
     setColumns(
