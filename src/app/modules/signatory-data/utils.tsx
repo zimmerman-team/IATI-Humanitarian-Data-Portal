@@ -270,7 +270,7 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
       },
     },
     {
-      name: 'Publishing monthly (at least)',
+      name: 'Publishing to IATI at least monthly',
       options: {
         filter: true,
         filterType: 'checkbox',
@@ -280,15 +280,15 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
         },
         customHeadRender: (columnMeta, updateDirection) =>
           getInfoTHead(
-            'Publishing monthly (at least)',
+            'Publishing to IATI at least monthly',
             getTooltipContent(
               tooltipsData,
               'Signatory Data',
-              'Publishing monthly (at least)'
+              'Publishing to IATI at least monthly'
             )
           ),
         customFilterListRender: value =>
-          `Publishing monthly (at least): ${value}`,
+          `Publishing to IATI at least monthly: ${value}`,
       },
     },
   ];

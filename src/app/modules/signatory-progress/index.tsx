@@ -5,7 +5,7 @@ import useTitle from 'react-use/lib/useTitle';
 
 /* store */
 import { signProgStore } from 'app/modules/signatory-progress/store';
-import { useStoreState } from 'app/state/store/hooks';
+import { useStoreState, useStoreActions } from 'app/state/store/hooks';
 
 /* consts */
 import {
@@ -20,6 +20,7 @@ import {
 /* utils */
 import map from 'lodash/map';
 import get from 'lodash/get';
+import filter from 'lodash/filter';
 import { formatLineChart } from 'app/modules/signatory-progress/utils/formatLineChart';
 import { formatBarData } from 'app/modules/signatory-progress/utils/formatBarData';
 import { formatTableData } from 'app/modules/signatory-progress/utils/formatTableData';
@@ -39,6 +40,12 @@ export function SignatoryProgress() {
   );
   const signatoryProgressDataLoading: any = useStoreState(
     globalState => globalState.signatoryProgress.loading
+  );
+  const signatoriesFrequency = useStoreState(
+    globalState => globalState.sigFrequencies
+  );
+  const sigFrequenciesCall = useStoreActions(
+    globalActions => globalActions.sigFrequencies.fetch
   );
 
   const gbOrgData = map(iatigbsignatoriesData.data, sig => ({
@@ -79,6 +86,12 @@ export function SignatoryProgress() {
       actions.publishersTrac.fetch({ values: pubTracQuery });
     }
   }, [iatigbsignatoriesData.data]);
+
+  useEffect(() => {
+    if (!signatoriesFrequency.data) {
+      sigFrequenciesCall({});
+    }
+  }, []);
 
   // array for specific publisher data, be it publishers publishing humanitarian,
   // v2.02 data and etc.
@@ -128,7 +141,21 @@ export function SignatoryProgress() {
         null
       ),
     },
+    {
+      name: 'Publishing to IATI at least monthly',
+      key: 'pub_mon',
+      // @ts-ignore
+      specPub: filter(
+        map(signatoriesFrequency.data || [], (freq: any) => ({
+          val: freq.sig_ref.toLowerCase(),
+          count: freq.value === 'Monthly' ? 1 : 0,
+        })),
+        { count: 1 }
+      ),
+    },
   ];
+
+  console.log(specPublishers);
 
   const lineData = formatLineChart(
     gbOrgData,
