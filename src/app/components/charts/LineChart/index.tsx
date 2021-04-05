@@ -36,7 +36,6 @@ const ChartContainer = styled.div`
 `;
 
 export const LineChart = (props: LineChartModel) => {
-  console.log(props.values);
   return (
     <>
       <ChartContainer>
