@@ -1,4 +1,5 @@
 import React from 'react';
+import get from 'lodash/get';
 import { useStoreState } from 'easy-peasy';
 import { useStoreActions } from '../state/store/hooks';
 
@@ -208,6 +209,12 @@ export function InitialDataLoad() {
   const getSignatoryProgress = useStoreActions(
     actions => actions.signatoryProgress.fetch
   );
+  const sigFrequenciesCSVCall = useStoreActions(
+    actions => actions.sigFrequenciesCSV.fetchCSV
+  );
+  const signatoriesFrequenciesCSV = useStoreState(state =>
+    get(state.sigFrequenciesCSV, 'data.data', [])
+  );
 
   React.useEffect(() => {
     // if (!gbsignatoriesData.data) {
@@ -320,5 +327,8 @@ export function InitialDataLoad() {
     }
     getTooltips({});
     getSignatoryProgress({});
+    if (signatoriesFrequenciesCSV.length === 0) {
+      sigFrequenciesCSVCall({});
+    }
   }, []);
 }

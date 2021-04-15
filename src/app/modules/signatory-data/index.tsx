@@ -50,7 +50,9 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
     state => state.organisationnarrative
   );
   const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
-  const signatoriesFrequency = useStoreState(state => state.sigFrequencies);
+  const signatoriesFrequenciesCSV = useStoreState(state =>
+    get(state.sigFrequenciesCSV, 'data.data', [])
+  );
 
   const shouldLoad = useStoreState(
     state =>
@@ -67,9 +69,6 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
   );
   const organisationNarrativeCall = useStoreActions(
     actions => actions.organisationnarrative.fetch
-  );
-  const sigFrequenciesCall = useStoreActions(
-    actions => actions.sigFrequencies.fetch
   );
 
   const loadData = () => {
@@ -99,7 +98,6 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
   // so when the component mounts we want to set the
   // table options stored in global easy peasy state
   React.useEffect(() => {
-    sigFrequenciesCall({});
     loadData();
     setColumns(
       mockDataVar2.columns.map((column, index) => {
@@ -179,10 +177,14 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
           'data.data.grouped.reporting_org_ref.groups',
           []
         ),
-        signatoriesFrequency.data || []
+        signatoriesFrequenciesCSV
       )
     );
-  }, [iatigbsignatoriesData, organisationNarrativeData, signatoriesFrequency]);
+  }, [
+    iatigbsignatoriesData,
+    organisationNarrativeData,
+    signatoriesFrequenciesCSV,
+  ]);
 
   React.useEffect(() => {
     setColumns(

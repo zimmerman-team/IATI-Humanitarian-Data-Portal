@@ -5,6 +5,8 @@ import { API } from 'space-api';
 
 import { ApiModel, Errors, RequestValues, ResponseData } from '../interfaces';
 
+import { CSVToJSON } from 'app/utils/csv';
+
 export const api = new API(
   process.env.REACT_APP_CMS_PROJECT_ID,
   process.env.REACT_APP_CMS_API
@@ -99,6 +101,16 @@ export const apiModel = <QueryModel, ResponseModel>(
       );
     });
   }),
+  fetchCSV: thunk(async (actions, query: RequestValues<QueryModel>) => {
+    axios.get(url).then(
+      (resp: AxiosResponse) => {
+        actions.onSuccess({ data: CSVToJSON(resp.data) });
+      },
+      (error: any) => {
+        actions.onError(error.response);
+      }
+    );
+  }),
 });
 
 export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
@@ -145,6 +157,7 @@ export const spaceCloudAPIModel = <QueryModel, ResponseModel>(
       actions.onError(res);
     }
   }),
+  fetchCSV: thunk(async (actions, query: RequestValues<QueryModel>) => {}),
 });
 
 // and redux actions for the generic api model
@@ -229,5 +242,15 @@ export const apiPOSTModel = <QueryModel, ResponseModel>(
         }
       );
     });
+  }),
+  fetchCSV: thunk(async (actions, query: RequestValues<QueryModel>) => {
+    axios.get(url).then(
+      (resp: AxiosResponse) => {
+        actions.onSuccess({ data: resp.data });
+      },
+      (error: any) => {
+        actions.onError(error.response);
+      }
+    );
   }),
 });

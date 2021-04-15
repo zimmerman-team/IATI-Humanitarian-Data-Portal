@@ -35,7 +35,7 @@ export const formatTableSignatories = (
   signatories,
   gbsignatoriesFromCMS,
   organisationNarrative,
-  signatoriesFrequency
+  signatoriesFrequenciesCSV
 ) => {
   const formatSigs: any = [];
   if (gbsignatoriesFromCMS && gbsignatoriesFromCMS.length > 0) {
@@ -54,8 +54,8 @@ export const formatTableSignatories = (
 
       sigOrgName = sigOrgName || cmsSig.pubName;
 
-      const sigFrequency = find(signatoriesFrequency, {
-        sig_ref: cmsSig.IATIOrgRef,
+      const sigFrequency = find(signatoriesFrequenciesCSV, {
+        'Publisher Registry Id': cmsSig.regPubId,
       });
 
       formatSigs.push([
@@ -88,7 +88,9 @@ export const formatTableSignatories = (
         orgType === 'Government'
           ? returnFlagValue(null)
           : returnFlagValue(fSig ? fSig.traec.count > 0 : '0'),
-        returnFlagValue(sigFrequency ? sigFrequency.value === 'Monthly' : 'na'),
+        returnFlagValue(
+          sigFrequency ? sigFrequency.Frequency === 'Monthly' : 'na'
+        ),
       ]);
     });
   }

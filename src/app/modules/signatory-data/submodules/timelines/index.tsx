@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
+import { useStoreState } from 'app/state/store/hooks';
 import { TimelinesLayout } from 'app/modules/signatory-data/submodules/timelines/layout';
 
 /* store */
@@ -14,6 +15,7 @@ import {
 
 /* utils */
 import get from 'lodash/get';
+import find from 'lodash/find';
 import { formatTimeTable } from 'app/modules/signatory-data/submodules/timelines/utils/formatTimeTable';
 import { formatFrequency } from 'app/modules/signatory-data/submodules/timelines/utils/formatFrequencyTable';
 import { getTimeLagName } from 'app/modules/signatory-data/submodules/timelines/utils/getTimeLagName';
@@ -45,6 +47,18 @@ function TimelinesF(props) {
   const timeLagTableData = formatTimeTable(timelagData);
   const freqTableData = formatFrequency(orgFrequency);
 
+  const signatory = useStoreState(rstate =>
+    find(get(rstate.gbsignatories, 'data', []), {
+      // @ts-ignore
+      IATIOrgRef: props.match.params.code,
+    })
+  );
+  const signatoryFreqCSV = useStoreState(rstate =>
+    find(get(rstate.sigFrequenciesCSV, 'data.data', []), {
+      'Publisher Registry Id': get(signatory, 'regPubId', ''),
+    })
+  );
+
   return (
     <TimelinesLayout
       freqRating={getFrequencyRating(
@@ -58,6 +72,7 @@ function TimelinesF(props) {
       timeLagName={getTimeLagName(timeLagTableData)}
       timelagData={timeLagTableData}
       freqData={freqTableData}
+      freqDataCSV={signatoryFreqCSV}
     />
   );
 }

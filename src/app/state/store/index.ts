@@ -38,6 +38,7 @@ import organisationnarrative from 'app/state/api/actionsReducers/organisationNar
 import { SigDataActivityListFilterModel } from '../api/interfaces';
 import { DataTableOptions } from 'app/state/general/interfaces';
 import { dataTableOpts } from 'app/state/general/actionsReducers';
+import sigFrequenciesCSV from 'app/state/api/actionsReducers/sigFrequenciesCSV';
 
 const persistSessionConfig = {
   key: 'session',
@@ -71,6 +72,7 @@ export interface ApplicationStoreModel {
   sigDataActivityListFilter: SigDataActivityListFilterModel;
   sigdatadatesheader: ActivityResponceInterface;
   sigdataoverviewcurrency: ActivityResponceInterface;
+  sigFrequenciesCSV: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -104,6 +106,7 @@ const applicationStore: ApplicationStoreModel = {
     }),
   },
   sigFrequencies,
+  sigFrequenciesCSV,
 };
 
 export const appStore = createStore(applicationStore, {
