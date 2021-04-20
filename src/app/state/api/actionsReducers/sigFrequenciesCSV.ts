@@ -3,7 +3,7 @@ import { apiModel } from './index';
 
 const sigFrequenciesCSV: ActivityResponceInterface = {
   ...apiModel(
-    'https://cors-anywhere.herokuapp.com/http://publishingstats.iatistandard.org/timeliness_frequency.csv'
+    'http://publishingstats.iatistandard.org/timeliness_frequency.csv'
   ),
 };
 
