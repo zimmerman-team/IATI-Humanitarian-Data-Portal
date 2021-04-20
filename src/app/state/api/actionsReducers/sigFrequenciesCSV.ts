@@ -3,7 +3,7 @@ import { apiModel } from './index';
 
 const sigFrequenciesCSV: ActivityResponceInterface = {
   ...apiModel(
-    'http://publishingstats.iatistandard.org/timeliness_frequency.csv'
+    'https://cors.mlt.nyuki.io/http://publishingstats.iatistandard.org/timeliness_frequency.csv'
   ),
 };
 
