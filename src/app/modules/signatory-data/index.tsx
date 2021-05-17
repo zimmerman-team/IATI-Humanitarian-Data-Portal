@@ -50,6 +50,10 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
     state => state.organisationnarrative
   );
   const iatigbsignatoriesData = useStoreState(state => state.iatigbsignatories);
+  const signatoriesFrequenciesCSV = useStoreState(state =>
+    get(state.sigFrequenciesCSV, 'data.data', [])
+  );
+
   const shouldLoad = useStoreState(
     state =>
       // !state.gbsignatories.loading &&
@@ -172,10 +176,15 @@ export const SignatoryData = React.memo((props: SignatoryDataModule) => {
           organisationNarrativeData,
           'data.data.grouped.reporting_org_ref.groups',
           []
-        )
+        ),
+        signatoriesFrequenciesCSV
       )
     );
-  }, [iatigbsignatoriesData, organisationNarrativeData]);
+  }, [
+    iatigbsignatoriesData,
+    organisationNarrativeData,
+    signatoriesFrequenciesCSV,
+  ]);
 
   React.useEffect(() => {
     setColumns(

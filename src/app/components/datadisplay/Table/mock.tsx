@@ -273,6 +273,7 @@ export const mockDataVar2: TableModuleModel = {
     { dataType: 'percentage', percValue: 'True' },
     { dataType: 'percentage', percValue: 'True' },
     { dataType: 'percentage', percValue: 'True' },
+    { dataType: 'percentage', percValue: 'True' },
   ],
 };
 

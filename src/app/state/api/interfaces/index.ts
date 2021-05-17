@@ -31,6 +31,10 @@ export interface ApiModel<QueryModel, ResponseModel> {
     ApiModel<QueryModel, ResponseModel>,
     RequestValues<QueryModel>
   >;
+  fetchCSV: Thunk<
+    ApiModel<QueryModel, ResponseModel>,
+    RequestValues<QueryModel>
+  >;
 }
 
 type activityFilterType = {
