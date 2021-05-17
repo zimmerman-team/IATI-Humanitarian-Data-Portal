@@ -1,23 +1,39 @@
 /* eslint-disable react/jsx-max-depth */
 import React from 'react';
-import { Grid, Typography, Box, Hidden } from '@material-ui/core';
+import uniq from 'lodash/uniq';
+import filter from 'lodash/filter';
 import TableModule from 'app/components/datadisplay/Table';
+import { Grid, Typography, Box, Hidden } from '@material-ui/core';
 import { mockDataVar7 } from 'app/components/datadisplay/Table/mock';
-import styled from 'styled-components';
 import { TimeLinessModel } from 'app/modules/signatory-data/submodules/timelines/model';
 import { DecoSigTimelineTopLeft } from 'app/modules/signatory-data/submodules/timelines/common/decoration/DecoSigTimelineTopLeft';
 
-// const ContentTypographyLG = styled(props => <Typography {...props} />)`
-//   column-count: 2;
-//   column-gap: 6rem;
-// `;
-
-const ColumnBox = styled.div`
-  column-count: 2;
-  column-gap: 6rem;
-`;
-
 export const TimelinesLayout = (props: TimeLinessModel) => {
+  let freqTableData: string[][] = [];
+  if (props.freqDataCSV) {
+    const dateFields = filter(
+      Object.keys(props.freqDataCSV),
+      (key: string) => key.indexOf('-') > -1
+    );
+    if (dateFields.length > 0) {
+      const years = uniq(dateFields.map((field: string) => field.slice(0, 4)));
+      years.forEach((year: string) => {
+        const yearArr = [year];
+        for (let i = 1; i <= 12; i++) {
+          if (props.freqDataCSV[`${year}-${i < 10 ? '0' : ''}${i}`]) {
+            yearArr.push(props.freqDataCSV[`${year}-${i < 10 ? '0' : ''}${i}`]);
+          } else {
+            yearArr.push('00');
+          }
+        }
+        freqTableData.push(yearArr);
+      });
+    }
+  }
+  freqTableData = freqTableData
+    .sort((a, b) => parseInt(a[0], 10) - parseInt(b[0], 10))
+    .reverse();
+
   return (
     <>
       {/* ---------------------------------------- */}
@@ -64,13 +80,15 @@ export const TimelinesLayout = (props: TimeLinessModel) => {
         </Grid>
         <Grid item xs={12} md={12}>
           <Typography variant="h6" align="right">
-            <span>{`Frequency rating: ${props.freqRating}`}</span>
+            <span>{`Frequency rating: ${
+              props.freqDataCSV ? props.freqDataCSV.Frequency : ''
+            }`}</span>
           </Typography>
           <Box width="100%" height="16px" />
 
           <TableModule
+            data={freqTableData}
             title={mockDataVar7.title}
-            data={props.freqData}
             columns={mockDataVar7.columns}
             options={mockDataVar7.options}
             columnsCell={mockDataVar7.columnsCell}

@@ -18,7 +18,6 @@ import {
   LocalTableStateModel,
   TotalRowColModel,
 } from 'app/components/datadisplay/Table/model';
-import { MUIDataTableState } from 'mui-datatables';
 import get from 'lodash/get';
 import styled from 'styled-components';
 

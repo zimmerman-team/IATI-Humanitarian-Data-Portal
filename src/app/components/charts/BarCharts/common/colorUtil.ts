@@ -11,6 +11,7 @@ export const colorScheme = colors => {
       Colours.yellowbase,
       Colours.redbase,
       Colours.bluebase,
+      Colours.melon,
     ];
   }
   return Colours.primaryBase;

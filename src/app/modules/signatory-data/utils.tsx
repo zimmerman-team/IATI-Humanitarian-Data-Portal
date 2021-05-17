@@ -34,7 +34,8 @@ const returnFlagValue = value => {
 export const formatTableSignatories = (
   signatories,
   gbsignatoriesFromCMS,
-  organisationNarrative
+  organisationNarrative,
+  signatoriesFrequenciesCSV
 ) => {
   const formatSigs: any = [];
   if (gbsignatoriesFromCMS && gbsignatoriesFromCMS.length > 0) {
@@ -52,6 +53,10 @@ export const formatTableSignatories = (
       );
 
       sigOrgName = sigOrgName || cmsSig.pubName;
+
+      const sigFrequency = find(signatoriesFrequenciesCSV, {
+        'Publisher Registry Id': cmsSig.regPubId,
+      });
 
       formatSigs.push([
         //{name: get(fSig,'pubName',''), code: encodeURIComponent(sig.val)},
@@ -83,6 +88,9 @@ export const formatTableSignatories = (
         orgType === 'Government'
           ? returnFlagValue(null)
           : returnFlagValue(fSig ? fSig.traec.count > 0 : '0'),
+        returnFlagValue(
+          sigFrequency ? sigFrequency.Frequency === 'Monthly' : 'na'
+        ),
       ]);
     });
   }
@@ -261,6 +269,28 @@ export const getBaseTable = (tooltipsData): TableModuleModel => {
           ),
         customFilterListRender: value =>
           `Incoming trans traceability: ${value}`,
+      },
+    },
+    {
+      name: 'Publishing to IATI at least monthly',
+      options: {
+        filter: true,
+        filterType: 'checkbox',
+        filterOptions: { names: ['True', 'False', 'NA'] },
+        customBodyRender: (value, tableMeta, updateValue) => {
+          return <IconCellModule value={value} />;
+        },
+        customHeadRender: (columnMeta, updateDirection) =>
+          getInfoTHead(
+            'Publishing to IATI at least monthly',
+            getTooltipContent(
+              tooltipsData,
+              'Signatory Data',
+              'Publishing to IATI at least monthly'
+            )
+          ),
+        customFilterListRender: value =>
+          `Publishing to IATI at least monthly: ${value}`,
       },
     },
   ];

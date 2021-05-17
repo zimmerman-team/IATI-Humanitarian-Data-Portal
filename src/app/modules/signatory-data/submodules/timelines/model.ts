@@ -9,12 +9,15 @@ export interface TimeLinessModel {
     | undefined
     | null
     | (string | number | null)[]
-    | moneyType)[][];
+    | moneyType
+  )[][];
   freqData: (
     | number
     | string
     | undefined
     | null
     | (string | number | null)[]
-    | moneyType)[][];
+    | moneyType
+  )[][];
+  freqDataCSV?: any;
 }

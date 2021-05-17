@@ -4,6 +4,7 @@ import storageSession from 'redux-persist/lib/storage/session';
 import activities from 'app/state/api/actionsReducers/activity';
 import humanitarian from 'app/state/api/actionsReducers/humanitarian';
 import gbsignatories from 'app/state/api/actionsReducers/gbsignatories';
+import sigFrequencies from 'app/state/api/actionsReducers/sigFrequencies';
 import tooltips from 'app/state/api/actionsReducers/tooltips';
 import signatoryProgress from 'app/state/api/actionsReducers/signatoryProgress';
 import SignatoryPrgoressResponseInterface from 'app/state/api/interfaces/signatoryProgressInterface';
@@ -37,6 +38,7 @@ import organisationnarrative from 'app/state/api/actionsReducers/organisationNar
 import { SigDataActivityListFilterModel } from '../api/interfaces';
 import { DataTableOptions } from 'app/state/general/interfaces';
 import { dataTableOpts } from 'app/state/general/actionsReducers';
+import sigFrequenciesCSV from 'app/state/api/actionsReducers/sigFrequenciesCSV';
 
 const persistSessionConfig = {
   key: 'session',
@@ -49,6 +51,7 @@ export interface ApplicationStoreModel {
   sigdataincoming: ActivityResponceInterface;
   sigdataoutgoing: ActivityResponceInterface;
   gbsignatories: GBSignatoryResponseInterface;
+  sigFrequencies: GBSignatoryResponseInterface;
   tooltips: GBSignatoryResponseInterface;
   signatoryProgress: SignatoryPrgoressResponseInterface;
   iatigbsignatories: ActivityResponceInterface;
@@ -69,6 +72,7 @@ export interface ApplicationStoreModel {
   sigDataActivityListFilter: SigDataActivityListFilterModel;
   sigdatadatesheader: ActivityResponceInterface;
   sigdataoverviewcurrency: ActivityResponceInterface;
+  sigFrequenciesCSV: ActivityResponceInterface;
 }
 
 const applicationStore: ApplicationStoreModel = {
@@ -101,6 +105,8 @@ const applicationStore: ApplicationStoreModel = {
       state.activityListFilter = payload;
     }),
   },
+  sigFrequencies,
+  sigFrequenciesCSV,
 };
 
 export const appStore = createStore(applicationStore, {
